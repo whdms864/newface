@@ -85,10 +85,18 @@
 		<put-attribute name="left" value="/WEB-INF/views/minihome/photo_left.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/minihome/photo_write.jsp"/>
 	</definition>  
+	
+	<definition name=".folder.*" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/{1}/{1}_left.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minihome/{1}/{1}_folder.jsp"/>
+	</definition>  
+	
 	<definition name=".*" extends=".minihome">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/{1}/{1}_left.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/minihome/{1}/{1}_content.jsp"/>
 	</definition>  
+	
+	
 	
 	
 	

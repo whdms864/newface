@@ -5,8 +5,12 @@
 <configuration>
   <typeAliases>
   	<typeAlias type="com.newface.vo.MemberVo" alias="member"/>
+  	<typeAlias type="com.newface.vo.DiaryfolderVo" alias="diaryfolder"/>
+  	<typeAlias type="com.newface.vo.DiaryVo" alias="diary"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/DiaryFolderMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
   </mappers>
 </configuration>

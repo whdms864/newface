@@ -106,4 +106,10 @@ public class DiaryController {
 		json.put("week", week);
 		return json.toString();
 	}
+	
+	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)
+	public String list(String fname,Model model) {
+		model.addAttribute("fname", fname);
+		return ".folder.diary";
+	}
 }
