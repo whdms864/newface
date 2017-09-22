@@ -75,8 +75,8 @@ CREATE TABLE ader
 
 CREATE TABLE admin
 (
-	id varchar(1000) NOT NULL,
-	pwd varchar(1000),
+	id varchar(250) NOT NULL,
+	pwd varchar(250),
 	name varchar(1000),
 	PRIMARY KEY (id)
 );
@@ -101,7 +101,7 @@ CREATE TABLE buy
 	cnt int,
 	pay int,
 	item_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (buy_num)
 );
 
@@ -110,7 +110,7 @@ CREATE TABLE cash
 (
 	cash_num int NOT NULL AUTO_INCREMENT,
 	cnt int,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (cash_num)
 );
 
@@ -144,7 +144,7 @@ CREATE TABLE diary_com
 	singo varchar(20),
 	regdate date,
 	diary_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (diary_com_num)
 );
 
@@ -154,7 +154,7 @@ CREATE TABLE diary_com_singo
 	dcs_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	diary_com_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (dcs_num)
 );
 
@@ -173,7 +173,7 @@ CREATE TABLE diary_singo
 (
 	diary_singo_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	diary_num int NOT NULL,
 	PRIMARY KEY (diary_singo_num)
 );
@@ -183,8 +183,8 @@ CREATE TABLE diary_tag
 (
 	tag_num int NOT NULL AUTO_INCREMENT,
 	diary_com_num int NOT NULL,
-	i_id varchar(1000) NOT NULL,
-	u_id varchar(1000) NOT NULL,
+	i_id varchar(250) NOT NULL,
+	u_id varchar(250) NOT NULL,
 	PRIMARY KEY (tag_num)
 );
 
@@ -196,7 +196,7 @@ CREATE TABLE guestbook
 	content varchar(4000),
 	secret varchar(20),
 	regdate date,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	hompy_num int NOT NULL,
 	PRIMARY KEY (guest_num)
 );
@@ -208,7 +208,7 @@ CREATE TABLE guestbook_com
 	content varchar(4000),
 	regdate date,
 	guest_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (guest_com_num)
 );
 
@@ -226,7 +226,7 @@ CREATE TABLE hompy
 	hompy_num int NOT NULL AUTO_INCREMENT,
 	total int,
 	hname varchar(1000),
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (hompy_num)
 );
 
@@ -259,8 +259,8 @@ CREATE TABLE iu
 	iu_num int NOT NULL AUTO_INCREMENT,
 	i_name varchar(1000),
 	u_name varchar(1000),
-	i_id varchar(1000) NOT NULL,
-	u_id varchar(1000) NOT NULL,
+	i_id varchar(250) NOT NULL,
+	u_id varchar(250) NOT NULL,
 	PRIMARY KEY (iu_num)
 );
 
@@ -271,15 +271,15 @@ CREATE TABLE iu_com
 	content varchar(4000),
 	regdate date,
 	hompy_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (iu_com_num)
 );
 
 
 CREATE TABLE member
 (
-	id varchar(1000) NOT NULL,
-	pwd varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
+	pwd varchar(250) NOT NULL,
 	name varchar(50),
 	email varchar(50),
 	addr varchar(100),
@@ -297,7 +297,7 @@ CREATE TABLE mine
 	totcnt int,
 	cnt int,
 	item_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (mine_num)
 );
 
@@ -319,8 +319,8 @@ CREATE TABLE msg
 	recv_del varchar(20),
 	regdate date,
 	send_clx varchar(20),
-	sender varchar(1000) NOT NULL,
-	receiver varchar(1000) NOT NULL,
+	sender varchar(250) NOT NULL,
+	receiver varchar(250) NOT NULL,
 	PRIMARY KEY (msg_num)
 );
 
@@ -331,7 +331,7 @@ CREATE TABLE noti
 	title varchar(1000),
 	content varchar(4000),
 	regdate date,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (noti_num)
 );
 
@@ -342,7 +342,7 @@ CREATE TABLE noti_com
 	content varchar(4000),
 	singo varchar(20),
 	regdate date,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	noti_num int NOT NULL,
 	PRIMARY KEY (noti_com_num)
 );
@@ -352,7 +352,7 @@ CREATE TABLE noti_com_singo
 (
 	noti_com_singo int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	noti_com_num int NOT NULL,
 	PRIMARY KEY (noti_com_singo)
 );
@@ -380,7 +380,7 @@ CREATE TABLE photo_com
 	content varchar(4000),
 	regdate date,
 	photo_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (photo_com_num)
 );
 
@@ -390,7 +390,7 @@ CREATE TABLE photo_com_singo
 	pcs_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	photo_com_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (pcs_num)
 );
 
@@ -399,8 +399,8 @@ CREATE TABLE photo_com_tag
 (
 	pct_num int NOT NULL AUTO_INCREMENT,
 	photo_com_num int NOT NULL,
-	i_id varchar(1000) NOT NULL,
-	u_id varchar(1000) NOT NULL,
+	i_id varchar(250) NOT NULL,
+	u_id varchar(250) NOT NULL,
 	PRIMARY KEY (pct_num)
 );
 
@@ -430,7 +430,7 @@ CREATE TABLE photo_singo
 	ps_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	photo_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (ps_num)
 );
 
@@ -455,7 +455,7 @@ CREATE TABLE qna11
 	content varchar(4000),
 	regdate date,
 	confirm varchar(20),
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (qna11_num)
 );
 
@@ -466,7 +466,7 @@ CREATE TABLE qna11_com
 	content varchar(4000),
 	regdate date,
 	qna11_num int NOT NULL,
-	id varchar(1000) NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (qna11_com_num)
 );
 
@@ -730,7 +730,7 @@ ALTER TABLE diary_com
 
 
 ALTER TABLE diary_tag
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -738,7 +738,7 @@ ALTER TABLE diary_tag
 
 
 ALTER TABLE diary_tag
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -802,7 +802,7 @@ ALTER TABLE mine
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (receiver)
+	ADD FOREIGN KEY (sender)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -810,7 +810,7 @@ ALTER TABLE msg
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (sender)
+	ADD FOREIGN KEY (receiver)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
