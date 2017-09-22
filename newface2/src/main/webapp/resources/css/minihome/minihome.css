@@ -1,0 +1,79 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	padding: 0;
+}
+#webView {
+	overflow: hidden;
+	position: relative;
+	background: rgb(149, 165, 166); /* 메인스킨 설정 */
+	width: 1200px;
+	height: 678px;
+	margin: 0 auto;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0)
+}
+#webView[data-show-memo='true'] {
+	overflow: visible
+}
+#scroll{
+	position: absolute; top: 80px; left: 886px; width: 22px; height: 550px;	overflow-y:scroll;
+}
+#today_back{/* 오늘방문자 */
+	position: absolute; top: 49px; left: 65px; width: 100px; height: 13px;
+	font-size: 10px
+}
+#today{/* 오늘방문자 */
+	display:inline-block; ;font-size: 9px; color: rgb(255, 0, 0);
+}
+#total{/*총방문자*/
+	position: absolute; top: 49px; left: 145px; width: 100px; height: 15px;
+	font-size: 10px;
+}
+.menu{
+	font-size: 12px; color: rgb(0, 0, 0); text-align: center; line-height: 3em; border-radius: 4px; background-color: rgb(52, 152, 219);
+	text-decoration: none;color: white;
+}
+#setup{
+	position: absolute; top: 104px; left: 919px; width: 60px; height: 30px; 
+}
+#diary{
+	position: absolute; top: 147px; left: 919px; width: 61px; height: 30px;
+}
+#photo{
+	position: absolute; top: 190px; left: 919px; width: 60px; height: 30px;
+}
+#guestbook{
+	position: absolute; top: 231px; left: 919px; width: 60px; height: 30px;
+}
+#set{
+	position: absolute; top: 274px; left: 919px; width: 60px; height: 30px;
+}
+
+#skin_back{
+	position: absolute; top: 20px; left: 18px; width: 910px; height: 648px;
+}
+#skin{
+	background-color: rgb(52, 152, 219); border-width: 0px; border-style: none; border-radius: 10px;width: 100%;height: 100%;
+}
+#profile_skin_back{
+	position: absolute; top: 70px; left: 32px; width: 205px; height: 569px;
+}
+#profile_skin{
+	background-color: rgb(255, 255, 255); border-radius: 10px;width: 100%;height: 100%;
+}
+#main_skin_back{
+	position: absolute; top: 71px; left: 257px; width: 662px; height: 568px;	
+}
+#main_skin{
+	background-color: rgb(255, 255, 255); border-radius: 10px;width: 100%;height: 100%;	
+}
+#hname_back{
+	position: absolute; top: 32px; left: 283px; width: 300px; height: 48px; display: inline-block;  /* afsdfsfsfsfsdfsfsfs */
+}
+#hname{
+	top:10px;font-weight: bold; font-size: 25px;
+}
+#hname_edit{
+	font-size: 15px;
+}

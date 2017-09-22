@@ -1,0 +1,13 @@
+@charset "UTF-8";
+#photo_title{
+	position: relative; top: 10px; left: 20px; width: 154px; height: 30px;
+	color: blue; font-size: 15px;
+}
+#photo_folder{
+	position: relative; top: 10px; left: 20px; width: 155px; height: 350px;
+	font-size: 13px;  
+}   
+.blank{
+	height: 10px;
+}
+                  

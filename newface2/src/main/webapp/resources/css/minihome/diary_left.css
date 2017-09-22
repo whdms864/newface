@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#diary_title{
+	position: relative; top: 10px; left: 20px; width: 154px; height: 30px;
+	color: blue; font-size: 15px;
+}
+#calender{
+	position: relative; top: 10px; left: 20px; width: 150px; height: 40px;
+	font-size: 14px; text-decoration: none; color: blue; 
+}
+#diary_folder_title{
+	position: relative; top: 10px; left: 20px; width: 155px; height: 40px;
+	font-size: 14px; font-weight: bold;
+}
+#diary_folder{
+	position: relative; top: 10px; left: 20px; width: 155px; height: 350px;
+	font-size: 13px;  
+}                       

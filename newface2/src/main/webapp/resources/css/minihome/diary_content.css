@@ -1,0 +1,37 @@
+@charset "UTF-8";
+*{
+	margin: 0px;padding: 0px;
+}
+#calendar_back{
+	margin: auto; width: 630px; height:70px; margin-top: 10px; border: 1px solid black;
+	border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;
+}
+#calendar_title{
+	height: 68px; width: 100px; float: left;text-align: center;
+	border-right: 1px solid black;
+}
+#mmdd{
+	font-size: 23px;font-weight: bold;margin-top: 5px;
+}
+#week{
+	font-size: 16px;margin-top: -3px;
+}
+#calendar{
+	float: left; width:500px; margin-top: 5px; margin-left: 18px; line-height: 20px;
+}
+.move{
+	width: 20px;height: 20px;font-size: 10px;text-align:center; margin-top: -15px;
+}
+#diary_content_back{
+	border: 1px solid black; margin-top: 90px;
+	border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;
+}
+#diary_content{
+	padding: 20px;
+}
+#regdate{
+	color: blue; font-size: 15px;
+}
+#menu{
+	float: right;
+}           

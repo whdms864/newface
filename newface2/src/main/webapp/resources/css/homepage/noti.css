@@ -1,0 +1,7 @@
+@charset "UTF-8";
+#wrap{width:1890px; height:1000px;}
+#header{width:1950px; height:70px; background-color: rgb(155, 89, 182);}
+#main2{width:1100px; height:950px; margin:auto;}
+#sidebar{width:200px; height:950px; float:left; margin:auto;}
+#content{width:600px; height:950px; float:left; margin:auto;}
+#ad{width:220px; height:950px; float:left; margin:auto;}

@@ -1,0 +1,51 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	padding: 0;
+}
+#webView {
+	overflow: hidden;
+	position: relative;
+	background: rgb(149, 165, 166); /* 메인스킨 설정 */
+	width: 1200px;
+	height: 678px;
+	margin: 0 auto;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0)
+}
+#webView[data-show-memo='true'] {
+	overflow: visible
+}
+#left_back{
+	width:147px ;height:153px ;
+}
+#profile{/*프로필사진*/
+	position: relative; top: 20px; left: 25px; width: 147px; height: 153px; 
+}
+#todayis{/*기분상태*/
+	position: relative; top: 40px; left: 38px; width:100px;
+	border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; 
+	text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(26, 188, 156);
+	display: inline-block;
+}                     
+#content{
+	position: relative; top: 50px; left: 25px; width: 155px; height: 136px;
+	font-size: 13px;
+}
+#edit{
+	position: relative; top: 30px; left: 25px; width: 100px; height: 13px;
+	font-size: 14px; color: rgb(41, 90, 221);
+}
+#member{
+	position: relative; top: 40px; left: 25px; width: 100px; height: 20px;
+	font-size: 15px;
+}
+#name{
+	display: inline-block;
+}
+#gender{
+	display: inline-block;
+}
+#iu{
+	position: relative; top: 80px; left: 25px;  width: 150px; height: 160px;
+}
