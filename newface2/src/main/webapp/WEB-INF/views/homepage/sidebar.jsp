@@ -12,19 +12,19 @@
 	</div>
 
 	<div id="lid"
-		style="top:10px;width: 30px; height: 32px; background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
+		style="margin-top:10px;width: 30px; height: 32px; background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
 	</div>
 
 	<!-- 비밀번호 입력창 -->
 	<div id="pwd"
-		style="top:150px;width: 150px; height: 32px;">
+		style="margin-top:10px;width: 150px; height: 32px;">
 		<input type="password"
 			style="color: rgb(94, 94, 94); border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; border-color: rgb(204, 204, 204); width: 150px; height: 30px;"
 			spellcheck="false">
 	</div>
 
 	<div id="lpwd"
-		style="top:150px;width: 30px; height: 32px; background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
+		style="margin-top:10px;width: 30px; height: 32px; background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
 	</div>
 
 	<div style="width: 182px; height:44px;top:190px; left: 410px;">
