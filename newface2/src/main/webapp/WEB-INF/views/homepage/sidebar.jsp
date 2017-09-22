@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!----------------- 여기서부터 왼쪽 사이드바 ----------------->
-<div align="center" style="width: 100%; height: 200px;margin:auto;background-color: rgb(224, 224, 224);">
+<div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
 		<!-- 아이디 입력창 -->
 		<div style="margin-top: 10px;display: inline-block;">
