@@ -18,3 +18,6 @@
 	<img alt="폴더사진" src="<c:url value='/resources/images/minihome/folder.PNG'/>">
 	<a href="">폴더</a>
 </div>
+<div id="diary_folder_set">
+	<a href="diary_folder_set">폴더 관리하기</a>
+</div>

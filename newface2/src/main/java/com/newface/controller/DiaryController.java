@@ -21,6 +21,7 @@ public class DiaryController {
 		Calendar today=Calendar.getInstance();
 		int y=today.get(Calendar.YEAR);
 		int m=(today.get(Calendar.MONTH)+1);
+		int d=(today.get(Calendar.DATE));
 		int lastday=today.getActualMaximum(Calendar.DATE);
 		int w=today.get(Calendar.DAY_OF_WEEK);
 		String week=null;
@@ -36,6 +37,7 @@ public class DiaryController {
 		JSONObject json=new JSONObject();
 		json.put("y", y);
 		json.put("m", m);
+		json.put("d", d);
 		json.put("lastday", lastday);
 		json.put("week", week);
 		return json.toString();
@@ -48,6 +50,7 @@ public class DiaryController {
 		cd.set(Calendar.MONTH, (Integer.parseInt(month)-2));
 		int y=cd.get(Calendar.YEAR);
 		int m=(cd.get(Calendar.MONTH)+1);
+		int d=(cd.get(Calendar.DATE));
 		int lastday=cd.getActualMaximum(Calendar.DATE);
 		int w=cd.get(Calendar.DAY_OF_WEEK);
 		String week=null;
@@ -63,6 +66,7 @@ public class DiaryController {
 		JSONObject json=new JSONObject();
 		json.put("y", y);
 		json.put("m", m);
+		json.put("d", d);
 		json.put("lastday", lastday);
 		json.put("week", week);
 		return json.toString();
@@ -81,6 +85,7 @@ public class DiaryController {
 		}
 		int y=cd.get(Calendar.YEAR);
 		int m=(cd.get(Calendar.MONTH)+1);
+		int d=(cd.get(Calendar.DATE));
 		int lastday=cd.getActualMaximum(Calendar.DATE);
 		int w=cd.get(Calendar.DAY_OF_WEEK);
 		String week=null;
@@ -96,6 +101,7 @@ public class DiaryController {
 		JSONObject json=new JSONObject();
 		json.put("y", y);
 		json.put("m", m);
+		json.put("d", d);
 		json.put("lastday", lastday);
 		json.put("week", week);
 		return json.toString();

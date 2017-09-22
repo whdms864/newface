@@ -11,7 +11,11 @@
 			$(".week").html(data.week);
 			$("#dd").html("");				
 			for(var i=1;i<=data.lastday;i++){
-				$("#dd").append(i + "  ");				
+				if(data.d==i){					
+					$("#dd").append("<span id='today'>" + i + "</span>  ");								
+				}else{
+					$("#dd").append(i + "  ");								
+				}
 			}
 		});
 		$("#before").click(function(){
@@ -23,7 +27,11 @@
 				$(".week").html(data.week);
 				$("#dd").html("");				
 				for(var i=1;i<=data.lastday;i++){
-					$("#dd").append(i + "  ");				
+					if(data.d==i){					
+						$("#dd").append("<span id='today'>" + i + "</span>  ");								
+					}else{
+						$("#dd").append(i + "  ");								
+					}				
 				}
 			});
 		});
@@ -36,12 +44,17 @@
 				$(".week").html(data.week);
 				$("#dd").html("");				
 				for(var i=1;i<=data.lastday;i++){
-					$("#dd").append(i + "  ");				
+					if(data.d==i){					
+						$("#dd").append("<span id='today'>" + i + "</span>  ");								
+					}else{
+						$("#dd").append(i + "  ");								
+					}				
 				}
 			});
 		});
 	});	
 </script>
+<br>
 <div id="calendar_back">
 	<div id="calendar_title">
 		<div id="mmdd"><span class="y" id="y"></span>.<span class="m" id="m"></span></div>
@@ -50,7 +63,8 @@
 	<div id="calendar">
 		<input type="button" value="◀" class="move" id="before">
 		<span class="y"></span>.<span class="m"></span>
-		<input type="button" value="▶" class="move" id="after">
+		<input type="button" value="▶" class="move" id="after"> 
+		&nbsp;
 		<span id="dd">		
 			${i}		
 		</span>
@@ -60,7 +74,7 @@
 			<div id="regdate">
 				2009.11.21 토 04:18			
 			</div>			
-			<br>싸이월드 50억 개이득!!!!<br>	
+			<br>싸이월드 50억 개이득!1121221<br>	
 			<br><hr>
 				공개설정 : 전체공개
 			<hr>

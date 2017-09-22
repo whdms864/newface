@@ -14,4 +14,7 @@
 #diary_folder{
 	position: relative; top: 10px; left: 20px; width: 155px; height: 350px;
 	font-size: 13px;  
+}
+#diary_folder_set{
+	font-size: 14px; 
 }                       
