@@ -107,8 +107,20 @@ public class DiaryController {
 		return json.toString();
 	}
 	
-	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)
+	@RequestMapping(value="/diary/list",method=RequestMethod.GET)
 	public String list(String fname,Model model) {
+		model.addAttribute("fname", fname);
+		return ".list.diary";
+	}
+	
+	@RequestMapping(value="/diary/insert",method=RequestMethod.GET)
+	public String insert(String fname,Model model) {
+		model.addAttribute("fname", fname);
+		return ".insert.diary";
+	}
+	
+	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)
+	public String folder(String fname,Model model) {
 		model.addAttribute("fname", fname);
 		return ".folder.diary";
 	}

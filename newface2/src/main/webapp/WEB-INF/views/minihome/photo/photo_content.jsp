@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/photo_content.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/photo/photo_content.css'/>">
 <div id="show_type1"><a href="">펼쳐보기</a></div>
 		<img src="img/photo_type1.PNG" id="show_type1_img">
 		<div id="show_type2"><a href="">작게보기</a></div>
