@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
 
 @Repository
@@ -22,6 +23,10 @@ public class MemberDao {
 	
 	public int insert(MemberVo vo) {
 		int n=sqlSession.insert(NAMESPACE+".insert",vo);
+		return n;
+	}
+	public int hompyinsert(HompyVo vo) {
+		int n=sqlSession.insert(NAMESPACE+".hompyinsert",vo);
 		return n;
 	}
 }

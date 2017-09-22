@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.MemberDao;
+import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
 
 @Service
@@ -17,5 +18,8 @@ public class MemberService {
 	}
 	public int insert(MemberVo vo) {
 		return dao.insert(vo);
+	}
+	public int hompyinsert(HompyVo vo) {
+		return dao.hompyinsert(vo);
 	}
 }
