@@ -114,9 +114,14 @@ public class DiaryController {
 	}
 	
 	@RequestMapping(value="/diary/insert",method=RequestMethod.GET)
-	public String insert(String fname,Model model) {
+	public String insertForm(String fname,Model model) {
 		model.addAttribute("fname", fname);
 		return ".insert.diary";
+	}
+	@RequestMapping(value="/diary/insert",method=RequestMethod.POST)
+	public String insert(String fname) {
+		
+		return ".list.diary";
 	}
 	
 	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)
