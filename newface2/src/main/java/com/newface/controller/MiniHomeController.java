@@ -1,4 +1,4 @@
-package com.jhta.newface;
+package com.newface.controller;
 
 
 import org.springframework.stereotype.Controller;
@@ -11,10 +11,6 @@ public class MiniHomeController {
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home() {
 		return ".minihome";
-	}
-	@RequestMapping(value = "/photo", method = RequestMethod.GET)
-	public String photo() {
-		return ".photo";
 	}
 	@RequestMapping(value = "/guestbook", method = RequestMethod.GET)
 	public String guestbook() {

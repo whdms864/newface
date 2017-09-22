@@ -1,4 +1,4 @@
-package com.jhta.newface;
+package com.newface.controller;
 
 
 import org.springframework.stereotype.Controller;

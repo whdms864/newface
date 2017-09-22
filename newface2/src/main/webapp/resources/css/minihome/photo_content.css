@@ -1,3 +1,75 @@
 @charset "UTF-8";
-
-                 
+#show_type1{
+	position: absolute;top: 20px;left: 20px;width: 55px;height: 21px;font-size: 12px;
+}
+#show_type1 a{
+	text-decoration: none;color: gray;
+}
+#show_type1_img{
+	position: absolute;top: 100px;left: 271px;
+}
+#show_type2{
+	position: absolute;top: 20px;left: 99px;width: 52px;height: 21px;font-size: 12px;
+}
+#show_type2 a{
+	text-decoration: none;color: gray;
+}
+#show_type2_img{
+	position: absolute;top: 94px;left: 357px;
+}
+#show_type3{
+	position: absolute;top: 20px;left: 178px;width: 50px;height: 21px;font-size: 12px;
+}
+#show_type3 a{
+	text-decoration: none;color: gray;
+}
+#show_type3_img{
+	position: absolute;top: 96px;left: 432px;
+}
+#p_upload{
+	position: absolute;top: 10px;left:484px;
+}
+#p_title{
+	position: relative;top: 44px;left: 20px;width: 576px;height: 24px;font-weight: bold;
+    font-size: 16px;text-align: center;background-color: rgb(224, 224, 224);
+}
+#p_content_back{
+	position: relative;top: 60px;left: 21px;width: 575px;height: 422px;background-color: rgb(224, 224, 224);
+}
+#p_writer{
+	position: absolute;top: 8.5px;left: 41px;width: 67px;height: 34px;font-size: 12px;
+}
+#p_date{
+	position: absolute;top: 8.5px;left: 403px;width: 69px;height: 21px;font-size: 12px;
+}
+#p_scrap{
+	position: absolute;top: 8.5px;left: 484px;width: 60px;height: 21px;font-size: 12px;
+}
+#p_content_img{
+	position: absolute;top: 43px;left: 41px;width: 478px;height: 281px;background-color: rgb(255, 255, 255);
+}
+#p_content_text{
+	position: absolute;top: 344px;left: 40px;width: 464px;height: 39px;font-size: 15px;
+}
+#p_scrap_b{
+	position: absolute;left: 477px;width: 59px;height: 22px;
+	font-size: 11px;color: rgb(255, 255, 255);text-align: center;line-height: 2em;border-top-left-radius: 4px;
+    border-top-right-radius: 4px;border-bottom-right-radius: 4px;border-bottom-left-radius: 4px;background-color: rgb(94, 94, 94);
+}
+#p_submit{
+	position: absolute;top: 383px;left: 477px;width: 60px;height: 28px;font-size: 10px;
+    color: rgb(94, 94, 94);text-align: center;line-height: 2em;border-radius: 4px;
+    background-color: white;font-weight: bold;
+}
+#p_upload{
+	position: absolute;left: 477px;
+}
+#p_comment{
+	position: absolute;top: 383px;left: 84px;width: 372px;height: 31px;padding: 6px 12px;
+    background: #fff;border: 1px solid #ccc;border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-sizing: border-box;
+    resize: none;font-size: 14px;color: rgb(94, 94, 94);
+}
+#p_comment_tt{
+	position: absolute;top: 388px;left: 43px;font-size: 13px;
+} 
