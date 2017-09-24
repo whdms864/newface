@@ -17,7 +17,7 @@ body {
 	overflow: visible
 }
 #scroll{
-	position: relative; top: 80px; left: 886px; width: 22px; height: 550px;	overflow-y:scroll;
+	position: relative; top: 80px; left: 886px; width: 22px; height: 550px;
 }
 #iu_com{/* 일촌평댓글 */
 	left:23px;

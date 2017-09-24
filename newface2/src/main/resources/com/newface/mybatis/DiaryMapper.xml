@@ -4,6 +4,51 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.DiaryMapper">
 	<insert id="insert" parameterType="diary">
-		insert into diary values(auto_increment,#{type},#{title},{content},'정상',0,now())
+		insert into diary values(0,#{type},#{title},#{content},'일반',0,now(),#{diary_folder_num})
 	</insert>
+	<select id="folder_list" parameterType="int" resultType="diary">
+		select *,@rownum:=@rownum+1 rownum  
+		from diary d join diary_folder f join (select @rownum:=0) r
+		on d.diary_folder_num=f.diary_folder_num
+		where f.diary_folder_num=#{value}
+	</select>
+	<select id="content" parameterType="int" resultType="diary">
+		select * from diary where diary_num=#{value}
+	</select>
+	<insert id="com_insert" parameterType="diarycom">
+		insert into diary_com values(0,#{content},'일반',now(),#{diary_num},#{id})
+	</insert>
+	<select id="com_list" parameterType="int" resultType="diarycom">
+		select content,regdate,id from diary_com where diary_num=#{value} order by diary_com_num desc
+	</select>
+	<select id="name" parameterType="string" resultType="string">
+		select name from member where id=#{value}
+	</select>
+	<select id="folder_all_list" resultType="diary">
+		select diary_num,title,content, regdate,@rownum:=@rownum+1 rownum from diary d,(select @rownum:=0) r where type='전체공개' order by diary_num desc
+	</select>
+	<update id="update" parameterType="diary">
+		update diary set title=#{title},content=#{content},type=#{type} where diary_num=#{diary_num}
+	</update>
+	<select id="com_is" parameterType="int" resultType="int">
+		select diary_com_num from diary_com where diary_num=#{value}
+	</select>
+	<delete id="com_all_delete" parameterType="int">
+		delete from diary_com where diary_num=#{value}
+	</delete>
+	<delete id="delete" parameterType="int">
+		delete from diary where diary_num=#{value}
+	</delete>
+	<select id="hompy_num" parameterType="string" resultType="int">
+		select hompy_num from hompy where id=#{value}
+	</select>
+	<insert id="folder_insert" parameterType="diaryfolder">
+		insert into diary_folder values(0,#{fname},now(),#{hompy_num})
+	</insert>
+	<select id="fname" parameterType="int" resultType="diaryfolder">
+		select diary_folder_num,fname from diary_folder where hompy_num=#{hompy_num}
+	</select>
+	<select id="regdate_d" parameterType="string" resultType="string">
+		select date_format(regdate,'%d') from diary where date_format(regdate,'%Y-%m')=#{value}
+	</select>
 </mapper>  

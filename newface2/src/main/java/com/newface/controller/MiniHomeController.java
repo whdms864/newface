@@ -1,6 +1,8 @@
 package com.newface.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MiniHomeController {
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpSession session) {
+		session.setAttribute("hompy_id", "sejonghumble");
 		return ".minihome";
 	}
 	@RequestMapping(value = "/guestbook", method = RequestMethod.GET)

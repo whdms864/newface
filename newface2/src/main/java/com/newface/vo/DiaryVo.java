@@ -1,7 +1,5 @@
 package com.newface.vo;
 
-import java.util.Date;
-
 public class DiaryVo {
 	private int diary_num;
 	private String type;
@@ -9,9 +7,10 @@ public class DiaryVo {
 	private String content;
 	private String singo;
 	private int love;
-	private Date regdate;
+	private String regdate;
 	private int diary_folder_num;
-	public DiaryVo(int diary_num, String type, String title, String content, String singo, int love, Date regdate,
+	private int rownum;
+	public DiaryVo(int diary_num, String type, String title, String content, String singo, int love, String regdate,
 			int diary_folder_num) {
 		super();
 		this.diary_num = diary_num;
@@ -74,11 +73,11 @@ public class DiaryVo {
 		this.love = love;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -89,5 +88,12 @@ public class DiaryVo {
 	public void setDiary_folder_num(int diary_folder_num) {
 		this.diary_folder_num = diary_folder_num;
 	}
-	
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}	
 }

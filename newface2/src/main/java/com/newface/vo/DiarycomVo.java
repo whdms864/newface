@@ -1,14 +1,12 @@
 package com.newface.vo;
 
-import java.util.Date;
-
 public class DiarycomVo {
 	private int diary_com_num;
 	private String content;
 	private String singo;
-	private Date regdate;
+	private String regdate;
 	private int diary_num;
-	public DiarycomVo(int diary_com_num, String content, String singo, Date regdate, int d) {
+	public DiarycomVo(int diary_com_num, String content, String singo, String regdate, int diary_num) {
 		super();
 		this.diary_com_num = diary_com_num;
 		this.content = content;
@@ -44,11 +42,11 @@ public class DiarycomVo {
 		this.singo = singo;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

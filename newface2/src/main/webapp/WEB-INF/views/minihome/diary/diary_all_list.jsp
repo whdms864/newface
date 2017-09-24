@@ -4,4 +4,3 @@
 <c:forEach var="vo" items="${requestScope.list }">
 	글번호 : ${vo.diary_num } 글순서 : ${vo.rownum } 제목 : <a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">${vo.title }</a> ㅣ 등록일 : ${vo.regdate } <br> 
 </c:forEach>  
-<a href="<c:url value='/diary/insert?diary_folder_num=${requestScope.diary_folder_num }'/>">글쓰기</a>

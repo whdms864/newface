@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_folder.css'/>"> 
 <form method="post"  action="<c:url value='/diary/insert'/>">
-	<input type="hidden" name="fname" value="${requestScope.fname }">
+	<input type="hidden" name="diary_folder_num" value="${requestScope.diary_folder_num }">
 	제목 <input type="text" name="title"><br>
 	내용 <textarea rows="5" cols="30" name="content"></textarea><br>
 	공개설정 

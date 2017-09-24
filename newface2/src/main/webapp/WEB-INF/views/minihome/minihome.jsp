@@ -23,10 +23,7 @@
 			<tiles:insertAttribute name="content"/>
 		</div>
 	</div>
-	<div id="scroll"></div>
 
-	
-	
 	<div id="today_back">
 		today
 		<div id="today">1234</div>
@@ -45,7 +42,7 @@
 	</div>
 	<div id="diary">
 		<div class="menu">
-			<a href="<c:url value='/diary'/>">다이어리</a>
+			<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a>
 		</div>
 	</div>
 	<div id="photo">
