@@ -13,12 +13,26 @@
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
 	background-color: rgb(250, 250, 250);
 	width: 90%;
-	height: 400px;
 	padding-top: 10px;
 }
 
 .timecom {
 	background-color: #f6f7f9;
+	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
 	width: 90%;
 	display: inline-block;
+}
+.content1{
+	width: 90%;
+	height: 300px;
+	border: 1px solid rgba(224, 224, 224, 0.78);
+}
+.content2 ul {
+	list-style: none;
+	display: inline-block;
+}
+
+.content2 ul li {
+	float: left;
+	margin-left: 10px;
 }
