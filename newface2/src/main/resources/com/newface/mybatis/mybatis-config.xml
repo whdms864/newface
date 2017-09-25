@@ -9,6 +9,9 @@
   	<typeAlias type="com.newface.vo.DiaryVo" alias="diary"/>
   	<typeAlias type="com.newface.vo.DiarycomVo" alias="diarycom"/>
   	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
+  	<typeAlias type="com.newface.vo.CalendarListVo" alias="calendarlist"/>
+  	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
+  	<typeAlias type="com.newface.vo.Diary__Diary_ComVo" alias="ddcom"/>
   	
   </typeAliases>
   <mappers>

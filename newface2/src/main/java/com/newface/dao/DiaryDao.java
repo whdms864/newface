@@ -6,9 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
+import com.newface.vo.HompyVo;
 
 @Repository
 public class DiaryDao {
@@ -33,9 +35,12 @@ public class DiaryDao {
 	public String name(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".name", id);
 	}
+	public List<DiaryVo> folder_basic_list(){
+		return sqlSession.selectList(NAMESPACE + ".folder_basic_list");
+	}
 	public List<DiaryVo> folder_all_list(){
 		return sqlSession.selectList(NAMESPACE + ".folder_all_list");
-	}
+	}	
 	public int update(DiaryVo vo) {
 		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
@@ -77,5 +82,17 @@ public class DiaryDao {
 	}
 	public int folder_delete(DiaryfolderVo vo) {
 		return sqlSession.delete(NAMESPACE + ".folder_delete", vo);
+	}
+	public List<CalendarListVo> calendar_list(int hompy_num){
+		return sqlSession.selectList(NAMESPACE + ".calendar_list", hompy_num);
+	}
+	public int com_update(DiarycomVo vo) {
+		return sqlSession.update(NAMESPACE + ".com_update", vo);
+	}
+	public int com_delete(int diary_com_num) {
+		return sqlSession.delete(NAMESPACE + ".com_delete", diary_com_num);
+	}
+	public int hompy_is(HompyVo vo) {
+		return sqlSession.selectOne(NAMESPACE + ".hompy_is", vo);
 	}
 }

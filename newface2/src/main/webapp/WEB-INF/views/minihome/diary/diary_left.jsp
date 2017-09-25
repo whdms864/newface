@@ -19,7 +19,7 @@
 </div>
 <div id="calender">
 	<hr>
-	<a href="">월간달력</a>
+	<a href="<c:url value='/diary/folder_all_list'/>">전체보기</a>
 </div>
 <div id="diary_folder_title">
 	<hr>

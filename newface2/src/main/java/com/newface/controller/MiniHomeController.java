@@ -16,7 +16,6 @@ public class MiniHomeController {
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home(HttpSession session) {
-		session.setAttribute("id", "sejonghumble");
 		String id=(String)session.getAttribute("id");
 		int hompy_num=service.hompy_num(id);
 		session.setAttribute("hompy_num", hompy_num);

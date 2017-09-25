@@ -16,39 +16,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.calendar.AfterCalendar;
 import com.newface.calendar.AutoCalendar;
 import com.newface.calendar.BeforeCalendar;
-import com.newface.calendar.TodayCalendar;
 import com.newface.service.DiaryService;
+import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
+import com.newface.vo.HompyVo;
 
 @Controller
 public class DiaryController {
-	@Autowired DiaryService service;
-	
-	@RequestMapping(value="/calendar_now")
-	@ResponseBody
-	public String now() {	
-		TodayCalendar today=TodayCalendar.getInstance();
-		int year=today.getYear();
-		int month=today.getMonth();
-		int date=today.getDate();
-		int lastdate=today.getLastdate();
-		String week=today.getWeek();
-		
-		JSONObject json=new JSONObject();
-		json.put("year", year);
-		json.put("month", month);
-		json.put("date", date);
-		json.put("lastdate", lastdate);
-		json.put("week", week);
-		return json.toString();
-	}
-	
+	@Autowired DiaryService service;	
 	
 	@RequestMapping(value="/calendar_auto")
 	@ResponseBody
-	public String auto(String regdate) {	
+	public String auto(String regdate,HttpSession session) {	
 		AutoCalendar auto=new AutoCalendar(regdate);
 		int year=auto.getYear();
 		int month=auto.getMonth();
@@ -106,7 +87,16 @@ public class DiaryController {
 	///////////// 다이어리목록 ///////////// 
 	@RequestMapping(value="/diary/folder_all_list",method=RequestMethod.GET)
 	public String folder_all_list(Model model,HttpSession session) {
-		List<DiaryVo> list=service.folder_all_list();
+		String id=(String)session.getAttribute("id");
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		HompyVo vo=new HompyVo(hompy_num, 0, null, id);
+		int n=service.hompy_is(vo);
+		List<DiaryVo> list=null;
+		if(n>0) {
+			list=service.folder_all_list();			
+		}else {
+			list=service.folder_basic_list();	
+		}
 		if(list!=null) {
 			model.addAttribute("list", list);
 			return ".all_list.diary";
@@ -169,7 +159,7 @@ public class DiaryController {
 		int n=service.insert(vo);
 		if(n>0) {
 			model.addAttribute("code", "성공적으로 다이어리 등록 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
 			return ".code";
 		}else {
 			model.addAttribute("code", "오류로 인하여 다이어리 등록 요청작업이 실패했습니다");
@@ -182,7 +172,9 @@ public class DiaryController {
 	public String delete(int diary_num,int diary_folder_num,Model model) {
 		int n=service.delete(diary_num);
 		if(n>0) {
-			return ".list.diary";			
+			model.addAttribute("code", "성공적으로 다이어리 삭제 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
+			return ".code";		
 		}else {
 			model.addAttribute("code", "오류로 인하여 다이어리 삭제 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
@@ -191,7 +183,7 @@ public class DiaryController {
 	}
 	///////////// 다이어리 댓글 등록 /////////////
 	@RequestMapping(value="/diary/com_insert",method=RequestMethod.POST)
-	public String diary_com(DiarycomVo vo,HttpSession session,Model model) {
+	public String com_insert(DiarycomVo vo,HttpSession session,Model model) {
 		String id=(String)session.getAttribute("id");
 		vo.setId(id);
 		int n=service.com_insert(vo);
@@ -204,6 +196,34 @@ public class DiaryController {
 			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
 			return ".code";
 		}	
+	}
+	///////////// 다이어리 댓글 삭제 /////////////
+	@RequestMapping(value="/diary/com_delete",method=RequestMethod.GET)
+	public String com_delete(int diary_com_num,int diary_num,Model model) {
+		int n=service.com_delete(diary_com_num);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 다이어리 댓글삭제 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + diary_num);
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 다이어리 댓글삭제 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + diary_num);
+			return ".code";
+		}			
+	}
+	///////////// 다이어리 댓글수정 /////////////
+	@RequestMapping(value="/diary/com_update",method=RequestMethod.POST)
+	public String com_update(DiarycomVo vo,Model model) {
+		int n=service.com_update(vo);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 다이어리 댓글수정 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 다이어리 댓글수정 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			return ".code";
+		}			
 	}
 	///////////// 폴더관리 ///////////// 
 	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)

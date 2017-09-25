@@ -6,17 +6,22 @@ public class DiarycomVo {
 	private String singo;
 	private String regdate;
 	private int diary_num;
-	public DiarycomVo(int diary_com_num, String content, String singo, String regdate, int diary_num) {
+	private String id;
+	private String name;
+	
+	public DiarycomVo() {}
+
+	public DiarycomVo(int diary_com_num, String content, String singo, String regdate, int diary_num, String id,
+			String name) {
 		super();
 		this.diary_com_num = diary_com_num;
 		this.content = content;
 		this.singo = singo;
 		this.regdate = regdate;
 		this.diary_num = diary_num;
+		this.id = id;
+		this.name = name;
 	}
-	private String id;
-	
-	public DiarycomVo() {}
 
 	public int getDiary_com_num() {
 		return diary_com_num;
@@ -50,7 +55,6 @@ public class DiarycomVo {
 		this.regdate = regdate;
 	}
 
-
 	public int getDiary_num() {
 		return diary_num;
 	}
@@ -66,5 +70,12 @@ public class DiarycomVo {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

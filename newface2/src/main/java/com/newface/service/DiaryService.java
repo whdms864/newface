@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.DiaryDao;
+import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
+import com.newface.vo.HompyVo;
 
 @Service
 public class DiaryService {
@@ -29,9 +31,12 @@ public class DiaryService {
 		List<DiarycomVo> com_list=dao.com_list(diary_num);
 		for(DiarycomVo vo:com_list) {
 			String name=dao.name(vo.getId());
-			vo.setId(name);
+			vo.setName(name);
 		}
 		return com_list;
+	}
+	public List<DiaryVo> folder_basic_list(){
+		return dao.folder_basic_list();
 	}
 	public List<DiaryVo> folder_all_list(){
 		return dao.folder_all_list();
@@ -73,5 +78,17 @@ public class DiaryService {
 			dao.diary_delete(vo.getDiary_folder_num());
 		}
 		return dao.folder_delete(vo);
+	}
+	public List<CalendarListVo> calendar_list(int hompy_num){
+		return dao.calendar_list(hompy_num);
+	}
+	public int com_update(DiarycomVo vo) {
+		return dao.com_update(vo);
+	}
+	public int com_delete(int diary_com_num) {
+		return dao.com_delete(diary_com_num);
+	}
+	public int hompy_is(HompyVo vo) {
+		return dao.hompy_is(vo);
 	}
 }
