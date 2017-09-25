@@ -46,11 +46,11 @@
 		<div style="display: inline-block;">
 			<div style="float:left;width: 62px; height: 20px;">
 				<div style="font-size: 13px; color: rgb(41, 90, 221); text-decoration: underline;">
-				<a href="<c:url value='/member'/>" style="text-decoration: none;">회원가입</a></div>
+				<a href="<c:url value='/member/insert'/>" style="text-decoration: none;">회원가입</a></div>
 			</div>
 			<div style="float:left; height: 20px;margin-left: 10px;">
 				<div style="font-size: 13px; color: rgb(41, 90, 221); text-decoration: underline;">
-				<a href="<c:url value='/member'/>" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
+				<a href="<c:url value=''/>" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 			</div>
 		</div>
 	</div>

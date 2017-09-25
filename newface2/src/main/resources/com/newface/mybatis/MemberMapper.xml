@@ -5,11 +5,11 @@
 <mapper namespace="com.newface.mybatis.MemberMapper">
 	
 	<insert id="insert" parameterType="member">
-		insert into member values(#{id},#{pwd},#{name},#{email},#{addr},#{birth},#{school},#{type},now())
+		insert into member values(#{id},#{pwd},#{name},#{email},#{addr},#{birth},#{school},'회원',now())
 	</insert>
 	
 	<insert id="hompyinsert" parameterType="hompy">
-		insert into hompy values(auto_increment,0,'NewFace',#{id})
+		insert into hompy values(0,0,'NewFace',#{id})
 	</insert>
 	
 	<select id="getinfo" resultType="member" parameterType="string">

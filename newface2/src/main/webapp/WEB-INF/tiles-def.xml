@@ -70,7 +70,7 @@
 	
 	
 	
-		
+	
 	<!-- 홈피 -->
 	<definition name=".minihome" template="/WEB-INF/views/minihome/minihome.jsp">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	

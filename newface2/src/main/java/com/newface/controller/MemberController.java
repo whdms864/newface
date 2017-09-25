@@ -31,17 +31,17 @@ public class MemberController {
 		return json.toString();
 	}
 	
-	@RequestMapping(value = "/member", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
 	public String member() {
 		return ".member";
 	}
 	
-	@RequestMapping(value = "/member", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/insert", method = RequestMethod.POST)
 	public String membergaib(MemberVo vo1,HompyVo vo2) {
 		int n1=service.insert(vo1);
 		int n2=service.hompyinsert(vo2);
 		if(n1>0 || n2>0) {
-			return ".success";
+			return ".main";
 		}else {
 			return ".member";
 		}
