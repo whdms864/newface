@@ -51,5 +51,7 @@
 	<select id="regdate_d" parameterType="string" resultType="string">
 		select date_format(regdate,'%d') from diary where date_format(regdate,'%Y-%m')=#{value}
 	</select>
-	<update id="update_folder"></update>
+	<update id="folder_move" parameterType="diary">
+		update diary set diary_folder_num=#{diary_folder_num} where diary_num=#{diary_num}
+	</update>
 </mapper>  

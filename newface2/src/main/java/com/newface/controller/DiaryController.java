@@ -231,6 +231,12 @@ public class DiaryController {
 		}		
 		return arr.toString();
 	}
+	///////////// 폴더이동 폼이동 ///////////// 
+	@RequestMapping(value="/diary/content",method=RequestMethod.GET)
+	public String foler_moveForm(int diary_num,Model model) {
+		model.addAttribute("diary_num", diary_num);
+		return ".folder_move.diary";		
+	}
 	///////////// 상세보기 ///////////// 
 	@RequestMapping(value="/diary/content",method=RequestMethod.GET)
 	public String content(int diary_num,Model model) {

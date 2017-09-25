@@ -60,4 +60,7 @@ public class DiaryDao {
 	public List<String> regdate_d(String regdate_ym){
 		return sqlSession.selectList(NAMESPACE + ".regdate_d", regdate_ym);
 	}
+	public int folder_move(DiaryVo vo) {
+		return sqlSession.update(NAMESPACE + ".folder_move", vo);
+	}
 }

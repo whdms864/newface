@@ -58,4 +58,7 @@ public class DiaryService {
 	public List<String> regdate_d(String regdate_ym){
 		return dao.regdate_d(regdate_ym);
 	}
+	public int folder_move(DiaryVo vo) {
+		return dao.folder_move(vo);
+	}
 }
