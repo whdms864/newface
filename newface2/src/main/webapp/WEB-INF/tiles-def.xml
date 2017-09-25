@@ -15,6 +15,12 @@
 		<put-attribute name="ad" value="/WEB-INF/views/homepage/ad.jsp"/>
 	</definition>
 	
+	<!-- 로그인후 메인 -->
+	<definition name=".main2" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/main2.jsp"/>
+		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/market/sidebar.jsp"/>
+	</definition>
+	
 	<!-- 공지 -->
 	<definition name=".noti" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/noti/notimain.jsp"/>

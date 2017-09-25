@@ -97,81 +97,87 @@
 });
 
 </script>
-<form method="post" id="f" name="f" action="<c:url value='/member/insert'/>">
-<div style="background-color: rgba(224, 224, 224, 0.78);margin-left:20px;width: 95%;height: 800px;"align="center">
-		<div style="font-weight:bold;font-size:25px;">회원가입</div>
+<div style="background-color: rgba(224, 224, 224, 0.78);margin-left:20px;width: 95%;height: 800px;">
+	<div style="margin-left: 30px;">
+		<label style="font-weight:bold;font-size:25px;">회원가입</label>
+	</div>
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
-	width:70%; height:80%;"align="left" >
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">아이디(*)</div>
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:1px;"></div>
-		<div style="width: 200px; height: 32px;display: inline-block;">
-			<input type="text" name="id" id="id" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px;float: left; padding:10px;" placeholder="영문,숫자로만 입력" class="required"><span id="idok"></span>
-			<input type="button" value="중복확인" id="idcheck" style="height: 30px;float: left;">
-		</div>
+		width:90%; height:90%;margin-left:30px;padding-top: 10px;"align="left">
+		<form method="post" id="f" name="f" action="<c:url value='/member/insert'/>">
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">아이디(*)</div>
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:1px;"></div>
+			<div style="width: 200px; height: 32px;display: inline-block;">
+				<input type="text" name="id" id="id" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px;float: left; padding:10px;" placeholder="영문,숫자로만 입력" class="required"><span id="idok"></span>
+				<input type="button" value="중복확인" id="idcheck" style="height: 30px;float: left;">
+			</div>
+			<div class="form-group has-warning">
+  				<label class="control-label" for="inputWarning1">아이디(*)</label>
+  				<label class="control-label" for="inputWarning1" style="color:red">
+  				<input type="text" class="form-control" id="inputWarning1">
+			</div>	
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">비밀번호(*)</div>
 			
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">비밀번호(*)</div>
-		
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
-				
-		<div style="width: 200px; height: 32px;">
-			<input type="password" name="pwd" id="pwd" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px;" placeholder="비밀번호" class="required"><span  id="pwd1"></span>
-		</div>
-		
-		<div style="width: 200px; height: 32px;">
-			<input type="password" name="pwdok" id="pwdok" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px; float:left;" placeholder="비밀번호 확인" class="required"><span id="pwd2"></span>
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+					
+			<div style="width: 200px; height: 32px;">
+				<input type="password" name="pwd" id="pwd" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px;" placeholder="비밀번호" class="required"><span  id="pwd1"></span>
+			</div>
 			
-		</div>
-		
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">이름(*)</div>
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
-		<div style="width: 200px; height: 32px;">
-			<input type="text" name="name" id="name" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px;"class="required"><span id="nameok"></span>
-		</div>
-		
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">이메일</div>
-		
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+			<div style="width: 200px; height: 32px;">
+				<input type="password" name="pwdok" id="pwdok" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px; float:left;" placeholder="비밀번호 확인" class="required"><span id="pwd2"></span>
 				
-		<div style="width: 200px; height: 32px;">
-			<input type="email" name="email" id="email" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
-		</div>
-		
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">주소</div>
-		
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
-				
-		<div id="addr" style="width: 200px; height: 32px;">
-			<input type="text" name="addr" id="addr" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px;" placeholder="ex)서울특별시  성북구">
-		</div>
-		
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">생년월일</div>
-		
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
-				
-		<div style="width: 200px; height: 32px;">
-			<input type="date" name="birth" id="birth" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
-		</div>
-		
-		<div style="font-size: 15px; color: rgb(158, 158, 158);">학교</div>
-		
-		<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
-				
-		<div id="school" style="width: 200px; height: 32px;">
-			<input type="text" name="school" id="school" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
-			border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
-		</div>
-		
-		<div style="width:120px; height:40px;">
-			<input type="submit" id="join" name="join" value="가입하기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;" > 
-		</div>
+			</div>
+			
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">이름(*)</div>
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+			<div style="width: 200px; height: 32px;">
+				<input type="text" name="name" id="name" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px;"class="required"><span id="nameok"></span>
+			</div>
+			
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">이메일</div>
+			
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+					
+			<div style="width: 200px; height: 32px;">
+				<input type="email" name="email" id="email" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
+			</div>
+			
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">주소</div>
+			
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+					
+			<div id="addr" style="width: 200px; height: 32px;">
+				<input type="text" name="addr" id="addr" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px; padding:10px;" placeholder="ex)서울특별시  성북구">
+			</div>
+			
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">생년월일</div>
+			
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+					
+			<div style="width: 200px; height: 32px;">
+				<input type="date" name="birth" id="birth" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
+			</div>
+			
+			<div style="font-size: 15px; color: rgb(158, 158, 158);">학교</div>
+			
+			<div style="background-color: rgb(158, 158, 158); width:470px; height:2px;"></div>
+					
+			<div id="school" style="width: 200px; height: 32px;">
+				<input type="text" name="school" id="school" style="color: rgb(94, 94, 94); border-radius: 4px 4px 4px 4px; border-width: 1px 1px 1px 1px; border-style: solid; 
+				border-color: rgb(204, 204, 204); width: 200px; height: 30px;">
+			</div>
+			<div style="position:absolute;top:700px;width: 85%;"align="center">
+				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
+				<input type="submit" id="join" name="join" value="가입하기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" > 
+			</div>
+		</form>
 	</div>
 </div>
-</form>
