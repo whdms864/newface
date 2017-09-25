@@ -33,9 +33,9 @@
 				</td>
 			</tr>
 		</table>
-		<div style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; 
+		<div style="font-size: 16px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); width: 230px; height:44px;margin-top: 5px;margin-right: 10px;">
-			<a href="<c:url value='/minihome'/>" style="text-decoration: none;">내 미니홈피 가기</a>
+			<a href="<c:url value='/minihome'/>" style="text-decoration: none; color:white;">내 미니홈피 가기</a>
 		</div>
 		<div>
 			<a href="" >1:1문의</a>
@@ -44,25 +44,26 @@
 		</div>
 	</div>
 </div>
+<div style="width: 250px; height: 175px;background-color: rgb(224, 224, 224);margin-top: 20px;padding: 5px;">
+	<label style="font-weight:bold;font-size:16px;margin-left: 20px;">공지사항</label>
+	<ul style="margin-left: 60px;">
+		<li>게시글1</li>
+		<li>게시글2</li>
+		<li>게시글3</li>
+		<li>게시글4</li>
+		<li>게시글5</li>
+	</ul>
+	<a href="" style="margin-right: 10px;float:right;">더보기</a>
+</div>
+<div style="margin-top: 20px;display: inline-block;">
+	<div style="width: 50px; height: 40px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
+	</div>
+	<input type="text"	style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
+		border-color: rgb(204, 204, 204); width: 200px; height: 40px;float:left;padding:10px;" placeholder="친구찾기">
+</div>
 <div>
 	<a href="<c:url value='/'/>">main</a>
 	<a href="<c:url value='/market'/>">market</a>
 	<a href="<c:url value='/admin'/>">admin</a>
 	<a href="<c:url value='/noti'/>">notice</a>
-</div>
-		
-		
-		
-		
-			
-		
-		
-						
-		
-		
-		
-		
-		
-		
-		
-		
+</div>		
