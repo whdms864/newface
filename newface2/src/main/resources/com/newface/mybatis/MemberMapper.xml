@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.MemberMapper">
+
 	
 	<insert id="insert" parameterType="member">
 		insert into member values(#{id},#{pwd},#{name},#{email},#{addr},#{birth},#{school},'회원',now())
