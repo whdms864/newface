@@ -1,5 +1,7 @@
 package com.newface.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,14 @@ public class MemberService {
 	}
 	public int hompyinsert(HompyVo vo) {
 		return dao.hompyinsert(vo);
+	}
+	public boolean isMembers(HashMap<String, String> map) {
+		MemberVo vo=dao.isMember(map);
+		
+		if(vo!=null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

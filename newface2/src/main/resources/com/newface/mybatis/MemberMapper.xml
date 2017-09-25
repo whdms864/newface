@@ -16,4 +16,10 @@
 		select * from member
 		where id=#{value}
 	</select>
+	
+	<select id="isMember" resultType="member">
+		select * from member
+		where id=#{id} and pwd=#{pwd}
+	</select>
+	
 </mapper>  

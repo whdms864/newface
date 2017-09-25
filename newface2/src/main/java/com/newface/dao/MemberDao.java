@@ -1,5 +1,7 @@
 package com.newface.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,5 +30,9 @@ public class MemberDao {
 	public int hompyinsert(HompyVo vo) {
 		int n=sqlSession.insert(NAMESPACE+".hompyinsert",vo);
 		return n;
+	}
+	public MemberVo isMember(HashMap<String, String> map) {
+		
+		return sqlSession.selectOne(NAMESPACE+ ".isMember",map);
 	}
 }
