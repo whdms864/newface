@@ -3,7 +3,7 @@
 #wrap{width:100%;}
 #header{width:100%; height:90px;}
 #main2{width:1100px;margin:auto;}
-#sidebar{width:20%; height:950px;position: fixed;}
-#content{width:600px;margin-left:250px;position: absolute;}
-#ad{width:20%; height:950px;margin-left:750px; position: fixed;}
+#sidebar{width:250px; height:950px;position: fixed;}
+#content{width:600px;margin-left:250px;position: absolute;z-index: 999}
+#ad{width:220px; height:950px;margin-left:910px; position: fixed;}
 	
