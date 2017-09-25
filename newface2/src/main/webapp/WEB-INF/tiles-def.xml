@@ -15,6 +15,12 @@
 		<put-attribute name="ad" value="/WEB-INF/views/homepage/ad.jsp"/>
 	</definition>
 	
+	<!-- 공지 -->
+	<definition name=".noti" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/noti/notimain.jsp"/>
+		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/market/sidebar.jsp"/>
+	</definition>
+	
 	<!-- 마켓 -->
 	<definition name=".market" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/market/market.jsp"/>
@@ -59,12 +65,7 @@
 	</definition>
 	<!-- 여기까지 관리자 -->
 	
-	<definition name=".noti" template="/WEB-INF/views/homepage/noti/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/homepage/noti/header.jsp"/>	
-		<put-attribute name="content" value="/WEB-INF/views/homepage/noti/notimain.jsp"/>
-		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/noti/sidebar.jsp"/>
-		<put-attribute name="ad" value="/WEB-INF/views/homepage/noti/ad.jsp"/>
-	</definition>
+
 	
 	
 	
