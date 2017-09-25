@@ -92,7 +92,7 @@
 			<hr>
 			<div id="menu">
 				<a href="<c:url value='/diary/update?diary_num=${requestScope.vo.diary_num }'/>">수정</a>ㅣ
-				<a href="<c:url value='/diary/update?diary_num=${requestScope.vo.diary_num }'/>">이동</a>ㅣ
+				<a href="<c:url value='/diary/folder_move?diary_num=${requestScope.vo.diary_num }&diary_folder_num=${requestScope.vo.diary_folder_num }'/>">이동</a>ㅣ
 				<a href="<c:url value='/diary/delete?diary_num=${requestScope.vo.diary_num }&diary_folder_num=${requestScope.vo.diary_folder_num }'/>">삭제</a>
 			</div>
 			<div>

@@ -61,4 +61,17 @@ public class DiaryService {
 	public int folder_move(DiaryVo vo) {
 		return dao.folder_move(vo);
 	}
+	public String fname_select(int diary_folder_num) {
+		return dao.fname_select(diary_folder_num);
+	}
+	public int folder_update(DiaryfolderVo vo) {
+		return dao.folder_update(vo);
+	}
+	public int folder_delete(DiaryfolderVo vo) {
+		List<Integer> list=dao.diary_is(vo.getDiary_folder_num());
+		if(list!=null) {
+			dao.diary_delete(vo.getDiary_folder_num());
+		}
+		return dao.folder_delete(vo);
+	}
 }

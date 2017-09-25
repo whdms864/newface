@@ -63,4 +63,19 @@ public class DiaryDao {
 	public int folder_move(DiaryVo vo) {
 		return sqlSession.update(NAMESPACE + ".folder_move", vo);
 	}
+	public String fname_select(int diary_folder_num) {
+		return sqlSession.selectOne(NAMESPACE + ".fname_select", diary_folder_num);
+	}
+	public int folder_update(DiaryfolderVo vo) {
+		return sqlSession.update(NAMESPACE + ".folder_update", vo);
+	}
+	public List<Integer> diary_is(int diary_folder_num){
+		return sqlSession.selectOne(NAMESPACE + ".diary_is", diary_folder_num);
+	}
+	public int diary_delete(int diary_folder_num) {
+		return sqlSession.delete(NAMESPACE + ".diary_delete", diary_folder_num);
+	}
+	public int folder_delete(DiaryfolderVo vo) {
+		return sqlSession.delete(NAMESPACE + ".folder_delete", vo);
+	}
 }

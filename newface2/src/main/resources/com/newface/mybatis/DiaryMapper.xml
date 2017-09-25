@@ -54,4 +54,19 @@
 	<update id="folder_move" parameterType="diary">
 		update diary set diary_folder_num=#{diary_folder_num} where diary_num=#{diary_num}
 	</update>
+	<select id="fname_select" parameterType="int" resultType="string">
+		select fname from diary_folder where diary_folder_num=#{value}
+	</select>
+	<update id="folder_update" parameterType="diaryfolder">
+		update diary_folder set fname=#{fname} where diary_folder_num=#{diary_folder_num}
+	</update>
+	<select id="diary_is" parameterType="int" resultType="int">
+		select diary_num from diary where diary_folder_num=#{value}
+	</select>
+	<delete id="diary_delete" parameterType="int">
+		delete from diary where diary_folder_num=#{value}
+	</delete>
+	<delete id="folder_delete" parameterType="diaryfolder">
+		delete from diary_folder where diary_folder_num=#{diary_folder_num} and hompy_num=#{hompy_num};
+	</delete>
 </mapper>  

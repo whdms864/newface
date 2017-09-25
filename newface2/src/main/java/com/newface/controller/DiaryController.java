@@ -26,10 +26,6 @@ import com.newface.vo.DiaryfolderVo;
 public class DiaryController {
 	@Autowired DiaryService service;
 	
-	@RequestMapping(value = "/diary", method = RequestMethod.GET)
-	public String diary() {
-		return ".diary";
-	}
 	@RequestMapping(value="/calendar_now")
 	@ResponseBody
 	public String now() {	
@@ -110,13 +106,14 @@ public class DiaryController {
 	///////////// 다이어리목록 ///////////// 
 	@RequestMapping(value="/diary/folder_all_list",method=RequestMethod.GET)
 	public String folder_all_list(Model model,HttpSession session) {
-		session.setAttribute("id", "sejonghumble");
 		List<DiaryVo> list=service.folder_all_list();
 		if(list!=null) {
 			model.addAttribute("list", list);
 			return ".all_list.diary";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 다이어리 요청작업이 실패했습니다");
+			model.addAttribute("url", "/minihome");
+			return ".code";
 		}
 	}
 	///////////// 해당폴더목록 ///////////// 
@@ -128,29 +125,36 @@ public class DiaryController {
 			model.addAttribute("list", list);
 			return ".list.diary";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 해당폴더 이동 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
 		}	
 	}
-	///////////// 다이어리 수정이동  ///////////// 
+	///////////// 다이어리 폼수정이동  ///////////// 
 	@RequestMapping(value="/diary/update",method=RequestMethod.GET)
 	public String updateForm(int diary_num,Model model) {
 		DiaryVo vo=service.content(diary_num);
-		if(vo!=null)
-		model.addAttribute("vo", vo);
-		return ".update.diary";	
+		if(vo!=null) {
+			model.addAttribute("vo", vo);
+			return ".update.diary";				
+		}else {
+			model.addAttribute("code", "오류로 인하여 다이어리 수정폼이동 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + diary_num);
+			return ".code";
+		}
 	}
 	///////////// 다이어리 수정 ///////////// 
 	@RequestMapping(value="/diary/update",method=RequestMethod.POST)
 	public String update(DiaryVo vo,Model model) {
 		int n=service.update(vo);
-		DiaryVo diary=service.content(vo.getDiary_num());
-		List<DiarycomVo> com_list=service.com_list(vo.getDiary_num());
 		if(n>0) {
-			model.addAttribute("vo", diary);
-			model.addAttribute("com_list", com_list);
-			return ".content.diary";
+			model.addAttribute("code", "성공적으로 다이어리 등록 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			return ".code";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 다이어리 수정 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
+			return ".code";
 		}
 	}
 	///////////// 다이어리 등록이동 ///////////// 
@@ -161,12 +165,16 @@ public class DiaryController {
 	}
 	///////////// 다이어리 등록 ///////////// 
 	@RequestMapping(value="/diary/insert",method=RequestMethod.POST)
-	public String insert(DiaryVo vo) {
+	public String insert(DiaryVo vo,Model model) {
 		int n=service.insert(vo);
 		if(n>0) {
-			return ".list.diary";
+			model.addAttribute("code", "성공적으로 다이어리 등록 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			return ".code";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 다이어리 등록 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
 		}	
 	}
 	///////////// 다이어리 삭제 ///////////// 
@@ -176,7 +184,9 @@ public class DiaryController {
 		if(n>0) {
 			return ".list.diary";			
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 다이어리 삭제 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
+			return ".code";
 		}
 	}
 	///////////// 다이어리 댓글 등록 /////////////
@@ -185,20 +195,22 @@ public class DiaryController {
 		String id=(String)session.getAttribute("id");
 		vo.setId(id);
 		int n=service.com_insert(vo);
-		DiaryVo diary=service.content(vo.getDiary_num());
-		List<DiarycomVo> com_list=service.com_list(vo.getDiary_num());
 		if(n>0) {
-			model.addAttribute("vo", diary);
-			model.addAttribute("com_list", com_list);
-			return ".content.diary";
+			model.addAttribute("code", "성공적으로 다이어리 댓글등록 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());	
+			return ".code";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 다이어리 댓글등록 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
+			return ".code";
 		}	
 	}
 	///////////// 폴더관리 ///////////// 
 	@RequestMapping(value="/diary/folder",method=RequestMethod.GET)
-	public String folder(String fname,Model model) {
-		model.addAttribute("fname", fname);
+	public String folder(Model model,HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		List<DiaryfolderVo> list=service.fname(hompy_num);
+		model.addAttribute("list", list);
 		return ".folder.diary";
 	}
 	///////////// 폴더생성 ///////////// 
@@ -211,15 +223,16 @@ public class DiaryController {
 		if(n>0) {
 			return ".folder.diary";			
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 폴더생성 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
 		}
 	}
 	///////////// 폴더검색 ajax ///////////// 
 	@RequestMapping(value="/folder_list")
 	@ResponseBody
 	public String folder_list(HttpSession session) {	
-		String id=(String)session.getAttribute("hompy_id");
-		int hompy_num=service.hompy_num(id);		
+		int hompy_num=(Integer)session.getAttribute("hompy_num");	
 		List<DiaryfolderVo> list=service.fname(hompy_num);
 		
 		JSONArray arr=new JSONArray();
@@ -231,11 +244,60 @@ public class DiaryController {
 		}		
 		return arr.toString();
 	}
-	///////////// 폴더이동 폼이동 ///////////// 
+	///////////// 폴더이동 수정폼 ///////////// 
 	@RequestMapping(value="/diary/folder_move",method=RequestMethod.GET)
-	public String foler_moveForm(int diary_num,Model model) {
+	public String folder_moveForm(int diary_num,int diary_folder_num,Model model,HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		List<DiaryfolderVo> list=service.fname(hompy_num);
+		String fname=service.fname_select(diary_folder_num);
 		model.addAttribute("diary_num", diary_num);
+		model.addAttribute("fname", fname);
+		model.addAttribute("list", list);
 		return ".folder_move.diary";		
+	}
+	///////////// 폴더이동 수정 ///////////// 
+	@RequestMapping(value="/diary/folder_move",method=RequestMethod.POST)
+	public String folder_moveForm(DiaryVo vo,Model model) {
+		int n=service.folder_move(vo);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 폴더이동 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());	
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 폴더이동 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}
+	}
+	///////////// 폴더이름 수정 ///////////// 
+	@RequestMapping(value="/diary/folder_update",method=RequestMethod.POST)
+	public String folder_update(DiaryfolderVo vo,Model model) {
+		int n=service.folder_update(vo);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 폴더수정 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 폴더수정 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}
+	}
+	///////////// 폴더삭제 ///////////// 
+	@RequestMapping(value="/diary/folder_delete",method=RequestMethod.POST)
+	public String folder_delete(DiaryfolderVo vo,HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		vo.setHompy_num(hompy_num);
+		int n=service.folder_delete(vo);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 폴더삭제 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 폴더삭제 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}
 	}
 	///////////// 상세보기 ///////////// 
 	@RequestMapping(value="/diary/content",method=RequestMethod.GET)
@@ -247,7 +309,9 @@ public class DiaryController {
 			model.addAttribute("com_list", com_list);
 			return ".content.diary";
 		}else {
-			return ".error";
+			model.addAttribute("code", "오류로 인하여 상세보기 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
 		}
 	}
 }
