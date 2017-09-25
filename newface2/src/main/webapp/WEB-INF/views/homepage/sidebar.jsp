@@ -5,38 +5,38 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+    // 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
     var userid = getCookie("userid");
     var userpwd = getCookie("userpwd");
     $("#id").val(userid); 
     $("#pwd").val(userpwd);
     
-    if($("#id").val() != "" && $("#pwd").val() != "" ){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
-        $("#autologin").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+    if($("#id").val() != "" && $("#pwd").val() != "" ){ // 그 전에 id,pwd 를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 id,pwd가 표시된 상태라면,
+        $("#auto").attr("checked", true); // id,pwd 저장하기를 체크 상태로 두기.
         
     }
     
-    $("#autologin").change(function(){ // 체크박스에 변화가 있다면,
-        if($("#autologin").is(":checked")){ // ID 저장하기 체크했을 때,
+    $("#auto").change(function(){ // 체크박스에 변화가 있다면,
+        if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
             var userid = $("#id").val();
         	var userpwd = $("#pwd").val();
             setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
             setCookie("userpwd", userpwd, 7);
-        }else{ // ID 저장하기 체크 해제 시,
+        }else{ // 자동로그인 체크 해제 시,
             deleteCookie("userid");
             deleteCookie("userpwd");
         }
     });
     
     $("#id").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-        if($("#autologin").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+        if($("#auto").is(":checked")){ // 자동 로그인를 체크한 상태라면,
             var userid = $("#id").val();
             setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
         }
     });
     
     $("#pwd").keyup(function(){ // pwd 입력 칸에 pwd를 입력할 때,
-        if($("#autologin").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+        if($("#auto").is(":checked")){ // 자동로그인를 체크한 상태라면,
             var userpwd = $("#pwd").val();
             setCookie("userpwd", userpwd, 7); // 7일 동안 쿠키 보관
         }
@@ -101,7 +101,7 @@ function getCookie(cookieName) {
 			<!--------------------자동로그인 ---------------------------------->
 			<div style="float:left;width: 20px; height: 20px;">
 				<label data-form-control="checkbox" data-min-width="20" data-min-height="20">
-				<input type="checkbox" id="autologin" name="autologin">
+				<input type="checkbox" id="auto" name="auto">
 				
 				<span data-form-decorator="true"></span></label>
 			</div>
