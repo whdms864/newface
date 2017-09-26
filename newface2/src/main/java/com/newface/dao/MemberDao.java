@@ -35,4 +35,10 @@ public class MemberDao {
 		
 		return sqlSession.selectOne(NAMESPACE+ ".isMember",map);
 	}
+	public MemberVo mypage(String id) {
+		MemberVo vo=sqlSession.selectOne(NAMESPACE + ".mypage",id);
+		return vo;
+	}
+	
+	
 }

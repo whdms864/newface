@@ -33,4 +33,7 @@ public class MemberService {
 			return false;
 		}
 	}
+	public MemberVo mypage(String id) {
+		return dao.mypage(id);
+	}
 }

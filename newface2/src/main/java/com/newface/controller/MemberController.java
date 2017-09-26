@@ -46,4 +46,9 @@ public class MemberController {
 			return ".member";
 		}
 	}
+	
+	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
+	public String mypage(String id) {
+		return ".mypage";
+	}
 }

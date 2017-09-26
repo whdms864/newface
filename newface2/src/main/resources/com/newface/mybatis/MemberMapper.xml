@@ -23,4 +23,9 @@
 		where id=#{loginid} and pwd=#{loginpwd}
 	</select>
 	
+	<select id="mypage" resultType="member" parameterType="String">
+		select * from member
+		where id=#{loginid}
+	</select>
+	
 </mapper>  

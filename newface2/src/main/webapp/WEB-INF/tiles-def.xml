@@ -39,6 +39,14 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/sidebar.jsp"/>
 	</definition>
 	
+	<definition name=".mypage" extends=".market">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
+	</definition>
+	
+	<definition name=".qna11" extends=".market">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/qna11.jsp"/>
+	</definition>
+	
 	<!-- 관리자 -->
 	<definition name=".admin" template="/WEB-INF/views/homepage/admin/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/admin/header.jsp"/>	
