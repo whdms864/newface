@@ -38,8 +38,6 @@
 			$(location).attr("href",url);
 		});
 		
-		
-		
         $('.trigger').click(function(){ 
 	        $('#popup_layer, #overlay_t').show(); 
 	        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
