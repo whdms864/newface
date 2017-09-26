@@ -36,4 +36,7 @@ public class MemberService {
 	public MemberVo mypage(String id) {
 		return dao.mypage(id);
 	}
+	public int update(MemberVo vo) {
+		return dao.update(vo);
+	}
 }

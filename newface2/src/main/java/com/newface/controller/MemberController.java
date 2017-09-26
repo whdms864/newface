@@ -3,6 +3,7 @@ package com.newface.controller;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,8 +48,23 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
-	public String mypage(String id) {
+	@RequestMapping("/member/mypage")
+	public String mypage(Model model,String id) {
+		MemberVo vo=service.mypage(id);
+		model.addAttribute("vo",vo);
 		return ".mypage";
+	}
+	
+	@RequestMapping(value="/member/update", method=RequestMethod.POST)
+	public String update(MemberVo vo) {
+		
+		System.out.println(vo.getAddr());
+		int n=service.update(vo);
+		System.out.println(n);
+		if(n>0) {
+			return "redirect:/member/mypage?id=" + vo.getId();
+		}else {
+			return ".market";
+		}
 	}
 }

@@ -40,5 +40,10 @@ public class MemberDao {
 		return vo;
 	}
 	
+	public int update(MemberVo vo) {
+		int n=sqlSession.update(NAMESPACE + ".update",vo);
+		return n;
+	}
+	
 	
 }

@@ -23,9 +23,15 @@
 		where id=#{loginid} and pwd=#{loginpwd}
 	</select>
 	
-	<select id="mypage" resultType="member" parameterType="String">
+	<select id="mypage" resultType="member" parameterType="string">
 		select * from member
 		where id=#{loginid}
 	</select>
+	
+	<update id="update" parameterType="member">
+		update member 
+		set pwd=#{pwd}, name=#{name}, email=#{email}, addr=#{addr}, birth=#{birth}, school=#{school} 
+		where id=#{id}     
+	</update>
 	
 </mapper>  
