@@ -75,21 +75,15 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value="/member/update", method=RequestMethod.GET)
+	@RequestMapping(value="/member/leave", method=RequestMethod.GET)
 	public String leaveform(MemberVo vo) {
-		return "";		
+		return ".leave";		
 	}
 	
-	@RequestMapping(value="/member/update", method=RequestMethod.POST)
+	@RequestMapping(value="/member/leave", method=RequestMethod.POST)
 	public String leave(MemberVo vo) {
 				
-		int n=service.update(vo);
-		
-		if(n>0) {
-			return "redirect:/member/mypage?id=" + vo.getId();
-		}else {
-			return ".market";
-		}
+		return"";
 	}
 	
 }

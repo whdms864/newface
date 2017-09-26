@@ -47,6 +47,10 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/update.jsp"/>
 	</definition>
 	
+	<definition name=".leave" extends=".market">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/leave.jsp"/>
+	</definition>
+	
 	<!-- 1:1문의 -->
 	<definition name=".qna11" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/qna11.jsp"/>
