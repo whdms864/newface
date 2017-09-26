@@ -12,11 +12,12 @@
   	<typeAlias type="com.newface.vo.CalendarListVo" alias="calendarlist"/>
   	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
   	<typeAlias type="com.newface.vo.Diary__Diary_ComVo" alias="ddcom"/>
-  	
+  	<typeAlias type="com.newface.vo.Qna11Vo" alias="qna11"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MiniHomeMapper.xml"/>
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/Qna11Mapper.xml"/>
   </mappers>
 </configuration>

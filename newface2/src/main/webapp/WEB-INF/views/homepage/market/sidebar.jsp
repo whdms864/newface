@@ -38,7 +38,7 @@
 			<a href="<c:url value='/minihome'/>" style="text-decoration: none; color:white;">내 미니홈피 가기</a>
 		</div>
 		<div>
-			<a href="" >1:1문의</a>
+			<a href="<c:url value='/qna11/insert'/>">1:1문의</a>
 			<a href="<c:url value='/market'/>" style="margin-left: 20px;">마켓</a>
 			<a href="" style="margin-left: 20px;">쪽지</a>
 			<a href="" style="margin-left: 20px;">MyPage</a>

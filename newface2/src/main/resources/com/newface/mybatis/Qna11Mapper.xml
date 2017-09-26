@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newface.mybatis.Qna11Mapper">
+	<insert id="insert" parameterType="qna11">
+		insert into qna11 values(0,#{title},#{content},now(),'대기',#{id})
+	</insert>
+	<select id="list" resultType="qna11">
+		select * from qna11
+	</select>
+	<select id="getinfo" resultType="qna11" parameterType="string">
+		select * from qna11 where id=#{id}
+	</select>
+</mapper>  

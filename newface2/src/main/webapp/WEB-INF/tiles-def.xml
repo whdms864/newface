@@ -43,6 +43,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
 	</definition>
 	
+	<!-- 1:1문의 -->
 	<definition name=".qna11" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/qna11.jsp"/>
 	</definition>
