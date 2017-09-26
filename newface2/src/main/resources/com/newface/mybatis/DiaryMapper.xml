@@ -28,11 +28,19 @@
 	<select id="id" parameterType="int" resultType="string">
 		select id from hompy where hompy_num=#{value}
 	</select>
-	<select id="folder_basic_list" resultType="diary">
-		select diary_num,title,content, regdate,@rownum:=@rownum+1 rownum from diary d,(select @rownum:=0) r where type='전체공개' order by diary_num desc
+	<select id="folder_basic_list" parameterType="int" resultType="diary">
+		select d.diary_num,d.title,d.content, d.regdate,d.love,@rownum:=@rownum+1 rownum 
+		from diary d join (select @rownum:=0) r join diary_folder f 
+		on d.diary_folder_num=f.diary_folder_num 
+		where type='전체공개' and f.hompy_num=#{value}
+		order by diary_num desc
 	</select>
-	<select id="folder_all_list" resultType="diary">
-		select diary_num,title,content, regdate,@rownum:=@rownum+1 rownum from diary d,(select @rownum:=0) r order by diary_num desc
+	<select id="folder_all_list" parameterType="int" resultType="diary">
+		select d.diary_num,d.title,d.content, d.regdate,d.love,@rownum:=@rownum+1 rownum 
+		from diary d join (select @rownum:=0) r join diary_folder f 
+		on d.diary_folder_num=f.diary_folder_num 
+		where f.hompy_num=#{value}
+		order by diary_num desc
 	</select>
 	<update id="update" parameterType="diary">
 		update diary set title=#{title},content=#{content},type=#{type} where diary_num=#{diary_num}
