@@ -52,8 +52,18 @@
 	</definition>
 	
 	<!-- 1:1문의 -->
-	<definition name=".qna11" extends=".market">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/qna11.jsp"/>
+	<definition name=".qna11.insert" template="/WEB-INF/views/homepage/qna11/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/header.jsp"/>	
+		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/sidebar.jsp"/>
+		<put-attribute name="ad" value="/WEB-INF/views/homepage/ad.jsp"/>
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/qna11/tab.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/insert.jsp"/>
+	</definition>
+	<definition name=".qna11.getinfo" extends=".qna11.insert">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/getinfo.jsp"/>
+	</definition>
+	<definition name=".qna11.detail" extends=".qna11.insert">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/detail.jsp"/>
 	</definition>
 	
 	<!-- 관리자 -->
