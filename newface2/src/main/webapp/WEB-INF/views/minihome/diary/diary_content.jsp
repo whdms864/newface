@@ -113,15 +113,15 @@
 	<div id="com_list_back">
 		<div id="com_list">			
 			<c:forEach var="com" items="${requestScope.com_list }">
-				${com.name } : ${com.content } (${com.regdate }) 
-				<c:if test="${com.id==sessionScope.id }">													
+				${com.name } : ${com.content } (${com.regdate })<br> 
+				<c:if test="${com.id==sessionScope.loginid }">													
 					<form method="post" action="<c:url value='/diary/com_update'/>">
 						<span style="display: none;" id="com">
 							<br>
 							<input type="text" name="content">
 							<input type="hidden" name="diary_com_num" value="${com.diary_com_num }">
 							<input type="hidden" name="diary_num" value="${requestScope.vo.diary_num }">
-							<input type="submit" value="수정하기">
+							<input type="submit" value="수정하기"> 
 						</span>			
 					</form>
 					<a href="javascript:void(0)" onclick="update()" id="open">수정열기</a>
@@ -133,8 +133,8 @@
 </div>
 <script>
 	function update() {
-		console.log("gg1212");
 		$("#com").css('display','inline');
+		$("#close").css('display','inline');
 		$("#open").css('display','none');
 	}
 </script>

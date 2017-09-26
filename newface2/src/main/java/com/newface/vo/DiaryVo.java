@@ -10,8 +10,9 @@ public class DiaryVo {
 	private String regdate;
 	private int diary_folder_num;
 	private int rownum;
+	private String fname;
 	public DiaryVo(int diary_num, String type, String title, String content, String singo, int love, String regdate,
-			int diary_folder_num) {
+			int diary_folder_num,String fname) {
 		super();
 		this.diary_num = diary_num;
 		this.type = type;
@@ -20,9 +21,18 @@ public class DiaryVo {
 		this.singo = singo;
 		this.love = love;
 		this.regdate = regdate;
+		this.fname = fname;
 		this.diary_folder_num = diary_folder_num;
 	}
 	
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
 	public DiaryVo() {}
 
 	public int getDiary_num() {

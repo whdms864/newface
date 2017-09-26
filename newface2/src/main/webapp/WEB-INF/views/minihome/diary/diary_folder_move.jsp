@@ -10,5 +10,5 @@
 		<option value="${vo.diary_folder_num }">${vo.fname}</option>
 	</c:forEach>
 	</select>
-	<input type="submit" value="생성">
+	<input type="submit" value="완료">
 </form>

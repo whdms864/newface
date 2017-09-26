@@ -112,10 +112,12 @@ public class DiaryController {
 		List<DiaryVo> list=service.folder_list(diary_folder_num);
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		if(list!=null) {
+			List<DiaryfolderVo> folder=service.fname(hompy_num);
 			String id=service.id(hompy_num);
 			String name=service.name(id);
 			model.addAttribute("diary_folder_num", diary_folder_num);
 			model.addAttribute("list", list);
+			model.addAttribute("folder", folder);
 			model.addAttribute("name", name);			
 			return ".list.diary";
 		}else {
@@ -185,6 +187,7 @@ public class DiaryController {
 			return ".code";
 		}
 	}
+///////////// 다이어리 다중 삭제 ///////////// 
 	@RequestMapping(value="/diary/deletes",method=RequestMethod.GET)
 	public String deletes(int[] diary_nums,int diary_folder_num,Model model) {
 		int n=0;
@@ -299,6 +302,24 @@ public class DiaryController {
 	@RequestMapping(value="/diary/folder_move",method=RequestMethod.POST)
 	public String folder_moveForm(DiaryVo vo,Model model) {
 		int n=service.folder_move(vo);
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 폴더이동 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());	
+			return ".code";
+		}else {
+			model.addAttribute("code", "오류로 인하여 폴더이동 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/folder_all_list");
+			return ".code";
+		}
+	}
+	///////////// 폴더이동 다중 수정 ///////////// 
+	@RequestMapping(value="/diary/folder_moves",method=RequestMethod.GET)
+	public String folder_moves(DiaryVo vo,int[] diary_nums,Model model) {
+		int n=0;
+		for(int diary_num:diary_nums) {
+			vo.setDiary_num(diary_num);
+			n=service.folder_move(vo);
+		}
 		if(n>0) {
 			model.addAttribute("code", "성공적으로 폴더이동 요청작업이 성공했습니다");
 			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());	

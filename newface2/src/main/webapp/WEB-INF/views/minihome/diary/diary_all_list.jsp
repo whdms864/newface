@@ -24,10 +24,10 @@
 	});		
 </script>
 <input type="hidden" id="diary_folder_num" value="${requestScope.diary_folder_num }">
-<div id="write">
+<%-- <div id="write">
 	<img alt='폴더사진' src="<c:url value='/resources/images/minihome/pensil.png'/>" id="icon">
 	<a href="<c:url value='/diary/insert?diary_folder_num=${requestScope.diary_folder_num }'/>">글쓰기</a><br>
-</div>
+</div> --%>
 <div id="diary_list_back">
 	<hr>
 	<div id="title_back">
