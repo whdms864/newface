@@ -29,9 +29,10 @@ $( function() {
 				  			<th>상태</th>
 				  			<th>상세보기</th>
 				  		</tr>
+				  		<c:set var="i" value="1"/>
 				  		<c:forEach var="vo" items="${requestScope.list }">
 				  			<tr>
-					  			<td>${vo.qna11_num}</td>
+					  			<td>${i}</td>
 					  			<td>${vo.title}</td>
 					  			<td>${vo.regdate}</td>
 					  			<td>${vo.confirm}</td>
