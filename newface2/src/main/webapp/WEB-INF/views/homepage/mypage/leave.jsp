@@ -2,54 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html >
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("form span").css({
-			color:"red",
-			fontsize:10
-		});
-		
-		$("#pwdok").keyup(function(){
-			var pwd=$("#pwd").val();
-			var pwdok=$("#pwdok").val();
-			
-			if(pwd!=pwdok || pwdok==""){
-				$("#pwdok").focus();
-				$("#pwd2").html("비밀번호가 일치하지 않습니다");
-				
-			}else{
-				$("#pwd2").html("");
-			}
-		});
-				
-		$("#f").submit(function(event){
-			var pwd=$("#pwd").val();
-			var pwdok=$("#pwdok").val();
-			var name=$("#name").val();
-			
-			if(pwd==""){
-				$("#pwd").focus();
-				$("#pwd1").html("비밀번호를 입력해주세요");
-				event.preventDefault();
-			}else if(pwdok==""){
-				$("#pwdok").focus();
-				$("#pwd2").html("비밀번호확인란을 입력해주세요");
-				event.preventDefault();
-			}else if(pwd!=pwdok){
-				$("#pwdok").focus();
-				$("#pwd2").html("비밀번호가 일치하지 않습니다");
-				event.preventDefault();
-			}
-			
-		});
-		
-	});
-	
-
-
-</script>
 
 
 
