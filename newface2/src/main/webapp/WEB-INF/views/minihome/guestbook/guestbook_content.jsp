@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=2'/>">
+	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=6'/>">
 <div id=scroll style="overflow: scroll; width: 660px; height: 560px;">
 	<form method="post" action="<c:url value='/guest/insert'/>">
 		<div id="g_write_b">
-			<input type="hidden" value=${sessionScope.id } name="id" id="id">
+			<input type="hidden" value=${sessionScope.loginid } name="id" id="id">
 			<input type="hidden" value=1 name="hompy_num" id="hompy_num">
 			<div id="g_minime"></div>
 			<textarea rows="100" cols="60" name="g_texta" id="g_texta"></textarea>

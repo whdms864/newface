@@ -27,7 +27,6 @@ public class GuestBookController {
 	@RequestMapping(value = "/guest/insert", method = RequestMethod.POST)
 	public String insert(GuestbookVo vo,Model model) {
 		int n=service.insert(vo);
-		System.out.println(vo);
 		if(n>0) {
 			model.addAttribute("code","¼º°ø");
 			model.addAttribute("url","/guestbook");
