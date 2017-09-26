@@ -26,12 +26,18 @@ $( function() {
 				  			<th>No.</th>
 				  			<th>제목</th>
 				  			<th>등록일</th>
+				  			<th>상태</th>
+				  			<th>상세보기</th>
 				  		</tr>
-			  			<tr>
-				  			<td>No.</td>
-				  			<td>제목</td>
-				  			<td>등록일</td>
-				  		</tr>
+				  		<c:forEach var="vo" items="${requestScope.list }">
+				  			<tr>
+					  			<td>${vo.qna11_num}</td>
+					  			<td>${vo.title}</td>
+					  			<td>${vo.regdate}</td>
+					  			<td>${vo.confirm}</td>
+					  			<td><a href="<c:url value='/qna11/detail'/>">보기</a></td>
+					  		</tr>
+					  	</c:forEach>
 				</table>
 				<div style="position:absolute;top:650px;width: 85%;"align="center">
 					<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>

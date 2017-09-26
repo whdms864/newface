@@ -13,7 +13,7 @@ public class Qna11Service {
 	public void setDao(Qna11Dao dao) {
 		this.dao = dao;
 	}
-	public Qna11Vo getinfo(String id) {
+	public List<Qna11Vo> getinfo(String id) {
 		return dao.getinfo(id);
 	}
 	public int insert(Qna11Vo vo) {

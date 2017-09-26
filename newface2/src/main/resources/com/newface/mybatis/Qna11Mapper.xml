@@ -7,9 +7,9 @@
 		insert into qna11 values(0,#{title},#{content},now(),'대기',#{id})
 	</insert>
 	<select id="list" resultType="qna11">
-		select * from qna11
+		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11
 	</select>
 	<select id="getinfo" resultType="qna11" parameterType="string">
-		select * from qna11 where id=#{id}
+		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11 where id=#{id}
 	</select>
 </mapper>  

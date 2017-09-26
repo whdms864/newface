@@ -1,18 +1,17 @@
 package com.newface.vo;
 
-import java.util.Date;
 
 public class Qna11Vo {
 	private int qna11_num;
 	private String title;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private String confirm;
 	private String id;
 	
 	public Qna11Vo() {}
 
-	public Qna11Vo(int qna11_num, String title, String content, Date regdate, String confirm, String id) {
+	public Qna11Vo(int qna11_num, String title, String content, String regdate, String confirm, String id) {
 		super();
 		this.qna11_num = qna11_num;
 		this.title = title;
@@ -46,11 +45,11 @@ public class Qna11Vo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

@@ -18,8 +18,8 @@ public class Qna11Dao {
 		this.sqlSession = sqlSession;
 	}
 	
-	public Qna11Vo getinfo(String id) {
-		return sqlSession.selectOne(NAMESPACE+".getinfo",id);
+	public List<Qna11Vo> getinfo(String id) {
+		return sqlSession.selectList(NAMESPACE+".getinfo",id);
 	}
 	
 	public int insert(Qna11Vo vo) {
