@@ -93,9 +93,9 @@ public class DiaryController {
 		int n=service.hompy_is(vo);
 		List<DiaryVo> list=null;
 		if(n>0) {
-			list=service.folder_all_list();			
+			list=service.folder_all_list(hompy_num);			
 		}else {
-			list=service.folder_basic_list();	
+			list=service.folder_basic_list(hompy_num);	
 		}
 		if(list!=null) {
 			model.addAttribute("list", list);

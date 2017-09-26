@@ -41,11 +41,11 @@ public class DiaryService {
 	public String id(int hompy_num) {
 		return dao.id(hompy_num);
 	}
-	public List<DiaryVo> folder_basic_list(){
-		return dao.folder_basic_list();
+	public List<DiaryVo> folder_basic_list(int hompy_num){
+		return dao.folder_basic_list(hompy_num);
 	}
-	public List<DiaryVo> folder_all_list(){
-		return dao.folder_all_list();
+	public List<DiaryVo> folder_all_list(int hompy_num){
+		return dao.folder_all_list(hompy_num);
 	}
 	public int update(DiaryVo vo) {
 		return dao.update(vo);

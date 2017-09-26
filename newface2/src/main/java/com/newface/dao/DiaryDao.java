@@ -38,11 +38,11 @@ public class DiaryDao {
 	public String id(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".id", hompy_num);
 	}
-	public List<DiaryVo> folder_basic_list(){
-		return sqlSession.selectList(NAMESPACE + ".folder_basic_list");
+	public List<DiaryVo> folder_basic_list(int hompy_num){
+		return sqlSession.selectList(NAMESPACE + ".folder_basic_list", hompy_num);
 	}
-	public List<DiaryVo> folder_all_list(){
-		return sqlSession.selectList(NAMESPACE + ".folder_all_list");
+	public List<DiaryVo> folder_all_list(int hompy_num){
+		return sqlSession.selectList(NAMESPACE + ".folder_all_list", hompy_num);
 	}	
 	public int update(DiaryVo vo) {
 		return sqlSession.update(NAMESPACE + ".update", vo);
