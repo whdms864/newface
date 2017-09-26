@@ -40,7 +40,6 @@ $(document).ready(function(){
 			$("#leaveok").html("탈퇴하시겠습니까?");
 			event.preventDefault();
 		}
-	
 	});
 });
 

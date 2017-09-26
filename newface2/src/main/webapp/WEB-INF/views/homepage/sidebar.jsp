@@ -5,7 +5,7 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    // 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
+	// 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
     var userid = getCookie("userid");
     var userpwd = getCookie("userpwd");
     $("#loginid").val(userid);
@@ -41,7 +41,9 @@ $(document).ready(function(){
         }
     });
 });
- 
+
+
+
 function setCookie(cookieName, value, exdays){
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
@@ -74,8 +76,7 @@ function getCookie(cookieName) {
 <!----------------- 여기서부터 왼쪽 사이드바 ----------------->
 <div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
-	
-		<form method="post" action="<c:url value='/member/login'/>">
+		<form method="post" id="f" name="f" action="<c:url value='/member/login'/>">
 			<!-- 아이디 입력창 -->
 			<div style="margin-top: 10px;display: inline-block;">
 				<div style="width: 40px; height: 32px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">

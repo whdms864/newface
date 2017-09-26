@@ -55,6 +55,14 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/bye.jsp"/>
 	</definition>
 	
+	<definition name=".loginpage" template="/WEB-INF/views/homepage/login/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/login/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/login/loginp.jsp"/>
+	</definition>
+	
+	
+	
+	
 	<!-- 1:1문의 -->
 	<definition name=".qna11_insert" template="/WEB-INF/views/homepage/qna11/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/header.jsp"/>	

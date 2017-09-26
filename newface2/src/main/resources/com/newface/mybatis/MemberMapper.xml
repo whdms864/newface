@@ -20,7 +20,7 @@
 	
 	<select id="isMember" resultType="member">
 		select * from member
-		where id=#{loginid} and pwd=#{loginpwd}
+		where id=#{loginid} and pwd=#{loginpwd} and type='회원'
 	</select>
 	
 	<select id="mypage" resultType="member" parameterType="string">
@@ -34,7 +34,7 @@
 	</update>
 	
 	<update id="leave" parameterType="member">
-		update set type='탈퇴' where id=#{id}
+		update member set type='탈퇴' where id=#{id}
 	</update>
 	
 </mapper>  
