@@ -77,6 +77,9 @@
 	<definition name=".qna11_detail" extends=".qna11_insert">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/detail.jsp"/>
 	</definition>
+	<definition name=".qna11_update" extends=".qna11_insert">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
+	</definition>
 	
 	<!-- 관리자 -->
 	<definition name=".admin" template="/WEB-INF/views/homepage/admin/layout.jsp">

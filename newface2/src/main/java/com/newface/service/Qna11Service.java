@@ -25,4 +25,10 @@ public class Qna11Service {
 	public List<Qna11Vo> list() {
 		return dao.list();
 	}
+	public int update(Qna11Vo vo) {
+		return dao.update(vo);
+	}
+	public int delete(int qna11_num) {
+		return dao.delete(qna11_num);
+	}
 }

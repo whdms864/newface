@@ -40,4 +40,20 @@ public class Qna11Controller {
 		model.addAttribute("vo",vo);
 		return ".qna11_detail";
 	}
+	@RequestMapping(value = "/qna11/update", method = RequestMethod.GET)
+	public String update(int qna11_num,Model model) {
+		Qna11Vo vo=service.getinfo(qna11_num);
+		model.addAttribute("vo",vo);
+		return ".qna11_update";
+	}
+	@RequestMapping(value = "/qna11/updateok", method = RequestMethod.POST)
+	public String updateok(Qna11Vo vo) {
+		service.update(vo);
+		return "redirect:/qna11/getinfo";
+	}
+	@RequestMapping(value = "/qna11/delete", method = RequestMethod.GET)
+	public String delete(int qna11_num) {
+		service.delete(qna11_num);
+		return "redirect:/qna11/getinfo";
+	}
 }

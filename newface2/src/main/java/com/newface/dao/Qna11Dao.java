@@ -28,6 +28,12 @@ public class Qna11Dao {
 	public int insert(Qna11Vo vo) {
 		return sqlSession.insert(NAMESPACE+".insert",vo);
 	}
+	public int update(Qna11Vo vo) {
+		return sqlSession.update(NAMESPACE+".update",vo);
+	}
+	public int delete(int qna11_num) {
+		return sqlSession.delete(NAMESPACE+".delete",qna11_num);
+	}
 	public List<Qna11Vo> list() {
 		return sqlSession.selectList(NAMESPACE+".list");
 	}

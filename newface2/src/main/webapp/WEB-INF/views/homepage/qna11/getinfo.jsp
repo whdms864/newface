@@ -22,7 +22,7 @@
 			  		</tr>
 			  	</c:forEach>
 		</table>
-		<div style="position:absolute;top:650px;width: 85%;"align="center">
+		<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
 			페이징
 		</div>

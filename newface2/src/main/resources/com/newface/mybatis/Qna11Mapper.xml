@@ -15,4 +15,10 @@
 	<select id="getinfo2" resultType="qna11" parameterType="int">
 		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11 where qna11_num=#{qna11_num}
 	</select>
+	<update id="update" parameterType="qna11">
+		update qna11 set title=#{title},content=#{content} where qna11_num=#{qna11_num}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from qna11 where qna11_num=#{qna11_num}
+	</delete>
 </mapper>  
