@@ -76,7 +76,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/leave", method=RequestMethod.GET)
-	public String leaveform(MemberVo vo) {
+	public String leaveform(Model model,String id) {
+		MemberVo vo=service.mypage(id);
+		model.addAttribute("vo",vo);
 		return ".leave";		
 	}
 	
