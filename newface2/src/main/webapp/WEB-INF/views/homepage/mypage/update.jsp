@@ -23,46 +23,58 @@
 	  				<label class="control-label" for="inputWarning1">아이디</label>
 	  				<label class="control-label" for="inputWarning1" style="color:#a94442;">(*)</label>
 	  				<br>
-	  				${vo.id }
+	  				<input type="text" name="id" id="id" class="form-control" style="width:400px;" value="${vo.id }" readonly="readonly">
 	  				<span id="idok"></span>
 				</div>	
+				<div class="form-group has-warning" style="display: inline-block; ">
+	  				<label class="control-label" for="inputWarning1">비밀번호</label>
+	  				<label class="control-label" for="inputWarning1" style="color:#a94442;">(*)</label>
+	  				<br>
+	  				<input type="password" name="pwd" id="pwd" class="form-control" style="width:400px;"value="${vo.pwd }"placeholder="비밀번호">
+	  				<span id="pwd1"></span>
+	  				<input type="password" name="pwdok" id="pwdok" class="form-control" style="width:400px;margin-top:10px;" placeholder="비밀번호 확인">
+	  				<span id="pwd2"></span>
+				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">이름</label>
 	  				<label class="control-label" for="inputWarning1" style="color:#a94442;">(*)</label>
 	  				<br>
-	  				${vo.name }
+	  				<input type="text" name="name" id="name" class="form-control" style="width:400px;" value="${vo.name }">
 	  				<span id="nameok"></span>
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">이메일</label>
 	  				<br>
-	  				${vo.email }
+	  				<input type="email" name="email" id="email" class="form-control" style="width:400px;" value="${vo.email }">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">주소</label>
 	  				<br>
-	  				${vo.addr }
+	  				<input type="text" name="addr" id="addr" class="form-control" style="width:400px;" value="${vo.addr }">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">생년월일</label>
 	  				<br>
-	  				${vo.birth }
+	  				<input type="text" name="birth" id="birth" class="form-control" style="width:400px;" value="${vo.birth }">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">학교</label>
 	  				<br>
-	  				${vo.school }
+	  				<input type="text" name="school" id="school" class="form-control" style="width:400px;" value="${vo.school }">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">가입일</label>
 	  				<br>
-	  				{vo.regdate }
+	  				<input type="text" name="regdate" id="regdate" class="form-control" style="width:400px;" value="${vo.regdate }" disabled="disabled">
 				</div>
 			</div>
 			<div style="position:absolute;top:700px;width: 85%;"align="center">
 				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-				<input type="submit" id="update" name="update" value="정보수정하기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				<input type="submit" id="update" name="update" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" >
+				
+				<input type="button" id="leave" name="leave" value="탈퇴" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" > 
 			</div>
 		</form>
 	</div>

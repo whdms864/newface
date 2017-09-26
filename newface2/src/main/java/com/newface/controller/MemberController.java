@@ -55,6 +55,12 @@ public class MemberController {
 		return ".mypage";
 	}
 	
+	@RequestMapping(value="/member/update", method=RequestMethod.GET)
+	public String updateform(MemberVo vo) {
+		return ".update";
+	}
+	
+	
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String update(MemberVo vo) {
 		
