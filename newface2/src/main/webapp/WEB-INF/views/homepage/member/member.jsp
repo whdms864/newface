@@ -17,11 +17,7 @@
 		$(".form-control").focusout(function(){
 			$(this).next().html("");
 		}); 
-		$("a").click(function(event){
-			//이벤트가 발생되었을 때 해야할 작업을 안하기(href로 연결된 페이지로 이동안하게 하기)
-			event.preventDefault();
-		});
-		
+				
 		$("#id").keyup(function(){
 			var id=$("#id").val();
 			$.getJSON("<c:url value='/idcheck/json'/>",{id:id},function(data){
@@ -67,7 +63,7 @@
 			}
 		});
 		
-		$("form").submit(function(event){
+		$("#f").submit(function(event){
 			var id=$("#id").val();
 			var pwd=$("#pwd").val();
 			var pwdok=$("#pwdok").val();

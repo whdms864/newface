@@ -8,12 +8,11 @@ $(document).ready(function(){
     // 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
     var userid = getCookie("userid");
     var userpwd = getCookie("userpwd");
-    $("#id").val(userid); 
+    $("#id").val(userid);
     $("#pwd").val(userpwd);
     
     if($("#id").val() != "" && $("#pwd").val() != "" ){ // 그 전에 id,pwd 를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 id,pwd가 표시된 상태라면,
         $("#auto").attr("checked", true); // id,pwd 저장하기를 체크 상태로 두기.
-        
     }
     
     $("#auto").change(function(){ // 체크박스에 변화가 있다면,
