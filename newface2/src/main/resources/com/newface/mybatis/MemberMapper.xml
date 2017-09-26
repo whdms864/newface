@@ -20,7 +20,7 @@
 	
 	<select id="isMember" resultType="member">
 		select * from member
-		where id=#{id} and pwd=#{pwd}
+		where id=#{loginid} and pwd=#{loginpwd}
 	</select>
 	
 </mapper>  

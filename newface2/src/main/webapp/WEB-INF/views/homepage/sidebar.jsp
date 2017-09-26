@@ -8,17 +8,17 @@ $(document).ready(function(){
     // 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
     var userid = getCookie("userid");
     var userpwd = getCookie("userpwd");
-    $("#id").val(userid);
-    $("#pwd").val(userpwd);
+    $("#loginid").val(userid);
+    $("#loginpwd").val(userpwd);
     
-    if($("#id").val() != "" && $("#pwd").val() != "" ){ // 그 전에 id,pwd 를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 id,pwd가 표시된 상태라면,
+    if($("#loginid").val() != "" && $("#loginpwd").val() != "" ){ // 그 전에 id,pwd 를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 id,pwd가 표시된 상태라면,
         $("#auto").attr("checked", true); // id,pwd 저장하기를 체크 상태로 두기.
     }
     
     $("#auto").change(function(){ // 체크박스에 변화가 있다면,
         if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
-            var userid = $("#id").val();
-        	var userpwd = $("#pwd").val();
+            var userid = $("#loginid").val();
+        	var userpwd = $("#loginpwd").val();
             setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
             setCookie("userpwd", userpwd, 7);
         }else{ // 자동로그인 체크 해제 시,
@@ -27,16 +27,16 @@ $(document).ready(function(){
         }
     });
     
-    $("#id").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+    $("#loginid").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
         if($("#auto").is(":checked")){ // 자동 로그인를 체크한 상태라면,
-            var userid = $("#id").val();
+            var userid = $("#loginid").val();
             setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
         }
     });
     
-    $("#pwd").keyup(function(){ // pwd 입력 칸에 pwd를 입력할 때,
+    $("#loginpwd").keyup(function(){ // pwd 입력 칸에 pwd를 입력할 때,
         if($("#auto").is(":checked")){ // 자동로그인를 체크한 상태라면,
-            var userpwd = $("#pwd").val();
+            var userpwd = $("#loginpwd").val();
             setCookie("userpwd", userpwd, 7); // 7일 동안 쿠키 보관
         }
     });
@@ -80,14 +80,14 @@ function getCookie(cookieName) {
 			<div style="margin-top: 10px;display: inline-block;">
 				<div style="width: 40px; height: 32px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
 				</div>
-				<input type="text" name="id" id="id" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
+				<input type="text" name="loginid" id="loginid" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
 				border-color: rgb(204, 204, 204); width: 180px; height: 32px;float:left;">
 			</div>
 			<!-- 비밀번호 입력창 -->
 			<div style="margin-top: 5px;display: inline-block;">
 				<div style="width: 40px; height: 32px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
 				</div>
-				<input type="password" name="pwd" id="pwd" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
+				<input type="password" name="loginpwd" id="loginpwd" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
 				border-color: rgb(204, 204, 204); width: 180px; height: 32px;float:left;">
 			</div>
 			<!-- 로그인버튼 -->

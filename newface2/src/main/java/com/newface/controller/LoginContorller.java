@@ -22,18 +22,17 @@ public class LoginContorller {
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		String box = request.getParameter("box");
-
+		String loginid = request.getParameter("loginid");
+		String loginpwd = request.getParameter("loginpwd");
+		
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("pwd", pwd);
+		map.put("loginid", loginid);
+		map.put("loginpwd", loginpwd);
 		boolean r = service.isMembers(map);
 
 		if (r) {
 			HttpSession session = request.getSession();
-			session.setAttribute("id", id);
+			session.setAttribute("loginid", loginid);
 			return ".main2";
 
 		} else {
