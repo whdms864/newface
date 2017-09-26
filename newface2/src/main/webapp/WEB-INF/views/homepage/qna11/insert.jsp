@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="tabs-2">
 	<div align="left">
 		<form method="post" id="f" name="f" action="<c:url value='/qna11/insertok'/>">
 			<div style="margin-left:40px;">
@@ -32,4 +31,3 @@
 			</div>
 		</form>
 	</div>
-</div>

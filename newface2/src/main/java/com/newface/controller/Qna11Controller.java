@@ -20,7 +20,7 @@ public class Qna11Controller {
 
 	@RequestMapping(value = "/qna11/insert", method = RequestMethod.GET)
 	public String insertform() {
-		return ".qna11.insert";
+		return ".qna11_insert";
 	}
 	@RequestMapping(value = "/qna11/insertok", method = RequestMethod.POST)
 	public String insert(Qna11Vo vo) {
@@ -32,12 +32,12 @@ public class Qna11Controller {
 		String id=(String)session.getAttribute("loginid");
 		List<Qna11Vo> list=service.getinfo(id);
 		model.addAttribute("list",list);
-		return ".qna11.getinfo";
+		return ".qna11_getinfo";
 	}
 	@RequestMapping(value = "/qna11/detail", method = RequestMethod.GET)
 	public String detail(int qna11_num,Model model) {
 		Qna11Vo vo=service.getinfo(qna11_num);
 		model.addAttribute("vo",vo);
-		return ".qna11.detail";
+		return ".qna11_detail";
 	}
 }

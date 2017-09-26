@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="tabs-1">
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 		  		<tr class="success">
@@ -28,4 +27,3 @@
 			페이징
 		</div>
 	</div>
-</div>

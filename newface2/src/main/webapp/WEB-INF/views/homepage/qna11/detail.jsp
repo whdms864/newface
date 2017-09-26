@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="tabs-3">
 	<form method="post" id="f" name="f" action="<c:url value='/qna11/detail'/>">
 		<div style="margin-left:40px;">
 			<div class="form-group has-warning" style="display: inline-block; ">
@@ -30,4 +29,3 @@
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" > 
 		</div>
 	</form>
-</div>

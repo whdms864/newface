@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/main.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/qna11.css'/>">
 </head>
 <body>
 <div id="wrap">
@@ -20,8 +20,12 @@
 			<tiles:insertAttribute name="sidebar"/>
 		</div>
 		<div id="content">
-			<tiles:insertAttribute name="tab"/>
-			<tiles:insertAttribute name="content"/>
+			<div id="tab">
+				<tiles:insertAttribute name="tab"/>
+			</div>
+			<div id="con">
+				<tiles:insertAttribute name="con"/>
+			</div>
 		</div>
 		<div id="ad">
 			<tiles:insertAttribute name="ad"/>
