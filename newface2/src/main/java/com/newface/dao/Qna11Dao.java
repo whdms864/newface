@@ -21,6 +21,9 @@ public class Qna11Dao {
 	public List<Qna11Vo> getinfo(String id) {
 		return sqlSession.selectList(NAMESPACE+".getinfo",id);
 	}
+	public Qna11Vo getinfo(int qna11_num) {
+		return sqlSession.selectOne(NAMESPACE+".getinfo2",qna11_num);
+	}
 	
 	public int insert(Qna11Vo vo) {
 		return sqlSession.insert(NAMESPACE+".insert",vo);

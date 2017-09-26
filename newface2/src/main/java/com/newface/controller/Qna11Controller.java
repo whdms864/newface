@@ -30,4 +30,10 @@ public class Qna11Controller {
 		model.addAttribute("list",list);
 		return ".qna11";
 	}
+	@RequestMapping(value = "/qna11/detail", method = RequestMethod.GET)
+	public String getinfo(int qna11_num,Model model) {
+		Qna11Vo list=service.getinfo(qna11_num);
+		model.addAttribute("list",list);
+		return ".qna11";
+	}
 }

@@ -12,4 +12,7 @@
 	<select id="getinfo" resultType="qna11" parameterType="string">
 		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11 where id=#{id}
 	</select>
+	<select id="getinfo2" resultType="qna11" parameterType="int">
+		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11 where qna11_num=#{qna11_num}
+	</select>
 </mapper>  
