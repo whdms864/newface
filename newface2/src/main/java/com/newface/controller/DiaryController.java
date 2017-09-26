@@ -87,7 +87,7 @@ public class DiaryController {
 	///////////// 다이어리목록 ///////////// 
 	@RequestMapping(value="/diary/folder_all_list",method=RequestMethod.GET)
 	public String folder_all_list(Model model,HttpSession session) {
-		String id=(String)session.getAttribute("id");
+		String id=(String)session.getAttribute("loginid");
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		HompyVo vo=new HompyVo(hompy_num, 0, null, id);
 		int n=service.hompy_is(vo);
@@ -108,11 +108,15 @@ public class DiaryController {
 	}
 	///////////// 해당폴더목록 ///////////// 
 	@RequestMapping(value="/diary/list",method=RequestMethod.GET)
-	public String list(int diary_folder_num,Model model) {
+	public String diary_list(int diary_folder_num,HttpSession session,Model model) {
 		List<DiaryVo> list=service.folder_list(diary_folder_num);
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		if(list!=null) {
+			String id=service.id(hompy_num);
+			String name=service.name(id);
 			model.addAttribute("diary_folder_num", diary_folder_num);
 			model.addAttribute("list", list);
+			model.addAttribute("name", name);			
 			return ".list.diary";
 		}else {
 			model.addAttribute("code", "오류로 인하여 해당폴더 이동 요청작업이 실패했습니다");
@@ -181,10 +185,26 @@ public class DiaryController {
 			return ".code";
 		}
 	}
+	@RequestMapping(value="/diary/deletes",method=RequestMethod.GET)
+	public String deletes(int[] diary_nums,int diary_folder_num,Model model) {
+		int n=0;
+		for(int diary_num:diary_nums) {
+			n=service.delete(diary_num);
+		}
+		if(n>0) {
+			model.addAttribute("code", "성공적으로 다이어리 삭제 요청작업이 성공했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
+			return ".code";		
+		}else {
+			model.addAttribute("code", "오류로 인하여 다이어리 삭제 요청작업이 실패했습니다");
+			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
+			return ".code";
+		}
+	}
 	///////////// 다이어리 댓글 등록 /////////////
 	@RequestMapping(value="/diary/com_insert",method=RequestMethod.POST)
 	public String com_insert(DiarycomVo vo,HttpSession session,Model model) {
-		String id=(String)session.getAttribute("id");
+		String id=(String)session.getAttribute("loginid");
 		vo.setId(id);
 		int n=service.com_insert(vo);
 		if(n>0) {
@@ -236,7 +256,7 @@ public class DiaryController {
 	///////////// 폴더생성 ///////////// 
 	@RequestMapping(value="/diary/folder_insert",method=RequestMethod.POST)
 	public String folder_insert(DiaryfolderVo vo,HttpSession session,Model model) {
-		String id=(String)session.getAttribute("id");
+		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		vo.setHompy_num(hompy_num);
 		int n=service.folder_insert(vo);

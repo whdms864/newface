@@ -9,8 +9,9 @@
 	<select id="folder_list" parameterType="int" resultType="diary">
 		select *,@rownum:=@rownum+1 rownum  
 		from diary d join diary_folder f join (select @rownum:=0) r
-		on d.diary_folder_num=f.diary_folder_num
+		on d.diary_folder_num=f.diary_folder_num 
 		where f.diary_folder_num=#{value}
+		order by rownum desc
 	</select>
 	<select id="content" parameterType="int" resultType="diary">
 		select * from diary where diary_num=#{value}
@@ -23,6 +24,9 @@
 	</select>
 	<select id="name" parameterType="string" resultType="string">
 		select name from member where id=#{value}
+	</select>
+	<select id="id" parameterType="int" resultType="string">
+		select id from hompy where hompy_num=#{value}
 	</select>
 	<select id="folder_basic_list" resultType="diary">
 		select diary_num,title,content, regdate,@rownum:=@rownum+1 rownum from diary d,(select @rownum:=0) r where type='전체공개' order by diary_num desc

@@ -35,6 +35,9 @@ public class DiaryDao {
 	public String name(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".name", id);
 	}
+	public String id(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".id", hompy_num);
+	}
 	public List<DiaryVo> folder_basic_list(){
 		return sqlSession.selectList(NAMESPACE + ".folder_basic_list");
 	}

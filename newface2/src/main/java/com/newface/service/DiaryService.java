@@ -35,6 +35,12 @@ public class DiaryService {
 		}
 		return com_list;
 	}
+	public String name(String id) {
+		return dao.name(id);
+	}
+	public String id(int hompy_num) {
+		return dao.id(hompy_num);
+	}
 	public List<DiaryVo> folder_basic_list(){
 		return dao.folder_basic_list();
 	}
