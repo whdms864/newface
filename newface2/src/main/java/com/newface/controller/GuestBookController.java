@@ -28,8 +28,6 @@ public class GuestBookController {
 	public String insert(GuestbookVo vo,Model model) {
 		int n=service.insert(vo);
 		if(n>0) {
-			model.addAttribute("code","성공");
-			model.addAttribute("url","/guestbook");
 			return "redirect:/guest/list_all";
 		}else {
 			model.addAttribute("code","실패");
