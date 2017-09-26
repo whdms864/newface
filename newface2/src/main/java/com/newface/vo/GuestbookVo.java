@@ -5,19 +5,19 @@ import java.util.Date;
 public class GuestbookVo {
 	private int guest_num;
 	private String title;
-	private String content;
+	private String g_texta;
 	private String secret;
 	private Date regdate;
 	private String id;
 	private int hompy_num;
 	
 	public GuestbookVo() {}
-	public GuestbookVo(int guest_num, String title, String content, String secret, Date regdate, String id,
+	public GuestbookVo(int guest_num, String title, String g_texta, String secret, Date regdate, String id,
 			int hompy_num) {
 		super();
 		this.guest_num = guest_num;
 		this.title = title;
-		this.content = content;
+		this.g_texta = g_texta;
 		this.secret = secret;
 		this.regdate = regdate;
 		this.id = id;
@@ -35,11 +35,11 @@ public class GuestbookVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getG_texta() {
+		return g_texta;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setG_texta(String g_texta) {
+		this.g_texta = g_texta;
 	}
 	public String getSecret() {
 		return secret;

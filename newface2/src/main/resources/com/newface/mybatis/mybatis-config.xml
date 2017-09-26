@@ -13,11 +13,14 @@
   	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
   	<typeAlias type="com.newface.vo.Diary__Diary_ComVo" alias="ddcom"/>
   	<typeAlias type="com.newface.vo.Qna11Vo" alias="qna11"/>
+  	<typeAlias type="com.newface.vo.GuestbookVo" alias="Guest"/>
+  	<typeAlias type="com.newface.vo.GuestbooklistVo" alias="Guestlist"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MiniHomeMapper.xml"/>
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
   	<mapper resource="com/newface/mybatis/Qna11Mapper.xml"/>
+  	<mapper resource="com/newface/mybatis/GuestbookMapper.xml"/>
   </mappers>
 </configuration>

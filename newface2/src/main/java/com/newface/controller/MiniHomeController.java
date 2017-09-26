@@ -21,10 +21,6 @@ public class MiniHomeController {
 		session.setAttribute("hompy_num", hompy_num);
 		return ".minihome";
 	}
-	@RequestMapping(value = "/guestbook", method = RequestMethod.GET)
-	public String guestbook() {
-		return ".guestbook";
-	}
 	@RequestMapping(value = "/setup", method = RequestMethod.GET)
 	public String setup() {
 		return ".setup";
