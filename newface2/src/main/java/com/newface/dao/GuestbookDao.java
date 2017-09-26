@@ -28,4 +28,10 @@ public class GuestbookDao {
 	public int delete(int guest_num) {
 		return sqlSession.delete(NAMESPACE+".delete",guest_num);
 	}
+	public GuestbookVo update(int guest_num) {
+		return sqlSession.selectOne(NAMESPACE+".update",guest_num);
+	}
+	public int updateok(GuestbookVo vo) {
+		return sqlSession.update(NAMESPACE+".updateok",vo);
+	}
 }

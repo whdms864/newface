@@ -25,4 +25,10 @@ public class GuestbookService {
 	public int delete(int guest_num) {
 		return dao.delete(guest_num);
 	}
+	public GuestbookVo update(int guest_num) {
+		return dao.update(guest_num);
+	}
+	public int updateok(GuestbookVo vo) {
+		return dao.updateok(vo);
+	}
 }

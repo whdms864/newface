@@ -38,6 +38,7 @@ public class GuestBookController {
 	@RequestMapping(value = "/guest/list_all", method = RequestMethod.GET)
 	public String list_all(Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
+		int hompy_num = ((Integer)(session.getAttribute("hompy_num"))).intValue();
 		List<GuestbooklistVo> list=service.list_all();
 		if(list!=null) {
 			model.addAttribute("list",list);
@@ -66,6 +67,27 @@ public class GuestBookController {
 	public String delete(HttpServletRequest request) {
 		int guest_num=Integer.parseInt(request.getParameter("guest_num"));
 		int n=service.delete(guest_num);
+		if(n>0) {
+			return "redirect:/guest/list_all";
+		}else {
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/guest/update")
+	public String update(HttpServletRequest request,Model model) {
+		int guest_num=Integer.parseInt(request.getParameter("guest_num"));
+		GuestbookVo vo=service.update(guest_num);
+		if(vo!=null) {
+			model.addAttribute("vo",vo);
+			model.addAttribute("guest_num",guest_num);
+			return ".update.guestbook";
+		}else {
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/guest/updateok",method = RequestMethod.POST)
+	public String updateok(GuestbookVo vo) {
+		int n=service.updateok(vo);
 		if(n>0) {
 			return "redirect:/guest/list_all";
 		}else {
