@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newface.mybatis.GuestbookMapper">
+	<insert id="insert" parameterType="Guest">
+		insert into guestbook values(0,#{g_texta},'전체공개',now(),#{id},#{hompy_num})
+	</insert>
+	<select id="list_all" resultType="Guestlist">
+		select a.name,b.guest_num,b.content,b.secret,date_format(b.regdate,'%Y/%c/%e') as regdate
+		from member as a join guestbook as b
+		on a.id=b.id order by b.guest_num desc
+	</select>
+	<update id="secret" parameterType="hashmap">
+		update guestbook set secret=#{value} where guest_num=#{guest_num}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from guestbook where guest_num=#{guest_num}
+	</delete>
+</mapper>  

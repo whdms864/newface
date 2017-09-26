@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=1'/>">
+	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=2'/>">
 <div id=scroll style="overflow: scroll; width: 660px; height: 560px;">
 	<form method="post" action="<c:url value='/guest/insert'/>">
 		<div id="g_write_b">

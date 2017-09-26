@@ -52,7 +52,7 @@
 	</div>
 	<div id="guestbook">
 		<div class="menu">
-			<a href="<c:url value='/guestbook'/>">방명록</a>
+			<a href="<c:url value='/guest/list_all'/>">방명록</a>
 		</div>
 	</div>
 	<div id="set">

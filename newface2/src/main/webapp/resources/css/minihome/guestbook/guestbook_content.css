@@ -1,0 +1,209 @@
+#g_write_b{
+	position: relative;
+    top: 40px;
+    left: 35px;
+    width: 567px;
+    height: 161px;
+    background-color: rgb(224, 224, 224);
+}
+#g_minime{
+	position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 84px;
+    height: 98px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+#g_texta{
+	position: absolute;
+    top: 20px;
+    left: 133px;
+    width: 406px;
+    height: 99px;
+}
+#g_submit{
+	position: absolute;
+    top: 131px;
+    left: 485px;
+    width: 60px;
+    height: 26px;
+    font-size: 12px;
+    color: rgb(64, 64, 64);
+    text-align: center;
+    line-height: 2em;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+}
+#g_content_b{
+	position: relative;
+	top:80px;
+	left:35px;
+    width: 568px;
+    height: 252px;
+}
+#g_header{
+	position: absolute;
+    width: 568px;
+    height: 27px;
+    background-color: rgba(230, 126, 34, 0.16);
+}
+#g_header1{
+	position: absolute;
+    width: 568px;
+    height: 27px;
+    background-color: rgb(224, 224, 224);
+}
+#g_num{
+	position: absolute;
+	top:5px;
+	left:10px;
+    width: 28px;
+    height: 21px;
+    font-size: 11px;
+}
+#g_name{
+	position: absolute;
+    top: 5px;
+    left: 45px;
+    width: 33px;
+    height: 30px;
+    font-size: 11px;
+}
+#g_home{
+	position: absolute;
+    top: 5px;
+    left: 83px;
+    width: 23px;
+    height: 19px;
+}
+#g_date{
+	position: absolute;
+    top: 5px;
+    left: 115px;
+    width: 100px;
+    height: 21px;
+    font-size: 11px;
+}
+#g_update{
+	position: absolute;
+    top: 5px;
+    left: 400px;
+    width: 45px;
+    height: 16px;
+    font-size: 11px;
+}
+#g_update a{
+	text-decoration: none;
+	color:black;
+}
+#g_l1{
+	position: absolute;
+    top: 5px;
+    left: 435px;
+    width: 20px;
+    height: 9px;
+    font-size: 11px;
+}
+#g_secret{
+	position: absolute;
+    top: 5px;
+    left: 447px;
+    width: 59px;
+    height: 16px;
+    font-size: 11px;
+}
+#g_secret a{
+	text-decoration: none;
+	color:black;
+}
+#g_l2{
+	position: absolute;
+    top: 5px;
+    left: 518px;
+    width: 20px;
+    height: 9px;
+    font-size: 11px;
+}
+#g_delete{
+	position: absolute;
+    top: 5px;
+    left: 530px;
+    width: 22px;
+    height: 15px;
+    font-size: 11px;
+}
+#g_delete a{
+	text-decoration: none;
+	color:black;
+}
+#g_minime1{
+	position: absolute;
+    top: 60px;
+    left: 10px;
+    width: 87px;
+    height: 91px;
+    background-color: rgb(224, 224, 224);
+}
+#g_content{
+	position: absolute;
+    top: 60px;
+    left: 111px;
+    width: 462px;
+    height: 93px;
+    font-size: 14px;
+}
+#g_comment_b{
+	position: absolute;
+    top: 185px;
+    width: 568px;
+    height: 68px;
+    color:black;
+}
+#g_secret_i{
+	position: absolute;
+    top: 35px;
+    left: 111px;
+    width: 21px;
+    height: 18px;
+}
+#g_secret_t{
+	position: absolute;
+    top: 35px;
+    left: 138px;
+    width: 376px;
+    height: 21px;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(241, 196, 15);
+}
+#g_text1{
+	position: absolute;
+    top: 13px;
+    left: 13px;
+    width: 486px;
+    height: 40px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-sizing: border-box;
+    resize: none;
+    font-size: 14px;
+}
+#g_comment_result{
+	position: absolute;
+    top: 20px;
+    left: 510px;
+    width: 55px;
+    height: 26px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+    line-height: 2em;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
