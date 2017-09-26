@@ -39,4 +39,8 @@ public class MemberService {
 	public int update(MemberVo vo) {
 		return dao.update(vo);
 	}
+	
+	public int leave(MemberVo vo) {
+		return dao.leave(vo);
+	}
 }

@@ -45,5 +45,10 @@ public class MemberDao {
 		return n;
 	}
 	
+	public int leave(MemberVo vo) {
+		int n=sqlSession.update(NAMESPACE+".leave",vo);
+		return n;
+	}
+	
 	
 }

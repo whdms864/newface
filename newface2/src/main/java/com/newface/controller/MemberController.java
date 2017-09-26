@@ -56,21 +56,40 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.GET)
-	public String updateform(MemberVo vo) {
+	public String updateform(String id, Model model) {
+		MemberVo vo=service.mypage(id);
+		model.addAttribute("vo",vo);
 		return ".update";
 	}
 	
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String update(MemberVo vo) {
-		
-		System.out.println(vo.getAddr());
+				
 		int n=service.update(vo);
-		System.out.println(n);
+		
 		if(n>0) {
 			return "redirect:/member/mypage?id=" + vo.getId();
 		}else {
 			return ".market";
 		}
 	}
+	
+	@RequestMapping(value="/member/update", method=RequestMethod.GET)
+	public String leaveform(MemberVo vo) {
+		return "";		
+	}
+	
+	@RequestMapping(value="/member/update", method=RequestMethod.POST)
+	public String leave(MemberVo vo) {
+				
+		int n=service.update(vo);
+		
+		if(n>0) {
+			return "redirect:/member/mypage?id=" + vo.getId();
+		}else {
+			return ".market";
+		}
+	}
+	
 }

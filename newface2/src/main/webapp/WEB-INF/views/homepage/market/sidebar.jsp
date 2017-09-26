@@ -38,7 +38,7 @@
 			<a href="<c:url value='/minihome'/>" style="text-decoration: none; color:white;">내 미니홈피 가기</a>
 		</div>
 		<div>
-			<a href="<c:url value='/qna11/getinfo?id=${sessionScope.loginid }'/>">1:1문의</a>
+			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>
 			<a href="<c:url value='/market'/>" style="margin-left: 20px;">마켓</a>
 			<a href="" style="margin-left: 20px;">쪽지</a>
 			<a href="<c:url value='/member/mypage?id=${sessionScope.loginid }'/>" style="margin-left: 20px;">MyPage</a>
@@ -64,7 +64,7 @@
 </div>
 <div>
 	<a href="<c:url value='/'/>">main</a>
-	<a href="<c:url value='/market'/>">market</a>
+	<a href="<c:url value='/market'/>" >market</a>
 	<a href="<c:url value='/admin'/>">admin</a>
 	<a href="<c:url value='/noti'/>">notice</a>
 </div>		

@@ -24,14 +24,17 @@
 	</select>
 	
 	<select id="mypage" resultType="member" parameterType="string">
-		select * from member
-		where id=#{loginid}
+		select id,pwd,name,email,addr,birth,school,date_format(regdate,'%Y-%m-%d') regdate from member where id=#{loginid}
 	</select>
 	
 	<update id="update" parameterType="member">
 		update member 
 		set pwd=#{pwd}, name=#{name}, email=#{email}, addr=#{addr}, birth=#{birth}, school=#{school} 
 		where id=#{id}     
+	</update>
+	
+	<update id="leave" parameterType="member">
+		update set type='탈퇴' where id=#{id}
 	</update>
 	
 </mapper>  

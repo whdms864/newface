@@ -11,12 +11,12 @@ public class MemberVo {
 	private String birth;
 	private String school;
 	private String type;
-	private Date regdate;
+	private String regdate;
 	
 	public MemberVo() {}
 
 	public MemberVo(String id, String pwd, String name, String email, String addr, String birth, String school,
-			String type, Date regdate) {
+			String type, String regdate) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -93,11 +93,11 @@ public class MemberVo {
 		this.type = type;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 }
