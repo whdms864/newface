@@ -16,6 +16,9 @@ public class Qna11Service {
 	public List<Qna11Vo> getinfo(String id) {
 		return dao.getinfo(id);
 	}
+	public Qna11Vo getinfo(int qna11_num) {
+		return dao.getinfo(qna11_num);
+	}
 	public int insert(Qna11Vo vo) {
 		return dao.insert(vo);
 	}
