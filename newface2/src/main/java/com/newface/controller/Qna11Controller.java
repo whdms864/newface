@@ -3,6 +3,8 @@ package com.newface.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +21,14 @@ public class Qna11Controller {
 	@RequestMapping(value = "/qna11/insertok", method = RequestMethod.POST)
 	public String insert(Qna11Vo vo) {
 		service.insert(vo);
-		return ".qna11";
+		return "redirect:/qna11/getinfo";
 	}
 	@RequestMapping(value = "/qna11/getinfo", method = RequestMethod.GET)
-	public String getinfo(String id,Model model) {
+	public String getinfo(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("loginid");
 		List<Qna11Vo> list=service.getinfo(id);
 		model.addAttribute("list",list);
+		model.addAttribute("no", 0);
 		return ".qna11";
 	}
 }
