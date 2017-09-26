@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/admin.css'/>">
-<div class="menu">
+<div class="menu" style="margin-top: 0px;">
 	<a href="<c:url value='/notiadmin'/>">공지사항</a>
 </div>
 <div class="menu">
