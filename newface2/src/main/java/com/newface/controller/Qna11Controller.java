@@ -28,7 +28,6 @@ public class Qna11Controller {
 		String id=(String)session.getAttribute("loginid");
 		List<Qna11Vo> list=service.getinfo(id);
 		model.addAttribute("list",list);
-		model.addAttribute("no", 0);
 		return ".qna11";
 	}
 }
