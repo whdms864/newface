@@ -65,7 +65,6 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String update(MemberVo vo) {
-				
 		int n=service.update(vo);
 		
 		if(n>0) {
@@ -84,8 +83,13 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/leave", method=RequestMethod.POST)
 	public String leave(MemberVo vo) {
-				
-		return"";
+		int n=service.leave(vo);
+		if(n>0) {
+			return ".bye";
+		}else {
+			return ".market";
+		}
+		
 	}
 	
 }
