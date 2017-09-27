@@ -42,7 +42,7 @@ public class LoginContorller {
 		}
 	}
 	
-	/*@RequestMapping(value = "/member/loginp", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/loginp", method = RequestMethod.POST)
 	public String loginp(HttpServletRequest request,Model model) {
 
 		String loginid = request.getParameter("loginid");
@@ -62,7 +62,7 @@ public class LoginContorller {
 			model.addAttribute("errMsg", "아이디/비밀번호가 맞지 않거나 등록된 아이디가 없습니다");
 			return ".loginpage";
 		}
-	}*/
+	}
 
 	@RequestMapping("/members/logout")
 	public String logout(HttpSession session) {

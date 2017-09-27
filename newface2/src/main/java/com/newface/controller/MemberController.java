@@ -19,9 +19,7 @@ import com.newface.vo.MemberVo;
 @Controller
 public class MemberController {
 	@Autowired private MemberService service;
-	
-	
-	
+		
 	@RequestMapping(value="/idcheck/json",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String idcheck(String id) {

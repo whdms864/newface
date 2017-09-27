@@ -35,7 +35,6 @@
 					}
 				}
 				$("#idok").html(data.id);
-				idcheck.disabled = true;
 			});
 		});
 		
@@ -45,7 +44,7 @@
 			
 			if(pwd.length<4 || pwd.length>20 || pwd==""){
 				$("#pwd1").html("비밀번호를 4자 이상 20자 이하로 입력하세요");
-			
+				return false;
 			}else{
 				$("#pwd1").html("");	
 			}
@@ -58,12 +57,13 @@
 			if(pwd!=pwdok || pwdok==""){
 				$("#pwdok").focus();
 				$("#pwd2").html("비밀번호가 일치하지 않습니다");
+				return false;
 			}else{
 				$("#pwd2").html("");
 			}
 		});
 		
-		$("#f").submit(function(event){
+		$("#fff").submit(function(event){
 			var id=$("#id").val();
 			var pwd=$("#pwd").val();
 			var pwdok=$("#pwdok").val();
@@ -84,14 +84,9 @@
 				$("#pwdok").focus();
 				$("#pwd2").html("비밀번호확인란을 입력해주세요");
 				event.preventDefault();
-			}else if(pwd!=pwdok){
-				$("#pwdok").focus();
-				$("#pwd2").html("비밀번호가 일치하지 않습니다");
-				event.preventDefault();
 			}
-			
 		});
-});
+	});
 
 </script>
 <div style="background-color: rgba(224, 224, 224, 0.78);margin-left:20px;width: 95%;height: 800px;">
@@ -100,7 +95,7 @@
 	</div>
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
 		width:90%; height:90%;margin-left:30px;padding: 10px;"align="left">
-		<form method="post" id="f" name="f" action="<c:url value='/member/insert'/>">
+		<form method="post" id="fff" action="<c:url value='/member/insert'/>">
 			<div  style="margin-left:50px;">
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">아이디</label>
@@ -133,7 +128,7 @@
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">주소</label>
 	  				<br>
-	  				<input type="text" name="addr" id="addr" class="form-control" style="width:400px;"placeholder="ex)서울특별시  성북구">
+	  				<input type="email" name="email" id="email" class="form-control" style="width:400px;"placeholder="ex)서울특별시  성북구">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">생년월일</label>
@@ -149,7 +144,7 @@
 			<div style="position:absolute;top:700px;width: 85%;"align="center">
 				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
 				<input type="submit" id="join" name="join" value="가입하기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" > 
+				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;"> 
 			</div>
 		</form>
 	</div>

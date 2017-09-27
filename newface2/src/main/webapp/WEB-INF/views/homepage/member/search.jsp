@@ -8,7 +8,7 @@
 	</div>
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
 		width:90%; height:90%;margin-left:30px;padding: 10px;"align="left">
-		<form method="post" id="f" name="f" action="<c:url value='/member/searchid'/>">
+		<form method="post" action="<c:url value='/member/searchid'/>">
 			<div style="margin-left: 30px; margin-top:20px;">
 				<label style="font-weight:bold;font-size:15px;">아이디 찾기</label>
 			</div>
@@ -32,9 +32,9 @@
 				
 			</div>
 		</form>
-				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px; margin-top:20px;"></div>
+				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px; margin-top:30px;"></div>
 		<br><br>
-		<form method="post" id="f" name="f" action="<c:url value='/member/searchid'/>">
+		<form method="post" action="<c:url value='/member/searchid'/>">
 			<div style="margin-left: 30px;">
 				<label style="font-weight:bold;font-size:15px;">비밀번호 찾기</label>
 			</div>
@@ -43,8 +43,8 @@
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">아이디</label>
 	  				<br>
-	  				<input type="text" name="name" id="name" class="form-control" style="width:400px;">
-	  				<span id="nameok"></span>
+	  				<input type="text" name="id" id="id" class="form-control" style="width:400px;">
+	  				<span id="idok"></span>
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">이메일</label>
@@ -55,8 +55,8 @@
 				</div>
 				<!-- <div style="position:absolute;top:700px;width: 85%;"align="center">
 				</div> -->
-				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
 			</div>
+				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px; margin-top:30px;"></div>
 		</form>
 	</div>
 	
