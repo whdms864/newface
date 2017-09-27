@@ -1,5 +1,10 @@
 package com.newface.controller;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,6 +95,33 @@ public class MemberController {
 			return ".market";
 		}
 		
+	}
+	
+	@RequestMapping(value="/member/search",method=RequestMethod.GET)
+	public String serachform() {
+		
+		return ".search";
+	}
+	
+	@RequestMapping(value = "/member/searchid", method = RequestMethod.POST)
+	public String serachid(HttpServletRequest request,Model model) {
+
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("email", email);
+		boolean r = service.isMembers(map);
+
+		if (r) {
+			model.addAttribute("name", name);
+			model.addAttribute("email", email);
+			return ".";
+		} else {
+			model.addAttribute("errMsg", "아이디/비밀번호가 맞지 않거나 등록된 아이디가 없습니다");
+			return ".loginpage";
+		}
 	}
 	
 }

@@ -61,11 +61,10 @@
 			</div>
 			<div style="position:absolute;top:700px;width: 85%;"align="center">
 				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-				<input type="button" id="update" name="update" value="정보수정하기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				<input type="button" id="update" name="update" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onClick="location.href='/newface/member/update?id=${sessionScope.loginid}'">
-
-
-								 
+				<input type="button" id="leave" name="leave" value="탈퇴" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onClick="location.href='/newface/member/leave?id=${sessionScope.loginid}'">
 			</div>
 		</form>
 	</div>

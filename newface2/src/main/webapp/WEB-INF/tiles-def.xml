@@ -60,8 +60,10 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/login/loginp.jsp"/>
 	</definition>
 	
-	
-	
+	<definition name=".search" extends=".loginpage">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/member/search.jsp"/>
+	</definition>
+		
 	
 	<!-- 1:1문의 -->
 	<definition name=".qna11_insert" template="/WEB-INF/views/homepage/qna11/layout.jsp">

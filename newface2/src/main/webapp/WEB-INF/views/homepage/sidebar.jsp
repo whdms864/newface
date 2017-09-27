@@ -96,7 +96,7 @@ function getCookie(cookieName) {
 					line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); width: 220px; height:44px;margin-top: 5px;">
 			
 		</form>
-		<div style="margin-top: 5px;display: inline-block;">
+		<div style="margin-top: 5px; display: inline-block;">
 		
 			<!--------------------자동로그인 ---------------------------------->
 			<div style="float:left;width: 20px; height: 20px;">
@@ -105,19 +105,10 @@ function getCookie(cookieName) {
 				
 				<span data-form-decorator="true"></span></label>
 			</div>
-			<div style="float:left;width: 70px; height: 20px;">
-				<div style="font-size: 12px;">자동로그인</div>
+			<div style="float:left;width: 120px; height: 20px;">
+				<div style="font-size: 12px;">아이디/비밀번호 저장</div>
 			</div>
-			<!-----------------아이디저장 ---------------------------->
-			<div style="float:left;width: 20px; height: 20px;margin-left: 10px;">
-				<label data-form-control="checkbox" data-min-width="20" data-min-height="20">
-				<input type="checkbox" id="idSaveCheck">
-				<span data-form-decorator="true"></span></label>
-			</div>
-			<div style="float:left;width: 70px; height: 20px;">
-				<div style="font-size: 12px;">아이디저장</div>
-			</div>
-			<!-- ---------------------------------------------------- -->	
+				
 		</div>
 		<div style="display: inline-block;">
 			<div style="float:left;width: 62px; height: 20px;">
@@ -126,7 +117,7 @@ function getCookie(cookieName) {
 			</div>
 			<div style="float:left; height: 20px;margin-left: 10px;">
 				<div style="font-size: 13px; color: rgb(41, 90, 221); text-decoration: underline;">
-				<a href="<c:url value=''/>" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
+				<a href="<c:url value='/member/search'/>" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 			</div>
 		</div>
 	</div>

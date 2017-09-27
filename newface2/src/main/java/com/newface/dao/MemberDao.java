@@ -32,7 +32,6 @@ public class MemberDao {
 		return n;
 	}
 	public MemberVo isMember(HashMap<String, String> map) {
-		
 		return sqlSession.selectOne(NAMESPACE+ ".isMember",map);
 	}
 	public MemberVo mypage(String id) {
@@ -48,6 +47,14 @@ public class MemberDao {
 	public int leave(MemberVo vo) {
 		int n=sqlSession.update(NAMESPACE+".leave",vo);
 		return n;
+	}
+	
+	public MemberVo searchid(HashMap<String, String> map) {
+		return sqlSession.selectOne(NAMESPACE+ ".searchid",map);
+	}
+	
+	public MemberVo searchpwd(HashMap<String, String> map) {
+		return sqlSession.selectOne(NAMESPACE+ ".serachpwd",map);
 	}
 	
 	
