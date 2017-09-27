@@ -6,6 +6,32 @@
 	<!--DOCTYPE 복사 : http://tiles.apache.org/2.2/framework/tiles-core/dtddoc/index.html   -->
 	
 <tiles-definitions>
+<!-- 홈피 -->
+	<definition name=".minihome" template="/WEB-INF/views/minihome/minihome.jsp">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/minihome/minihome_content.jsp"/>
+	</definition>
+	<!-- 예외 방명록 -->
+	<definition name=".guestbook" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/minihome/guestbook/guestbook_content.jsp"/>
+	</definition>
+	<!-- 요청이동 -->
+	<definition name=".code" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/minihome/code/code_content.jsp"/>
+	</definition>  
+	<!-- 홈피 기능 이동 -->
+	<definition name=".*.*" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/{2}/{2}_left.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minihome/{2}/{2}_{1}.jsp"/>
+	</definition>  
+	<!-- 홈피 기본 이동 -->
+	<definition name=".*" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/{1}/{1}_left.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minihome/{1}/{1}_content.jsp"/>
+	</definition>  
+
 	
 	<!-- 메인 -->
 	<definition name=".main" template="/WEB-INF/views/homepage/layout.jsp">
@@ -91,27 +117,41 @@
 	</definition>
 	
 	<definition name=".notiadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/notiadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/noti/notiadmin.jsp"/>
 	</definition>
 	
 	<definition name=".adadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/adadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/adadmin.jsp"/>
 	</definition>
 	
-	<definition name=".qna11admin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/qna11admin.jsp"/>
+	<!-- 1:1문의 -->
+	<definition name=".qna11admin" template="/WEB-INF/views/homepage/admin/qna11/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/admin/header.jsp"/>	
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/qna11/tab.jsp"/>
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/list.jsp"/>
+		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/admin/sidebar.jsp"/>
+	</definition>
+	<definition name=".qna11admin_insert" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/insert.jsp"/>
+	</definition>
+	<definition name=".qna11admin_detail" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/detail.jsp"/>
+	</definition>
+	<definition name=".qna11admin_update" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/update.jsp"/>
 	</definition>
 	
+	<!--  -->
 	<definition name=".marketadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/marketadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/marketadmin.jsp"/>
 	</definition>
 	
 	<definition name=".memadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/memadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/memadmin.jsp"/>
 	</definition>
 	
 	<definition name=".singoadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/singoadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/singo/singoadmin.jsp"/>
 	</definition>
 	<!-- 여기까지 관리자 -->
 	
@@ -121,32 +161,7 @@
 	
 	
 	
-	<!-- 홈피 -->
-	<definition name=".minihome" template="/WEB-INF/views/minihome/minihome.jsp">
-		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
-		<put-attribute name="content" value="/WEB-INF/views/minihome/minihome_content.jsp"/>
-	</definition>
-	<!-- 예외 방명록 -->
-	<definition name=".guestbook" extends=".minihome">
-		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
-		<put-attribute name="content" value="/WEB-INF/views/minihome/guestbook/guestbook_content.jsp"/>
-	</definition>
-	<!-- 요청이동 -->
-	<definition name=".code" extends=".minihome">
-		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
-		<put-attribute name="content" value="/WEB-INF/views/minihome/code/code_content.jsp"/>
-	</definition>  
-	<!-- 홈피 기능 이동 -->
-	<definition name=".*.*" extends=".minihome">
-		<put-attribute name="left" value="/WEB-INF/views/minihome/{2}/{2}_left.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/minihome/{2}/{2}_{1}.jsp"/>
-	</definition>  
-	<!-- 홈피 기본 이동 -->
-	<definition name=".*" extends=".minihome">
-		<put-attribute name="left" value="/WEB-INF/views/minihome/{1}/{1}_left.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/minihome/{1}/{1}_content.jsp"/>
-	</definition>  
-
+	
 </tiles-definitions>
 	
 	
