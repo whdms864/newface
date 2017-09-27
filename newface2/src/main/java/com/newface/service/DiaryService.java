@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.DiaryDao;
 import com.newface.vo.CalendarListVo;
+import com.newface.vo.DiaryListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
@@ -41,10 +42,10 @@ public class DiaryService {
 	public String id(int hompy_num) {
 		return dao.id(hompy_num);
 	}
-	public List<DiaryVo> folder_basic_list(int hompy_num){
+	public List<DiaryListVo> folder_basic_list(int hompy_num){
 		return dao.folder_basic_list(hompy_num);
 	}
-	public List<DiaryVo> folder_all_list(int hompy_num){
+	public List<DiaryListVo> folder_all_list(int hompy_num){
 		return dao.folder_all_list(hompy_num);
 	}
 	public int update(DiaryVo vo) {

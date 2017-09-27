@@ -17,6 +17,7 @@ import com.newface.calendar.AfterCalendar;
 import com.newface.calendar.AutoCalendar;
 import com.newface.calendar.BeforeCalendar;
 import com.newface.service.DiaryService;
+import com.newface.vo.DiaryListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
@@ -91,17 +92,21 @@ public class DiaryController {
 	@RequestMapping(value = "/diary/folder_all_list", method = RequestMethod.GET)
 	public String folder_all_list(Model model, HttpSession session) {
 		session.setAttribute("diary_folder_num", null);
+		
 		String id = (String) session.getAttribute("loginid");
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
+		String hompy_id=service.id(hompy_num);
 		HompyVo vo = new HompyVo(hompy_num, 0, null, id);
 		int n = service.hompy_is(vo);
-		List<DiaryVo> list = null;
+		
+		List<DiaryListVo> list = null;
 		if (n > 0) {
 			list = service.folder_all_list(hompy_num);
 		} else {
 			list = service.folder_basic_list(hompy_num);
 		}
 		if (list != null) {
+			model.addAttribute("hompy_id", hompy_id);
 			model.addAttribute("list", list);
 			return ".all_list.diary";
 		} else {
@@ -386,10 +391,14 @@ public class DiaryController {
 
 	///////////// 상세보기 /////////////
 	@RequestMapping(value = "/diary/content", method = RequestMethod.GET)
-	public String content(int diary_num, Model model) {
+	public String content(int diary_num, Model model,HttpSession session) {
+		int hompy_num = (Integer) session.getAttribute("hompy_num");
+		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);
 		List<DiarycomVo> com_list = service.com_list(diary_num);
 		if (vo != null) {
+			session.setAttribute("diary_folder_num", vo.getDiary_folder_num());
+			model.addAttribute("hompy_id", hompy_id);
 			model.addAttribute("vo", vo);
 			model.addAttribute("com_list", com_list);
 			return ".content.diary";

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.CalendarListVo;
+import com.newface.vo.DiaryListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
@@ -38,10 +39,10 @@ public class DiaryDao {
 	public String id(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".id", hompy_num);
 	}
-	public List<DiaryVo> folder_basic_list(int hompy_num){
+	public List<DiaryListVo> folder_basic_list(int hompy_num){
 		return sqlSession.selectList(NAMESPACE + ".folder_basic_list", hompy_num);
 	}
-	public List<DiaryVo> folder_all_list(int hompy_num){
+	public List<DiaryListVo> folder_all_list(int hompy_num){
 		return sqlSession.selectList(NAMESPACE + ".folder_all_list", hompy_num);
 	}	
 	public int update(DiaryVo vo) {

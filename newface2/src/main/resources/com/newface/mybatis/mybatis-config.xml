@@ -16,6 +16,7 @@
   	<typeAlias type="com.newface.vo.Qna11comVo" alias="qna11com"/>
   	<typeAlias type="com.newface.vo.GuestbookVo" alias="Guest"/>
   	<typeAlias type="com.newface.vo.GuestbooklistVo" alias="Guestlist"/>
+  	<typeAlias type="com.newface.vo.DiaryListVo" alias="diarylist"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>

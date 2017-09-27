@@ -55,7 +55,9 @@
 <div id="diary_list_back">
 	<hr>
 	<div id="title_back">
-		<div class="chk"><input type="checkbox" id="chk_all"></div>
+		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
+			<div class="chk"><input type="checkbox" id="chk_all"></div>
+		</c:if>
 		<div class="num">번호</div>
 		<div id="title">제목</div>
 		<div class="name">작성자</div>
@@ -64,7 +66,9 @@
 	</div>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<hr>
-		<div class="chk"><input type="checkbox" name="num" class="num" value="${vo.diary_num }"></div>
+		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
+			<div class="chk"><input type="checkbox" name="num" class="num" value="${vo.diary_num }"></div>
+		</c:if>
 		<div class="num">${vo.rownum }</div>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
 		<div class="name">${requestScope.name }</div>
