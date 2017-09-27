@@ -24,11 +24,15 @@
 				<label class="control-label" for="inputWarning1">관리자 답변</label>
 				<br>
 				<c:choose>
-				<c:when test="${content!=null }">
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${content }</textarea>
+				<c:when test="${comvo.content!=null }">
+					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${comvo.content }
+
+
+[ ${comvo.regdate } ]
+					</textarea>
 				</c:when>
 				<c:otherwise>
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >답변이 아직 오고 있어요...</textarea>
+					<textarea rows="8" cols="51" name="content" class="form-control"></textarea>
 				</c:otherwise>
 				</c:choose>
 			</div>
@@ -36,8 +40,8 @@
 	</div>
 	<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-			<input type="submit" id="join" name="join" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+			<input type="button" id="join" name="join" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
-			<input type="submit" id="join" name="join" value="삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+			<input type="button" id="join" name="join" value="답변삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/delete?qna11_num=${vo.qna11_num }'" > 
 	</div>
