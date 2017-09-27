@@ -41,6 +41,11 @@
 	background-color:rgb(52, 152, 219);
 	color:white;
 }
+#sidebar ul li .now{
+	/* background-color:rgb(52, 152, 219); */
+	background-color:orange;
+	color:white;
+}
 #sidebar ul a{
 	border-top-left-radius:5px;
 	border-bottom-left-radius:5px;

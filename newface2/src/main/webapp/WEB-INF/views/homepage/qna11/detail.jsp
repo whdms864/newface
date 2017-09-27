@@ -40,8 +40,12 @@
 	</div>
 	<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-			<input type="button" id="join" name="join" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
+			<c:choose>
+				<c:when test="${comvo.content==null }">
+					<input type="button" id="join" name="join" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
+				</c:when>
+			</c:choose>
 			<input type="button" id="join" name="join" value="삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/delete?qna11_num=${vo.qna11_num }'" > 
 	</div>

@@ -35,10 +35,16 @@ public class Qna11Service {
 	public int update(Qna11Vo vo) {
 		return dao.update(vo);
 	}
+	public int com_update(Qna11comVo vo) {
+		return dao.com_update(vo);
+	}
 	public int up_confirm(Qna11Vo vo) {
 		return dao.up_confirm(vo);
 	}
 	public int delete(int qna11_num) {
 		return dao.delete(qna11_num);
+	}
+	public int com_delete(int qna11_com_num) {
+		return dao.com_delete(qna11_com_num);
 	}
 }

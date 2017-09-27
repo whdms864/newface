@@ -30,4 +30,10 @@
 	<select id="com_getinfo" resultType="qna11com" parameterType="int">
 		select qna11_com_num,content,date_format(regdate,'%Y-%m-%d') regdate,qna11_num,id from qna11_com where qna11_num=#{qna11_num}
 	</select>
+	<update id="com_update" parameterType="qna11com">
+		update qna11_com set content=#{content} where qna11_com_num=#{qna11_com_num}
+	</update>
+	<update id="com_delete" parameterType="int">
+		delete from qna11_com where qna11_com_num=#{qna11_com_num}
+	</update>
 </mapper>  

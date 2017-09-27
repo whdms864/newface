@@ -75,8 +75,10 @@ public class Qna11Controller {
 		
 		//상태변경
 		String confirm="확인중";
-		vo.setConfirm(confirm);
-		service.up_confirm(vo);
+		if(vo.getConfirm().equals("대기")) {
+			vo.setConfirm(confirm);
+			service.up_confirm(vo);
+		}
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("comvo",comvo);
@@ -89,9 +91,42 @@ public class Qna11Controller {
 		//상태변경
 		String confirm="답변완료";
 		Qna11Vo vo=service.getinfo(comvo.getQna11_num());
-		vo.setConfirm(confirm);
-		service.up_confirm(vo);
+		if(vo.getConfirm().equals("확인중")) {
+			vo.setConfirm(confirm);
+			service.up_confirm(vo);
+		}
+		return "redirect:/qna11/admin/list";
+	}
+	@RequestMapping(value = "/qna11/admin/update", method = RequestMethod.GET)
+	public String admin_updateform(int qna11_num,Model model) {
+		Qna11Vo vo=service.getinfo(qna11_num);
+		Qna11comVo comvo=service.com_getinfo(qna11_num);
+
+		model.addAttribute("vo",vo);
+		model.addAttribute("comvo",comvo);
+		return ".qna11admin_update";
+	}
+	@RequestMapping(value = "/qna11/admin/updateok", method = RequestMethod.POST)
+	public String admin_updateok(Qna11comVo comvo) {
+		service.com_update(comvo);
 		
+		String confirm="답변완료";
+		Qna11Vo vo=service.getinfo(comvo.getQna11_num());
+		if(vo.getConfirm().equals("확인중")) {
+			vo.setConfirm(confirm);
+			service.up_confirm(vo);
+		}
+		return "redirect:/qna11/admin/list";
+	}
+	@RequestMapping(value = "/qna11/admin/delete", method = RequestMethod.GET)
+	public String admin_delete(int qna11_com_num) {
+		service.com_delete(qna11_com_num);
+		String confirm="확인중";
+		Qna11Vo vo=service.getinfo(qna11_com_num);
+		if(vo.getConfirm().equals("답변완료")) {
+			vo.setConfirm(confirm);
+			service.up_confirm(vo);
+		}
 		return "redirect:/qna11/admin/list";
 	}
 }

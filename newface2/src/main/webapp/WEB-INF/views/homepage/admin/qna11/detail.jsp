@@ -47,9 +47,9 @@
 			<c:choose>
 				<c:when test="${comvo.content!=null }">
 					<input type="button" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/admin/update?qna11_num=${vo.qna11_num }'"> 
 					<input type="button" value="답변삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/delete?qna11_num=${vo.qna11_num }'" > 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/admin/delete?qna11_com_num=${comvo.qna11_com_num }'" > 
 				</c:when>
 				<c:otherwise>
 						<input type="submit" value="답변작성" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 

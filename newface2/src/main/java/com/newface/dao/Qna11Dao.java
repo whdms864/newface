@@ -38,11 +38,17 @@ public class Qna11Dao {
 	public int update(Qna11Vo vo) {
 		return sqlSession.update(NAMESPACE+".update",vo);
 	}
+	public int com_update(Qna11comVo vo) {
+		return sqlSession.update(NAMESPACE+".com_update",vo);
+	}
 	public int up_confirm(Qna11Vo vo) {
 		return sqlSession.update(NAMESPACE+".up_confirm",vo);
 	}
 	public int delete(int qna11_num) {
 		return sqlSession.delete(NAMESPACE+".delete",qna11_num);
+	}
+	public int com_delete(int qna11_com_num) {
+		return sqlSession.delete(NAMESPACE+".com_delete",qna11_com_num);
 	}
 	public List<Qna11Vo> list() {
 		return sqlSession.selectList(NAMESPACE+".list");
