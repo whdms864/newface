@@ -49,7 +49,7 @@ public class MemberService {
 
 	}
 	
-	public String serachpwd(HashMap<String, String> map) {
+	public String searchpwd(HashMap<String, String> map) {
 		return dao.searchpwd(map);
 	}
 }

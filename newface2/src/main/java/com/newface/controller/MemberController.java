@@ -113,11 +113,11 @@ public class MemberController {
 		String id = service.searchid(map);
 
 		if (id!=null) {
-			model.addAttribute("idMsg", id);
+			model.addAttribute("idMsg", "검색된 아이디: "+ id);
 		} else {
 			model.addAttribute("idMsg", "등록된 아이디가 없습니다");
 		}
-		return ".loginpage";
+		return ".search";
 	}
 	
 	@RequestMapping(value = "/member/searchpwd", method = RequestMethod.POST)
@@ -129,14 +129,14 @@ public class MemberController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
 		map.put("email", email);
-		String pwd = service.searchid(map);
+		String pwd = service.searchpwd(map);
 
 		if (pwd!=null) {
-			model.addAttribute("pwdMsg", pwd);
+			model.addAttribute("pwdMsg", "검색된 비밀번호: "+ pwd);
 		} else {
-			model.addAttribute("pwdMsg", "입력된");
+			model.addAttribute("pwdMsg", "입력하신 아이디/이메일을 찾을 수 없습니다.");
 		}
-		return ".loginpage";
+		return ".search";
 	}
 	
 }

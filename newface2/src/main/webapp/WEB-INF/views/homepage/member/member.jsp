@@ -151,7 +151,7 @@
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">주소</label>
 	  				<br>
-	  				<input type="email" name="email" id="email" class="form-control" style="width:400px;"placeholder="ex)서울특별시  성북구">
+	  				<input type="text" name="addr" id="addr" class="form-control" style="width:400px;"placeholder="ex)서울특별시  성북구">
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">생년월일</label>
