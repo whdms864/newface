@@ -67,3 +67,6 @@ ul{
 #iu_com{
 	position: relative; top: 28px; left: 150px; width: 400px; height: 40px;
 }
+a{
+	text-decoration: none; color: black;
+}

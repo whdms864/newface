@@ -90,6 +90,7 @@ public class DiaryController {
 	///////////// 다이어리목록 /////////////
 	@RequestMapping(value = "/diary/folder_all_list", method = RequestMethod.GET)
 	public String folder_all_list(Model model, HttpSession session) {
+		session.setAttribute("diary_folder_num", null);
 		String id = (String) session.getAttribute("loginid");
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		HompyVo vo = new HompyVo(hompy_num, 0, null, id);
@@ -113,6 +114,7 @@ public class DiaryController {
 	///////////// 해당폴더목록 /////////////
 	@RequestMapping(value = "/diary/list", method = RequestMethod.GET)
 	public String diary_list(int diary_folder_num, HttpSession session, Model model) {
+		session.setAttribute("diary_folder_num", diary_folder_num);
 		List<DiaryVo> list = service.folder_list(diary_folder_num);
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		if (list != null) {

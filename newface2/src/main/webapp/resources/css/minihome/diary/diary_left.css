@@ -17,4 +17,7 @@
 }
 #diary_folder_set{
 	font-size: 14px; margin-left: 25px; margin-top: 20px;
+}
+a{
+	text-decoration: none; color: black;
 }                       
