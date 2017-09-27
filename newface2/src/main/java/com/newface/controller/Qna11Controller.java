@@ -71,16 +71,27 @@ public class Qna11Controller {
 	@RequestMapping(value = "/qna11/admin/detail", method = RequestMethod.GET)
 	public String admin_detail(int qna11_num,Model model) {
 		Qna11Vo vo=service.getinfo(qna11_num);
+		Qna11comVo comvo=service.com_getinfo(qna11_num);
+		
+		//상태변경
+		String confirm="확인중";
+		vo.setConfirm(confirm);
+		service.up_confirm(vo);
+		
 		model.addAttribute("vo",vo);
+		model.addAttribute("comvo",comvo);
 		return ".qna11admin_detail";
 	}
-	@RequestMapping(value = "/qna11/admin/insert", method = RequestMethod.GET)
-	public String admin_insertform() {
-		return ".qna11admin_insert";
-	}
 	@RequestMapping(value = "/qna11/admin/insertok", method = RequestMethod.POST)
-	public String admin_insert(Qna11comVo vo) {
-		service.insert(vo);
+	public String admin_insert(Qna11comVo comvo) {
+		service.insert(comvo);
+		
+		//상태변경
+		String confirm="답변완료";
+		Qna11Vo vo=service.getinfo(comvo.getQna11_num());
+		vo.setConfirm(confirm);
+		service.up_confirm(vo);
+		
 		return "redirect:/qna11/admin/list";
 	}
 }

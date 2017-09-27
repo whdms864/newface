@@ -6,5 +6,4 @@
 	</div>
 	<ul>
 	    <li><a href="<c:url value='/qna11/admin/list'/>"style="margin-left:0px;">목록</a></li>
-	    <li><a href="<c:url value='/qna11/admin/insert'/>">답변작성</a></li>
 	</ul>

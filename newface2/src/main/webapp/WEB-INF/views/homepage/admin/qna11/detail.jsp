@@ -24,24 +24,37 @@
 				<label class="control-label" for="inputWarning1">관리자 답변</label>
 				<br>
 				<c:choose>
-				<c:when test="${comvo.content!=null }">
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${comvo.content }
+					<c:when test="${comvo.content!=null }">
+						<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${comvo.content }
 
 
 [ ${comvo.regdate } ]
 					</textarea>
-				</c:when>
-				<c:otherwise>
-					<textarea rows="8" cols="51" name="content" class="form-control"></textarea>
-				</c:otherwise>
+						
+					</c:when>
+					<c:otherwise>
+						<form method="post" action="<c:url value='/qna11/admin/insertok'/>">
+							<textarea rows="8" cols="51" name="content" class="form-control"></textarea>
+							<input type="hidden" name="id" value="admin"><!-- 나중에 꼭 고치기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+							<input type="hidden" name="qna11_num" value="${vo.qna11_num }">
+					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</div>
 	<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-			<input type="button" id="join" name="join" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
-			<input type="button" id="join" name="join" value="답변삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/delete?qna11_num=${vo.qna11_num }'" > 
+			<c:choose>
+				<c:when test="${comvo.content!=null }">
+					<input type="button" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/update?qna11_num=${vo.qna11_num }'"> 
+					<input type="button" value="답변삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/qna11/delete?qna11_num=${vo.qna11_num }'" > 
+				</c:when>
+				<c:otherwise>
+						<input type="submit" value="답변작성" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+							border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;"> 
+					</form>
+				</c:otherwise>
+			</c:choose>
 	</div>
