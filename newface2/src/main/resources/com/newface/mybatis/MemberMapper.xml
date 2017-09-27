@@ -18,7 +18,7 @@
 		where id=#{value}
 	</select>
 	
-	<select id="isMember" resultType="member">
+	<select id="isMember" resultType="member" parameterType="hashmap">
 		select * from member
 		where id=#{loginid} and pwd=#{loginpwd} and type='회원'
 	</select>
@@ -37,12 +37,12 @@
 		update member set type='탈퇴' where id=#{id}
 	</update>
 	
-	<select id="serachid" resultType="member" parameterType="string">
+	<select id="searchid" resultType="string" parameterType="hashmap">
 		select id from member
 		where name=#{name} and email=#{email}
 	</select>
 	
-	<select id="serachpwd" resultType="member" parameterType="string">
+	<select id="serachpwd" resultType="string" parameterType="hashmap">
 		select pwd from member
 		where id=#{id} and email=#{email}
 	</select>

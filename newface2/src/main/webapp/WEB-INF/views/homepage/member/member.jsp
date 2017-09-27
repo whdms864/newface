@@ -34,6 +34,7 @@
 						return false;
 					}
 				}
+				
 				$("#idok").html(data.id);
 			});
 		});
@@ -42,9 +43,9 @@
 		$("#pwd").keyup(function(){
 			var pwd=$("#pwd").val();
 			
-			if(pwd.length<4 || pwd.length>20 || pwd==""){
+			if(pwd.length<4 || pwd.length>20){
+				$("#pwd1").focus();
 				$("#pwd1").html("비밀번호를 4자 이상 20자 이하로 입력하세요");
-				return false;
 			}else{
 				$("#pwd1").html("");	
 			}
@@ -57,7 +58,6 @@
 			if(pwd!=pwdok || pwdok==""){
 				$("#pwdok").focus();
 				$("#pwd2").html("비밀번호가 일치하지 않습니다");
-				return false;
 			}else{
 				$("#pwd2").html("");
 			}
@@ -68,21 +68,42 @@
 			var pwd=$("#pwd").val();
 			var pwdok=$("#pwdok").val();
 			var name=$("#name").val();
+			var email=$("#email").val();
+			var patt = new RegExp(/^[A-Za-z0-9]+$/);
 			
 			if(id==""){
 				$("#id").focus();
 				$("#idok").html("아이디를 입력해주세요");
 				event.preventDefault();
-			}else if(name==""){
-				$("#name").focus();
+			}else if(id.length<5 || id.length>20){
+				$("#id").focus();
+				$("#idok").html("아이디는 5자이상 20자 이하여야 합니다.");
+				event.preventDefault();
+			}else if(!patt.test(id)){
+				$("#id").focus();
+				$("#idok").html("아이디는 영문자나 숫자로만 입력하세요.");
 				event.preventDefault();
 			}else if(pwd==""){
 				$("#pwd").focus();
 				$("#pwd1").html("비밀번호를 입력해주세요");
 				event.preventDefault();
+			}else if(pwd.length<4 || pwd.length>20){
+				$("#pwd").focus();
+				$("#pwd").html("비밀번호는 5자이상 20자 이하여야 합니다.");
+				event.preventDefault();
 			}else if(pwdok==""){
 				$("#pwdok").focus();
 				$("#pwd2").html("비밀번호확인란을 입력해주세요");
+				event.preventDefault();
+			}else if(pwd!=pwdok){
+				$("#pwdok").focus();
+				$("#pwd2").html("비밀번호가 일치하지 않습니다");
+				event.preventDefault();
+			}else if(name==""){
+				$("#name").focus();
+				event.preventDefault();
+			}else if(email==""){
+				$("#email").focus();
 				event.preventDefault();
 			}
 		});
@@ -121,9 +142,11 @@
 	  				<span id="nameok"></span>
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
-	  				<label class="control-label" for="inputWarning1">이메일</label>
+					<label class="control-label" for="inputWarning1">이메일</label>
+					<label class="control-label" for="inputWarning1" style="color:#a94442;">(*)</label>
 	  				<br>
 	  				<input type="email" name="email" id="email" class="form-control" style="width:400px;">
+	  				<span id="emailok"></span>
 				</div>
 				<div class="form-group has-warning" style="display: inline-block; ">
 	  				<label class="control-label" for="inputWarning1">주소</label>

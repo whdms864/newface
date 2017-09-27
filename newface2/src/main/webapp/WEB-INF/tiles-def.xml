@@ -82,7 +82,7 @@
 	</definition>
 	
 	<definition name=".loginpage" template="/WEB-INF/views/homepage/login/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/homepage/login/header.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/homepage/header.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/homepage/login/loginp.jsp"/>
 	</definition>
 	

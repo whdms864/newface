@@ -49,11 +49,11 @@ public class MemberDao {
 		return n;
 	}
 	
-	public MemberVo searchid(HashMap<String, String> map) {
+	public String searchid(HashMap<String, String> map) {
 		return sqlSession.selectOne(NAMESPACE+ ".searchid",map);
 	}
 	
-	public MemberVo searchpwd(HashMap<String, String> map) {
+	public String searchpwd(HashMap<String, String> map) {
 		return sqlSession.selectOne(NAMESPACE+ ".serachpwd",map);
 	}
 	

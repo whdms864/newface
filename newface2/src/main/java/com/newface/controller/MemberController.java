@@ -102,24 +102,41 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/searchid", method = RequestMethod.POST)
-	public String serachid(HttpServletRequest request,Model model) {
-
+	public String searchid(HttpServletRequest request,Model model) {
+		
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("name", name);
 		map.put("email", email);
-		boolean r = service.isMembers(map);
+		String id = service.searchid(map);
 
-		if (r) {
-			model.addAttribute("name", name);
-			model.addAttribute("email", email);
-			return ".";
+		if (id!=null) {
+			model.addAttribute("idMsg", id);
 		} else {
-			model.addAttribute("errMsg", "아이디/비밀번호가 맞지 않거나 등록된 아이디가 없습니다");
-			return ".loginpage";
+			model.addAttribute("idMsg", "등록된 아이디가 없습니다");
 		}
+		return ".loginpage";
+	}
+	
+	@RequestMapping(value = "/member/searchpwd", method = RequestMethod.POST)
+	public String searchpwd(HttpServletRequest request,Model model) {
+		
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("email", email);
+		String pwd = service.searchid(map);
+
+		if (pwd!=null) {
+			model.addAttribute("pwdMsg", pwd);
+		} else {
+			model.addAttribute("pwdMsg", "입력된");
+		}
+		return ".loginpage";
 	}
 	
 }

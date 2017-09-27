@@ -27,6 +27,9 @@
 					<input type="submit" id="serachid" name="serachid" value="아이디찾기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;"> 
 				</div>
+				<div>
+	  				<span>${idMsg }</span>
+	  			</div>
 				<!-- <div style="position:absolute;top:700px;width: 85%;"align="center">
 				</div> -->
 				
@@ -34,7 +37,7 @@
 		</form>
 				<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px; margin-top:30px;"></div>
 		<br><br>
-		<form method="post" action="<c:url value='/member/searchid'/>">
+		<form method="post" action="<c:url value='/member/searchpwd'/>">
 			<div style="margin-left: 30px;">
 				<label style="font-weight:bold;font-size:15px;">비밀번호 찾기</label>
 			</div>
@@ -53,6 +56,9 @@
 					<input type="submit" id="serachpwd" name="serachpwd" value="비밀번호 찾기" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 					border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;"> 
 				</div>
+				<div>
+	  				<span>${pwdMsg }</span>
+	  			</div>
 				<!-- <div style="position:absolute;top:700px;width: 85%;"align="center">
 				</div> -->
 			</div>

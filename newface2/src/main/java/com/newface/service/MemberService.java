@@ -44,23 +44,12 @@ public class MemberService {
 		return dao.leave(vo);
 	}
 	
-	public boolean serachid(HashMap<String, String> map) {
-		MemberVo vo=dao.searchid(map);
-		
-		if(vo!=null) {
-			return true;
-		}else {
-			return false;
-		}
+	public String searchid(HashMap<String, String> map) {
+		return dao.searchid(map);
+
 	}
 	
-	public boolean serachpwd(HashMap<String, String> map) {
-		MemberVo vo=dao.searchpwd(map);
-		
-		if(vo!=null) {
-			return true;
-		}else {
-			return false;
-		}
+	public String serachpwd(HashMap<String, String> map) {
+		return dao.searchpwd(map);
 	}
 }
