@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=2323'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){	
@@ -16,6 +16,7 @@
 			$("#d").html(data.date);
 			$("#week").html(data.week);
 			$("#dd").html("");	
+			
 			for(var i=1;i<=data.lastdate;i++){
 				if(data.date==i){					
 					$("#dd").append("<span id='today'>" + i + "</span>  ");								
@@ -68,6 +69,25 @@
 				}
 			});
 		});
+   //수정
+	    $('.trigger').click(function(){    	
+	    	var num=$(this).attr("id"); 
+	    	var content=$("#content" + num).html();
+	    	var diary_num=$("#diary_num").val();
+	    	var name=$("#name" + num).html();
+
+	    	$("#diary_num1").val(diary_num);
+	    	$("#content1").val(content);
+	    	$("#diary_com_num1").val(num);
+	    	$("#com_name").html(name);
+	    	
+	        $('#popup_layer, #overlay_t').show(); 
+	        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
+	    }); 
+	    $('#close, .close').click(function(e){ 
+	        e.preventDefault(); 
+	        $('#popup_layer, #overlay_t').hide(); 
+	    }); 
 	});	
 </script>
 <input type="hidden" id="regdate" value="${requestScope.vo.regdate }">
@@ -100,41 +120,36 @@
 				<a href="<c:url value='/diary/folder_move?diary_num=${requestScope.vo.diary_num }&diary_folder_num=${requestScope.vo.diary_folder_num }'/>">이동</a>ㅣ
 				<a href="<c:url value='/diary/delete?diary_num=${requestScope.vo.diary_num }&diary_folder_num=${requestScope.vo.diary_folder_num }'/>">삭제</a>
 			</div>
-			<br><br>
-			<div>
-				<form method="post" action="<c:url value='/diary/com_insert'/>">
-					<input type="hidden" name="diary_num" value="${requestScope.vo.diary_num }">
-					댓글 <input type="text" name="content" size="45" id="content"> 
-					<input type="submit" value="확인" style="height: 20px;vertical-align: middle;">
-				</form>
-			</div>			
+			<br><br>		
 		</div>
 	</div>
 	<div id="com_list_back">
 		<div id="com_list">			
 			<c:forEach var="com" items="${requestScope.com_list }">
-				${com.name } : ${com.content } (${com.regdate })<br> 
-				<c:if test="${com.id==sessionScope.loginid }">													
-					<form method="post" action="<c:url value='/diary/com_update'/>">
-						<span style="display: none;" id="com">
-							<br>
-							<input type="text" name="content">
-							<input type="hidden" name="diary_com_num" value="${com.diary_com_num }">
-							<input type="hidden" name="diary_num" value="${requestScope.vo.diary_num }">
-							<input type="submit" value="수정하기"> 
-						</span>			
-					</form>
-					<a href="javascript:void(0)" onclick="update()" id="open">수정열기</a>
+				<span id="name${com.diary_com_num }">${com.name }</span> : <span id="content${com.diary_com_num }">${com.content }</span> (${com.regdate }) 
+				<c:if test="${com.id==sessionScope.loginid }">
+					<a href="#" class="trigger" id="${com.diary_com_num }">수정</a>
 					<a href="<c:url value='/diary/com_delete?diary_com_num=${com.diary_com_num }&diary_num=${requestScope.vo.diary_num }'/>">삭제</a><br>				
 				</c:if>
 			</c:forEach>
+	<div>
+		<form method="post" action="<c:url value='/diary/com_insert'/>">
+			<input type="hidden" name="diary_num" id="diary_num" value="${requestScope.vo.diary_num }">
+			댓글 <input type="text" name="content" size="45" id="content"> 
+			<input type="submit" value="확인" id="insert">
+		</form>
+	</div>	
 		</div>	
 	</div>
 </div>
-<script>
-	function update() {
-		$("#com").css('display','inline');
-		$("#close").css('display','inline');
-		$("#open").css('display','none');
-	}
-</script>
+<div id="overlay_t"></div> 	
+<div id="popup_layer">	
+	<h1><span id="com_name"></span>님의 댓글 수정</h1>										
+	<form method="post" action="<c:url value='/diary/com_update'/>">
+		<input type="text" name="content" id="content1">
+		<input type="hidden" name="diary_com_num" id="diary_com_num1">
+		<input type="hidden" name="diary_num" id="diary_num1">
+		<input type="submit" value="수정" class="btn">		
+		<input type="button" value="닫기" id="close" class="btn">		
+	</form>
+</div>

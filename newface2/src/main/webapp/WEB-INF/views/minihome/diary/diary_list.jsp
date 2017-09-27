@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=12333'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=113'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -16,8 +16,16 @@
 		});
 		
 		//이동
+		$("#move").click(function(){ 
+	        $("#popup_layer, #overlay_t").show(); 
+	        $("#popup_layer").css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
+	    }); 
+	    $('#close, .close').click(function(e){ 
+	        e.preventDefault(); 
+	        $("#popup_layer, #overlay_t").hide(); 
+	    }); 
 		var diary_nums=[];
-		$("#move").click(function(){
+		$("#moveOk").click(function(){
 			var diary_folder_num=$("#select").val();
 			$(".num:checked").each(function(){
 				diary_nums.unshift($(this).val());
@@ -36,17 +44,7 @@
 			});
 			var url="<c:url value='/diary/deletes?diary_nums="+ diary_nums +"&diary_folder_num=" + diary_folder_num + "'/>";
 			$(location).attr("href",url);
-		});
-		
-        $('.trigger').click(function(){ 
-	        $('#popup_layer, #overlay_t').show(); 
-	        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
-	    }); 
-	    $('#move, .close').click(function(e){ 
-	        e.preventDefault(); 
-	        $('#popup_layer, #overlay_t').hide(); 
-	    }); 
-		
+		});	
 	});		
 </script>
 <input type="hidden" id="diary_folder_num" value="${requestScope.diary_folder_num }">
@@ -75,19 +73,20 @@
 	</c:forEach> 
 	<hr>
 </div>
-<input type="button" class="trigger" value="이동">
+<input type="button" id="move" value="이동">
 <input type="button" id="delete" value="삭제">
 
 
 <div id="overlay_t"></div> 
 <div id="popup_layer">
-<h2>폴더이동</h2>
+<h2>폴더이동</h2><br>
 	<select name="diary_folder_num" id="select">
 	<c:forEach var="vo" items="${requestScope.folder }">
 		<option value="${vo.diary_folder_num }">${vo.fname}</option>
 	</c:forEach>
-	</select>
-	<input type="button" value="완료" id="move">
+	</select><br>
+	<input type="button" value="완료" id="moveOk">
+	<input type="button" value="닫기" id="close">
 </div>
 
 

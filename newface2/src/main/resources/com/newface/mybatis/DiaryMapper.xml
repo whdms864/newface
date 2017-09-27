@@ -33,14 +33,14 @@
 		from diary d join (select @rownum:=0) r join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where type='전체공개' and f.hompy_num=#{value}
-		order by diary_num desc
+		order by rownum desc
 	</select>
 	<select id="folder_all_list" parameterType="int" resultType="diary">
 		select d.diary_num,d.title,d.content, d.regdate,d.love,f.fname,f.diary_folder_num,@rownum:=@rownum+1 rownum 
 		from diary d join (select @rownum:=0) r join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where f.hompy_num=#{value}
-		order by diary_num desc
+		order by rownum desc
 	</select>
 	<update id="update" parameterType="diary">
 		update diary set title=#{title},content=#{content},type=#{type} where diary_num=#{diary_num}
@@ -85,10 +85,11 @@
 		delete from diary_folder where diary_folder_num=#{diary_folder_num} and hompy_num=#{hompy_num};
 	</delete>
 	<select id="calendar_list" parameterType="int" resultType="calendarlist">
-		select diary_num,date_format(d.regdate,'%Y') y,date_format(d.regdate,'%m') m,date_format(d.regdate,'%d') d  
+		select diary_num,date_format(d.regdate,'%Y') y,date_format(d.regdate,'%m') m,date_format(d.regdate,'%d') d,date_format(d.regdate,'%Y-%m-%d') regdate     
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where hompy_num=#{value}
+		group by regdate
 	</select>
 	<update id="com_update" parameterType="diarycom">
 		update diary_com set content=#{content},regdate=now() where diary_com_num=#{diary_com_num}

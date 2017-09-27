@@ -49,4 +49,3 @@
 	</c:forEach> 
 	<hr>
 </div>
-	<a>이동</a> <input type="button" id="delete" value="삭제">

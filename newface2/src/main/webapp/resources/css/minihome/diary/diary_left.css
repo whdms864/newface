@@ -12,9 +12,9 @@
 	font-size: 14px; font-weight: bold;
 }
 #diary_folder{
-	position: relative; top: 10px; left: 20px; width: 155px; height: 350px;
-	font-size: 13px;  
+	position: relative; top: 5px;left: 20px;  width: 155px; 
+	font-size: 13px;  line-height: 25px;
 }
 #diary_folder_set{
-	font-size: 14px; 
+	font-size: 14px; margin-left: 25px; margin-top: 20px;
 }                       
