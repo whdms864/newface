@@ -10,7 +10,7 @@
 		<a href="<c:url value='/adadmin'/>" >광고관리</a>
 	</li>
 	<li>
-		<a href="<c:url value='/qna11admin'/>">1:1문의</a>
+		<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
 	</li>
 	<li>
 		<a href="<c:url value='/marketadmin'/>">마켓관리</a>

@@ -5,13 +5,13 @@ import java.util.Date;
 public class Qna11comVo {
 	private int qna11_com_num;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private int qna11_num;
 	private String id;
 	
 	public Qna11comVo() {}
 
-	public Qna11comVo(int qna11_com_num, String content, Date regdate, int qna11_num, String id) {
+	public Qna11comVo(int qna11_com_num, String content, String regdate, int qna11_num, String id) {
 		super();
 		this.qna11_com_num = qna11_com_num;
 		this.content = content;
@@ -36,11 +36,11 @@ public class Qna11comVo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

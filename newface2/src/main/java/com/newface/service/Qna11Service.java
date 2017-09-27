@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.newface.dao.Qna11Dao;
 import com.newface.vo.Qna11Vo;
+import com.newface.vo.Qna11comVo;
 
 @Service
 public class Qna11Service {
@@ -19,7 +20,13 @@ public class Qna11Service {
 	public Qna11Vo getinfo(int qna11_num) {
 		return dao.getinfo(qna11_num);
 	}
+	public Qna11comVo com_getinfo(int qna11_num) {
+		return dao.com_getinfo(qna11_num);
+	}
 	public int insert(Qna11Vo vo) {
+		return dao.insert(vo);
+	}
+	public int insert(Qna11comVo vo) {
 		return dao.insert(vo);
 	}
 	public List<Qna11Vo> list() {
@@ -27,6 +34,9 @@ public class Qna11Service {
 	}
 	public int update(Qna11Vo vo) {
 		return dao.update(vo);
+	}
+	public int up_confirm(Qna11Vo vo) {
+		return dao.up_confirm(vo);
 	}
 	public int delete(int qna11_num) {
 		return dao.delete(qna11_num);

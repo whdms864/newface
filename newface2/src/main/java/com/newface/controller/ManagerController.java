@@ -19,11 +19,6 @@ public class ManagerController {
 		return ".adadmin";
 	}
 	
-	@RequestMapping(value = "/qna11admin", method = RequestMethod.GET)
-	public String qna11() {
-		return ".qna11admin";
-	}
-	
 	@RequestMapping(value = "/marketadmin", method = RequestMethod.GET)
 	public String manmarket() {
 		return ".marketadmin";

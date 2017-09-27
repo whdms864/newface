@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.Qna11Service;
 import com.newface.vo.Qna11Vo;
+import com.newface.vo.Qna11comVo;
 
 @Controller
 public class Qna11Controller {
@@ -37,7 +38,9 @@ public class Qna11Controller {
 	@RequestMapping(value = "/qna11/detail", method = RequestMethod.GET)
 	public String detail(int qna11_num,Model model) {
 		Qna11Vo vo=service.getinfo(qna11_num);
+		Qna11comVo comvo=service.com_getinfo(qna11_num);
 		model.addAttribute("vo",vo);
+		model.addAttribute("comvo",comvo);
 		return ".qna11_detail";
 	}
 	@RequestMapping(value = "/qna11/update", method = RequestMethod.GET)
@@ -55,5 +58,29 @@ public class Qna11Controller {
 	public String delete(int qna11_num) {
 		service.delete(qna11_num);
 		return "redirect:/qna11/getinfo";
+	}
+	
+	/***************************** °ü¸®ÀÚ ******************************************/
+	
+	@RequestMapping(value = "/qna11/admin/list", method = RequestMethod.GET)
+	public String list(Model model) {
+		List<Qna11Vo> list=service.list();
+		model.addAttribute("list",list);
+		return ".qna11admin";
+	}
+	@RequestMapping(value = "/qna11/admin/detail", method = RequestMethod.GET)
+	public String admin_detail(int qna11_num,Model model) {
+		Qna11Vo vo=service.getinfo(qna11_num);
+		model.addAttribute("vo",vo);
+		return ".qna11admin_detail";
+	}
+	@RequestMapping(value = "/qna11/admin/insert", method = RequestMethod.GET)
+	public String admin_insertform() {
+		return ".qna11admin_insert";
+	}
+	@RequestMapping(value = "/qna11/admin/insertok", method = RequestMethod.POST)
+	public String admin_insert(Qna11comVo vo) {
+		service.insert(vo);
+		return "redirect:/qna11/admin/list";
 	}
 }

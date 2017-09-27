@@ -18,12 +18,12 @@
 			  			<td>${vo.title}</td>
 			  			<td>${vo.regdate}</td>
 			  			<td>${vo.confirm}</td>
-			  			<td><a href="<c:url value='/qna11/detail?qna11_num=${vo.qna11_num }'/>">보기</a></td>
+			  			<td><a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">보기</a></td>
 			  		</tr>
 			  	</c:forEach>
 		</table>
-		<div style="position:absolute;top:620px;width: 98%;"align="center">
-			<div style="background-color: rgba(224, 224, 224, 0.78);width: 490px; height:1px;"></div>
-			페이징
-		</div>
+	</div>
+	<div style="position:absolute;top:600px;width: 100%;"align="center">
+		<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>
+		페이징
 	</div>

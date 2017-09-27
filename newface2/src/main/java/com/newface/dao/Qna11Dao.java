@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.Qna11Vo;
+import com.newface.vo.Qna11comVo;
 
 @Repository
 public class Qna11Dao {
@@ -24,12 +25,21 @@ public class Qna11Dao {
 	public Qna11Vo getinfo(int qna11_num) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo2",qna11_num);
 	}
+	public Qna11comVo com_getinfo(int qna11_num) {
+		return sqlSession.selectOne(NAMESPACE+".com_getinfo",qna11_num);
+	}
 	
 	public int insert(Qna11Vo vo) {
 		return sqlSession.insert(NAMESPACE+".insert",vo);
 	}
+	public int insert(Qna11comVo vo) {
+		return sqlSession.insert(NAMESPACE+".com_insert",vo);
+	}
 	public int update(Qna11Vo vo) {
 		return sqlSession.update(NAMESPACE+".update",vo);
+	}
+	public int up_confirm(Qna11Vo vo) {
+		return sqlSession.update(NAMESPACE+".up_confirm",vo);
 	}
 	public int delete(int qna11_num) {
 		return sqlSession.delete(NAMESPACE+".delete",qna11_num);

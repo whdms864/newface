@@ -24,8 +24,12 @@
 				<label class="control-label" for="inputWarning1">관리자 답변</label>
 				<br>
 				<c:choose>
-				<c:when test="${content!=null }">
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${content }</textarea>
+				<c:when test="${comvo.content!=null }">
+					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${comvo.content }
+
+
+[ ${comvo.regdate } ]
+					</textarea>
 				</c:when>
 				<c:otherwise>
 					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >답변이 아직 오고 있어요...</textarea>
