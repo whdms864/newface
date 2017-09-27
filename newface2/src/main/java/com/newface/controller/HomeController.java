@@ -25,10 +25,7 @@ public class HomeController {
 		return ".admin";
 	}
 	
-	@RequestMapping(value = "/noti", method = RequestMethod.GET)
-	public String noti() {
-		return ".noti";
-	}
+	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
 	public String main2() {
 		return ".main2";

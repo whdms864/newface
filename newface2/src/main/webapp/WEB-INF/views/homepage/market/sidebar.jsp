@@ -64,4 +64,5 @@
 </div>
 <div>
 	<a href="<c:url value='/admin'/>">admin</a>
+	<a href="<c:url value='/members/logout'/>">로그아웃</a>
 </div>		

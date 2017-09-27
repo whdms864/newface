@@ -65,27 +65,33 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/sidebar.jsp"/>
 	</definition>
 	
+	<!-- 마이페이지 -->
 	<definition name=".mypage" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
 	</definition>
 	
+	<!-- 회원정보수정 -->
 	<definition name=".update" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/update.jsp"/>
 	</definition>
 	
+	<!-- 탈퇴확인페이지 -->
 	<definition name=".leave" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/leave.jsp"/>
 	</definition>
+	
 	
 	<definition name=".bye" extends=".market">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/bye.jsp"/>
 	</definition>
 	
+	<!-- 로그인페이지 -->
 	<definition name=".loginpage" template="/WEB-INF/views/homepage/login/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/header.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/homepage/login/loginp.jsp"/>
 	</definition>
 	
+	<!-- 아이디/비번 찾기 페이지 -->
 	<definition name=".search" extends=".loginpage">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/member/search.jsp"/>
 	</definition>
@@ -108,6 +114,8 @@
 	<definition name=".qna11_update" extends=".qna11_insert">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
 	</definition>
+	
+	
 	
 	<!-- 관리자 -->
 	<definition name=".admin" template="/WEB-INF/views/homepage/admin/layout.jsp">
@@ -140,6 +148,17 @@
 	<definition name=".qna11admin_update" extends=".qna11admin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/update.jsp"/>
 	</definition>
+	
+	
+	
+	<!-- 공지사항 -->
+	<definition name=".notiadmin" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
+	</definition>
+	<definition name=".notiadmin_insert" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
+	</definition>
+	
 	
 	<!--  -->
 	<definition name=".marketadmin" extends=".admin">

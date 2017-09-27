@@ -67,6 +67,6 @@ public class LoginContorller {
 	@RequestMapping("/members/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return ".main";
 	}
 }

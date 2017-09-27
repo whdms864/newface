@@ -5,41 +5,45 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
 	// 저장된 쿠키값을 가져와서 id,pwd 칸에 넣어준다. 없으면 공백으로 들어감.
-    var userid = getCookie("userid");
+    var userid = getCookie("userid"); 
+
     var userpwd = getCookie("userpwd");
     $("#loginid").val(userid);
     $("#loginpwd").val(userpwd);
     
     if($("#loginid").val() != "" && $("#loginpwd").val() != "" ){ // 그 전에 id,pwd 를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 id,pwd가 표시된 상태라면,
         $("#auto").attr("checked", true); // id,pwd 저장하기를 체크 상태로 두기.
+    }else{
+    	$("#auto").attr("checked", false);
     }
-    
-    $("#auto").change(function(){ // 체크박스에 변화가 있다면,
-        if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
-            var userid = $("#loginid").val();
-        	var userpwd = $("#loginpwd").val();
-            setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
-            setCookie("userpwd", userpwd, 7);
-        }else{ // 자동로그인 체크 해제 시,
-            deleteCookie("userid");
+			
+	$("#ff").submit(function(event){
+		var loginid=$("#loginid").val();
+		var loginpwd=$("#loginpwd").val();
+		
+		if(loginid==""){
+			$("#loginid").focus();
+			event.preventDefault();
+		}else if(loginpwd==""){
+			$("#loginpwd").focus();
+			event.preventDefault();
+           
+		}else if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
+			if(userid!=loginid){
+				 deleteCookie("userid");
+		         deleteCookie("userpwd");
+			}
+			setCookie("userid", loginid, 3); // 3일 동안 쿠키 보관
+			setCookie("userpwd", loginpwd, 3);
+		}else{
+       		deleteCookie("userid");
             deleteCookie("userpwd");
-        }
-    });
-    
-    $("#loginid").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
-        if($("#auto").is(":checked")){ // 자동 로그인를 체크한 상태라면,
-            var userid = $("#loginid").val();
-            setCookie("userid", userid, 7); // 7일 동안 쿠키 보관
-        }
-    });
-    
-    $("#loginpwd").keyup(function(){ // pwd 입력 칸에 pwd를 입력할 때,
-        if($("#auto").is(":checked")){ // 자동로그인를 체크한 상태라면,
-            var userpwd = $("#loginpwd").val();
-            setCookie("userpwd", userpwd, 7); // 7일 동안 쿠키 보관
-        }
-    });
+       	}
+	});
+	
 });
 
 
@@ -76,7 +80,7 @@ function getCookie(cookieName) {
 <!----------------- 여기서부터 왼쪽 사이드바 ----------------->
 <div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
-		<form method="post" id="f" name="f" action="<c:url value='/member/login'/>">
+		<form method="post" id="ff" action="<c:url value='/member/login'/>">
 			<!-- 아이디 입력창 -->
 			<div style="margin-top: 10px;display: inline-block;">
 				<div style="width: 40px; height: 32px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
@@ -99,15 +103,15 @@ function getCookie(cookieName) {
 		<div style="margin-top: 5px; display: inline-block;">
 		
 			<!--------------------자동로그인 ---------------------------------->
-			<div style="float:left;width: 20px; height: 20px;">
-				<label data-form-control="checkbox" data-min-width="20" data-min-height="20">
-				<input type="checkbox" id="auto" name="auto">
-				
-				<span data-form-decorator="true"></span></label>
+			<div style="float:left;width: 200px; height: 20px;">
+				<label>
+				<input type="checkbox" id="auto" name="auto"> 아이디/비밀번호 저장
+				</label>
 			</div>
-			<div style="float:left;width: 120px; height: 20px;">
+			
+			<!-- <div style="float:left;width: 120px; height: 20px;">
 				<div style="font-size: 12px;">아이디/비밀번호 저장</div>
-			</div>
+			</div> -->
 				
 		</div>
 		<div style="display: inline-block;">
