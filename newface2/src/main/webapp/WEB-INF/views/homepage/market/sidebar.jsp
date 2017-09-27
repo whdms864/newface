@@ -63,8 +63,5 @@
 		border-color: rgb(204, 204, 204); width: 200px; height: 40px;float:left;padding:10px;" placeholder="친구찾기">
 </div>
 <div>
-	<a href="<c:url value='/'/>">main</a>
-	<a href="<c:url value='/market'/>" >market</a>
 	<a href="<c:url value='/admin'/>">admin</a>
-	<a href="<c:url value='/noti'/>">notice</a>
 </div>		

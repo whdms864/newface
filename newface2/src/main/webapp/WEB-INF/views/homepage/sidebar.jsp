@@ -123,9 +123,6 @@ function getCookie(cookieName) {
 	</div>
 </div>
 <div>
-	<a href="<c:url value='/'/>">main</a>
-	<a href="<c:url value='/market'/>">market</a>
 	<a href="<c:url value='/admin'/>">admin</a>
-	<a href="<c:url value='/noti'/>">notice</a>
 </div>
 
