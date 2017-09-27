@@ -30,20 +30,28 @@
 	width: 800px;
 	height: 800px;
 	float: left;
+	box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 8px 0px;
 }
 
-.menu {
-	font-size: 16px;
-	color: rgb(64, 64, 64);
-	text-align: center;
-	line-height: 2.5em;
-	border-radius: 4px 0px 0px 4px;
-	background-color: rgb(224, 224, 224);
-	margin-top: 10px;
+#sidebar ul {
+	list-style:none;
+	width: 100%;
 }
-
-.menu a {
+#sidebar ul li a:hover{
+	background-color:rgb(52, 152, 219);
+	color:white;
+}
+#sidebar ul a{
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	background-color:rgb(224, 224, 224);
+	padding: 8px 70px 8px 70px;
 	text-decoration: none;
+	font-size: 15px;
+	color: black;
+	display: block;
+	margin-top: 7px;
+	box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 8px 0px;
 }
 
 .main {
