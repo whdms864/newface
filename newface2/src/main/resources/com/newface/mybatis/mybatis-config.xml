@@ -19,6 +19,7 @@
   	<typeAlias type="com.newface.vo.DiaryListVo" alias="diarylist"/>
   	<typeAlias type="com.newface.vo.AdminVo" alias="admin"/>
   	<typeAlias type="com.newface.vo.GuestcomlistVo" alias="Guestcom"/>
+  	<typeAlias type="com.newface.vo.NotiVo" alias="noti"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
@@ -26,5 +27,6 @@
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
   	<mapper resource="com/newface/mybatis/Qna11Mapper.xml"/>
   	<mapper resource="com/newface/mybatis/GuestbookMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/NotiMapper.xml"/>
   </mappers>
 </configuration>
