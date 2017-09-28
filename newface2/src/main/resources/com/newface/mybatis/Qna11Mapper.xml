@@ -33,7 +33,7 @@
 	<update id="com_update" parameterType="qna11com">
 		update qna11_com set content=#{content} where qna11_com_num=#{qna11_com_num}
 	</update>
-	<update id="com_delete" parameterType="int">
+	<delete id="com_delete" parameterType="int">
 		delete from qna11_com where qna11_com_num=#{qna11_com_num}
-	</update>
+	</delete>
 </mapper>  

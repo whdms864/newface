@@ -139,9 +139,6 @@
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/list.jsp"/>
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/admin/sidebar.jsp"/>
 	</definition>
-	<definition name=".qna11admin_insert" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/insert.jsp"/>
-	</definition>
 	<definition name=".qna11admin_detail" extends=".qna11admin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/detail.jsp"/>
 	</definition>

@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div style="background-color: rgba(224, 224, 224, 0.78);margin-top:10px;margin-left:10px;width: 490px; height:1px;"></div>
-	<form method="post" action="<c:url value='/qna11/admin/insertok'/>">
+	<form method="post" action="<c:url value='/qna11/admin/updateok'/>">
 		<div style="margin-top: 10px;background-color: rgb(239, 238, 238);width: 83%;height:33%;margin-left: 40px;padding: 10px;">
 			<div>
 				<div class="form-group has-error" style="display: inline-block; ">

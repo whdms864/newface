@@ -109,24 +109,16 @@ public class Qna11Controller {
 	@RequestMapping(value = "/qna11/admin/updateok", method = RequestMethod.POST)
 	public String admin_updateok(Qna11comVo comvo) {
 		service.com_update(comvo);
-		
-		String confirm="답변완료";
-		Qna11Vo vo=service.getinfo(comvo.getQna11_num());
-		if(vo.getConfirm().equals("확인중")) {
-			vo.setConfirm(confirm);
-			service.up_confirm(vo);
-		}
 		return "redirect:/qna11/admin/list";
 	}
 	@RequestMapping(value = "/qna11/admin/delete", method = RequestMethod.GET)
-	public String admin_delete(int qna11_com_num) {
+	public String admin_delete(int qna11_com_num,int qna11_num) {
 		service.com_delete(qna11_com_num);
+		
 		String confirm="확인중";
-		Qna11Vo vo=service.getinfo(qna11_com_num);
-		if(vo.getConfirm().equals("답변완료")) {
-			vo.setConfirm(confirm);
-			service.up_confirm(vo);
-		}
+		Qna11Vo vo=service.getinfo(qna11_num);
+		vo.setConfirm(confirm);
+		service.up_confirm(vo);
 		return "redirect:/qna11/admin/list";
 	}
 }
