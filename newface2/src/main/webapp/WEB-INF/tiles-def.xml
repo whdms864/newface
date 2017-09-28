@@ -178,9 +178,6 @@
 	<definition name=".marketadmin_insert_item" extends=".marketadmin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_item.jsp"/>
 	</definition>
-	<definition name=".marketadmin_insert_cate" extends=".marketadmin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_cate.jsp"/>
-	</definition>
 	
 	<!--  -->
 	<definition name=".memadmin" extends=".admin">
