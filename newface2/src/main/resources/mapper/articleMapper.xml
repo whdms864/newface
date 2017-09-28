@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talanton.spring.board.dao.ArticleMapper">
+<!-- 모든 맴버 정보 -->
+	<select id="select" resultType="com.talanton.spring.board.dto.ArticleVO">
+	    <![CDATA[
+	    select * from (select rownum R, A.* from (select * from article where boardId=#{param1} order by ref desc, step desc) A) where R between #{param2} and #{param3}
+	    ]]>
+	</select>
+	<select id="selectWithoutContent" resultType="com.talanton.spring.board.dto.ArticleVO">
+	    <![CDATA[
+	    select * from (select rownum R, A.* from (select article_id, boardId, writer_name, email, title, author, password, read_count, comment_count, like_count, ref, step, depth, createdAt, modifiedAt, ip, secret from article where boardId=#{param1} order by ref desc, step desc) A) where R between #{param2} and #{param3}
+	    ]]>
+	</select>
+	<select id="selectCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	    select count(*) from article where boardId = #{boardId}
+	</select>
+	<insert id="add">
+		insert into article (article_id, boardId, writer_name, email, title, author, password, ref, step, depth, content, ip, secret) values(article_sequence.nextval, #{boardId}, #{writer_name}, #{email}, #{title}, #{author}, #{password}, #{ref}, #{step}, #{depth}, #{content}, #{ip}, #{secret})
+		<selectKey keyProperty="article_id" resultType="java.lang.Integer" order="AFTER">
+	    	select article_sequence.currval from dual
+	    </selectKey>
+	</insert>
+	<select id="getArticleId" resultType="java.lang.Integer">
+	    select article_sequence.currval from article
+	</select>
+	<select id="getMaxArticleId" resultType="java.lang.Integer">
+	    select max(article_id) from article
+	</select>
+		<select id="getArticle" resultType="com.talanton.spring.board.dto.ArticleVO">
+		select * from article where article_id = #{article_id}
+	</select>
+	<select id="selectById" resultType="com.talanton.spring.board.dto.ArticleVO">
+	    select * from article where article_id = #{article_id}
+	</select>
+	<select id="selectByLimit">
+	    select article_id from article where boardId = #{param1} limit #{param2}, #{param2}
+	</select>
+	<update id="increaseReadCount">
+	    update article set read_count = read_count + 1 where article_id = #{param1}
+	</update>
+	<update id="updateStep">
+		update article set step = step + 1 where boardId=#{param1} and ref=#{param2} and step=#{param3}
+	</update>
+</mapper>

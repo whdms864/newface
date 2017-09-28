@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0;
+}
+html[lang^="ko"] {
+	font-family: "Nanum Gothic", "나눔 고딕", "NanumGothic", sans-serif;
+}
+/* content */
+body {
+	width: 980px;
+	margin: 0 auto;
+	margin-top: 5px;
+	min-height: 770px;
+}
+form {
+	margin-top: 20px;
+	line-height: 2;
+}
+#addBtn {
+	width: 200px;
+	font-size: 14px;
+	padding: 10px;
+	background-color: blue;
+	color: white;
+	border-radius: 5px 5px 5px 5px;
+	margin-top:30px;
+}
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	margin-top: 20px;
+	width: 100%;
+}
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	padding: 5px;
+	line-height: 1.5;
+}
