@@ -14,7 +14,7 @@ public class NotiController {
 	
 	@RequestMapping(value = "/noti/list", method = RequestMethod.GET)
 	public String notilist() {
-		return ".notiadmin";
+		return ".notilist";
 	}
 	
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.GET)

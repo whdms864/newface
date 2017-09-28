@@ -153,7 +153,7 @@
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
 		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/noti/tab.jsp"/>
 	</definition>
-	<definition name=".notiadmin_insert" extends=".notiadmin">
+	<definition name=".notiadmin_insert" extends=".notilist">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
 	</definition>
 	
