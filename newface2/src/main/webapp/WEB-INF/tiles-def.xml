@@ -154,8 +154,9 @@
 	<!-- 공지사항 -->
 	<definition name=".notiadmin" extends=".qna11admin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/noti/tab.jsp"/>
 	</definition>
-	<definition name=".notiadmin_insert" extends=".qna11admin">
+	<definition name=".notiadmin_insert" extends=".notiadmin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
 	</definition>
 	

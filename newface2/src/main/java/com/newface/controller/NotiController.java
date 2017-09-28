@@ -15,6 +15,6 @@ public class NotiController {
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.GET)
 	public String nadmininsert() {
 		
-		return "..notiadmin_insert";
+		return ".notiadmin_insert";
 	}
 }

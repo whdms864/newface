@@ -23,6 +23,13 @@
 		where id=#{loginid} and pwd=#{loginpwd} and type='회원'
 	</select>
 	
+	<select id="isadmin" resultType="admin" parameterType="hashmap">
+		select * from admin
+		where id=#{loginid} and pwd=#{loginpwd} 
+	</select>
+	
+	
+	
 	<select id="mypage" resultType="member" parameterType="string">
 		select id,pwd,name,email,addr,birth,school,date_format(regdate,'%Y-%m-%d') regdate from member where id=#{loginid}
 	</select>

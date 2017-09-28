@@ -22,8 +22,8 @@
 			var id=$("#id").val();
 			$.getJSON("<c:url value='/idcheck/json'/>",{id:id},function(data){
 				
-				if(!(id.length>=5 && id.length <=20)){
-					$("#idok").html("아이디는 5자이상 20자 이하여야 합니다.");
+				if(id=="admin"){
+					$("#idok").html("사용하실 수 없습니다");
 					return false;
 				}
 				
@@ -83,6 +83,10 @@
 				$("#id").focus();
 				$("#idok").html("아이디는 영문자나 숫자로만 입력하세요.");
 				event.preventDefault();
+			}else if(id=="admin"){
+				$("#id").focus();
+				$("#idok").html("사용하실 수 없습니다");
+				event.preventDefault();	
 			}else if(pwd==""){
 				$("#pwd").focus();
 				$("#pwd1").html("비밀번호를 입력해주세요");
