@@ -30,39 +30,26 @@ public class LoginContorller {
 		map.put("loginid", loginid);
 		map.put("loginpwd", loginpwd);
 		boolean r = service.isMembers(map);
+		boolean a = service.isAdmin(map);
 
-		if (r) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginid", loginid);
-			return ".main2";
-
+		if (r || a) {
+			if(r) {
+				HttpSession session = request.getSession();
+				session.setAttribute("loginid", loginid);
+				return ".main2";
+			}else if(a) {
+				HttpSession session = request.getSession();
+				session.setAttribute("loginid", loginid);
+				return ".admin";
+			}
 		} else {
 			model.addAttribute("errMsg", "아이디/비밀번호가 맞지 않거나 등록된 아이디가 없습니다");
 			return ".loginpage";
 		}
+		return null;
 	}
 	
-	@RequestMapping(value = "/member/admin", method = RequestMethod.POST)
-	public String loginp(HttpServletRequest request,Model model) {
-
-		String loginid = request.getParameter("loginid");
-		String loginpwd = request.getParameter("loginpwd");
-		
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("loginid", loginid);
-		map.put("loginpwd", loginpwd);
-		boolean r = service.isMembers(map);
-
-		if (r) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginid", loginid);
-			return ".admin";
-
-		} else {
-			model.addAttribute("errMsg", "아이디/비밀번호가 맞지 않거나 등록된 아이디가 없습니다");
-			return ".loginpage";
-		}
-	}
+	
 
 	@RequestMapping("/members/logout")
 	public String logout(HttpSession session) {

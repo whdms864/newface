@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.service.MemberService;
+import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
 
@@ -25,12 +26,13 @@ public class MemberController {
 	public String idcheck(String id) {
 		
 		JSONObject json=new JSONObject();
-		MemberVo vo=service.getinfo(id);
+		MemberVo vo1=service.getinfo(id);
+		AdminVo vo2=service.getadmin(id);
 		
-		if(vo==null) {
+		if(vo1==null && vo2==null) {
 			json.put("id", "사용하실 수 있습니다.");			
 		}else {
-			json.put("id", "중복된 아이디입니다.");
+			json.put("id", "사용하실 수 없습니다.");
 		}
 		return json.toString();
 	}

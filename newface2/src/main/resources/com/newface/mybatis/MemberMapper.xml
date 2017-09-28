@@ -18,12 +18,19 @@
 		where id=#{value}
 	</select>
 	
+	<select id="getadmin" resultType="admin" parameterType="string">
+		select * from admin
+		where id=#{value}
+	</select>
+	
+	
+	
 	<select id="isMember" resultType="member" parameterType="hashmap">
 		select * from member
 		where id=#{loginid} and pwd=#{loginpwd} and type='회원'
 	</select>
 	
-	<select id="isadmin" resultType="admin" parameterType="hashmap">
+	<select id="isAdmin" resultType="admin" parameterType="hashmap">
 		select * from admin
 		where id=#{loginid} and pwd=#{loginpwd} 
 	</select>

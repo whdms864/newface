@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.MemberDao;
+import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
 
@@ -17,6 +18,10 @@ public class MemberService {
 	}
 	public MemberVo getinfo(String id) {
 		return dao.getinfo(id);
+	}
+	
+	public AdminVo getadmin(String id) {
+		return dao.getadmin(id);
 	}
 	public int insert(MemberVo vo) {
 		return dao.insert(vo);
@@ -33,6 +38,17 @@ public class MemberService {
 			return false;
 		}
 	}
+	
+	public boolean isAdmin(HashMap<String, String> map) {
+		AdminVo vo=dao.isAdmin(map);
+		
+		if(vo!=null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public MemberVo mypage(String id) {
 		return dao.mypage(id);
 	}
