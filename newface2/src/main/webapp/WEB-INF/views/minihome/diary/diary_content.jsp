@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=2323'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=23'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){	
@@ -19,11 +19,12 @@
 			
 			for(var i=1;i<=data.lastdate;i++){
 				if(data.date==i){					
-					$("#dd").append("<span id='today'>" + i + "</span>  ");								
+					$("#dd").append("<span class='cal'>" + i + "</span>  ");								
 				}else{
 					$("#dd").append(i + "  ");								
 				}				
 			}
+			css_d();
 		});
 		$("#before").click(function(){
 			var year=$(".y").html();
@@ -46,6 +47,7 @@
 					}				
 				}
 			});
+			css_d();
 		});
 		$("#after").click(function(){
 			var year=$(".y").html();
@@ -68,7 +70,20 @@
 					}				
 				}
 			});
+			css_d();
 		});
+		//////////////////////////////////////////
+		var diary_num=$("#diary_num").val();
+		function css_d() {
+			$.getJSON("<c:url value='/calendar_list'/>",{"diary_num":diary_num},function(data){
+				$(data).each(function(i,cal){
+					console.log(cal.d);
+				});	
+			});
+		}
+		
+		
+		
    //수정
 	    $('.trigger').click(function(){    	
 	    	var num=$(this).attr("id"); 
@@ -91,6 +106,7 @@
 	});	
 </script>
 <input type="hidden" id="regdate" value="${requestScope.vo.regdate }">
+<input type="hidden" id="diary_num" value="${requestScope.vo.diary_num }">
 <br>
 <div id="content_back">
 	<div id="calendar_back">

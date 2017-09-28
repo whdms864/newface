@@ -17,6 +17,7 @@ import com.newface.calendar.AfterCalendar;
 import com.newface.calendar.AutoCalendar;
 import com.newface.calendar.BeforeCalendar;
 import com.newface.service.DiaryService;
+import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryListVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.DiarycomVo;
@@ -25,9 +26,26 @@ import com.newface.vo.HompyVo;
 
 @Controller
 public class DiaryController {
-	@Autowired
-	DiaryService service;
-
+	@Autowired DiaryService service;
+	
+	//달력 해당날짜 데이터 얻어오기
+	@RequestMapping(value = "/calendar_list")
+	@ResponseBody
+	public String calendar_list(int diary_num, HttpSession session) {		
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		CalendarListVo ym=service.get_cal(diary_num);
+		CalendarListVo cal=new CalendarListVo(hompy_num, 0, null, ym.getY(), ym.getM(), null);
+		List<CalendarListVo> list=service.calendar_m(cal);
+		
+		JSONArray arr=new JSONArray();
+		for(CalendarListVo vo:list) {
+			JSONObject json = new JSONObject();
+			json.put("d", vo.getD());
+			arr.add(json);
+		}
+		return arr.toString();
+	}
+	
 	// 해당 날짜
 	@RequestMapping(value = "/calendar_auto")
 	@ResponseBody
@@ -38,7 +56,12 @@ public class DiaryController {
 		int date = auto.getDate();
 		int lastdate = auto.getLastdate();
 		String week = auto.getWeek();
-
+		
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String m=String.valueOf(month);
+		CalendarListVo cal=new CalendarListVo(hompy_num, 0, null, null, m, null);
+		List<CalendarListVo> cal_list=service.calendar_m(cal);
+		
 		JSONObject json = new JSONObject();
 		json.put("year", year);
 		json.put("month", month);
@@ -119,14 +142,18 @@ public class DiaryController {
 	///////////// 해당폴더목록 /////////////
 	@RequestMapping(value = "/diary/list", method = RequestMethod.GET)
 	public String diary_list(int diary_folder_num, HttpSession session, Model model) {
-		session.setAttribute("diary_folder_num", diary_folder_num);
-		List<DiaryVo> list = service.folder_list(diary_folder_num);
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
+		String hompy_id=service.id(hompy_num);
+		
+		session.setAttribute("diary_folder_num", diary_folder_num);
+		
+		List<DiaryVo> list = service.folder_list(diary_folder_num);
 		if (list != null) {
 			List<DiaryfolderVo> folder = service.fname(hompy_num);
 			String id = service.id(hompy_num);
 			String name = service.name(id);
 			model.addAttribute("diary_folder_num", diary_folder_num);
+			model.addAttribute("hompy_id", hompy_id);
 			model.addAttribute("list", list);
 			model.addAttribute("folder", folder);
 			model.addAttribute("name", name);
@@ -396,6 +423,7 @@ public class DiaryController {
 		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);
 		List<DiarycomVo> com_list = service.com_list(diary_num);
+
 		if (vo != null) {
 			session.setAttribute("diary_folder_num", vo.getDiary_folder_num());
 			model.addAttribute("hompy_id", hompy_id);

@@ -87,9 +87,6 @@ public class DiaryDao {
 	public int folder_delete(DiaryfolderVo vo) {
 		return sqlSession.delete(NAMESPACE + ".folder_delete", vo);
 	}
-	public List<CalendarListVo> calendar_list(int hompy_num){
-		return sqlSession.selectList(NAMESPACE + ".calendar_list", hompy_num);
-	}
 	public int com_update(DiarycomVo vo) {
 		return sqlSession.update(NAMESPACE + ".com_update", vo);
 	}
@@ -98,5 +95,14 @@ public class DiaryDao {
 	}
 	public int hompy_is(HompyVo vo) {
 		return sqlSession.selectOne(NAMESPACE + ".hompy_is", vo);
+	}
+	public List<CalendarListVo> calendar_m(CalendarListVo vo){
+		return sqlSession.selectList(NAMESPACE + ".calendar_m", vo);
+	}
+	public List<CalendarListVo> calendar_list(CalendarListVo vo){
+		return sqlSession.selectList(NAMESPACE + ".calendar_list", vo);
+	}
+	public CalendarListVo get_cal(int diary_num) {
+		return sqlSession.selectOne(NAMESPACE + "get_cal", diary_num);
 	}
 }

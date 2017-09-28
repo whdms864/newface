@@ -88,13 +88,6 @@
 	<delete id="folder_delete" parameterType="diaryfolder">
 		delete from diary_folder where diary_folder_num=#{diary_folder_num} and hompy_num=#{hompy_num};
 	</delete>
-	<select id="calendar_list" parameterType="int" resultType="calendarlist">
-		select diary_num,date_format(d.regdate,'%Y') y,date_format(d.regdate,'%m') m,date_format(d.regdate,'%d') d,date_format(d.regdate,'%Y-%m-%d') regdate     
-		from diary d join diary_folder f 
-		on d.diary_folder_num=f.diary_folder_num 
-		where hompy_num=#{value}
-		group by regdate
-	</select>
 	<update id="com_update" parameterType="diarycom">
 		update diary_com set content=#{content},regdate=now() where diary_com_num=#{diary_com_num}
 	</update>
@@ -103,5 +96,23 @@
 	</delete>
 	<select id="hompy_is" parameterType="hompy" resultType="int">
 		select hompy_num from hompy where id=#{id} and hompy_num=#{hompy_num}
+	</select>
+	<select id="calendar_m" parameterType="calendarlist" resultType="calendarlist">
+		select date_format(d.regdate,'%Y') y,date_format(d.regdate,'%c') m,date_format(d.regdate,'%e') d,date_format(d.regdate,'%Y-%c-%e') regdate     
+		from diary d join diary_folder f 
+		on d.diary_folder_num=f.diary_folder_num 
+		where hompy_num=#{hompy_num} and date_format(d.regdate,'%Y')=#{y} and date_format(d.regdate,'%c')=#{m}
+		group by regdate
+		order by regdate desc
+	</select>
+	<select id="calendar_list" parameterType="calendarlist" resultType="calendarlist">
+		select diary_num,date_format(d.regdate,'%Y') y,date_format(d.regdate,'%c') m,date_format(d.regdate,'%e') d,date_format(d.regdate,'%Y-%c-%e') regdate     
+		from diary d join diary_folder f 
+		on d.diary_folder_num=f.diary_folder_num 
+		where hompy_num=#{hompy_num} and date_format(d.regdate,'%c')=#{m}
+		order by regdate desc
+	</select>
+	<select id="get_cal" parameterType="int" resultType="calendarlist">
+		select date_format(regdate,'%Y') y,date_format(regdate,'%c') m from diary where diary_num=#{value}
 	</select>
 </mapper>  

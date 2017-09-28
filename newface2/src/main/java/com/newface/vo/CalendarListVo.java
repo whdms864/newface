@@ -1,6 +1,7 @@
 package com.newface.vo;
 
 public class CalendarListVo {
+	private int hompy_num;
 	private int diary_num;
 	private String regdate;
 	private String y;
@@ -9,21 +10,22 @@ public class CalendarListVo {
 	
 	public CalendarListVo() {}
 
-	public CalendarListVo(int diary_num, String y,String m,String d,String regdate) {
+	public CalendarListVo(int hompy_num, int diary_num, String regdate, String y, String m, String d) {
 		super();
+		this.hompy_num = hompy_num;
 		this.diary_num = diary_num;
 		this.regdate = regdate;
 		this.y = y;
 		this.m = m;
 		this.d = d;
 	}
-	
-	public String getRegdate() {
-		return regdate;
+
+	public int getHompy_num() {
+		return hompy_num;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setHompy_num(int hompy_num) {
+		this.hompy_num = hompy_num;
 	}
 
 	public int getDiary_num() {
@@ -32,6 +34,14 @@ public class CalendarListVo {
 
 	public void setDiary_num(int diary_num) {
 		this.diary_num = diary_num;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getY() {

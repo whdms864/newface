@@ -86,9 +86,6 @@ public class DiaryService {
 		}
 		return dao.folder_delete(vo);
 	}
-	public List<CalendarListVo> calendar_list(int hompy_num){
-		return dao.calendar_list(hompy_num);
-	}
 	public int com_update(DiarycomVo vo) {
 		return dao.com_update(vo);
 	}
@@ -97,5 +94,14 @@ public class DiaryService {
 	}
 	public int hompy_is(HompyVo vo) {
 		return dao.hompy_is(vo);
+	}
+	public List<CalendarListVo> calendar_m(CalendarListVo vo){
+		return dao.calendar_m(vo);
+	}
+	public List<CalendarListVo> calendar_list(CalendarListVo vo){
+		return dao.calendar_list(vo);
+	}
+	public CalendarListVo get_cal(int diary_num) {
+		return dao.get_cal(diary_num);
 	}
 }

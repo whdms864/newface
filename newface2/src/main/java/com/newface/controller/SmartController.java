@@ -31,16 +31,13 @@ public class SmartController implements ServletContextAware {
 		//파일명 - 싱글파일업로드와 다르게 멀티파일업로드는 HEADER로 넘어옴 
 		String name = request.getHeader("file-name");
 		String ext = name.substring(name.lastIndexOf(".")+1);
-		System.out.println("name : " + name);
-		System.out.println("ext : " + ext);
 
 		//파일 기본경로
 		String root = request.getContextPath() + "/resources";
 		String defaultPath = context.getRealPath("/resources");
-		System.out.println("root : " + root);
+
 		//파일 기본경로 _ 상세경로
 		String path = defaultPath + File.separator + "upload" + File.separator;
-		System.out.println("path : " + path);
 		File file = new File(path);
 		if(!file.exists()) {
 		  file.mkdirs();
@@ -48,7 +45,6 @@ public class SmartController implements ServletContextAware {
 		String realname = UUID.randomUUID().toString() + "." + ext;
 		InputStream is = request.getInputStream();
 		String storedFileName = path + realname;
-		System.out.println("storedFileName : " + storedFileName);
 		OutputStream os=new FileOutputStream(storedFileName);
 		int numRead;
 		//파일쓰기
@@ -64,7 +60,6 @@ public class SmartController implements ServletContextAware {
 
 		sFileInfo += "&bNewLine=true&sFileName="+ name+"&sFileURL=" + root + "/upload/"+realname;
 		PrintWriter out = response.getWriter();
-		System.out.println(sFileInfo);
 		out.println(sFileInfo);
 	}
 	
@@ -126,19 +121,6 @@ public class SmartController implements ServletContextAware {
 		    }
 		}
 		response.sendRedirect(return1+return2+return3);
-	}
-	
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public ModelAndView write(HttpServletRequest request) throws IOException, FileUploadException {
-		String title = request.getParameter("title");
-		String smarteditor = request.getParameter("smarteditor");
-//		
-//		System.out.println("title = " + title);
-//		System.out.println("content = " + smarteditor);
-		ModelAndView model = new ModelAndView("write");
-		model.addObject("title", title);
-		model.addObject("smarteditor", smarteditor);
-		return model;
 	}
 	
 	@Override

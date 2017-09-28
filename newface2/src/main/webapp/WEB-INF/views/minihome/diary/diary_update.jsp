@@ -23,10 +23,10 @@
 			<td><input type="text" name="title" id="title" placeholder="제목" value="${requestScope.vo.title }"></td>
 		</tr>
 		<tr>
-			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:412px;">${requestScope.vo.content }</textarea></td>
+			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:302px;">${requestScope.vo.content }</textarea></td>
 		</tr>
 	</table>
-	<select name="type">
+	<select name="type" id="type">
 		<option value="전체공개">전체공개</option>
 		<option value="1촌공개">1촌공개</option>
 		<option value="비공개">비공개</option>

@@ -67,7 +67,7 @@
 	<c:forEach var="vo" items="${requestScope.list }">
 		<hr>
 		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
-			<div class="chk"><input type="checkbox" name="num" class="num" value="${vo.diary_num }"></div>
+			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
 		<div class="num">${vo.rownum }</div>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
@@ -92,11 +92,5 @@
 	<input type="button" value="완료" id="moveOk">
 	<input type="button" value="닫기" id="close">
 </div>
-<a class="test" id="실화냐">클릭</a>
-<script>
-	$(".test").on("click",function(){
-		$(this).css("color","red");
-	});
-</script>
 
  

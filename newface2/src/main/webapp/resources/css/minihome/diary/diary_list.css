@@ -6,31 +6,28 @@
 	margin:auto; width: 634px; height: 568; text-align: center; margin-top: 10px;
 }
 #title_back{
-	display: inline-block; background-color: #d2d2d2;
+	display: inline-block; background-color: #d2d2d2; width: 100%
 }
 #write{
 	display: inline-block; margin-left: 580px; margin-top: 20px;
 }
 .chk{
-	display: inline-block; width: 25px; height:25px; 
-}
-.num{
-	display: inline-block; width: 50px; height:25px;
+	display: inline-block; width: 25px; height:25px;  text-align: center;
 }
 #title{
-	display: inline-block; width: 280px; height:25px; text-align: center;
+	display: inline-block; width: 280px; height:25px; text-align: center; 
 } 
 .title{	
 	display: inline-block; width: 280px; height:25px; text-align: left; 	
 } 
 .name{
-	display: inline-block; width: 100px; height:25px;
+	display: inline-block; width: 100px; height:25px; text-align: center;
 }
 .regdate{
-	display: inline-block; width: 100px; height:25px;
+	display: inline-block; width: 100px; height:25px; text-align: center;
 }
 .love{
-	display: inline-block; width: 50px; height:25px;
+	display: inline-block; width: 50px; height:25px; text-align: center;
 }
 a{
 	text-decoration: none; color: black;
