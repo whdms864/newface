@@ -2,25 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<form method="post" action="<c:url value='/notiadmin_insert'/>">
+	<form method="post" action="<c:url value='/notiadmin_updateok'/>">
 	<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
 		<div style="margin-left: 67px;">
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">제목</label>
 				<br>
-				<input type="text" name="title" id="title" class="form-control" style="width:500px;">
+				<input type="hidden" name="noti_num" value="${vo.noti_num }">
+				<input type="text" name="title" id="title" class="form-control" style="width:500px;" value="${vo.title }">
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1" >작성자</label>
+				<label class="control-label" for="inputWarning1">작성자</label>
 				<br>
-				<input type="text" name="id" id="id" class="form-control" style="width:500px;" value="${sessionScope.loginid }" readonly="readonly">
+				<input type="text" name="id" id="id" class="form-control" style="width:500px;" value="${vo.id }" readonly="readonly">
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">내용</label>
 				<br>
-				<textarea rows="10" cols="65" name="content" class="form-control" ></textarea>
+				<textarea rows="10" cols="65" name="content" class="form-control">${vo.content }</textarea>
 			</div>
 		</div>
 	</div>

@@ -20,4 +20,16 @@ public class NotiDao {
 	public List<NotiVo> notilist(){
 		return sqlSession.selectList(NAMESPACE+".notilist");
 	}
+	
+	public NotiVo notigetinfo(int noti_num){
+		return sqlSession.selectOne(NAMESPACE+".notigetinfo",noti_num);
+	}
+	
+	public int notiupdate(NotiVo vo) {
+		return sqlSession.insert(NAMESPACE + ".notiupdate",vo);
+	}
+	
+	public int notidelete(int noti_num) {
+		return sqlSession.delete(NAMESPACE + ".notidelete",noti_num);
+	}
 }

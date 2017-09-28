@@ -5,19 +5,16 @@
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 		  		<tr class="success">
 		  			<th>No.</th>
-		  			<th>아이디</th>
 		  			<th>제목</th>
+		  			<th>작성자</th>
 		  			<th>등록일</th>
-		  			<th>상세보기</th>
 		  		</tr>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
-			  			<td>${vo.qna11_num}</td>
+			  			<td>${vo.noti_num}</td>
+			  			<td><a href="<c:url value='/notigetinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
 			  			<td>${vo.id}</td>
-			  			<td>${vo.title}</td>
 			  			<td>${vo.regdate}</td>
-			  			<td>${vo.confirm}</td>
-			  			<td><a href="<c:url value=''/>">보기</a></td>
 			  		</tr>
 			  	</c:forEach>
 		</table>

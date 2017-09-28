@@ -22,4 +22,16 @@ public class NotiService {
 	public List<NotiVo> list(){
 		return dao.notilist();
 	}
+	
+	public NotiVo notigetinfo(int noti_num){
+		return dao.notigetinfo(noti_num);
+	}
+	
+	public int notiupdate(NotiVo vo) {
+		return dao.notiupdate(vo);
+	}
+	
+	public int notidelete(int noti_num) {
+		return dao.notidelete(noti_num);
+	}
 }

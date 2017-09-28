@@ -6,12 +6,12 @@ public class NotiVo {
 	private int noti_num;
 	private String title;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private String id;
 	
 	public NotiVo() {}
 
-	public NotiVo(int noti_num, String title, String content, Date regdate, String id) {
+	public NotiVo(int noti_num, String title, String content, String regdate, String id) {
 		super();
 		this.noti_num = noti_num;
 		this.title = title;
@@ -44,11 +44,11 @@ public class NotiVo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

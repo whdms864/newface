@@ -10,4 +10,16 @@
 	<select id="notilist" resultType="noti">
 		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti
 	</select>
+	
+	<select id="notigetinfo" resultType="noti" parameterType="int">
+		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti where noti_num=#{noti_num} 
+	</select>
+	
+	<update id="notiupdate" parameterType="noti">
+		update noti set title=#{title}, content=#{content} where noti_num=#{noti_num}	
+	</update>
+	
+	<delete id="notidelete" parameterType="int">
+		delete from noti where noti_num=#{noti_num}
+	</delete>
 </mapper>  
