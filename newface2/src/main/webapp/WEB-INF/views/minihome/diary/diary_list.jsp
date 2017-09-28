@@ -1,17 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=133'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=13'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
-		//체크박스
+		//체크박스 전체 선택/해제
 		$("#chk_all").click(function(){
 			var chk=$("#chk_all").prop("checked");
 			if(chk){
-				$(".num").prop('checked',true);						
+				$("input[name=num]:checkbox").each(function() {
+					$(this).attr("checked", true);
+				});						
 			}else{
-				$(".num").prop('checked',false);	
+				$("input[name=num]:checkbox").each(function() {
+					$(this).attr("checked", false);
+				});	
 			}
 		});
 		
@@ -27,7 +30,7 @@
 		var diary_nums=[];
 		$("#moveOk").click(function(){
 			var diary_folder_num=$("#select").val();
-			$(".num:checked").each(function(){
+			$("input[name=num]:checked").each(function(){
 				diary_nums.unshift($(this).val());
 			});
 			var url="<c:url value='/diary/folder_moves?diary_nums=" + diary_nums + "&diary_folder_num=" + diary_folder_num + "'/>";
@@ -39,13 +42,13 @@
 		var diary_nums=[];
 		$("#delete").click(function(){
 			var diary_folder_num=$("#diary_folder_num").val();
-			$(".num:checked").each(function(){
+			$("input[name=num]:checked").each(function(){
 				diary_nums.unshift($(this).val());
 			});
 			var url="<c:url value='/diary/deletes?diary_nums="+ diary_nums +"&diary_folder_num=" + diary_folder_num + "'/>";
 			$(location).attr("href",url);
-		});	
-	});		
+		});
+	});
 </script>
 <input type="hidden" id="diary_folder_num" value="${requestScope.diary_folder_num }">
 <div id="write">

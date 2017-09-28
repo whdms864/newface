@@ -454,26 +454,6 @@
 	    elDropArea.removeEventListener("drop", drop, false);	
 	}
  	
-	/**
-	 * Ajax 통신 시 error가 발생할 때 처리하는 함수입니다.
-	 * @return
-	 */
-	function onAjaxError (){
-		alert("[가이드]사진 업로더할 서버URL셋팅이 필요합니다.-onAjaxError");
-	}
-
- 	/**
-      * 이미지 업로드 시작
-      * 확인 버튼 클릭하면 호출되는 msg
-      */
-     function uploadImage (e){
-    	 if(!bSupportDragAndDropAPI){
-    		 generalUpload();
-    	 }else{
-    		 html5Upload();
-    	 }
-     }
-     
  	/**
  	 * jindo에 파일 업로드 사용.(iframe에 Form을 Submit하여 리프레시없이 파일을 업로드하는 컴포넌트)
  	 */

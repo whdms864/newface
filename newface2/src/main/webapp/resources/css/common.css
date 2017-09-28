@@ -2,18 +2,11 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	border: 0;
 }
 html[lang^="ko"] {
 	font-family: "Nanum Gothic", "나눔 고딕", "NanumGothic", sans-serif;
 }
 /* content */
-body {
-	width: 980px;
-	margin: 0 auto;
-	margin-top: 5px;
-	min-height: 770px;
-}
 form {
 	margin-top: 20px;
 	line-height: 2;

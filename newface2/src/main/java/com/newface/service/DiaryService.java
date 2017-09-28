@@ -95,13 +95,13 @@ public class DiaryService {
 	public int hompy_is(HompyVo vo) {
 		return dao.hompy_is(vo);
 	}
-	public List<CalendarListVo> calendar_m(CalendarListVo vo){
-		return dao.calendar_m(vo);
+	public List<CalendarListVo> group_m(CalendarListVo vo){
+		return dao.group_m(vo);
 	}
-	public List<CalendarListVo> calendar_list(CalendarListVo vo){
-		return dao.calendar_list(vo);
+	public List<CalendarListVo> get_m(CalendarListVo vo){
+		return dao.get_m(vo);
 	}
-	public CalendarListVo get_cal(int diary_num) {
-		return dao.get_cal(diary_num);
+	public CalendarListVo diary_m(int diary_num) {
+		return dao.diary_m(diary_num);
 	}
 }

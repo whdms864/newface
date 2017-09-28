@@ -24,7 +24,7 @@
 					$("#dd").append(i + "  ");								
 				}				
 			}
-			css_d();
+
 		});
 		$("#before").click(function(){
 			var year=$(".y").html();
@@ -47,7 +47,7 @@
 					}				
 				}
 			});
-			css_d();
+		
 		});
 		$("#after").click(function(){
 			var year=$(".y").html();
@@ -70,21 +70,10 @@
 					}				
 				}
 			});
-			css_d();
-		});
-		//////////////////////////////////////////
-		var diary_num=$("#diary_num").val();
-		function css_d() {
-			$.getJSON("<c:url value='/calendar_list'/>",{"diary_num":diary_num},function(data){
-				$(data).each(function(i,cal){
-					console.log(cal.d);
-				});	
-			});
-		}
 		
+		});		
 		
-		
-   //수정
+   		//수정
 	    $('.trigger').click(function(){    	
 	    	var num=$(this).attr("id"); 
 	    	var content=$("#content" + num).html();

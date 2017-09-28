@@ -28,19 +28,19 @@ import com.newface.vo.HompyVo;
 public class DiaryController {
 	@Autowired DiaryService service;
 	
-	//달력 해당날짜 데이터 얻어오기
-	@RequestMapping(value = "/calendar_list")
+	// 해당 달에 있는 다이어리 모든 날짜 구하기
+	@RequestMapping(value = "/get_date")
 	@ResponseBody
-	public String calendar_list(int diary_num, HttpSession session) {		
+	public String get_date(int diary_num, HttpSession session) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		CalendarListVo ym=service.get_cal(diary_num);
-		CalendarListVo cal=new CalendarListVo(hompy_num, 0, null, ym.getY(), ym.getM(), null);
-		List<CalendarListVo> list=service.calendar_m(cal);
+		CalendarListVo vo=service.diary_m(diary_num);
+		vo.setHompy_num(hompy_num);
+		List<CalendarListVo> list=service.group_m(vo);
 		
 		JSONArray arr=new JSONArray();
-		for(CalendarListVo vo:list) {
+		for(CalendarListVo cal:list) {
 			JSONObject json = new JSONObject();
-			json.put("d", vo.getD());
+			json.put("d", cal.getD());
 			arr.add(json);
 		}
 		return arr.toString();
@@ -56,11 +56,6 @@ public class DiaryController {
 		int date = auto.getDate();
 		int lastdate = auto.getLastdate();
 		String week = auto.getWeek();
-		
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		String m=String.valueOf(month);
-		CalendarListVo cal=new CalendarListVo(hompy_num, 0, null, null, m, null);
-		List<CalendarListVo> cal_list=service.calendar_m(cal);
 		
 		JSONObject json = new JSONObject();
 		json.put("year", year);
