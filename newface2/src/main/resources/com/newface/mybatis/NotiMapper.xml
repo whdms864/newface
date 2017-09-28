@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="notilist" resultType="noti">
-		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti
+		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti order by noti_num desc;
 	</select>
 	
 	<select id="notigetinfo" resultType="noti" parameterType="int">

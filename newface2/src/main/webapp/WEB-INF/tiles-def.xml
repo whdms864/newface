@@ -115,7 +115,15 @@
 		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
 	</definition>
 	
+	<!-- 공지사항 -->
+	<definition name=".noti_list" extends=".qna11_insert">
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/noti/tab.jsp"/>
+		<put-attribute name="con" value="/WEB-INF/views/homepage/noti/list.jsp"/>
+	</definition>
 	
+	<definition name=".noti_getinfo" extends=".noti_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/noti/getinfo.jsp"/>
+	</definition>
 	
 	<!-- 관리자 -->
 	<definition name=".admin" template="/WEB-INF/views/homepage/admin/layout.jsp">
@@ -148,21 +156,21 @@
 	
 	
 	
-	<!-- 공지사항 -->
-	<definition name=".notilist" extends=".qna11admin">
+	<!-- 공지사항 관리자-->
+	<definition name=".notiadmin_list" extends=".qna11admin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
 		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/noti/tab.jsp"/>
 	</definition>
 	
-	<definition name=".notigetinfo" extends=".notilist">
+	<definition name=".notiadmin_getinfo" extends=".notiadmin_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/getinfo.jsp"/>
 	</definition>
 	
-	<definition name=".notiadmin_insert" extends=".notilist">
+	<definition name=".notiadmin_insert" extends=".notiadmin_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
 	</definition>
 	
-	<definition name=".notiadmin_update" extends=".notilist">
+	<definition name=".notiadmin_update" extends=".notiadmin_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/update.jsp"/>
 	</definition>
 	

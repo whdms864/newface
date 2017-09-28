@@ -20,7 +20,7 @@
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">내용</label>
 				<br>
-				<textarea rows="10" cols="65" name="content" class="form-control" ></textarea>
+				<textarea rows="17" cols="65" name="content" class="form-control" ></textarea>
 			</div>
 		</div>
 	</div>

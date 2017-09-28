@@ -12,7 +12,7 @@
 </script>
 <ul>
 	<li>
-		<a href="<c:url value='/noti/list'/>"style="margin-top: 0px;">공지사항</a>
+		<a href="<c:url value='/notiadmin_list'/>"style="margin-top: 0px;">공지사항</a>
 	</li>
 	<li>
 		<a href="<c:url value='/adadmin'/>" >광고관리</a>

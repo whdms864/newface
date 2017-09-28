@@ -5,6 +5,5 @@
 		<label style="font-weight:bold;font-size:25px;">공지사항</label>
 	</div>
 	<ul>
-	    <li><a href="<c:url value='/notiadmin_list'/>"style="margin-left:0px;">목록</a></li>
-	    <li><a href="<c:url value='/notiadmin_insert'/>">작성</a></li>
+	    <li><a href="<c:url value='/qna11/getinfo'/>"style="margin-left:0px;">목록</a></li>
 	</ul>

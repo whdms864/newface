@@ -15,30 +15,34 @@ import com.newface.vo.NotiVo;
 public class NotiController {
 	@Autowired private NotiService service;
 	
-	@RequestMapping(value = "/noti/list", method = RequestMethod.GET)
-	public String notilist(Model model) {
+	@RequestMapping(value = "/notiadmin_list", method = RequestMethod.GET)
+	public String notiadmin_list(Model model) {
 		List<NotiVo> list=service.list();
 		model.addAttribute("list",list);
-		return ".notilist";
+		return ".notiadmin_list";
 	}
 	
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.GET)
-	public String ndmininsertform() {
+	public String notiadmin_insertform() {
 		return ".notiadmin_insert";
 	}
 	
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.POST)
 	public String nadmininsert(NotiVo vo) {
 		service.insert(vo);
-		return ".notilist";
+		return "redirect:/notiadmin_list";
 	}
 	
-	@RequestMapping(value="/notigetinfo", method=RequestMethod.GET)
-	public String notigetinfo(Model model,int noti_num) {
+	@RequestMapping(value="/notiadmin_getinfo", method=RequestMethod.GET)
+	public String notiadmin_getinfo(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
+		String content=vo.getContent();
+		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
+		vo.setContent(content);	
+		
 		model.addAttribute("vo", vo);
-		return ".notigetinfo";
+		return ".notiadmin_getinfo";
 		
 	}
 	
@@ -51,14 +55,35 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value = "/notiadmin_updateok", method = RequestMethod.POST)
-	public String notiupdate(NotiVo vo) {
+	public String notiadmin_update(NotiVo vo) {
 		service.notiupdate(vo);
-		return "redirect:/notigetinfo?noti_num=" + vo.getNoti_num();
+		return "redirect:/notiadmin_getinfo?noti_num=" + vo.getNoti_num();
 	}
 	
 	@RequestMapping(value = "/notiadmin_delete", method = RequestMethod.GET)
-	public String notidelete(int noti_num) {
+	public String notiadmin_delete(int noti_num) {
 		service.notidelete(noti_num);
-		return "redirect:/noti/list";
+		return "redirect:/notiadmin_list";
+	}
+	
+	@RequestMapping(value = "/noti_list", method = RequestMethod.GET)
+	public String noti_list(Model model) {
+		List<NotiVo> list=service.list();
+		model.addAttribute("list",list);
+		return ".noti_list";
+	}
+	
+	
+	@RequestMapping(value="/noti_getinfo", method=RequestMethod.GET)
+	public String noti_getinfo(Model model,int noti_num) {
+		NotiVo vo=service.notigetinfo(noti_num);
+		
+		String content=vo.getContent();
+		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
+		vo.setContent(content);	
+		
+		model.addAttribute("vo", vo);
+		return ".noti_getinfo";
+		
 	}
 }
