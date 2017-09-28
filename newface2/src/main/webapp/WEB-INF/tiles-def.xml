@@ -158,11 +158,19 @@
 	</definition>
 	
 	
-	<!--  -->
-	<definition name=".marketadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/marketadmin.jsp"/>
+	<!-- 마켓관리 -->
+	<definition name=".marketadmin" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/list.jsp"/>
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/market/tab.jsp"/>
+	</definition>
+	<definition name=".marketadmin_insert_item" extends=".marketadmin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_item.jsp"/>
+	</definition>
+	<definition name=".marketadmin_insert_cate" extends=".marketadmin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_cate.jsp"/>
 	</definition>
 	
+	<!--  -->
 	<definition name=".memadmin" extends=".admin">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/memadmin.jsp"/>
 	</definition>
