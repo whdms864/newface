@@ -20,6 +20,8 @@
   	<typeAlias type="com.newface.vo.AdminVo" alias="admin"/>
   	<typeAlias type="com.newface.vo.GuestcomlistVo" alias="Guestcom"/>
   	<typeAlias type="com.newface.vo.NotiVo" alias="noti"/>
+  	<typeAlias type="com.newface.vo.ItemVo" alias="item"/>
+  	<typeAlias type="com.newface.vo.CategoryVo" alias="category"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
