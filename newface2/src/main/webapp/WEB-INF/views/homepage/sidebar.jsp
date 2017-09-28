@@ -126,7 +126,4 @@ function getCookie(cookieName) {
 		</div>
 	</div>
 </div>
-<div>
-	<a href="<c:url value='/admin'/>">admin</a>
-</div>
 
