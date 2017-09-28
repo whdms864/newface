@@ -7,9 +7,9 @@
 		insert into guestbook values(0,#{content},#{secret},now(),#{id},#{hompy_num})
 	</insert>
 	<select id="list_all" resultType="Guestlist">
-		select a.name,b.guest_num,b.content,b.secret,date_format(b.regdate,'%Y/%c/%e') as regdate
+		select a.name,b.id,b.guest_num,b.content,b.secret,date_format(b.regdate,'%Y/%c/%e') as regdate
 		from member as a join guestbook as b
-		on a.id=b.id order by b.guest_num desc
+		on a.id=b.id order by b.guest_num desc limit #{startRow},#{endRow}
 	</select>
 	<update id="secret" parameterType="hashmap">
 		update guestbook set secret=#{value} where guest_num=#{guest_num}
@@ -27,8 +27,14 @@
 		insert into guestbook_com values(0,#{content},now(),#{guest_num},#{id})
 	</insert>
 	<select id="com_list" resultType="Guestcom">
-		select a.name,b.guest_num,b.content,date_format(b.regdate,'%Y.%c.%e') as regdate
+		select a.name,b.guest_com_num,b.id,b.guest_num,b.content,date_format(b.regdate,'%Y/%c/%e') as regdate
 		from member as a join guestbook_com as b
 		on a.id=b.id order by b.guest_num desc;
+	</select>
+	<delete id="com_delete" parameterType="int">
+		delete from guestbook_com where guest_com_num=#{guest_com_num}
+	</delete>
+	<select id="count" resultType="int" parameterType="hashmap">
+		select coalesce(count(guest_num),0) from guestbook;
 	</select>
 </mapper>   

@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newface.page.PageUtil;
 import com.newface.service.GuestbookService;
 import com.newface.vo.GuestbookVo;
 import com.newface.vo.GuestbookcomVo;
@@ -38,13 +40,19 @@ public class GuestBookController {
 			return ".code";
 		}
 	}
-	@RequestMapping(value = "/guest/list_all", method = RequestMethod.GET)
-	public String list_all(Model model,HttpSession session) {
+	@RequestMapping("/guest/list_all")
+	public String list_all(@RequestParam(value="pageNum",defaultValue="0") int pageNum,Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num = ((Integer)(session.getAttribute("hompy_num"))).intValue();
-		List<GuestbooklistVo> list=service.list_all();
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount(map);
+		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<GuestbooklistVo> list=service.list_all(map);
 		if(list!=null) {
 			model.addAttribute("list",list);
+			model.addAttribute("pu",pu);
 			return "forward:/guest/com_list";
 		}else {
 			model.addAttribute("code","¿À·ù");
@@ -112,6 +120,16 @@ public class GuestBookController {
 		if(list1 != null) {
 			model.addAttribute("list1",list1);
 			return ".guestbook";
+		}else {
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/guest/com_delete")
+	public String com_delete(HttpServletRequest request) {
+		int guest_com_num=Integer.parseInt(request.getParameter("guest_com_num"));
+		int n=service.com_delete(guest_com_num);
+		if(n>0) {
+			return "redirect:/guest/list_all";
 		}else {
 			return ".code";
 		}

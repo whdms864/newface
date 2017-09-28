@@ -18,8 +18,8 @@ public class GuestbookService {
 	public int insert(GuestbookVo vo) {
 		return dao.insert(vo);
 	}
-	public List<GuestbooklistVo> list_all(){
-		return dao.list_all();
+	public List<GuestbooklistVo> list_all(HashMap<String,Object> map){
+		return dao.list_all(map);
 	}
 	public int secret(HashMap<String,Object> map) {
 		return dao.secret(map);
@@ -38,5 +38,11 @@ public class GuestbookService {
 	}
 	public List<GuestcomlistVo> com_list(){
 		return dao.com_list();
+	}
+	public int com_delete(int guest_com_num) {
+		return dao.com_delete(guest_com_num);
+	}
+	public int getCount(HashMap<String,Object> map) {
+		return dao.getCount(map);
 	}
 }

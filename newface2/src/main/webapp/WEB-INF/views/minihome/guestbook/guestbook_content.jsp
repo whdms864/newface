@@ -88,10 +88,43 @@
 					<c:if test="${vo1.guest_num eq vo.guest_num}">
 						<div class="c_name">
 							<a href="">${vo1.name } :</a> ${vo1.content }
+							<div style="display:inline;font-size:9px;color:gray;">( ${vo1.regdate } )</div>&nbsp;
+							<c:if test="${sessionScope.loginid == vo1.id}">
+							<a href="<c:url value='/guest/com_delete?guest_com_num=${vo1.guest_com_num }'/>"><img src="<c:url value='/resources/images/minihome/comment_delete1.png'/>" style="position:absolute;margin-top:2px;"></a>
+						</c:if>
 						</div>
 					</c:if>
 				</c:forEach>
 			</div>
 		</div>
 	</c:forEach>
+<div style="position:relative;">
+	<c:choose>
+		<c:when test="${pu.startPageNum>5 }">
+			<a href="<c:url value='/guest/all_list?pageNum=${pu.startPageNum-1 }'/>">[이전]</a>
+		</c:when>
+		<c:otherwise>
+			[이전]
+		</c:otherwise>
+	</c:choose>
+	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
+		<c:choose>
+			<c:when test="${i==pu.pageNum }">
+				<a href="<c:url value='/guest/list_all?pageNum=${i }'/>"><span style="color:blue">[${i }]</span></a>
+			</c:when>
+			<c:otherwise>
+				<a href="<c:url value='/guest/list_all?pageNum=${i }'/>"><span style="color:gray">[${i }]</span></a>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<!-- 다음 -->
+	<c:choose>
+	<c:when test="${pu.endPageNum<pu.totalPageCount}">
+		<a href="<c:url value='/guest/all_list?pageNum=${pu.endPageNum+1 }'/>">[다음]</a>
+	</c:when>
+	<c:otherwise>
+		[다음]
+	</c:otherwise>
+</c:choose>
+</div>
 </div>

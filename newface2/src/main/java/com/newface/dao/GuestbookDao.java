@@ -21,8 +21,8 @@ public class GuestbookDao {
 		return sqlSession.insert(NAMESPACE+".insert",vo);
 	}
 	
-	public List<GuestbooklistVo> list_all(){
-		return sqlSession.selectList(NAMESPACE+".list_all");
+	public List<GuestbooklistVo> list_all(HashMap<String,Object> map){
+		return sqlSession.selectList(NAMESPACE+".list_all",map);
 	}
 	public int secret(HashMap<String,Object> map) {
 		return sqlSession.update(NAMESPACE+".secret",map);
@@ -41,5 +41,11 @@ public class GuestbookDao {
 	}
 	public List<GuestcomlistVo> com_list(){
 		return sqlSession.selectList(NAMESPACE+".com_list");
+	}
+	public int com_delete(int guest_com_num) {
+		return sqlSession.delete(NAMESPACE+".com_delete",guest_com_num);
+	}
+	public int getCount(HashMap<String,Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".count",map);
 	}
 }
