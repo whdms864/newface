@@ -30,5 +30,6 @@
   	<mapper resource="com/newface/mybatis/Qna11Mapper.xml"/>
   	<mapper resource="com/newface/mybatis/GuestbookMapper.xml"/>
   	<mapper resource="com/newface/mybatis/NotiMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/MarketMapper.xml"/>
   </mappers>
 </configuration>

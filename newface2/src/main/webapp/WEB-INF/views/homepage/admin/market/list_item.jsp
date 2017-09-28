@@ -5,20 +5,24 @@
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 		  		<tr class="success">
 		  			<th>No.</th>
-		  			<th>아이디</th>
-		  			<th>제목</th>
+		  			<th>이미지</th>
+		  			<th>상품명</th>
+		  			<th>상세내용</th>
+		  			<th>가격</th>
 		  			<th>등록일</th>
-		  			<th>상태</th>
-		  			<th>상세보기</th>
 		  		</tr>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
-			  			<td>${vo.qna11_num}</td>
-			  			<td>${vo.id}</td>
-			  			<td>${vo.title}</td>
+			  			<td>${vo.item_num}</td>
+			  			<td>이미지</td>
+			  			<td>
+			  				<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">
+			  					${vo.name}
+			  				</a>
+			  			</td>
+			  			<td>${vo.pay}</td>
+			  			<td>${vo.content}</td>
 			  			<td>${vo.regdate}</td>
-			  			<td>${vo.confirm}</td>
-			  			<td><a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">보기</a></td>
 			  		</tr>
 			  	</c:forEach>
 		</table>

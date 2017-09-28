@@ -21,7 +21,7 @@
 		<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
 	</li>
 	<li>
-		<a href="<c:url value='/market/admin/list'/>">마켓관리</a>
+		<a href="<c:url value='/market/admin/item/list'/>">마켓관리</a>
 	</li>
 	<li>
 		<a href="<c:url value='/memadmin'/>" >회원관리</a>

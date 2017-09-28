@@ -2,17 +2,24 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.newface.mybatis.Qna11Mapper">
+<mapper namespace="com.newface.mybatis.MarketMapper">
 	<insert id="insert_cate" parameterType="category">
 		insert into category values(0,#{name})
 	</insert>
 	<insert id="insert_item" parameterType="item">
 		insert into category values(0,#{pay},#{name},#{content},now(),#{org_name},#{save_name},#{category_num})
 	</insert>
-	<select id="list" resultType="qna11">
-		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11
+	<select id="list_cate" resultType="category">
+		select * from category
 	</select>
-	<select id="getinfo" resultType="qna11" parameterType="string">
-		select qna11_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,confirm,id from qna11 where id=#{id}
+	<select id="list_item" resultType="item">
+		select item_num,pay,name,content,date_format(regdate,'%Y-%m-%d') regdate,org_name,save_name,category_num from item
+	</select>
+	<select id="getinfo_cate" resultType="category" parameterType="int">
+		select * from category where category_num=#{value}
+	</select>
+	<select id="getinfo_item" resultType="item" parameterType="int">
+		select item_num,pay,name,content,date_format(regdate,'%Y-%m-%d') regdate,org_name,save_name,category_num from item 
+		where item_num=#{value}
 	</select>
 </mapper>  
