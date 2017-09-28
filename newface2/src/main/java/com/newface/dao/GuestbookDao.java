@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.GuestbookVo;
+import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
+import com.newface.vo.GuestcomlistVo;
 
 @Repository
 public class GuestbookDao {
@@ -33,5 +35,11 @@ public class GuestbookDao {
 	}
 	public int updateok(GuestbookVo vo) {
 		return sqlSession.update(NAMESPACE+".updateok",vo);
+	}
+	public int com_insert(GuestbookcomVo vo) {
+		return sqlSession.insert(NAMESPACE+".com_insert",vo);
+	}
+	public List<GuestcomlistVo> com_list(){
+		return sqlSession.selectList(NAMESPACE+".com_list");
 	}
 }

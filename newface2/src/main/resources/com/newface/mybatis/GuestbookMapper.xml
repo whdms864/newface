@@ -23,4 +23,12 @@
 	<update id="updateok" parameterType="Guest">
 		update guestbook set content=#{content},secret=#{secret} where guest_num=#{guest_num}
 	</update>
+	<insert id="com_insert" parameterType="Guestcom">
+		insert into guestbook_com values(0,#{content},now(),#{guest_num},#{id})
+	</insert>
+	<select id="com_list" resultType="Guestcom">
+		select a.name,b.guest_num,b.content,date_format(b.regdate,'%Y.%c.%e') as regdate
+		from member as a join guestbook_com as b
+		on a.id=b.id order by b.guest_num desc;
+	</select>
 </mapper>   

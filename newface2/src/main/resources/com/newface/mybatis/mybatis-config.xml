@@ -18,6 +18,7 @@
   	<typeAlias type="com.newface.vo.GuestbooklistVo" alias="Guestlist"/>
   	<typeAlias type="com.newface.vo.DiaryListVo" alias="diarylist"/>
   	<typeAlias type="com.newface.vo.AdminVo" alias="admin"/>
+  	<typeAlias type="com.newface.vo.GuestcomlistVo" alias="Guestcom"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>

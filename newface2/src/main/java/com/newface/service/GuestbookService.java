@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.GuestbookDao;
 import com.newface.vo.GuestbookVo;
+import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
+import com.newface.vo.GuestcomlistVo;
 
 @Service
 public class GuestbookService {
@@ -30,5 +32,11 @@ public class GuestbookService {
 	}
 	public int updateok(GuestbookVo vo) {
 		return dao.updateok(vo);
+	}
+	public int com_insert(GuestbookcomVo vo) {
+		return dao.com_insert(vo);
+	}
+	public List<GuestcomlistVo> com_list(){
+		return dao.com_list();
 	}
 }

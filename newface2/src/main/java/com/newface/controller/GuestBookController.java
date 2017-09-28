@@ -11,10 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.GuestbookService;
 import com.newface.vo.GuestbookVo;
+import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
+import com.newface.vo.GuestcomlistVo;
 
 @Controller
 public class GuestBookController {
@@ -42,7 +45,7 @@ public class GuestBookController {
 		List<GuestbooklistVo> list=service.list_all();
 		if(list!=null) {
 			model.addAttribute("list",list);
-			return ".guestbook";
+			return "forward:/guest/com_list";
 		}else {
 			model.addAttribute("code","¿À·ù");
 			model.addAttribute("url","/guestbook");
@@ -90,6 +93,25 @@ public class GuestBookController {
 		int n=service.updateok(vo);
 		if(n>0) {
 			return "redirect:/guest/list_all";
+		}else {
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/guest/com_insert",method = RequestMethod.POST)
+	public String com_insert(GuestbookcomVo vo) {
+		int n=service.com_insert(vo);
+		if(n>0) {
+			return "redirect:/guest/list_all";
+		}else {
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/guest/com_list")
+	public String com_list(Model model) {
+		List<GuestcomlistVo> list1=service.com_list();
+		if(list1 != null) {
+			model.addAttribute("list1",list1);
+			return ".guestbook";
 		}else {
 			return ".code";
 		}
