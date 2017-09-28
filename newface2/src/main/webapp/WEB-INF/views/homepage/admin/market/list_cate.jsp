@@ -5,23 +5,27 @@
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 		  		<tr class="success">
 		  			<th>No.</th>
-		  			<th>아이디</th>
-		  			<th>제목</th>
-		  			<th>등록일</th>
-		  			<th>상태</th>
-		  			<th>상세보기</th>
+		  			<th>카테고리</th>
 		  		</tr>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
-			  			<td>${vo.qna11_num}</td>
-			  			<td>${vo.id}</td>
-			  			<td>${vo.title}</td>
-			  			<td>${vo.regdate}</td>
-			  			<td>${vo.confirm}</td>
-			  			<td><a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">보기</a></td>
+			  			<td>${vo.category_num}</td>
+			  			<td>${vo.name}</td>
 			  		</tr>
 			  	</c:forEach>
 		</table>
+	</div>
+	<div align="left" style="position:absolute;top:540px;width: 100%;"">
+		<form method="post" id="f" name="f" action="<c:url value='/market/admin/cate/insertok'/>">
+			<div style="margin-left:35px;display: inline-block;">
+				<div class="form-group has-success" style="display: inline-block; ">
+					<label class="control-label" for="inputWarning1" style="float:left;margin-top: 5px;">카테고리</label>
+					<input type="text" name="title" id="title" class="form-control" style="width:520px;float:left;margin-left: 5px;">
+					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:80px; height:35px;float:left;margin-left: 5px;" > 
+				</div>
+			</div>
+		</form>
 	</div>
 	<div style="position:absolute;top:600px;width: 100%;"align="center">
 		<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>
