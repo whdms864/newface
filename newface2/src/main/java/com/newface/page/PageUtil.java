@@ -21,15 +21,15 @@ public class PageUtil {
 		this.totalRowCount = totalRowCount;
 		
 		//시작행번호
-		startRow=(pageNum)*rowBlockCount;
+		startRow=(pageNum-1)*rowBlockCount;
 		//끝행번호
-		endRow=startRow+rowBlockCount;
+		endRow=5;
 		//전체페이지갯수
-		totalPageCount=(int)Math.ceil(totalRowCount/(double)rowBlockCount)-1;
+		totalPageCount=(int)Math.ceil(totalRowCount/(double)rowBlockCount);
 		//시작페이지번호
-		startPageNum=(pageNum)/pageBlockCount*pageBlockCount;
+		startPageNum=(pageNum-1)/pageBlockCount*pageBlockCount+1;
 		//끝페이지번호
-		endPageNum=startPageNum+pageBlockCount;
+		endPageNum=startPageNum+pageBlockCount-1;
 		if(endPageNum>totalPageCount) {
 			endPageNum=totalPageCount;
 		}

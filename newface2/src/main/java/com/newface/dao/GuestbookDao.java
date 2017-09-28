@@ -45,7 +45,10 @@ public class GuestbookDao {
 	public int com_delete(int guest_com_num) {
 		return sqlSession.delete(NAMESPACE+".com_delete",guest_com_num);
 	}
-	public int getCount(HashMap<String,Object> map) {
+/*	public int getCount(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".count",map);
+	}*/
+	public int getCount() {
+		return sqlSession.selectOne(NAMESPACE+".count");
 	}
 }

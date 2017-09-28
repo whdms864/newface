@@ -33,9 +33,7 @@ public class MarketController {
 		return ".marketadmin_list_cate";
 	}
 	@RequestMapping(value = "/market/admin/item/insert", method = RequestMethod.GET)
-	public String item_insertForm(int item_num,Model model) {
-		ItemVo vo=service.getinfo_item(item_num);
-		model.addAttribute("vo", vo);
+	public String item_insertForm(Model model) {
 		return ".marketadmin_insert_item";
 	}
 	@RequestMapping(value = "/market/admin/item/insertok", method = RequestMethod.POST)

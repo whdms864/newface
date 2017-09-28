@@ -34,7 +34,10 @@
 	<delete id="com_delete" parameterType="int">
 		delete from guestbook_com where guest_com_num=#{guest_com_num}
 	</delete>
-	<select id="count" resultType="int" parameterType="hashmap">
+	<!-- <select id="count" resultType="int" parameterType="hashmap">
+		select coalesce(count(guest_num),0) from guestbook;
+	</select> -->
+	<select id="count" resultType="int">
 		select coalesce(count(guest_num),0) from guestbook;
 	</select>
 </mapper>   

@@ -41,11 +41,12 @@ public class GuestBookController {
 		}
 	}
 	@RequestMapping("/guest/list_all")
-	public String list_all(@RequestParam(value="pageNum",defaultValue="0") int pageNum,Model model,HttpSession session) {
+	public String list_all(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num = ((Integer)(session.getAttribute("hompy_num"))).intValue();
+		
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount(map);
+		int totalRowCount=service.getCount();
 		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());

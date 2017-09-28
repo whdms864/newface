@@ -42,7 +42,10 @@ public class GuestbookService {
 	public int com_delete(int guest_com_num) {
 		return dao.com_delete(guest_com_num);
 	}
-	public int getCount(HashMap<String,Object> map) {
+/*	public int getCount(HashMap<String,Object> map) {
 		return dao.getCount(map);
+	}*/
+	public int getCount() {
+		return dao.getCount();
 	}
 }
