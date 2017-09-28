@@ -1,10 +1,13 @@
 @CHARSET "UTF-8";
-
+html[lang^="ko"] {
+	font-family: "Nanum Gothic", "나눔 고딕", "NanumGothic", sans-serif;
+}
 table {
 	border-collapse: collapse;
 	border-spacing: 0px;
 	margin-top: 20px;
 	width: 90%;
+	height: 80%;
 }
 td {
 	border: 1px solid #e0e0e0;
@@ -13,7 +16,13 @@ td {
 	padding: 5px;
 	line-height: 1.5;
 }
-#title{
-	width: 600px;
+input{
+	width: 500px;
 	margin-left: 5px;
+}
+select{
+	margin-left: 5px;
+}
+body{
+	overflow-y:hidden; 
 }
