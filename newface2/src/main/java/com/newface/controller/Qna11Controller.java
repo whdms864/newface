@@ -133,7 +133,7 @@ public class Qna11Controller {
 	public String admin_delete(int qna11_com_num,int qna11_num) {
 		service.com_delete(qna11_com_num);
 		
-		String confirm="2";//0:'대기' 1:'확인중' 2:'답변완료'
+		String confirm="1";//0:'대기' 1:'확인중' 2:'답변완료'
 		Qna11Vo vo=service.getinfo(qna11_num);
 		vo.setConfirm(confirm);
 		service.up_confirm(vo);
