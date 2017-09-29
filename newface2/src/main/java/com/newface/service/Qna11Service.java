@@ -15,8 +15,8 @@ public class Qna11Service {
 	public void setDao(Qna11Dao dao) {
 		this.dao = dao;
 	}
-	public List<Qna11Vo> getinfo(String id) {
-		return dao.getinfo(id);
+	public List<Qna11Vo> getinfo(HashMap<String,Object> map) {
+		return dao.getinfo(map);
 	}
 	public Qna11Vo getinfo(int qna11_num) {
 		return dao.getinfo(qna11_num);
@@ -35,6 +35,9 @@ public class Qna11Service {
 	}
 	public int getCount() {
 		return dao.getCount();
+	}
+	public int getCount(String id) {
+		return dao.getCount(id);
 	}
 	public int update(Qna11Vo vo) {
 		return dao.update(vo);

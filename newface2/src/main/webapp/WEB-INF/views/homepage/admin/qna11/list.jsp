@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<c:url value='/resources/css/paging_style.css?ver=1'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/paging_style.css'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -33,7 +33,13 @@
 		  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300px;">
 		  			<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a></td>
 		  			<td>${vo.regdate}</td>
-		  			<td>${vo.confirm}</td>
+		  			<td>
+			  			<c:choose>
+			  				<c:when test="${vo.confirm=='0'}">대기</c:when>
+			  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
+			  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
+			  			</c:choose>
+		  			</td>
 		  		</tr>
 		  	</c:forEach>
 		</table>
@@ -66,7 +72,6 @@
 			</c:choose>
 		</c:forEach>	
 		</div>
-		<div class="btnnext">▷▷</div>
 		<c:choose>
 			<c:when test="${pu.endPageNum<pu.totalPageCount}">
 				<a href="<c:url value='/qna11/admin/list?pageNum=${pu.endPageNum+1 }'/>">

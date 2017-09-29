@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
-		<div style="margin-left: 67px;">
-			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">제목</label>
-				<br>
-				<input type="text" name="title" id="title" class="form-control" value="${vo.title }" readonly="readonly"  style="width:500px;">
-			</div>
-			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">문의내용</label>
-				<br>
-				<textarea rows="10" cols="65" name="content" class="form-control" readonly="readonly" style="resize: none;">${vo.content }</textarea>
-			</div>
-		</div>
+	<div align="center">
+		<table class="table" style="width: 90%;margin-top: 20px;">
+		  		<tr class="success">
+		  			<td>No.${vo.qna11_num}</td>
+		  			<td>${vo.title}</td>
+		  		</tr>
+		  		<tr>
+		  			<td>작성자 : ${vo.id }</td>
+		  			<td>작성일 : ${vo.regdate }</td>
+			  	</tr>
+			  	<tr>
+		  			<td colspan="2" style="height:100px"><textarea rows="11" cols="91" name="content" readonly="readonly" style="resize: none;border-style:hidden;">${vo.content }</textarea></td>
+			  	</tr>
+		</table>
 	</div>
 	<div style="background-color: rgb(224, 224, 224);margin-top:10px;margin-left:10px;width: 97%; height:1px;"></div>
 	<div style="margin-top: 10px;background-color: rgb(239, 238, 238);width: 89%;height:33%;margin-left: 40px;padding: 10px;">

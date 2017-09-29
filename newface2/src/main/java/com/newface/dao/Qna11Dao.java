@@ -20,8 +20,8 @@ public class Qna11Dao {
 		this.sqlSession = sqlSession;
 	}
 	
-	public List<Qna11Vo> getinfo(String id) {
-		return sqlSession.selectList(NAMESPACE+".getinfo",id);
+	public List<Qna11Vo> getinfo(HashMap<String,Object> map) {
+		return sqlSession.selectList(NAMESPACE+".getinfo",map);
 	}
 	public Qna11Vo getinfo(int qna11_num) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo2",qna11_num);
@@ -56,5 +56,8 @@ public class Qna11Dao {
 	}
 	public int getCount() {
 		return sqlSession.selectOne(NAMESPACE+".count");
+	}
+	public int getCount(String id) {
+		return sqlSession.selectOne(NAMESPACE+".count_user",id);
 	}
 }

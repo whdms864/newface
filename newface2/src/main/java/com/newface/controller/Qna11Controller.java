@@ -33,10 +33,18 @@ public class Qna11Controller {
 		return "redirect:/qna11/getinfo";
 	}
 	@RequestMapping(value = "/qna11/getinfo", method = RequestMethod.GET)
-	public String getinfo(HttpSession session,Model model) {
+	public String getinfo(@RequestParam(value="pageNum",defaultValue="1") int pageNum,HttpSession session,Model model) {
 		String id=(String)session.getAttribute("loginid");
-		List<Qna11Vo> list=service.getinfo(id);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount(id);
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("id",id);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		
+		List<Qna11Vo> list=service.getinfo(map);
 		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
 		return ".qna11_getinfo";
 	}
 	@RequestMapping(value = "/qna11/detail", method = RequestMethod.GET)
@@ -84,8 +92,8 @@ public class Qna11Controller {
 		Qna11comVo comvo=service.com_getinfo(qna11_num);
 		
 		//상태변경
-		String confirm="확인중";
-		if(vo.getConfirm().equals("대기")) {
+		String confirm="1";//0:'대기' 1:'확인중' 2:'답변완료'
+		if(vo.getConfirm().equals("0")) {
 			vo.setConfirm(confirm);
 			service.up_confirm(vo);
 		}
@@ -99,9 +107,9 @@ public class Qna11Controller {
 		service.insert(comvo);
 		
 		//상태변경
-		String confirm="답변완료";
+		String confirm="2";//0:'대기' 1:'확인중' 2:'답변완료'
 		Qna11Vo vo=service.getinfo(comvo.getQna11_num());
-		if(vo.getConfirm().equals("확인중")) {
+		if(vo.getConfirm().equals("1")) {
 			vo.setConfirm(confirm);
 			service.up_confirm(vo);
 		}
@@ -125,7 +133,7 @@ public class Qna11Controller {
 	public String admin_delete(int qna11_com_num,int qna11_num) {
 		service.com_delete(qna11_com_num);
 		
-		String confirm="확인중";
+		String confirm="2";//0:'대기' 1:'확인중' 2:'답변완료'
 		Qna11Vo vo=service.getinfo(qna11_num);
 		vo.setConfirm(confirm);
 		service.up_confirm(vo);
