@@ -10,10 +10,12 @@ public class ItemVo {
 	private Date regdate;
 	private String org_name;
 	private String save_name;
+	private int category_num;
 	
 	public ItemVo() {}
 
-	public ItemVo(int item_num, int pay, String name, String content, Date regdate, String org_name, String save_name) {
+	public ItemVo(int item_num, int pay, String name, String content, Date regdate, String org_name, String save_name,
+			int category_num) {
 		super();
 		this.item_num = item_num;
 		this.pay = pay;
@@ -22,6 +24,7 @@ public class ItemVo {
 		this.regdate = regdate;
 		this.org_name = org_name;
 		this.save_name = save_name;
+		this.category_num = category_num;
 	}
 
 	public int getItem_num() {
@@ -79,4 +82,14 @@ public class ItemVo {
 	public void setSave_name(String save_name) {
 		this.save_name = save_name;
 	}
+
+	public int getCategory_num() {
+		return category_num;
+	}
+
+	public void setCategory_num(int category_num) {
+		this.category_num = category_num;
+	}
+
+	
 }

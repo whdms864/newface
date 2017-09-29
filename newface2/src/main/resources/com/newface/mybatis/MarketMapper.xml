@@ -7,7 +7,7 @@
 		insert into category values(0,#{name})
 	</insert>
 	<insert id="insert_item" parameterType="item">
-		insert into category values(0,#{pay},#{name},#{content},now(),#{org_name},#{save_name},#{category_num})
+		insert into item values(0,#{pay},#{name},#{content},now(),#{org_name},#{save_name},#{category_num})
 	</insert>
 	<select id="list_cate" resultType="category">
 		select * from category

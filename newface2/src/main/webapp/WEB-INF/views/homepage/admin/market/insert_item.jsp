@@ -9,11 +9,11 @@
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
 <div align="center">
-	<form action="<c:url value='/market/admin/item/insert'/>" method="post" id="frm">
+	<form action="<c:url value='/market/admin/item/insertok'/>" method="post" id="frm">
 		<table>
 			<tr>
-				<td>제목</td>
-				<td><input type="text" name="title" id="title" placeholder="제목"></td>
+				<td>상품명</td>
+				<td><input type="text" name="name" id="name" placeholder="제목"></td>
 			</tr>
 			<tr>
 				<td>카테고리</td>
@@ -37,7 +37,7 @@
 		</table>
 	<div style="position:absolute;top:600px;width: 98%;">
 			<div style="background-color: rgba(224, 224, 224, 0.78);width: 100%; height:1px;"></div>
-			<input type="submit" value="등록" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+			<input id="addBtn" type="submit" value="등록" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 			border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:12px;" > 
 	</div>
 	</form>

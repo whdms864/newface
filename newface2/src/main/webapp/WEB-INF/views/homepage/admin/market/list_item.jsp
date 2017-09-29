@@ -7,8 +7,8 @@
 		  			<th>No.</th>
 		  			<th>이미지</th>
 		  			<th>상품명</th>
-		  			<th>상세내용</th>
 		  			<th>가격</th>
+		  			<th>상세내용</th>
 		  			<th>등록일</th>
 		  		</tr>
 		  		<c:forEach var="vo" items="${list}">
@@ -16,7 +16,7 @@
 			  			<td>${vo.item_num}</td>
 			  			<td>이미지</td>
 			  			<td>
-			  				<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">
+			  				<a href="<c:url value='/qna11/admin/detail?'/>">
 			  					${vo.name}
 			  				</a>
 			  			</td>
@@ -26,6 +26,9 @@
 			  		</tr>
 			  	</c:forEach>
 		</table>
+		<div style="border: 1px solid red; width: 100px; height: 100px;">
+		${vo.content}
+		</div>
 	</div>
 	<div style="position:absolute;top:600px;width: 100%;"align="center">
 		<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>
