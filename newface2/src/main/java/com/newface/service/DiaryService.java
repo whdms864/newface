@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class DiaryService {
 	public int insert(DiaryVo vo) {
 		return dao.insert(vo);
 	}
-	public List<DiaryVo> folder_list(int diary_folder_num){
-		return dao.folder_list(diary_folder_num);
+	public List<DiaryVo> folder_list(HashMap<String, Integer> map){
+		return dao.folder_list(map);
 	}
 	public DiaryVo content(int diary_num) {
 		return dao.content(diary_num);
@@ -42,11 +43,16 @@ public class DiaryService {
 	public String id(int hompy_num) {
 		return dao.id(hompy_num);
 	}
-	public List<DiaryListVo> folder_basic_list(int hompy_num){
-		return dao.folder_basic_list(hompy_num);
+	public List<DiaryListVo> folder_basic_list(HashMap<String, Integer> map){
+		return dao.folder_basic_list(map);
 	}
-	public List<DiaryListVo> folder_all_list(int hompy_num){
-		return dao.folder_all_list(hompy_num);
+	public List<DiaryListVo> folder_all_list(HashMap<String, Integer> map){
+		return dao.folder_all_list(map);
+	}
+	public Double diary_all_count(int hompy_num) {
+		Double num=dao.diary_all_count(hompy_num);
+		num=Math.ceil(num/10.0);
+		return num;
 	}
 	public int update(DiaryVo vo) {
 		return dao.update(vo);

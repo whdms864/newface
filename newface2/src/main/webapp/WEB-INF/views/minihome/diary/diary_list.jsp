@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=13'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=133'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -51,10 +51,6 @@
 	});
 </script>
 <input type="hidden" id="diary_folder_num" value="${requestScope.diary_folder_num }">
-<div id="write">
-	<img alt='폴더사진' src="<c:url value='/resources/images/minihome/pensil.png'/>" id="icon">
-	<a href="<c:url value='/diary/insert?diary_folder_num=${requestScope.diary_folder_num }'/>">글쓰기</a><br>
-</div>
 <div id="diary_list_back">
 	<hr>
 	<div id="title_back">
@@ -80,9 +76,35 @@
 	</c:forEach> 
 	<hr>
 </div>
-<input type="button" id="move" value="이동">
-<input type="button" id="delete" value="삭제">
 
+<div id="page">
+	<c:choose>
+		<c:when test="${requestScope.pageNum>0 }">
+			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum-10 }'/>">▲</a>
+		</c:when>
+		<c:otherwise>
+			<a href="">△</a>		
+		</c:otherwise>
+	</c:choose>
+	<c:choose>
+		<c:when test="${requestScope.pageNum<requestScope.count }">
+			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum+10 }'/>">▼</a>
+		</c:when>
+		<c:otherwise>
+			<a href="">▽</a>		
+		</c:otherwise>
+	</c:choose>	
+	<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
+		<div id="write">
+			<img alt='폴더사진' src="<c:url value='/resources/images/minihome/pensil.png'/>">
+			<a href="<c:url value='/diary/insert?diary_folder_num=${requestScope.diary_folder_num }'/>">글쓰기</a>
+			<img alt='이동사진' src="<c:url value='/resources/images/minihome/move.png'/>">
+			<a id="move">이동</a>
+			<img alt='삭제사진' src="<c:url value='/resources/images/minihome/eraser.png'/>">
+			<a id="delete">삭제</a> 
+		</div>
+	</c:if>
+</div>
 
 <div id="overlay_t"></div> 
 <div id="popup_layer">

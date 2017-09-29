@@ -6,12 +6,13 @@
 	<insert id="insert" parameterType="diary">
 		insert into diary values(0,#{type},#{title},#{content},'일반',0,now(),#{diary_folder_num})
 	</insert>
-	<select id="folder_list" parameterType="int" resultType="diary">
+	<select id="folder_list" parameterType="hashmap" resultType="diary">
 		select *,@rownum:=@rownum+1 rownum  
 		from diary d join diary_folder f join (select @rownum:=0) r
 		on d.diary_folder_num=f.diary_folder_num 
-		where f.diary_folder_num=#{value}
+		where f.diary_folder_num=#{diary_folder_num}
 		order by rownum desc
+		limit #{pageNum},10
 	</select>
 	<select id="content" parameterType="int" resultType="diary">
 		select * from diary where diary_num=#{value}
@@ -28,23 +29,28 @@
 	<select id="id" parameterType="int" resultType="string">
 		select id from hompy where hompy_num=#{value}
 	</select>
-	<select id="folder_basic_list" parameterType="int" resultType="diarylist">
+	<select id="folder_basic_list" parameterType="hashmap" resultType="diarylist">
 		select d.diary_num,d.title,d.content, d.regdate,d.love,f.fname,f.diary_folder_num,@rownum:=@rownum+1 rownum,m.name 
 		from diary d join (select @rownum:=0) r join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		join hompy h on f.hompy_num=h.hompy_num  
 		join member m on h.id=m.id
-		where d.type='전체공개' and f.hompy_num=#{value}
-		order by rownum desc;
+		where d.type='전체공개' and f.hompy_num=#{hompy_num}
+		order by rownum desc
+		limit #{pageNum},10
 	</select>
-	<select id="folder_all_list" parameterType="int" resultType="diarylist">
+	<select id="folder_all_list" parameterType="hashmap" resultType="diarylist">
 		select d.diary_num,d.title,d.content, d.regdate,d.love,f.fname,f.diary_folder_num,@rownum:=@rownum+1 rownum,m.name 
 		from diary d join (select @rownum:=0) r join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		join hompy h on f.hompy_num=h.hompy_num  
 		join member m on h.id=m.id
-		where f.hompy_num=#{value}
-		order by rownum desc;
+		where f.hompy_num=#{hompy_num}
+		order by rownum desc
+		limit #{pageNum},10
+	</select>
+	<select id="diary_all_count" parameterType="int" resultType="double">
+		select count(diary_num) from diary d join diary_folder f on d.diary_folder_num=f.diary_folder_num where hompy_num=#{value}
 	</select>
 	<update id="update" parameterType="diary">
 		update diary set title=#{title},content=#{content},type=#{type} where diary_num=#{diary_num}

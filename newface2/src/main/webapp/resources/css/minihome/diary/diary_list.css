@@ -3,7 +3,7 @@
 	margin: 0px;padding: 0px;
 }
 #diary_list_back{
-	margin:auto; width: 634px; height: 568; text-align: center; margin-top: 10px;
+	margin:auto; width: 594px; height: 568; text-align: center; margin-top: 30px;
 }
 #title_back{
 	display: inline-block; background-color: #d2d2d2; width: 100%
@@ -15,10 +15,10 @@
 	display: inline-block; width: 25px; height:25px;  text-align: center;
 }
 #title{
-	display: inline-block; width: 280px; height:25px; text-align: center; 
+	display: inline-block; width: 240px; height:25px; text-align: center; 
 } 
 .title{	
-	display: inline-block; width: 280px; height:25px; text-align: left; 	
+	display: inline-block; width: 240px; height:25px; text-align: left; 	
 } 
 .name{
 	display: inline-block; width: 100px; height:25px; text-align: center;
@@ -48,4 +48,10 @@ a{
 #popup_layer { 
 	width:200px; margin-bottom:30px; background:#fff; border:solid 1px #ccc; text-align:center; padding:30px;
 	position:absolute; top:260px; left:50%; margin-left:-200px; box-shadow: 0px 1px 20px #333; z-index:100; display:none;
+}
+#page{
+	position:relative; top: 10px; left: 30px;
+}
+#write{
+	display: inline-block; margin-left: 360px;
 }

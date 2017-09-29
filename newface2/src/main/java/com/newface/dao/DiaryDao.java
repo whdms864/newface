@@ -1,5 +1,6 @@
 package com.newface.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,8 +22,8 @@ public class DiaryDao {
 	public int insert(DiaryVo vo) {
 		return sqlSession.insert(NAMESPACE + ".insert", vo);
 	}
-	public List<DiaryVo> folder_list(int diary_folder_num){
-		return sqlSession.selectList(NAMESPACE + ".folder_list", diary_folder_num);
+	public List<DiaryVo> folder_list(HashMap<String, Integer> map){
+		return sqlSession.selectList(NAMESPACE + ".folder_list", map);
 	}
 	public DiaryVo content(int diary_num) {
 		return sqlSession.selectOne(NAMESPACE + ".content", diary_num);
@@ -39,12 +40,15 @@ public class DiaryDao {
 	public String id(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".id", hompy_num);
 	}
-	public List<DiaryListVo> folder_basic_list(int hompy_num){
-		return sqlSession.selectList(NAMESPACE + ".folder_basic_list", hompy_num);
+	public List<DiaryListVo> folder_basic_list(HashMap<String, Integer> map){
+		return sqlSession.selectList(NAMESPACE + ".folder_basic_list", map);
 	}
-	public List<DiaryListVo> folder_all_list(int hompy_num){
-		return sqlSession.selectList(NAMESPACE + ".folder_all_list", hompy_num);
+	public List<DiaryListVo> folder_all_list(HashMap<String, Integer> map){
+		return sqlSession.selectList(NAMESPACE + ".folder_all_list", map);
 	}	
+	public Double diary_all_count(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".diary_all_count", hompy_num);
+	}
 	public int update(DiaryVo vo) {
 		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
