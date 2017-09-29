@@ -335,7 +335,7 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/se/file_uploader_html5'; 	//upload URL
+    	sUploadURL= '/newface/file_uploader_html5'; 	//upload URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -479,7 +479,7 @@
  	 */
  	function callFileUploader (){
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			sUrl  : '/se/file_uploader',										//샘플 URL입니다.
+ 			sUrl  : '/newface/file_uploader',										//샘플 URL입니다.
  	        sCallback : '/resources/smarteditor/photo_uploader/popup' + '/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
 // 			sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/file_uploader.php',	//샘플 URL입니다.
 // 	        sCallback : location.href.replace(/\/[^\/]*$/, '') + '/callback.html',	//업로드 이후에 iframe이 redirect될 콜백페이지의 주소
