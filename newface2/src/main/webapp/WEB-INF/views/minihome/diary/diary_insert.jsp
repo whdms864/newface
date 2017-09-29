@@ -21,7 +21,7 @@
 		});
 	</script>
 <input type="hidden" id="get_diary_folder_num" value="${requestScope.diary_folder_num }">
-<form action="<c:url value='/diary/update'/>" method="post" id="frm">
+<form action="<c:url value='/diary/insert'/>" method="post" id="frm">
 	<table>
 		<tr>
 			<td>
@@ -31,7 +31,7 @@
 				</c:forEach>
 				</select>
 			</td>
-			<td><input type="text" name="title" id="title" placeholder="제목" value="다이어리 제목을 입력하세요"></td>
+			<td><input type="text" name="title" id="title" placeholder="다이어리 제목을 입력하세요" ></td>
 		</tr>
 		<tr>
 			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:360px;"></textarea></td>
@@ -41,5 +41,5 @@
 	<input type="radio" name="type" value="전체공개" checked="checked">전체공개 
 	<input type="radio" name="type" value="1촌공개">1촌공개 
 	<input type="radio" name="type" value="비공개">비공개 
-	<input id="addBtn" type="submit" value="수정">
+	<input id="addBtn" type="submit" value="등록">
 </form>

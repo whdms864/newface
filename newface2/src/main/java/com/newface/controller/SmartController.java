@@ -36,14 +36,16 @@ public class SmartController implements ServletContextAware {
 		//파일 기본경로
 		String root = request.getContextPath() + "/resources";
 		String defaultPath = context.getRealPath("/resources");
-
+		
 		//파일 기본경로 _ 상세경로
 		String path = defaultPath + File.separator + "upload" + File.separator;
 		File file = new File(path);
+		System.out.println(path);
 		if(!file.exists()) {
 		  file.mkdirs();
 		}
 		String realname = UUID.randomUUID().toString() + "." + ext;
+		System.out.println("realname : " + realname);
 		InputStream is = request.getInputStream();
 		String storedFileName = path + realname;
 		OutputStream os=new FileOutputStream(storedFileName);

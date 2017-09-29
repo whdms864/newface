@@ -109,4 +109,7 @@ public class DiaryDao {
 	public CalendarListVo diary_m(int diary_num) {
 		return sqlSession.selectOne(NAMESPACE + ".diary_m", diary_num);
 	}
+	public int get_diary_num() {
+		return sqlSession.selectOne(NAMESPACE + ".get_diary_num");
+	}
 }

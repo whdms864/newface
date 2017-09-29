@@ -110,4 +110,7 @@ public class DiaryService {
 	public CalendarListVo diary_m(int diary_num) {
 		return dao.diary_m(diary_num);
 	}
+	public int get_diary_num() {
+		return dao.get_diary_num();
+	}
 }

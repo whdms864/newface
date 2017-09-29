@@ -121,4 +121,7 @@
 	<select id="diary_m" parameterType="int" resultType="calendarlist">
 		select date_format(regdate,'%Y') y,date_format(regdate,'%c') m from diary where diary_num=#{value}
 	</select>
+	<select id="get_diary_num" resultType="int">
+		select max(diary_num) from diary
+	</select>
 </mapper>  
