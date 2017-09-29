@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.NotiDao;
 import com.newface.vo.NotiVo;
+import com.newface.vo.NoticomVo;
 
 @Service
 public class NotiService {
@@ -39,4 +40,11 @@ public class NotiService {
 		return dao.noti_side();
 	}
 	
+	public int noti_com_insert(NoticomVo vo) {
+		return dao.noti_com_insert(vo);
+	}
+	
+	public List<NoticomVo> noti_com_list(){
+		return dao.noti_com_list();
+	}
 }

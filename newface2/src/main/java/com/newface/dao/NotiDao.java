@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.NotiVo;
+import com.newface.vo.NoticomVo;
 
 @Repository
 public class NotiDao {
@@ -34,5 +35,13 @@ public class NotiDao {
 	}
 	public List<NotiVo> noti_side(){
 		return sqlSession.selectList(NAMESPACE+ ".noti_side");
+	}
+	
+	public int noti_com_insert(NoticomVo vo) {
+		return sqlSession.insert(NAMESPACE + ".noti_com_insert",vo);
+	}
+	
+	public List<NoticomVo> noti_com_list(){
+		return sqlSession.selectList(NAMESPACE +  ".noti_com.list");
 	}
 }

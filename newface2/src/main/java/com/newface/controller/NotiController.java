@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.NotiService;
 import com.newface.vo.NotiVo;
+import com.newface.vo.NoticomVo;
 
 @Controller
 public class NotiController {
@@ -37,13 +38,12 @@ public class NotiController {
 	public String notiadmin_getinfo(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
-		String content=vo.getContent();
+		/*String content=vo.getContent();
 		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
-		vo.setContent(content);	
+		vo.setContent(content);*/	
 		
 		model.addAttribute("vo", vo);
 		return ".notiadmin_getinfo";
-		
 	}
 	
 	@RequestMapping(value="/notiadmin_update", method=RequestMethod.GET)
@@ -78,9 +78,9 @@ public class NotiController {
 	public String noti_getinfo(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
-		String content=vo.getContent();
+	/*	String content=vo.getContent();
 		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
-		vo.setContent(content);	
+		vo.setContent(content);	*/
 		
 		model.addAttribute("vo", vo);
 		return ".noti_getinfo";
@@ -94,4 +94,18 @@ public class NotiController {
 		model.addAttribute("noti_side",noti_side);
 		return ".market";
 	}
+	
+	@RequestMapping(value="/noti_com_insert",method=RequestMethod.POST)
+	public String noti_com_insert(Model model, NoticomVo vo) {
+		service.noti_com_insert(vo);
+		return "redirct:/noti_com_list";
+	}
+	
+	@RequestMapping(value="/noti_com_list",method=RequestMethod.GET)
+	public String noti_com_list(Model model) {
+		List<NoticomVo> noti_com_list=service.noti_com_list();
+		model.addAttribute("noti_com_list",noti_com_list);
+		return "";
+	}
+	
 }

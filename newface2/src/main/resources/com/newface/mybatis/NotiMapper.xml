@@ -26,4 +26,12 @@
 	<select id="noti_side" resultType="noti">
 		select * from noti order by noti_num desc limit 1,5
 	</select>
+	
+	<insert id="noti_com_insert" parameterType="noticom">
+		insert into noti_com values(#{noti_com_num},#{content},'정상',now(),#{id},#{noti_num})
+	</insert>
+	
+	<select id="noti_com_list" resultType="noticom">
+		select * from noti_com
+	</select>
 </mapper>  

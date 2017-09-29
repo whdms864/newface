@@ -12,7 +12,7 @@
 		  			<td>작성일 : ${vo.regdate }</td>
 			  	</tr>
 			  	<tr>
-		  			<td colspan="2" style="height:100px">${vo.content }</td>
+		  			<td colspan="2" style="height:100px"><textarea rows="25" cols="91" name="content" readonly="readonly" style="border-style:hidden;">${vo.content }</textarea></td>
 			  	</tr>
 		</table>
 	</div>

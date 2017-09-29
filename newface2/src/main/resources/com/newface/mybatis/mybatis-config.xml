@@ -22,6 +22,7 @@
   	<typeAlias type="com.newface.vo.NotiVo" alias="noti"/>
   	<typeAlias type="com.newface.vo.ItemVo" alias="item"/>
   	<typeAlias type="com.newface.vo.CategoryVo" alias="category"/>
+  	<typeAlias type="com.newface.vo.NoticomVo" alias="noticom"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>

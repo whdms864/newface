@@ -51,8 +51,8 @@
 		<table>
 			<tr>
 				<td>
-				<c:forEach var="noti_side" items="${noti_side}">
-					${noti_side.title }
+				<c:forEach var="noti" items="${noti_side}">
+					${noti.title }
 				</c:forEach>
 				</td>
 			<tr>
