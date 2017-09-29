@@ -12,7 +12,7 @@
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
 			  			<td>${vo.noti_num}</td>
-			  			<td><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
+			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
 			  			<td>${vo.id}</td>
 			  			<td>${vo.regdate}</td>
 			  		</tr>

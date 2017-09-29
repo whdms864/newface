@@ -41,7 +41,7 @@ public class NotiDao {
 		return sqlSession.insert(NAMESPACE + ".noti_com_insert",vo);
 	}
 	
-	public List<NoticomVo> noti_com_list(){
-		return sqlSession.selectList(NAMESPACE +  ".noti_com.list");
+	public List<NoticomVo> noti_com_list(int noti_num){
+		return sqlSession.selectList(NAMESPACE +  ".noti_com_list",noti_num);
 	}
 }

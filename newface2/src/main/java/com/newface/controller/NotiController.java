@@ -37,11 +37,9 @@ public class NotiController {
 	@RequestMapping(value="/notiadmin_getinfo", method=RequestMethod.GET)
 	public String notiadmin_getinfo(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
+		List<NoticomVo> noti_com_list=service.noti_com_list(noti_num);
 		
-		/*String content=vo.getContent();
-		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
-		vo.setContent(content);*/	
-		
+		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);
 		return ".notiadmin_getinfo";
 	}
@@ -77,11 +75,9 @@ public class NotiController {
 	@RequestMapping(value="/noti_getinfo", method=RequestMethod.GET)
 	public String noti_getinfo(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
+		List<NoticomVo> noti_com_list=service.noti_com_list(noti_num);
 		
-	/*	String content=vo.getContent();
-		content=content.replaceAll("\n","<br>");//\n 문자열을 <br>로 바꾸기
-		vo.setContent(content);	*/
-		
+		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);
 		return ".noti_getinfo";
 		
@@ -101,11 +97,6 @@ public class NotiController {
 		return "redirct:/noti_com_list";
 	}
 	
-	@RequestMapping(value="/noti_com_list",method=RequestMethod.GET)
-	public String noti_com_list(Model model) {
-		List<NoticomVo> noti_com_list=service.noti_com_list();
-		model.addAttribute("noti_com_list",noti_com_list);
-		return "";
-	}
+
 	
 }

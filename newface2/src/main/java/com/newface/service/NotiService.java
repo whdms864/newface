@@ -44,7 +44,7 @@ public class NotiService {
 		return dao.noti_com_insert(vo);
 	}
 	
-	public List<NoticomVo> noti_com_list(){
-		return dao.noti_com_list();
+	public List<NoticomVo> noti_com_list(int noti_num){
+		return dao.noti_com_list(noti_num);
 	}
 }

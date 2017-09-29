@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div align="center">
-		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
+		<table class="table table-hover" style="width: 460px; margin-top: 20px;">
 		  		<tr class="success">
 		  			<th>No.</th>
 		  			<th>제목</th>
@@ -12,7 +12,7 @@
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
 			  			<td>${vo.noti_num}</td>
-			  			<td><a href="<c:url value='/noti_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
+			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value='/noti_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
 			  			<td>${vo.id}</td>
 			  			<td>${vo.regdate}</td>
 			  		</tr>
