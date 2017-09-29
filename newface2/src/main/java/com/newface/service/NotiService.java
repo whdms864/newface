@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,11 @@ public class NotiService {
 		return dao.noti_com_insert(vo);
 	}
 	
-	public List<NoticomVo> noti_com_list(int noti_num){
-		return dao.noti_com_list(noti_num);
+	public List<NoticomVo> noti_com_list(HashMap<String,Object> map){
+		return dao.noti_com_list(map);
+	}
+	
+	public int getCount() {
+		return dao.getCount();
 	}
 }

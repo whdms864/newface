@@ -1,5 +1,6 @@
 package com.newface.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -41,7 +42,11 @@ public class NotiDao {
 		return sqlSession.insert(NAMESPACE + ".noti_com_insert",vo);
 	}
 	
-	public List<NoticomVo> noti_com_list(int noti_num){
-		return sqlSession.selectList(NAMESPACE +  ".noti_com_list",noti_num);
+	public List<NoticomVo> noti_com_list(HashMap<String,Object> map){
+		return sqlSession.selectList(NAMESPACE +  ".noti_com_list",map);
+	}
+	
+	public int getCount() {
+		return sqlSession.selectOne(NAMESPACE+".count");
 	}
 }

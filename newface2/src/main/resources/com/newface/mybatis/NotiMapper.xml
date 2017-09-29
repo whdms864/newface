@@ -32,6 +32,10 @@
 	</insert>
 	
 	<select id="noti_com_list" resultType="noticom" parameterType="int">
-		select * from noti_com where noti_num=#{noti_num}
+		select * from noti_com where noti_num=#{noti_num} order by noti_com_num desc limit #{startRow},#{endRow}
+	</select>
+	
+	<select id="count" resultType="int">
+		select coalesce(count(noti_com_num),0) from noti_com;
 	</select>
 </mapper>  

@@ -1,5 +1,6 @@
 package com.newface.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.newface.page.PageUtil;
 import com.newface.service.NotiService;
 import com.newface.vo.NotiVo;
 import com.newface.vo.NoticomVo;
+
 
 @Controller
 public class NotiController {
@@ -35,10 +39,17 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value="/notiadmin_getinfo", method=RequestMethod.GET)
-	public String notiadmin_getinfo(Model model,int noti_num) {
+	public String notiadmin_getinfo(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
-		List<NoticomVo> noti_com_list=service.noti_com_list(noti_num);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount();
+		PageUtil pu=new PageUtil(pageNum,7,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("noti_num",noti_num);
+		List<NoticomVo> noti_com_list=service.noti_com_list(map);
 		
+		model.addAttribute("pu",pu);
 		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);
 		return ".notiadmin_getinfo";
@@ -73,10 +84,18 @@ public class NotiController {
 	
 	
 	@RequestMapping(value="/noti_getinfo", method=RequestMethod.GET)
-	public String noti_getinfo(Model model,int noti_num) {
+	public String noti_getinfo(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
-		List<NoticomVo> noti_com_list=service.noti_com_list(noti_num);
 		
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount();
+		PageUtil pu=new PageUtil(pageNum,7,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("noti_num",noti_num);
+		List<NoticomVo> noti_com_list=service.noti_com_list(map);
+		
+		model.addAttribute("pu",pu);
 		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);
 		return ".noti_getinfo";
@@ -94,7 +113,7 @@ public class NotiController {
 	@RequestMapping(value="/noti_com_insert",method=RequestMethod.POST)
 	public String noti_com_insert(Model model, NoticomVo vo) {
 		service.noti_com_insert(vo);
-		return "redirct:/noti_com_list";
+		return "redirect:/noti_getinfo?noti_num=" + vo.getNoti_num();
 	}
 	
 
