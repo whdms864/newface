@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,11 @@ public class Qna11Service {
 	public int insert(Qna11comVo vo) {
 		return dao.insert(vo);
 	}
-	public List<Qna11Vo> list() {
-		return dao.list();
+	public List<Qna11Vo> list(HashMap<String,Object> map) {
+		return dao.list(map);
+	}
+	public int getCount() {
+		return dao.getCount();
 	}
 	public int update(Qna11Vo vo) {
 		return dao.update(vo);

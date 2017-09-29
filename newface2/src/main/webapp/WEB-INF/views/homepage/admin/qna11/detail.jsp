@@ -11,7 +11,7 @@
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">문의내용</label>
 				<br>
-				<textarea rows="10" cols="65" name="content" class="form-control" readonly="readonly" >${vo.content }</textarea>
+				<textarea rows="10" cols="65" name="content" class="form-control" readonly="readonly" style="resize: none;">${vo.content }</textarea>
 			</div>
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 				<br>
 				<c:choose>
 					<c:when test="${comvo.content!=null }">
-						<textarea rows="8" cols="65" name="content" class="form-control" readonly="readonly" >${comvo.content }
+						<textarea rows="8" cols="65" name="content" class="form-control" readonly="readonly" style="resize: none;">${comvo.content }
 
 
 [ ${comvo.regdate } ]
@@ -32,7 +32,7 @@
 					</c:when>
 					<c:otherwise>
 						<form method="post" action="<c:url value='/qna11/admin/insertok'/>">
-							<textarea rows="8" cols="65" name="content" class="form-control"></textarea>
+							<textarea rows="8" cols="65" name="content" class="form-control" style="resize: none;"></textarea>
 							<input type="hidden" name="id" value="admin"><!-- 나중에 꼭 고치기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 							<input type="hidden" name="qna11_num" value="${vo.qna11_num }">
 					</c:otherwise>

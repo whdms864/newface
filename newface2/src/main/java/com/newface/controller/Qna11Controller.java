@@ -1,6 +1,7 @@
 package com.newface.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.newface.page.PageUtil;
 import com.newface.service.Qna11Service;
+import com.newface.vo.GuestbooklistVo;
 import com.newface.vo.Qna11Vo;
 import com.newface.vo.Qna11comVo;
 
@@ -63,9 +67,15 @@ public class Qna11Controller {
 	/***************************** °ü¸®ÀÚ ******************************************/
 	
 	@RequestMapping(value = "/qna11/admin/list", method = RequestMethod.GET)
-	public String list(Model model) {
-		List<Qna11Vo> list=service.list();
+	public String list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount();
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<Qna11Vo> list=service.list(map);
 		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
 		return ".qna11admin";
 	}
 	@RequestMapping(value = "/qna11/admin/detail", method = RequestMethod.GET)

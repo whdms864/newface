@@ -11,7 +11,7 @@
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">문의내용</label>
 				<br>
-				<textarea rows="10" cols="65" name="content" class="form-control" readonly="readonly" >${vo.content }</textarea>
+				<textarea rows="10" cols="65" name="content" class="form-control" readonly="readonly" style="resize: none;">${vo.content }</textarea>
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 				<div class="form-group has-error" style="display: inline-block; ">
 					<label class="control-label" for="inputWarning1">관리자 답변</label>
 					<br>
-					<textarea rows="8" cols="65" name="content" class="form-control">${comvo.content }</textarea>
+					<textarea rows="8" cols="65" name="content" class="form-control" style="resize: none;">${comvo.content }</textarea>
 					<input type="hidden" name="id" value="admin"><!-- 나중에 꼭 고치기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					<input type="hidden" name="qna11_com_num" value="${comvo.qna11_com_num }">
 				</div>

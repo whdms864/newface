@@ -1,6 +1,7 @@
 package com.newface.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,7 +51,10 @@ public class Qna11Dao {
 	public int com_delete(int qna11_com_num) {
 		return sqlSession.delete(NAMESPACE+".com_delete",qna11_com_num);
 	}
-	public List<Qna11Vo> list() {
-		return sqlSession.selectList(NAMESPACE+".list");
+	public List<Qna11Vo> list(HashMap<String,Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list",map);
+	}
+	public int getCount() {
+		return sqlSession.selectOne(NAMESPACE+".count");
 	}
 }

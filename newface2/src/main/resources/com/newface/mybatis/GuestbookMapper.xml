@@ -6,7 +6,7 @@
 	<insert id="insert" parameterType="Guest">
 		insert into guestbook values(0,#{content},#{secret},now(),#{id},#{hompy_num})
 	</insert>
-	<select id="list_all" resultType="Guestlist">
+	<select id="list_all" resultType="Guestlist" parameterType="hashmap">
 		select a.name,b.id,b.guest_num,b.content,b.secret,date_format(b.regdate,'%Y/%c/%e') as regdate
 		from member as a join guestbook as b
 		on a.id=b.id order by b.guest_num desc limit #{startRow},#{endRow}

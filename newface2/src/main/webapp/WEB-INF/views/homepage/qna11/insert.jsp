@@ -21,7 +21,7 @@
 				<div class="form-group has-warning" style="display: inline-block; ">
 					<label class="control-label" for="inputWarning1">문의내용</label>
 					<br>
-					<textarea rows="10" cols="51" name="content" class="form-control"></textarea>
+					<textarea rows="10" cols="51" name="content" class="form-control" style="resize: none;"></textarea>
 				</div>
 			</div>
 			<div style="position:absolute;top:620px;width: 98%;"align="center">

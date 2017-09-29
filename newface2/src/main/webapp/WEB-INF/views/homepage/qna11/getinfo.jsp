@@ -15,7 +15,7 @@
 		  			<tr>
 		  				<c:set var="i" value="${i + 1}"/>
 			  			<td>${i}</td>
-			  			<td>${vo.title}</td>
+			  			<td style="text-overflow: ellipsis;">${vo.title}</td>
 			  			<td>${vo.regdate}</td>
 			  			<td>${vo.confirm}</td>
 			  			<td><a href="<c:url value='/qna11/detail?qna11_num=${vo.qna11_num }'/>">보기</a></td>

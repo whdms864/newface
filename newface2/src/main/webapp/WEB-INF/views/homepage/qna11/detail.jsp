@@ -13,7 +13,7 @@
 			<div class="form-group has-warning" style="display: inline-block; ">
 				<label class="control-label" for="inputWarning1">문의내용</label>
 				<br>
-				<textarea rows="10" cols="51" name="content" class="form-control" readonly="readonly" >${vo.content }</textarea>
+				<textarea rows="10" cols="51" name="content" class="form-control" readonly="readonly" style="resize: none;">${vo.content }</textarea>
 			</div>
 		</div>
 	</div>
@@ -25,14 +25,14 @@
 				<br>
 				<c:choose>
 				<c:when test="${comvo.content!=null }">
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >${comvo.content }
+					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" style="resize: none;">${comvo.content }
 
 
 [ ${comvo.regdate } ]
 					</textarea>
 				</c:when>
 				<c:otherwise>
-					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" >답변이 아직 오고 있어요...</textarea>
+					<textarea rows="8" cols="51" name="content" class="form-control" readonly="readonly" style="resize: none;">답변이 아직 오고 있어요...</textarea>
 				</c:otherwise>
 				</c:choose>
 			</div>

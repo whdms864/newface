@@ -23,7 +23,7 @@ public class PageUtil {
 		//시작행번호
 		startRow=(pageNum-1)*rowBlockCount;
 		//끝행번호
-		endRow=5;
+		endRow=rowBlockCount;
 		//전체페이지갯수
 		totalPageCount=(int)Math.ceil(totalRowCount/(double)rowBlockCount);
 		//시작페이지번호
