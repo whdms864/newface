@@ -86,4 +86,12 @@ public class NotiController {
 		return ".noti_getinfo";
 		
 	}
+	
+	@RequestMapping(value = "/noti_side", method = RequestMethod.GET)
+	public String noti_side(Model model) {
+		List<NotiVo> noti_side=service.noti_side();
+		System.out.println(noti_side);
+		model.addAttribute("noti_side",noti_side);
+		return ".market";
+	}
 }

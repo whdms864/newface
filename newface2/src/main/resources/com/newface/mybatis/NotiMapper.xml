@@ -22,4 +22,8 @@
 	<delete id="notidelete" parameterType="int">
 		delete from noti where noti_num=#{noti_num}
 	</delete>
+	
+	<select id="noti_side" resultType="noti">
+		select * from noti order by noti_num desc limit 1,5
+	</select>
 </mapper>  

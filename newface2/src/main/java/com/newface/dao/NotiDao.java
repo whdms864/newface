@@ -32,4 +32,7 @@ public class NotiDao {
 	public int notidelete(int noti_num) {
 		return sqlSession.delete(NAMESPACE + ".notidelete",noti_num);
 	}
+	public List<NotiVo> noti_side(){
+		return sqlSession.selectList(NAMESPACE+ ".noti_side");
+	}
 }

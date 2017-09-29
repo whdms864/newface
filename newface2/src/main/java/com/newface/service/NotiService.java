@@ -34,4 +34,9 @@ public class NotiService {
 	public int notidelete(int noti_num) {
 		return dao.notidelete(noti_num);
 	}
+	
+	public List<NotiVo> noti_side(){
+		return dao.noti_side();
+	}
+	
 }

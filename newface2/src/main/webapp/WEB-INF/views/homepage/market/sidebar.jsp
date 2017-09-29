@@ -47,13 +47,17 @@
 </div>
 <div style="width: 250px; height: 175px;background-color: rgb(224, 224, 224);margin-top: 20px;padding: 5px;">
 	<label style="font-weight:bold;font-size:16px;margin-left: 20px;">공지사항</label>
-	<ul style="margin-left: 60px;">
-		<li>게시글1</li>
-		<li>게시글2</li>
-		<li>게시글3</li>
-		<li>게시글4</li>
-		<li>게시글5</li>
-	</ul>
+	<div style="width:90%; height:90%">
+		<table>
+			<tr>
+				<td>
+				<c:forEach var="noti_side" items="${noti_side}">
+					${noti_side.title }
+				</c:forEach>
+				</td>
+			<tr>
+		</table>
+	</div>
 	<a href="<c:url value='/noti_list'/>" style="margin-right: 10px;float:right;">더보기</a>
 </div>
 <div style="margin-top: 20px;display: inline-block;">
