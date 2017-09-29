@@ -43,7 +43,7 @@ public class NotiController {
 		NotiVo vo=service.notigetinfo(noti_num);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum,7,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("noti_num",noti_num);
@@ -89,7 +89,7 @@ public class NotiController {
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum,7,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("noti_num",noti_num);

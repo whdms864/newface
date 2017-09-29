@@ -59,13 +59,28 @@
 			<div style="display: inline-block;">
 				<div class="form-group has-success" style="display: inline-block; height:35px ">
 					<input type="text" name="content" id="com_content" class="form-control" style="width:400px;float:left; height:30px; position:absoulte; right:80px; top:5px;">
-					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; 
-					border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
+						<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
 					<div style="width:95%; height:160px; background-color: white; position:absolute; top:40px; right:12px;">
-						<table border="1" style="width:100%; ">
+						<table style="width:100%;">
+							<th>글쓴이</th>
+							<th>내용</th>
+							<th>작성일</th>
+							<th></th>
+						
 							<c:forEach var="noti_com_list" items="${noti_com_list }">
 							<tr>
-								<td style="width:22%; height:20%" >${noti_com_list.id }</td><td style="width:60%;">${noti_com_list.content }</td><td style="width:18%;">${noti_com_list.regdate }</td>
+								<td style="width:18%; height:20%" >${noti_com_list.id }</td>
+								<td style="width:55%;">${noti_com_list.content }</td>
+								<td style="width:18%;">${noti_com_list.regdate }</td>
+								<c:choose>
+									<c:when test="${noti_com_list.id != sessionScope.loginid}">
+										<td style="width:9%;">신고</td>
+									</c:when>
+										
+									<c:otherwise>
+										<td></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 							</c:forEach>
 						</table>
