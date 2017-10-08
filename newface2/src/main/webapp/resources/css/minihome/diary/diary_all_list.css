@@ -5,14 +5,11 @@
 #diary_list_back{
 	margin:auto; width: 594px; height: 568px; margin-top: 30px;
 }
-#diary_list{
-	padding-top: 50px; 
-}
 #title_back{
-	display: inline-block; background-color: #d2d2d2;
+	display: inline-block; background-color: #d2d2d2; width: 100%
 }
 .chk{
-	display: inline-block; width: 25px; height:25px;  text-align: center;
+	display: inline-block; width: 25px; height:25px;  text-align: center; margin-top: -15px;
 }
 .num{
 	display: inline-block; width: 50px; height:25px;  text-align: center;
@@ -35,6 +32,11 @@
 a{
 	text-decoration: none; color: black; cursor:pointer;
 }
+
+#select{
+	width: 200px;height: 30px; margin-bottom: 20px;
+}
+
 #overlay_t { 
 	background-color: #000; bottom: 0; left: 0; opacity: 0.5; filter: alpha(opacity = 50); 
 	/* IE7 & 8 */ position: fixed; right: 0; top: 0; z-index: 99; display:none;

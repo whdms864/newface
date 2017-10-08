@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_all_list.css?ver=32'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=133'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -42,6 +41,7 @@
 		//삭제
 		var diary_nums=[];
 		$("#delete").click(function(){
+			var diary_folder_num=$("#diary_folder_num").val();
 			$("input[name=num]:checked").each(function(){
 				diary_nums.unshift($(this).val());
 			});
@@ -50,6 +50,7 @@
 		});
 	});
 </script>
+<input type="hidden" id="diary_folder_num" value="${requestScope.diary_folder_num }">
 <div id="diary_list_back">
 	<hr>
 	<div id="title_back">
@@ -67,29 +68,30 @@
 		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
 			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
-		<div class="num">${vo.rownum }</div>
+		<div class="num">${vo.diary_num }</div>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
-		<div class="name">${vo.name }</div>
+		<div class="name">${requestScope.name }</div>
 		<div class="regdate">${vo.regdate }</div>
 		<div class="love">${vo.love }</div><br>
 	</c:forEach> 
 	<hr>
 </div>
+
 <div id="page">
 	<c:choose>
-		<c:when test="${requestScope.pageNum>0 }">
-			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum-10 }'/>">▲</a>
+		<c:when test="${requestScope.pageNum>1 }">
+			<a href="<c:url value='/diary/folder_all_list?pageNum=${requestScope.pageNum-1 }'/>">▲</a>
 		</c:when>
 		<c:otherwise>
-			<a href="">△</a>		
+			△		
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
-		<c:when test="${requestScope.pageNum<requestScope.count }">
-			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum+10 }'/>">▼</a>
+		<c:when test="${requestScope.pageNum<requestScope.endPageNum }">
+			<a href="<c:url value='/diary/folder_all_list?pageNum=${requestScope.pageNum+1 }'/>">▼</a>
 		</c:when>
 		<c:otherwise>
-			<a href="">▽</a>		
+			▽		
 		</c:otherwise>
 	</c:choose>	
 	<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
@@ -103,6 +105,7 @@
 		</div>
 	</c:if>
 </div>
+
 <div id="overlay_t"></div> 
 <div id="popup_layer">
 <h2>폴더이동</h2><br>
@@ -114,3 +117,5 @@
 	<input type="button" value="완료" id="moveOk">
 	<input type="button" value="닫기" id="close">
 </div>
+
+ 

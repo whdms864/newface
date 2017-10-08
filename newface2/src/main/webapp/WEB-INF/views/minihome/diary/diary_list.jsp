@@ -68,7 +68,7 @@
 		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
 			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
-		<div class="num">${vo.rownum }</div>
+		<div class="num">${vo.diary_num }</div>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
 		<div class="name">${requestScope.name }</div>
 		<div class="regdate">${vo.regdate }</div>
@@ -79,19 +79,19 @@
 
 <div id="page">
 	<c:choose>
-		<c:when test="${requestScope.pageNum>0 }">
-			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum-10 }'/>">▲</a>
+		<c:when test="${requestScope.pageNum>1 }">
+			<a href="<c:url value='/diary/list?pageNum=${requestScope.pageNum-1 }&diary_folder_num=${requestScope.diary_folder_num }'/>">▲</a>
 		</c:when>
 		<c:otherwise>
-			<a href="">△</a>		
+			△		
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
-		<c:when test="${requestScope.pageNum<requestScope.count }">
-			<a href="<c:url value='/diary/folder_all_list?num=${requestScope.pageNum+10 }'/>">▼</a>
+		<c:when test="${requestScope.pageNum<requestScope.endPageNum }">
+			<a href="<c:url value='/diary/list?pageNum=${requestScope.pageNum+1 }&diary_folder_num=${requestScope.diary_folder_num }'/>">▼</a>
 		</c:when>
 		<c:otherwise>
-			<a href="">▽</a>		
+			▽		
 		</c:otherwise>
 	</c:choose>	
 	<c:if test="${requestScope.hompy_id==sessionScope.loginid }">

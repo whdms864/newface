@@ -3,6 +3,7 @@ package com.newface.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -12,11 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.newface.calendar.AfterCalendar;
 import com.newface.calendar.AutoCalendar;
 import com.newface.calendar.BeforeCalendar;
+import com.newface.page.AutoPage;
 import com.newface.service.DiaryService;
 import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryListVo;
@@ -108,18 +112,16 @@ public class DiaryController {
 	}
 
 	///////////// 다이어리 전체목록 /////////////
-	@RequestMapping(value = "/diary/folder_all_list", method = RequestMethod.GET)
-	public String folder_all_list(Model model,String num, HttpSession session) {
+	@RequestMapping(value = "/diary/folder_all_list", method = {RequestMethod.GET,RequestMethod.POST})
+	public String folder_all_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model, HttpSession session) {
 		//페이지 처리
-		int pageNum=0;
-		if(num!=null) {
-			pageNum=Integer.parseInt(num);
-		}
-		HashMap<String, Integer> map=new HashMap<String, Integer>();
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
+		int totalRowCount=service.diary_all_count(hompy_num);
+		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수
+		AutoPage page=new AutoPage(pageNum, 10, 10, totalRowCount);
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
 		map.put("hompy_num", hompy_num);
-		map.put("pageNum", pageNum);
-		double count=service.diary_all_count(hompy_num);
+		map.put("startRow", page.getStartRow());		
 		
 		List<DiaryfolderVo> folder = service.fname(hompy_num);
 		session.setAttribute("diary_folder_num", null);
@@ -129,7 +131,7 @@ public class DiaryController {
 		int n = service.hompy_is(vo);	
 		
 		List<DiaryListVo> list = null;
-		if (n > 0) {
+		if (n > 0 ) {
 			list = service.folder_all_list(map);
 		} else {
 			list = service.folder_basic_list(map);
@@ -139,7 +141,7 @@ public class DiaryController {
 			model.addAttribute("folder", folder);
 			model.addAttribute("list", list);
 			model.addAttribute("pageNum", pageNum);
-			model.addAttribute("count", count);
+			model.addAttribute("endPageNum", page.getEndPageNum());
 			return ".all_list.diary";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 요청작업이 실패했습니다");
@@ -149,22 +151,23 @@ public class DiaryController {
 	}
 
 	///////////// 다이어리 폴더목록 /////////////
-	@RequestMapping(value = "/diary/list", method = RequestMethod.GET)
-	public String diary_list(int diary_folder_num,String num, HttpSession session, Model model) {
+	@RequestMapping(value = "/diary/list", method = {RequestMethod.GET,RequestMethod.POST})
+	public String diary_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum, int diary_folder_num, HttpSession session, Model model) {
+		//페이지 처리
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		map.put("hompy_num", hompy_num);
+		map.put("diary_folder_num", diary_folder_num);
+		int totalRowCount=service.diary_folder_count(map);
+		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수
+		AutoPage page=new AutoPage(pageNum, 10, 10, totalRowCount);
+		map.put("diary_folder_num", diary_folder_num);
+		map.put("startRow", page.getStartRow());
+		System.out.println("시작 : " + page.getStartRow());
+		List<DiaryVo> list = service.folder_list(map);
+		
 		String hompy_id=service.id(hompy_num);		
 		session.setAttribute("diary_folder_num", diary_folder_num);
-		
-		//페이지 처리
-		int pageNum=0;
-		if(num!=null) {
-			pageNum=Integer.parseInt(num);
-		}
-		HashMap<String, Integer> map=new HashMap<String, Integer>();
-		map.put("diary_folder_num", diary_folder_num);
-		map.put("pageNum", pageNum);		
-		List<DiaryVo> list = service.folder_list(map);
-		double count=service.diary_all_count(hompy_num);
 		
 		if (list != null) {
 			List<DiaryfolderVo> folder = service.fname(hompy_num);
@@ -176,7 +179,7 @@ public class DiaryController {
 			model.addAttribute("folder", folder);
 			model.addAttribute("name", name);
 			model.addAttribute("pageNum", pageNum);
-			model.addAttribute("count", count);
+			model.addAttribute("endPageNum", page.getEndPageNum());
 			return ".list.diary";
 		} else {
 			model.addAttribute("code", "오류로 인하여 해당폴더 이동 요청작업이 실패했습니다");
@@ -204,12 +207,11 @@ public class DiaryController {
 
 	///////////// 다이어리 수정 /////////////
 	@RequestMapping(value = "/diary/update", method = RequestMethod.POST)
-	public String update(DiaryVo vo, Model model) {
+	public String update(DiaryVo vo,Model model) {
 		int n = service.update(vo);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 등록 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
-			return ".code";
+			model.addAttribute("diary_num", vo.getDiary_num());
+			return "forward:/diary/content";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 수정 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
@@ -227,14 +229,16 @@ public class DiaryController {
 		return ".insert.diary";
 	}
 
-	///////////// 다이어리 등록 /////////////
+	///////////// 다이어리 등록 ///////////// 상세보기로 갈때 오류남
 	@RequestMapping(value = "/diary/insert", method = RequestMethod.POST)
 	public String insert(DiaryVo vo, Model model) {
+		/*int diary_num=service.get_diary_num();*/
 		int n = service.insert(vo);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 등록 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
-			return ".code";
+			/*model.addAttribute("diary_num", vo.getDiary_num());
+			return "forward:/diary/content";*/
+			model.addAttribute("diary_folder_num", vo.getDiary_folder_num());
+			return "forward:/diary/list";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 등록 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
@@ -247,9 +251,8 @@ public class DiaryController {
 	public String delete(int diary_num, int diary_folder_num, Model model) {
 		int n = service.delete(diary_num);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 삭제 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
-			return ".code";
+			model.addAttribute("diary_folder_num", diary_folder_num);
+			return "forward:/diary/list";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 삭제 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);
@@ -265,13 +268,12 @@ public class DiaryController {
 			n = service.delete(diary_num);
 		}	 
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 삭제 요청작업이 성공했습니다");
-			if(diary_folder_num==-1) {
-				model.addAttribute("url", "/diary/folder_all_list");								
+			if(diary_folder_num==-1) {								
+				return "forward:/diary/folder_all_list";
 			}else {
-				model.addAttribute("url", "/diary/list?diary_folder_num=" + diary_folder_num);				
+				model.addAttribute("diary_folder_num", diary_folder_num);				
+				return "forward:/diary/list";
 			}
-			return ".code";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 삭제 요청작업이 실패했습니다");
 			if(diary_folder_num<0) {
@@ -283,51 +285,53 @@ public class DiaryController {
 		}
 	}
 
+	///////////// 다이어리 댓글 목록 /////////////
+	@RequestMapping(value = "/diary/com_list", method = RequestMethod.GET)
+	@ResponseBody
+	public String com_list(int diary_num, HttpSession session) {
+		List<DiarycomVo> list=service.com_list(diary_num);
+		JSONArray arr=new JSONArray();
+		for(DiarycomVo com:list) {
+			JSONObject json=new JSONObject();
+			json.put("diary_com_num", com.getDiary_com_num());
+			json.put("id", com.getId());
+			json.put("name", com.getName());
+			json.put("content", com.getContent());
+			json.put("regdate", com.getRegdate());
+			arr.add(json);
+		}
+		return arr.toString();
+	}
 	///////////// 다이어리 댓글 등록 /////////////
-	@RequestMapping(value = "/diary/com_insert", method = RequestMethod.POST)
-	public String com_insert(DiarycomVo vo, HttpSession session, Model model) {
+	@RequestMapping(value = "/diary/com_insert", method = RequestMethod.GET)
+	@ResponseBody
+	public String com_insert(DiarycomVo vo, HttpSession session) {
 		String id = (String) session.getAttribute("loginid");
 		vo.setId(id);
 		int n = service.com_insert(vo);
-		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 댓글등록 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
-			return ".code";
-		} else {
-			model.addAttribute("code", "오류로 인하여 다이어리 댓글등록 요청작업이 실패했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
-			return ".code";
-		}
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		return json.toString();
 	}
 
 	///////////// 다이어리 댓글 삭제 /////////////
 	@RequestMapping(value = "/diary/com_delete", method = RequestMethod.GET)
-	public String com_delete(int diary_com_num, int diary_num, Model model) {
+	@ResponseBody
+	public String com_delete(int diary_com_num) {
 		int n = service.com_delete(diary_com_num);
-		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 댓글삭제 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + diary_num);
-			return ".code";
-		} else {
-			model.addAttribute("code", "오류로 인하여 다이어리 댓글삭제 요청작업이 실패했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + diary_num);
-			return ".code";
-		}
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		return json.toString();
 	}
 
 	///////////// 다이어리 댓글수정 /////////////
-	@RequestMapping(value = "/diary/com_update", method = RequestMethod.POST)
-	public String com_update(DiarycomVo vo, Model model) {
+	@RequestMapping(value = "/diary/com_update", method = RequestMethod.GET)
+	@ResponseBody
+	public String com_update(DiarycomVo vo) {
 		int n = service.com_update(vo);
-		if (n > 0) {
-			model.addAttribute("code", "성공적으로 다이어리 댓글수정 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
-			return ".code";
-		} else {
-			model.addAttribute("code", "오류로 인하여 다이어리 댓글수정 요청작업이 실패했습니다");
-			model.addAttribute("url", "/diary/content?diary_num=" + vo.getDiary_num());
-			return ".code";
-		}
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		return json.toString();
 	}
 
 	///////////// 폴더관리 /////////////
@@ -386,12 +390,11 @@ public class DiaryController {
 
 	///////////// 폴더이동 수정 /////////////
 	@RequestMapping(value = "/diary/folder_move", method = RequestMethod.POST)
-	public String folder_moveForm(DiaryVo vo, Model model) {
+	public String folder_moveForm(DiaryVo vo, Model model) {		
 		int n = service.folder_move(vo);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 폴더이동 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
-			return ".code";
+			model.addAttribute("diary_folder_num", vo.getDiary_folder_num());
+			return "forward:/diary/list";
 		} else {
 			model.addAttribute("code", "오류로 인하여 폴더이동 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
@@ -401,16 +404,15 @@ public class DiaryController {
 
 	///////////// 폴더이동 다중 수정 /////////////
 	@RequestMapping(value = "/diary/folder_moves", method = RequestMethod.GET)
-	public String folder_moves(DiaryVo vo, int[] diary_nums, Model model) {
+	public String folder_moves(DiaryVo vo, int[] diary_nums, Model model,int diary_folder_num) {
 		int n = 0;
 		for (int diary_num : diary_nums) {
 			vo.setDiary_num(diary_num);
 			n = service.folder_move(vo);
 		}
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 폴더이동 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/list?diary_folder_num=" + vo.getDiary_folder_num());
-			return ".code";
+			model.addAttribute("diary_folder_num", diary_folder_num);				
+			return "forward:/diary/list";
 		} else {
 			model.addAttribute("code", "오류로 인하여 폴더이동 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
@@ -451,18 +453,16 @@ public class DiaryController {
 	}
 
 	///////////// 상세보기 /////////////
-	@RequestMapping(value = "/diary/content", method = RequestMethod.GET)
+	@RequestMapping(value = "/diary/content", method = {RequestMethod.GET,RequestMethod.POST})
 	public String content(int diary_num, Model model,HttpSession session) {
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);
-		List<DiarycomVo> com_list = service.com_list(diary_num);
 
 		if (vo != null) {
 			session.setAttribute("diary_folder_num", vo.getDiary_folder_num());
 			model.addAttribute("hompy_id", hompy_id);
 			model.addAttribute("vo", vo);
-			model.addAttribute("com_list", com_list);
 			return ".content.diary";
 		} else {
 			model.addAttribute("code", "오류로 인하여 상세보기 요청작업이 실패했습니다");

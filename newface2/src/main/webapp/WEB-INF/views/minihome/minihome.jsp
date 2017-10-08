@@ -6,7 +6,8 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=23'/>">
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
 <div id="webView">
@@ -34,6 +35,16 @@
 			미니홈피 <a id="hname_edit" href="">edit</a>
 		</div>
 	</div>
+	<div id="bgm_back">
+		<div id="bgm">
+			<input type="button" value="노래" id="bgm">
+			<audio controls="controls" autoplay="autoplay" preload="none">
+				<source src="<c:url value='/resources/bgm/WINNER-REALLY REALLY.mp3'/>" type="audio/mpeg">
+				<source src="<c:url value='/resources/bgm/TWICE-SIGNAL.mp3'/>" type="audio/mpeg">
+			</audio>
+		</div>
+	</div>
+	
 	
 	<div id="setup">
 		<div class="menu">

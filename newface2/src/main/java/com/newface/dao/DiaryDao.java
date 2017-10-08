@@ -46,8 +46,11 @@ public class DiaryDao {
 	public List<DiaryListVo> folder_all_list(HashMap<String, Integer> map){
 		return sqlSession.selectList(NAMESPACE + ".folder_all_list", map);
 	}	
-	public Double diary_all_count(int hompy_num) {
+	public int diary_all_count(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".diary_all_count", hompy_num);
+	}
+	public int diary_folder_count(HashMap<String, Integer> map) {
+		return sqlSession.selectOne(NAMESPACE + ".diary_folder_count", map);
 	}
 	public int update(DiaryVo vo) {
 		return sqlSession.update(NAMESPACE + ".update", vo);

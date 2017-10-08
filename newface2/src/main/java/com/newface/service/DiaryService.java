@@ -49,10 +49,11 @@ public class DiaryService {
 	public List<DiaryListVo> folder_all_list(HashMap<String, Integer> map){
 		return dao.folder_all_list(map);
 	}
-	public Double diary_all_count(int hompy_num) {
-		Double num=dao.diary_all_count(hompy_num);
-		num=Math.ceil(num/10.0);
-		return num;
+	public int diary_all_count(int hompy_num) {
+		return dao.diary_all_count(hompy_num);
+	}
+	public int diary_folder_count(HashMap<String, Integer> map) {
+		return dao.diary_folder_count(map);
 	}
 	public int update(DiaryVo vo) {
 		return dao.update(vo);
