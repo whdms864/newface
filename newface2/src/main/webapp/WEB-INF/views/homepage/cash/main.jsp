@@ -5,24 +5,58 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	/* $("#qna11_insert_form").submit(function(event){
-		var title=$("#qna11_title").val();
-		var content=$("#qna11_content").val();
+	 $("#mon_input").keyup(function(){
+		var cnt=$("#mon_input").val();
+		var tot=cnt*100;
+		$("#mon_span").html(tot);
 		
-		if(title==""){
-			$("#qna11_title").focus();
-			alert("제목을 입력해주세요");
-			event.preventDefault();
-		}else if(content==""){
-			$("#qna11_content").focus();
-			alert("문의할 내용을 입력해주세요");
-			event.preventDefault();
-		} */
 	});
+	 $("#btn_end").click(function(){
+		 window.self.close(); 
+	 });
+	 $("#cash_add").submit(function(event){
+		 var ph1=$("#ph1").val();
+		 var ph2=$("#ph2").val();
+		 var ph3=$("#ph3").val();
+		 var jumin1=$("#jumin1").val();
+		 var jumin2=$("#jumin2").val();
+		 var chk1=$("#chk1").prop("checked");
+		 var chk2=$("#chk2").prop("checked");
+		if(ph1==""){
+			$("#ph1").focus();
+			alert("핸드폰 번호를 입력하세요");
+			event.preventDefault();
+		}else if(ph2==""){
+			$("#ph2").focus();
+			alert("핸드폰 번호를 입력하세요");
+			event.preventDefault();
+		}else if(ph3==""){
+			$("#ph3").focus();
+			alert("핸드폰 번호를 입력하세요");
+			event.preventDefault();
+		}else if(jumin1==""){
+			$("#jumin1").focus();
+			alert("주민번호 앞자리를 입력하세요");
+			event.preventDefault();
+		}else if(jumin2==""){
+			$("#jumin2").focus();
+			alert("주민번호 뒷자리를 입력하세요");
+			event.preventDefault();
+		}else if(chk1=="false"){
+			alert("이용약관에 동의하여 주세요");
+			event.preventDefault();
+		}else if(chk1==false){
+			alert("이용약관에 동의하여 주세요");
+			event.preventDefault();
+		}else if(chk2==false){
+			alert("결제 대행사에 결제정보를 제공하는 것에 동의하여 주세요");
+			event.preventDefault();
+		}
+	 });
 });
 </script>
 <div id="main_wrap">
-<form action="" method="post">
+<form action="" method="post" id="cash_add">
 	<div id="title">
 		싸이 충전 
 		<label style="font-weight: lighter;color: rgb(220, 220, 220);"> | </label>
@@ -50,7 +84,7 @@ $(document).ready(function(){
 		<input type="radio" value="500" name="mon">
 		<label>500</label>개(50,000원)
 		<input type="radio" value="직접입력" name="mon">
-		직접입력&nbsp;<input type="text" name="mon" size="4" style="margin: 0px;">개(<span>0</span>원)
+		직접입력&nbsp;<input type="text" name="mon" id="mon_input" size="4" style="margin: 0px;">개(<span id="mon_span">0</span>원)
 	</div>
 	<div style="font-size: 12px;margin-top: 20px;font-weight: bold;">
 		결제 수단
@@ -70,14 +104,14 @@ $(document).ready(function(){
 					<option value="LG">LG</option>
 					<option value="SKT">SKT</option>
 				</select>
-				<input type="text" name="ph1" style="margin-left: 10px;"> -
-				<input type="text" name="ph2"> -
-				<input type="text" name="ph3">
+				<input type="text" name="ph1" id="ph1" style="margin-left: 10px;"> -
+				<input type="text" name="ph2" id="ph2"> -
+				<input type="text" name="ph3" id="ph3">
 			</div>
 			<div style="margin-top: 5px;">
 				가입자주민번호
-				<input type="text" name="jumin1"> -
-				<input type="text" name="jumin2">
+				<input type="text" name="jumin1" id="jumin1"> -
+				<input type="text" name="jumin2" id="jumin2">
 			</div>
 			<div class="small">
 				<input type="checkbox" id="chk1" style="width: 15px;">
@@ -96,7 +130,7 @@ $(document).ready(function(){
 	<hr>
 	<div id="btn_wrap">
 		<input type="submit" value="결제" style="background :linear-gradient(#ffb000,#ff5e00);border: 1px solid #ff5e00  ">
-		<input type="button" value="취소" id="end" style="background: linear-gradient(#b4b4b4,gray); border: 1px solid gray">
+		<input type="button" value="취소" id="btn_end" style="background: linear-gradient(#b4b4b4,gray); border: 1px solid gray">
 	</div>
 </form>
 </div>
