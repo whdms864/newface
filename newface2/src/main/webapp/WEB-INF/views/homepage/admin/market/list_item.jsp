@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
+			<thead>
 		  		<tr class="success">
 		  			<th>No.</th>
 		  			<th>이미지</th>
@@ -11,6 +12,8 @@
 		  			<th>상세내용</th>
 		  			<th>등록일</th>
 		  		</tr>
+		  	</thead>
+		  	<tbody>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
 			  			<td>${vo.item_num}</td>
@@ -25,10 +28,8 @@
 			  			<td>${vo.regdate}</td>
 			  		</tr>
 			  	</c:forEach>
+			 </tbody>
 		</table>
-		<div style="border: 1px solid red; width: 100px; height: 100px;">
-		${vo.content}
-		</div>
 	</div>
 	<div style="position:absolute;top:600px;width: 100%;"align="center">
 		<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>

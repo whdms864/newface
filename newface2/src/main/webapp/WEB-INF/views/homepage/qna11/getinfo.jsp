@@ -19,12 +19,15 @@
 </script>	
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
+			<thead>
 		  		<tr class="success">
 		  			<th>No.</th>
 		  			<th>제목</th>
 		  			<th>등록일</th>
 		  			<th>상태</th>
 		  		</tr>
+		  	</thead>
+		  	<tbody>
 		  		<c:set var="i" value="0"/>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
@@ -43,6 +46,7 @@
 			  			</td>
 			  		</tr>
 			  	</c:forEach>
+			 </tbody>
 		</table>
 		<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<c:choose>

@@ -17,16 +17,20 @@
 </script>
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
+			<thead>
 		  		<tr class="success">
 		  			<th>No.</th>
 		  			<th>카테고리</th>
 		  		</tr>
+		  	</thead>
+		  	<tbody>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
 			  			<td>${vo.category_num}</td>
 			  			<td>${vo.name}</td>
 			  		</tr>
 			  	</c:forEach>
+			 </tbody>
 		</table>
 	</div>
 	<div align="center" style="position:absolute;top:540px;width: 100%;">

@@ -19,29 +19,33 @@
 </script>	
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
-	  		<tr class="success">
-	  			<th>No.</th>
-	  			<th>아이디</th>
-	  			<th>제목</th>
-	  			<th>등록일</th>
-	  			<th>상태</th>
-	  		</tr>
-	  		<c:forEach var="vo" items="${list}">
-	  			<tr>
-		  			<td>${vo.qna11_num}</td>
-		  			<td>${vo.id}</td>
-		  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300px;">
-		  			<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a></td>
-		  			<td>${vo.regdate}</td>
-		  			<td>
-			  			<c:choose>
-			  				<c:when test="${vo.confirm=='0'}">대기</c:when>
-			  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
-			  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
-			  			</c:choose>
-		  			</td>
+			<thead>
+		  		<tr class="success">
+		  			<th>No.</th>
+		  			<th>아이디</th>
+		  			<th>제목</th>
+		  			<th>등록일</th>
+		  			<th>상태</th>
 		  		</tr>
-		  	</c:forEach>
+		  	</thead>
+		  	<tbody>
+		  		<c:forEach var="vo" items="${list}">
+		  			<tr>
+			  			<td>${vo.qna11_num}</td>
+			  			<td>${vo.id}</td>
+			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300px;">
+			  			<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a></td>
+			  			<td>${vo.regdate}</td>
+			  			<td>
+				  			<c:choose>
+				  				<c:when test="${vo.confirm=='0'}">대기</c:when>
+				  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
+				  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
+				  			</c:choose>
+			  			</td>
+			  		</tr>
+			  	</c:forEach>
+			</tbody>
 		</table>
 	</div>
 	<div style="position:absolute;top:610px;width: 100%;"align="center">
