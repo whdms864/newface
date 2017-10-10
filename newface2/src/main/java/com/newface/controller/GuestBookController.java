@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.newface.page.PageUtil;
+import com.newface.page.AutoPage;
 import com.newface.service.GuestbookService;
 import com.newface.vo.GuestbookVo;
 import com.newface.vo.GuestbookcomVo;
@@ -47,7 +47,7 @@ public class GuestBookController {
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
+		AutoPage pu=new AutoPage(pageNum,5,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<GuestbooklistVo> list=service.list_all(map);

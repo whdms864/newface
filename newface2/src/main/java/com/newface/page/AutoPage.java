@@ -1,6 +1,6 @@
 package com.newface.page;
 
-public class PageUtil {
+public class AutoPage {
 	private int pageNum; //현재페이지
 	private int startRow; //시작행번호
 	private int endRow; //끝행번호
@@ -11,9 +11,9 @@ public class PageUtil {
 	private int pageBlockCount; //한페이지에 보여질 페이지 갯수
 	private int totalRowCount; //전체글의 갯수
 	
-	public PageUtil() {}
+	public AutoPage() {}
 
-	public PageUtil(int pageNum, int rowBlockCount, int pageBlockCount, int totalRowCount) {
+	public AutoPage(int pageNum, int rowBlockCount, int pageBlockCount, int totalRowCount) {
 		super();
 		this.pageNum = pageNum;
 		this.rowBlockCount = rowBlockCount;

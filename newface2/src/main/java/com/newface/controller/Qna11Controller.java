@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.newface.page.PageUtil;
+import com.newface.page.AutoPage;
 import com.newface.service.Qna11Service;
 import com.newface.vo.GuestbooklistVo;
 import com.newface.vo.Qna11Vo;
@@ -37,7 +37,7 @@ public class Qna11Controller {
 		String id=(String)session.getAttribute("loginid");
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount(id);
-		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		AutoPage pu=new AutoPage(pageNum,15,5,totalRowCount);
 		map.put("id",id);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
@@ -78,7 +78,7 @@ public class Qna11Controller {
 	public String list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		AutoPage pu=new AutoPage(pageNum,15,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<Qna11Vo> list=service.list(map);
