@@ -13,7 +13,7 @@
 
 <div style="background-color: rgba(224, 224, 224, 0.78);margin-left:20px;width: 95%;height: 800px;">
 	<div style="margin-left: 30px;">
-		<label style="font-weight:bold;font-size:25px;">MyPage</label>
+		<label style="font-weight:bold;font-size:25px;margin-top: 10px;">MyPage</label>
 	</div>
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
 		width:90%; height:90%;margin-left:30px;padding: 10px;"align="left">
