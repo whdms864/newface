@@ -59,6 +59,12 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/market/sidebar.jsp"/>
 	</definition>
 	
+	<!-- 가상화폐 -->
+	<definition name=".cash" template="/WEB-INF/views/homepage/cash/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/cash/header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/main.jsp"/>
+	</definition>
+	
 	<!-- 회원가입 -->
 	<definition name=".member" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/member/member.jsp"/>
@@ -185,6 +191,9 @@
 	</definition>
 	<definition name=".marketadmin_insert_item" extends=".marketadmin">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_item.jsp"/>
+	</definition>
+	<definition name=".marketadmin_update_item" extends=".marketadmin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/update_item.jsp"/>
 	</definition>
 	
 	<!--  -->

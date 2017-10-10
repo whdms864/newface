@@ -14,11 +14,6 @@ public class HomeController {
 		return ".main";
 	}
 	
-	@RequestMapping(value = "/market", method = RequestMethod.GET)
-	public String market() {
-		return ".market";
-	}
-	
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String manager() {

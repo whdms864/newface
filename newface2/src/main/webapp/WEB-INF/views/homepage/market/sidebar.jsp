@@ -2,8 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!----------------- 여기서부터 왼쪽 사이드바 ----------------->
-		
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#cash_add").click(function(){
+			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570");
+		});
+	});
+</script>		
 <div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
 		<table width="240px" style="margin: 10px;text-align: center;">
@@ -29,7 +35,7 @@
 					<img src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"style="width:20px; height:20px "> &nbsp;20
 				</td>
 				<td>
-					<div style="font-size: 16px;"><a href="">충전</a></div>
+					<div style="font-size: 16px;"><a href="" id="cash_add">충전</a></div>
 				</td>
 			</tr>
 		</table>
@@ -39,7 +45,7 @@
 		</div>
 		<div>
 			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>
-			<a href="<c:url value='/market'/>" style="margin-left: 20px;">마켓</a>
+			<a href="<c:url value='/market/item/list'/>" style="margin-left: 20px;">마켓</a>
 			<a href="" style="margin-left: 20px;">쪽지</a>
 			<a href="<c:url value='/member/mypage?id=${sessionScope.loginid }'/>" style="margin-left: 20px;">MyPage</a>
 		</div>
