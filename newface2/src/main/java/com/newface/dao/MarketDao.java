@@ -1,6 +1,7 @@
 package com.newface.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,16 +27,37 @@ public class MarketDao {
 	public int insert(ItemVo vo) {
 		return sqlSession.insert(NAMESPACE+".insert_item",vo);
 	}
-	public List<CategoryVo> list_cate() {
-		return sqlSession.selectList(NAMESPACE+".list_cate");
+	public List<CategoryVo> list_cate(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list_cate",map);
 	}
-	public List<ItemVo> list_item() {
-		return sqlSession.selectList(NAMESPACE+".list_item");
+	public List<CategoryVo> list_cate_all() {
+		return sqlSession.selectList(NAMESPACE+".list_cate_all");
+	}
+	public List<ItemVo> list_item(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list_item",map);
+	}
+	public int getCount(int category_num) {
+		return sqlSession.selectOne(NAMESPACE+".count",category_num);
+	}
+	public int getCount() {
+		return sqlSession.selectOne(NAMESPACE+".count_cate");
 	}
 	public CategoryVo getinfo_cate(int category_num) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo_cate",category_num);
 	}
 	public ItemVo getinfo_item(int item_num) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo_item",item_num);
+	}
+	public int delete_item(int item_num) {
+		return sqlSession.delete(NAMESPACE+".delete_item",item_num);
+	}
+	public int delete_cate(int category_num) {
+		return sqlSession.insert(NAMESPACE+".delete_cate",category_num);
+	}
+	public int update_item(ItemVo vo) {
+		return sqlSession.delete(NAMESPACE+".update_item",vo);
+	}
+	public int update_cate(CategoryVo vo) {
+		return sqlSession.insert(NAMESPACE+".update_cate",vo);
 	}
 }
