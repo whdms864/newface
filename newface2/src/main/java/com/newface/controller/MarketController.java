@@ -20,11 +20,28 @@ import com.newface.vo.ItemVo;
 @Controller
 public class MarketController {
 	@Autowired private MarketService service;
-
+	
+	@RequestMapping(value = "/market/item/list", method = RequestMethod.GET)
+	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount(category_num);
+		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("category_num", category_num);
+		List<ItemVo> list=service.list_item(map);
+		List<CategoryVo> list_cate=service.list_cate_all();
+		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("category_num",category_num);
+		model.addAttribute("list_cate",list_cate);
+		return ".market";
+	}
+	
 	/***************************** °ü¸®ÀÚ ******************************************/
 	
 	@RequestMapping(value = "/market/admin/item/list", method = RequestMethod.GET)
-	public String item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="4") int category_num,Model model) {
+	public String item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount(category_num);
 		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
@@ -80,8 +97,16 @@ public class MarketController {
 		return "redirect:/market/admin/cate/list";
 	}
 	@RequestMapping(value = "/market/admin/item/update", method = RequestMethod.GET)
-	public String item_update(int item_num) {
-		service.delete_item(item_num);
+	public String item_update(int item_num,Model model) {
+		ItemVo vo=service.getinfo_item(item_num);
+		List<CategoryVo> list=service.list_cate_all();
+		model.addAttribute("list",list);
+		model.addAttribute("vo",vo);
+		return ".marketadmin_update_item";
+	}
+	@RequestMapping(value = "/market/admin/item/updateok", method = RequestMethod.POST)
+	public String item_updateok(ItemVo vo) {
+		service.update_item(vo);
 		return "redirect:/market/admin/item/list";
 	}
 	@RequestMapping(value = "/market/admin/cate/update", method = RequestMethod.POST)

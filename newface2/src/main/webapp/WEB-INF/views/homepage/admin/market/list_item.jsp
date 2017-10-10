@@ -43,21 +43,25 @@
 		  			<th>상세내용</th>
 		  			<th>가격(개)</th>
 		  			<th>등록일</th>
+		  			<th>수정</th>
+		  			<th>삭제</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
 		  		<c:forEach var="vo" items="${list}">
 		  			<tr>
 			  			<td>${vo.item_num}</td>
-			  			<td>
-			  				<a href="<c:url value='/'/>">
-			  					${vo.name}
-			  				</a>
+			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+			  				${vo.name}
 			  			</td>
 			  			<td>${vo.item_img}</td>
-			  			<td>${vo.content}</td>
+			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+			  				${vo.content}
+			  			</td>
 			  			<td>${vo.pay}</td>
 			  			<td>${vo.regdate}</td>
+			  			<td><a href="<c:url value='/market/admin/item/update?item_num=${vo.item_num }'/>">수정</a></td>
+			  			<td><a href="<c:url value='/market/admin/item/delete?item_num=${vo.item_num }'/>">삭제</a></td>
 			  		</tr>
 			  	</c:forEach>
 			 </tbody>
