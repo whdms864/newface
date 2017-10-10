@@ -70,7 +70,7 @@
 		</c:if>
 		<div class="num">${vo.diary_num }</div>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
-		<div class="name">${requestScope.name }</div>
+		<div class="name">${vo.name }</div>
 		<div class="regdate">${vo.regdate }</div>
 		<div class="love">${vo.love }</div><br>
 	</c:forEach> 

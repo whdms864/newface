@@ -11,7 +11,7 @@
 	미니홈피 관리
 </div>
 <div id="minihome_set_menu">
-	<a href="">메뉴 설정</a><br>
+	<a href="<c:url value='/setup/menu'/>">메뉴 설정</a><br>
 </div>
 <div id="item_set">
 	<hr>

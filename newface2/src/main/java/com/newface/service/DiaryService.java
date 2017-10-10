@@ -44,10 +44,20 @@ public class DiaryService {
 		return dao.id(hompy_num);
 	}
 	public List<DiaryListVo> folder_basic_list(HashMap<String, Integer> map){
-		return dao.folder_basic_list(map);
+		List<DiaryListVo> list=dao.folder_basic_list(map);
+		for(DiaryListVo vo:list) {
+			String name=dao.diary_name(vo.getDiary_folder_num());
+			vo.setName(name);
+		}
+		return list;
 	}
 	public List<DiaryListVo> folder_all_list(HashMap<String, Integer> map){
-		return dao.folder_all_list(map);
+		List<DiaryListVo> list=dao.folder_all_list(map);
+		for(DiaryListVo vo:list) {
+			String name=dao.diary_name(vo.getDiary_folder_num());
+			vo.setName(name);
+		}
+		return list;
 	}
 	public int diary_all_count(int hompy_num) {
 		return dao.diary_all_count(hompy_num);

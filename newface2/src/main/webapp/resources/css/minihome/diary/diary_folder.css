@@ -5,4 +5,27 @@
 a{
 	text-decoration: none; color: black;
 }
-    
+#diary_folder_back{
+	padding: 30px;
+}    
+.folder_back{
+	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;
+}
+h3{
+	padding-top: 30px; padding-bottom: 5px;
+}
+select{
+	width: 200px; height: 23px;
+}
+input[type=text]{
+	height: 17px; width: 250px;
+}
+input[type=submit]{
+	height: 23px;
+}
+#menu{
+	margin-top: 10px; margin-bottom: 10px; border: 1px dashed #c6c6c6;
+}
+#first{
+	padding-top: 0px;
+}

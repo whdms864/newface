@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=23'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=333'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){	
@@ -22,7 +22,7 @@
 			
 			for(var i=1;i<=data.lastdate;i++){
 				if(data.date==i){					
-					$("#dd").append("<span id='today'>" + i + "</span>  ");								
+					$("#dd").append("<span id='now'>" + i + "</span>  ");								
 				}else{
 					$("#dd").append(i + "  ");								
 				}				
@@ -44,7 +44,7 @@
 				var d=$("#d").html();
 				for(var i=1;i<=data.lastdate;i++){
 					if(y==data.year && m==data.month && data.date==i){					
-						$("#dd").append("<span id='today'>" + i + "</span>  ");								
+						$("#dd").append("<span id='now'>" + i + "</span>  ");								
 					}else{
 						$("#dd").append(i + "  ");								
 					}				
@@ -67,7 +67,7 @@
 				var d=$("#d").html();
 				for(var i=1;i<=data.lastdate;i++){
 					if(y==data.year && m==data.month && data.date==i){					
-						$("#dd").append("<span id='today'>" + i + "</span>  ");								
+						$("#dd").append("<span id='now'>" + i + "</span>  ");								
 					}else{
 						$("#dd").append(i + "  ");								
 					}				
@@ -81,9 +81,9 @@
 	    	$.getJSON("<c:url value='/diary/com_list'/>",{"diary_num":diary_num},function(data){
 	    		$("#com_list").html("");
 	    		$(data).each(function(i,com){
-	    			$("#com_list").append("<span id='name" + com.diary_com_num + "'>" + com.name + "</span> : <span id='content" + com.diary_com_num + "'>" + com.content + "</span> (" + com.regdate + ")");
+	    			$("#com_list").append("<span class='name' id='name" + com.diary_com_num + "'>" + com.name + "</span> : <span id='content" + com.diary_com_num + "'>" + com.content + "</span> <span class='date'>(" + com.regdate + ")</span>");
 	    			if(com.id==loginid){
-	    				$("#com_list").append(" <a href='#' class='trigger' id='" + com.diary_com_num + "'>수정</a> " +
+	    				$("#com_list").append(" <a href='#' class='update' id='" + com.diary_com_num + "'>수정</a> | " +
 						"<a href='#' class='delete' id='" + com.diary_com_num + "'>삭제</a>");
 	    			}
 	    			$("#com_list").append("<br>");
@@ -117,7 +117,7 @@
 		});
 		
 	  //수정
-		$("#com_list").on("click",".trigger",function(){
+		$("#com_list").on("click",".update",function(){
 			var num=$(this).attr("id"); 
 	    	var content=$("#content" + num).html();
 	    	var name=$("#name" + num).html();

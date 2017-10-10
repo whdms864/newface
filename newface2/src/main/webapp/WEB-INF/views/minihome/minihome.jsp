@@ -35,7 +35,7 @@
 			미니홈피 <a id="hname_edit" href="">edit</a>
 		</div>
 	</div>
-	<div id="bgm_back">
+	<%-- <div id="bgm_back">
 		<div id="bgm">
 			<input type="button" value="노래" id="bgm">
 			<audio controls="controls" autoplay="autoplay" preload="none">
@@ -43,7 +43,7 @@
 				<source src="<c:url value='/resources/bgm/TWICE-SIGNAL.mp3'/>" type="audio/mpeg">
 			</audio>
 		</div>
-	</div>
+	</div> --%>
 	
 	
 	<div id="setup">

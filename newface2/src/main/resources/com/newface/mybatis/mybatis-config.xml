@@ -28,6 +28,7 @@
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MiniHomeMapper.xml"/>
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/SetupMapper.xml"/>
   	<mapper resource="com/newface/mybatis/Qna11Mapper.xml"/>
   	<mapper resource="com/newface/mybatis/GuestbookMapper.xml"/>
   	<mapper resource="com/newface/mybatis/NotiMapper.xml"/>
