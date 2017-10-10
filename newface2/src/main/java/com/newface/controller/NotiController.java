@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.newface.page.AutoPage;
+import com.newface.page.PageUtil;
 import com.newface.service.NotiService;
 import com.newface.vo.NotiVo;
 import com.newface.vo.NoticomVo;
@@ -43,7 +43,7 @@ public class NotiController {
 		NotiVo vo=service.notigetinfo(noti_num);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		AutoPage pu=new AutoPage(pageNum,6,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("noti_num",noti_num);
@@ -89,7 +89,7 @@ public class NotiController {
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		AutoPage pu=new AutoPage(pageNum,6,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("noti_num",noti_num);

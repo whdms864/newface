@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.newface.calendar.AfterCalendar;
 import com.newface.calendar.AutoCalendar;
 import com.newface.calendar.BeforeCalendar;
-import com.newface.page.AutoPage;
+import com.newface.page.PageUtil;
 import com.newface.service.DiaryService;
 import com.newface.vo.CalendarListVo;
 import com.newface.vo.DiaryListVo;
@@ -118,7 +118,7 @@ public class DiaryController {
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		int totalRowCount=service.diary_all_count(hompy_num);
 		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수
-		AutoPage page=new AutoPage(pageNum, 10, 10, totalRowCount);
+		PageUtil page=new PageUtil(pageNum, 10, 10, totalRowCount);
 		HashMap<String, Integer> map=new HashMap<String, Integer>();
 		map.put("hompy_num", hompy_num);
 		map.put("startRow", page.getStartRow());		
@@ -160,7 +160,7 @@ public class DiaryController {
 		map.put("diary_folder_num", diary_folder_num);
 		int totalRowCount=service.diary_folder_count(map);
 		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수
-		AutoPage page=new AutoPage(pageNum, 10, 10, totalRowCount);
+		PageUtil page=new PageUtil(pageNum, 10, 10, totalRowCount);
 		map.put("diary_folder_num", diary_folder_num);
 		map.put("startRow", page.getStartRow());
 		System.out.println("시작 : " + page.getStartRow());
