@@ -10,4 +10,7 @@
 .blank{
 	height: 10px;
 }
+#photo_set{
+	position: absolute; top:480px;
+}
                   

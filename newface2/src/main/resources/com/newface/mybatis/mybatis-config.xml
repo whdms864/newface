@@ -23,6 +23,9 @@
   	<typeAlias type="com.newface.vo.ItemVo" alias="item"/>
   	<typeAlias type="com.newface.vo.CategoryVo" alias="category"/>
   	<typeAlias type="com.newface.vo.NoticomVo" alias="noticom"/>
+  	<typeAlias type="com.newface.vo.PhotofolderVo" alias="photo_f"/>
+  	<typeAlias type="com.newface.vo.PhotoVo" alias="photo"/>
+  	<typeAlias type="com.newface.vo.PhotolistVo" alias="photo_list"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
@@ -33,5 +36,6 @@
   	<mapper resource="com/newface/mybatis/GuestbookMapper.xml"/>
   	<mapper resource="com/newface/mybatis/NotiMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MarketMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/PhotoMapper.xml"/>
   </mappers>
 </configuration>

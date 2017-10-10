@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newface.mybatis.PhotoMapper">
+	<select id="hompy_num" parameterType="string" resultType="int">
+		select hompy_num from hompy where id=#{value}
+	</select>
+	<insert id="folder_insert" parameterType="photo_f">
+		insert into photo_folder values(0,#{fname},now(),#{hompy_num})
+	</insert>
+	<select id="folder_list" parameterType="int" resultType="photo_f">
+		select * from photo_folder where hompy_num=#{hompy_num}
+	</select>
+	<insert id="photo_insert" parameterType="photo">
+		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num})
+	</insert>
+	<select id="photo_list" parameterType="int" resultType="photo_list">
+		select a.photo_num,a.title,a.content,a.love,a.secret,a.singo,date_format(a.regdate,'%Y/%c/%e')as regdate,a.photo_folder_num,b.hompy_num
+		from photo as a join photo_folder as b 
+		on a.photo_folder_num=b.photo_folder_num order by a.photo_num desc
+	</select>
+</mapper>   
