@@ -6,21 +6,33 @@
 	<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
 		<div style="margin-left: 67px;">
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">제목</label>
+				<label class="control-label" for="inputWarning1">회사명</label>
 				<br>
-				<input type="text" name="title" id="title" class="form-control" style="width:500px;">
+				<input type="text" name="hname" class="form-control" style="width:500px;">
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1" >작성자</label>
+				<label class="control-label" for="inputWarning1" >대표명</label>
 				<br>
-				<input type="text" name="id" id="id" class="form-control" style="width:500px;" value="${sessionScope.loginid }" readonly="readonly">
+				<input type="text" name="pname" class="form-control" style="width:500px;">
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">내용</label>
+				<label class="control-label" for="inputWarning1" >사업자번호</label>
 				<br>
-				<textarea rows="17" cols="65" name="content" class="form-control" ></textarea>
+				<input type="text" name="snum" class="form-control" style="width:500px;">
+			</div>
+			
+			<div class="form-group has-warning" style="display: inline-block; ">
+				<label class="control-label" for="inputWarning1" >담당자명</label>
+				<br>
+				<input type="text" name="dname" class="form-control" style="width:500px;">
+			</div>
+			
+			<div class="form-group has-warning" style="display: inline-block; ">
+				<label class="control-label" for="inputWarning1" >전화번호</label>
+				<br>
+				<input type="text" name="phone" class="form-control" style="width:500px;">
 			</div>
 		</div>
 	</div>

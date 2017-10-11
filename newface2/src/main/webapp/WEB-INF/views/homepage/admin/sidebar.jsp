@@ -31,7 +31,7 @@
 	</li>
 </ul>
 <div>
-<a href="<c:url value='/'/>">main</a>
+<a href="<c:url value='/members/logout'/>">main</a>
 </div>
 
 

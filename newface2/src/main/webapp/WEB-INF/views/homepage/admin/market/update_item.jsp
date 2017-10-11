@@ -9,23 +9,14 @@
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
 <div align="center">
-	<form action="<c:url value='/market/admin/item/updateok'/>" method="post" id="frm" >
+	<form action="<c:url value=''/>" method="post" id="frm" >
 		<input type="hidden" name="item_num" value="${vo.item_num }">
 		<table>
 			<tr>
-				<td>상품명</td>
+				<td>타입</td>
 				<td><input type="text" name="name" id="name" value="${vo.name }"></td>
 			</tr>
-			<tr>
-				<td>카테고리</td>
-				<td>
-					<select name="category_num" style="width:500px;height:25px;">
-					<c:forEach var="cate_vo" items="${list }">
-						<option value="${cate_vo.category_num}" ${cate_vo.category_num == vo.category_num ? 'selected="selected"' : '' }>${cate_vo.name}</option>
-					</c:forEach>
-					</select>
-				</td>
-			</tr>
+			
 			<tr>
 				<td>가격</td>
 				<td><input type="text" name="pay" id="pay" value="${vo.pay }"></td>
