@@ -26,6 +26,8 @@
   	<typeAlias type="com.newface.vo.PhotofolderVo" alias="photo_f"/>
   	<typeAlias type="com.newface.vo.PhotoVo" alias="photo"/>
   	<typeAlias type="com.newface.vo.PhotolistVo" alias="photo_list"/>
+  	<typeAlias type="com.newface.vo.SetupVo" alias="setup"/>
+  	<typeAlias type="com.newface.vo.ProfileVo" alias="profile"/>
   </typeAliases>
   <mappers>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>

@@ -12,14 +12,16 @@
 </div>
 <div id="minihome_set_menu">
 	<a href="<c:url value='/setup/menu'/>">메뉴 설정</a><br>
+	<a href="<c:url value='/setup/hname'/>">홈피명 설정</a><br>
+	<a href="<c:url value='/setup/profile'/>">프로필 설정</a><br>
 </div>
 <div id="item_set">
 	<hr>
 	아이템 관리
 </div>
 <div id="item_set_menu">
-	<a href="">미니홈피 효과</a><br>
+	<a href="<c:url value='/setup/skin'/>">미니홈피 효과</a><br>
 	<a href="">미니룸 설정</a><br>
-	<a href="">미니미 설정</a>
+	<a href="">미니미 설정</a><br>
 	<a href="">음악 설정</a>
 </div>

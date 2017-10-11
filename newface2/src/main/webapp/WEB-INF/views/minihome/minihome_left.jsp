@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css?var=23'/>">
 <div id="left_back">
 	<div id="profile">
-		<img alt="프로필사진" src="<c:url value='/resources/images/minihome/profile.PNG'/>">
+		<c:choose>
+			<c:when test="${requestScope.vo.save_name==null }">
+				<img alt="프로필사진" class="photo" src="<c:url value='/resources/images/minihome/profile.PNG'/>">			
+			</c:when>
+			<c:otherwise>
+				<img alt="프로필사진" class="photo" src="<c:url value='/resources/upload/${requestScope.vo.save_name }'/>">
+			</c:otherwise>
+		</c:choose>
 	</div>
-	<div id="todayis">today is 기쁨</div>
+	<div id="todayis">today is ${requestScope.vo.todayis }</div>
 	<div id="content">
-		<p>자기소개가 없습니다</p>
+		${requestScope.vo.content }
 	</div>
 	<div id="edit">
 		<a href="">edit</a> 

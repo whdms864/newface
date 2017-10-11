@@ -6,4 +6,13 @@
 	<select id="hompy_num" parameterType="string" resultType="int">
 		select hompy_num from hompy where id=#{value}
 	</select>
+	<select id="setup_list" parameterType="int" resultType="setup">
+		select guest,photo,diary from setup where hompy_num=#{value} 
+	</select>
+	<select id="hompy" parameterType="string" resultType="hompy">
+		select * from hompy where id=#{value}
+	</select>
+	<select id="profile" parameterType="int" resultType="profile">
+		select * from profile where hompy_num=#{value}
+	</select>
 </mapper>  

@@ -27,12 +27,12 @@
 
 	<div id="today_back">
 		today
-		<div id="today">1234</div>
+		<div id="today">0</div>
 	</div>
-	<div id="total">total 1234</div>
+	<div id="total">total ${sessionScope.total }</div>
 	<div id="hname_back">
 		<div id="hname">
-			미니홈피 <a id="hname_edit" href="">edit</a>
+			${sessionScope.hname } <a id="hname_edit" href="">edit</a>
 		</div>
 	</div>
 	<%-- <div id="bgm_back">
@@ -46,31 +46,39 @@
 	</div> --%>
 	
 	
-	<div id="setup">
+	<div id="home">
 		<div class="menu">
 			<a href="<c:url value='/minihome'/>">홈</a>
 		</div>
 	</div>
-	<div id="diary">
-		<div class="menu">
-			<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a>
+	<c:if test="${sessionScope.diary==1 }">
+		<div id="diary">
+			<div class="menu">
+				<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a>
+			</div>
 		</div>
-	</div>
-	<div id="photo">
-		<div class="menu">
-			<a href="<c:url value='/photo/folder_list'/>">사진첩</a>
+	</c:if>
+	<c:if test="${sessionScope.photo==1 }">
+		<div id="photo">
+			<div class="menu">
+				<a href="<c:url value='/photo'/>">사진첩</a>
+			</div>
 		</div>
-	</div>
-	<div id="guestbook">
+	</c:if>
+	<c:if test="${sessionScope.guest==1 }">
+	<div id="guest">
 		<div class="menu">
 			<a href="<c:url value='/guest/list_all'/>">방명록</a>
 		</div>
 	</div>
+	</c:if>
+	<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
 	<div id="set">
 		<div class="menu">
-			<a href="<c:url value='/setup'/>">설정</a>
+			<a href="<c:url value='/setup/menu'/>">설정</a>
 		</div>
-	</div>		
+	</div>	
+	</c:if>	
 </div>
 </body>
 </html>
