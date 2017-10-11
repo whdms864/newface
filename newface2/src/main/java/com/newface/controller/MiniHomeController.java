@@ -1,6 +1,8 @@
 package com.newface.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.MiniHomeService;
 import com.newface.vo.HompyVo;
+import com.newface.vo.MemberVo;
+import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
 
@@ -43,6 +47,28 @@ public class MiniHomeController {
 		//프로필사진
 		ProfileVo profile=service.profile(hompy_num);
 		model.addAttribute("vo", profile);
+		
+		//최신글
+		List<NowVo> now=service.now(hompy_num);
+		model.addAttribute("now", now);
+		
+		//게시판 현황
+		int diary_count=service.diary_count(hompy_num);
+		int diary_now=service.diary_now(hompy_num);
+		int photo_count=service.photo_count(hompy_num);
+		int photo_now=service.photo_now(hompy_num);
+		int guest_count=service.guest_count(hompy_num);
+		int guest_now=service.guest_now(hompy_num);
+		model.addAttribute("diary_count", diary_count);
+		model.addAttribute("diary_now", diary_now);
+		model.addAttribute("photo_count", photo_count);
+		model.addAttribute("photo_now", photo_now);
+		model.addAttribute("guest_count", guest_count);
+		model.addAttribute("guest_now", guest_now);
+		
+		//미니홈피 이름
+		MemberVo member=service.profile_member(hompy_num);
+		model.addAttribute("member", member);
 		return ".minihome";
 	}
 }

@@ -11,19 +11,19 @@
 </div>
 <div id="board_back">
 	<ul id="board">
-		<li>최신글1</li>
-		<li>최신글2</li>
-		<li>최신글3</li>
+		<c:forEach var="nowVo" items="${requestScope.now }">
+			<li><a>${nowVo.title }</a></li>	
+		</c:forEach>
 	</ul>
 </div>
 <div id="board_cnt">
 	<table >
 		<tr>
-			<td class="cnt">다이어리</td>
-			<td class="cnt">사진첩</td>
+			<td class="cnt">다이어리 ${requestScope.diary_now } / ${requestScope.diary_count }</td>
+			<td class="cnt">사진첩 ${requestScope.photo_now } / ${requestScope.photo_count }</td>
 		</tr>
 		<tr>
-			<td class="cnt">방명록</td>
+			<td class="cnt">방명록 ${requestScope.guest_now } / ${requestScope.guest_count }</td>
 		</tr>
 	</table>
 </div>

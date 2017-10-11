@@ -22,9 +22,8 @@
 		<a href="">history</a>
 	</div>
 	<div id="member">
-		<div id="name">홍길동</div>
-		<div id="gender">♂♀</div>
-		<div id="email">song@daum.net</div>
+		<div id="name">${requestScope.member.name }</div>
+		<div id="email">${requestScope.member.email }</div>
 	</div>
 	<div id="iu">
 		<select style="width: 150px; height: 30px;">

@@ -26,4 +26,25 @@
 		order by regdate desc
 		limit 0,3
 	</select>
+	<select id="diary_count" parameterType="int" resultType="int">
+		select count(d.diary_num) from diary d join diary_folder f on d.diary_folder_num=f.diary_folder_num where f.hompy_num=#{hompy_num}
+	</select>
+	<select id="diary_now" parameterType="int" resultType="int">
+		select count(d.diary_num) from diary d join diary_folder f on d.diary_folder_num=f.diary_folder_num where f.hompy_num=#{hompy_num} and date_format(d.regdate,"%Y-%c-%d")=date_format(now(),"%Y-%c-%d")
+	</select>
+	<select id="photo_count" parameterType="int" resultType="int">
+		select count(p.photo_num) from photo p join photo_folder f on p.photo_folder_num=f.photo_folder_num where f.hompy_num=#{hompy_num}
+	</select>
+	<select id="photo_now" parameterType="int" resultType="int">
+		select count(p.photo_num) from photo p join photo_folder f on p.photo_folder_num=f.photo_folder_num where f.hompy_num=#{hompy_num} and date_format(p.regdate,"%Y-%c-%d")=date_format(now(),"%Y-%c-%d")
+	</select>
+	<select id="guest_count" parameterType="int" resultType="int">
+		select count(guest_num) from guestbook where hompy_num=#{hompy_num}
+	</select>
+	<select id="guest_now" parameterType="int" resultType="int">
+		select count(guest_num) from guestbook where hompy_num=#{hompy_num} and date_format(regdate,"%Y-%c-%d")=date_format(now(),"%Y-%c-%d")
+	</select>
+	<select id="profile_member" parameterType="int" resultType="member">
+		select m.* from member m join hompy h on m.id=h.id where h.hompy_num=#{value}
+	</select>
 </mapper>  
