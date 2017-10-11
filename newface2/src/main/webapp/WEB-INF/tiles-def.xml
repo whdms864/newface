@@ -200,6 +200,10 @@
 	<definition name=".adimg_insert" extends=".adimg_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_insert.jsp"/>
 	</definition>
+	
+	<definition name=".adimg_update" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_update.jsp"/>
+	</definition>
 		
 	
 	
@@ -214,6 +218,10 @@
 	<definition name=".ad_insert" extends=".adimg_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_insert.jsp"/>
 	</definition>
+	
+	<definition name=".ad_update" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_update.jsp"/>
+	</definition>
 		
 		
 	
@@ -227,6 +235,10 @@
 	
 	<definition name=".ader_insert" extends=".adimg_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_insert.jsp"/>
+	</definition>
+	
+	<definition name=".ader_update" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_update.jsp"/>
 	</definition>
 	
 		

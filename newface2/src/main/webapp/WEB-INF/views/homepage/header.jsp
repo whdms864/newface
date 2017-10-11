@@ -6,6 +6,7 @@
   <nav class="navbar navbar-default navbar-fixed-top"style="background-color: rgb(243, 164, 18); height:70px;">
 	  <div class="container">
 	  <c:choose>
+	  
 	  	<c:when test="${not empty sessionScope.loginid }">
 			<a href="<c:url value='/main2'/>">
 				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
@@ -17,6 +18,7 @@
 				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
 		  	</a>
 		</c:otherwise>
+		
 	  </c:choose>
 	  </div>
   </nav>

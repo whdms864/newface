@@ -4,20 +4,20 @@
 	<div align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 			<thead>
-		  		<tr class="success">
+				<tr class="success">
 		  			<th>No.</th>
-		  			<th>제목</th>
-		  			<th>작성자</th>
-		  			<th>등록일</th>
+		  			<th>회사명</th>
+		  			<th>대표명</th>
+		  			<th>사업자번호</th>
 		  		</tr>
 		  	</thead>
-		  	<tbody>
-		  		<c:forEach var="vo" items="${list}">
+	  		<tbody>	  	
+		  		<c:forEach var="vo" items="${ader_list}">
 		  			<tr>
-			  			<td>${vo.noti_num}</td>
-			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
-			  			<td>${vo.id}</td>
-			  			<td>${vo.regdate}</td>
+			  			<td>${vo.ader_num}</td>
+			  			<td><a href="<c:url value='/ader_getinfo?ader_num=${vo.ader_num}'/>">${vo.hname}</a></td>
+			  			<td>${vo.pname}</td>
+			  			<td>${vo.snum}</td>
 			  		</tr>
 			  	</c:forEach>
 			</tbody>

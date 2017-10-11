@@ -9,11 +9,11 @@ public class AderVo {
 	private String snum;
 	private String dname;
 	private String phone;
-	private Date regdate;
+	private String regdate;
 	
 	public AderVo() {}
 
-	public AderVo(int ader_num, String hname, String pname, String snum, String dname, String phone, Date regdate) {
+	public AderVo(int ader_num, String hname, String pname, String snum, String dname, String phone, String regdate) {
 		super();
 		this.ader_num = ader_num;
 		this.hname = hname;
@@ -72,11 +72,11 @@ public class AderVo {
 		this.phone = phone;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	

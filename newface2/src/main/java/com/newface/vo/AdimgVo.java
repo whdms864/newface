@@ -3,19 +3,17 @@ package com.newface.vo;
 public class AdimgVo {
 	private int ad_img_num;
 	private String type;
-	private String org_name;
-	private String save_name;
+	private String ad_img;
 	private String url;
 	private int ad_num;
 	
-	public AdimgVo(){}
+	public AdimgVo() {}
 
-	public AdimgVo(int ad_img_num, String type, String org_name, String save_name, String url, int ad_num) {
+	public AdimgVo(int ad_img_num, String type, String ad_img, String url, int ad_num) {
 		super();
 		this.ad_img_num = ad_img_num;
 		this.type = type;
-		this.org_name = org_name;
-		this.save_name = save_name;
+		this.ad_img = ad_img;
 		this.url = url;
 		this.ad_num = ad_num;
 	}
@@ -36,20 +34,12 @@ public class AdimgVo {
 		this.type = type;
 	}
 
-	public String getOrg_name() {
-		return org_name;
+	public String getAd_img() {
+		return ad_img;
 	}
 
-	public void setOrg_name(String org_name) {
-		this.org_name = org_name;
-	}
-
-	public String getSave_name() {
-		return save_name;
-	}
-
-	public void setSave_name(String save_name) {
-		this.save_name = save_name;
+	public void setAd_img(String ad_img) {
+		this.ad_img = ad_img;
 	}
 
 	public String getUrl() {
@@ -67,4 +57,6 @@ public class AdimgVo {
 	public void setAd_num(int ad_num) {
 		this.ad_num = ad_num;
 	}
+	
+	
 }	

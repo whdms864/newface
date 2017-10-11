@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newface.mybatis.AdMapper">
+	<insert id="ader_insert" parameterType="ader">
+		insert into ader values(0,#{hname},#{pname},#{snum},#{dname},#{phone},now())
+	</insert>
+	
+	<select id="ader_list" resultType="ader">
+		select ader_num,hname,pname,snum,dname,phone,date_format(regdate,'%Y-%m-%d') regdate from ader order by ader_num desc
+	</select>
+	
+	<select id="ader_getinfo" resultType="ader" parameterType="int">
+		select ader_num,hname,pname,snum,dname,phone,date_format(regdate,'%Y-%m-%d') regdate from ader where ader_num=#{ader_num} 
+	</select>
+	
+	<update id="ader_update" parameterType="ader">
+		update ader set hname=#{hname}, pname=#{pname}, snum=#{snum}, dname=#{dname}, phone=#{phone} where ader_num=#{ader_num}
+	</update>
+	
+	<delete id="ader_delete" parameterType="int">
+		delete from ader where ader_num=#{ader_num}
+	</delete>
+	
+	<select id="ader_count" resultType="int">
+		select coalesce(count(ader_num),0) from ader;
+	</select>
+</mapper>  

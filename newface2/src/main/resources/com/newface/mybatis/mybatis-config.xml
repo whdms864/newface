@@ -29,6 +29,11 @@
   	<typeAlias type="com.newface.vo.SetupVo" alias="setup"/>
   	<typeAlias type="com.newface.vo.ProfileVo" alias="profile"/>
   	<typeAlias type="com.newface.vo.CashVo" alias="cash"/>
+  	<typeAlias type="com.newface.vo.AdVo" alias="ad"/>
+  	<typeAlias type="com.newface.vo.AderVo" alias="ader"/>
+  	
+  	
+  	
   </typeAliases>
   <mappers>
  	 <mapper resource="com/newface/mybatis/CashMapper.xml"/>
@@ -41,5 +46,6 @@
   	<mapper resource="com/newface/mybatis/NotiMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MarketMapper.xml"/>
   	<mapper resource="com/newface/mybatis/PhotoMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/AdMapper.xml"/>
   </mappers>
 </configuration>

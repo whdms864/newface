@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<form method="post" action="<c:url value=''/>">
+	<form action="<c:url value='/ader_insert'/>" method="post">
 	<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
 		<div style="margin-left: 67px;">
 			<div class="form-group has-warning" style="display: inline-block; ">

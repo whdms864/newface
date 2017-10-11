@@ -9,9 +9,8 @@
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
 <div align="center">
-	<form action="<c:url value=''/>" method="post">
+	<form action="<c:url value='/adimg_insert'/>" method="post">
 		<table>
-			
 			<tr>
 				<td>타입	</td>
 				<td>

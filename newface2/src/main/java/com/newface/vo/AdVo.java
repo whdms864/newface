@@ -6,17 +6,21 @@ public class AdVo {
 	private int ad_num;
 	private String type;
 	private int pay;
+	private String ad_img;
+	private String url;
 	private Date sdate;
 	private Date edate;
 	private int ader_num;
 	
 	public AdVo() {}
 
-	public AdVo(int ad_num, String type, int pay, Date sdate, Date edate, int ader_num) {
+	public AdVo(int ad_num, String type, int pay, String ad_img, String url, Date sdate, Date edate, int ader_num) {
 		super();
 		this.ad_num = ad_num;
 		this.type = type;
 		this.pay = pay;
+		this.ad_img = ad_img;
+		this.url = url;
 		this.sdate = sdate;
 		this.edate = edate;
 		this.ader_num = ader_num;
@@ -46,6 +50,22 @@ public class AdVo {
 		this.pay = pay;
 	}
 
+	public String getAd_img() {
+		return ad_img;
+	}
+
+	public void setAd_img(String ad_img) {
+		this.ad_img = ad_img;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public Date getSdate() {
 		return sdate;
 	}
@@ -69,5 +89,7 @@ public class AdVo {
 	public void setAder_num(int ader_num) {
 		this.ader_num = ader_num;
 	}
+
+	
 	
 }
