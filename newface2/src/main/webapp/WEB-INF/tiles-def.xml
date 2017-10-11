@@ -68,6 +68,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/success.jsp"/>
 	</definition>
 	<definition name=".item_cash" extends=".cash">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/cash/header2.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/item_cash.jsp"/>
 	</definition>
 	

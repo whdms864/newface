@@ -21,7 +21,8 @@
 			location.href='list?category_num='+category_num;
 		});
 		$(".item_getinfo").click(function(){
-			window.open("/market/item/getinfo?item_num=${vo.item_num }","_item_getinfo","width=500,height=500");
+			var item_num=$(this).find(".item_num_val").val();
+			window.open("<c:url value='/market/item/getinfo?item_num="+item_num+"'/>","_item_getinfo","width=500,height=500");
 		});
 	});
 </script>
@@ -51,7 +52,10 @@
 					${vo.item_img}
 					</div>
 					<div style="font-size:13px;margin-top: 5px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-						<a href="" class="item_getinfo">${vo.name}</a>
+						<a class="item_getinfo" style="cursor:pointer;">
+						<input type="hidden" value="${vo.item_num }" class="item_num_val">
+						${vo.name}
+						</a>
 					</div>
 				</div>
 				<c:if test="${i%3==0 }">
