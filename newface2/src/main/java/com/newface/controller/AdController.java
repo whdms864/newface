@@ -11,31 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.newface.service.AdService;
 import com.newface.vo.AderVo;
 
-
-
 @Controller
 public class AdController {
 	@Autowired private AdService service;
-	
-	//±§∞Ì¿ÃπÃ¡ˆ
-	@RequestMapping(value = "/adimg_list", method = RequestMethod.GET)
-	public String adimg_list(Model model) {
 		
-		return ".adimg_list";
-	}
-	
-	@RequestMapping(value = "/adimg_getinfo", method = RequestMethod.GET)
-	public String adimg_getinfo(Model model) {
-		
-		return ".adimg_getinfo";
-	}
-	
-	@RequestMapping(value = "/adimg_insert", method = RequestMethod.GET)
-	public String adimg_insert(Model model) {
-		
-		return ".adimg_insert";
-	}
-	
 	//±§∞Ì∞Ëæ‡
 	@RequestMapping(value = "/ad_list", method = RequestMethod.GET)
 	public String ad_list(Model model) {

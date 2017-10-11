@@ -188,56 +188,40 @@
 	</definition>
 	
 	<!-- 광고 관리자-->
-	<definition name=".adimg_list" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_list.jsp"/>
+	
+		
+	<definition name=".ad_list" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_list.jsp"/>
 		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/ad/tab.jsp"/>
 	</definition>
 	
-	<definition name=".adimg_getinfo" extends=".adimg_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_getinfo.jsp"/>
-	</definition>
-	
-	<definition name=".adimg_insert" extends=".adimg_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_insert.jsp"/>
-	</definition>
-	
-	<definition name=".adimg_update" extends=".adimg_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_update.jsp"/>
-	</definition>
-		
-	
-	
-	<definition name=".ad_list" extends=".adimg_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_list.jsp"/>
-	</definition>
-	
-	<definition name=".ad_getinfo" extends=".adimg_list">
+	<definition name=".ad_getinfo" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_getinfo.jsp"/>
 	</definition>
 	
-	<definition name=".ad_insert" extends=".adimg_list">
+	<definition name=".ad_insert" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_insert.jsp"/>
 	</definition>
 	
-	<definition name=".ad_update" extends=".adimg_list">
+	<definition name=".ad_update" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_update.jsp"/>
 	</definition>
 		
 		
 	
-	<definition name=".ader_list" extends=".adimg_list">
+	<definition name=".ader_list" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_list.jsp"/>
 	</definition>
 	
-	<definition name=".ader_getinfo" extends=".adimg_list">
+	<definition name=".ader_getinfo" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_getinfo.jsp"/>
 	</definition>
 	
-	<definition name=".ader_insert" extends=".adimg_list">
+	<definition name=".ader_insert" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_insert.jsp"/>
 	</definition>
 	
-	<definition name=".ader_update" extends=".adimg_list">
+	<definition name=".ader_update" extends=".ad_list">
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_update.jsp"/>
 	</definition>
 	
