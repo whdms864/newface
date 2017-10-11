@@ -33,6 +33,7 @@ public class CashController {
 			vo.setCnt(cnt);
 			service.update(vo);
 		}else {
+			cnt=addcnt;
 			CashVo vo2=new CashVo(0, addcnt, id);
 			service.insert(vo2);
 		}

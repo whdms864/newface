@@ -37,6 +37,10 @@ public class MarketController {
 		model.addAttribute("list_cate",list_cate);
 		return ".market";
 	}
+	@RequestMapping(value = "/market/item/getinfo", method = RequestMethod.GET)
+	public String user_item_getinfo(Model model,int item_num) {
+		return ".item_cash";
+	}
 	
 	/***************************** °ü¸®ÀÚ ******************************************/
 	
