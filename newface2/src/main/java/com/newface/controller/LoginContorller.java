@@ -12,12 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.newface.service.CashService;
 import com.newface.service.MemberService;
+import com.newface.service.Qna11Service;
+import com.newface.vo.CashVo;
 
 
 @Controller
 public class LoginContorller {
 	@Autowired private MemberService service;
+	@Autowired private CashService cashservice;
 	
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -36,6 +41,13 @@ public class LoginContorller {
 			if(r) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
+				
+				CashVo vo=cashservice.list(loginid);
+				if(vo!=null) {
+					session.setAttribute("cnt", vo.getCnt());
+				}else {
+					session.setAttribute("cnt", 0);
+				}
 				return ".main2";
 			}else if(a) {
 				HttpSession session = request.getSession();

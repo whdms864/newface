@@ -18,36 +18,26 @@ public class CashController {
 	
 	@RequestMapping(value = "/cash", method = RequestMethod.GET)
 	public String home(HttpSession session,Model model) {
-		String id=(String)session.getAttribute("loginid");
-		CashVo vo=service.list(id);
-		if(vo!=null) {
-			model.addAttribute("cnt", vo.getCnt());
-		}else {
-			model.addAttribute("cnt", 0);
-		}
 		return ".cash";
 		
 	}
 	@RequestMapping(value = "/cash/insert", method = RequestMethod.POST)
-	public String insert(Model model,HttpSession session,String mon,String mon_info) {
+	public String insert(Model model,HttpSession session,String mon) {
 		String id=(String)session.getAttribute("loginid");
-		
+		int addcnt=0;
 		int cnt=0;
-		
-		if(mon!="직접입력") {
-			cnt=Integer.parseInt(mon);
-		}else {
-			cnt=Integer.parseInt(mon_info);
-		}
+		addcnt=Integer.parseInt(mon);
 		CashVo vo=service.list(id);
 		if(vo!=null) {
-			vo.setCnt(vo.getCnt()+cnt);
+			cnt=vo.getCnt()+addcnt;
+			vo.setCnt(cnt);
 			service.update(vo);
 		}else {
-			CashVo vo2=new CashVo(0, cnt, id);
+			CashVo vo2=new CashVo(0, addcnt, id);
 			service.insert(vo2);
 		}
-		model.addAttribute("cnt", cnt);
+		session.setAttribute("cnt", cnt);
+		model.addAttribute("addcnt", addcnt);
 		return ".cash_insert";
 	}
 }

@@ -5,12 +5,6 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	 $("#mon_input").keyup(function(){
-		var cnt=$("#mon_input").val();
-		var tot=cnt*100;
-		$("#mon_span").html(tot);
-		
-	});
 	 $("#btn_end").click(function(){
 		 window.self.close(); 
 	 });
@@ -62,7 +56,7 @@ $(document).ready(function(){
 		<label style="font-weight: lighter;color: rgb(220, 220, 220);"> | </label>
 		<label style="color: #ff8100;">핸드폰 결제</label>
 		<br>
-		<label style="font-size: 13px;font-weight:lighter;">현재잔액 ${cnt }개</label>
+		<label style="font-size: 13px;font-weight:lighter;">[ 현재잔액 ${cnt }개 ]</label>
 	</div>
 	<hr size="2" color= "gray">
 	<div style="font-size: 12px;margin-top: 20px;">
@@ -83,8 +77,8 @@ $(document).ready(function(){
 		<label>300</label>개(30,000원)
 		<input type="radio" value="500" name="mon">
 		<label>500</label>개(50,000원)
-		<input type="radio" value="직접입력" name="mon">
-		직접입력&nbsp;<input type="text" name="mon_info" id="mon_input" size="4" style="margin: 0px;">개(<span id="mon_span">0</span>원)
+		<input type="radio" value="1000" name="mon">
+		<label>1000</label>개(100,000원)
 	</div>
 	<div style="font-size: 12px;margin-top: 20px;font-weight: bold;">
 		결제 수단
