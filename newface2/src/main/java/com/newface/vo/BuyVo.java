@@ -1,10 +1,9 @@
 package com.newface.vo;
 
-import java.util.Date;
 
 public class BuyVo {
 	private int buy_num;
-	private Date regdate;
+	private String regdate;
 	private int cnt;
 	private int pay;
 	private int item_num;
@@ -12,7 +11,7 @@ public class BuyVo {
 	
 	public BuyVo() {}
 
-	public BuyVo(int buy_num, Date regdate, int cnt, int pay, int item_num, String id) {
+	public BuyVo(int buy_num, String regdate, int cnt, int pay, int item_num, String id) {
 		super();
 		this.buy_num = buy_num;
 		this.regdate = regdate;
@@ -30,11 +29,11 @@ public class BuyVo {
 		this.buy_num = buy_num;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -69,4 +68,6 @@ public class BuyVo {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	
 }

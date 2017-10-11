@@ -4,6 +4,7 @@ package com.newface.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newface.page.PageUtil;
+import com.newface.service.BuyService;
 import com.newface.service.MarketService;
+import com.newface.service.MineService;
 import com.newface.vo.CategoryVo;
 import com.newface.vo.ItemVo;
 
 @Controller
 public class MarketController {
 	@Autowired private MarketService service;
+	@Autowired private BuyService buy_service;
+	@Autowired private MineService mine_service;
 	
 	@RequestMapping(value = "/market/item/list", method = RequestMethod.GET)
 	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
@@ -39,7 +44,16 @@ public class MarketController {
 	}
 	@RequestMapping(value = "/market/item/getinfo", method = RequestMethod.GET)
 	public String user_item_getinfo(Model model,int item_num) {
+		ItemVo vo=service.getinfo_item(item_num);
+		model.addAttribute("vo",vo);
 		return ".item_cash";
+	}
+	@RequestMapping(value = "/market/buy", method = RequestMethod.POST)
+	public String user_item_buy(Model model,HttpSession session,int item_num) {
+		int cnt=(Integer)session.getAttribute("cnt");//技记 档配府焊蜡
+		ItemVo vo=service.getinfo_item(item_num);
+		
+		return ".item_buy_ok";
 	}
 	
 	/***************************** 包府磊 ******************************************/

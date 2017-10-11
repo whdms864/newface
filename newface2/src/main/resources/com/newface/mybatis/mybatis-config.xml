@@ -32,10 +32,14 @@
   	<typeAlias type="com.newface.vo.AdVo" alias="ad"/>
   	<typeAlias type="com.newface.vo.AderVo" alias="ader"/>
   	<typeAlias type="com.newface.vo.NowVo" alias="now"/>
+  	<typeAlias type="com.newface.vo.BuyVo" alias="buy"/>
+  	<typeAlias type="com.newface.vo.MineVo" alias="mine"/>
   </typeAliases>
   
   <mappers>
- 	 <mapper resource="com/newface/mybatis/CashMapper.xml"/>
+ 	<mapper resource="com/newface/mybatis/BuyMapper.xml"/>
+ 	<mapper resource="com/newface/mybatis/MineMapper.xml"/>
+ 	<mapper resource="com/newface/mybatis/CashMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MiniHomeMapper.xml"/>
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>
