@@ -32,7 +32,7 @@
 			</tr>
 			<tr>
 				<td align="center">
-					<img src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"style="width:20px; height:20px "> &nbsp;20
+					<img src="<c:url value='/resources/images/homepage/도토리_최종.png'/>"style="width:20px; height:20px "> &nbsp;20
 				</td>
 				<td>
 					<div style="font-size: 16px;"><a href="" id="cash_add">충전</a></div>

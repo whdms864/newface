@@ -28,8 +28,10 @@
   	<typeAlias type="com.newface.vo.PhotolistVo" alias="photo_list"/>
   	<typeAlias type="com.newface.vo.SetupVo" alias="setup"/>
   	<typeAlias type="com.newface.vo.ProfileVo" alias="profile"/>
+  	<typeAlias type="com.newface.vo.CashVo" alias="cash"/>
   </typeAliases>
   <mappers>
+ 	 <mapper resource="com/newface/mybatis/CashMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MiniHomeMapper.xml"/>
   	<mapper resource="com/newface/mybatis/DiaryMapper.xml"/>

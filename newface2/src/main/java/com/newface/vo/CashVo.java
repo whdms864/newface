@@ -4,14 +4,16 @@ public class CashVo {
 	private int cash_num;
 	private int cnt;
 	private String id;
+
+	public CashVo() {
+	}
+
 	public CashVo(int cash_num, int cnt, String id) {
 		super();
 		this.cash_num = cash_num;
 		this.cnt = cnt;
 		this.id = id;
 	}
-	
-	public CashVo() {}
 
 	public int getCash_num() {
 		return cash_num;
@@ -36,4 +38,6 @@ public class CashVo {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	
 }

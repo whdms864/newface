@@ -58,16 +58,16 @@ $(document).ready(function(){
 <div id="main_wrap">
 <form action="<c:url value='/cash/insert'/>" method="post" id="cash_add">
 	<div id="title">
-		싸이 충전 
+		도토리 충전 
 		<label style="font-weight: lighter;color: rgb(220, 220, 220);"> | </label>
 		<label style="color: #ff8100;">핸드폰 결제</label>
 		<br>
-		<label style="font-size: 13px;font-weight:lighter;">현재잔액 0개</label>
+		<label style="font-size: 13px;font-weight:lighter;">현재잔액 ${cnt }개</label>
 	</div>
 	<hr size="2" color= "gray">
 	<div style="font-size: 12px;margin-top: 20px;">
-		<label style="font-weight: bold;">싸이 충전 </label>
-		(싸이는 10개 단위로 충전 가능합니다.)
+		<label style="font-weight: bold;">도토리 충전 </label>
+		(도토리는 10개 단위로 충전 가능합니다.)
 	</div>
 	<div class="money">
 		<input type="radio" value="10" name="mon" checked="checked" style="margin-left: 10px;">
@@ -84,7 +84,7 @@ $(document).ready(function(){
 		<input type="radio" value="500" name="mon">
 		<label>500</label>개(50,000원)
 		<input type="radio" value="직접입력" name="mon">
-		직접입력&nbsp;<input type="text" name="mon" id="mon_input" size="4" style="margin: 0px;">개(<span id="mon_span">0</span>원)
+		직접입력&nbsp;<input type="text" name="mon_info" id="mon_input" size="4" style="margin: 0px;">개(<span id="mon_span">0</span>원)
 	</div>
 	<div style="font-size: 12px;margin-top: 20px;font-weight: bold;">
 		결제 수단

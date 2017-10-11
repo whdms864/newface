@@ -30,8 +30,9 @@ $(document).ready(function(){
 		}else if(loginpwd==""){
 			$("#loginpwd").focus();
 			event.preventDefault();
-           
-		}else if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
+		}
+		
+		if($("#auto").is(":checked")){ // 자동로그인 체크했을 때,
 			if(userid!=loginid){
 				 deleteCookie("userid");
 		         deleteCookie("userpwd");
