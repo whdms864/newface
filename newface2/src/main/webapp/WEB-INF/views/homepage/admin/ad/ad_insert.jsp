@@ -2,25 +2,35 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<form method="post" action="<c:url value='/notiadmin_insert'/>">
+	<form method="post" action="<c:url value=''/>">
 	<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
 		<div style="margin-left: 67px;">
+			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">제목</label>
-				<br>
-				<input type="text" name="title" id="title" class="form-control" style="width:500px;">
+				<select name="type" style="width:500px; height:33px;">
+						<option value="1">계약협상</option>
+						<option value="2">광고게시</option>
+						<option value="3">계약만료</option>
+				</select>
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1" >작성자</label>
+				<label class="control-label" for="inputWarning1">계약금액</label>
 				<br>
-				<input type="text" name="id" id="id" class="form-control" style="width:500px;" value="${sessionScope.loginid }" readonly="readonly">
+				<input type="text" name="pay" class="form-control" style="width:500px;">
+			</div>
+						
+			
+			<div class="form-group has-warning" style="display: inline-block; ">
+				<label class="control-label" for="inputWarning1">광고시작일</label>
+				<br>
+				<input type="date" name="sdate" class="form-control" style="width:500px;">
 			</div>
 			
 			<div class="form-group has-warning" style="display: inline-block; ">
-				<label class="control-label" for="inputWarning1">내용</label>
+				<label class="control-label" for="inputWarning1">광고만료일</label>
 				<br>
-				<textarea rows="17" cols="65" name="content" class="form-control" ></textarea>
+				<input type="date" name="edate" class="form-control" style="width:500px;">
 			</div>
 		</div>
 	</div>

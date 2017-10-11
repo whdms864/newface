@@ -5,9 +5,19 @@
 <nav class="navbar navbar-default navbar-fixed-top"style="background-color: white; height:90px;border: none;">
   <nav class="navbar navbar-default navbar-fixed-top"style="background-color: rgb(243, 164, 18); height:70px;">
 	  <div class="container">
-		<a href="<c:url value='/'/>">
-			<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
-	  	</a>
+	  <c:choose>
+	  	<c:when test="${not empty sessionScope.loginid }">
+			<a href="<c:url value='/main2'/>">
+				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
+		  	</a>
+		</c:when>
+		
+		<c:otherwise>
+			<a href="<c:url value='/'/>">
+				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
+		  	</a>
+		</c:otherwise>
+	  </c:choose>
 	  </div>
   </nav>
 </nav>
