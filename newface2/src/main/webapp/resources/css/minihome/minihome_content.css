@@ -6,9 +6,8 @@ body {
 #webView {
 	overflow: hidden;
 	position: relative;
-	background: rgb(149, 165, 166); /* 메인스킨 설정 */
-	width: 1200px;
-	height: 678px;
+	width: 1024px;
+	height: 592px;
 	margin: 0 auto;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0)
@@ -26,11 +25,11 @@ body {
 	color: rgb(94, 94, 94);
 }
 #iu_content{
-	position: relative; top: 20px;left: 40px;  width: 497px; height: 200px;font-size: 12px;
+	position: relative; top: 30px;left: 20px;  width: 497px; height: 200px;font-size: 12px;
 }
 
 #news_back{
-	position: relative; top: 15px; left: 40px; width: 250px; height: 50px;
+	position: relative; top: 5px; left: 20px; width: 170px; height: 50px;
 }
 #news{
 	font-weight: bold; font-size: 18px
@@ -40,35 +39,35 @@ ul{
 }
 
 #board_back{
-	position: relative; top: 10px; left: 50; width: 300px; height: 88px;
+	position: relative; top: 10px; left: 20; width: 300px; height: 88px; font-size: 14px;
 }
 #board{
-	font-size: 16px;
+	font-size: 14px; margin-top: -20px; 
 }
 #board_cnt{
-	position: relative;top: -90px; left: 310px;  width: 259px; height: 60px;
+	position: relative;top: -100px; left: 210px;  width: 259px; height: 60px;
 }
 .cnt{
 	border: 1px solid black;width: 120px;
 }
 #miniroom_back{
-	position: relative; top: -35px; left: 40px; width: 520px; height: 214px;
+	position: relative; top: -80px; left: 20px; width: 450px; height: 214px;
 }
 #miniroom{
 	background-color: rgb(241, 196, 15);width: 100%;height: 100%;
 }
 #friends_say_back{
-	position: relative; top: 20px; left: 50px; width: 80px; height: 50px;
+	position: relative; top: -30px; left: 50px; width: 80px; height: 50px;
 }
 #friends_say{
 	left:20px;border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; text-align: center; line-height: 11px; color: rgb(255, 255, 255); font-size: 13px; box-shadow: none; background-color: rgb(26, 188, 156);
 	height: 40%;
 }
 #iu_com{
-	position: relative; top: -33px; left: 150px; width: 400px; height: 40px;
+	position: relative; top: -83px; left: 150px; width: 400px; height: 40px;
 }
 #iu_content{
-	position: relative; top: -40px;
+	position: relative; top: -90px; width: 460px;
 }
 a{
 	text-decoration: none; color: black;

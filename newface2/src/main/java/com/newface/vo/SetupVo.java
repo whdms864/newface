@@ -3,13 +3,13 @@ package com.newface.vo;
 public class SetupVo {
 	private int setup_num;
 	private int hompy_num;
-	private String guest;
-	private String photo;
-	private String diary;
+	private int guest;
+	private int photo;
+	private int diary;
 	
 	public SetupVo() {}
 
-	public SetupVo(int setup_num, int hompy_num, String guest, String photo, String diary) {
+	public SetupVo(int setup_num, int hompy_num, int guest, int photo, int diary) {
 		super();
 		this.setup_num = setup_num;
 		this.hompy_num = hompy_num;
@@ -34,27 +34,27 @@ public class SetupVo {
 		this.hompy_num = hompy_num;
 	}
 
-	public String getGuest() {
+	public int getGuest() {
 		return guest;
 	}
 
-	public void setGuest(String guest) {
+	public void setGuest(int guest) {
 		this.guest = guest;
 	}
 
-	public String getPhoto() {
+	public int getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public void setPhoto(int photo) {
 		this.photo = photo;
 	}
 
-	public String getDiary() {
+	public int getDiary() {
 		return diary;
 	}
 
-	public void setDiary(String diary) {
+	public void setDiary(int diary) {
 		this.diary = diary;
 	}
 	

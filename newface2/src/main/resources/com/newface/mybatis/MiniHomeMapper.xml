@@ -15,4 +15,15 @@
 	<select id="profile" parameterType="int" resultType="profile">
 		select * from profile where hompy_num=#{value}
 	</select>
+	<select id="now" parameterType="int" resultType="now">
+		select photo_num num,title,p.photo_folder_num folder_num,hompy_num,p.regdate regdate,(select 1 from dual) division
+		from photo p join photo_folder pf
+		where p.photo_folder_num=pf.photo_folder_num and pf.hompy_num=#{hompy_num}
+		union
+		select diary_num num,title,d.diary_folder_num folder_num,hompy_num,d.regdate regdate,(select 2 from dual) division
+		from diary d join diary_folder df
+		where d.diary_folder_num=df.diary_folder_num and df.hompy_num=#{hompy_num}
+		order by regdate desc
+		limit 0,3
+	</select>
 </mapper>  

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=133'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_all_list.css?ver=52'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -76,7 +76,6 @@
 	</c:forEach> 
 	<hr>
 </div>
-
 <div id="page">
 	<c:choose>
 		<c:when test="${requestScope.pageNum>1 }">

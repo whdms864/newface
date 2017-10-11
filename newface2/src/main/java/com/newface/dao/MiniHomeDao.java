@@ -1,10 +1,13 @@
 package com.newface.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
+import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
 
@@ -23,5 +26,8 @@ public class MiniHomeDao {
 	}
 	public ProfileVo profile(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".profile", hompy_num);
+	}
+	public List<NowVo> now(int hompy_num) {
+		return sqlSession.selectList(NAMESPACE + ".now", hompy_num);
 	}
 }

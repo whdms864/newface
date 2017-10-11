@@ -1,0 +1,22 @@
+@charset "UTF-8";
+*{
+	margin: 0px;padding: 0px;
+}
+#diary_folder_back{
+	padding: 30px;
+}    
+.menu_back{
+	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;
+}
+h3{
+	padding-top: 30px; padding-bottom: 5px;
+}
+select{
+	width: 200px; height: 23px;
+}
+#menu{
+	position:absolute; width: 460px; top: 10px; left: 20px;
+}
+#first{
+	padding-top: 0px; margin-top: 20px;
+}

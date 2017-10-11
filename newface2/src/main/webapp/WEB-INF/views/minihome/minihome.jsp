@@ -6,11 +6,11 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=23'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=25'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
-<div id="webView">
+ <div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');"> 
 	<div id="skin_back">
 		<div id="skin"></div>
 	</div>
@@ -75,7 +75,7 @@
 	<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
 	<div id="set">
 		<div class="menu">
-			<a href="<c:url value='/setup/menu'/>">설정</a>
+			<a href="<c:url value='/setup/basic'/>">설정</a>
 		</div>
 	</div>	
 	</c:if>	

@@ -17,20 +17,21 @@ import com.newface.vo.SetupVo;
 public class SetupController {
 	@Autowired SetupService service;
 	
-	@RequestMapping(value="/setup/menu",method=RequestMethod.GET)
-	public String menu() {
-		return ".menu.setup";
+	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
+	public String basicForm() {
+		return ".basic.setup";
 	}
-	@RequestMapping(value="/setup/menu",method=RequestMethod.POST)
-	public String menu(SetupVo vo,HttpSession session,Model model) {
+	@RequestMapping(value="/setup/basic",method=RequestMethod.POST)
+	public String basic(SetupVo vo,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		vo.setHompy_num(hompy_num);
+		System.out.println(vo.getDiary());
 		int n=service.menu_update(vo);
 		if(n>0) {
-			return ".menu.setup";			
+			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 카테고리 메뉴수정 요청작업이 실패했습니다");
-			model.addAttribute("url", "/setup/menu");
+			model.addAttribute("url", "/setup/basic");
 			return ".code";
 		}
 	}
@@ -38,17 +39,13 @@ public class SetupController {
 	public String skin() {
 		return ".skin.setup";
 	}
-	@RequestMapping(value="/setup/hname",method=RequestMethod.GET)
-	public String hnameForm() {
-		return ".hname.setup";
-	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
 	public String hname(HompyVo vo,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		vo.setHompy_num(hompy_num);
 		int n=service.hname(vo);
 		if(n>0) {
-			return ".hname.setup";			
+			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 홈피명 수정 요청작업이 실패했습니다");
 			model.addAttribute("url", "/setup/hname");
@@ -85,5 +82,9 @@ public class SetupController {
 			model.addAttribute("url", "/setup/profile");
 			return ".code";
 		}		
+	}
+	@RequestMapping(value="/setup/bgm",method=RequestMethod.GET)
+	public String bgm() {
+		return ".bgm.setup";
 	}
 }

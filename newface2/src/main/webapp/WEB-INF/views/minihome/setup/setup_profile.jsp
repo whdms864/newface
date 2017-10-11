@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=23'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=233'/>"> 
 <div id="setup_profile_back">
 	<h3 id="first">프로필 사진설정</h3>
 	<hr>
@@ -25,10 +25,10 @@
 <form action="<c:url value='/setup/profile_content'/>" method="post" id="frm">
 	<table>
 		<tr>
-			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:360px;"></textarea></td>
+			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor"></textarea></td>
 		</tr>
 		<tr>
-			<td><input id="addBtn" type="submit" value="등록"></td>
+			<td><input id="addBtn" type="submit" value="변경"></td>
 		</tr>
 	</table>	
 </form>
@@ -42,8 +42,7 @@
 		<input type="radio" name="todayis" value="좋음" checked="checked">좋음 
 		<input type="radio" name="todayis" value="보통">보통 
 		<input type="radio" name="todayis" value="나쁨">나쁨 
-		<input  type="submit" value="등록">
-		<input type="submit" value="삭제">
+		<input  type="submit" value="변경">
 	</form>
 	</div>
 	<hr>

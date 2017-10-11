@@ -32,6 +32,10 @@ public class MiniHomeController {
 		
 		//메뉴설정
 		SetupVo vo=service.setup_list(hompy_num);
+		System.out.println("hompy_num : " + hompy_num);
+		System.out.println("diary : " + vo.getDiary());
+		System.out.println("photo : " + vo.getPhoto());
+		System.out.println("guest : " + vo.getGuest());		
 		session.setAttribute("diary", vo.getDiary());
 		session.setAttribute("photo", vo.getPhoto());
 		session.setAttribute("guest", vo.getGuest());

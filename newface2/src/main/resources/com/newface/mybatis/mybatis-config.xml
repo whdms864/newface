@@ -31,10 +31,9 @@
   	<typeAlias type="com.newface.vo.CashVo" alias="cash"/>
   	<typeAlias type="com.newface.vo.AdVo" alias="ad"/>
   	<typeAlias type="com.newface.vo.AderVo" alias="ader"/>
-  	
-  	
-  	
+  	<typeAlias type="com.newface.vo.NowVo" alias="now"/>
   </typeAliases>
+  
   <mappers>
  	 <mapper resource="com/newface/mybatis/CashMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MemberMapper.xml"/>

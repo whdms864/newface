@@ -6,9 +6,8 @@ body {
 #webView {
 	overflow: hidden;
 	position: relative;
-	background: rgb(149, 165, 166); /* 메인스킨 설정 */
-	width: 1200px;
-	height: 678px;
+	width: 1024px;
+	height: 592px;
 	margin: 0 auto;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0)
@@ -17,59 +16,59 @@ body {
 	overflow: visible
 }
 #today_back{/* 오늘방문자 */
-	position: absolute; top: 49px; left: 65px; width: 100px; height: 13px;
-	font-size: 10px
+	position: absolute; top: 60px; left: 65px; width: 100px; height: 13px;
+	font-size: 12px
 }
 #today{/* 오늘방문자 */
-	display:inline-block; ;font-size: 9px; color: rgb(255, 0, 0);
+	display:inline-block; ;font-size: 14px; color: rgb(255, 0, 0);
 }
 #total{/*총방문자*/
-	position: absolute; top: 49px; left: 145px; width: 100px; height: 15px;
-	font-size: 10px;
+	position: absolute; top: 60px; left: 145px; width: 100px; height: 15px;
+	font-size: 14px;
 }
 .menu{
 	font-size: 12px; color: rgb(0, 0, 0); text-align: center; line-height: 3em; border-radius: 4px; background-color: rgb(52, 152, 219);
 	text-decoration: none;color: white;
 }
 #home{
-	position: relative; width: 61px; height: 30px; margin-top: 80px; margin-left: 919px;  
+	position: relative; width: 61px; height: 30px; margin-top: 80px; margin-left: 816px;  
 }
 #diary{
-	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 919px; 
+	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 816px; 
 }
 #photo{
-	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 919px; 
+	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 816px; 
 }
 #guest{
-	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 919px; 
+	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 816px; 
 }
 #set{
-	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 919px; 
+	position: relative; width: 61px; height: 30px; margin-top: 20px; margin-left: 816px; 
 }
 
 #skin_back{
 	position: absolute; top: 20px; left: 18px; width: 910px; height: 648px;
 }
 #skin{
-	background-color: rgb(52, 152, 219); border-width: 0px; border-style: none; border-radius: 10px;width: 100%;height: 100%;
+	/* background-color: rgb(52, 152, 219); */ border-width: 0px; border-style: none; border-radius: 10px;width: 100%;height: 100%;
 }
 #profile_skin_back{
-	position: absolute; top: 70px; left: 32px; width: 205px; height: 569px;
+	position: absolute; top: 85px; left: 55px; width: 205px; height: 430px; 
 }
 #profile_skin{
-	background-color: rgb(255, 255, 255); border-radius: 10px;width: 100%;height: 100%;
+	/* background-color: rgb(255, 255, 255); */ border-radius: 10px;width: 100%;height: 100%;
 }
 #main_skin_back{
-	position: absolute; top: 71px; left: 257px; width: 662px; height: 568px; 	
+	position: absolute; margin-top: 88px; left: 264px; width: 515px; height: 408px; 	
 }
 #main_skin{
-	background-color: rgb(255, 255, 255); border-radius: 10px;width: 100%;height: 100%;	overflow: scroll;
+	border-radius: 10px;width: 515px;height: 440px;	overflow: scroll;
 }
 #hname_back{
-	position: absolute; top: 32px; left: 283px; width: 600px; height: 48px; display: inline-block; 
+	position: absolute; margin-top: 52px; left: 283px; width: 600px; height: 48px; display: inline-block; 
 }
 #hname{
-	top:10px;font-weight: bold; font-size: 25px;
+	top:40px;font-weight: bold; font-size: 25px;
 }
 #hname_edit{
 	font-size: 15px;
