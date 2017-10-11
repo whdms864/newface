@@ -183,6 +183,50 @@
 		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/update.jsp"/>
 	</definition>
 	
+	<!-- 광고 관리자-->
+	<definition name=".adimg_list" extends=".qna11admin">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_list.jsp"/>
+		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/ad/tab.jsp"/>
+	</definition>
+	
+	<definition name=".adimg_getinfo" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_getinfo.jsp"/>
+	</definition>
+	
+	<definition name=".adimg_insert" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/adimg_insert.jsp"/>
+	</definition>
+		
+	
+	
+	<definition name=".ad_list" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_list.jsp"/>
+	</definition>
+	
+	<definition name=".ad_getinfo" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_getinfo.jsp"/>
+	</definition>
+	
+	<definition name=".ad_insert" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ad_insert.jsp"/>
+	</definition>
+		
+		
+	
+	<definition name=".ader_list" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_list.jsp"/>
+	</definition>
+	
+	<definition name=".ader_getinfo" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_getinfo.jsp"/>
+	</definition>
+	
+	<definition name=".ader_insert" extends=".adimg_list">
+		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/ad/ader_insert.jsp"/>
+	</definition>
+	
+		
+	
 	
 	<!-- 마켓관리 -->
 	<definition name=".marketadmin" extends=".qna11admin">

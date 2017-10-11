@@ -15,7 +15,7 @@
 		<a href="<c:url value='/notiadmin_list'/>"style="margin-top: 0px;">공지사항</a>
 	</li>
 	<li>
-		<a href="<c:url value='/adadmin'/>" >광고관리</a>
+		<a href="<c:url value='/ad_list'/>" >광고관리</a>
 	</li>
 	<li>
 		<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
