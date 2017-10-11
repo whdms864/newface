@@ -11,4 +11,8 @@ public class CashController {
 	public String home() {
 		return ".cash";
 	}
+	@RequestMapping(value = "/cash/insert", method = RequestMethod.POST)
+	public String insert() {
+		return ".cash_insert";
+	}
 }

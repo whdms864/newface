@@ -64,6 +64,9 @@
 		<put-attribute name="header" value="/WEB-INF/views/homepage/cash/header.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/main.jsp"/>
 	</definition>
+	<definition name=".cash_insert" extends=".cash">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/success.jsp"/>
+	</definition>
 	
 	<!-- 회원가입 -->
 	<definition name=".member" extends=".main">

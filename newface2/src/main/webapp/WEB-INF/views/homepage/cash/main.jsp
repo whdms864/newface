@@ -56,7 +56,7 @@ $(document).ready(function(){
 });
 </script>
 <div id="main_wrap">
-<form action="" method="post" id="cash_add">
+<form action="<c:url value='/cash/insert'/>" method="post" id="cash_add">
 	<div id="title">
 		싸이 충전 
 		<label style="font-weight: lighter;color: rgb(220, 220, 220);"> | </label>
