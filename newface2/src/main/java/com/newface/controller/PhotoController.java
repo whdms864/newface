@@ -193,6 +193,7 @@ public class PhotoController {
 		if(list != null) {
 			model.addAttribute("name",name);
 			model.addAttribute("list2",list);
+			model.addAttribute("id",id);
 			return "forward:/photo/folder_list";
 		}else {
 			model.addAttribute("code","¿À·ù");

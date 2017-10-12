@@ -53,4 +53,7 @@
 	<delete id="com_delete" parameterType="int">
 		delete from photo_com where photo_com_num=#{photo_com_num}
 	</delete>
+	<select id="home_test" parameterType="hashmap" resultType="int">
+		select hompy_num from hompy where id=#{id} and hompy_num=#{hompy_num}
+	</select> 
 </mapper>   

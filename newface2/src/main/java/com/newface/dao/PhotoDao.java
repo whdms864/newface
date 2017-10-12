@@ -65,4 +65,7 @@ public class PhotoDao {
 	public int com_delete(int photo_com_num) {
 		return sqlSession.delete(NAMESPACE+".com_delete",photo_com_num);
 	}
+	public int home_test(HashMap<String,Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".home_test",map);
+	}
 }

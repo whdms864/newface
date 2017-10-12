@@ -63,4 +63,7 @@ public class PhotoService {
 	public int com_delete(int photo_com_num) {
 		return dao.com_delete(photo_com_num);
 	}
+	public int home_test(HashMap<String,Object> map) {
+		return dao.home_test(map);
+	}
 }

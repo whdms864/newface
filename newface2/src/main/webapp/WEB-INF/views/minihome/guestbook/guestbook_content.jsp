@@ -4,8 +4,7 @@
 <script type="text/javascript"
 	src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=7'/>">
-<div class=scroll style="overflow: scroll; width: 660px; height: 560px;">
+	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=4'/>">
 	<div>
 		<form method="post" action="<c:url value='/guest/insert'/>">
 			<div class="g_write_b">
@@ -98,7 +97,7 @@
 			</div>
 		</div>
 	</c:forEach>
-<div style="position:relative;">
+<div style="position:relative;top:100px;text-align: center;">
 	<c:choose>
 		<c:when test="${pu.startPageNum>5 }">
 			<a href="<c:url value='/guest/all_list?pageNum=${pu.startPageNum-1 }'/>">[이전]</a>
@@ -126,5 +125,4 @@
 		[다음]
 	</c:otherwise>
 </c:choose>
-</div>
 </div>
