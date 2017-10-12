@@ -6,18 +6,18 @@
 			<thead>
 		  		<tr class="success">
 		  			<th>계약상태</th>
-		  			<th>url</th>
+		  			<th>URL</th>
 		  			<th>시작일</th>
 		  			<th>만료일</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
-		  		<c:forEach var="ad_list" items="${ad_list}">
+		  		<c:forEach var="ad" items="${ad_list}">
 		  			<tr>
-			  			<td>${ad_list.type}</td>
-			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/ad_getinfo?ad_num=${ad_list.ad_num }'/>">${ad_list.url}</a></td>
-			  			<td>${ad_list.sdate}</td>
-			  			<td>${ad_list.edate}</td>
+			  			<td>${ad.type}</td>
+			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/ad_getinfo?ad_num=${ad.ad_num }'/>">${ad.url}</a></td>
+			  			<td>${ad.sdate}</td>
+			  			<td>${ad.edate}</td>
 			  		</tr>
 			  	</c:forEach>
 			</tbody>
