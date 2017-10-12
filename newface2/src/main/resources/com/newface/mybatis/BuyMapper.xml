@@ -9,9 +9,16 @@
 	<select id="list_all" resultType="buy" parameterType="string">
 		select * from buy where id=#{id}
 	</select>
-	<select id="list_join" resultType="buyjoin" parameterType="string">
-		select buy_num, cnt, b.pay pay,i.item_num item_num,name,content,item_img,category_num,b.regdate,id 
-		from item i join buy b 
-		where i.item_num=b.item_num;
+	<select id="list_join" resultType="buyjoin" parameterType="hashmap">
+		select buy_num, cnt, b.pay pay, i.item_num item_num,iname,content,item_img,category_num,cname,b.regdate regdate,id 
+		from (select item_num,i.name iname,content,item_img,c.category_num category_num,c.name cname 
+		from item i join category c 
+		where i.category_num=c.category_num) i join buy b 
+		where i.item_num=b.item_num and id=#{id} 
+		order by category_num,iname,regdate desc 
+		limit #{startRow},#{endRow}
+	</select>
+	<select id="count" resultType="int" parameterType="string">
+		select coalesce(count(buy_num),0) from buy where id=#{id}
 	</select>
 </mapper>  

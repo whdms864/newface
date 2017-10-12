@@ -74,11 +74,11 @@ public class MarketController {
 		MineVo minevo_org=mine_service.getinfo(map);
 		if(minevo_org!=null) {
 			totcnt=minevo_org.getTotcnt()+item_cnt;
-			MineVo minevo_save=new MineVo(0, totcnt, item_cnt, item_num, id);
+			MineVo minevo_save=new MineVo(0, totcnt, totcnt, item_num, id);
 			mine_service.update(minevo_save);
 		}else {
 			totcnt=item_cnt;
-			MineVo minevo_save=new MineVo(0, totcnt, item_cnt, item_num, id);
+			MineVo minevo_save=new MineVo(0, totcnt, totcnt, item_num, id);
 			mine_service.insert(minevo_save);
 		}
 		
@@ -91,17 +91,31 @@ public class MarketController {
 		return ".item_buy_ok";
 	}
 	@RequestMapping(value = "/market/buy/list", method = RequestMethod.GET)
-	public String buy_list(Model model,HttpSession session) {
+	public String buy_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
-		List<Buy_Join_ItemVo> list=buy_service.joinlist(id);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=buy_service.getCount(id);
+		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("id", id);
+		List<Buy_Join_ItemVo> list=buy_service.joinlist(map);
 		model.addAttribute("list", list);
+		model.addAttribute("pu",pu);
 		return ".buy_list";
 	}
 	@RequestMapping(value = "/market/mine/list", method = RequestMethod.GET)
-	public String mine_list(Model model,HttpSession session) {
+	public String mine_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
-		List<Mine_Join_itemVo> list=mine_service.joinlist(id);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=mine_service.getCount(id);
+		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		map.put("id", id);
+		List<Mine_Join_itemVo> list=mine_service.joinlist(map);
 		model.addAttribute("list", list);
+		model.addAttribute("pu",pu);
 		return ".mine_list";
 	}
 	

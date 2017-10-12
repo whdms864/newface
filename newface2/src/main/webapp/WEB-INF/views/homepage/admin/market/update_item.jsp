@@ -68,7 +68,7 @@
 						<td><input type="text" name="pay" id="pay" value="${vo.pay }"></td>
 					</tr>
 					<tr>
-						<td>상세내용</td>
+						<td>상세정보</td>
 						<td>
 							<textarea name="content" rows="7" cols="69" style="margin-left: 5px;">${vo.content }</textarea>
 						</td>

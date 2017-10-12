@@ -16,7 +16,19 @@
 			$(this).html("▷▷");
 		});
 	});
-</script>	
+</script>
+<style>
+	td p img{
+		width: 40px;
+		height: 40px;
+	}
+/* 	table{
+		text-align: center;	
+	}
+	th{
+		text-align: center;
+	} */
+</style>	
 	<div id="tab">
 		<div style="margin-left: 30px;margin-top: 10px;">
 			<label style="font-weight:bold;font-size:25px;">My Page</label>
@@ -30,11 +42,13 @@
 	<div id="con" align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 			<thead>
-		  		<tr class="success">
+		  		<tr class="success" >
 		  			<th>No.</th>
-		  			<th>상품</th>
-		  			<th>상태</th>
-		  			<th>등록일</th>
+		  			<th>카테고리</th>
+		  			<th>상품명</th>
+		  			<th>수량</th>
+		  			<th>결제금액</th>
+		  			<th>구매일</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
@@ -43,17 +57,11 @@
 		  			<tr>
 		  				<c:set var="i" value="${i + 1}"/>
 			  			<td>${i}</td>
-			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 200px;">
-		  					<a href="<c:url value='/qna11/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a>
-		  				</td>
+			  			<td>${vo.cname}</td>
+			  			<td><a>${vo.iname}</a></td>
+		  				<td>${vo.cnt}</td>
+		  				<td>${vo.pay}</td>
 		  				<td>${vo.regdate}</td>
-		  				<td>
-				  			<c:choose>
-				  				<c:when test="${vo.confirm=='0'}">대기</c:when>
-				  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
-				  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
-				  			</c:choose>
-			  			</td>
 			  		</tr>
 			  	</c:forEach>
 			 </tbody>

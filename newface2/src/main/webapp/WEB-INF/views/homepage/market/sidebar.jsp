@@ -8,8 +8,14 @@
 		$("#cash_add").click(function(){
 			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570");
 		});
+		 $("#minihome").click(function(){
+			 window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592"); 
+		 });
 	});
-</script>		
+</script>	
+<style>
+	a{cursor:pointer;}
+</style>	
 <div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
 		<table width="240px" style="margin: 10px;text-align: center;">
@@ -35,13 +41,13 @@
 					<img src="<c:url value='/resources/images/homepage/도토리_최종.png'/>"style="width:20px; height:20px "> &nbsp;${cnt }
 				</td>
 				<td>
-					<div style="font-size: 16px;"><a id="cash_add" style="cursor:pointer;">충전</a></div>
+					<div style="font-size: 16px;"><a id="cash_add">충전</a></div>
 				</td>
 			</tr>
 		</table>
 		<div style="font-size: 16px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); width: 230px; height:44px;margin-top: 5px;margin-right: 10px;">
-			<a href="<c:url value='/minihome'/>" style="text-decoration: none; color:white;">내 미니홈피 가기</a>
+			<a id="minihome" style="text-decoration: none; color:white;">내 미니홈피 가기</a>
 		</div>
 		<div>
 			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>

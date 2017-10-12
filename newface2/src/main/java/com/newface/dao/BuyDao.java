@@ -1,6 +1,7 @@
 package com.newface.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -25,7 +26,10 @@ public class BuyDao {
 	public List<BuyVo> list(String id) {
 		return sqlSession.selectList(NAMESPACE+".list_all",id);
 	}
-	public List<Buy_Join_ItemVo> joinlist(String id) {
-		return sqlSession.selectList(NAMESPACE+".list_join",id);
+	public List<Buy_Join_ItemVo> joinlist(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list_join",map);
+	}
+	public int getCount(String id) {
+		return sqlSession.selectOne(NAMESPACE+".count",id);
 	}
 }

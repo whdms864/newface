@@ -29,13 +29,16 @@ public class MineDao {
 	public List<MineVo> list(String id) {
 		return sqlSession.selectList(NAMESPACE+".list_all",id);
 	}
-	public List<Mine_Join_itemVo> joinlist(String id) {
-		return sqlSession.selectList(NAMESPACE+".list_join",id);
+	public List<Mine_Join_itemVo> joinlist(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list_join",map);
 	}
 	public MineVo getinfo(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo",map);
 	}
 	public int update(MineVo vo) {
 		return sqlSession.insert(NAMESPACE+".update",vo);
+	}
+	public int getCount(String id) {
+		return sqlSession.selectOne(NAMESPACE+".count",id);
 	}
 }

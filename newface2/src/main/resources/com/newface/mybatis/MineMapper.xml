@@ -12,12 +12,19 @@
 	<select id="getinfo" resultType="mine" parameterType="hashmap">
 		select * from mine where id=#{id} and item_num=#{item_num}
 	</select>
-	<select id="list_join" resultType="minejoin" parameterType="string">
-		select mine_num, totcnt, cnt, i.item_num item_num, name, content, item_img, category_num, id 
-		from item i join mine m 
-		where i.item_num=m.item_num;
+	<select id="list_join" resultType="minejoin" parameterType="hashmap">
+		select mine_num, totcnt, cnt, i.item_num item_num, iname, content, item_img, category_num,cname, id 
+		from (select item_num,i.name iname,content,item_img,c.category_num category_num,c.name cname 
+		from item i join category c 
+		where i.category_num=c.category_num) i join mine m 
+		where i.item_num=m.item_num and id=#{id} 
+		order by category_num,iname 
+		limit #{startRow},#{endRow}
 	</select>
 	<update id="update" parameterType="mine">
 		update mine set totcnt=#{totcnt},cnt=#{cnt} where id=#{id}
 	</update>
+	<select id="count" resultType="int" parameterType="string">
+		select coalesce(count(mine_num),0) from mine where id=#{id}
+	</select>
 </mapper>  

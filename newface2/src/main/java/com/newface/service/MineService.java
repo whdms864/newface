@@ -21,8 +21,8 @@ public class MineService {
 	public List<MineVo> list(String id) {
 		return dao.list(id);
 	}
-	public List<Mine_Join_itemVo> joinlist(String id) {
-		return dao.joinlist(id);
+	public List<Mine_Join_itemVo> joinlist(HashMap<String, Object> map) {
+		return dao.joinlist(map);
 	}
 	public MineVo getinfo(HashMap<String,Object> map) {
 		return dao.getinfo(map);
@@ -32,5 +32,8 @@ public class MineService {
 	}
 	public int update(MineVo vo) {
 		return dao.update(vo);
+	}
+	public int getCount(String id) {
+		return dao.getCount(id);
 	}
 }

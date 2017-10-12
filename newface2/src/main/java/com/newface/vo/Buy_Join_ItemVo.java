@@ -6,26 +6,28 @@ public class Buy_Join_ItemVo {
 	private int cnt;
 	private int pay;
 	private int item_num;
-	private String name;
+	private String iname;
 	private String content;
 	private String item_img;
 	private int category_num;
+	private String cname;
 	private String regdate;
 	private String id;
 	
 	public Buy_Join_ItemVo() {}
 
-	public Buy_Join_ItemVo(int buy_num, int cnt, int pay, int item_num, String name, String content, String item_img,
-			int category_num, String regdate, String id) {
+	public Buy_Join_ItemVo(int buy_num, int cnt, int pay, int item_num, String iname, String content, String item_img,
+			int category_num, String cname, String regdate, String id) {
 		super();
 		this.buy_num = buy_num;
 		this.cnt = cnt;
 		this.pay = pay;
 		this.item_num = item_num;
-		this.name = name;
+		this.iname = iname;
 		this.content = content;
 		this.item_img = item_img;
 		this.category_num = category_num;
+		this.cname = cname;
 		this.regdate = regdate;
 		this.id = id;
 	}
@@ -62,12 +64,12 @@ public class Buy_Join_ItemVo {
 		this.item_num = item_num;
 	}
 
-	public String getName() {
-		return name;
+	public String getIname() {
+		return iname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setIname(String iname) {
+		this.iname = iname;
 	}
 
 	public String getContent() {
@@ -94,6 +96,14 @@ public class Buy_Join_ItemVo {
 		this.category_num = category_num;
 	}
 
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
 	public String getRegdate() {
 		return regdate;
 	}
@@ -109,5 +119,6 @@ public class Buy_Join_ItemVo {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	
 }

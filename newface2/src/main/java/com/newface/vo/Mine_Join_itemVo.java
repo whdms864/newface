@@ -5,25 +5,27 @@ public class Mine_Join_itemVo {
 	private int totcnt;
 	private int cnt;
 	private int item_num;
-	private String name;
+	private String iname;
 	private String content;
 	private String item_img;
 	private int category_num;
+	private String cname;
 	private String id;
 	
 	public Mine_Join_itemVo() {}
 
-	public Mine_Join_itemVo(int mine_num, int totcnt, int cnt, int item_num, String name, String content,
-			String item_img, int category_num, String id) {
+	public Mine_Join_itemVo(int mine_num, int totcnt, int cnt, int item_num, String iname, String content,
+			String item_img, int category_num, String cname, String id) {
 		super();
 		this.mine_num = mine_num;
 		this.totcnt = totcnt;
 		this.cnt = cnt;
 		this.item_num = item_num;
-		this.name = name;
+		this.iname = iname;
 		this.content = content;
 		this.item_img = item_img;
 		this.category_num = category_num;
+		this.cname = cname;
 		this.id = id;
 	}
 
@@ -59,12 +61,12 @@ public class Mine_Join_itemVo {
 		this.item_num = item_num;
 	}
 
-	public String getName() {
-		return name;
+	public String getIname() {
+		return iname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setIname(String iname) {
+		this.iname = iname;
 	}
 
 	public String getContent() {
@@ -91,6 +93,14 @@ public class Mine_Join_itemVo {
 		this.category_num = category_num;
 	}
 
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -98,5 +108,6 @@ public class Mine_Join_itemVo {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	
 }
