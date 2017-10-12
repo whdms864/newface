@@ -6,9 +6,9 @@
 		<label style="font-weight:bold;font-size:25px;">My Page</label>
 	</div>
 	<ul>
-	    <li><a href="<c:url value='/qna11/getinfo'/>"style="margin-left:0px;" class="hover_a">회원정보</a></li>
-	    <li><a href="<c:url value='/qna11/insert'/>">구매내역</a></li>
-	    <li><a href="<c:url value='/qna11/insert'/>">보유내역</a></li>
+	    <li><a href="<c:url value='/member/mypage'/>"style="margin-left:0px;" class="hover_a">회원정보</a></li>
+	    <li><a href="<c:url value='/market/buy/list'/>">구매내역</a></li>
+	    <li><a href="<c:url value='/market/mine/list'/>">보유내역</a></li>
 	</ul>
 </div>
 <div style="margin-left:30px;padding: 10px;"align="left" id="con">

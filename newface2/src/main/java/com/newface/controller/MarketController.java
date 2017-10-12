@@ -88,6 +88,14 @@ public class MarketController {
 		model.addAttribute("vo", vo);
 		return ".item_buy_ok";
 	}
+	@RequestMapping(value = "/market/buy/list", method = RequestMethod.GET)
+	public String buy_list(Model model) {
+		return ".buy_list";
+	}
+	@RequestMapping(value = "/market/mine/list", method = RequestMethod.GET)
+	public String mine_list(Model model) {
+		return ".mine_list";
+	}
 	
 	/***************************** °ü¸®ÀÚ ******************************************/
 	

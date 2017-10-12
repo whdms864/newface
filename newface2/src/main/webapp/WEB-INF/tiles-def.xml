@@ -110,10 +110,19 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
 	</definition>
 	
-	<!-- 마이페이지 -->
+	<!-- 마이페이지-회원정보-->
 	<definition name=".mypage" extends=".qna11_insert">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
 	</definition>
+	<!-- 마이페이지-구매내역 -->
+	<definition name=".buy_list" extends=".mypage">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/buy_list.jsp"/>
+	</definition>
+	<!-- 마이페이지 - 보유내역 -->
+	<definition name=".mine_list" extends=".mypage">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mine_list.jsp"/>
+	</definition>
+	
 	<!-- 회원정보수정 -->
 	<definition name=".update" extends=".mypage">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/update.jsp"/>
