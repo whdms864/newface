@@ -35,7 +35,7 @@
 <div style="background-color: rgba(224, 224, 224, 0.78);margin-left:20px;width: 95%;height: 800px;">
 	<div style="margin-left: 30px;">
 		<label style="font-weight:bold;font-size:25px;margin-top: 10px;">마켓</label>
-		<select name="category_num" id="select_cate" style="height:25px;margin-left: 392px;">
+		<select name="category_num" id="select_cate" style="height:25px;right:35px;top:15px;position:absolute;">
 			<c:forEach var="vo" items="${list_cate }">
 				<option value="${vo.category_num}" ${vo.category_num == category_num ? 'selected="selected"' : '' }>${vo.name}</option>
 			</c:forEach>

@@ -46,11 +46,11 @@
 	</div>
 	<div id="con">
 		<div align="center">
-			<form action="<c:url value=''/>" method="post" id="frm" >
+			<form action="<c:url value='/market/admin/item/updateok'/>" method="post" id="frm" >
 				<input type="hidden" name="item_num" value="${vo.item_num }">
 				<table>
 					<tr>
-						<td>타입</td>
+						<td>상품명</td>
 						<td><input type="text" name="name" id="name" value="${vo.name }"></td>
 					</tr>
 					
