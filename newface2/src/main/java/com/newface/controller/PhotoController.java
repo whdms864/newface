@@ -70,7 +70,7 @@ public class PhotoController {
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
 		if(list!=null) {
 			model.addAttribute("list",list);
-			return "forward:/photo/com_list";
+			return ".photo";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -101,7 +101,7 @@ public class PhotoController {
 			model.addAttribute("list1",list1);
 			model.addAttribute("pu",pu);
 			model.addAttribute("name",name);
-			return ".photo";
+			return "forward:/photo/com_list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -193,7 +193,7 @@ public class PhotoController {
 		if(list != null) {
 			model.addAttribute("name",name);
 			model.addAttribute("list2",list);
-			return "forward:/photo/list";
+			return "forward:/photo/folder_list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
