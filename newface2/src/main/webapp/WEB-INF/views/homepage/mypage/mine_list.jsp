@@ -15,6 +15,10 @@
 		},function(){
 			$(this).html("▷▷");
 		});
+		$(".info").click(function(){
+			var item_num=$(this).find(".item_num_val").val();
+			window.open("<c:url value='/item/info?item_num="+item_num+"'/>","_item_info","width=500,height=400");
+		});
 	});
 </script>	
 <style>
@@ -56,7 +60,7 @@
 		  				<c:set var="i" value="${i + 1}"/>
 			  			<td>${i}</td>
 			  			<td>${vo.cname}</td>
-			  			<td><a>${vo.iname}</a></td>
+			  			<td><a class="info"><input type="hidden" value="${vo.item_num }" class="item_num_val">${vo.iname}</a></td>
 		  				<td>${vo.cnt} / ${vo.totcnt }</td>
 			  		</tr>
 			  	</c:forEach>

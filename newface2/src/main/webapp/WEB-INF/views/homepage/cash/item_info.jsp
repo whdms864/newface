@@ -27,14 +27,6 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<div class="money">
-		총 결제가격 : 도토리 ${vo.pay }개<br>
-		<label>내가 가진 도토리수 : ${cnt }개</label>
-	</div>
-	<div class="small">
-		<img src="<c:url value='/resources/images/homepage/느낌표.JPG'/>">
-		<label>본 아이템은 결제 완료 후 환불이 불가한 상품입니다.</label>
-	</div>
 	<div id="btn_wrap">
 		<input type="button" value="확인" id="btn_end" style="background: linear-gradient(#b4b4b4,gray); border: 1px solid gray;margin-left: 15px;">
 	</div>
