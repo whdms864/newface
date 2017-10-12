@@ -1,18 +1,16 @@
 package com.newface.vo;
 
-import java.util.Date;
-
 public class PhotocomVo {
 	private int photo_com_num;
 	private String singo;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private int photo_num;
 	private String id;
 	
 	public PhotocomVo() {}
 
-	public PhotocomVo(int photo_com_num, String singo, String content, Date regdate, int photo_num, String id) {
+	public PhotocomVo(int photo_com_num, String singo, String content, String regdate, int photo_num, String id) {
 		super();
 		this.photo_com_num = photo_com_num;
 		this.singo = singo;
@@ -46,11 +44,11 @@ public class PhotocomVo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -59,7 +57,7 @@ public class PhotocomVo {
 	}
 
 	public void setPhoto_num(int photo_num) {
-		this.photo_num = photo_num;
+		this.photo_num = photo_num;	
 	}
 
 	public String getId() {

@@ -11,11 +11,12 @@ public class PhotolistVo {
 		private String type;
 		private int photo_folder_num;
 		private int hompy_num;
+		private String name;
 		
 		public PhotolistVo() {}
 
 		public PhotolistVo(int photo_num, String title, String content, int love, String secret, String singo,
-				String regdate, String type, int photo_folder_num, int hompy_num) {
+				String regdate, String type, int photo_folder_num, int hompy_num, String name) {
 			super();
 			this.photo_num = photo_num;
 			this.title = title;
@@ -27,8 +28,16 @@ public class PhotolistVo {
 			this.type = type;
 			this.photo_folder_num = photo_folder_num;
 			this.hompy_num = hompy_num;
+			this.name = name;
 		}
 
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
 
 		public int getHompy_num() {
 			return hompy_num;

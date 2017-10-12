@@ -4,26 +4,17 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/smarteditor/js/HuskyEZCreator.js"/>" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/writeForm.js"/>"></script>
-	<link rel="stylesheet" href="<c:url value="/resources/css/homepage/admin_common.css?ver=3"/>"/>
+	<link rel="stylesheet" href="<c:url value="/resources/css/homepage/admin_common.css?ver=2"/>"/>
 	<script type="text/javascript" charset="utf-8">
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
 <div align="center">
-	<form action="<c:url value='/photo/insert'/>" method="post" id="frm">
+	<form action="<c:url value='/photo/updateok'/>" method="post" id="frm">
+		<input type="hidden" name="photo_num" value="${vo.photo_num }">
 		<table>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" id="name" placeholder="제목"></td>
-			</tr>
-			<tr>
-				<td>폴더</td>
-				<td>
-					<select name="photo_folder_num" style="width:500px;height:25px;">
-					<c:forEach var="vo" items="${list }">
-						<option value="${vo.photo_folder_num}">${vo.fname}</option>
-					</c:forEach>
-					</select>
-				</td>
+				<td><input type="text" name="title" id="name" placeholder="제목" value="${vo.title }"></td>
 			</tr>
 			<tr>
 				<td>공개</td>
@@ -46,7 +37,7 @@
 			</tr>
 			<tr>
 				<td style="margin:0; padding:0;" colspan="2">
-					<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:400px;"></textarea>
+					<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:400px;">${vo.content }</textarea>
 				</td>
 			</tr>
 		</table>

@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.PhotoDao;
 import com.newface.vo.PhotoVo;
+import com.newface.vo.PhotocomVo;
 import com.newface.vo.PhotofolderVo;
 import com.newface.vo.PhotolistVo;
 
@@ -25,7 +27,40 @@ public class PhotoService {
 	public int photo_insert(PhotoVo vo) {
 		return dao.photo_insert(vo);
 	}
-	public List<PhotolistVo> photo_list(int hompy_num){
-		return dao.photo_list(hompy_num);
+	public List<PhotolistVo> photo_list(HashMap<String, Object> map){
+		return dao.photo_list(map);
+	}
+	public String name(String id) {
+		return dao.name(id);
+	}
+	public int photo_delete(int photo_num) {
+		return dao.photo_delete(photo_num);
+	}
+	public int photo_love(HashMap<String, Object> map) {
+		return dao.photo_love(map);
+	}
+	public PhotoVo photo_update(int photo_num) {
+		return dao.photo_update(photo_num);
+	}
+	public int photo_updateok(PhotoVo vo) {
+		return dao.photo_updateok(vo);
+	}
+	public int getCount() {
+		return dao.getCount();
+	}
+	public int folder_update(PhotofolderVo vo) {
+		return dao.folder_update(vo);
+	}
+	public int folder_delete(PhotofolderVo vo) {
+		return dao.folder_delete(vo);
+	}
+	public int com_insert(PhotocomVo vo) {
+		return dao.com_insert(vo);
+	}
+	public List<PhotocomVo> com_list(){
+		return dao.com_list();
+	}
+	public int com_delete(int photo_com_num) {
+		return dao.com_delete(photo_com_num);
 	}
 }

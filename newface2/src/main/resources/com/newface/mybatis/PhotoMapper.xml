@@ -15,9 +15,42 @@
 	<insert id="photo_insert" parameterType="photo">
 		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num})
 	</insert>
-	<select id="photo_list" parameterType="int" resultType="photo_list">
+	<select id="photo_list" parameterType="hashmap" resultType="photo_list">
 		select a.photo_num,a.title,a.content,a.love,a.secret,a.singo,date_format(a.regdate,'%Y/%c/%e')as regdate,a.photo_folder_num,b.hompy_num
 		from photo as a join photo_folder as b 
-		on a.photo_folder_num=b.photo_folder_num order by a.photo_num desc
+		on a.photo_folder_num=b.photo_folder_num order by a.photo_num desc limit #{startRow},#{endRow}
 	</select>
+	<select id="name" parameterType="String" resultType="String">
+		select name from member where id=#{value}
+	</select>
+	<delete id="photo_delete" parameterType="int">
+		delete from photo where photo_num=#{photo_num}
+	</delete>
+	<update id="photo_love" parameterType="hashmap">
+		update photo set love=love+#{love} where photo_num=#{photo_num}
+	</update>
+	<select id="photo_update" parameterType="int" resultType="photo">
+		select * from photo where photo_num=#{photo_num}
+	</select>
+	<update id="photo_updateok" parameterType="photo">
+		update photo set title=#{title},secret=#{secret},type=#{type},content=#{content} where photo_num=#{photo_num}
+	</update>
+	<select id="count" resultType="int">
+		select coalesce(count(photo_num),0) from photo;
+	</select>
+	<update id="folder_update" parameterType="photo_f">
+		update photo_folder set fname=#{fname} where photo_folder_num=#{photo_folder_num}
+	</update>
+	<delete id="folder_delete" parameterType="photo_f">
+		delete from photo_folder where photo_folder_num=#{photo_folder_num}
+	</delete>
+	<insert id="com_insert" parameterType="photo_com">
+		insert into photo_com values(0,0,#{content},now(),#{photo_num},#{id})
+	</insert>
+	<select id="com_list" resultType="photo_com">
+		select photo_com_num,content,date_format(regdate,'%Y/%c/%e')as regdate,photo_num,id from photo_com
+	</select>
+	<delete id="com_delete" parameterType="int">
+		delete from photo_com where photo_com_num=#{photo_com_num}
+	</delete>
 </mapper>   
