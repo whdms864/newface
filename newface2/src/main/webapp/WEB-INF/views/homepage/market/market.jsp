@@ -24,6 +24,14 @@
 			var item_num=$(this).find(".item_num_val").val();
 			window.open("<c:url value='/market/item/getinfo?item_num="+item_num+"'/>","_item_getinfo","width=500,height=500");
 		});
+		$("#search").submit(function(event){
+			var text=$("#text").val();
+			if(text==""){
+				$("#text").focus();
+				alert("검색한 내용을 입력해주세요");
+				event.preventDefault();
+			}
+		});
 	});
 </script>
 <style>
@@ -43,7 +51,7 @@
 	</div>
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
 		width:90%; height:90%;margin-left:30px;padding-top: 10px;" align="center">
-		<div align="center" style="display: inline-block;margin-top:10px;">
+		<div align="center" style="display: inline-block;">
 			<c:set var="i" value="0"/>
 			<c:forEach var="vo" items="${list}">
 				<c:set var="i" value="${i + 1}"/>
@@ -63,7 +71,7 @@
 				</c:if>
 			</c:forEach>
 		</div>
-		<div style="position:absolute;top:700px;width: 85%;"align="center">
+		<div style="position:absolute;top:665px;width: 85%;"align="center">
 			<c:choose>
 			<c:when test="${pu.startPageNum>5 }">
 				<a href="<c:url value='/market/item/list?pageNum=${pu.startPageNum-1 }'/>">
@@ -103,6 +111,17 @@
 				<span class="btnnext-a">▷▷</span>
 			</c:otherwise>
 		</c:choose>
+		</div>
+		<div style="position:absolute;top:710px;width: 85%;"align="center">
+			<form method="post" id="search" name="f" action="<c:url value='/market/admin/item/search'/>">
+				<div style="display: inline-block;margin-top: 20px;">
+					<div class="form-group has-success" style="display: inline-block; ">
+						<input type="text" name="text" id="text" class="form-control" style="width:350px;float:left;margin-left: 5px;height: 25px;">
+						<input type="submit" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+						border-radius: 4px; background-color: rgb(52, 152, 219);width:50px; height:25px;float:left;margin-left: 5px;font-size: 13px;" > 
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

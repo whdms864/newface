@@ -20,12 +20,20 @@
 			var category_num=$(this).val();
 			location.href='list?category_num='+category_num;
 		});
+		$("#search").submit(function(event){
+			var text=$("#text").val();
+			if(text==""){
+				$("#text").focus();
+				alert("검색한 내용을 입력해주세요");
+				event.preventDefault();
+			}
+		});
 	});
 </script>
 <style>
 	td p img{
-		width: 60px;
-		height: 60px;
+		width: 40px;
+		height: 40px;
 	}
 </style>
 <div id="sidebar">
@@ -104,7 +112,7 @@
 				 </tbody>
 			</table>
 		</div>
-	<div style="position:absolute;top:610px;width: 100%;"align="center">
+	<div style="position:absolute;top:540px;width: 100%;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
 					<a href="<c:url value='/market/admin/item/list?pageNum=${pu.startPageNum-1 }'/>">
@@ -144,6 +152,18 @@
 					<span class="btnnext-a">▷▷</span>
 				</c:otherwise>
 			</c:choose>
+		</div>
+		<div style="position:absolute;top:600px;width: 100%;"align="center">
+			<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>
+			<form method="post" id="search" name="f" action="<c:url value='/market/admin/item/search'/>">
+				<div style="display: inline-block;margin-top: 20px;">
+					<div class="form-group has-success" style="display: inline-block; ">
+						<input type="text" name="text" id="text" class="form-control" style="width:520px;float:left;margin-left: 5px;">
+						<input type="submit" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+						border-radius: 4px; background-color: rgb(52, 152, 219);width:80px; height:35px;float:left;margin-left: 5px;" > 
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
