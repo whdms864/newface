@@ -49,6 +49,10 @@
 	background-color:rgb(52, 152, 219);
 	color:white;
 }
+#content #tab .hover_a{
+	background-color:rgb(52, 152, 219);
+	color:white;
+}
 #content #tab ul a{
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;

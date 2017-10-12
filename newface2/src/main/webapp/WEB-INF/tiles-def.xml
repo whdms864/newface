@@ -116,19 +116,18 @@
 	<!-- 1:1문의 -->
 	<definition name=".qna11_insert" template="/WEB-INF/views/homepage/qna11/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/header.jsp"/>	
-		<put-attribute name="tab" value="/WEB-INF/views/homepage/qna11/tab.jsp"/>
-		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/insert.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/insert.jsp"/>
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/market/sidebar.jsp"/>
 		<put-attribute name="ad" value="/WEB-INF/views/homepage/ad.jsp"/>
 	</definition>
 	<definition name=".qna11_getinfo" extends=".qna11_insert">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/getinfo.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/getinfo.jsp"/>
 	</definition>
 	<definition name=".qna11_detail" extends=".qna11_insert">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/detail.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/detail.jsp"/>
 	</definition>
 	<definition name=".qna11_update" extends=".qna11_insert">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
 	</definition>
 	
 	<!-- 공지사항 -->
@@ -141,7 +140,7 @@
 		<put-attribute name="con" value="/WEB-INF/views/homepage/noti/getinfo.jsp"/>
 	</definition>
 	
-	<!-- 관리자 -->
+	<!-- ///////////////////////// 관리자 ///////////////////////////////////////////////// -->
 	<definition name=".admin" template="/WEB-INF/views/homepage/admin/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/admin/header.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/main.jsp"/>
@@ -159,35 +158,32 @@
 	<!-- 1:1문의 -->
 	<definition name=".qna11admin" template="/WEB-INF/views/homepage/admin/qna11/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/admin/header.jsp"/>	
-		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/qna11/tab.jsp"/>
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/list.jsp"/>
-		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/admin/sidebar.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/qna11/list.jsp"/>
 	</definition>
 	<definition name=".qna11admin_detail" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/detail.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/qna11/detail.jsp"/>
 	</definition>
 	<definition name=".qna11admin_update" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/qna11/update.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/qna11/update.jsp"/>
 	</definition>
 	
 	
 	
 	<!-- 공지사항 관리자-->
 	<definition name=".notiadmin_list" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
-		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/noti/tab.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/noti/list.jsp"/>
 	</definition>
 	
 	<definition name=".notiadmin_getinfo" extends=".notiadmin_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/getinfo.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/noti/getinfo.jsp"/>
 	</definition>
 	
 	<definition name=".notiadmin_insert" extends=".notiadmin_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/noti/insert.jsp"/>
 	</definition>
 	
 	<definition name=".notiadmin_update" extends=".notiadmin_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/noti/update.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/noti/update.jsp"/>
 	</definition>
 	
 	<!-- 광고 관리자-->
@@ -236,17 +232,16 @@
 	
 	<!-- 마켓관리 -->
 	<definition name=".marketadmin" extends=".qna11admin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/list_item.jsp"/>
-		<put-attribute name="tab" value="/WEB-INF/views/homepage/admin/market/tab.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/list_item.jsp"/>
 	</definition>
 	<definition name=".marketadmin_list_cate" extends=".marketadmin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/list_cate.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/list_cate.jsp"/>
 	</definition>
 	<definition name=".marketadmin_insert_item" extends=".marketadmin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/insert_item.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/insert_item.jsp"/>
 	</definition>
 	<definition name=".marketadmin_update_item" extends=".marketadmin">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/admin/market/update_item.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/update_item.jsp"/>
 	</definition>
 	
 	<!--  -->

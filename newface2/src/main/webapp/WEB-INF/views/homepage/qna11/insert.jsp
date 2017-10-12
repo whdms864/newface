@@ -21,6 +21,16 @@ $(document).ready(function(){
 	});
 });
 </script>
+<div id="tab">
+		<div style="margin-left: 30px;margin-top: 10px;">
+			<label style="font-weight:bold;font-size:25px;">1:1문의</label>
+		</div>
+		<ul>
+		    <li><a href="<c:url value='/qna11/getinfo'/>"style="margin-left:0px;">목록</a></li>
+		    <li><a href="<c:url value='/qna11/insert'/>" class="hover_a">작성</a></li>
+		</ul>
+	</div>
+<div id="con">
 	<div align="left" style="margin-top: 20px;">
 		<form method="post" id="qna11_insert_form" action="<c:url value='/qna11/insertok'/>">
 			<div style="margin-left:55px;">
@@ -51,3 +61,4 @@ $(document).ready(function(){
 			</div>
 		</form>
 	</div>
+</div>

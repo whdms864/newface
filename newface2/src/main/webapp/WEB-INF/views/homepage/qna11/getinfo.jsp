@@ -17,7 +17,16 @@
 		});
 	});
 </script>	
-	<div align="center">
+	<div id="tab">
+		<div style="margin-left: 30px;margin-top: 10px;">
+			<label style="font-weight:bold;font-size:25px;">1:1문의</label>
+		</div>
+		<ul>
+		    <li><a href="<c:url value='/qna11/getinfo'/>"style="margin-left:0px;" class="hover_a">목록</a></li>
+		    <li><a href="<c:url value='/qna11/insert'/>">작성</a></li>
+		</ul>
+	</div>
+	<div id="con" align="center">
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 			<thead>
 		  		<tr class="success">
