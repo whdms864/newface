@@ -161,7 +161,6 @@ public class DiaryController {
 		PageUtil page=new PageUtil(pageNum, 10, 10, totalRowCount);
 		map.put("diary_folder_num", diary_folder_num);
 		map.put("startRow", page.getStartRow());
-		System.out.println("Ω√¿€ : " + page.getStartRow());
 		List<DiaryVo> list = service.folder_list(map);
 		
 		String hompy_id=service.id(hompy_num);		

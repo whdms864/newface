@@ -32,7 +32,7 @@
 	<div id="total">total ${sessionScope.total }</div>
 	<div id="hname_back">
 		<div id="hname">
-			${sessionScope.hname } <a id="hname_edit" href="">edit</a>
+			${sessionScope.hname } <a id="hname_edit" href="<c:url value='/setup/basic'/>">edit</a>
 		</div>
 	</div>
 	<%-- <div id="bgm_back">

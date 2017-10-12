@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css?var=2'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css?var=25'/>">
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
+<script>
+	$(function(){
+		$("#name").on("click","#name1",function(){
+			$("#i_you").toggle(); 
+		});
+		$("#i_you1").click(function(){
+			$.getJSON("<c:url value='/minihome/iu_request'/>",function(data){
+				if(data.n>0){
+					alert("일촌신청이 완료되었습니다");
+				}else{
+					alert("오류로 인하여 일촌신청 하지 못했습니다")
+				}
+			});
+		});
+	});
+</script>
 <div id="left_back">
 	<div id="profile">
 		<c:choose>
@@ -18,11 +35,12 @@
 		${requestScope.vo.content }
 	</div>
 	<div id="edit">
-		<a href="">edit</a> 
+		<a href="<c:url value='/setup/profile'/>">edit</a> 
 		<a href="">history</a>
 	</div>
 	<div id="member">
-		<div id="name">${requestScope.member.name }</div>
+		<div id="name"><a id="name1">${requestScope.member.name }</a></div>
+		<div id="i_you"><a id="i_you1">일촌맺기</a></div>
 		<div id="email">${requestScope.member.email }</div>
 	</div>
 	<div id="iu">

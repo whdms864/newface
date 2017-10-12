@@ -34,6 +34,8 @@
   	<typeAlias type="com.newface.vo.NowVo" alias="now"/>
   	<typeAlias type="com.newface.vo.BuyVo" alias="buy"/>
   	<typeAlias type="com.newface.vo.MineVo" alias="mine"/>
+  	<typeAlias type="com.newface.vo.IuVo" alias="iu"/>
+  	<typeAlias type="com.newface.vo.IucomVo" alias="iu_com"/>
   </typeAliases>
   
   <mappers>

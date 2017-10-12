@@ -5,14 +5,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.MiniHomeService;
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
+import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
@@ -35,11 +40,7 @@ public class MiniHomeController {
 		session.setAttribute("hompyid", hompy.getId());
 		
 		//메뉴설정
-		SetupVo vo=service.setup_list(hompy_num);
-		System.out.println("hompy_num : " + hompy_num);
-		System.out.println("diary : " + vo.getDiary());
-		System.out.println("photo : " + vo.getPhoto());
-		System.out.println("guest : " + vo.getGuest());		
+		SetupVo vo=service.setup_list(hompy_num);	
 		session.setAttribute("diary", vo.getDiary());
 		session.setAttribute("photo", vo.getPhoto());
 		session.setAttribute("guest", vo.getGuest());
@@ -68,7 +69,51 @@ public class MiniHomeController {
 		
 		//미니홈피 이름
 		MemberVo member=service.profile_member(hompy_num);
-		model.addAttribute("member", member);
+		model.addAttribute("member", member);	
 		return ".minihome";
+	}
+	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
+	@ResponseBody
+	public String iu_request(HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String i_id=service.id(hompy_num);
+		String u_id=(String)session.getAttribute("loginid");
+		IuVo vo=new IuVo(0, null, null, i_id, u_id);
+		int n=service.iu_request(vo);
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		return json.toString();
+	}
+	@RequestMapping(value="/minihome/iu_com",method=RequestMethod.GET)
+	@ResponseBody
+	public String iu_com(HttpSession session,String content) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String i_id=service.id(hompy_num);
+		String u_id=(String)session.getAttribute("loginid");
+		IuVo iu=new IuVo(0, null, null, i_id, u_id);
+		int n1=service.iu_is(iu);
+		int n2=0;
+		if(n1>0) {
+			IucomVo vo=new IucomVo(0, content, null, hompy_num, u_id);
+			n2=service.iu_com(vo);		
+		}
+		JSONObject json=new JSONObject();
+		json.put("n", n2);
+		return json.toString();
+	}
+	@RequestMapping(value="/minihome/iu_com_list",method=RequestMethod.GET)
+	@ResponseBody
+	public String iu_com_list(HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		List<IucomVo> list=service.iu_com_list(hompy_num);
+		JSONArray arr=new JSONArray();
+		for(IucomVo vo:list) {
+			JSONObject json=new JSONObject();
+			String name=service.name(vo.getId());
+			json.put("name", name);
+			json.put("content", vo.getContent());
+			arr.add(json);
+		}		
+		return arr.toString();
 	}
 }

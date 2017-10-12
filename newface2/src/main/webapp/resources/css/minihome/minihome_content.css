@@ -57,14 +57,14 @@ ul{
 	background-color: rgb(241, 196, 15);width: 100%;height: 100%;
 }
 #friends_say_back{
-	position: relative; top: -30px; left: 50px; width: 80px; height: 50px;
+	position: relative; top: -30px; left: 20px; width: 80px; height: 50px;
 }
 #friends_say{
-	left:20px;border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; text-align: center; line-height: 11px; color: rgb(255, 255, 255); font-size: 13px; box-shadow: none; background-color: rgb(26, 188, 156);
+	border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; text-align: center; line-height: 11px; color: rgb(255, 255, 255); font-size: 13px; box-shadow: none; background-color: rgb(26, 188, 156);
 	height: 40%;
 }
 #iu_com{
-	position: relative; top: -83px; left: 150px; width: 400px; height: 40px;
+	position: relative; top: -83px; left: 110px; width: 400px; height: 40px;
 }
 #iu_content{
 	position: relative; top: -90px; width: 460px;

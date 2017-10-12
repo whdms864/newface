@@ -1,10 +1,13 @@
 package com.newface.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.SetupDao;
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
 
@@ -32,5 +35,11 @@ public class SetupService {
 	}
 	public int profile_todayis(ProfileVo vo) {
 		return dao.profile_todayis(vo);
+	}
+	public List<IuVo> iu_request_list(String id){
+		return dao.iu_request_list(id);
+	}
+	public int iuOk(IuVo vo) {
+		return dao.iuOk(vo);
 	}
 }

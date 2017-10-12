@@ -24,4 +24,10 @@
 	<update id="profile_todayis">
 		update profile set regdate=now(),todayis=#{todayis} where hompy_num=#{hompy_num}
 	</update>
+	<select id="iu_request_list" parameterType="string" resultType="iu">
+		select * from iu where i_id=#{value} and u_name='신청'
+	</select>
+	<update id="iuOk" parameterType="iu">
+		update iu set u_name='일촌' where i_id=#{i_id} and u_id=#{u_id}
+	</update>
 </mapper>  

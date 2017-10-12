@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=233'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=29'/>"> 
 <div id="setup_profile_back">
 	<h3 id="first">프로필 사진설정</h3>
 	<hr>
@@ -22,16 +22,14 @@
 	<script type="text/javascript" charset="utf-8">
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
-<form action="<c:url value='/setup/profile_content'/>" method="post" id="frm">
-	<table>
-		<tr>
-			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor"></textarea></td>
-		</tr>
-		<tr>
-			<td><input id="addBtn" type="submit" value="변경"></td>
-		</tr>
-	</table>	
-</form>
+	<form action="<c:url value='/setup/profile_content'/>" method="post" id="frm">
+		<table>
+			<tr>
+				<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor"></textarea></td>
+			</tr>
+		</table>				
+		<input id="addBtn" type="submit" value="변경">		
+	</form>
 	</div>
 	<hr>
 	<h3>프로필 기분상태 설정</h3>

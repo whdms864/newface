@@ -1,10 +1,13 @@
 package com.newface.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
 
@@ -33,5 +36,11 @@ public class SetupDao {
 	}
 	public int profile_todayis(ProfileVo vo) {
 		return sqlSession.update(NAMESPACE + ".profile_todayis", vo);
+	}
+	public List<IuVo> iu_request_list(String id){
+		return sqlSession.selectList(NAMESPACE + ".iu_request_list", id);
+	}
+	public int iuOk(IuVo vo) {
+		return sqlSession.update(NAMESPACE + ".iuOk", vo);
 	}
 }

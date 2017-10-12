@@ -47,4 +47,22 @@
 	<select id="profile_member" parameterType="int" resultType="member">
 		select m.* from member m join hompy h on m.id=h.id where h.hompy_num=#{value}
 	</select>
+	<select id="id" parameterType="int" resultType="string">
+		select id from hompy where hompy_num=#{value}
+	</select>
+	<insert id="iu_request" parameterType="iu">
+		insert into iu values(0,'일촌','신청',#{i_id},#{u_id})
+	</insert>
+	<insert id="iu_com" parameterType="iu_com">
+		insert into iu_com values(0,#{content},now(),#{hompy_num},#{id})
+	</insert>
+	<select id="iu_is" parameterType="iu" resultType="int">
+		select iu_num from iu where u_name='일촌' and i_id=#{i_id} and u_id=#{u_id}
+	</select>
+	<select id="iu_com_list" parameterType="int" resultType="iu_com">
+		select * from iu_com where hompy_num=#{value} order by iu_com_num desc
+	</select>
+	<select id="name" parameterType="string" resultType="string">
+		select name from member where id=#{value}
+	</select>
 </mapper>  

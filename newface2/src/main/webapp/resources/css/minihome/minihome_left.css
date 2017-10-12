@@ -40,10 +40,10 @@ body {
 	font-size: 15px;
 }
 #name{
-	display: inline-block;
+	display: inline; float: left; cursor: pointer;
 }
-#gender{
-	display: inline-block;
+#i_you{
+	display: inline; float: left; display: none;
 }
 #iu{
 	position: relative; top: 30px; left: 25px;  width: 150px; height: 170px;

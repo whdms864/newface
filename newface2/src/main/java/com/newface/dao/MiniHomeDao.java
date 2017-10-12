@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
+import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
@@ -51,5 +53,23 @@ public class MiniHomeDao {
 	}
 	public MemberVo profile_member(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".profile_member", hompy_num);
+	}
+	public String id(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".id", hompy_num);
+	}
+	public int iu_request(IuVo vo) {
+		return sqlSession.insert(NAMESPACE + ".iu_request", vo);
+	}
+	public int iu_com(IucomVo vo) {
+		return sqlSession.insert(NAMESPACE + ".iu_com", vo);
+	}
+	public int iu_is(IuVo vo) {
+		return sqlSession.selectOne(NAMESPACE + ".iu_is", vo);
+	}
+	public List<IucomVo> iu_com_list(int hompy_num){
+		return sqlSession.selectList(NAMESPACE + ".iu_com_list", hompy_num);
+	}
+	public String name(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".name", id);
 	}
 }

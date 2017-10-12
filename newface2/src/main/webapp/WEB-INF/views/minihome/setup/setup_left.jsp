@@ -13,6 +13,7 @@
 <div id="minihome_set_menu">
 	<a href="<c:url value='/setup/basic'/>">기본 설정</a><br>
 	<a href="<c:url value='/setup/profile'/>">프로필 설정</a><br>
+	<a href="<c:url value='/setup/iu'/>">일촌관리</a><br>
 </div>
 <div id="item_set">
 	<hr>

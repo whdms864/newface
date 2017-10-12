@@ -1,17 +1,15 @@
 package com.newface.vo;
 
-import java.util.Date;
-
 public class IucomVo {	
 	private int iu_com_num;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private int hompy_num;
 	private String id;
 	
 	public IucomVo() {}
 
-	public IucomVo(int iu_com_num, String content, Date regdate, int hompy_num, String id) {
+	public IucomVo(int iu_com_num, String content, String regdate, int hompy_num, String id) {
 		super();
 		this.iu_com_num = iu_com_num;
 		this.content = content;
@@ -36,11 +34,11 @@ public class IucomVo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
