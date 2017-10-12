@@ -30,6 +30,9 @@ public class PhotoService {
 	public List<PhotolistVo> photo_list(HashMap<String, Object> map){
 		return dao.photo_list(map);
 	}
+	public List<PhotolistVo> photo_list1(HashMap<String, Object> map){
+		return dao.photo_list1(map);
+	}
 	public String name(String id) {
 		return dao.name(id);
 	}
@@ -45,8 +48,11 @@ public class PhotoService {
 	public int photo_updateok(PhotoVo vo) {
 		return dao.photo_updateok(vo);
 	}
-	public int getCount() {
-		return dao.getCount();
+	public int getCount(int hompy_num) {
+		return dao.getCount(hompy_num);
+	}
+	public int getCount1(int photo_folder_num) {
+		return dao.getCount1(photo_folder_num);
 	}
 	public int folder_update(PhotofolderVo vo) {
 		return dao.folder_update(vo);

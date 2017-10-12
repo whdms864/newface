@@ -32,6 +32,9 @@ public class PhotoDao {
 	public List<PhotolistVo> photo_list(HashMap<String, Object> map){
 		return sqlSession.selectList(NAMESPACE+".photo_list",map);
 	}
+	public List<PhotolistVo> photo_list1(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".photo_list1",map);
+	}
 	public String name(String id) {
 		return sqlSession.selectOne(NAMESPACE+".name",id);
 	}
@@ -47,8 +50,11 @@ public class PhotoDao {
 	public int photo_updateok(PhotoVo vo) {
 		return sqlSession.update(NAMESPACE+".photo_updateok",vo);
 	}
-	public int getCount() {
-		return sqlSession.selectOne(NAMESPACE+".count");
+	public int getCount(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE+".count",hompy_num);
+	}
+	public int getCount1(int photo_folder_num) {
+		return sqlSession.selectOne(NAMESPACE+".count1",photo_folder_num);
 	}
 	public int folder_update(PhotofolderVo vo) {
 		return sqlSession.update(NAMESPACE+".folder_update",vo);

@@ -9,11 +9,11 @@
 	<hr>
 	<div class="blank"></div>
 	<img alt="폴더사진" src="<c:url value='/resources/images/minihome/folder.PNG'/>">
-	<a href="">전체보기</a>
+	<a href="<c:url value='/photo/list'/>">전체보기</a>
 	<c:forEach var="vo" items="${requestScope.list }">
 	<div class="blank"></div>
 	<img alt="폴더사진" src="<c:url value='/resources/images/minihome/folder.PNG'/>">
-	<a href="">${vo.fname }</a>
+	<a href="<c:url value='/photo/list?photo_folder_num=${vo.photo_folder_num }'/>">${vo.fname }</a>
 	</c:forEach>
 	<div id="photo_set">
 		<a href="<c:url value='/photo/folder'/>">폴더 설정하기</a>

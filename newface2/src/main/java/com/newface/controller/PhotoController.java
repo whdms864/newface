@@ -87,16 +87,28 @@ public class PhotoController {
 		}
 	}
 	@RequestMapping(value="/photo/list")
-	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,HttpSession session,Model model) {
+	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="photo_folder_num",defaultValue="0")int photo_folder_num,HttpSession session,Model model) {
 		String id=(String)session.getAttribute("loginid");
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		int hompy_num=service.Hompy_num(id);
 		String name=service.name(id);
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum, 5, 5, totalRowCount);
-		map.put("startRow",pu.getStartRow());
-		map.put("endRow",pu.getEndRow());
-		List<PhotolistVo> list1=service.photo_list(map);
+		map.put("hompy_num", hompy_num);
+		map.put("photo_folder_num", photo_folder_num);
+		List<PhotolistVo> list1 =null;
+		PageUtil pu=null;
+		if (photo_folder_num > 0) {
+			int totalRowCount=service.getCount1(photo_folder_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list1(map);
+		}else {
+			int totalRowCount=service.getCount(hompy_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list(map);
+		}
 		if(list1!=null) {
 			model.addAttribute("list1",list1);
 			model.addAttribute("pu",pu);
