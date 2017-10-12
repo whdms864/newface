@@ -39,7 +39,7 @@
 		select coalesce(count(noti_com_num),0) from noti_com;
 	</select>
 	
-	<select id="count_user" resultType="int" parameterType="string">
-		select coalesce(count(noti_com_num),0) from noti noti_num=#{noti_num};
+	<select id="count_noti_com" resultType="int" parameterType="int">
+		select coalesce(count(noti_com_num),0) from noti_com where noti_num=#{noti_num};
 	</select>
 </mapper>  

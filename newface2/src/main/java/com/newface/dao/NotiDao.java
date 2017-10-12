@@ -46,7 +46,7 @@ public class NotiDao {
 		return sqlSession.selectList(NAMESPACE +  ".noti_com_list",map);
 	}
 	
-	public int getCount() {
-		return sqlSession.selectOne(NAMESPACE+".count");
+	public int getCount(int noti_num) {
+		return sqlSession.selectOne(NAMESPACE+".count_noti_com",noti_num);
 	}
 }

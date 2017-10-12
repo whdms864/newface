@@ -41,14 +41,15 @@ public class NotiController {
 	@RequestMapping(value="/notiadmin_getinfo", method=RequestMethod.GET)
 	public String notiadmin_getinfo(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
+		
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount();
+		int totalRowCount=service.getCount(noti_num);
 		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
+		map.put("noti_num",noti_num);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
-		map.put("noti_num",noti_num);
-		List<NoticomVo> noti_com_list=service.noti_com_list(map);
 		
+		List<NoticomVo> noti_com_list=service.noti_com_list(map);
 		model.addAttribute("pu",pu);
 		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);
@@ -88,13 +89,13 @@ public class NotiController {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount();
+		int totalRowCount=service.getCount(noti_num);
 		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
+		map.put("noti_num",noti_num);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
-		map.put("noti_num",noti_num);
-		List<NoticomVo> noti_com_list=service.noti_com_list(map);
 		
+		List<NoticomVo> noti_com_list=service.noti_com_list(map);
 		model.addAttribute("pu",pu);
 		model.addAttribute("noti_com_list",noti_com_list);
 		model.addAttribute("vo", vo);

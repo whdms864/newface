@@ -48,10 +48,47 @@
 			  			<td>작성일 : ${vo.regdate }</td>
 				  	</tr>
 				  	<tr>
-			  			<td colspan="2" style="height:100px"><textarea rows="25" cols="91" name="content" readonly="readonly" style="border-style:hidden;">${vo.content }</textarea></td>
+			  			<td colspan="2" style="height:100px"><textarea rows="16" cols="91" name="content" readonly="readonly" style="border-style:hidden;">${vo.content }</textarea></td>
 				  	</tr>
 			</table>
+			
+		<div style="display: inline-block;">
+			<div class="form-group has-success" style="display: inline-block; width:500px; height:35px;">
+				<input type="text" name="content" id="com_content" class="form-control" style="width:400px;height:30px; float:left; position:absolute;right:75px; top:5px;">
+					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
+				<div style="width:90%; height:148px; background-color: white; position:absolute; top:440px; right:38px;">
+					<table style="width:100%;">
+						<tr>
+						<th>글쓴이</th>
+						<th>내용</th>
+						<th>작성일</th>
+						<th></th>
+						</tr>
+						<c:forEach var="noti_com_list" items="${noti_com_list }">
+						<tr>
+							<td style="width:18%; height:20%" >${noti_com_list.id }</td>
+							<td style="width:55%;">${noti_com_list.content }</td>
+							<td style="width:18%;">${noti_com_list.regdate }</td>
+							<c:choose>
+								<c:when test="${noti_com_list.id != sessionScope.loginid}">
+									<td style="width:9%;">신고</td>
+								</c:when>
+									
+								<c:otherwise>
+									<td></td>
+								</c:otherwise>
+							</c:choose>
+						</tr>
+						</c:forEach>
+					</table>
+					<input type="hidden" name="id" value="${sessionScope.loginid }">
+					<input type="hidden" name="noti_num" value="${vo.noti_num}">
+				</div> 
+			</div>
 		</div>
+		</form>
+	</div>
+		
 		
 		<div style="position:absolute;top:610px;width: 98%;"align="center">
 				<div style="background-color: rgb(224, 224, 224);margin-left:10px;width: 99%; height:1px;"></div>
@@ -61,7 +98,7 @@
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/notiadmin_delete?noti_num=${vo.noti_num}'">
 		</div>
 		
-		<div style="position:absolute;top:210px;width: 100%;"align="center">
+		<div style="position:absolute;top:560px;width: 100%;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
 					<a href="<c:url value='/notiadmin_getinfo?pageNum=${pu.startPageNum-1 }&noti_num=${vo.noti_num }'/>">

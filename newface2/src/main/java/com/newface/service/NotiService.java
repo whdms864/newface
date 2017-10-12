@@ -49,7 +49,7 @@ public class NotiService {
 		return dao.noti_com_list(map);
 	}
 	
-	public int getCount() {
-		return dao.getCount();
+	public int getCount(int noti_num) {
+		return dao.getCount(noti_num);
 	}
 }
