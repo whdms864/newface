@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="ader_list" resultType="ader">
-		select ader_num,hname,pname,snum,dname,phone,date_format(regdate,'%Y-%m-%d') regdate from ader order by ader_num desc
+		select ader_num,hname,pname,snum,dname,phone,date_format(regdate,'%Y-%m-%d') regdate from ader order by ader_num
 	</select>
 	
 	<select id="ader_getinfo" resultType="ader" parameterType="int">
@@ -18,7 +18,7 @@
 	</select>
 	
 	<update id="ader_update" parameterType="ader">
-		update ader set hname=#{hname}, pname=#{pname}, snum=#{snum}, dname=#{dname}, phone=#{phone} where ader_num=#{ader_num}
+		update ader set hname=#{hname}, pname=#{pname}, .snum=#{snum}, dname=#{dname}, phone=#{phone} where ader_num=#{ader_num}
 	</update>
 	
 	<delete id="ader_delete" parameterType="int">
@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="ad_getinfo" resultType="ad" parameterType="int">
-		select * from ad where ad_num=#{ad_num}
+		select * from ad where ader_num=#{ader_num}
 	</select>
 	
 	<update id="ad_update" parameterType="ad">

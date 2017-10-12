@@ -39,8 +39,8 @@ public class AdService {
 	public List<AdVo> ad_list(){
 		return dao.ad_list();
 	}
-	public AdVo ad_getinfo(int ad_num) {
-		return dao.ad_getinfo(ad_num);
+	public AdVo ad_getinfo(int ader_num) {
+		return dao.ad_getinfo(ader_num);
 	}
 	public int ad_update(AdVo vo) {
 		return dao.ad_update(vo);

@@ -44,8 +44,8 @@ public class AdDao {
 		return sqlSession.selectList(NAMESPACE+".ad_list");
 	}
 	
-	public AdVo ad_getinfo(int ad_num) {
-		return sqlSession.selectOne(NAMESPACE+ ".ad_getinfo",ad_num);
+	public AdVo ad_getinfo(int ader_num) {
+		return sqlSession.selectOne(NAMESPACE+ ".ad_getinfo",ader_num);
 	}
 	
 	public int ad_delete(int ad_num) {

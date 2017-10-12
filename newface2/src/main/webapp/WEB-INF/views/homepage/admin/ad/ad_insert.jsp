@@ -42,7 +42,6 @@
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;"  class="hover_a">광고주목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
-		    <li><a href="<c:url value='/ad_list'/>">광고목록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
@@ -58,10 +57,10 @@
 				
 				<div class="form-group has-warning" style="display: inline-block;">
 					<label class="control-label" for="inputWarning1">진행상황</label>
-					<select name="type" style="width:250px; height:33px;">
-							<option value="1">계약협상</option>
-							<option value="2">광고게시</option>
-							<option value="3">계약만료</option>
+					<select name="type" style="width:250px; height:33px;" class="form-control">
+							<option value="1" >계약협상</option>
+							<option value="2" >광고게시</option>
+							<option value="3" >계약만료</option>
 					</select>
 				</div>
 				<br>
@@ -80,8 +79,7 @@
 					<label class="control-label" for="inputWarning1">광고 이미지</label>
 					<br>
 					<textarea name="ad_img" id="smarteditor" rows="12" cols="300" style="width:100%;"></textarea>
-				
-					
+								
 					
 				<div class="form-group has-warning" style="display: inline-block; ">
 					<label class="control-label" for="inputWarning1">광고시작일</label>
@@ -98,7 +96,7 @@
 		</div>
 			<div style="position:absolute;top:610px;width: 98%;"align="center">
 				<div style="background-color: rgb(224, 224, 224);margin-left:10px;width: 99%; height:1px;"></div>
-				<input type="submit" value="등록" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+				<input id="addBtn" type="submit" value="등록" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;"> 
 		</div>
 		</form>

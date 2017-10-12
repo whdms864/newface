@@ -34,19 +34,18 @@
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;">광고주목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
-		    <li><a href="<c:url value='/ad_list'/>" class="hover_a">광고목록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
 	<div id="con">
-		<form method="post" action="<c:url value='/notiadmin_updateok'/>">
+		<form method="post" action="<c:url value='/ad_update'/>">
 		<div style="margin-top: 20px;background-color: rgb(239, 238, 238);width: 89%;height:50%;margin-left: 40px;padding: 10px;">
 			<div style="margin-left: 67px;">
 				<div class="form-group has-warning" style="display: inline-block; ">
 					<label class="control-label" for="inputWarning1">제목</label>
 					<br>
-					<input type="hidden" name="noti_num" value="${vo.noti_num }">
-					<input type="text" name="title" id="title" class="form-control" style="width:500px;" value="${vo.title }">
+					<input type="hidden" name="noti_num" value="${ad_getinfo.ad_num }">
+					<input type="text" name="title" id="title" class="form-control" style="width:500px;" value="${ad_getinfo.title }">
 				</div>
 				
 				<div class="form-group has-warning" style="display: inline-block; ">

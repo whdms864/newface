@@ -34,7 +34,6 @@
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;">광고주목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
-		    <li><a href="<c:url value='/ad_list'/>" class="hover_a">광고목록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
@@ -42,7 +41,7 @@
 		<div align="center">
 			<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 				<thead>
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<th>계약상태</th>
 			  			<th>URL</th>
 			  			<th>시작일</th>
@@ -50,9 +49,23 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		<c:forEach var="ad" items="${ad_list}">
+			  		<c:forEach var="ad" items="${ad_getinfo}">
 			  			<tr>
-				  			<td>${ad.type}</td>
+				  			<td>
+				  			<c:choose>
+				  				<c:when test="${ad.type==1 }">
+				  					계약협상
+				  				</c:when>
+				  				
+				  				<c:when test="${ad.type==2 }">
+				  					광고게시
+				  				</c:when>
+				  				
+				  				<c:otherwise>
+				  					계약만료
+				  				</c:otherwise>
+				  			</c:choose>
+				  			</td>
 				  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/ad_getinfo?ad_num=${ad.ad_num }'/>">${ad.url}</a></td>
 				  			<td>${ad.sdate}</td>
 				  			<td>${ad.edate}</td>

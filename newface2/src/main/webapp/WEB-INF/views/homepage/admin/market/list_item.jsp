@@ -73,7 +73,7 @@
 			</select>
 			<table class="table table-hover" style="width: 90%;margin-top: 50px;">
 				<thead>
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<th>No.</th>
 			  			<th>상품명</th>
 			  			<th>이미지</th>

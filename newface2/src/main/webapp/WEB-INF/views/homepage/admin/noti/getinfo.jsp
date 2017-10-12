@@ -39,7 +39,7 @@
 	<div id="con">	
 		<div align="center">
 			<table class="table" style="width: 70%;margin-top: 20px;">
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<td>No.${vo.noti_num}</td>
 			  			<td>${vo.title}</td>
 			  		</tr>

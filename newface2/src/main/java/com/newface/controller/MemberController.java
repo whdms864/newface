@@ -87,9 +87,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/leave", method=RequestMethod.POST)
-	public String leave(MemberVo vo) {
+	public String leave(MemberVo vo,HttpSession session) {
 		int n=service.leave(vo);
 		if(n>0) {
+			session.invalidate();
 			return ".bye";
 		}else {
 			return ".market";

@@ -67,7 +67,7 @@
 			<form method="post" action="<c:url value='/market/admin/cate/update'/>">
 				<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 					<thead>
-				  		<tr class="success">
+				  		<tr class="danger">
 				  			<th>No.</th>
 				  			<th>카테고리</th>
 				  			<th>수정</th>

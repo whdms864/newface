@@ -34,7 +34,6 @@
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;"  class="hover_a">광고주목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
-		    <li><a href="<c:url value='/ad_list'/>">광고목록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
@@ -78,7 +77,9 @@
 			  		</tr>
 			  		
 			  		<tr>
-			  			<td colspan="2" align="center"><input type="button" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"> </td>
+			  			<td colspan="2" align="center">
+			  			<input type="button" onclick="location.href='/newface/ad_list?ader_num=${vo.ader_num}'" value="광고목록"> &nbsp;&nbsp;
+			  			<input type="button" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"> </td>
 			  		</tr>
 			</table>
 		</div>

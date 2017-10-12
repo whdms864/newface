@@ -40,7 +40,7 @@
 		<div align="center">
 			<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 				<thead>
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<th>No.</th>
 			  			<th>제목</th>
 			  			<th>작성자</th>
