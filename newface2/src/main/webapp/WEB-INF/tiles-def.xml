@@ -81,25 +81,6 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/homepage/sidebar.jsp"/>
 	</definition>
 	
-	<!-- 마이페이지 -->
-	<definition name=".mypage" extends=".market">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
-	</definition>
-	
-	<!-- 회원정보수정 -->
-	<definition name=".update" extends=".market">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/update.jsp"/>
-	</definition>
-	
-	<!-- 탈퇴확인페이지 -->
-	<definition name=".leave" extends=".market">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/leave.jsp"/>
-	</definition>
-	
-	
-	<definition name=".bye" extends=".market">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/bye.jsp"/>
-	</definition>
 	
 	<!-- 로그인페이지 -->
 	<definition name=".loginpage" template="/WEB-INF/views/homepage/login/layout.jsp">
@@ -111,7 +92,6 @@
 	<definition name=".search" extends=".loginpage">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/member/search.jsp"/>
 	</definition>
-		
 	
 	<!-- 1:1문의 -->
 	<definition name=".qna11_insert" template="/WEB-INF/views/homepage/qna11/layout.jsp">
@@ -130,14 +110,32 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/qna11/update.jsp"/>
 	</definition>
 	
+	<!-- 마이페이지 -->
+	<definition name=".mypage" extends=".qna11_insert">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/mypage.jsp"/>
+	</definition>
+	<!-- 회원정보수정 -->
+	<definition name=".update" extends=".mypage">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/update.jsp"/>
+	</definition>
+	
+	<!-- 탈퇴확인페이지 -->
+	<definition name=".leave" extends=".mypage">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/leave.jsp"/>
+	</definition>
+	
+	<definition name=".bye" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/mypage/bye.jsp"/>
+	</definition>
+	
+	
 	<!-- 공지사항 -->
 	<definition name=".noti_list" extends=".qna11_insert">
-		<put-attribute name="tab" value="/WEB-INF/views/homepage/noti/tab.jsp"/>
-		<put-attribute name="con" value="/WEB-INF/views/homepage/noti/list.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/noti/list.jsp"/>
 	</definition>
 	
 	<definition name=".noti_getinfo" extends=".noti_list">
-		<put-attribute name="con" value="/WEB-INF/views/homepage/noti/getinfo.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/noti/getinfo.jsp"/>
 	</definition>
 	
 	<!-- ///////////////////////// 관리자 ///////////////////////////////////////////////// -->
