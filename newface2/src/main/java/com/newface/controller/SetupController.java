@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.service.SetupService;
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.MineVo;
+import com.newface.vo.Miniroom_listVo;
 import com.newface.vo.ProfileVo;
+import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
 
 @Controller
@@ -107,4 +110,39 @@ public class SetupController {
 		json.put("n", n);
 		return json.toString();
 	}	
+	@RequestMapping(value="/setup/miniroom",method=RequestMethod.GET)
+	public String miniroom(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("loginid");
+		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
+		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
+		model.addAttribute("wallpaper", wallpaper);
+		return ".miniroom.setup";
+	}
+	@RequestMapping(value="/setup/item_img",method=RequestMethod.GET)
+	@ResponseBody
+	public String item_img(int item_num) {
+		String item_img=service.item_img(item_num);
+		JSONObject json=new JSONObject();
+		json.put("item_img", item_img);
+		return json.toString();
+	}
+	@RequestMapping(value="/setup/room_posi",method=RequestMethod.GET)
+	@ResponseBody
+	public String room_posi(int item_num,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		MineVo mine=new MineVo(0, 0, 0, item_num, id);
+		System.out.println("item_num : " + item_num);
+		System.out.println("id : " + id);
+		int mine_num=service.mine_num(mine);
+		int mini_num=service.mini_num(hompy_num);
+		System.out.println("mine_num : " + mine_num);
+		System.out.println("mini_num : " + mini_num);
+		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
+		int n=service.position_insert(posi);
+		
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		return json.toString();
+	}
 }

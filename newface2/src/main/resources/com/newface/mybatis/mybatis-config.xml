@@ -36,6 +36,8 @@
   	<typeAlias type="com.newface.vo.MineVo" alias="mine"/>
   	<typeAlias type="com.newface.vo.IuVo" alias="iu"/>
   	<typeAlias type="com.newface.vo.IucomVo" alias="iu_com"/>
+  	<typeAlias type="com.newface.vo.Miniroom_listVo" alias="miniroom_list"/>
+  	<typeAlias type="com.newface.vo.RoomposiVo" alias="position"/>
   </typeAliases>
   
   <mappers>

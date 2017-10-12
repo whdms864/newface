@@ -28,8 +28,14 @@ public class MemberDao {
 		AdminVo vo=sqlSession.selectOne(NAMESPACE+".getadmin",id);
 		return vo;
 	}
-	
-	
+	public int miniroom(int hompy_num) {
+		int n=sqlSession.insert(NAMESPACE + ".miniroom", hompy_num);
+		return n;
+	}
+	public int hompy_num(String id) {
+		int hompy_num=sqlSession.selectOne(NAMESPACE + ".hompy_num", id);
+		return hompy_num;
+	}
 	public int insert(MemberVo vo) {
 		int n=sqlSession.insert(NAMESPACE+".insert",vo);
 		return n;

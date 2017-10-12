@@ -2,17 +2,17 @@ package com.newface.vo;
 
 public class RoomposiVo {
 	private int room_posi_num;
-	private int miniroom_num;
+	private int mini_num;
 	private String drag;
 	private double x;
 	private double y;
 	private int mine_num;
 	
 	public RoomposiVo() {}
-	public RoomposiVo(int room_posi_num, int miniroom_num, String drag, double x, double y, int mine_num) {
+	public RoomposiVo(int room_posi_num, int mini_num, String drag, double x, double y, int mine_num) {
 		super();
 		this.room_posi_num = room_posi_num;
-		this.miniroom_num = miniroom_num;
+		this.mini_num = mini_num;
 		this.drag = drag;
 		this.x = x;
 		this.y = y;
@@ -24,11 +24,11 @@ public class RoomposiVo {
 	public void setRoom_posi_num(int room_posi_num) {
 		this.room_posi_num = room_posi_num;
 	}
-	public int getMiniroom_num() {
-		return miniroom_num;
+	public int getMini_num() {
+		return mini_num;
 	}
-	public void setMiniroom_num(int miniroom_num) {
-		this.miniroom_num = miniroom_num;
+	public void setMini_num(int mini_num) {
+		this.mini_num = mini_num;
 	}
 	public String getDrag() {
 		return drag;

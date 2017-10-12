@@ -30,7 +30,9 @@ public class MiniHomeController {
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("loginid");
+		System.out.println("id : " + id);
 		int hompy_num=service.hompy_num(id);
+		System.out.println("hompy_num : " + hompy_num);
 		session.setAttribute("hompy_num", hompy_num);
 		
 		//홈피명,총방문자
@@ -79,7 +81,11 @@ public class MiniHomeController {
 		String i_id=service.id(hompy_num);
 		String u_id=(String)session.getAttribute("loginid");
 		IuVo vo=new IuVo(0, null, null, i_id, u_id);
-		int n=service.iu_request(vo);
+		IuVo iu=service.iu_before(vo);
+		int n=0;
+		if(iu==null) {
+			service.iu_request(vo);			
+		}
 		JSONObject json=new JSONObject();
 		json.put("n", n);
 		return json.toString();

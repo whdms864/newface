@@ -72,4 +72,7 @@ public class MiniHomeDao {
 	public String name(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".name", id);
 	}
+	public IuVo iu_before(IuVo vo) {
+		return sqlSession.selectOne(NAMESPACE + ".iu_before", vo);
+	}
 }

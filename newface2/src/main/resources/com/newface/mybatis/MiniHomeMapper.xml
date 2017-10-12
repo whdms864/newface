@@ -65,4 +65,7 @@
 	<select id="name" parameterType="string" resultType="string">
 		select name from member where id=#{value}
 	</select>
+	<select id="iu_before" parameterType="iu" resultType="iu">
+		select * from iu where i_id=#{i_id} and u_id=#{u_id}
+	</select>
 </mapper>  

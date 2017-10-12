@@ -73,4 +73,7 @@ public class MiniHomeService {
 	public String name(String id) {
 		return dao.name(id);
 	}
+	public IuVo iu_before(IuVo vo) {
+		return dao.iu_before(vo);
+	}
 }

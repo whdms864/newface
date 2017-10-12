@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.MineVo;
+import com.newface.vo.Miniroom_listVo;
 import com.newface.vo.ProfileVo;
+import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
 
 @Repository
@@ -42,5 +45,20 @@ public class SetupDao {
 	}
 	public int iuOk(IuVo vo) {
 		return sqlSession.update(NAMESPACE + ".iuOk", vo);
+	}
+	public List<Miniroom_listVo> miniroom_wallpaper(Miniroom_listVo vo){
+		return sqlSession.selectList(NAMESPACE + ".miniroom_wallpaper", vo);
+	}
+	public String item_img(int item_num) {
+		return sqlSession.selectOne(NAMESPACE + ".item_img", item_num);
+	}
+	public int mini_num(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".mini_num", hompy_num);
+	}
+	public int mine_num(MineVo vo) {
+		return sqlSession.selectOne(NAMESPACE + ".mine_num", vo);
+	}
+	public int position_insert(RoomposiVo vo) {
+		return sqlSession.insert(NAMESPACE + ".position_insert", vo);
 	}
 }

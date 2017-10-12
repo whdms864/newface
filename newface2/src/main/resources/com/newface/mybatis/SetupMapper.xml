@@ -30,4 +30,22 @@
 	<update id="iuOk" parameterType="iu">
 		update iu set u_name='일촌' where i_id=#{i_id} and u_id=#{u_id}
 	</update>
+	<select id="miniroom_wallpaper" parameterType="miniroom_list" resultType="miniroom_list">
+		select m.*,i.name,i.item_img from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=#{category_num}
+	</select>
+	<select id="item_img" parameterType="int" resultType="string">
+		select item_img from item where item_num=#{value}
+	</select>
+	<select id="mini_num" parameterType="int" resultType="int">
+		select mini_num from miniroom where hompy_num=#{value}
+	</select>
+	<select id="mine_num" parameterType="mine" resultType="int">
+		select mine_num from mine where id=#{id} and item_num=#{item_num}
+	</select>
+	<insert id="position_insert" parameterType="position">
+		insert into room_posi values(0,#{mini_num},'없음',0.0,0.0,#{mine_num})
+	</insert>
+	<select id="">
+		select mine_num from room_posi where mine_num=#{mine_num} and mini_num=#{mini_num}
+	</select>
 </mapper>  

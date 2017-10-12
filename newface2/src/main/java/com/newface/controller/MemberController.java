@@ -46,7 +46,9 @@ public class MemberController {
 	public String membergaib(MemberVo vo1,HompyVo vo2) {
 		int n1=service.insert(vo1);
 		int n2=service.hompyinsert(vo2);
-		if(n1>0 || n2>0) {
+		int hompy_num=service.hompy_num(vo1.getId());
+		int n3=service.miniroom(hompy_num);
+		if(n1>0 || n2>0 || n3>0) {
 			return ".main";
 		}else {
 			return ".member";

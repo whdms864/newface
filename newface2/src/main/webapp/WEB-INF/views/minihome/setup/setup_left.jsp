@@ -21,7 +21,7 @@
 </div>
 <div id="item_set_menu">
 	<a href="<c:url value='/setup/skin'/>">미니홈피 효과</a><br>
-	<a href="">미니룸 설정</a><br>
+	<a href="<c:url value='/setup/miniroom'/>"">미니룸 설정</a><br>
 	<a href="">미니미 설정</a><br>
 	<a href="<c:url value='/setup/bgm'/>">음악 설정</a><br>
 </div>

@@ -48,7 +48,12 @@ public class MemberService {
 			return false;
 		}
 	}
-	
+	public int miniroom(int hompy_num) {
+		return dao.miniroom(hompy_num);
+	}
+	public int hompy_num(String id) {
+		return dao.hompy_num(id);
+	}
 	public MemberVo mypage(String id) {
 		return dao.mypage(id);
 	}

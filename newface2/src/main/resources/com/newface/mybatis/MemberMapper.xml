@@ -22,9 +22,13 @@
 		select * from admin
 		where id=#{value}
 	</select>
+	<select id="hompy_num" parameterType="string" resultType="int">
+		select hompy_num from hompy where id=#{value}
+	</select>
 	
-	
-	
+	<insert id="miniroom" parameterType="int">
+		insert into miniroom values(0,'미니룸',#{value})
+	</insert>
 	<select id="isMember" resultType="member" parameterType="hashmap">
 		select * from member
 		where id=#{loginid} and pwd=#{loginpwd} and type='회원'

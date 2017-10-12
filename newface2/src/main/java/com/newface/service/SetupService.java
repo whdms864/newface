@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.newface.dao.SetupDao;
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.MineVo;
+import com.newface.vo.Miniroom_listVo;
 import com.newface.vo.ProfileVo;
+import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
 
 @Service
@@ -41,5 +44,20 @@ public class SetupService {
 	}
 	public int iuOk(IuVo vo) {
 		return dao.iuOk(vo);
+	}
+	public List<Miniroom_listVo> miniroom_wallpaper(Miniroom_listVo vo){
+		return dao.miniroom_wallpaper(vo);
+	}
+	public String item_img(int item_num) {
+		return dao.item_img(item_num);
+	}
+	public int mini_num(int hompy_num) {
+		return dao.mini_num(hompy_num);
+	}
+	public int mine_num(MineVo vo) {
+		return dao.mine_num(vo);
+	}
+	public int position_insert(RoomposiVo vo) {
+		return dao.position_insert(vo);
 	}
 }
