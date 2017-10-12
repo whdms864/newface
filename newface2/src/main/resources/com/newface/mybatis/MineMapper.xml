@@ -22,7 +22,7 @@
 		limit #{startRow},#{endRow}
 	</select>
 	<update id="update" parameterType="mine">
-		update mine set totcnt=#{totcnt},cnt=#{cnt} where id=#{id}
+		update mine set totcnt=#{totcnt},cnt=#{cnt} where id=#{id} and item_num=#{item_num}
 	</update>
 	<select id="count" resultType="int" parameterType="string">
 		select coalesce(count(mine_num),0) from mine where id=#{id}
