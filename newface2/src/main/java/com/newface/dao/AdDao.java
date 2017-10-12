@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.AdVo;
 import com.newface.vo.AderVo;
 
 
@@ -33,5 +34,25 @@ public class AdDao {
 	
 	public int ader_update(AderVo vo) {
 		return sqlSession.update(NAMESPACE+ ".ader_update",vo);
+	}
+	
+	public int ad_insert(AdVo vo) {
+		return sqlSession.insert(NAMESPACE + ".ad_insert",vo);
+	}
+	
+	public List<AdVo> ad_list(){
+		return sqlSession.selectList(NAMESPACE+".ad_list");
+	}
+	
+	public AdVo ad_getinfo(int ad_num) {
+		return sqlSession.selectOne(NAMESPACE+ ".ad_getinfo",ad_num);
+	}
+	
+	public int ad_delete(int ad_num) {
+		return sqlSession.delete(NAMESPACE + ".ad_delete",ad_num);
+	}
+	
+	public int ad_update(AdVo vo) {
+		return sqlSession.update(NAMESPACE+ ".ad_update",vo);
 	}
 }

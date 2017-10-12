@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td style="margin:0; padding:0;" colspan="2">
-					<textarea name="item_img" id="smarteditor" rows="1" cols="100" style="width:100%;"></textarea>
+					<textarea name="item_img" id="smarteditor" rows="10" cols="100" style="width:100%;"></textarea>
 				</td>
 			</tr>
 			

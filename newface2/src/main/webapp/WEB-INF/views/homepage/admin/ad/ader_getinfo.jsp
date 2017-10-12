@@ -38,6 +38,10 @@
 		  			<td>등록날짜</td>
 		  			<td>${vo.regdate}</td>
 		  		</tr>
+		  		
+		  		<tr>
+		  			<td colspan="2" align="center"><input type="button" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"> </td>
+		  		</tr>
 		</table>
 	</div>
 	

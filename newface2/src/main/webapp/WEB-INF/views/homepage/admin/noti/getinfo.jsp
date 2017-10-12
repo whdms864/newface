@@ -28,7 +28,7 @@
 	<div style="position:absolute;top:210px;width: 100%;"align="center">
 		<c:choose>
 			<c:when test="${pu.startPageNum>5 }">
-				<a href="<c:url value='/noti_getinfo?pageNum=${pu.startPageNum-1 }&noti_num=${vo.noti_num }'/>">
+				<a href="<c:url value='/notiadmin_getinfo?pageNum=${pu.startPageNum-1 }&noti_num=${vo.noti_num }'/>">
 					<span class="btnprev">◁◁</span>
 				</a>
 			</c:when>
@@ -40,12 +40,12 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }">
-					<a href="<c:url value='/noti_getinfo?pageNum=${i }&noti_num=${vo.noti_num }'/>">
+					<a href="<c:url value='/notiadmin_getinfo?pageNum=${i }&noti_num=${vo.noti_num }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot--active"></span>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/noti_getinfo?pageNum=${i }&noti_num=${vo.noti_num }'/>">
+					<a href="<c:url value='/notiadmin_getinfo?pageNum=${i }&noti_num=${vo.noti_num }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot">
 						</span>
 					</a>
@@ -55,7 +55,7 @@
 		</div>
 		<c:choose>
 			<c:when test="${pu.endPageNum<pu.totalPageCount}">
-				<a href="<c:url value='/noti_getinfo?pageNum=${pu.endPageNum+1 }&noti_num=${vo.noti_num }'/>">
+				<a href="<c:url value='/notiadmin_getinfo?pageNum=${pu.endPageNum+1 }&noti_num=${vo.noti_num }'/>">
 					<span class="btnnext">
 							▷▷
 					</span>

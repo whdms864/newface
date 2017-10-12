@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.AdService;
+import com.newface.vo.AdVo;
 import com.newface.vo.AderVo;
 
 @Controller
@@ -18,19 +19,22 @@ public class AdController {
 	//±¤°í°è¾à
 	@RequestMapping(value = "/ad_list", method = RequestMethod.GET)
 	public String ad_list(Model model) {
-		
+		List<AdVo> ad_list=service.ad_list();
+		model.addAttribute("ad_list", ad_list);
 		return ".ad_list";
 	}
 	
 	@RequestMapping(value = "/ad_getinfo", method = RequestMethod.GET)
-	public String ad_getinfo(Model model) {
-		
+	public String ad_getinfo(Model model, int ad_num) {
+		AdVo ad_vo=service.ad_getinfo(ad_num);
+		model.addAttribute("ad_vo", ad_vo);
 		return ".ad_getinfo";
 	}
 	
 	@RequestMapping(value = "/ad_insert", method = RequestMethod.GET)
-	public String ad_insert(Model model) {
-		
+	public String ad_insert(Model model,int ader_num) {
+		AderVo vo=service.ader_getinfo(ader_num);
+		model.addAttribute("vo", vo);
 		return ".ad_insert";
 	}
 	

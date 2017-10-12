@@ -26,4 +26,24 @@
 	<select id="ader_count" resultType="int">
 		select coalesce(count(ader_num),0) from ader;
 	</select>
+	
+	<insert id="ad_insert" parameterType="ad">
+		insert into ad values(0,#{type},#{pay},#{ad_img},#{url},#{sdate},#{edate},#{ader_num})
+	</insert>
+	
+	<select id="ad_list" resultType="ad">
+		select ad_num,type,pay,ad_img,url,date_format(sdate,'%Y-%m-%d') sdate, date_format(edate,'%Y-%m-%d') edate,ader_num from ad order by a_num desc
+	</select>
+	
+	<select id="ad_getinfo" resultType="ad" parameterType="int">
+		select ad_num,type,pay,ad_img,url,date_format(sdate,'%Y-%m-%d') sdate, date_format(edate,'%Y-%m-%d') edate,ader_num from ad where ad_num=#{ad_num}
+	</select>
+	
+	<update id="ad_update" parameterType="ad">
+		update ad set type=#{type}, pay=#{pay}, ad_img=#{ad_img}, url=#{url}, sdate=#{sdate}, edate=#{edate} where ad_num=#{ad_num}
+	</update>
+	
+	<delete id="ad_delete" parameterType="int">
+		delete from ad where ad_num=#{ad_num}
+	</delete>
 </mapper>  
