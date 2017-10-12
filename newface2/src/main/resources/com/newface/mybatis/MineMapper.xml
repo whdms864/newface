@@ -9,6 +9,9 @@
 	<select id="list_all" resultType="mine" parameterType="string">
 		select * from mine where id=#{id}
 	</select>
+	<select id="getinfo" resultType="mine" parameterType="hashmap">
+		select * from mine where id=#{id} and item_num=#{item_num}
+	</select>
 	<update id="update" parameterType="mine">
 		update mine set totcnt=#{totcnt},cnt=#{cnt} where id=#{id}
 	</update>

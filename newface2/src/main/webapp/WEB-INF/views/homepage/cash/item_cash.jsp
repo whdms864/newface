@@ -9,10 +9,9 @@ $(document).ready(function(){
 		 window.self.close(); 
 	 });
 	 $("#cash_add").submit(function(event){
-		var pqy=$("#pqy").val();
-		var cnt=$("#cnt").val();
-		
-		if(pqy>cnt){
+		var pay=parseInt($("#pay").val());
+		var cnt=parseInt($("#cnt").val());
+		if(pay>cnt){
 			alert("도토리가 부족합니다 도토리를 충전해주세요!!");
 			event.preventDefault();
 		}
@@ -25,7 +24,7 @@ $(document).ready(function(){
 		<div style="width: 100%; height: 170px;"class="item_img">
 			${vo.item_img }
 			<input type="hidden" name="item_num" value="${vo.item_num }">
-			<input type="hidden" id="pqy" value="${vo.pay }">
+			<input type="hidden" id="pay" value="${vo.pay }">
 			<input type="hidden" id="cnt" value="${cnt }">
 		</div>
 		<div style="margin-top: 5px;">${vo.name }</div>

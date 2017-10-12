@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.BuyMapper">
 	<insert id="insert" parameterType="buy">
-		insert into buy values(0,now(),#{cnt},#{pay},${item_num},${id})
+		insert into buy values(0,now(),#{cnt},#{pay},#{item_num},#{id})
 	</insert>
 	<select id="list_all" resultType="buy" parameterType="string">
 		select * from buy where id=#{id}

@@ -15,16 +15,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newface.page.PageUtil;
 import com.newface.service.BuyService;
+import com.newface.service.CashService;
 import com.newface.service.MarketService;
 import com.newface.service.MineService;
+import com.newface.vo.BuyVo;
+import com.newface.vo.CashVo;
 import com.newface.vo.CategoryVo;
 import com.newface.vo.ItemVo;
+import com.newface.vo.MineVo;
 
 @Controller
 public class MarketController {
 	@Autowired private MarketService service;
 	@Autowired private BuyService buy_service;
 	@Autowired private MineService mine_service;
+	@Autowired private CashService cash_service;
 	
 	@RequestMapping(value = "/market/item/list", method = RequestMethod.GET)
 	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
@@ -50,9 +55,37 @@ public class MarketController {
 	}
 	@RequestMapping(value = "/market/buy", method = RequestMethod.POST)
 	public String user_item_buy(Model model,HttpSession session,int item_num) {
-		int cnt=(Integer)session.getAttribute("cnt");//세션 도토리보유
+		int cash_cnt=(Integer)session.getAttribute("cnt");//세션 도토리보유
+		String id=(String)session.getAttribute("loginid");
 		ItemVo vo=service.getinfo_item(item_num);
+		int pay=vo.getPay();
 		
+		int item_cnt=1;//아이템수량
+		
+		BuyVo buyvo=new BuyVo(0, null, item_cnt, pay, item_num, id);
+		buy_service.insert(buyvo);
+		
+		int totcnt=0;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("item_num", item_num);
+		MineVo minevo_org=mine_service.getinfo(map);
+		if(minevo_org!=null) {
+			totcnt=minevo_org.getTotcnt()+item_cnt;
+			MineVo minevo_save=new MineVo(0, totcnt, item_cnt, item_num, id);
+			mine_service.update(minevo_save);
+		}else {
+			totcnt=item_cnt;
+			MineVo minevo_save=new MineVo(0, totcnt, item_cnt, item_num, id);
+			mine_service.insert(minevo_save);
+		}
+		
+		cash_cnt -=pay;
+		CashVo cashvo=new CashVo(0, cash_cnt, id);
+		cash_service.update(cashvo);//도토리수량 차감
+		
+		session.setAttribute("cnt", cash_cnt);
+		model.addAttribute("vo", vo);
 		return ".item_buy_ok";
 	}
 	

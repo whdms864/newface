@@ -1,6 +1,8 @@
 package com.newface.service;
 
 
+
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class MineService {
 	}
 	public List<MineVo> list(String id) {
 		return dao.list(id);
+	}
+	public MineVo getinfo(HashMap<String,Object> map) {
+		return dao.getinfo(map);
 	}
 	public int insert(MineVo vo) {
 		return dao.insert(vo);

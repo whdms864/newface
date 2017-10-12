@@ -72,7 +72,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/item_cash.jsp"/>
 	</definition>
 	<definition name=".item_buy_ok" extends=".item_cash">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/success.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/success2.jsp"/>
 	</definition>
 	
 	<!-- 회원가입 -->
