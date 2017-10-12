@@ -61,7 +61,7 @@
 	<c:if test="${sessionScope.photo==1 }">
 		<div id="photo">
 			<div class="menu">
-				<a href="<c:url value='/photo/folder_list'/>">사진첩</a>
+				<a href="<c:url value='/photo/list'/>">사진첩</a>
 			</div>
 		</div>
 	</c:if>
