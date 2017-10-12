@@ -45,7 +45,13 @@
 	<insert id="position_insert" parameterType="position">
 		insert into room_posi values(0,#{mini_num},'없음',0.0,0.0,#{mine_num})
 	</insert>
-	<select id="">
-		select mine_num from room_posi where mine_num=#{mine_num} and mini_num=#{mini_num}
+	<select id="mine_num_is" parameterType="position" resultType="position">
+		select * from room_posi where mine_num=#{mine_num} and mini_num=#{mini_num}
+	</select>
+	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value}
+	</select>
+	<select id="miniroom_decorate" parameterType="string" resultType="item">
+		select i.* from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3
 	</select>
 </mapper>  

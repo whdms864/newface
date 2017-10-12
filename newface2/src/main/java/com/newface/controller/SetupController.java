@@ -1,9 +1,11 @@
 package com.newface.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.SetupService;
 import com.newface.vo.HompyVo;
+import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.MineVo;
+import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.Miniroom_listVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.RoomposiVo;
@@ -112,6 +116,11 @@ public class SetupController {
 	}	
 	@RequestMapping(value="/setup/miniroom",method=RequestMethod.GET)
 	public String miniroom(HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int mini_num=service.mini_num(hompy_num);
+		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
+		model.addAttribute("mini", mini);
+		
 		String id=(String)session.getAttribute("loginid");
 		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
 		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
@@ -132,17 +141,31 @@ public class SetupController {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		MineVo mine=new MineVo(0, 0, 0, item_num, id);
-		System.out.println("item_num : " + item_num);
-		System.out.println("id : " + id);
 		int mine_num=service.mine_num(mine);
 		int mini_num=service.mini_num(hompy_num);
-		System.out.println("mine_num : " + mine_num);
-		System.out.println("mini_num : " + mini_num);
 		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
-		int n=service.position_insert(posi);
+		RoomposiVo test=service.mine_num_is(posi);
+		int n2=0;
+		if(test==null) {
+			n2=service.position_insert(posi);			
+		}
 		
 		JSONObject json=new JSONObject();
-		json.put("n", n);
+		json.put("n", n2);
 		return json.toString();
+	}
+	@RequestMapping(value="/setup/miniroom_decorate",method=RequestMethod.GET)
+	@ResponseBody
+	public String miniroom_decorate(HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		List<ItemVo> list=service.miniroom_decorate(id);
+		JSONArray arr=new JSONArray();
+		for(ItemVo vo:list) {
+			JSONObject json=new JSONObject();
+			json.put("item_num", vo.getItem_num());
+			json.put("item_img", vo.getItem_img());
+			arr.add(json);
+		}
+		return arr.toString();
 	}
 }

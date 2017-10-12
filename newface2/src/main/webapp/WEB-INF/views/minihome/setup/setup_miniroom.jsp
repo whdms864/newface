@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?var=29'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?var=25'/>"> 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
+		$.getJSON("<c:url value='/setup/miniroom_decorate'/>",function(data){
+			$(data).each(function(i,item){
+				$("#item_list").append("<a id='" + item.item_num + "'>" + item.item_img + "</a>");
+			});
+		});
 		$("#wallpaper").change(function(){
 			var item_num=$("#wallpaper").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
@@ -34,8 +39,11 @@
 	</select>
 	<input type="button" id="btn" value="적용">
 		<div id="miniroom">
-			
+			<c:forEach var="miniVo" items="${requestScope.mini }">
+				${miniVo.item_img }
+			</c:forEach>
 		</div>
+		<div id="item_list"></div>
 	</div>
 	<hr>
 </div>

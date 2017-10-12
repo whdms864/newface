@@ -19,6 +19,7 @@ import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
@@ -72,6 +73,12 @@ public class MiniHomeController {
 		//미니홈피 이름
 		MemberVo member=service.profile_member(hompy_num);
 		model.addAttribute("member", member);	
+		
+		//미니룸
+		int mini_num=service.mini_num(hompy_num);
+		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
+		model.addAttribute("mini", mini);
+		
 		return ".minihome";
 	}
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
