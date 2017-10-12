@@ -6,24 +6,37 @@
 	margin: auto;
 }
 
+.info {
+	background-color: rgb(229, 227, 227);
+	padding: 5px;
+	width: 93%;
+	height: 70px;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+.info label{
+	font-weight:bold;
+	font-size: 14px;
+}
 .money {
 	font-size: 18px;
 	background-color: #fbfbef;
 	border:1px solid rgb(210, 209, 209);
 	padding: 10px;
-	margin-top: 20px;
+	margin-top: 10px;
 	color: #ff8100;
 	font-weight: bold;
 }
 .item_img img{
 	max-width:100%;
-	max-height: 160px;
+	max-height: 180px;
 	margin-top: 5px;
 }
 .money label{
 	margin-top: 5px;
 	font-weight:lighter;
 	font-size: 13px;
+
 }
 #info_input input{
 	width: 50px;
@@ -31,7 +44,7 @@
 .small{
 	color: rgb(120, 118, 118);
 	font-size: 12px;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-bottom: 15px;
 }
 .small img{
@@ -39,7 +52,7 @@
 	top: 7px;
 }
 #btn_wrap{
-	margin-top: 40px;
+	margin-top: 15px;
 }
 #btn_wrap input{
 	width: 60px;

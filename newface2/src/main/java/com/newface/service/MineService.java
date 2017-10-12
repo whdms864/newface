@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.MineDao;
 import com.newface.vo.MineVo;
+import com.newface.vo.Mine_Join_itemVo;
 
 @Service
 public class MineService {
@@ -19,6 +20,9 @@ public class MineService {
 	}
 	public List<MineVo> list(String id) {
 		return dao.list(id);
+	}
+	public List<Mine_Join_itemVo> joinlist(String id) {
+		return dao.joinlist(id);
 	}
 	public MineVo getinfo(HashMap<String,Object> map) {
 		return dao.getinfo(map);

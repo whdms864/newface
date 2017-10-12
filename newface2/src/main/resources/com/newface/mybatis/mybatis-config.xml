@@ -34,6 +34,8 @@
   	<typeAlias type="com.newface.vo.NowVo" alias="now"/>
   	<typeAlias type="com.newface.vo.BuyVo" alias="buy"/>
   	<typeAlias type="com.newface.vo.MineVo" alias="mine"/>
+  	<typeAlias type="com.newface.vo.Buy_Join_ItemVo" alias="buyjoin"/>
+  	<typeAlias type="com.newface.vo.Mine_Join_itemVo" alias="minejoin"/>
   	<typeAlias type="com.newface.vo.IuVo" alias="iu"/>
   	<typeAlias type="com.newface.vo.IucomVo" alias="iu_com"/>
   	<typeAlias type="com.newface.vo.Miniroom_listVo" alias="miniroom_list"/>

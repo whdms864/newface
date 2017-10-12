@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.BuyVo;
+import com.newface.vo.Buy_Join_ItemVo;
 
 
 @Repository
@@ -23,5 +24,8 @@ public class BuyDao {
 	}
 	public List<BuyVo> list(String id) {
 		return sqlSession.selectList(NAMESPACE+".list_all",id);
+	}
+	public List<Buy_Join_ItemVo> joinlist(String id) {
+		return sqlSession.selectList(NAMESPACE+".list_join",id);
 	}
 }

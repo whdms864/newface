@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/cash/main2.css?ver=24'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/cash/main2.css?ver=23'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -20,14 +20,20 @@ $(document).ready(function(){
 </script>
 <div id="main_wrap" align="center">
 <form action="<c:url value='/market/buy'/>" method="post" id="cash_add">
-	<div style="font-size: 12px;margin-top: 20px;border: 1px solid rgb(210, 209, 209);width: 450px; height:200px; ">
-		<div style="width: 100%; height: 170px;"class="item_img">
+	<div style="font-size: 12px;margin-top: 20px;border: 1px solid rgb(210, 209, 209);width: 450px; height:290px; ">
+		<div style="width: 100%; height: 190px;"class="item_img">
 			${vo.item_img }
 			<input type="hidden" name="item_num" value="${vo.item_num }">
 			<input type="hidden" id="pay" value="${vo.pay }">
 			<input type="hidden" id="cnt" value="${cnt }">
 		</div>
-		<div style="margin-top: 5px;">${vo.name }</div>
+		<div class="info">
+			<div>
+				<label>[ ${vo.name } ]</label>
+				<br>
+				${vo.content }
+			</div>
+		</div>
 	</div>
 	<div class="money">
 		총 결제가격 : 도토리 ${vo.pay }개<br>

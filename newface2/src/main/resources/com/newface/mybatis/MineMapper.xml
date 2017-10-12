@@ -12,6 +12,11 @@
 	<select id="getinfo" resultType="mine" parameterType="hashmap">
 		select * from mine where id=#{id} and item_num=#{item_num}
 	</select>
+	<select id="list_join" resultType="minejoin" parameterType="string">
+		select mine_num, totcnt, cnt, i.item_num item_num, name, content, item_img, category_num, id 
+		from item i join mine m 
+		where i.item_num=m.item_num;
+	</select>
 	<update id="update" parameterType="mine">
 		update mine set totcnt=#{totcnt},cnt=#{cnt} where id=#{id}
 	</update>

@@ -32,9 +32,9 @@
 			<thead>
 		  		<tr class="success">
 		  			<th>No.</th>
-		  			<th>제목</th>
-		  			<th>등록일</th>
+		  			<th>상품</th>
 		  			<th>상태</th>
+		  			<th>등록일</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>

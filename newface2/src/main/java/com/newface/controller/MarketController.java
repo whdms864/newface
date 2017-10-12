@@ -19,10 +19,12 @@ import com.newface.service.CashService;
 import com.newface.service.MarketService;
 import com.newface.service.MineService;
 import com.newface.vo.BuyVo;
+import com.newface.vo.Buy_Join_ItemVo;
 import com.newface.vo.CashVo;
 import com.newface.vo.CategoryVo;
 import com.newface.vo.ItemVo;
 import com.newface.vo.MineVo;
+import com.newface.vo.Mine_Join_itemVo;
 
 @Controller
 public class MarketController {
@@ -89,11 +91,17 @@ public class MarketController {
 		return ".item_buy_ok";
 	}
 	@RequestMapping(value = "/market/buy/list", method = RequestMethod.GET)
-	public String buy_list(Model model) {
+	public String buy_list(Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		List<Buy_Join_ItemVo> list=buy_service.joinlist(id);
+		model.addAttribute("list", list);
 		return ".buy_list";
 	}
 	@RequestMapping(value = "/market/mine/list", method = RequestMethod.GET)
-	public String mine_list(Model model) {
+	public String mine_list(Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		List<Mine_Join_itemVo> list=mine_service.joinlist(id);
+		model.addAttribute("list", list);
 		return ".mine_list";
 	}
 	

@@ -9,7 +9,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.BuyVo;
 import com.newface.vo.MineVo;
+import com.newface.vo.Mine_Join_itemVo;
 import com.newface.vo.Qna11Vo;
 
 
@@ -26,6 +28,9 @@ public class MineDao {
 	}
 	public List<MineVo> list(String id) {
 		return sqlSession.selectList(NAMESPACE+".list_all",id);
+	}
+	public List<Mine_Join_itemVo> joinlist(String id) {
+		return sqlSession.selectList(NAMESPACE+".list_join",id);
 	}
 	public MineVo getinfo(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".getinfo",map);
