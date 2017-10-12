@@ -15,6 +15,10 @@
 		},function(){
 			$(this).html("▷▷");
 		});
+		$(".info").click(function(){
+			var item_num=$(this).find(".item_num_val").val();
+			window.open("<c:url value='/item/info?item_num="+item_num+"'/>","_item_info","width=500,height=400");
+		});
 	});
 </script>
 <style>
@@ -22,6 +26,7 @@
 		width: 40px;
 		height: 40px;
 	}
+	a{cursor:pointer;}
 /* 	table{
 		text-align: center;	
 	}
@@ -34,7 +39,7 @@
 			<label style="font-weight:bold;font-size:25px;">My Page</label>
 		</div>
 		<ul>
-		    <li><a href="<c:url value='/member/mypage'/>"style="margin-left:0px;" >회원정보</a></li>
+		    <li><a href="<c:url value='/member/mypage?id=${loginid }'/>"style="margin-left:0px;" >회원정보</a></li>
 		    <li><a href="<c:url value='/market/buy/list'/>" class="hover_a">구매내역</a></li>
 		    <li><a href="<c:url value='/market/mine/list'/>">보유내역</a></li>
 		</ul>
@@ -58,7 +63,7 @@
 		  				<c:set var="i" value="${i + 1}"/>
 			  			<td>${i}</td>
 			  			<td>${vo.cname}</td>
-			  			<td><a>${vo.iname}</a></td>
+			  			<td><a class="info"><input type="hidden" value="${vo.item_num }" class="item_num_val">${vo.iname}</a></td>
 		  				<td>${vo.cnt}</td>
 		  				<td>${vo.pay}</td>
 		  				<td>${vo.regdate}</td>

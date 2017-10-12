@@ -74,6 +74,10 @@
 	<definition name=".item_buy_ok" extends=".item_cash">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/success2.jsp"/>
 	</definition>
+	<definition name=".item_info" extends=".cash">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/cash/header3.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/cash/item_info.jsp"/>
+	</definition>
 	
 	<!-- 회원가입 -->
 	<definition name=".member" extends=".main">

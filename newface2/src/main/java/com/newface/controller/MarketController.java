@@ -119,6 +119,14 @@ public class MarketController {
 		return ".mine_list";
 	}
 	
+	@RequestMapping(value = "/item/info", method = RequestMethod.GET)
+	public String home(HttpSession session,Model model,int item_num) {
+		ItemVo vo=service.getinfo_item(item_num);
+		model.addAttribute("vo",vo);
+		return ".item_info";
+		
+	}
+	
 	/***************************** °ü¸®ÀÚ ******************************************/
 	
 	@RequestMapping(value = "/market/admin/item/list", method = RequestMethod.GET)

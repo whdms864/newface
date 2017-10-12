@@ -68,4 +68,10 @@
 	<select id="iu_before" parameterType="iu" resultType="iu">
 		select * from iu where i_id=#{i_id} and u_id=#{u_id}
 	</select>
+	<select id="mini_num" parameterType="int" resultType="int">
+		select mini_num from miniroom where hompy_num=#{value}
+	</select>
+	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value}
+	</select>
 </mapper>  

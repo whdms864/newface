@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
+import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.MineVo;
+import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.Miniroom_listVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.RoomposiVo;
@@ -60,5 +62,14 @@ public class SetupDao {
 	}
 	public int position_insert(RoomposiVo vo) {
 		return sqlSession.insert(NAMESPACE + ".position_insert", vo);
+	}
+	public RoomposiVo mine_num_is(RoomposiVo vo) {
+		return sqlSession.selectOne(NAMESPACE + ".mine_num_is", vo);
+	}
+	public List<Miniroom_HompyVo> miniroom_hompy(int mini_num){
+		return sqlSession.selectList(NAMESPACE + ".miniroom_hompy", mini_num);
+	}
+	public List<ItemVo> miniroom_decorate(String id){
+		return sqlSession.selectList(NAMESPACE + ".miniroom_decorate", id);
 	}
 }

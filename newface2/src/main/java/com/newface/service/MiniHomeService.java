@@ -10,6 +10,7 @@ import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.SetupVo;
@@ -75,5 +76,11 @@ public class MiniHomeService {
 	}
 	public IuVo iu_before(IuVo vo) {
 		return dao.iu_before(vo);
+	}
+	public int mini_num(int hompy_num) {
+		return dao.mini_num(hompy_num);
+	}
+	public List<Miniroom_HompyVo> miniroom_hompy(int mini_num){
+		return dao.miniroom_hompy(mini_num);
 	}
 }

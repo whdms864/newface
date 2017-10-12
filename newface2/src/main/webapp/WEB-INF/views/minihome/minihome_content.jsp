@@ -55,7 +55,11 @@
 <div id="miniroom_back">
 	Mini Room
 	<hr>
-	<div id="miniroom"></div>
+	<div id="miniroom">
+		<c:forEach var="miniVo" items="${requestScope.mini }">
+			${miniVo.item_img }
+		</c:forEach> 
+	</div>
 </div>
 <div id="friends_say_back">
 	<div id="friends_say">Friends say</div>
