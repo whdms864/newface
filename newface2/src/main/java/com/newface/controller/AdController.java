@@ -38,6 +38,12 @@ public class AdController {
 		return ".ad_insert";
 	}
 	
+	@RequestMapping(value = "/ad_insert", method = RequestMethod.POST)
+	public String ad_insert(Model model,AdVo vo) {
+		service.ad_insert(vo);
+		return "redirect:/ad_list";
+	}
+	
 	
 	//±§∞Ì¡÷
 	@RequestMapping(value = "/ader_list", method = RequestMethod.GET)

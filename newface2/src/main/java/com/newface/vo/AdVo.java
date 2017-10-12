@@ -1,20 +1,20 @@
 package com.newface.vo;
 
-import java.util.Date;
+
 
 public class AdVo {
 	private int ad_num;
 	private String type;
-	private int pay;
+	private String pay;
 	private String ad_img;
 	private String url;
-	private Date sdate;
-	private Date edate;
+	private String sdate;
+	private String edate;
 	private int ader_num;
 	
 	public AdVo() {}
 
-	public AdVo(int ad_num, String type, int pay, String ad_img, String url, Date sdate, Date edate, int ader_num) {
+	public AdVo(int ad_num, String type, String pay, String ad_img, String url, String sdate, String edate, int ader_num) {
 		super();
 		this.ad_num = ad_num;
 		this.type = type;
@@ -42,11 +42,11 @@ public class AdVo {
 		this.type = type;
 	}
 
-	public int getPay() {
+	public String getPay() {
 		return pay;
 	}
 
-	public void setPay(int pay) {
+	public void setPay(String pay) {
 		this.pay = pay;
 	}
 
@@ -66,19 +66,19 @@ public class AdVo {
 		this.url = url;
 	}
 
-	public Date getSdate() {
+	public String getSdate() {
 		return sdate;
 	}
 
-	public void setSdate(Date sdate) {
+	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
 
-	public Date getEdate() {
+	public String getEdate() {
 		return edate;
 	}
 
-	public void setEdate(Date edate) {
+	public void setEdate(String edate) {
 		this.edate = edate;
 	}
 

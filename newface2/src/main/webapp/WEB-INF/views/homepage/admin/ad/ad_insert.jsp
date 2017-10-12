@@ -42,7 +42,7 @@
 			
 				<label class="control-label" for="inputWarning1">광고 이미지</label>
 				<br>
-				<textarea name="ad_img" id="smarteditor" rows="15" cols="300" style="width:100%;"></textarea>
+				<textarea name="ad_img" id="smarteditor" rows="12" cols="300" style="width:100%;"></textarea>
 			
 				
 				

@@ -5,19 +5,19 @@
 		<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 			<thead>
 		  		<tr class="success">
-		  			<th>No.</th>
-		  			<th>제목</th>
-		  			<th>작성자</th>
-		  			<th>등록일</th>
+		  			<th>계약상태</th>
+		  			<th>url</th>
+		  			<th>시작일</th>
+		  			<th>만료일</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
-		  		<c:forEach var="vo" items="${list}">
+		  		<c:forEach var="ad_list" items="${ad_list}">
 		  			<tr>
-			  			<td>${vo.noti_num}</td>
-			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
-			  			<td>${vo.id}</td>
-			  			<td>${vo.regdate}</td>
+			  			<td>${ad_list.type}</td>
+			  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/ad_getinfo?ad_num=${ad_list.ad_num }'/>">${ad_list.url}</a></td>
+			  			<td>${ad_list.sdate}</td>
+			  			<td>${ad_list.edate}</td>
 			  		</tr>
 			  	</c:forEach>
 			</tbody>

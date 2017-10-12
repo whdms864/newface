@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.AdMapper">
+
+	<!-- 광고주 -->
 	<insert id="ader_insert" parameterType="ader">
 		insert into ader values(0,#{hname},#{pname},#{snum},#{dname},#{phone},now())
 	</insert>
@@ -27,16 +29,18 @@
 		select coalesce(count(ader_num),0) from ader;
 	</select>
 	
+	
+	<!-- 광고 -->
 	<insert id="ad_insert" parameterType="ad">
 		insert into ad values(0,#{type},#{pay},#{ad_img},#{url},#{sdate},#{edate},#{ader_num})
 	</insert>
 	
 	<select id="ad_list" resultType="ad">
-		select ad_num,type,pay,ad_img,url,date_format(sdate,'%Y-%m-%d') sdate, date_format(edate,'%Y-%m-%d') edate,ader_num from ad order by a_num desc
+		select * from ad order by edate desc
 	</select>
 	
 	<select id="ad_getinfo" resultType="ad" parameterType="int">
-		select ad_num,type,pay,ad_img,url,date_format(sdate,'%Y-%m-%d') sdate, date_format(edate,'%Y-%m-%d') edate,ader_num from ad where ad_num=#{ad_num}
+		select * from ad where ad_num=#{ad_num}
 	</select>
 	
 	<update id="ad_update" parameterType="ad">
