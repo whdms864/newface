@@ -19,19 +19,17 @@ public class AdController {
 	//±¤°í°è¾à
 	@RequestMapping(value = "/ad_list", method = RequestMethod.GET)
 	public String ad_list(Model model,int ader_num) {
-		AdVo ad_getinfo=service.ad_getinfo(ader_num);
-		AderVo ader_getinfo=service.ader_getinfo(ader_num);
-		model.addAttribute("ad_getinfo", ad_getinfo);
-		model.addAttribute("ader_getinfo", ader_getinfo);
+		List<AdVo> ad_list=service.ad_list(ader_num);
+		model.addAttribute("ad_list", ad_list);
 		return ".ad_list";
 	}
 	
 	@RequestMapping(value = "/ad_getinfo", method = RequestMethod.GET)
-	public String ad_getinfo(Model model, int ader_num) {
-		AdVo ad_getinfo=service.ad_getinfo(ader_num);
-		AderVo ader_getinfo=service.ader_getinfo(ader_num);
+	public String ad_getinfo(Model model, int ad_num) {
+		AdVo ad_getinfo=service.ad_getinfo(ad_num);
+		
 		model.addAttribute("ad_getinfo", ad_getinfo);
-		model.addAttribute("ader_getinfo", ader_getinfo);
+		
 		return ".ad_getinfo";
 	}
 	
@@ -45,19 +43,26 @@ public class AdController {
 	@RequestMapping(value = "/ad_insert", method = RequestMethod.POST)
 	public String ad_insert(Model model,AdVo vo) {
 		service.ad_insert(vo);
-		return "redirect:/ad_list";
+		return "redirect:/ad_list?ader_num="+ vo.getAder_num();
+	}
+	
+	@RequestMapping(value = "/ad_update", method = RequestMethod.GET)
+	public String ad_updateform(Model model, int ad_num) {
+		AdVo vo=service.ad_getinfo(ad_num);
+		model.addAttribute("vo", vo);
+		return ".ad_update";
 	}
 	
 	@RequestMapping(value = "/ad_update", method = RequestMethod.POST)
 	public String ad_update(AdVo vo) {
 		service.ad_update(vo);
-		return "redirect:/ad_getinfo?ader_num=" + vo.getAd_num();
+		return "redirect:/ad_getinfo?ad_num=" + vo.getAd_num();
 	}
 	
 	@RequestMapping(value = "/ad_delete", method = RequestMethod.GET)
-	public String ad_delete(Model model, int ad_num) {
+	public String ad_delete(int ad_num) {
 		service.ad_delete(ad_num);
-		return "redirect:/ad_list";
+		return "redirect:/ader_list";
 	}
 	
 	

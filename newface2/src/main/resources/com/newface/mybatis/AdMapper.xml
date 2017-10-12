@@ -9,7 +9,7 @@
 		insert into ader values(0,#{hname},#{pname},#{snum},#{dname},#{phone},now())
 	</insert>
 	
-	<select id="ader_list" resultType="ader">
+	<select id="ader_list" resultType="ader" >
 		select ader_num,hname,pname,snum,dname,phone,date_format(regdate,'%Y-%m-%d') regdate from ader order by ader_num
 	</select>
 	
@@ -18,7 +18,7 @@
 	</select>
 	
 	<update id="ader_update" parameterType="ader">
-		update ader set hname=#{hname}, pname=#{pname}, .snum=#{snum}, dname=#{dname}, phone=#{phone} where ader_num=#{ader_num}
+		update ader set hname=#{hname}, pname=#{pname}, snum=#{snum}, dname=#{dname}, phone=#{phone} where ader_num=#{ader_num}
 	</update>
 	
 	<delete id="ader_delete" parameterType="int">
@@ -35,12 +35,12 @@
 		insert into ad values(0,#{type},#{pay},#{ad_img},#{url},#{sdate},#{edate},#{ader_num})
 	</insert>
 	
-	<select id="ad_list" resultType="ad">
-		select * from ad order by edate desc
+	<select id="ad_list" resultType="ad" parameterType="int">
+		select * from ad where ader_num=#{ader_num} order by edate desc 
 	</select>
 	
 	<select id="ad_getinfo" resultType="ad" parameterType="int">
-		select * from ad where ader_num=#{ader_num}
+		select * from ad where ad_num=#{ad_num}
 	</select>
 	
 	<update id="ad_update" parameterType="ad">

@@ -46,6 +46,8 @@
 			  			<th>회사명</th>
 			  			<th>대표명</th>
 			  			<th>사업자번호</th>
+			  			<th>광고목록</th>
+			  			<th>광고등록</th>
 			  		</tr>
 			  	</thead>
 		  		<tbody>	  	
@@ -55,6 +57,8 @@
 				  			<td><a href="<c:url value='/ader_getinfo?ader_num=${vo.ader_num}'/>">${vo.hname}</a></td>
 				  			<td>${vo.pname}</td>
 				  			<td>${vo.snum}</td>
+				  			<td><input type="button" onclick="location.href='/newface/ad_list?ader_num=${vo.ader_num}'" value="광고목록"></td>
+			  				<td><input type="button" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"></td>
 				  		</tr>
 				  	</c:forEach>
 				</tbody>

@@ -49,7 +49,7 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		<c:forEach var="ad" items="${ad_getinfo}">
+			  		<c:forEach var="ad" items="${ad_list}">
 			  			<tr>
 				  			<td>
 				  			<c:choose>
@@ -71,8 +71,10 @@
 				  			<td>${ad.edate}</td>
 				  		</tr>
 				  	</c:forEach>
+				  	
 				</tbody>
 			</table>
+			
 		</div>
 		<div style="position:absolute;top:600px;width: 100%;"align="center">
 			<div style="background-color: rgb(224, 224, 224);width:100%; height:1px;"></div>

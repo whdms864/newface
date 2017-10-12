@@ -40,12 +40,12 @@ public class AdDao {
 		return sqlSession.insert(NAMESPACE + ".ad_insert",vo);
 	}
 	
-	public List<AdVo> ad_list(){
-		return sqlSession.selectList(NAMESPACE+".ad_list");
+	public List<AdVo> ad_list(int ader_num){
+		return sqlSession.selectList(NAMESPACE+".ad_list",ader_num);
 	}
 	
-	public AdVo ad_getinfo(int ader_num) {
-		return sqlSession.selectOne(NAMESPACE+ ".ad_getinfo",ader_num);
+	public AdVo ad_getinfo(int ad_num) {
+		return sqlSession.selectOne(NAMESPACE+ ".ad_getinfo",ad_num);
 	}
 	
 	public int ad_delete(int ad_num) {

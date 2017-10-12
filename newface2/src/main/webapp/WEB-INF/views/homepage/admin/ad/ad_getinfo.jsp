@@ -46,14 +46,14 @@ td img{
 	</div>
 	<div id="con">
 		<div align="center">
-			<table class="table table hover" style="width: 70%;margin-top: 20px;">
+			<table class="table table hover" style="width: 80%;margin-top: 20px;">
 			  		<tr>
 			  			<td class="danger" colspan="4">No. ${ad_getinfo.ad_num }</td>
 			  			
 			  		</tr>
 			  		<tr>
-			  			<td>가격 </td> 
-			  			<td> ${ad_getinfo.pay }</td>
+			  			<td style="width:70px;">가격 </td> 
+			  			<td style="width:400px;"> ${ad_getinfo.pay }</td>
 			  			<td>시작일</td>
 			  			<td> ${ad_getinfo.sdate }</td>
 			  			
@@ -66,14 +66,6 @@ td img{
 			  			<td> ${ad_getinfo.edate }</td>
 			  		</tr>
 			  		
-			  		<tr>
-			  			<td>회사명</td>
-			  			<td>${ader_getinfo.hname }</td>
-			  			<td>담당자명</td>
-			  			<td>${ader_getinfo.dname }</td>
-			  		</tr>
-			  		
-			  		
 				  	<tr>
 			  			<td colspan="4" align="center"> ${ad_getinfo.ad_img }</td>
 				  	</tr>
@@ -83,7 +75,7 @@ td img{
 		<div style="position:absolute;top:610px;width: 98%;"align="center">
 				<div style="background-color: rgb(224, 224, 224);margin-left:10px;width: 99%; height:1px;"></div>
 				<input type="button" value="수정" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/ad_getinfo?ad_num=${ad_getinfo.ad_num}'">
+				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/ad_update?ad_num=${ad_getinfo.ad_num}'">
 				<input type="button" value="삭제" style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/ad_delete?ad_num=${ad_getinfo.ad_num}'">
 		</div>

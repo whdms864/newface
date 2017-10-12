@@ -33,7 +33,7 @@
 		</div>
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;">광고주목록</a></li>
-		    <li><a href="<c:url value='/ader_insert'/>"  class="hover_a">광고주등록</a></li>
+		    <li><a href="<c:url value='/ader_insert'/>" class="hover_a">광고주등록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
