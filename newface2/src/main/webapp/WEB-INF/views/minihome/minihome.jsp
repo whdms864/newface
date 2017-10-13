@@ -15,7 +15,7 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 <!-- SCM Music Player script end -->
 <!-- {'title':'제목','url':'주소'} -->
 
-
+<!-- sdfsdjfosdjfosfjo -->
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
 		<div id="webView" style=" width:1024px;height:592px;"> 
