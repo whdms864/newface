@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_skin.css?ver=35'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_skin.css?ver=335'/>"> 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){

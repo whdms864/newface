@@ -2,4 +2,7 @@
 .back_img{
 	width: 450px; height: 259px; background-color: yellow;
 }    
+.back_img img{
+	width: 450px; height: 259px;
+}
         

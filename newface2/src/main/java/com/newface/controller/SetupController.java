@@ -54,11 +54,15 @@ public class SetupController {
 		
 		//½ºÅ²
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		int mine_num=service.skin_mine_num(hompy_num);
-		int item_num=service.item_num(mine_num);
-		String item_img=service.item_img(item_num);
-		session.setAttribute("item_img", item_img);
-		
+		RoomposiVo mine=service.skin_mine_num(hompy_num);
+		int item_num=0;
+		if(mine!=null) {
+			item_num=service.item_num(mine.getMine_num());			
+		}
+		if(item_num>0) {
+			String item_img=service.item_img(item_num);
+			session.setAttribute("item_img", item_img);			
+		}		
 		return ".skin.setup";
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
