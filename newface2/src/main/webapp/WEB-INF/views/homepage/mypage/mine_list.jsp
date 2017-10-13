@@ -59,8 +59,8 @@
 		  			<tr>
 		  				<c:set var="i" value="${i + 1}"/>
 			  			<td>${i}</td>
-			  			<td>${vo.cname}</td>
-			  			<td><a class="info"><input type="hidden" value="${vo.item_num }" class="item_num_val">${vo.iname}</a></td>
+			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">${vo.cname}</td>
+			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;"><a class="info"><input type="hidden" value="${vo.item_num }" class="item_num_val">${vo.iname}</a></td>
 		  				<td>${vo.cnt} / ${vo.totcnt }</td>
 			  		</tr>
 			  	</c:forEach>

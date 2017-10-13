@@ -113,7 +113,8 @@
 				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
 				  				${vo.name}
 				  			</td>
-				  			<td>${vo.item_img}</td>
+				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+				  			${vo.item_img}</td>
 				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
 				  				${vo.content}
 				  			</td>

@@ -99,7 +99,7 @@ public class MarketController {
 		String id=(String)session.getAttribute("loginid");
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=buy_service.getCount(id);
-		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("id", id);
@@ -113,7 +113,7 @@ public class MarketController {
 		String id=(String)session.getAttribute("loginid");
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=mine_service.getCount(id);
-		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		map.put("id", id);
