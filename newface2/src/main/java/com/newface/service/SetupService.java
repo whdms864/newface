@@ -86,4 +86,7 @@ public class SetupService {
 	public RoomposiVo skin_mine_num(int mini_num) {
 		return dao.skin_mine_num(mini_num);
 	}
+	public HompyVo hompy(String id) {
+		return dao.hompy(id);
+	}
 }

@@ -69,4 +69,7 @@
 	<select id="skin_mine_num" parameterType="int" resultType="position">
 		select * from room_posi where mini_num=#{value} and drag='스킨'
 	</select>
+	<select id="hompy" parameterType="string" resultType="hompy">
+		select * from hompy where id=#{value}
+	</select>
 </mapper>  

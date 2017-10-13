@@ -87,4 +87,7 @@ public class SetupDao {
 	public RoomposiVo skin_mine_num(int mini_num) {
 		return sqlSession.selectOne(NAMESPACE + ".skin_mine_num", mini_num);
 	}
+	public HompyVo hompy(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".hompy", id);
+	}
 }

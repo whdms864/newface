@@ -11,29 +11,20 @@
 				$(".back_img").html("<span class='back_img'>" + data.item_img + "</span>");
 			});
 		});
-		$("#btn").click(function(){
-			var item_num=$("#skin_list").find(":selected").val();
-			$.getJSON("<c:url value='/setup/skin_update'/>",{"item_num":item_num},function(data){
-				if(data.n>0){
-					alert("스킨 변경이 완료되었습니다");
-					$("#webView").css("background-image",data.item_img);
-				}else{
-					alert("오류로 인하여 스킨 변경을 하지 못했습니다");
-				}
-			});
-		});
 	});
 </script>
 <div id="setup_iu_back">
 	<h3 id="first">미니홈피 스킨설정</h3>
 	<hr>
 	<div class="iu_back">
-	<select id="skin_list">
+	<form method="post" action="<c:url value='/setup/skin_update'/>">
+	<select id="skin_list" name="item_num">
 	<c:forEach var="vo" items="${requestScope.list }">
 		<option class="choice" value="${vo.item_num }">${vo.name }</option>
 	</c:forEach>
 	</select>
-	<input type="button" id="btn" value="적용">
+	<input type="submit" value="적용">
+	</form>
 		<div class="back_img">${sessionScope.item_img }</div>
 	</div>
 	<hr>

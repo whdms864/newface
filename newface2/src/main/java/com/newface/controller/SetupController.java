@@ -33,12 +33,16 @@ public class SetupController {
 	public String basicForm() {
 		return ".basic.setup";
 	}
-	@RequestMapping(value="/setup/basic",method=RequestMethod.POST)
+	@RequestMapping(value="/setup/menu",method=RequestMethod.POST)
 	public String basic(SetupVo vo,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		vo.setHompy_num(hompy_num);
 		int n=service.menu_update(vo);
 		if(n>0) {
+			SetupVo menu=service.setup_list(hompy_num);	
+			session.setAttribute("diary", menu.getDiary());
+			session.setAttribute("photo", menu.getPhoto());
+			session.setAttribute("guest", menu.getGuest());
 			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 카테고리 메뉴수정 요청작업이 실패했습니다");
@@ -68,9 +72,12 @@ public class SetupController {
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
 	public String hname(HompyVo vo,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=(String)session.getAttribute("loginid");
 		vo.setHompy_num(hompy_num);
 		int n=service.hname(vo);
 		if(n>0) {
+			HompyVo hompy=service.hompy(id);
+			session.setAttribute("hname", hompy.getHname());
 			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 홈피명 수정 요청작업이 실패했습니다");
@@ -169,7 +176,7 @@ public class SetupController {
 		json.put("n", n2);
 		return json.toString();
 	}
-	@RequestMapping(value="/setup/skin_update",method=RequestMethod.GET)
+	@RequestMapping(value="/setup/skin_update",method=RequestMethod.POST)
 	public String skin_update(int item_num,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
@@ -181,11 +188,11 @@ public class SetupController {
 		int n=service.skin_insert(posi);
 		
 		//이미지 불러오기
-		String item_img=service.item_img(item_num);
-		JSONObject json=new JSONObject();
-		json.put("n", n);
-		json.put("item_img", item_img);		
-		return json.toString();
+		if(n>0) {
+			String item_img=service.item_img(item_num);
+			session.setAttribute("item_img", item_img);													
+		}
+		return "redirect:/setup/skin";
 	}
 	@RequestMapping(value="/setup/miniroom_decorate",method=RequestMethod.GET)
 	@ResponseBody
