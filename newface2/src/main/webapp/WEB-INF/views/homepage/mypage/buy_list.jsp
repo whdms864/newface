@@ -17,7 +17,7 @@
 		});
 		$(".info").click(function(){
 			var item_num=$(this).find(".item_num_val").val();
-			window.open("<c:url value='/item/info?item_num="+item_num+"'/>","_item_info","width=500,height=400");
+			window.open("<c:url value='/item/info?item_num="+item_num+"'/>","_item_info","width=500,height=400,left=100,top=100");
 		});
 	});
 </script>
