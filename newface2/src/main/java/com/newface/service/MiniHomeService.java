@@ -84,16 +84,13 @@ public class MiniHomeService {
 	public List<Miniroom_HompyVo> miniroom_hompy(int mini_num){
 		return dao.miniroom_hompy(mini_num);
 	}
-	public int mine_num(int hompy_num) {
-		return dao.mine_num(hompy_num);
+	public RoomposiVo mine_num(int mini_num) {
+		return dao.mine_num(mini_num);
 	}
 	public int item_num(int mine_num) {
 		return dao.item_num(mine_num);
 	}
 	public String item_img(int item_num) {
 		return dao.item_img(item_num);
-	}
-	public List<RoomposiVo> start(int mini_num) {
-		return dao.start(mini_num);
 	}
 }

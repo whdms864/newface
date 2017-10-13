@@ -83,16 +83,13 @@ public class MiniHomeDao {
 	public List<Miniroom_HompyVo> miniroom_hompy(int mini_num){
 		return sqlSession.selectList(NAMESPACE + ".miniroom_hompy", mini_num);
 	}
-	public int mine_num(int hompy_num) {
-		return sqlSession.selectOne(NAMESPACE + ".mine_num", hompy_num);
+	public RoomposiVo mine_num(int mini_num) {
+		return sqlSession.selectOne(NAMESPACE + ".mine_num", mini_num);
 	}
 	public int item_num(int mine_num) {
 		return sqlSession.selectOne(NAMESPACE + ".item_num", mine_num);
 	}
 	public String item_img(int item_num) {
 		return sqlSession.selectOne(NAMESPACE + ".item_img", item_num);
-	}
-	public List<RoomposiVo> start(int mini_num) {
-		return sqlSession.selectList(NAMESPACE + ".start", mini_num);
 	}
 }

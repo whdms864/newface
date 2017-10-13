@@ -89,12 +89,14 @@ public class MiniHomeController {
 		model.addAttribute("mini", mini);
 		
 		//½ºÅ²
-		List<RoomposiVo> room=service.start(mini_num);
-		if(room!=null) {
-			int mine_num=service.mine_num(hompy_num);
-			int item_num=service.item_num(mine_num);
+		RoomposiVo mine=service.mine_num(mini_num);
+		int item_num=0;
+		if(mine!=null) {
+			item_num=service.item_num(mine.getMine_num());			
+		}
+		if(item_num>0) {
 			String item_img=service.item_img(item_num);
-			session.setAttribute("item_img", item_img);			
+			session.setAttribute("item_img", item_img);						
 		}
 		
 		return ".minihome";
