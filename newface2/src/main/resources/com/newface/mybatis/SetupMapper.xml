@@ -66,4 +66,7 @@
 	<select id="item_num" parameterType="int" resultType="int">
 		select item_num from mine where mine_num=#{value}
 	</select>
+	<select id="skin_mine_num" parameterType="int" resultType="int">
+		select r.mine_num from room_posi r join miniroom m on r.mini_num=m.mini_num where m.hompy_num=#{value} and r.drag='스킨'
+	</select>
 </mapper>  

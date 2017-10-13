@@ -10,13 +10,15 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
-<script type="text/javascript" src="http://scmplayer.co/script.js" 
-data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SiK-K, pH-1, %uBC15%uC7AC%uBC94 - iffy (prod by. GroovyRoom)','url':'https://youtu.be/Q8AK_wfGhkg'},{'title':'Sik-K (%uC2DD%uCF00%uC774) - %uC774%uC5B4%uD3F0 (Earphone) (Prod. BOYCOLD) [BOYCOLD]','url':'https://youtu.be/unBH_nFW8Ng'}]}" ></script>
-<!-- SCM Music Player script end -->
-<!-- {'title':'제목','url':'주소'} -->
-
-
- <div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');"> 
+ <c:choose>
+ 	<c:when test="${sessionScope.item_img!=null }">
+		<div id="webView" style=" width:1024px;height:592px;"> 
+ 		<span style="position:absolute ; top: -20px; z-index: 0">${sessionScope.item_img }</span>
+ 	</c:when>
+ 	<c:otherwise>
+		<div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');">		
+ 	</c:otherwise>
+ </c:choose>
 	<div id="skin_back">
 		<div id="skin"></div>
 	</div>

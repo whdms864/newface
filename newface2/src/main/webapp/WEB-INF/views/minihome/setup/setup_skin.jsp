@@ -25,7 +25,7 @@
 	});
 </script>
 <div id="setup_iu_back">
-	<h3 id="first">미니룸</h3>
+	<h3 id="first">미니홈피 스킨설정</h3>
 	<hr>
 	<div class="iu_back">
 	<select id="skin_list">
@@ -34,7 +34,7 @@
 	</c:forEach>
 	</select>
 	<input type="button" id="btn" value="적용">
-		<div class="back_img" style=""></div>
+		<div class="back_img">${sessionScope.item_img }</div>
 	</div>
 	<hr>
 </div>

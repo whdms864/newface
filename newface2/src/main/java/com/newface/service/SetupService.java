@@ -83,4 +83,7 @@ public class SetupService {
 	public int item_num(int mine_num) {
 		return dao.item_num(mine_num);
 	}
+	public int skin_mine_num(int hompy_num) {
+		return dao.skin_mine_num(hompy_num);
+	}
 }
