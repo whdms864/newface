@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/smarteditor/js/HuskyEZCreator.js"/>" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/writeForm.js"/>"></script>
-	<link rel="stylesheet" href="<c:url value="/resources/css/common.css?var=243"/>"/>
+	<link rel="stylesheet" href="<c:url value="/resources/css/common.css?var=24"/>"/>
 	<script type="text/javascript" charset="utf-8">
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
