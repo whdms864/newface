@@ -48,7 +48,7 @@
 			  			<td>작성일 : ${vo.regdate }</td>
 				  	</tr>
 				  	<tr>
-			  			<td colspan="2" style="height:100px"><textarea rows="16" cols="91" name="content" readonly="readonly" style="border-style:hidden;">${vo.content }</textarea></td>
+			  			<td colspan="2" style="height:100px"><textarea rows="16" cols="91" name="content" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea></td>
 				  	</tr>
 			</table>
 			
@@ -69,15 +69,7 @@
 							<td style="width:18%; height:20%" >${noti_com_list.id }</td>
 							<td style="width:55%;">${noti_com_list.content }</td>
 							<td style="width:18%;">${noti_com_list.regdate }</td>
-							<c:choose>
-								<c:when test="${noti_com_list.id != sessionScope.loginid}">
-									<td style="width:9%;">신고</td>
-								</c:when>
-									
-								<c:otherwise>
-									<td></td>
-								</c:otherwise>
-							</c:choose>
+							<td><input type="button" value="블라인드"></td>
 						</tr>
 						</c:forEach>
 					</table>
@@ -86,7 +78,6 @@
 				</div> 
 			</div>
 		</div>
-		</form>
 	</div>
 		
 		

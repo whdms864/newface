@@ -40,7 +40,7 @@
 	<div id="con">
 		<div align="center">
 			<table class="table table-hover" style="width: 70%;margin-top: 20px;">
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<td>광고주 No.</td>
 			  			<td>${vo.ader_num}</td>
 			  		</tr>

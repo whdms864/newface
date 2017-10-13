@@ -3,6 +3,8 @@ package com.newface.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +35,10 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.POST)
-	public String nadmininsert(NotiVo vo) {
+	public String nadmininsert(NotiVo vo, HttpSession session) {
+		List<NotiVo> noti_side=service.noti_side();
 		service.insert(vo);
+		session.setAttribute("noti_side", noti_side);
 		return "redirect:/notiadmin_list";
 	}
 	
@@ -59,19 +63,21 @@ public class NotiController {
 	@RequestMapping(value="/notiadmin_update", method=RequestMethod.GET)
 	public String notiadmin_update(Model model,int noti_num) {
 		NotiVo vo=service.notigetinfo(noti_num);
-		
 		model.addAttribute("vo", vo);
 		return ".notiadmin_update";
 	}
 	
 	@RequestMapping(value = "/notiadmin_updateok", method = RequestMethod.POST)
-	public String notiadmin_update(NotiVo vo) {
+	public String notiadmin_update(NotiVo vo,HttpSession session) {
+		List<NotiVo> noti_side=service.noti_side();
 		service.notiupdate(vo);
+		session.setAttribute("noti_side", noti_side);
 		return "redirect:/notiadmin_getinfo?noti_num=" + vo.getNoti_num();
 	}
 	
 	@RequestMapping(value = "/notiadmin_delete", method = RequestMethod.GET)
 	public String notiadmin_delete(int noti_num) {
+		service.noti_com_delete(noti_num);
 		service.notidelete(noti_num);
 		return "redirect:/notiadmin_list";
 	}
@@ -104,10 +110,10 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value = "/noti_side", method = RequestMethod.GET)
-	public String noti_side(Model model) {
+	public String noti_side(HttpSession session) {
 		List<NotiVo> noti_side=service.noti_side();
-		System.out.println(noti_side);
-		model.addAttribute("noti_side",noti_side);
+		
+		session.setAttribute("noti_side", noti_side);
 		return ".market";
 	}
 	
@@ -116,6 +122,8 @@ public class NotiController {
 		service.noti_com_insert(vo);
 		return "redirect:/noti_getinfo?noti_num=" + vo.getNoti_num();
 	}
+	
+	
 	
 
 	

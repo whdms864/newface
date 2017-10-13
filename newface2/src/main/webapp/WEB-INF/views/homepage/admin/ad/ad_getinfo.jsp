@@ -53,7 +53,7 @@ td img{
 			  		</tr>
 			  		<tr>
 			  			<td style="width:70px;">가격 </td> 
-			  			<td style="width:400px;"> ${ad_getinfo.pay }</td>
+			  			<td style="width:350px;"> ${ad_getinfo.pay }</td>
 			  			<td>시작일</td>
 			  			<td> ${ad_getinfo.sdate }</td>
 			  			

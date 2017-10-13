@@ -1,6 +1,7 @@
 package com.newface.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.CashService;
 import com.newface.service.MemberService;
+import com.newface.service.NotiService;
 import com.newface.service.Qna11Service;
 import com.newface.vo.CashVo;
+import com.newface.vo.NotiVo;
 
 
 @Controller
 public class LoginContorller {
 	@Autowired private MemberService service;
 	@Autowired private CashService cashservice;
+	@Autowired private NotiService notiservice;
 	
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -30,6 +34,8 @@ public class LoginContorller {
 
 		String loginid = request.getParameter("loginid");
 		String loginpwd = request.getParameter("loginpwd");
+		
+		List<NotiVo> noti_side=notiservice.noti_side();
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("loginid", loginid);
@@ -41,6 +47,7 @@ public class LoginContorller {
 			if(r) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
+				session.setAttribute("noti_side", noti_side);
 				
 				CashVo vo=cashservice.list(loginid);
 				if(vo!=null) {

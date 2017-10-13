@@ -69,7 +69,7 @@
 					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
 				<div style="width:95%; height:160px; background-color: white; position:absolute; top:40px; right:12px;">
 					<table style="width:100%;">
-						<tr>
+						<tr align="center">
 						<th>글쓴이</th>
 						<th>내용</th>
 						<th>작성일</th>

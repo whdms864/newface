@@ -60,14 +60,15 @@
 <div style="width: 250px; height: 175px;background-color: rgb(224, 224, 224);margin-top: 20px;padding: 5px;">
 	<label style="font-weight:bold;font-size:16px;margin-left: 20px;">공지사항</label>
 	<div style="width:90%; height:90%">
-		<table>
-			<tr>
-				<td>
-				<c:forEach var="noti" items="${noti_side}" varStatus="status">
-					${noti.title }
+		<table style="margin-left:8px;">
+				<c:forEach var="noti" items="${noti_side }">
+				<tr>
+					<td style="text-overflow: ellipsis; white-space: nowrap; max-width:220px; overflow: hidden; height:27px;" >
+						<a href="<c:url value='/noti_getinfo?noti_num=${noti.noti_num }'/>">${noti.title}</a>
+					</td>
+				</tr>
 				</c:forEach>
-				</td>
-			<tr>
+			
 		</table>
 	</div>
 	<a href="<c:url value='/noti_list'/>" style="margin-right: 10px;float:right;">더보기</a>

@@ -2,6 +2,8 @@ package com.newface.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,6 @@ public class AdController {
 	@RequestMapping(value = "/ad_getinfo", method = RequestMethod.GET)
 	public String ad_getinfo(Model model, int ad_num) {
 		AdVo ad_getinfo=service.ad_getinfo(ad_num);
-		
 		model.addAttribute("ad_getinfo", ad_getinfo);
 		
 		return ".ad_getinfo";

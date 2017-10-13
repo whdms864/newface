@@ -24,7 +24,7 @@
 	</delete>
 	
 	<select id="noti_side" resultType="noti">
-		select * from noti order by noti_num desc limit 1,5
+		select * from noti order by noti_num desc limit 0,5
 	</select>
 	
 	<insert id="noti_com_insert" parameterType="noticom">
@@ -40,6 +40,10 @@
 	</select>
 	
 	<select id="count_noti_com" resultType="int" parameterType="int">
-		select coalesce(count(noti_com_num),0) from noti_com where noti_num=#{noti_num};
+		select coalesce(count(noti_com_num),0) from noti_com where noti_num=#{noti_num}
 	</select>
+	
+	<delete id="noti_com_delete" parameterType="int">
+		delete from noti_com where noti_num=#{noti_num}
+	</delete>
 </mapper>  
