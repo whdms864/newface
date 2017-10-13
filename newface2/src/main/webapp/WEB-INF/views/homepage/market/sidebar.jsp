@@ -6,10 +6,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#cash_add").click(function(){
-			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570");
+			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570,left=100,top=100");
 		});
 		 $("#minihome").click(function(){
-			 window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592"); 
+			 window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
 		 });
 	});
 </script>	

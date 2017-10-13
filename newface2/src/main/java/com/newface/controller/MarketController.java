@@ -141,7 +141,7 @@ public class MarketController {
 		map.put("category_num", category_num);
 		map.put("text", text);
 		int totalRowCount=service.getCount(map);
-		PageUtil pu=new PageUtil(pageNum,4,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<ItemVo> list=service.list_item(map);

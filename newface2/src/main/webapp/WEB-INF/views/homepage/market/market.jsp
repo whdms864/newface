@@ -22,7 +22,7 @@
 		});
 		$(".item_getinfo").click(function(){
 			var item_num=$(this).find(".item_num_val").val();
-			window.open("<c:url value='/market/item/getinfo?item_num="+item_num+"'/>","_item_getinfo","width=500,height=500");
+			window.open("<c:url value='/market/item/getinfo?item_num="+item_num+"'/>","_item_getinfo","width=500,height=500,left=100,top=100");
 		});
 		$("#search").click(function(event){
 			var text=$("#text").val();
