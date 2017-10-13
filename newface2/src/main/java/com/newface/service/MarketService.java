@@ -34,8 +34,8 @@ public class MarketService {
 	public List<ItemVo> list_item(HashMap<String, Object> map) {
 		return dao.list_item(map);
 	}
-	public int getCount(int category_num) {
-		return dao.getCount(category_num);
+	public int getCount(HashMap<String, Object> map) {
+		return dao.getCount(map);
 	}
 	public int getCount() {
 		return dao.getCount();

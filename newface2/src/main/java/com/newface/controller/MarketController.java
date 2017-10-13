@@ -34,17 +34,21 @@ public class MarketController {
 	@Autowired private CashService cash_service;
 	
 	@RequestMapping(value = "/market/item/list", method = RequestMethod.GET)
-	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
+	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
+			@RequestParam(value="category_num",defaultValue="3") int category_num,Model model,
+			@RequestParam(value="text",defaultValue="") String text) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount(category_num);
+		map.put("category_num", category_num);
+		map.put("text", text);
+		int totalRowCount=service.getCount(map);
 		PageUtil pu=new PageUtil(pageNum,12,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
-		map.put("category_num", category_num);
 		List<ItemVo> list=service.list_item(map);
 		List<CategoryVo> list_cate=service.list_cate_all();
 		model.addAttribute("list",list);
 		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
 		model.addAttribute("category_num",category_num);
 		model.addAttribute("list_cate",list_cate);
 		return ".market";
@@ -130,17 +134,21 @@ public class MarketController {
 	/***************************** °ü¸®ÀÚ ******************************************/
 	
 	@RequestMapping(value = "/market/admin/item/list", method = RequestMethod.GET)
-	public String item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="category_num",defaultValue="3") int category_num,Model model) {
+	public String item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
+			@RequestParam(value="category_num",defaultValue="3") int category_num,Model model,
+			@RequestParam(value="text",defaultValue="") String text) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount(category_num);
-		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
+		map.put("category_num", category_num);
+		map.put("text", text);
+		int totalRowCount=service.getCount(map);
+		PageUtil pu=new PageUtil(pageNum,4,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
-		map.put("category_num", category_num);
 		List<ItemVo> list=service.list_item(map);
 		List<CategoryVo> list_cate=service.list_cate_all();
 		model.addAttribute("list",list);
 		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
 		model.addAttribute("category_num",category_num);
 		model.addAttribute("list_cate",list_cate);
 		return ".marketadmin";

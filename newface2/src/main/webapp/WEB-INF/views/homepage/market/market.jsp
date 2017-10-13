@@ -24,12 +24,27 @@
 			var item_num=$(this).find(".item_num_val").val();
 			window.open("<c:url value='/market/item/getinfo?item_num="+item_num+"'/>","_item_getinfo","width=500,height=500");
 		});
-		$("#search").submit(function(event){
+		$("#search").click(function(event){
 			var text=$("#text").val();
+			var category_num=$("#select_cate").val();
 			if(text==""){
 				$("#text").focus();
 				alert("검색한 내용을 입력해주세요");
 				event.preventDefault();
+			}else{
+				location.href='list?category_num='+category_num+'&text='+text;
+			}
+		});
+		$("#text").keypress(function(event){
+			if(event.keyCode==13){
+				var text=$("#text").val();
+				var category_num=$("#select_cate").val();
+				if(text==""){
+					$("#text").focus();
+					alert("검색한 내용을 입력해주세요");
+				}else{
+					location.href='list?category_num='+category_num+'&text='+text;
+				}
 			}
 		});
 	});
@@ -74,7 +89,7 @@
 		<div style="position:absolute;top:665px;width: 85%;"align="center">
 			<c:choose>
 			<c:when test="${pu.startPageNum>5 }">
-				<a href="<c:url value='/market/item/list?pageNum=${pu.startPageNum-1 }'/>">
+				<a href="<c:url value='/market/item/list?pageNum=${pu.startPageNum-1 }&text=${text}&category_num=${category_num }'/>">
 					<span class="btnprev">◁◁</span>
 				</a>
 			</c:when>
@@ -86,12 +101,12 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }">
-					<a href="<c:url value='/market/item/list?pageNum=${i }'/>">
+					<a href="<c:url value='/market/item/list?pageNum=${i }&text=${text}&category_num=${category_num }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot--active"></span>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/market/item/list?pageNum=${i }'/>">
+					<a href="<c:url value='/market/item/list?pageNum=${i }&text=${text}&category_num=${category_num }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot">
 						</span>
 					</a>
@@ -101,7 +116,7 @@
 		</div>
 		<c:choose>
 			<c:when test="${pu.endPageNum<pu.totalPageCount}">
-				<a href="<c:url value='/market/item/list?pageNum=${pu.endPageNum+1 }'/>">
+				<a href="<c:url value='/market/item/list?pageNum=${pu.endPageNum+1 }&text=${text}&category_num=${category_num }'/>">
 					<span class="btnnext">
 							▷▷
 					</span>
@@ -113,15 +128,13 @@
 		</c:choose>
 		</div>
 		<div style="position:absolute;top:710px;width: 85%;"align="center">
-			<form method="post" id="search" name="f" action="<c:url value='/market/admin/item/search'/>">
-				<div style="display: inline-block;margin-top: 20px;">
-					<div class="form-group has-success" style="display: inline-block; ">
-						<input type="text" name="text" id="text" class="form-control" style="width:350px;float:left;margin-left: 5px;height: 25px;">
-						<input type="submit" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-						border-radius: 4px; background-color: rgb(52, 152, 219);width:50px; height:25px;float:left;margin-left: 5px;font-size: 13px;" > 
-					</div>
+			<div style="display: inline-block;margin-top: 20px;">
+				<div class="form-group has-success" style="display: inline-block; ">
+					<input type="text" name="text" id="text" class="form-control" placeholder="검색할 상품명을 입력하세요" value="${text }" style="width:350px;float:left;margin-left: 5px;height: 25px;">
+					<input type="button" id="search" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
+					border-radius: 4px; background-color: rgb(52, 152, 219);width:50px; height:25px;float:left;margin-left: 5px;font-size: 13px;" > 
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>

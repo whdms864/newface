@@ -36,8 +36,8 @@ public class MarketDao {
 	public List<ItemVo> list_item(HashMap<String, Object> map) {
 		return sqlSession.selectList(NAMESPACE+".list_item",map);
 	}
-	public int getCount(int category_num) {
-		return sqlSession.selectOne(NAMESPACE+".count",category_num);
+	public int getCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".count",map);
 	}
 	public int getCount() {
 		return sqlSession.selectOne(NAMESPACE+".count_cate");
