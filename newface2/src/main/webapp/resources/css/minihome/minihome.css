@@ -12,6 +12,9 @@ body {
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0)
 }
+#background{
+	margin: 0px; padding: 0px; width:1024px;height:592px;
+}
 #webView[data-show-memo='true'] {
 	overflow: visible
 }

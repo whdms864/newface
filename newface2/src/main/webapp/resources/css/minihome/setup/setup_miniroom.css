@@ -1,24 +1,12 @@
 @charset "UTF-8";
-*{
-	margin: 0px;padding: 0px;
-}
-a{
-	text-decoration: none; color: black;
-}
-#setup_iu_back{
+#setup_miniroom_back{
 	padding: 30px;
 }    
-.iu_back{
+.miniroom_back{
 	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;
 }
 h3{
 	padding-top: 30px; padding-bottom: 5px;
-}
-input[type=text]{
-	height: 17px; width: 200px;
-}
-input[type=submit]{
-	height: 23px;
 }
 #menu{
 	margin-top: 10px; margin-bottom: 10px; border: 1px dashed #c6c6c6;
@@ -27,6 +15,13 @@ input[type=submit]{
 	padding-top: 0px;
 }
 #miniroom{
-	width: 400px;height: 200px; background-color: orange;
+	width: 400px;height: 200px; background-color: orange; 
 }
+.item{
+	display:inline; margin: 0px; padding: 0px; z-index: 0; position: relative; 
+}
+.add1{
+	display:inline; margin: 0px; padding: 0px; z-index: 99; top: 94px; left: 30px; position: relative; 
+}
+
 

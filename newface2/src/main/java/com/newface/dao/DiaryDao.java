@@ -103,7 +103,7 @@ public class DiaryDao {
 	public int com_delete(int diary_com_num) {
 		return sqlSession.delete(NAMESPACE + ".com_delete", diary_com_num);
 	}
-	public int hompy_is(HompyVo vo) {
+	public HompyVo hompy_is(HompyVo vo) {
 		return sqlSession.selectOne(NAMESPACE + ".hompy_is", vo);
 	}
 	public List<CalendarListVo> group_m(CalendarListVo vo){

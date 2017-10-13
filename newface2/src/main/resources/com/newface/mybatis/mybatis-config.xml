@@ -42,6 +42,8 @@
   	<typeAlias type="com.newface.vo.RoomposiVo" alias="position"/>
   	<typeAlias type="com.newface.vo.PhotocomVo" alias="photo_com"/>
   	<typeAlias type="com.newface.vo.Miniroom_HompyVo" alias="miniroom_hompy"/>
+  	<typeAlias type="com.newface.vo.Item_MineVo" alias="item_mine"/>
+  	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
   </typeAliases>
   
   <mappers>

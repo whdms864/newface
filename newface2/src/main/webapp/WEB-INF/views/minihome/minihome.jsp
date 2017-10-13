@@ -10,7 +10,8 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
- <div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');"> 
+ <div id="webView" style=" width:1024px;height:592px;"> 
+ <span style="position:absolute ; top: -20px; z-index: 0">${sessionScope.item_img }</span>
 	<div id="skin_back">
 		<div id="skin"></div>
 	</div>

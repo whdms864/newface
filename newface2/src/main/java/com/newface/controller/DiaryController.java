@@ -126,10 +126,10 @@ public class DiaryController {
 		String id = (String) session.getAttribute("loginid");
 		String hompy_id=service.id(hompy_num);
 		HompyVo vo = new HompyVo(hompy_num, 0, null, id);
-		int n = service.hompy_is(vo);	
+		HompyVo hompy = service.hompy_is(vo);	
 		
 		List<DiaryListVo> list = null;
-		if (n > 0 ) {
+		if (hompy!=null ) {
 			list = service.folder_all_list(map);
 		} else {
 			list = service.folder_basic_list(map);

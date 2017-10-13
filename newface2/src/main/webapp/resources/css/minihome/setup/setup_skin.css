@@ -1,5 +1,5 @@
 @charset "UTF-8";
-a:hover{
-	cursor: pointer; font-weight: bold;
-}
-                 
+.back_img{
+	width: 450px; height: 259px; background-color: yellow;
+}    
+        

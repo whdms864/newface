@@ -72,4 +72,16 @@ public class SetupDao {
 	public List<ItemVo> miniroom_decorate(String id){
 		return sqlSession.selectList(NAMESPACE + ".miniroom_decorate", id);
 	}
+	public List<ItemVo> skin_list(String id){
+		return sqlSession.selectList(NAMESPACE + ".skin_list", id);
+	}
+	public int skin_insert(RoomposiVo vo) {
+		return sqlSession.insert(NAMESPACE + ".skin_insert", vo);
+	}
+	public int skin_delete(int mini_num) {
+		return sqlSession.delete(NAMESPACE + ".skin_delete", mini_num);
+	}
+	public int item_num(int mine_num) {
+		return sqlSession.selectOne(NAMESPACE + ".item_num", mine_num);
+	}
 }

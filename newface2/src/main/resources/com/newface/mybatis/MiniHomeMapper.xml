@@ -72,6 +72,15 @@
 		select mini_num from miniroom where hompy_num=#{value}
 	</select>
 	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
-		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value}
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨'
+	</select>
+	<select id="mine_num" parameterType="int" resultType="int">
+		select r.mine_num from room_posi r join miniroom m on r.mini_num=m.mini_num where m.hompy_num=#{value} and r.drag='스킨'
+	</select>
+	<select id="item_num" parameterType="int" resultType="int">
+		select item_num from mine where mine_num=#{value}
+	</select>
+	<select id="item_img" parameterType="int" resultType="string">
+		select item_img from item where item_num=#{value}
 	</select>
 </mapper>  

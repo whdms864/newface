@@ -47,7 +47,10 @@ public class SetupController {
 		}
 	}
 	@RequestMapping(value="/setup/skin",method=RequestMethod.GET)
-	public String skin() {
+	public String skin(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("loginid");
+		List<ItemVo> list=service.skin_list(id);
+		model.addAttribute("list", list);
 		return ".skin.setup";
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
@@ -152,6 +155,24 @@ public class SetupController {
 		
 		JSONObject json=new JSONObject();
 		json.put("n", n2);
+		return json.toString();
+	}
+	@RequestMapping(value="/setup/skin_update",method=RequestMethod.GET)
+	public String skin_update(int item_num,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		MineVo mine=new MineVo(0, 0, 0, item_num, id);
+		int mine_num=service.mine_num(mine);
+		int mini_num=service.mini_num(hompy_num);
+		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
+		service.skin_delete(mini_num);
+		int n=service.skin_insert(posi);
+		
+		//이미지 불러오기
+		String item_img=service.item_img(item_num);
+		JSONObject json=new JSONObject();
+		json.put("n", n);
+		json.put("item_img", item_img);		
 		return json.toString();
 	}
 	@RequestMapping(value="/setup/miniroom_decorate",method=RequestMethod.GET)

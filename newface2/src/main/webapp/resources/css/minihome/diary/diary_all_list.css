@@ -3,16 +3,16 @@
 	margin: 0px;padding: 0px;
 }
 #diary_list_back{
-	margin:auto; width: 460px; height: 290px; margin-top: 30px; font-size: 14px;
+	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px;
 }
 #title_back{
 	display: inline-block; background-color: #d2d2d2; width: 100%
 }
 .chk{
-	display: inline-block; width: 25px; height:25px;  text-align: center; margin-top: -15px;
+	display: inline-block; width: 25px; height:25px;  text-align: center;
 }
 .num{
-	display: inline-block; width: 50px; height:25px;  text-align: center;
+	display: inline-block; width: 50px; height:25px; text-align: center;
 }
 #title{
 	display: inline-block; width: 140px; height:25px; text-align: center; 
@@ -47,7 +47,7 @@ a{
 	position:absolute; top:260px; left:50%; margin-left:-200px; box-shadow: 0px 1px 20px #333; z-index:100; display:none;
 }
 #page{
-	position:relative; top: 20px; left: 20px;
+	position:relative; top: 10px; left: 20px;
 }
 #write{
 	display: inline-block; margin-left: 250px; font-size: 14px;

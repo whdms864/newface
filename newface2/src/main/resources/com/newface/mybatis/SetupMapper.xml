@@ -49,9 +49,21 @@
 		select * from room_posi where mine_num=#{mine_num} and mini_num=#{mini_num}
 	</select>
 	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
-		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value}
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨'
 	</select>
 	<select id="miniroom_decorate" parameterType="string" resultType="item">
 		select i.* from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3
+	</select>
+	<select id="skin_list" parameterType="string" resultType="item_mine">
+		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=5
+	</select>
+	<insert id="skin_insert" parameterType="position">
+		insert into room_posi values(0,#{mini_num},'스킨',0,0,#{mine_num})
+	</insert>
+	<delete id="skin_delete" parameterType="int">
+		delete from room_posi where drag='스킨' and mini_num=#{value}
+	</delete>
+	<select id="item_num" parameterType="int" resultType="int">
+		select item_num from mine where mine_num=#{value}
 	</select>
 </mapper>  

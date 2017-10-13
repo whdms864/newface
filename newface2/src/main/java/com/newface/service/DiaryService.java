@@ -109,7 +109,7 @@ public class DiaryService {
 	public int com_delete(int diary_com_num) {
 		return dao.com_delete(diary_com_num);
 	}
-	public int hompy_is(HompyVo vo) {
+	public HompyVo hompy_is(HompyVo vo) {
 		return dao.hompy_is(vo);
 	}
 	public List<CalendarListVo> group_m(CalendarListVo vo){

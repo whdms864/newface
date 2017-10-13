@@ -1,6 +1,6 @@
 package com.newface.vo;
 
-public class ItemVo {
+public class Item_MineVo {
 	private int item_num;
 	private int pay;
 	private String name;
@@ -8,11 +8,12 @@ public class ItemVo {
 	private String item_img;
 	private String regdate;
 	private int category_num;
+	private int mine_num;
 
-	public ItemVo() {
-	}
+	public Item_MineVo() {}
 
-	public ItemVo(int item_num, int pay, String name, String content, String item_img, String regdate, int category_num) {
+	public Item_MineVo(int item_num, int pay, String name, String content, String item_img, String regdate,
+			int category_num, int mine_num) {
 		super();
 		this.item_num = item_num;
 		this.pay = pay;
@@ -21,6 +22,7 @@ public class ItemVo {
 		this.item_img = item_img;
 		this.regdate = regdate;
 		this.category_num = category_num;
+		this.mine_num = mine_num;
 	}
 
 	public int getItem_num() {
@@ -78,6 +80,13 @@ public class ItemVo {
 	public void setCategory_num(int category_num) {
 		this.category_num = category_num;
 	}
-	
+
+	public int getMine_num() {
+		return mine_num;
+	}
+
+	public void setMine_num(int mine_num) {
+		this.mine_num = mine_num;
+	}
 	
 }

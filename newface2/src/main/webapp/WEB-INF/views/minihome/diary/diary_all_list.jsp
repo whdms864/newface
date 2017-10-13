@@ -76,6 +76,7 @@
 	</c:forEach> 
 	<hr>
 </div>
+
 <div id="page">
 	<c:choose>
 		<c:when test="${requestScope.pageNum>1 }">

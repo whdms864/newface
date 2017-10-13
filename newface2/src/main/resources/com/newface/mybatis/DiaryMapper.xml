@@ -106,8 +106,8 @@
 	<delete id="com_delete" parameterType="int">
 		delete from diary_com where diary_com_num=#{value}
 	</delete>
-	<select id="hompy_is" parameterType="hompy" resultType="int">
-		select hompy_num from hompy where id=#{id} and hompy_num=#{hompy_num}
+	<select id="hompy_is" parameterType="hompy" resultType="hompy">
+		select * from hompy where id=#{id} and hompy_num=#{hompy_num}
 	</select>
 	<select id="group_m" parameterType="calendarlist" resultType="calendarlist">
 		select date_format(d.regdate,'%Y') y,date_format(d.regdate,'%c') m,date_format(d.regdate,'%e') d,date_format(d.regdate,'%Y-%c-%e') regdate     

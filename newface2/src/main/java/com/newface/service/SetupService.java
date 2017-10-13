@@ -71,4 +71,16 @@ public class SetupService {
 	public List<ItemVo> miniroom_decorate(String id){
 		return dao.miniroom_decorate(id);
 	}
+	public List<ItemVo> skin_list(String id){
+		return dao.skin_list(id);
+	}
+	public int skin_insert(RoomposiVo vo) {
+		return dao.skin_insert(vo);
+	}
+	public int skin_delete(int mini_num) {
+		return dao.skin_delete(mini_num);
+	}
+	public int item_num(int mine_num) {
+		return dao.item_num(mine_num);
+	}
 }
