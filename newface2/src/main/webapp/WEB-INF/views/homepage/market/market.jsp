@@ -29,7 +29,7 @@
 			var category_num=$("#select_cate").val();
 			if(text==""){
 				$("#text").focus();
-				alert("검색한 내용을 입력해주세요");
+				alert("검색할 내용을 입력해주세요");
 				event.preventDefault();
 			}else{
 				location.href='list?category_num='+category_num+'&text='+text;
@@ -41,7 +41,7 @@
 				var category_num=$("#select_cate").val();
 				if(text==""){
 					$("#text").focus();
-					alert("검색한 내용을 입력해주세요");
+					alert("검색할 내용을 입력해주세요");
 				}else{
 					location.href='list?category_num='+category_num+'&text='+text;
 				}

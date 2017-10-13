@@ -10,15 +10,10 @@
 		},function(){
 			$(this).html("◁◁");
 		});
-		
 		$(".btnnext").hover(function() {
 			$(this).html("▶▶");
 		},function(){
 			$(this).html("▷▷");
-		});
-		$("#select_cate").change(function(){
-			var category_num=$(this).val();
-			location.href='list?category_num='+category_num;
 		});
 		$("#search").click(function(){
 			var text=$("#text").val();
@@ -44,12 +39,6 @@
 		});
 	});
 </script>
-<style>
-	td p img{
-		width: 40px;
-		height: 40px;
-	}
-</style>
 <div id="sidebar">
 	<ul>
 		<li>
@@ -59,10 +48,10 @@
 			<a href="<c:url value='/ader_list'/>" >광고관리</a>
 		</li>
 		<li>
-			<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
+			<a href="<c:url value='/qna11/admin/list'/>" class="now">1:1문의</a>
 		</li>
 		<li>
-			<a href="<c:url value='/market/admin/item/list'/>" class="now">마켓관리</a>
+			<a href="<c:url value='/market/admin/item/list'/>">마켓관리</a>
 		</li>
 		<li>
 			<a href="<c:url value='/memadmin'/>" >회원관리</a>
@@ -78,58 +67,50 @@
 <div id="con_wrap">
 	<div id="tab">
 		<div style="margin-left: 30px;margin-top: 10px;">
-			<label style="font-weight:bold;font-size:25px;">마켓관리</label>
+			<label style="font-weight:bold;font-size:25px;">1:1문의</label>
 		</div>
 		<ul>
-		    <li><a href="<c:url value='/market/admin/item/list'/>"style="margin-left:0px;"  class="hover_a">상품목록</a></li>
-		    <li><a href="<c:url value='/market/admin/item/insert'/>">상품등록</a></li>
-		    <li><a href="<c:url value='/market/admin/cate/list'/>">카테고리관리</a></li>
+		    <li><a href="<c:url value='/qna11/admin/list'/>"style="margin-left:0px;" class="hover_a">전체회원</a></li>
+		    <li><a href="<c:url value='/qna11/admin/list'/>"style="margin-left:0px;">제재회원</a></li>
+		    <li><a href="<c:url value='/qna11/admin/list'/>"style="margin-left:0px;">탈퇴회원</a></li>
 		</ul>
 	</div>
-	<div id="con">
+	<div id="con">	
 		<div align="center">
-			<select name="category_num" id="select_cate" style="top: 20px;right: 38px;position:absolute;">
-				<c:forEach var="vo" items="${list_cate }">
-					<option value="${vo.category_num}" ${vo.category_num == category_num ? 'selected="selected"' : '' }>${vo.name}</option>
-				</c:forEach>
-			</select>
-			<table class="table table-hover" style="width: 90%;margin-top: 50px;">
+			<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 				<thead>
 			  		<tr class="danger">
 			  			<th>No.</th>
-			  			<th>상품명</th>
-			  			<th>이미지</th>
-			  			<th>상세정보</th>
-			  			<th>가격(개)</th>
+			  			<th>아이디</th>
+			  			<th>제목</th>
 			  			<th>등록일</th>
-			  			<th>수정</th>
-			  			<th>삭제</th>
+			  			<th>상태</th>
 			  		</tr>
 			  	</thead>
 			  	<tbody>
 			  		<c:forEach var="vo" items="${list}">
 			  			<tr>
-				  			<td>${vo.item_num}</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-				  				${vo.name}
-				  			</td>
-				  			<td>${vo.item_img}</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-				  				${vo.content}
-				  			</td>
-				  			<td>${vo.pay}</td>
+				  			<td>${vo.qna11_num}</td>
+				  			<td>${vo.id}</td>
+				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300px;">
+				  			<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a></td>
 				  			<td>${vo.regdate}</td>
-				  			<td><a href="<c:url value='/market/admin/item/update?item_num=${vo.item_num }'/>">수정</a></td>
-				  			<td><a href="<c:url value='/market/admin/item/delete?item_num=${vo.item_num }'/>">삭제</a></td>
+				  			<td>
+					  			<c:choose>
+					  				<c:when test="${vo.confirm=='0'}">대기</c:when>
+					  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
+					  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
+					  			</c:choose>
+				  			</td>
 				  		</tr>
 				  	</c:forEach>
-				 </tbody>
+				</tbody>
 			</table>
 		</div>
-	<div style="position:absolute;top:540px;width: 100%;"align="center">
+		<div style="position:absolute;top:540px;width: 100%;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
-					<a href="<c:url value='/market/admin/item/list?pageNum=${pu.startPageNum-1 }&text=${text}&category_num=${category_num }'/>">
+					<a href="<c:url value='/qna11/admin/list?pageNum=${pu.startPageNum-1 }'/>">
 						<span class="btnprev">◁◁</span>
 					</a>
 				</c:when>
@@ -141,12 +122,12 @@
 			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 				<c:choose>
 					<c:when test="${i==pu.pageNum }">
-						<a href="<c:url value='/market/admin/item/list?pageNum=${i }&text=${text}&category_num=${category_num }'/>">
+						<a href="<c:url value='/qna11/admin/list?pageNum=${i }'/>">
 							<span data-tooltip="${i }" class="pagination__dot pagination__dot--active"></span>
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a href="<c:url value='/market/admin/item/list?pageNum=${i }&text=${text}&category_num=${category_num }'/>">
+						<a href="<c:url value='/qna11/admin/list?pageNum=${i }'/>">
 							<span data-tooltip="${i }" class="pagination__dot pagination__dot">
 							</span>
 						</a>
@@ -156,7 +137,7 @@
 			</div>
 			<c:choose>
 				<c:when test="${pu.endPageNum<pu.totalPageCount}">
-					<a href="<c:url value='/market/admin/item/list?pageNum=${pu.endPageNum+1 }&text=${text}&category_num=${category_num }'/>">
+					<a href="<c:url value='/qna11/admin/list?pageNum=${pu.endPageNum+1 }'/>">
 						<span class="btnnext">
 								▷▷
 						</span>

@@ -246,11 +246,15 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/market/update_item.jsp"/>
 	</definition>
 	
-	<!--  -->
+	<!-- 회원관리 -->
 	<definition name=".memadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/memadmin.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/list.jsp"/>
+	</definition>
+	<definition name=".memadmin_getinfo" extends=".admin">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/getinfo.jsp"/>
 	</definition>
 	
+	<!-- 신고관리 -->
 	<definition name=".singoadmin" extends=".admin">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/singo/singoadmin.jsp"/>
 	</definition>
