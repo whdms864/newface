@@ -83,4 +83,7 @@
 	<select id="item_img" parameterType="int" resultType="string">
 		select item_img from item where item_num=#{value}
 	</select>
+	<select id="start" parameterType="int" resultType="position">
+		select * from room_posi where mini_num=#{value}
+	</select>
 </mapper>  

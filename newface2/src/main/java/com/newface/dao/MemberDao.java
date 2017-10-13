@@ -23,7 +23,10 @@ public class MemberDao {
 		MemberVo vo=sqlSession.selectOne(NAMESPACE+".getinfo",id);
 		return vo;
 	}
-	
+	public int setup_insert(int hompy_num) {
+		int n=sqlSession.insert(NAMESPACE + ".setup_insert", hompy_num);
+		return n;
+	}
 	public AdminVo getadmin(String id) {
 		AdminVo vo=sqlSession.selectOne(NAMESPACE+".getadmin",id);
 		return vo;

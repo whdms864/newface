@@ -48,7 +48,8 @@ public class MemberController {
 		int n2=service.hompyinsert(vo2);
 		int hompy_num=service.hompy_num(vo1.getId());
 		int n3=service.miniroom(hompy_num);
-		if(n1>0 || n2>0 || n3>0) {
+		int n4=service.setup_insert(hompy_num);
+		if(n1>0 || n2>0 || n3>0 || n4>0) {
 			return ".main";
 		}else {
 			return ".member";

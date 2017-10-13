@@ -13,6 +13,7 @@ import com.newface.vo.MemberVo;
 import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
+import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
 
 
@@ -91,5 +92,8 @@ public class MiniHomeService {
 	}
 	public String item_img(int item_num) {
 		return dao.item_img(item_num);
+	}
+	public List<RoomposiVo> start(int mini_num) {
+		return dao.start(mini_num);
 	}
 }

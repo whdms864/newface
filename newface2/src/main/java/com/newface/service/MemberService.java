@@ -19,7 +19,9 @@ public class MemberService {
 	public MemberVo getinfo(String id) {
 		return dao.getinfo(id);
 	}
-	
+	public int setup_insert(int hompy_num) {
+		return dao.setup_insert(hompy_num);
+	}
 	public AdminVo getadmin(String id) {
 		return dao.getadmin(id);
 	}

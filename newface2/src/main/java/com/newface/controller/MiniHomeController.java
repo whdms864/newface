@@ -24,6 +24,7 @@ import com.newface.vo.MemberVo;
 import com.newface.vo.Miniroom_HompyVo;
 import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
+import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
 
 @Controller
@@ -88,10 +89,13 @@ public class MiniHomeController {
 		model.addAttribute("mini", mini);
 		
 		//½ºÅ²
-		int mine_num=service.mine_num(hompy_num);
-		int item_num=service.item_num(mine_num);
-		String item_img=service.item_img(item_num);
-		session.setAttribute("item_img", item_img);
+		List<RoomposiVo> room=service.start(mini_num);
+		if(room!=null) {
+			int mine_num=service.mine_num(hompy_num);
+			int item_num=service.item_num(mine_num);
+			String item_img=service.item_img(item_num);
+			session.setAttribute("item_img", item_img);			
+		}
 		
 		return ".minihome";
 	}
