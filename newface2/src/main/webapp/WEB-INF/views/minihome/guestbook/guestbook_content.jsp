@@ -86,7 +86,7 @@
 				<c:forEach var="vo1" items="${requestScope.list1 }">
 					<c:if test="${vo1.guest_num eq vo.guest_num}">
 						<div class="c_name">
-							<a href="">${vo1.name } :</a> ${vo1.content }
+							<a href="<c:url value='/minihome?id=${vo1.id }&hompy_num=${vo1.hompy_num }'/>">${vo1.name } :</a> ${vo1.content }
 							<div style="display:inline;font-size:9px;color:gray;">( ${vo1.regdate } )</div>&nbsp;
 							<c:if test="${sessionScope.loginid == vo1.id}">
 							<a href="<c:url value='/guest/com_delete?guest_com_num=${vo1.guest_com_num }'/>"><img src="<c:url value='/resources/images/minihome/comment_delete1.png'/>" style="position:absolute;margin-top:2px;"></a>

@@ -27,9 +27,9 @@
 		insert into guestbook_com values(0,#{content},now(),#{guest_num},#{id})
 	</insert>
 	<select id="com_list" resultType="Guestcom">
-		select a.name,b.guest_com_num,b.id,b.guest_num,b.content,date_format(b.regdate,'%Y/%c/%e') as regdate
+		select a.name,b.guest_com_num,b.id,b.guest_num,b.content,date_format(b.regdate,'%Y/%c/%e') as regdate,c.hompy_num
 		from member as a join guestbook_com as b
-		on a.id=b.id order by b.guest_num desc;
+		on a.id=b.id join hompy as c on c.id=a.id order by b.guest_num desc
 	</select>
 	<delete id="com_delete" parameterType="int">
 		delete from guestbook_com where guest_com_num=#{guest_com_num}

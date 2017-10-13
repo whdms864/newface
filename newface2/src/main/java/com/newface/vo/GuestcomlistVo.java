@@ -8,10 +8,12 @@ public class GuestcomlistVo {
 	private String content;
 	private String regdate;
 	private String id;
+	private int hompy_num;
 	
 	public GuestcomlistVo() {}
 
-	public GuestcomlistVo(String name, int guest_num, int guest_com_num, String content, String regdate, String id) {
+	public GuestcomlistVo(String name, int guest_num, int guest_com_num, String content, String regdate, String id,
+			int hompy_num) {
 		super();
 		this.name = name;
 		this.guest_num = guest_num;
@@ -19,6 +21,16 @@ public class GuestcomlistVo {
 		this.content = content;
 		this.regdate = regdate;
 		this.id = id;
+		this.hompy_num = hompy_num;
+	}
+
+	
+	public int getHompy_num() {
+		return hompy_num;
+	}
+
+	public void setHompy_num(int hompy_num) {
+		this.hompy_num = hompy_num;
 	}
 
 	public int getGuest_com_num() {

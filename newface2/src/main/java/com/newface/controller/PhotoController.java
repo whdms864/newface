@@ -65,7 +65,10 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/folder_list", method = RequestMethod.GET)
 	public String folder_list(Model model,HttpSession session) {
-		String id=(String)session.getAttribute("loginid");
+		String id=(String)session.getAttribute("fid");
+		if(id==null) {
+			id=(String)session.getAttribute("loginid");
+		}
 		int hompy_num=service.Hompy_num(id);
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
 		if(list!=null) {
@@ -88,7 +91,10 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/list")
 	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="photo_folder_num",defaultValue="0")int photo_folder_num,HttpSession session,Model model) {
-		String id=(String)session.getAttribute("loginid");
+		String id=(String)session.getAttribute("fid");
+		if(id==null) {
+			id=(String)session.getAttribute("loginid");
+		}
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		int hompy_num=service.Hompy_num(id);
 		String name=service.name(id);
@@ -199,7 +205,10 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/com_list", method = RequestMethod.GET)
 	public String com_list(Model model,HttpSession session) {
-		String id=(String)session.getAttribute("loginid");
+		String id=(String)session.getAttribute("fid");
+		if(id==null) {
+			id=(String)session.getAttribute("loginid");
+		}
 		String name=service.name(id);
 		List<PhotocomVo> list=service.com_list();
 		if(list != null) {

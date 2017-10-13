@@ -3,6 +3,7 @@ package com.newface.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.MiniHomeService;
@@ -29,12 +31,18 @@ public class MiniHomeController {
 	@Autowired MiniHomeService service;
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
-	public String home(HttpSession session,Model model) {
-		String id=(String)session.getAttribute("loginid");
-		System.out.println("id : " + id);
-		int hompy_num=service.hompy_num(id);
-		System.out.println("hompy_num : " + hompy_num);
+	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,Model model,HttpServletRequest request) {
+		String id=request.getParameter("id");
+		session.setAttribute("fid", id);
+		if(id == null) {
+			id=(String)session.getAttribute("loginid");
+			hompy_num=service.hompy_num(id);
+		}else {
+			hompy_num=Integer.parseInt(request.getParameter("hompy_num"));
+		}
 		session.setAttribute("hompy_num", hompy_num);
+		System.out.println("id : " + id);
+		System.out.println("hompy_num : " + hompy_num);
 		
 		//홈피명,총방문자
 		HompyVo hompy=service.hompy(id);
@@ -78,12 +86,6 @@ public class MiniHomeController {
 		int mini_num=service.mini_num(hompy_num);
 		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
 		model.addAttribute("mini", mini);
-		
-		//스킨
-		int mine_num=service.mine_num(hompy_num);
-		int item_num=service.item_num(mine_num);
-		String item_img=service.item_img(item_num);
-		session.setAttribute("item_img", item_img);
 		
 		return ".minihome";
 	}
