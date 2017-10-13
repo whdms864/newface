@@ -1,6 +1,7 @@
 package com.newface.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,11 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.newface.page.PageUtil;
 import com.newface.service.MemberService;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Qna11Vo;
 
 @Controller
 public class MemberController {
@@ -144,5 +149,62 @@ public class MemberController {
 		}
 		return ".search";
 	}
-	
+	/********* 여기부터 관리자꺼 시작이다!!!!!!!!!!!**************************************/
+	@RequestMapping(value = "/memadmin", method = RequestMethod.GET)
+	public String admin_member_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
+			Model model,@RequestParam(value="text",defaultValue="") String text) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("text",text);
+		int totalRowCount=service.count(map);
+		PageUtil pu=new PageUtil(pageNum,13,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<MemberVo> list=service.listall(map);
+		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
+		return ".memadmin";
+	}
+	@RequestMapping(value = "/memadmin/1", method = RequestMethod.GET)
+	public String admin_member_list_1(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,
+			@RequestParam(value="text",defaultValue="") String text,
+			@RequestParam(value="type",defaultValue="제재") String type) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("text",text);
+		map.put("type",type);
+		int totalRowCount=service.count_type(map);
+		PageUtil pu=new PageUtil(pageNum,13,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<MemberVo> list=service.getinfo_type(map);
+		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
+		model.addAttribute("type",type);
+		return ".memadmin_list_1";
+	}
+	@RequestMapping(value = "/memadmin/2", method = RequestMethod.GET)
+	public String admin_member_list_2(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,
+			@RequestParam(value="text",defaultValue="") String text,
+			@RequestParam(value="type",defaultValue="탈퇴") String type) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("text",text);
+		map.put("type",type);
+		int totalRowCount=service.count_type(map);
+		PageUtil pu=new PageUtil(pageNum,13,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<MemberVo> list=service.getinfo_type(map);
+		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
+		model.addAttribute("type",type);
+		return ".memadmin_list_2";
+	}
+	@RequestMapping(value = "/memadmin/getinfo", method = RequestMethod.GET)
+	public String admin_member_getinfo(String id,Model model) {
+		MemberVo vo=service.getinfo(id);
+		model.addAttribute("vo",vo);
+		return ".memadmin_getinfo";
+	}
 }

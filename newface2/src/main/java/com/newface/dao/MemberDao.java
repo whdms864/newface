@@ -1,6 +1,7 @@
 package com.newface.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,18 @@ public class MemberDao {
 	
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
+	}
+	public List<MemberVo> getinfo_type(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".getinfo_type",map);
+	}
+	public List<MemberVo> listall(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".listall",map);
+	}
+	public int count(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".count",map);
+	}
+	public int count_type(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".count_type",map);
 	}
 	
 	public MemberVo getinfo(String id) {

@@ -14,10 +14,6 @@ public class ManagerController {
 		return ".adadmin";
 	}
 
-	@RequestMapping(value = "/memadmin", method = RequestMethod.GET)
-	public String mems() {
-		return ".memadmin";
-	}
 	
 	@RequestMapping(value = "/singoadmin", method = RequestMethod.GET)
 	public String singo() {

@@ -13,11 +13,27 @@
 		insert into hompy values(0,0,'NewFace',#{id})
 	</insert>
 	
+	<select id="getinfo_type" resultType="member" parameterType="hashmap">
+		select * from member
+		where type=#{type} and (id like concat('%',#{text},'%') or name like concat('%',#{text},'%'))
+		order by id,regdate limit #{startRow},#{endRow}
+	</select>
+	<select id="listall" resultType="member" parameterType="hashmap">
+		select * from member
+		where id like concat('%',#{text},'%') or name like concat('%',#{text},'%')
+		order by id,regdate limit #{startRow},#{endRow}
+	</select>
 	<select id="getinfo" resultType="member" parameterType="string">
 		select * from member
 		where id=#{value}
 	</select>
-	
+	<select id="count" resultType="int" parameterType="hashmap">
+		select coalesce(count(id),0) from member where id like concat('%',#{text},'%') or name like concat('%',#{text},'%')
+	</select>
+	<select id="count_type" resultType="int" parameterType="hashmap">
+		select coalesce(count(id),0) from member where type=#{type} and 
+		(id like concat('%',#{text},'%') or name like concat('%',#{text},'%'))
+	</select>
 	<select id="getadmin" resultType="admin" parameterType="string">
 		select * from admin
 		where id=#{value}

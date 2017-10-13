@@ -1,6 +1,7 @@
 package com.newface.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,18 @@ public class MemberService {
 	}
 	public MemberVo getinfo(String id) {
 		return dao.getinfo(id);
+	}
+	public List<MemberVo> getinfo_type(HashMap<String, Object> map) {
+		return dao.getinfo_type(map);
+	}
+	public List<MemberVo> listall(HashMap<String, Object> map) {
+		return dao.listall(map);
+	}
+	public int count(HashMap<String, Object> map) {
+		return dao.count(map);
+	}
+	public int count_type(HashMap<String, Object> map) {
+		return dao.count_type(map);
 	}
 	public int setup_insert(int hompy_num) {
 		return dao.setup_insert(hompy_num);

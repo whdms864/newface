@@ -247,10 +247,16 @@
 	</definition>
 	
 	<!-- 회원관리 -->
-	<definition name=".memadmin" extends=".admin">
-		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/list.jsp"/>
+	<definition name=".memadmin" extends=".qna11admin">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/list_all.jsp"/>
 	</definition>
-	<definition name=".memadmin_getinfo" extends=".admin">
+	<definition name=".memadmin_list_1" extends=".memadmin">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/list_1.jsp"/>
+	</definition>
+	<definition name=".memadmin_list_2" extends=".memadmin">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/list_2.jsp"/>
+	</definition>
+	<definition name=".memadmin_getinfo" extends=".memadmin">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/member/getinfo.jsp"/>
 	</definition>
 	
