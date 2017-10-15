@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=25'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=11'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
@@ -18,8 +18,8 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 <!-- sdfsdjfosdjfosfjo -->
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
-		<div id="webView" style=" width:1024px;height:592px;"> 
- 		<span style="position:absolute ; top: -20px; z-index: 0">${sessionScope.item_img }</span>
+		<div id="webView"> 
+ 		<span id="skin_size" style="position:absolute ; top: -20px; z-index: 0">${sessionScope.item_img }</span>
  	</c:when>
  	<c:otherwise>
 		<div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');">		

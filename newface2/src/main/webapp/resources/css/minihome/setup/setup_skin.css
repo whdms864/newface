@@ -1,8 +1,16 @@
 @charset "UTF-8";
 .back_img{
-	width: 450px; height: 259px; background-color: yellow;
+	width: 438px; height: 252px; background-color: yellow;
 }    
 .back_img img{
-	width: 450px; height: 259px;
+	width: 438px; height: 252px;
 }
-        
+#setup_skin_back{
+	padding: 30px; padding-top: 0px;
+}    
+.skin_back{
+	 padding-bottom: 10px; background-color: #f3f3f3;
+}       
+select{
+	height: 24px;
+}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.newface.dao.MiniHomeDao;
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.Miniroom_HompyVo;
@@ -66,7 +67,7 @@ public class MiniHomeService {
 	public int iu_com(IucomVo vo) {
 		return dao.iu_com(vo);
 	}
-	public int iu_is(IuVo vo) {
+	public IuVo iu_is(IuVo vo) {
 		return dao.iu_is(vo);
 	}
 	public List<IucomVo> iu_com_list(int hompy_num){
@@ -92,5 +93,8 @@ public class MiniHomeService {
 	}
 	public String item_img(int item_num) {
 		return dao.item_img(item_num);
+	}
+	public List<Iu_NameVo> iu_list(String id){
+		return dao.iu_list(id);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.Miniroom_HompyVo;
@@ -65,7 +66,7 @@ public class MiniHomeDao {
 	public int iu_com(IucomVo vo) {
 		return sqlSession.insert(NAMESPACE + ".iu_com", vo);
 	}
-	public int iu_is(IuVo vo) {
+	public IuVo iu_is(IuVo vo) {
 		return sqlSession.selectOne(NAMESPACE + ".iu_is", vo);
 	}
 	public List<IucomVo> iu_com_list(int hompy_num){
@@ -91,5 +92,8 @@ public class MiniHomeDao {
 	}
 	public String item_img(int item_num) {
 		return sqlSession.selectOne(NAMESPACE + ".item_img", item_num);
+	}
+	public List<Iu_NameVo> iu_list(String id) {
+		return sqlSession.selectList(NAMESPACE + ".iu_list", id);
 	}
 }

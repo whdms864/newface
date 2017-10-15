@@ -36,7 +36,7 @@
 			<td><input type="text" name="title" id="title" placeholder="제목" value="${requestScope.vo.title }"></td>
 		</tr>
 		<tr>
-			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:360px;">${requestScope.vo.content }</textarea></td>
+			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="width:493px; height:270px;">${requestScope.vo.content }</textarea></td>
 		</tr>
 	</table>
 	<span id="type" style="font-size: 16px; font-weight: bold;">설정정보</span> 

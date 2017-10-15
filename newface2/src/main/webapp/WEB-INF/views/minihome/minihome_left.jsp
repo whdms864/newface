@@ -5,8 +5,11 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
-		$("#name").on("click","#name1",function(){
+		/* $("#name").on("click","#name1",function(){
 			$("#i_you").toggle(); 
+		}); */
+		$("#name1").click(function(){
+			$("#i_you1").toggle();
 		});
 		$("#i_you1").click(function(){
 			$.getJSON("<c:url value='/minihome/iu_request'/>",function(data){
@@ -16,6 +19,10 @@
 					alert("이미 일촌신청을 했거나 오류로 인하여 일촌신청 하지 못했습니다")
 				}
 			});
+		});
+		$("#iu_list").change(function(){
+			var hompy_num=$(this).val();
+			window.open("<c:url value='/minihome?hompy_num=" + hompy_num + "'/>","_minihome2"," width=1024,height=594,left=100,top=100"); 
 		});
 	});
 </script>
@@ -39,15 +46,17 @@
 		<a href="">history</a>
 	</div>
 	<div id="member">
-		<div id="name"><a id="name1">${requestScope.member.name }</a></div>
-		<div id="i_you"><a id="i_you1">일촌맺기</a></div>
+		<div id="name"><a id="name1">${requestScope.member.name }</a> <span id="i_you"><a id="i_you1">일촌맺기</a></span></div>		
 		<div id="email">${requestScope.member.email }</div>
 	</div>
+	<c:if test="${sessionScope.hompyid==sessionScope.loginid }">
 	<div id="iu">
-		<select style="width: 150px; height: 30px;">
-			<option>파도타기</option>
-			<option>일촌1</option>
-			<option>일촌2</option>
+		<select style="width: 150px; height: 30px;" id="iu_list">
+			<option>일촌목록</option>		
+		<c:forEach var="iu" items="${sessionScope.iu_list }">
+			<option value="${iu.hompy_num }">${iu.name } (${iu.u_id})</option>		
+		</c:forEach>
 		</select>
 	</div>
+	</c:if>
 </div>

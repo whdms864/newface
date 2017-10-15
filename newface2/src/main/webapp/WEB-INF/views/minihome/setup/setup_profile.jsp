@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=29'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=92'/>"> 
 <div id="setup_profile_back">
 	<h3 id="first">프로필 사진설정</h3>
 	<hr>
@@ -25,7 +25,7 @@
 	<form action="<c:url value='/setup/profile_content'/>" method="post" id="frm">
 		<table>
 			<tr>
-				<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor"></textarea></td>
+				<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="background-color: white;"></textarea></td>
 			</tr>
 		</table>				
 		<input id="addBtn" type="submit" value="변경">		
@@ -36,7 +36,6 @@
 	<hr>
 	<div class="profile_back">
 	<form method="post" action="<c:url value='/setup/profile_todayis'/>">
-		<span id="todayis" style="font-size: 16px; font-weight: bold;">기분상태</span> 
 		<input type="radio" name="todayis" value="좋음" checked="checked">좋음 
 		<input type="radio" name="todayis" value="보통">보통 
 		<input type="radio" name="todayis" value="나쁨">나쁨 

@@ -130,8 +130,11 @@ public class SetupController {
 	@ResponseBody
 	public String iuOk(HttpSession session,String u_id) {
 		String i_id=(String)session.getAttribute("loginid");
+		//º≠∑Œ ¿œ√Ã¿ª ∏Œ±‚ ∂ßπÆ
 		IuVo vo=new IuVo(0, null, null, i_id, u_id);
+		IuVo vo1=new IuVo(0, null, null, u_id, i_id );
 		int n=service.iuOk(vo);
+		int n1=service.iuOk(vo1);
 		JSONObject json=new JSONObject();
 		json.put("n", n);
 		return json.toString();

@@ -3,7 +3,7 @@ a{
 	text-decoration: none; color: black;
 }
 #setup_profile_back{
-	padding: 30px;
+	padding: 30px; padding-top: 0px;
 }    
 .profile_back{
 	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;
@@ -23,16 +23,6 @@ input[type=submit]{
 #first{
 	padding-top: 0px;
 }
-/* content */
-/* #addBtn {
-	width: 80px;
-	height:35px;
-	font-size: 15px;
-	padding: 8px;
-	background-color: blue;
-	color: white;
-	border-radius: 5px 5px 5px 5px;
-	margin-top:-10px;
-	margin-left: 150px;
-} */
-
+#frm{
+	background-color: white; width: 168px; height: 330px;
+}

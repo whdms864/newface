@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #diary_list_back{
-	margin:auto; width: 460px; height: 290px; margin-top: 30px; font-size: 14px; background-color: red;
+	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px; 
 }
 #title_back{
 	display: inline-block; background-color: #d2d2d2; width: 100%
@@ -48,4 +48,7 @@ a{
 }
 #write{
 	display: inline-block; margin-left: 250px; font-size: 14px;
+}
+hr{
+	margin: 0px; padding: 0px;
 }

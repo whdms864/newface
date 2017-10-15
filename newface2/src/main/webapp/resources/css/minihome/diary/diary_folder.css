@@ -3,7 +3,7 @@ a{
 	text-decoration: none; color: black;
 }
 #diary_folder_back{
-	padding: 30px;
+	padding: 30px; padding-top: 0px;
 }    
 .folder_back{
 	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;

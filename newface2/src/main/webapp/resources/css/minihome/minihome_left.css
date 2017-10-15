@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
-#webView {
+/* #webView {
 	overflow: hidden;
 	position: relative;
 	width: 1024px;
@@ -14,7 +14,7 @@ body {
 }
 #webView[data-show-memo='true'] {
 	overflow: visible
-}
+} */
 #left_back{
 	width:147px ;height:153px ;
 }
@@ -32,18 +32,21 @@ body {
 	font-size: 13px;
 }
 #edit{
-	position: relative; margin-top: 20px; left: 25px; width: 100px; height: 13px;
+	position: relative; margin-top: 20px; left: 25px; width: 100px; height: 13px; 
 	font-size: 14px; color: rgb(41, 90, 221);
 }
 #member{
-	position: relative; margin-top:10px; left: 25px; width: 100px; height: 20px;
-	font-size: 15px;
+	position: relative; margin-top:10px; left: 25px; width: 100px; height: 20px; 
+	font-size: 15px; 
 }
 #name{
-	display: inline; float: left; cursor: pointer;
+	display: inline; float: left; cursor: pointer;  width: 130px;
 }
-#i_you{
-	display: inline; float: left; display: none;
+#u_you{
+	display: inline-block;
+}
+#i_you1{
+	display: none; 
 }
 #iu{
 	position: relative; top: 30px; left: 25px;  width: 150px; height: 170px;

@@ -56,8 +56,8 @@
 	<insert id="iu_com" parameterType="iu_com">
 		insert into iu_com values(0,#{content},now(),#{hompy_num},#{id})
 	</insert>
-	<select id="iu_is" parameterType="iu" resultType="int">
-		select iu_num from iu where u_name='일촌' and i_id=#{i_id} and u_id=#{u_id}
+	<select id="iu_is" parameterType="iu" resultType="iu">
+		select * from iu where u_name='일촌' and i_id=#{i_id} and u_id=#{u_id}
 	</select>
 	<select id="iu_com_list" parameterType="int" resultType="iu_com">
 		select * from iu_com where hompy_num=#{value} order by iu_com_num desc
@@ -82,5 +82,8 @@
 	</select>
 	<select id="item_img" parameterType="int" resultType="string">
 		select item_img from item where item_num=#{value}
+	</select>
+	<select id="iu_list" parameterType="string" resultType="iu_name">
+		select i.*,m.name,h.hompy_num from iu i join member m on i.u_id=m.id join hompy h on m.id=h.id where i_id=#{value} and u_name='일촌';
 	</select>
 </mapper>  

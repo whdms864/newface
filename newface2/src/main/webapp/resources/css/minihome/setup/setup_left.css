@@ -16,7 +16,7 @@
 	font-size: 14px; font-weight: bold;
 }
 #item_set_menu{
-	position: relative; top: 30px; left: 20px; width: 155px; height: 100px;
+	position: relative; top: 20px; left: 20px; width: 155px; height: 100px;
 	font-size: 13px;  
 }                       
 #info_set{
@@ -26,4 +26,7 @@
 #info_set_menu{
 	position: relative; top: 30px; left: 20px; width: 155px; height: 100px;
 	font-size: 13px;  
-}                       
+}            
+.setup_menu{
+	display:inline-block; ; margin-bottom: 5px;
+}           

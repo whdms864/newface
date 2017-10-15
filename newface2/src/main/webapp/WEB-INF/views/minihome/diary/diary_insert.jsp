@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/smarteditor/js/HuskyEZCreator.js"/>" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/writeForm.js"/>"></script>
-	<link rel="stylesheet" href="<c:url value="/resources/css/common.css?var=233"/>"/>
+	<link rel="stylesheet" href="<c:url value="/resources/css/common.css?var=5"/>"/>
 	<script type="text/javascript" charset="utf-8">
 		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
 	</script>
@@ -34,10 +34,10 @@
 			<td><input type="text" name="title" id="title" placeholder="다이어리 제목을 입력하세요" ></td>
 		</tr>
 		<tr>
-			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" rows="10" cols="100" style="width:100%; height:360px;"></textarea></td>
+			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="width:493px; height:270px;"></textarea></td>
 		</tr>
 	</table>
-	<span id="type" style="font-size: 16px; font-weight: bold;">설정정보</span> 
+	<span id="type" style="font-size: 16px; font-weight: bold;">&nbsp;설정정보</span> 
 	<input type="radio" name="type" value="전체공개" checked="checked">전체공개 
 	<input type="radio" name="type" value="1촌공개">1촌공개 
 	<input type="radio" name="type" value="비공개">비공개 

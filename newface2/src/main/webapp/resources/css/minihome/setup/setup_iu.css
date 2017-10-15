@@ -3,13 +3,13 @@ a{
 	text-decoration: none; color: black;
 }
 #setup_iu_back{
-	padding: 30px;
+	padding: 30px; padding-top: 0px;
 }    
 .iu_back{
 	padding-top: 10px; padding-bottom: 10px; background-color: #f3f3f3;
 }
 h3{
-	padding-top: 30px; padding-bottom: 5px;
+	
 }
 input[type=text]{
 	height: 17px; width: 200px;
@@ -19,9 +19,6 @@ input[type=submit]{
 }
 #menu{
 	margin-top: 10px; margin-bottom: 10px; border: 1px dashed #c6c6c6;
-}
-#first{
-	padding-top: 0px;
 }
 
 

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 #diary_list_back{
-	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px; background-color: red;
+	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px; 
 }
 #title_back{
-	display: inline-block; background-color: #d2d2d2; width: 100%
+	display: inline-block; background-color: #d2d2d2; width: 100%; padding: 0px;
 }
 .chk{
 	display: inline-block; width: 25px; height:25px;  text-align: center;
@@ -44,8 +44,11 @@ a{
 	position:absolute; top:260px; left:50%; margin-left:-200px; box-shadow: 0px 1px 20px #333; z-index:100; display:none;
 }
 #page{
-	position:relative; top: 10px; left: 20px;
+	position:relative; top: 10px; left: 20px; 
 }
 #write{
 	display: inline-block; margin-left: 250px; font-size: 14px;
+}
+hr{
+	margin: 0px; padding: 0px;
 }

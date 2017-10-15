@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.service.MiniHomeService;
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.Miniroom_HompyVo;
@@ -33,15 +34,18 @@ public class MiniHomeController {
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,Model model,HttpServletRequest request) {
-		String id=request.getParameter("id");
-		session.setAttribute("fid", id);
-		if(id == null) {
-			id=(String)session.getAttribute("loginid");
+		//아이디 구분 (주인인지 아닌지)
+		String loginid=(String)session.getAttribute("loginid");
+		String id;
+		if(hompy_num<1) {
+			id=loginid;
 			hompy_num=service.hompy_num(id);
 		}else {
-			hompy_num=Integer.parseInt(request.getParameter("hompy_num"));
+			id=service.id(hompy_num);
 		}
+
 		session.setAttribute("hompy_num", hompy_num);
+		System.out.println("loginid : " + loginid);
 		System.out.println("id : " + id);
 		System.out.println("hompy_num : " + hompy_num);
 		
@@ -99,6 +103,11 @@ public class MiniHomeController {
 			session.setAttribute("item_img", item_img);						
 		}
 		
+		//일촌목록
+		List<Iu_NameVo> iu_list=service.iu_list(id);
+		session.setAttribute("iu_list", iu_list);
+		
+		
 		return ".minihome";
 	}
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
@@ -124,14 +133,14 @@ public class MiniHomeController {
 		String i_id=service.id(hompy_num);
 		String u_id=(String)session.getAttribute("loginid");
 		IuVo iu=new IuVo(0, null, null, i_id, u_id);
-		int n1=service.iu_is(iu);
-		int n2=0;
-		if(n1>0) {
+		IuVo iu_is=service.iu_is(iu);
+		int n=0;
+		if(iu_is!=null) {
 			IucomVo vo=new IucomVo(0, content, null, hompy_num, u_id);
-			n2=service.iu_com(vo);		
+			n=service.iu_com(vo);		
 		}
 		JSONObject json=new JSONObject();
-		json.put("n", n2);
+		json.put("n", n);
 		return json.toString();
 	}
 	@RequestMapping(value="/minihome/iu_com_list",method=RequestMethod.GET)

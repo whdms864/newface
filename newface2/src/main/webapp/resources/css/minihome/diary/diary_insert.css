@@ -30,8 +30,11 @@ select{
 	width: 100px; height: 25px;
 }
 #title{
-	width: 387px; height: 25px;
+	width: 388px; height: 25px;
 }
 #smarteditor{
 	height: 380px;
+}
+#main_skin{
+	height: 450px;
 }
