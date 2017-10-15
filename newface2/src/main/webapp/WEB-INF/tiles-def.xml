@@ -190,7 +190,6 @@
 	</definition>
 	
 	<!-- 광고 관리자-->
-	
 	<definition name=".ader_list" extends=".qna11admin">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/ader_list.jsp"/>
 	</definition>
@@ -206,11 +205,9 @@
 	<definition name=".ader_update" extends=".ader_list">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/ader_update.jsp"/>
 	</definition>
-		
-		
+			
 	<definition name=".ad_list" extends=".ader_list">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/ad_list.jsp"/>
-		
 	</definition>
 	
 	<definition name=".ad_getinfo" extends=".ader_list">
@@ -265,6 +262,24 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/singo/singoadmin.jsp"/>
 	</definition>
 	<!-- 여기까지 관리자 -->
+	
+	
+	<!-- 쪽지 -->
+	
+	<definition name=".msg" template="/WEB-INF/views/homepage/msg/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/homepage/msg/header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/recvlist.jsp"/>
+	</definition>
+	
+	<definition name=".sendlist" extends=".msg">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/sendlist.jsp"/>
+	</definition>
+	
+	<definition name=".send" extends=".msg">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/send.jsp"/>
+	</definition>
+	
+	
 	
 
 	

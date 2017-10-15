@@ -8,9 +8,12 @@
 		$("#cash_add").click(function(){
 			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570,left=100,top=100");
 		});
-		 $("#minihome").click(function(){
-			 window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
-		 });
+		$("#minihome").click(function(){
+		    window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
+		});
+		$("#msg").click(function(){
+		    window.open("<c:url value='/msg'/>","_msg"," width=512,height=594,left=100,top=100"); 
+		});
 	});
 </script>	
 <style>
@@ -52,7 +55,7 @@
 		<div>
 			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>
 			<a href="<c:url value='/market/item/list'/>" style="margin-left: 20px;">마켓</a>
-			<a href="" style="margin-left: 20px;">쪽지</a>
+			<a style="margin-left: 20px;" id="msg">쪽지</a>
 			<a href="<c:url value='/member/mypage?id=${sessionScope.loginid }'/>" style="margin-left: 20px;">MyPage</a>
 		</div>
 	</div>
