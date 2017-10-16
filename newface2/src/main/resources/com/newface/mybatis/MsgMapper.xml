@@ -54,7 +54,7 @@
 		where msg_num=#{msg_num}
 	</update>
 	
-	<select id="msgrecv_getinfo" parameterType="int">
+	<select id="msgrecv_getinfo" parameterType="int" resultType="msg">
 		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d'), send_cls, chk, sender, receiver
 		from msg
 		where msg_num=#{msg_num}

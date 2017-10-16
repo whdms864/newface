@@ -12,7 +12,9 @@
 	</select>
 	
 	<select id="notigetinfo" resultType="noti" parameterType="int">
-		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti where noti_num=#{noti_num} 
+		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id 
+		from noti where 
+		noti_num=#{noti_num} 
 	</select>
 	
 	<update id="notiupdate" parameterType="noti">
