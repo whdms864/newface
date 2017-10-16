@@ -19,8 +19,8 @@ public class NotiDao {
 		return sqlSession.insert(NAMESPACE + ".insert",vo);
 	}
 	
-	public List<NotiVo> notilist(){
-		return sqlSession.selectList(NAMESPACE+".notilist");
+	public List<NotiVo> notilist(HashMap<String,Object> map){
+		return sqlSession.selectList(NAMESPACE+".notilist",map);
 	}
 	
 	public NotiVo notigetinfo(int noti_num){
@@ -50,7 +50,11 @@ public class NotiDao {
 		return sqlSession.delete(NAMESPACE + ".noti_com_delete",noti_num);
 	}
 	
-	public int getCount(int noti_num) {
+	public int com_getCount(int noti_num) {
 		return sqlSession.selectOne(NAMESPACE+".count_noti_com",noti_num);
+	}
+	
+	public int getCount() {
+		return sqlSession.selectOne(NAMESPACE+".count_noti");
 	}
 }

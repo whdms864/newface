@@ -1,6 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/paging_style_user.css?ver=1'/>">
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#noti_com_insert").submit(function(event){
+			var content=$("#com_content").val();
+			
+			if(content==""){
+				$("#com_content").focus();
+				alert("내용을 입력해주세요");
+				event.preventDefault();
+			}
+		});
+		
+			
+		$(".btnprev").hover(function() {
+			$(this).html("◀◀");
+		},function(){
+			$(this).html("◁◁");
+		});
+		$(".btnnext").hover(function() {
+			$(this).html("▶▶");
+		},function(){
+			$(this).html("▷▷");
+		});
+		
+		
+		
+	});
+</script>
+
 <div id="sidebar">
 	<ul>
 		<li>
@@ -48,15 +80,20 @@
 			  			<td>작성일 : ${vo.regdate }</td>
 				  	</tr>
 				  	<tr>
-			  			<td colspan="2" style="height:100px"><textarea rows="16" cols="91" name="content" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea></td>
+			  			<td colspan="2" style="height:100px"><textarea rows="13" cols="91" name="content" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea></td>
 				  	</tr>
 			</table>
-			
+		<form method="post" id="noti_com_insert" action="<c:url value='/notiadmin_com_insert'/>">
 		<div style="display: inline-block;">
-			<div class="form-group has-success" style="display: inline-block; width:500px; height:35px;">
-				<input type="text" name="content" id="com_content" class="form-control" style="width:400px;height:30px; float:left; position:absolute;right:75px; top:5px;">
-					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
-				<div style="width:90%; height:148px; background-color: white; position:absolute; top:440px; right:38px;">
+			<input type="hidden" name="id" value="${sessionScope.loginid }">
+			<input type="hidden" name="noti_num" value="${vo.noti_num}">
+			<div class="form-group has-success" style="display: inline-block; width:700px; height:35px;">
+				<input type="text" name="content" id="com_content" class="form-control" style="width:500px;height:30px; float:left; margin-left:70px;">
+				<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; margin-left:10px;">
+			</div>
+		</div>
+		</form>
+			<div style="width:90%; height:148px; background-color: white; position:absolute; top:440px; right:38px;">
 					<table style="width:100%;">
 						<tr>
 						<th>글쓴이</th>
@@ -73,11 +110,10 @@
 						</tr>
 						</c:forEach>
 					</table>
-					<input type="hidden" name="id" value="${sessionScope.loginid }">
-					<input type="hidden" name="noti_num" value="${vo.noti_num}">
-				</div> 
-			</div>
+					
+				
 		</div>
+		
 	</div>
 		
 		

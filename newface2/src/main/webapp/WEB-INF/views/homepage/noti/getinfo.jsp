@@ -37,7 +37,7 @@
 		<label style="font-weight:bold;font-size:25px;">공지사항</label>
 	</div>
 	<ul>
-	    <li><a href="<c:url value='/qna11/getinfo'/>"style="margin-left:0px;" class="hover_a">목록</a></li>
+	    <li><a href="<c:url value='/noti_list'/>"style="margin-left:0px;" class="hover_a">목록</a></li>
 	</ul>
 </div>
 <div id="con" align="center">
@@ -86,7 +86,7 @@
 								</c:when>
 									
 								<c:otherwise>
-									<td></td>
+									<td style="width:9%;"><input type="button" value="삭제"></td>
 								</c:otherwise>
 							</c:choose>
 						</tr>

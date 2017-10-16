@@ -51,21 +51,7 @@
 			  	<tbody>
 			  		<c:forEach var="ad" items="${ad_list}">
 			  			<tr>
-				  			<td>
-				  			<c:choose>
-				  				<c:when test="${ad.type==1 }">
-				  					계약협상
-				  				</c:when>
-				  				
-				  				<c:when test="${ad.type==2 }">
-				  					광고게시
-				  				</c:when>
-				  				
-				  				<c:otherwise>
-				  					계약만료
-				  				</c:otherwise>
-				  			</c:choose>
-				  			</td>
+				  			<td>${ad.type }</td>
 				  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/ad_getinfo?ad_num=${ad.ad_num }'/>">${ad.url}</a></td>
 				  			<td>${ad.sdate}</td>
 				  			<td>${ad.edate}</td>

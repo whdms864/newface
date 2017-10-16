@@ -23,8 +23,14 @@ public class NotiController {
 	@Autowired private NotiService service;
 	
 	@RequestMapping(value = "/notiadmin_list", method = RequestMethod.GET)
-	public String notiadmin_list(Model model) {
-		List<NotiVo> list=service.list();
+	public String notiadmin_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount();
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<NotiVo> list=service.list(map);
+		model.addAttribute("pu",pu);
 		model.addAttribute("list",list);
 		return ".notiadmin_list";
 	}
@@ -35,10 +41,12 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value = "/notiadmin_insert", method = RequestMethod.POST)
-	public String nadmininsert(NotiVo vo, HttpSession session) {
+	public String nadmininsert(NotiVo vo, HttpSession session,Model model) {
+		String id=(String)session.getAttribute("loginid");
 		List<NotiVo> noti_side=service.noti_side();
 		service.insert(vo);
 		session.setAttribute("noti_side", noti_side);
+		model.addAttribute("id", id);
 		return "redirect:/notiadmin_list";
 	}
 	
@@ -47,8 +55,8 @@ public class NotiController {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount(noti_num);
-		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
+		int totalRowCount=service.com_getCount(noti_num);
+		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
 		map.put("noti_num",noti_num);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
@@ -82,10 +90,24 @@ public class NotiController {
 		return "redirect:/notiadmin_list";
 	}
 	
+	@RequestMapping(value="/notiadmin_com_insert",method=RequestMethod.POST)
+	public String notiadmin_com_insert(NoticomVo vo) {
+		service.noti_com_insert(vo);
+		return "redirect:/notiadmin_getinfo?noti_num=" + vo.getNoti_num();
+	}
+	
+	
+	
 	@RequestMapping(value = "/noti_list", method = RequestMethod.GET)
-	public String noti_list(Model model) {
-		List<NotiVo> list=service.list();
+	public String noti_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.getCount();
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<NotiVo> list=service.list(map);
 		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
 		return ".noti_list";
 	}
 	
@@ -95,8 +117,8 @@ public class NotiController {
 		NotiVo vo=service.notigetinfo(noti_num);
 		
 		HashMap<String,Object> map=new HashMap<String, Object>();
-		int totalRowCount=service.getCount(noti_num);
-		PageUtil pu=new PageUtil(pageNum,6,5,totalRowCount);
+		int totalRowCount=service.com_getCount(noti_num);
+		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
 		map.put("noti_num",noti_num);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
@@ -118,7 +140,7 @@ public class NotiController {
 	}
 	
 	@RequestMapping(value="/noti_com_insert",method=RequestMethod.POST)
-	public String noti_com_insert(Model model, NoticomVo vo) {
+	public String noti_com_insert(NoticomVo vo) {
 		service.noti_com_insert(vo);
 		return "redirect:/noti_getinfo?noti_num=" + vo.getNoti_num();
 	}

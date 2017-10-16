@@ -48,8 +48,8 @@ td img{
 		<div align="center">
 			<table class="table table hover" style="width: 80%;margin-top: 20px;">
 			  		<tr>
-			  			<td class="danger" colspan="4">No. ${ad_getinfo.ad_num }</td>
-			  			
+			  			<td class="danger" colspan="2">No. ${ad_getinfo.ad_num }</td>
+			  			<td class="info" colspan="2">${ad_getinfo.type }</td>
 			  		</tr>
 			  		<tr>
 			  			<td style="width:70px;">가격 </td> 

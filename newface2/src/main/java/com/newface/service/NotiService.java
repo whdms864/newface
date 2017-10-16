@@ -21,8 +21,8 @@ public class NotiService {
 		return dao.insert(vo);
 	}
 	
-	public List<NotiVo> list(){
-		return dao.notilist();
+	public List<NotiVo> list(HashMap<String,Object> map){
+		return dao.notilist(map);
 	}
 	
 	public NotiVo notigetinfo(int noti_num){
@@ -53,7 +53,11 @@ public class NotiService {
 		return dao.noti_com_delete(noti_num);
 	}
 	
-	public int getCount(int noti_num) {
-		return dao.getCount(noti_num);
+	public int com_getCount(int noti_num) {
+		return dao.com_getCount(noti_num);
+	}
+	
+	public int getCount() {
+		return dao.getCount();
 	}
 }
