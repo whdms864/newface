@@ -2,7 +2,6 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
-DROP TABLE IF EXISTS ad_img;
 DROP TABLE IF EXISTS ad;
 DROP TABLE IF EXISTS ader;
 DROP TABLE IF EXISTS diary_com_singo;
@@ -32,11 +31,11 @@ DROP TABLE IF EXISTS iu_com;
 DROP TABLE IF EXISTS miniroom;
 DROP TABLE IF EXISTS photo_com_tag;
 DROP TABLE IF EXISTS photo_com;
-DROP TABLE IF EXISTS photo_img;
 DROP TABLE IF EXISTS photo;
 DROP TABLE IF EXISTS photo_folder;
 DROP TABLE IF EXISTS profile;
 DROP TABLE IF EXISTS setup;
+DROP TABLE IF EXISTS today;
 DROP TABLE IF EXISTS hompy;
 DROP TABLE IF EXISTS iu;
 DROP TABLE IF EXISTS msg;
@@ -52,7 +51,9 @@ CREATE TABLE ad
 (
 	ad_num int NOT NULL AUTO_INCREMENT,
 	type varchar(20),
-	pay int,
+	pay varchar(4000),
+	ad_img varchar(4000),
+	url varchar(1000),
 	sdate date,
 	edate date,
 	ader_num int NOT NULL,
@@ -79,18 +80,6 @@ CREATE TABLE admin
 	pwd varchar(250),
 	name varchar(1000),
 	PRIMARY KEY (id)
-);
-
-
-CREATE TABLE ad_img
-(
-	ad_img_num int NOT NULL AUTO_INCREMENT,
-	type varchar(20),
-	org_name varchar(1000),
-	save_name varchar(1000),
-	url varchar(1000),
-	ad_num int NOT NULL,
-	PRIMARY KEY (ad_img_num)
 );
 
 
@@ -192,7 +181,6 @@ CREATE TABLE diary_tag
 CREATE TABLE guestbook
 (
 	guest_num int NOT NULL AUTO_INCREMENT,
-	title varchar(1000),
 	content varchar(4000),
 	secret varchar(20),
 	regdate date,
@@ -224,7 +212,6 @@ CREATE TABLE hashtag
 CREATE TABLE hompy
 (
 	hompy_num int NOT NULL AUTO_INCREMENT,
-	total int,
 	hname varchar(1000),
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (hompy_num)
@@ -246,9 +233,8 @@ CREATE TABLE item
 	pay int,
 	name varchar(1000),
 	content varchar(4000),
+	item_img varchar(4000),
 	regdate date,
-	org_name varchar(1000),
-	save_name varchar(1000),
 	category_num int NOT NULL,
 	PRIMARY KEY (item_num)
 );
@@ -415,16 +401,6 @@ CREATE TABLE photo_folder
 );
 
 
-CREATE TABLE photo_img
-(
-	photo_img_num int NOT NULL AUTO_INCREMENT,
-	org_name varchar(1000),
-	save_name varchar(1000),
-	photo_num int NOT NULL,
-	PRIMARY KEY (photo_img_num)
-);
-
-
 CREATE TABLE photo_singo
 (
 	ps_num int NOT NULL AUTO_INCREMENT,
@@ -494,16 +470,18 @@ CREATE TABLE setup
 );
 
 
+CREATE TABLE today
+(
+	today_num int NOT NULL AUTO_INCREMENT,
+	cnt int,
+	regdate date,
+	hompy_num int NOT NULL,
+	PRIMARY KEY (today_num)
+);
+
+
 
 /* Create Foreign Keys */
-
-ALTER TABLE ad_img
-	ADD FOREIGN KEY (ad_num)
-	REFERENCES ad (ad_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
 
 ALTER TABLE ad
 	ADD FOREIGN KEY (ader_num)
@@ -689,6 +667,14 @@ ALTER TABLE setup
 ;
 
 
+ALTER TABLE today
+	ADD FOREIGN KEY (hompy_num)
+	REFERENCES hompy (hompy_num)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE buy
 	ADD FOREIGN KEY (item_num)
 	REFERENCES item (item_num)
@@ -770,7 +756,7 @@ ALTER TABLE hompy
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -778,7 +764,7 @@ ALTER TABLE iu
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -802,7 +788,7 @@ ALTER TABLE mine
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (sender)
+	ADD FOREIGN KEY (receiver)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -810,7 +796,7 @@ ALTER TABLE msg
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (receiver)
+	ADD FOREIGN KEY (sender)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -898,14 +884,6 @@ ALTER TABLE noti_com_singo
 
 
 ALTER TABLE photo_com
-	ADD FOREIGN KEY (photo_num)
-	REFERENCES photo (photo_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_img
 	ADD FOREIGN KEY (photo_num)
 	REFERENCES photo (photo_num)
 	ON UPDATE RESTRICT

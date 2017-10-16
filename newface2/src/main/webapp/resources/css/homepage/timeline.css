@@ -8,6 +8,22 @@
 	padding-top: 10px;
 }
 
+.img-circle {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid black;
+	margin-left: 5px;
+}
+
+.form-control {
+	float: left;
+	width: 90%;
+	border-radius: 20px;
+	height: 40px;
+	margin-left: 5px;
+}
+
 .first {
 	border-radius: 2px;
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
@@ -21,12 +37,31 @@
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
 	width: 90%;
 	display: inline-block;
+	position: relative;
 }
-.content1{
+.com_a{
+	float:right;margin-right: 10px;
+}
+.timecom-wrap {
+	width: 100%;
+	padding: 5px;
+	position: relative;
+}
+
+.input-icon {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	right: 65px;
+	top: 480px;
+}
+
+.content1 {
 	width: 90%;
 	height: 300px;
 	border: 1px solid rgba(224, 224, 224, 0.78);
 }
+
 .content2 ul {
 	list-style: none;
 	display: inline-block;
