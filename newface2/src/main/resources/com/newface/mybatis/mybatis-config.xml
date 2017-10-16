@@ -66,5 +66,6 @@
   	<mapper resource="com/newface/mybatis/PhotoMapper.xml"/>
   	<mapper resource="com/newface/mybatis/AdMapper.xml"/>
   	<mapper resource="com/newface/mybatis/TimelineMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/MsgMapper.xml"/>
   </mappers>
 </configuration>

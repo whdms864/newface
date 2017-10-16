@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.MsgService;
+import com.newface.vo.MsgVo;
 
 
 @Controller
@@ -26,8 +27,13 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "/msg_send", method = RequestMethod.GET)
-	public String msg_send(Model model) {
-		
+	public String msg_sendform(Model model) {
 		return ".send";
+	}
+	
+	@RequestMapping(value = "/msg_send", method = RequestMethod.POST)
+	public String msg_send(Model model,MsgVo vo) {
+		service.msg_insert(vo);
+		return "redirect:/msg_sendlist";
 	}
 }
