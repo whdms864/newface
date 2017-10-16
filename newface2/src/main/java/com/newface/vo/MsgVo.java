@@ -9,10 +9,14 @@ public class MsgVo {
 	private String recv_del;
 	private Date regdate;
 	private String send_clx;
+	private String chk;
 	private String sender;
 	private String receiver;
+	
+	public MsgVo() {}
+
 	public MsgVo(int msg_num, String content, String send_del, String recv_del, Date regdate, String send_clx,
-			String sender, String receiver) {
+			String chk, String sender, String receiver) {
 		super();
 		this.msg_num = msg_num;
 		this.content = content;
@@ -20,11 +24,10 @@ public class MsgVo {
 		this.recv_del = recv_del;
 		this.regdate = regdate;
 		this.send_clx = send_clx;
+		this.chk = chk;
 		this.sender = sender;
 		this.receiver = receiver;
 	}
-	
-	public MsgVo() {}
 
 	public int getMsg_num() {
 		return msg_num;
@@ -74,6 +77,14 @@ public class MsgVo {
 		this.send_clx = send_clx;
 	}
 
+	public String getChk() {
+		return chk;
+	}
+
+	public void setChk(String chk) {
+		this.chk = chk;
+	}
+
 	public String getSender() {
 		return sender;
 	}
@@ -89,4 +100,6 @@ public class MsgVo {
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
+	
+	
 }
