@@ -34,6 +34,7 @@
 		SELECT pro.save_name save_name
 		FROM hompy h JOIN profile pro
 		ON h.hompy_num=pro.hompy_num
-		WHERE id=#{value}
+		WHERE id=#{value} 
+		order by regdate desc limit 0,1
 	</select>
 </mapper>  
