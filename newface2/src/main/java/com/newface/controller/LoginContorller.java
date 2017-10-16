@@ -22,6 +22,7 @@ import com.newface.service.TimelineService;
 import com.newface.vo.CashVo;
 import com.newface.vo.NotiVo;
 import com.newface.vo.TimelineVo;
+import com.newface.vo.Timeline_proVo;
 
 
 @Controller
@@ -59,7 +60,9 @@ public class LoginContorller {
 					session.setAttribute("cnt", 0);
 				}
 				List<TimelineVo> list=timelineservice.list();
+				Timeline_proVo pro_img=timelineservice.pro_img(loginid);
 				model.addAttribute("list",list);
+				model.addAttribute("pro_img",pro_img);
 				return ".main2";
 			}else if(a) {
 				HttpSession session = request.getSession();

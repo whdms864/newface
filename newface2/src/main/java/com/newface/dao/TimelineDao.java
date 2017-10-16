@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.TimelineVo;
+import com.newface.vo.Timeline_proVo;
 
 
 @Repository
@@ -20,5 +21,8 @@ public class TimelineDao {
 	}
 	public List<TimelineVo> list() {
 		return sqlSession.selectList(NAMESPACE+".list");
+	}
+	public Timeline_proVo pro_img(String id) {
+		return sqlSession.selectOne(NAMESPACE+".pro_img",id);
 	}
 }
