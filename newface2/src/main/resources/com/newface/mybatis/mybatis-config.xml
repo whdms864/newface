@@ -46,7 +46,8 @@
   	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
   	<typeAlias type="com.newface.vo.Iu_NameVo" alias="iu_name"/>
   	<typeAlias type="com.newface.vo.TodayVo" alias="today"/> 
-  	<typeAlias type="com.newface.vo.MsgVo" alias="msg"/> 	
+  	<typeAlias type="com.newface.vo.MsgVo" alias="msg"/> 
+  	<typeAlias type="com.newface.vo.TimelineVo" alias="timeline"/> 	
   </typeAliases>
   
   <mappers>
@@ -63,5 +64,6 @@
   	<mapper resource="com/newface/mybatis/MarketMapper.xml"/>
   	<mapper resource="com/newface/mybatis/PhotoMapper.xml"/>
   	<mapper resource="com/newface/mybatis/AdMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/TimelineMapper.xml"/>
   </mappers>
 </configuration>

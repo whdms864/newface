@@ -4,26 +4,33 @@
 	background-color: rgba(224, 224, 224, 0.78);
 	margin-left: 20px;
 	width: 95%;
-	height: 1500px;
 	padding-top: 10px;
 }
-
 .img-circle {
 	float: left;
 	width: 40px;
 	height: 40px;
-	border: 1px solid black;
+	border: 1px solid rgba(224, 224, 224, 0.78);
 	margin-left: 5px;
 }
 
 .form-control {
 	float: left;
-	width: 90%;
+	width: 89%;
 	border-radius: 20px;
 	height: 40px;
 	margin-left: 5px;
 }
-
+.timeline{
+	margin-bottom:20px;
+}
+.com{
+	float: left;
+	width: 90%;
+	height: 40px;
+	margin-left: 5px;
+	
+}
 .first {
 	border-radius: 2px;
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
@@ -37,19 +44,17 @@
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
 	width: 90%;
 	display: inline-block;
-	position: relative;
-}
-.com_a{
-	float:right;margin-right: 10px;
-}
-.timecom-wrap {
-	width: 100%;
 	padding: 5px;
-	position: relative;
 }
 
+.com_a {
+	float: right;
+	margin-right: 10px;
+	margin-top:10px;
+}
+
+
 .input-icon {
-	position: relative;
 	width: 20px;
 	height: 20px;
 	right: 65px;
@@ -57,17 +62,40 @@
 }
 
 .content1 {
-	width: 90%;
-	height: 300px;
+	width: 95%;
+	height:320px;
 	border: 1px solid rgba(224, 224, 224, 0.78);
+	padding: 10px;
+	
 }
-
+.content1 p img{
+	max-width: 100%;
+	max-height: 98%;
+	
+}
+.content2 {
+	height: 50px;
+}
 .content2 ul {
 	list-style: none;
 	display: inline-block;
 }
 
 .content2 ul li {
+	float: left;
+	margin-left: 10px;
+}
+.com_main{
+	margin-top: 10px;
+}
+.com_main ul {
+	list-style: none;
+	display: inline-block;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.com_main ul li {
 	float: left;
 	margin-left: 10px;
 }

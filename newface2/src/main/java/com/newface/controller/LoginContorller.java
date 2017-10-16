@@ -18,14 +18,17 @@ import com.newface.service.CashService;
 import com.newface.service.MemberService;
 import com.newface.service.NotiService;
 import com.newface.service.Qna11Service;
+import com.newface.service.TimelineService;
 import com.newface.vo.CashVo;
 import com.newface.vo.NotiVo;
+import com.newface.vo.TimelineVo;
 
 
 @Controller
 public class LoginContorller {
 	@Autowired private MemberService service;
 	@Autowired private CashService cashservice;
+	@Autowired private TimelineService timelineservice;
 	@Autowired private NotiService notiservice;
 	
 
@@ -55,6 +58,8 @@ public class LoginContorller {
 				}else {
 					session.setAttribute("cnt", 0);
 				}
+				List<TimelineVo> list=timelineservice.list();
+				model.addAttribute("list",list);
 				return ".main2";
 			}else if(a) {
 				HttpSession session = request.getSession();

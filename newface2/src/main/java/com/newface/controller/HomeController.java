@@ -1,8 +1,15 @@
 package com.newface.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.newface.service.TimelineService;
+import com.newface.vo.TimelineVo;
 
 
 
@@ -10,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-	
+	@Autowired private TimelineService timelineservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -25,8 +32,9 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
-	public String main2() {
-						
+	public String main2(Model model) {
+		List<TimelineVo> list=timelineservice.list();
+		model.addAttribute("list",list);
 		return ".main2";
 	}
 	

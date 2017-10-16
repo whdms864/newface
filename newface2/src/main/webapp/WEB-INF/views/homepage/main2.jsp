@@ -1,63 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=445'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=24'/>">
 	<div class="loginafter" align="center">
-		<div >
+	<c:forEach var="vo" items="${list }">
+		<div class="timeline">
 			<div class="first" align="center">
-				<img src="" class="img-circle" >
-				사용자이름<br>
-				등록일<br>
-				<p>내용들어갈자리</p>
-				<div class="content1">
+				<div align="left" style="margin-left: 5px;">
+				<table style="padding:0px; margin: 0px;">
+						<tr>
+							<td rowspan="2">
+								<c:choose>
+									<c:when test="${vo.save_name!=null }">
+										<img src="<c:url value='/resources/upload/${vo.save_name }'/>" class="img-circle">
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>" class="img-circle">
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td style="width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;">
+								${vo.name }
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 94%;padding-left:10px;height: 20px;color:#90949c;">
+								${vo.regdate }
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"style="width: 100%;">
+							<p style="margin-left:5px;">${vo.title }</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="content1" align="left">
+					${vo.content }
 				</div>
 				<div class="content2" align="left">
-					<hr>
+					<hr style="margin-bottom:15px;">
 					<ul>
 						<li><a href="">좋아요</a></li>
 						<li><a href="">댓글달기</a></li>
 						<li><a href="">공유하기</a></li>
+						<li><a href="">신고하기</a></li>
 					</ul>
 				</div>
 			</div>	
 			<div class="timecom" align="center">
-				<div class="timecom-wrap">
-					<img src="" class="img-circle">
-					<input type="text" class="form-control" placeholder="댓글을 입력하세요">
-					<img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" >
+				<img src="" class="img-circle">
+				<input type="text" class="form-control" placeholder="댓글을 입력하세요">
+				<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
+				<div class="com_main">
+					<table style="padding:0px; margin: 0px;">
+						<tr>
+							<td rowspan="2">
+								<img src="" class="img-circle">
+								
+							</td>
+							<td style="width: 94%;padding-left:10px;height: 30px;">
+								댓글내용
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<ul>
+									<li><a href="" style="margin: 0px;">좋아요</a></li>
+									<li><a href="">답글달기</a></li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+					<a href="" class="com_a">댓글 더보기</a>
 				</div>
-				<a href="" class="com_a">댓글 더보기</a>
 			</div>
 		</div>
-		<div style="margin-top: 20px;">
-			<div class="first" align="center">
-				<img src="" class="img-circle" style="float: left;width:40px;height: 40px;border: 1px solid black;margin-left: 5px;">
-				사용자이름<br>
-				등록일<br>
-				<p>내용들어갈자리</p>
-				<div class="content1">
-				</div>
-				<div class="content2" align="left">
-					<hr>
-					<ul>
-						<li><a href="">좋아요</a></li>
-						<li><a href="">댓글달기</a></li>
-						<li><a href="">공유하기</a></li>
-					</ul>
-				</div>
-			</div>	
-			<div class="timecom" align="center">
-				<div style="width: 100%;padding: 5px;">
-					<img src="" class="img-circle" style="float: left;width:40px;height: 40px;border: 1px solid black;margin-left: 5px;">
-					<input type="text" class="form-control" placeholder="댓글을 입력하세요" 
-					style="float: left;width: 90%;border-radius: 20px;height:40px;margin-left: 5px;">
-					<img src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" 
-					style="position:relative;width: 20px;height: 20px;right: 65px;top:480px;">
-				</div>
-				<a href="" style="float:right;margin-right: 10px;">댓글 더보기</a>
-			</div>
-		</div>
-	</div>
+	</c:forEach>
+</div>
 	
 	
 	
