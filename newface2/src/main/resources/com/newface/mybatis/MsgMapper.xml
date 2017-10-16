@@ -7,10 +7,10 @@
 		insert into msg values(0,#{content},'삭제전','삭제전',now(),'취소전','읽지않음',#{sender},#{receiver})
 	</insert>
 	
-	<select id="msgrecv_list" resultType="msg" parameterType="hashmap">
-		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d'), send_cls, chk, sender, receiver 
+	<select id="msgrecv_list" resultType="msg" parameterType="String">
+		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d') regdate, send_clx, chk, sender, receiver 
 		from msg 
-		where receiver=#{loginid} and send_clx='취소전' and recv_del='삭제전'
+		where receiver=#{loginid } and send_clx='취소전' and recv_del='삭제전'
 		order by regdate desc
 		limit #{startRow},#{endRow}
 	</select>
@@ -22,10 +22,10 @@
 	</select>
 	
 	
-	<select id="msgsend_list" resultType="msg" parameterType="hashmap">
-		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d'), send_cls, chk, sender, receiver
+	<select id="msgsend_list" resultType="msg" parameterType="String">
+		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d') regdate, send_clx, chk, sender, receiver
 		from msg
-		where sender=#{loginid} and recv_del='삭제전'
+		where sender=#{loginid } and recv_del='삭제전'
 		order by regdate desc
 		limit #{startRow},#{endRow}
 	</select>

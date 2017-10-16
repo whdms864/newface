@@ -266,16 +266,16 @@
 	
 	<!-- 쪽지 -->
 	
-	<definition name=".msg" template="/WEB-INF/views/homepage/msg/layout.jsp">
+	<definition name=".recvlist" template="/WEB-INF/views/homepage/msg/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/homepage/msg/header.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/recvlist.jsp"/>
 	</definition>
 	
-	<definition name=".sendlist" extends=".msg">
+	<definition name=".sendlist" extends=".recvlist">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/sendlist.jsp"/>
 	</definition>
 	
-	<definition name=".send" extends=".msg">
+	<definition name=".send" extends=".recvlist">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/send.jsp"/>
 	</definition>
 	

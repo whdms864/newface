@@ -7,7 +7,7 @@ public class MsgVo {
 	private String content;
 	private String send_del;
 	private String recv_del;
-	private Date regdate;
+	private String regdate;
 	private String send_clx;
 	private String chk;
 	private String sender;
@@ -15,7 +15,7 @@ public class MsgVo {
 	
 	public MsgVo() {}
 
-	public MsgVo(int msg_num, String content, String send_del, String recv_del, Date regdate, String send_clx,
+	public MsgVo(int msg_num, String content, String send_del, String recv_del, String regdate, String send_clx,
 			String chk, String sender, String receiver) {
 		super();
 		this.msg_num = msg_num;
@@ -61,11 +61,11 @@ public class MsgVo {
 		this.recv_del = recv_del;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

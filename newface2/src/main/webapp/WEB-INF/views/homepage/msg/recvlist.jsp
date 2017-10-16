@@ -11,12 +11,13 @@
 	  		</tr>
 	  	</thead>
 	  	<tbody>
-	  		
+	  		<c:forEach var="msgrecv_list" items="${msgrecv_list }">
 	  			<tr>
-		  			<td></td>
-		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value=''/>"></a></td>
-		  			<td></td>
+		  			<td>${msgrecv_list.sender }</td>
+		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value=''/>">${msgrecv_list.content }</a></td>
+		  			<td>${msgrecv_list.regdate }</td>
 		  		</tr>
+		  	</c:forEach>
 		</tbody>
 		</table>
 	</div>

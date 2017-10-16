@@ -9,13 +9,13 @@
 	  	<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); 
 				width: 80px; height:30px; float:left; margin-top:10px;" >
-			<a href="<c:url value='/msg'/>">받은쪽지함</a>
+			<a href="<c:url value='/msgrecv_list?receiver=${loginid }'/>">받은쪽지함</a>
 		</div>
 		
 		<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); 
 				width: 80px; height:30px; ; float:left; margin-top:10px; margin-left: 10px;">
-			<a href="<c:url value='/msg_sendlist'/>">보낸쪽지함</a>
+			<a href="<c:url value='/msgsend_list?sender=${loginid }'/>">보낸쪽지함</a>
 		</div>
 		
 		<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
