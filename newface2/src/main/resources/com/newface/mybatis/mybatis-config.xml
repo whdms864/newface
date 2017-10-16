@@ -45,7 +45,8 @@
   	<typeAlias type="com.newface.vo.Item_MineVo" alias="item_mine"/>
   	<typeAlias type="com.newface.vo.HompyVo" alias="hompy"/>
   	<typeAlias type="com.newface.vo.Iu_NameVo" alias="iu_name"/>
-  	<typeAlias type="com.newface.vo.TodayVo" alias="today"/>  	
+  	<typeAlias type="com.newface.vo.TodayVo" alias="today"/> 
+  	<typeAlias type="com.newface.vo.MsgVo" alias="msg"/> 	
   </typeAliases>
   
   <mappers>
