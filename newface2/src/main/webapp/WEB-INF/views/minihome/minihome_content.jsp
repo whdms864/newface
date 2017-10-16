@@ -37,7 +37,14 @@
 <div id="board_back">
 	<ul id="board">
 		<c:forEach var="nowVo" items="${requestScope.now }">
-			<li><a>${nowVo.title }</a></li>	
+			<c:choose>
+				<c:when test="${nowVo.division==1 }">
+					<li><a href="<c:url value='/photo/list?photo_folder_num=${nowVo.folder_num }'/>">${nowVo.title }</a></li>			
+				</c:when>
+				<c:when test="${nowVo.division==2 }">
+					<li><a href="<c:url value='/diary/content?diary_num=${nowVo.num }'/>">${nowVo.title }</a></li>					
+				</c:when>
+			</c:choose>
 		</c:forEach>
 	</ul>
 </div>

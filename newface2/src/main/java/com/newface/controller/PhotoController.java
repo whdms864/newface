@@ -91,6 +91,8 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/list")
 	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="photo_folder_num",defaultValue="0")int photo_folder_num,HttpSession session,Model model) {
+		System.out.println("¿À³Ä22");
+		System.out.println("photo_folder_num : " + photo_folder_num);
 		String id=(String)session.getAttribute("fid");
 		if(id==null) {
 			id=(String)session.getAttribute("loginid");

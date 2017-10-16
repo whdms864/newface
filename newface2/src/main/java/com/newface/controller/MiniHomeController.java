@@ -1,6 +1,7 @@
 package com.newface.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newface.page.PageUtil;
 import com.newface.service.MiniHomeService;
 import com.newface.vo.HompyVo;
 import com.newface.vo.IuVo;
@@ -37,11 +39,14 @@ public class MiniHomeController {
 		//아이디 구분 (주인인지 아닌지)
 		String loginid=(String)session.getAttribute("loginid");
 		String id;
-		if(hompy_num<1) {
+		if(hompy_num<1) { 
+			//홈주인
 			id=loginid;
 			hompy_num=service.hompy_num(id);
-		}else {
+		}else { 
+			//방문자
 			id=service.id(hompy_num);
+			service.today_insert(hompy_num);
 		}
 
 		session.setAttribute("hompy_num", hompy_num);
@@ -49,11 +54,16 @@ public class MiniHomeController {
 		System.out.println("id : " + id);
 		System.out.println("hompy_num : " + hompy_num);
 		
-		//홈피명,총방문자
+		//홈피명
 		HompyVo hompy=service.hompy(id);
 		session.setAttribute("hname", hompy.getHname());
-		session.setAttribute("total", hompy.getTotal());
 		session.setAttribute("hompyid", hompy.getId());
+		
+		//방문자
+		int today=service.today_today(hompy_num);
+		session.setAttribute("today", today);
+		int total=service.today_total(hompy_num);
+		session.setAttribute("total", total);
 		
 		//메뉴설정
 		SetupVo vo=service.setup_list(hompy_num);	
@@ -126,6 +136,7 @@ public class MiniHomeController {
 		json.put("n", n);
 		return json.toString();
 	}
+	//일촌평 댓글등록
 	@RequestMapping(value="/minihome/iu_com",method=RequestMethod.GET)
 	@ResponseBody
 	public String iu_com(HttpSession session,String content) {
@@ -143,6 +154,7 @@ public class MiniHomeController {
 		json.put("n", n);
 		return json.toString();
 	}
+	//일촌평 댓글목록
 	@RequestMapping(value="/minihome/iu_com_list",method=RequestMethod.GET)
 	@ResponseBody
 	public String iu_com_list(HttpSession session) {
@@ -157,5 +169,26 @@ public class MiniHomeController {
 			arr.add(json);
 		}		
 		return arr.toString();
+	}
+	@RequestMapping(value="/minihome/profile_history",method=RequestMethod.GET)
+	public String profile_list(HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		List<ProfileVo> profile_list=service.profile_list(hompy_num);
+		model.addAttribute("profile_list", profile_list);
+		return "minihome/profile";
+	}
+	@RequestMapping(value="/minihome/iu_history",method=RequestMethod.GET)
+	public String iu_history(@RequestParam(value="pageNum",defaultValue="1") int pageNum,String id,HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("hompy_num", hompy_num);
+		map.put("id", id);
+		int totalRowCount=service.iu_com_count(map);
+		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수		
+		PageUtil page=new PageUtil(pageNum, 5, 5, totalRowCount);
+		map.put("startRow", page.getStartRow());
+		List<IucomVo> list=service.iu_history(map);
+		model.addAttribute("list", list);
+		return "minihome/iu_com";
 	}
 }

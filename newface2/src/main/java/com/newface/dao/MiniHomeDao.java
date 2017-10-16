@@ -1,5 +1,6 @@
 package com.newface.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,6 +33,9 @@ public class MiniHomeDao {
 	}
 	public ProfileVo profile(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".profile", hompy_num);
+	}
+	public List<ProfileVo> profile_list(int hompy_num){
+		return sqlSession.selectList(NAMESPACE + ".profile_list", hompy_num);
 	}
 	public List<NowVo> now(int hompy_num) {
 		return sqlSession.selectList(NAMESPACE + ".now", hompy_num);
@@ -95,5 +99,20 @@ public class MiniHomeDao {
 	}
 	public List<Iu_NameVo> iu_list(String id) {
 		return sqlSession.selectList(NAMESPACE + ".iu_list", id);
+	}
+	public int today_insert(int hompy_num) {
+		return sqlSession.insert(NAMESPACE + ".today_insert", hompy_num);
+	}
+	public int today_today(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".today_today", hompy_num);
+	}
+	public int today_total(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".today_total", hompy_num);
+	}
+	public List<IucomVo> iu_history(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE + ".iu_history", map);
+	}
+	public int iu_com_count(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE + ".iu_com_count", map);
 	}
 }

@@ -33,14 +33,8 @@ public class SetupDao {
 	public ProfileVo profile(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".profile", hompy_num);
 	}
-	public int profile_photo(ProfileVo vo) {
-		return sqlSession.update(NAMESPACE + ".profile_photo", vo);
-	}
-	public int profile_content(ProfileVo vo) {
-		return sqlSession.update(NAMESPACE + ".profile_content", vo);
-	}
-	public int profile_todayis(ProfileVo vo) {
-		return sqlSession.update(NAMESPACE + ".profile_todayis", vo);
+	public int profile_insert(ProfileVo vo) {
+		return sqlSession.insert(NAMESPACE + ".profile_insert", vo);
 	}
 	public List<IuVo> iu_request_list(String id){
 		return sqlSession.selectList(NAMESPACE + ".iu_request_list", id);

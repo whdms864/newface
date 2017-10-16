@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css?var=25'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_left.css?var=2'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -24,6 +24,10 @@
 			var hompy_num=$(this).val();
 			window.open("<c:url value='/minihome?hompy_num=" + hompy_num + "'/>","_minihome2"," width=1024,height=594,left=100,top=100"); 
 		});
+		$("#history").click(function(){
+			var hompy_num=$(this).val();
+			window.open("<c:url value='/minihome/profile_history?hompy_num=" + hompy_num + "'/>","_minihome3"," width=235,height=594,left=100,top=100"); 
+		});
 	});
 </script>
 <div id="left_back">
@@ -42,8 +46,8 @@
 		${requestScope.vo.content }
 	</div>
 	<div id="edit">
-		<a href="<c:url value='/setup/profile'/>">edit</a> 
-		<a href="">history</a>
+		<c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a href="<c:url value='/setup/profile'/>">edit</a></c:if> 
+		<a id="history">history</a>
 	</div>
 	<div id="member">
 		<div id="name"><a id="name1">${requestScope.member.name }</a> <span id="i_you"><a id="i_you1">일촌맺기</a></span></div>		

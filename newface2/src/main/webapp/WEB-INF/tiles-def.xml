@@ -20,7 +20,7 @@
 	<definition name=".code" extends=".minihome">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/minihome/code/code_content.jsp"/>
-	</definition>  
+	</definition> 
 	<!-- 홈피 기능 이동 -->
 	<definition name=".*.*" extends=".minihome">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/{2}/{2}_left.jsp"/>

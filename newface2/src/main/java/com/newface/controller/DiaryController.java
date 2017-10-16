@@ -452,6 +452,8 @@ public class DiaryController {
 	///////////// 상세보기 /////////////
 	@RequestMapping(value = "/diary/content", method = {RequestMethod.GET,RequestMethod.POST})
 	public String content(int diary_num, Model model,HttpSession session) {
+		System.out.println("오냐?");
+		System.out.println("diary_num" + diary_num);
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);

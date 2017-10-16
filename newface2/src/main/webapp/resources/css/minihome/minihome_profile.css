@@ -60,4 +60,7 @@ a{
 .photo{
 	max-width: 153px;max-height: 153px; margin-left: auto; margin-right: auto; display: block;
 }
+hr{
+	width: 230px;
+}
 

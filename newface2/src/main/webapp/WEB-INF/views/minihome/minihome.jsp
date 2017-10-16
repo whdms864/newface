@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=11'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=14'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
@@ -41,12 +41,12 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 
 	<div id="today_back">
 		today
-		<div id="today">0</div>
+		<div id="today">${sessionScope.today }</div>
 	</div>
 	<div id="total">total ${sessionScope.total }</div>
 	<div id="hname_back">
 		<div id="hname">
-			${sessionScope.hname } <a id="hname_edit" href="<c:url value='/setup/basic'/>">edit</a>
+			${sessionScope.hname } <c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a id="hname_edit" href="<c:url value='/setup/basic'/>">edit</a></c:if>
 		</div>
 	</div>
 	<%-- <div id="bgm_back">
@@ -62,37 +62,59 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 	
 	<div id="home">
 		<div class="menu">
-			<a href="<c:url value='/minihome'/>">홈</a>
+			홈
 		</div>
 	</div>
 	<c:if test="${sessionScope.diary==1 }">
 		<div id="diary">
 			<div class="menu">
-				<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a>
+				다이어리
 			</div>
 		</div>
 	</c:if>
 	<c:if test="${sessionScope.photo==1 }">
 		<div id="photo">
 			<div class="menu">
-				<a href="<c:url value='/photo/list'/>">사진첩</a>
+				사진첩
 			</div>
 		</div>
 	</c:if>
 	<c:if test="${sessionScope.guest==1 }">
 	<div id="guest">
 		<div class="menu">
-			<a href="<c:url value='/guest/list_all'/>">방명록</a>
+			방명록
 		</div>
 	</div>
 	</c:if>
 	<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
 	<div id="set">
 		<div class="menu">
-			<a href="<c:url value='/setup/basic'/>">설정</a>
+			설정
 		</div>
 	</div>	
 	</c:if>	
 </div>
+<script>
+	$("#home").click(function(){
+		var url="<c:url value='/minihome'/>";
+		$(location).attr("href",url);
+	});
+	$("#diary").click(function(){
+		var url="<c:url value='/diary/folder_all_list'/>";
+		$(location).attr("href",url);
+	});
+	$("#photo").click(function(){
+		var url="<c:url value='/photo/list'/>";
+		$(location).attr("href",url);
+	});
+	$("#guest").click(function(){
+		var url="<c:url value='/guest/list_all'/>";
+		$(location).attr("href",url);
+	});
+	$("#set").click(function(){
+		var url="<c:url value='/setup/basic'/>";
+		$(location).attr("href",url);
+	});
+</script>
 </body>
 </html>

@@ -49,8 +49,9 @@ public class FileUpdateController {
 			return "file/error";
 		}
 		// DB¼öÁ¤
-		ProfileVo vo=new ProfileVo(0, null, null, null, orgfilename, savefilename, hompy_num);
-		service.profile_photo(vo);
+		ProfileVo vo=service.profile(hompy_num);
+		ProfileVo profile=new ProfileVo(vo.getPro_num(), vo.getTodayis(), vo.getContent(), null, orgfilename, savefilename, hompy_num);
+		service.profile_insert(profile);
 		return ".profile.setup";		
 	}
 }

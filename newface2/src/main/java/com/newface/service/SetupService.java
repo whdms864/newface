@@ -32,14 +32,8 @@ public class SetupService {
 	public ProfileVo profile(int hompy_num) {
 		return dao.profile(hompy_num);
 	}
-	public int profile_photo(ProfileVo vo) {
-		return dao.profile_photo(vo);
-	}
-	public int profile_content(ProfileVo vo) {
-		return dao.profile_content(vo);
-	}
-	public int profile_todayis(ProfileVo vo) {
-		return dao.profile_todayis(vo);
+	public int profile_insert(ProfileVo vo) {
+		return dao.profile_insert(vo);
 	}
 	public List<IuVo> iu_request_list(String id){
 		return dao.iu_request_list(id);

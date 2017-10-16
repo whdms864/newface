@@ -13,7 +13,10 @@
 		select * from hompy where id=#{value}
 	</select>
 	<select id="profile" parameterType="int" resultType="profile">
-		select * from profile where hompy_num=#{value}
+		select * from profile where hompy_num=#{value} order by pro_num desc limit 0,1
+	</select>
+	<select id="profile_list" parameterType="int" resultType="profile">
+		select * from profile where hompy_num=#{value} order by pro_num desc
 	</select>
 	<select id="now" parameterType="int" resultType="now">
 		select photo_num num,title,p.photo_folder_num folder_num,hompy_num,p.regdate regdate,(select 1 from dual) division
@@ -85,5 +88,20 @@
 	</select>
 	<select id="iu_list" parameterType="string" resultType="iu_name">
 		select i.*,m.name,h.hompy_num from iu i join member m on i.u_id=m.id join hompy h on m.id=h.id where i_id=#{value} and u_name='일촌';
+	</select>
+	<insert id="today_insert" parameterType="int">
+		insert into today values(0,1,now(),#{hompy_num})
+	</insert>
+	<select id="today_today" parameterType="int" resultType="int">
+		select ifnull(count(cnt),0) from today where hompy_num=#{value} and regdate=date_format(now(),'%Y-%c-%e')
+	</select>
+	<select id="today_total" parameterType="int" resultType="int">
+		select ifnull(count(cnt),0) from today where hompy_num=#{value}
+	</select>
+	<select id="iu_history" parameterType="hashmap" resultType="iu_com">
+		select * from iu_com where hompy_num=#{hompy_num} and id=#{id} order by iu_com_num desc limit #{startRow},5
+	</select>
+	<select id="iu_com_count" parameterType="hashmap" resultType="int">
+		select ifnull(count(iu_com_num),0) from iu_com where hompy_num=#{hompy_num} and id=#{id}
 	</select>
 </mapper>  

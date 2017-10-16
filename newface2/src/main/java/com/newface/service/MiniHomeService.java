@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class MiniHomeService {
 	}
 	public ProfileVo profile(int hompy_num) {
 		return dao.profile(hompy_num);
+	}
+	public List<ProfileVo> profile_list(int hompy_num){
+		return dao.profile_list(hompy_num);
 	}
 	public List<NowVo> now(int hompy_num){
 		return dao.now(hompy_num);
@@ -96,5 +100,20 @@ public class MiniHomeService {
 	}
 	public List<Iu_NameVo> iu_list(String id){
 		return dao.iu_list(id);
+	}
+	public int today_insert(int hompy_num) {
+		return dao.today_insert(hompy_num);
+	}
+	public int today_today(int hompy_num) {
+		return dao.today_today(hompy_num);
+	}
+	public int today_total(int hompy_num) {
+		return dao.today_total(hompy_num);
+	}
+	public List<IucomVo> iu_history(HashMap<String, Object> map){
+		return dao.iu_history(map);
+	}
+	public int iu_com_count(HashMap<String, Object> map) {
+		return dao.iu_com_count(map);
 	}
 }

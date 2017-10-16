@@ -13,17 +13,11 @@
 		update hompy set hname=#{hname} where hompy_num=#{hompy_num}
 	</update>
 	<select id="profile" parameterType="int" resultType="profile">
-		select * from profile where hompy_num=#{value}
+		select * from profile where hompy_num=#{value} order by pro_num desc limit 0,1
 	</select>
-	<update id="profile_photo">
-		update profile set regdate=now(),org_name=#{org_name},save_name=#{save_name} where hompy_num=#{hompy_num}
-	</update>
-	<update id="profile_content">
-		update profile set regdate=now(),content=#{content} where hompy_num=#{hompy_num}
-	</update>
-	<update id="profile_todayis">
-		update profile set regdate=now(),todayis=#{todayis} where hompy_num=#{hompy_num}
-	</update>
+	<insert id="profile_insert">
+		insert into profile values(0,#{todayis},#{content},now(),#{org_name},#{save_name},#{hompy_num})
+	</insert>
 	<select id="iu_request_list" parameterType="string" resultType="iu">
 		select * from iu where i_id=#{value} and u_name='신청'
 	</select>

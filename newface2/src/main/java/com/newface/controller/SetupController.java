@@ -92,8 +92,9 @@ public class SetupController {
 	@RequestMapping(value="/setup/profile_content",method=RequestMethod.POST)
 	public String profile_content(String content,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		ProfileVo vo=new ProfileVo(0, null, content, null, null, null, hompy_num);
-		int n=service.profile_content(vo);
+		ProfileVo vo=service.profile(hompy_num);
+		ProfileVo profile=new ProfileVo(vo.getPro_num(), vo.getTodayis(), content, null, vo.getOrg_name(), vo.getSave_name(), hompy_num);
+		int n=service.profile_insert(profile);
 		if(n>0) {
 			return ".profile.setup";			
 		}else {
@@ -103,10 +104,11 @@ public class SetupController {
 		}		
 	}
 	@RequestMapping(value="/setup/profile_todayis",method=RequestMethod.POST)
-	public String profile_todayis(ProfileVo vo,HttpSession session,Model model) {
+	public String profile_todayis(String todayis,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		vo.setHompy_num(hompy_num);
-		int n=service.profile_todayis(vo);
+		ProfileVo vo=service.profile(hompy_num);
+		ProfileVo profile=new ProfileVo(vo.getPro_num(), todayis, vo.getContent(), null, vo.getOrg_name(), vo.getSave_name(), hompy_num);
+		int n=service.profile_insert(profile);
 		if(n>0) {
 			return ".profile.setup";			
 		}else {

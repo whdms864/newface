@@ -6,14 +6,14 @@ public class ProfileVo {
 	private int pro_num;
 	private String todayis;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private String org_name;
 	private String save_name;
 	private int hompy_num;
 	
 	public ProfileVo() {}
 
-	public ProfileVo(int pro_num, String todayis, String content, Date regdate, String org_name, String save_name,
+	public ProfileVo(int pro_num, String todayis, String content, String regdate, String org_name, String save_name,
 			int hompy_num) {
 		super();
 		this.pro_num = pro_num;
@@ -49,11 +49,11 @@ public class ProfileVo {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
