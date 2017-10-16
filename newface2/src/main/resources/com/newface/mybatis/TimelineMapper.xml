@@ -4,31 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.TimelineMapper">
 	<select id="list" resultType="timeline">
-		SELECT p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.regdate regdate,h.id id,m.name name,pro.save_name save_name 
-		FROM member m 
-		JOIN hompy h 
-		ON h.id=m.id 
-		JOIN profile pro 
-		ON h.hompy_num=pro.hompy_num 
-		JOIN photo_folder pf 
-		ON pf.hompy_num = h.hompy_num 
-		JOIN photo p 
-		ON pf.photo_folder_num = p.photo_folder_num 
-		where p.secret='전체공개' 
-		union 
-		SELECT d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.regdate regdate,h.id id,m.name name,pro.save_name save_name 
-		FROM member m 
-		JOIN hompy h 
-		ON h.id=m.id 
-		JOIN profile pro 
-		ON h.hompy_num=pro.hompy_num 
-		JOIN diary_folder df 
-		ON df.hompy_num = h.hompy_num 
-		JOIN diary d 
-		ON df.diary_folder_num = d.diary_folder_num 
-		where d.type='전체공개' 
+		SELECT p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.regdate regdate,h.id id,m.name name,pro.save_name save_name
+		FROM member m
+		JOIN hompy h
+		ON h.id=m.id
+		JOIN (SELECT * from (
+		SELECT hompy_num,save_name 
+		from profile
+		order by hompy_num, regdate desc
+		) a
+		group by a.hompy_num) pro
+		ON h.hompy_num=pro.hompy_num
+		JOIN photo_folder pf
+		ON pf.hompy_num = h.hompy_num
+		JOIN photo p
+		ON pf.photo_folder_num = p.photo_folder_num
+		where p.secret='전체공개'
+		union
+		SELECT d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.regdate regdate,h.id id,m.name name,pro.save_name save_name
+		FROM member m
+		JOIN hompy h
+		ON h.id=m.id
+		JOIN (SELECT * from (
+		SELECT hompy_num,save_name 
+		from profile
+		order by hompy_num, regdate desc
+		) a
+		group by a.hompy_num) pro
+		ON h.hompy_num=pro.hompy_num
+		JOIN diary_folder df
+		ON df.hompy_num = h.hompy_num
+		JOIN diary d
+		ON df.diary_folder_num = d.diary_folder_num
+		where d.type='전체공개'
 		
-		ORDER BY regdate desc
+		ORDER BY regdate desc;
 	</select>
 	<select id="pro_img" resultType="string" parameterType="string">
 		SELECT pro.save_name save_name
