@@ -22,6 +22,6 @@
 <div id="item_set_menu">
 	<a href="<c:url value='/setup/skin'/>" class="setup_menu">홈피스킨 설정</a><br>
 	<a href="<c:url value='/setup/miniroom'/>" class="setup_menu">미니룸 설정</a><br>
-	<a href="" class="setup_menu">미니미 설정</a><br>
+	<a href="<c:url value='/setup/minime?id=${requestScope.id }'/>" class="setup_menu">미니미 설정</a><br>
 	<a href="<c:url value='/setup/bgm'/>" class="setup_menu">음악 설정</a><br>
 </div>

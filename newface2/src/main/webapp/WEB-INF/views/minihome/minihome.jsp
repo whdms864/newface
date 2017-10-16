@@ -93,8 +93,10 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 		</div>
 	</div>	
 	</c:if>	
+	<input type="hidden" id="hompyid" value="${requestScope.hompyid }">
 </div>
-<script>
+<script> 
+	var hompyid=$("#hompyid").val();
 	$("#home").click(function(){
 		var url="<c:url value='/minihome'/>";
 		$(location).attr("href",url);
@@ -112,7 +114,7 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 		$(location).attr("href",url);
 	});
 	$("#set").click(function(){
-		var url="<c:url value='/setup/basic'/>";
+		var url="<c:url value='/setup/basic?id=" + hompyid + "'/>";
 		$(location).attr("href",url);
 	});
 </script>

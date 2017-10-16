@@ -1,6 +1,5 @@
 package com.newface.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +29,8 @@ public class SetupController {
 	@Autowired SetupService service;
 	
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
-	public String basicForm() {
+	public String basicForm(String id,Model model) {
+		model.addAttribute("id", id);
 		return ".basic.setup";
 	}
 	@RequestMapping(value="/setup/menu",method=RequestMethod.POST)
@@ -212,5 +212,11 @@ public class SetupController {
 			arr.add(json);
 		}
 		return arr.toString();
+	}
+	@RequestMapping(value="/setup/minime",method=RequestMethod.GET)
+	public String minime(String id,Model model) {
+		List<ItemVo> list=service.minime_list(id);
+		model.addAttribute("list", list);
+		return ".minime.setup";
 	}
 }

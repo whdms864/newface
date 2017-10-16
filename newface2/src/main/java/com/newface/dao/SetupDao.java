@@ -84,4 +84,7 @@ public class SetupDao {
 	public HompyVo hompy(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".hompy", id);
 	}
+	public List<ItemVo> minime_list(String id){
+		return sqlSession.selectList(NAMESPACE + ".minime_list", id);
+	}
 }

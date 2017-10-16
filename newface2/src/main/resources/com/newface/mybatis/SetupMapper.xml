@@ -66,4 +66,7 @@
 	<select id="hompy" parameterType="string" resultType="hompy">
 		select * from hompy where id=#{value}
 	</select>
+	<select id="minime_list" parameterType="string" resultType="item">
+		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=4
+	</select>
 </mapper>  

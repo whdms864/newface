@@ -83,4 +83,7 @@ public class SetupService {
 	public HompyVo hompy(String id) {
 		return dao.hompy(id);
 	}
+	public List<ItemVo> minime_list(String id){
+		return dao.minime_list(id);
+	}
 }
