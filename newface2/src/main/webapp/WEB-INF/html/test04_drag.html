@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/jquery-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#box1").draggable();
+		$("#img1").draggable({
+			containment:"parent",
+			axis:"x",
+			stop:function(){
+				alert("이동완료!");
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<div id="box1" style="width:200px;height: 100px;background-color: orange;">
+	나를 드래그 하세요
+</div>
+<div id="box2" style="width:500px;height: 500px;background-color: green;">
+	<img src="images/1.png" id="img1">
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

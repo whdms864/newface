@@ -202,9 +202,18 @@ public class MemberController {
 		return ".memadmin_list_2";
 	}
 	@RequestMapping(value = "/memadmin/getinfo", method = RequestMethod.GET)
-	public String admin_member_getinfo(String id,Model model) {
+	public String admin_member_getinfo(String id,Model model,@RequestParam(value="up",defaultValue="0") int up) {
 		MemberVo vo=service.getinfo(id);
 		model.addAttribute("vo",vo);
+		model.addAttribute("up",up);
 		return ".memadmin_getinfo";
+	}
+	@RequestMapping(value = "/memadmin/getinfo/update", method = RequestMethod.GET)
+	public String admin_member_getinfo_update(String id,Model model,String type) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("type", type);
+		service.update_type(map);
+		return "redirect:/memadmin/getinfo?id="+id;
 	}
 }

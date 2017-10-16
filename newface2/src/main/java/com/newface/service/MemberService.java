@@ -75,6 +75,9 @@ public class MemberService {
 	public int update(MemberVo vo) {
 		return dao.update(vo);
 	}
+	public int update_type(HashMap<String, Object> map) {
+		return dao.update_type(map);
+	}
 	
 	public int leave(MemberVo vo) {
 		return dao.leave(vo);

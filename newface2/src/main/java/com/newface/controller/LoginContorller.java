@@ -25,7 +25,6 @@ import com.newface.vo.TimelineVo;
 public class LoginContorller {
 	@Autowired private MemberService service;
 	@Autowired private CashService cashservice;
-	@Autowired private TimelineService timelineservice;
 	@Autowired private NotiService notiservice;
 	
 
@@ -55,11 +54,7 @@ public class LoginContorller {
 				}else {
 					session.setAttribute("cnt", 0);
 				}
-				List<TimelineVo> list=timelineservice.list();
-				String pro_img=timelineservice.pro_img(loginid);
-				model.addAttribute("list",list);
-				model.addAttribute("pro_img",pro_img);
-				return ".main2";
+				return "redirect:/main2";
 			}else if(a) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);

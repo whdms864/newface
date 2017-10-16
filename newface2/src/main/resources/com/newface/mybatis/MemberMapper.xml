@@ -82,5 +82,10 @@
 		select pwd from member
 		where id=#{id} and email=#{email}
 	</select>
+	<update id="update_type" parameterType="hashmap">
+		update member 
+		set type=#{type}  
+		where id=#{id}     
+	</update>
 	
 </mapper>  

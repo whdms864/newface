@@ -35,6 +35,18 @@
 				}
 			}
 		});
+		$("#btn_up").click(function(){
+			location.href="<c:url value='/memadmin/getinfo?id=${vo.id }&up=1'/>";
+		});
+		$("#btn_upok").click(function(){
+			var m_type=$("#m_type").val();
+			if(m_type==""){
+				$("#m_type").focus();
+				alert("회원 상태를 입력해주세요");
+			}else{
+				location.href="<c:url value='/memadmin/getinfo/update?id=${vo.id }'/>&type="+m_type;
+			}
+		});
 	});
 </script>
 <div id="sidebar">
@@ -75,24 +87,57 @@
 	</div>
 	<div id="con">	
 		<div align="center">
-			<table class="table table-hover" style="width: 90%;margin-top: 20px;">
+			<div style="margin-top: 10px;margin-left:110px;"align="left">
+				<label style="font-size:20px;">[ 회원정보 ]</label>
+			</div>
+			<table class="table table-hover" style="width: 70%;margin-top: 20px;">
 				<thead>
 			  		<tr class="danger">
-			  			<th>아이디</th>
-			  			<th>이름</th>
-			  			<th>이메일</th>
-			  			<th>상태</th>
-			  			<th>가입일</th>
+			  			<td style="width: 50%;">아이디</td>
+			  			<td>${vo.id}</td>
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  			<tr>
-				  			<td><a href="<c:url value='/memadmin/getinfo?id=${vo.id }'/>">${vo.id}</a></td>
-				  			<td>${vo.name}</td>
-				  			<td>${vo.email}</td>
-				  			<td>${vo.type}</td>
-				  			<td>${vo.regdate}</td>
-				  		</tr>
+			  		<tr>
+			  			<td>이름</td>
+			  			<td>${vo.name}</td>
+			  		</tr>
+			  		<tr>
+			  			<td>이메일</td>
+			  			<td>${vo.email}</td>
+			  		</tr>
+			  		<tr>
+			  			<td>생일</td>
+			  			<td>${vo.birth}</td>
+			  		</tr>
+			  		<tr>
+			  			<td>학교</td>
+			  			<td>${vo.school}</td>
+			  		</tr>
+			  		<tr>
+			  			<td>상태</td>
+			  			<c:choose>
+			  				<c:when test="${up==1}">
+						  			<td>
+						  			<input type="text" value="${vo.type}" id="m_type">
+						  			<input type="button" value="확인" class="btn btn-primary" id="btn_upok"
+						  			style="width: 50px;padding: 0px;height: 25px;float: right;">
+						  			</td>
+			  				</c:when>
+			  				<c:otherwise>
+						  			<td>
+						  			${vo.type} 
+						  			<input type="button" class="btn btn-primary" value="수정" id="btn_up"
+						  			style="width: 50px;padding: 0px;height: 25px;float: right;">
+						  			<%-- <a href="<c:url value='/memadmin?id=${vo.id }&up=1'/>">수정</a> --%>
+						  			</td>
+					  		</c:otherwise>
+						</c:choose>
+			  		</tr>
+			  		<tr>
+			  			<td>가입일</td>
+			  			<td>${vo.regdate}</td>
+			  		</tr>
 				</tbody>
 			</table>
 		</div>

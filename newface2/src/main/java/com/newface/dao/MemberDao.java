@@ -78,6 +78,10 @@ public class MemberDao {
 		int n=sqlSession.update(NAMESPACE + ".update",vo);
 		return n;
 	}
+	public int update_type(HashMap<String, Object> map) {
+		int n=sqlSession.update(NAMESPACE + ".update_type",map);
+		return n;
+	}
 	
 	public int leave(MemberVo vo) {
 		int n=sqlSession.update(NAMESPACE+".leave",vo);

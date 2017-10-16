@@ -74,16 +74,33 @@
 	
 }
 .content2 {
-	height: 50px;
+	margin-top:10px;
 }
 .content2 ul {
 	list-style: none;
 	display: inline-block;
+	margin: 0px;
+	margin-left: 5px;
 }
 
 .content2 ul li {
 	float: left;
 	margin-left: 10px;
+}
+.content2 ul li a{
+	color:#616770;
+}
+.content3 ul {
+	list-style: none;
+	display: inline-block;
+	margin: 0px;
+	padding:5px;
+}
+
+.content3 ul li {
+	float: left;
+	margin-left: 10px;
+	color:#90949c;
 }
 .com_main{
 	margin-top: 10px;
