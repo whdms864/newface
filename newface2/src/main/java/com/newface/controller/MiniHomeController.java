@@ -164,6 +164,7 @@ public class MiniHomeController {
 		for(IucomVo vo:list) {
 			JSONObject json=new JSONObject();
 			String name=service.name(vo.getId());
+			json.put("id", vo.getId());
 			json.put("name", name);
 			json.put("content", vo.getContent());
 			arr.add(json);
@@ -178,8 +179,7 @@ public class MiniHomeController {
 		return "minihome/profile";
 	}
 	@RequestMapping(value="/minihome/iu_history",method=RequestMethod.GET)
-	public String iu_history(@RequestParam(value="pageNum",defaultValue="1") int pageNum,String id,HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+	public String iu_history(@RequestParam(value="pageNum",defaultValue="1") int pageNum,String id,int hompy_num,HttpSession session,Model model) {
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("hompy_num", hompy_num);
 		map.put("id", id);
@@ -187,6 +187,7 @@ public class MiniHomeController {
 		// 페이지번호, 한 페이지에 보여질 글의 갯수, 한 페이지에 보여질 페이지 갯수, 전체갯수		
 		PageUtil page=new PageUtil(pageNum, 5, 5, totalRowCount);
 		map.put("startRow", page.getStartRow());
+		map.put("startRow", 0);
 		List<IucomVo> list=service.iu_history(map);
 		model.addAttribute("list", list);
 		return "minihome/iu_com";

@@ -38,19 +38,22 @@ body {
 	text-decoration: none;color: white;
 }
 #home{
-	position: relative; width: 65px; height: 31px; margin-top: 80px; margin-left: 816px;  
+	position: relative; width: 65px; height: 31px; margin-top: 80px; margin-left: 816px; 
+}
+#home:hover{
+	
 }
 #diary{
-	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; 
+	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; cursor: pointer; 
 }
 #photo{
-	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; 
+	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; cursor: pointer;
 }
 #guest{
-	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; 
+	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; cursor: pointer; 
 }
 #set{
-	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; 
+	position: relative; width: 65px; height: 31px; margin-top: 3px; margin-left: 816px; cursor: pointer; 
 }
 
 #skin_back{
@@ -78,7 +81,7 @@ body {
 	top:40px;font-weight: bold; font-size: 25px;
 }
 #hname_edit{
-	font-size: 15px;
+	font-size: 15px; background-color: gray; color: white; margin-left: 40px;
 }
 #bgm_back{
 	position: absolute; top: 32px; left: 850px; width: 300px; height: 48px; display: inline-block; 

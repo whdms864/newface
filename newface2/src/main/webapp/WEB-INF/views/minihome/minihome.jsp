@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=14'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=15'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
@@ -46,7 +46,7 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 	<div id="total">total ${sessionScope.total }</div>
 	<div id="hname_back">
 		<div id="hname">
-			${sessionScope.hname } <c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a id="hname_edit" href="<c:url value='/setup/basic'/>">edit</a></c:if>
+			${sessionScope.hname } <c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a id="hname_edit" href="<c:url value='/setup/basic'/>">수정</a></c:if>
 		</div>
 	</div>
 	<%-- <div id="bgm_back">

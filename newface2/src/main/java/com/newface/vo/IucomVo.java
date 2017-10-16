@@ -57,5 +57,5 @@ public class IucomVo {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 }

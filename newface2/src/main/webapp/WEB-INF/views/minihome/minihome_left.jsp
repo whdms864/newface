@@ -41,13 +41,30 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<div id="todayis">today is ${requestScope.vo.todayis }</div>
+	<div id="todayis"> 
+		<a id="today_color">TODAY IS.. </a>  
+	<c:choose>
+		<c:when test="${requestScope.vo.todayis=='좋음' }">
+			<img src="<c:url value='/resources/images/minihome/flower.png'/>">
+		</c:when>
+		<c:when test="${requestScope.vo.todayis=='보통' }">
+			<img src="<c:url value='/resources/images/minihome/sun.png'/>"> 
+		</c:when>
+		<c:when test="${requestScope.vo.todayis=='나쁨' }">
+			<img src="<c:url value='/resources/images/minihome/bolt.png'/>">
+		</c:when>
+	</c:choose>
+		 ${requestScope.vo.todayis }
+	
+	</div>
 	<div id="content">
 		${requestScope.vo.content }
 	</div>
 	<div id="edit">
-		<c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a href="<c:url value='/setup/profile'/>">edit</a></c:if> 
-		<a id="history">history</a>
+		<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
+			<span class="triangle">▶</span><a href="<c:url value='/setup/profile'/>">edit</a>
+		</c:if> 
+		<span class="triangle">▶</span><a id="history">history</a>
 	</div>
 	<div id="member">
 		<div id="name"><a id="name1">${requestScope.member.name }</a> <span id="i_you"><a id="i_you1">일촌맺기</a></span></div>		

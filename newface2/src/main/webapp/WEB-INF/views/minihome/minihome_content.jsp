@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=23'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=24'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -20,14 +20,18 @@
 		var iu_content=function(){
 			$.getJSON("<c:url value='/minihome/iu_com_list'/>",function(data){
 				$(data).each(function(i,com){
-					$("#iu_content").append(com.content + " (" + com.name + ")<hr>");
+					$("#iu_content").append(com.content + " (<span class='com_name'>" + com.name + "</span>) <img class='history' id='" + com.id + "' alt='일촌평 히스토리' src='<c:url value='/resources/images/minihome/arrow.png'/>'><hr>");
 				});
 			});
 		}
 		iu_content();
+		$("#iu_content").on("click",".history",function(){
+			var id=$(this).attr("id");
+			var hompy_num=$("#hompy_num").val();
+			window.open("<c:url value='/minihome/iu_history?hompy_num=" + hompy_num + "&id=" + id + "'/>","_minihome3"," width=385,height=594,left=100,top=100");
+		});
 	});
 </script>
-<div>
 <div id="news_back">
 	<div id="news">
 		Upload news
@@ -75,5 +79,5 @@
 	<input type="text" id="iu_text" size="38" name="iu_com" placeholder="일촌과 나누고 싶은 이야기를 남겨보세요">
 	&nbsp;&nbsp;<input type="button" value="확인" id="btn">
 </div>
+<input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
 <div id="iu_content"></div>
-</div>

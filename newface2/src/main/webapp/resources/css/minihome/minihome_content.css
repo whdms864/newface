@@ -72,3 +72,9 @@ ul{
 a{
 	text-decoration: none; color: black;
 }
+.history{
+	cursor: pointer;
+}
+.com_name{
+	color: #2580da;
+}
