@@ -3,9 +3,7 @@ package com.newface.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.newface.service.CashService;
 import com.newface.service.MemberService;
 import com.newface.service.NotiService;
-import com.newface.service.Qna11Service;
 import com.newface.service.TimelineService;
 import com.newface.vo.CashVo;
 import com.newface.vo.NotiVo;
 import com.newface.vo.TimelineVo;
-import com.newface.vo.Timeline_proVo;
 
 
 @Controller
@@ -60,7 +56,7 @@ public class LoginContorller {
 					session.setAttribute("cnt", 0);
 				}
 				List<TimelineVo> list=timelineservice.list();
-				Timeline_proVo pro_img=timelineservice.pro_img(loginid);
+				String pro_img=timelineservice.pro_img(loginid);
 				model.addAttribute("list",list);
 				model.addAttribute("pro_img",pro_img);
 				return ".main2";

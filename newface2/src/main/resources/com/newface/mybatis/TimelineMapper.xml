@@ -30,8 +30,8 @@
 		
 		ORDER BY regdate desc
 	</select>
-	<select id="pro_img" resultType="timeline_pro" parameterType="string">
-		SELECT h.hompy_num hompy_num,pro.save_name save_name,h.id id
+	<select id="pro_img" resultType="string" parameterType="string">
+		SELECT pro.save_name save_name
 		FROM hompy h JOIN profile pro
 		ON h.hompy_num=pro.hompy_num
 		WHERE id=#{value}

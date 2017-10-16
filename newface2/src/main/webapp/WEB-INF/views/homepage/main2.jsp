@@ -49,21 +49,22 @@
 				</div>
 			</div>	
 			<div class="timecom" align="center">
-				<img src="" class="img-circle">
+				<c:choose>
+					<c:when test="${pro_img!=null }">
+						<img src="<c:url value='/resources/upload/${pro_img}'/>" class="img-circle">
+					</c:when>
+					<c:otherwise>
+						<img src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>" class="img-circle">
+					</c:otherwise>
+				</c:choose>
 				<input type="text" class="form-control" placeholder="댓글을 입력하세요">
 				<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
 				<div class="com_main">
 					<table style="padding:0px; margin: 0px;">
 						<tr>
 							<td rowspan="2">
-								<c:choose>
-									<c:when test="${pro_img.save_name!=null }">
-										<img src="<c:url value='/resources/upload/${pro_img.save_name }'/>" class="img-circle">
-									</c:when>
-									<c:otherwise>
-										<img src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>" class="img-circle">
-									</c:otherwise>
-								</c:choose>
+								<img src="" class="img-circle">
+								
 							</td>
 							<td style="width: 94%;padding-left:10px;height: 30px;">
 								댓글내용

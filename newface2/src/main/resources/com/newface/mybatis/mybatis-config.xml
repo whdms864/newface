@@ -48,7 +48,6 @@
   	<typeAlias type="com.newface.vo.TodayVo" alias="today"/> 
   	<typeAlias type="com.newface.vo.MsgVo" alias="msg"/> 
   	<typeAlias type="com.newface.vo.TimelineVo" alias="timeline"/> 
-  	<typeAlias type="com.newface.vo.Timeline_proVo" alias="timeline_pro"/> 
   </typeAliases>
   
   <mappers>
