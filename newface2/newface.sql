@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS diary_tag;
 DROP TABLE IF EXISTS diary_com;
+DROP TABLE IF EXISTS diary_love;
 DROP TABLE IF EXISTS diary;
 DROP TABLE IF EXISTS diary_folder;
 DROP TABLE IF EXISTS guestbook_com;
@@ -31,6 +32,7 @@ DROP TABLE IF EXISTS iu_com;
 DROP TABLE IF EXISTS miniroom;
 DROP TABLE IF EXISTS photo_com_tag;
 DROP TABLE IF EXISTS photo_com;
+DROP TABLE IF EXISTS photo_love;
 DROP TABLE IF EXISTS photo;
 DROP TABLE IF EXISTS photo_folder;
 DROP TABLE IF EXISTS profile;
@@ -155,6 +157,15 @@ CREATE TABLE diary_folder
 	regdate date,
 	hompy_num int NOT NULL,
 	PRIMARY KEY (diary_folder_num)
+);
+
+
+CREATE TABLE diary_love
+(
+	diary_love_num int NOT NULL AUTO_INCREMENT,
+	id varchar(250) NOT NULL,
+	diary_num int NOT NULL,
+	PRIMARY KEY (diary_love_num)
 );
 
 
@@ -401,6 +412,15 @@ CREATE TABLE photo_folder
 );
 
 
+CREATE TABLE photo_love
+(
+	photo_love_num int NOT NULL AUTO_INCREMENT,
+	id varchar(250) NOT NULL,
+	photo_num int NOT NULL,
+	PRIMARY KEY (photo_love_num)
+);
+
+
 CREATE TABLE photo_singo
 (
 	ps_num int NOT NULL AUTO_INCREMENT,
@@ -563,6 +583,14 @@ ALTER TABLE diary_com
 ;
 
 
+ALTER TABLE diary_love
+	ADD FOREIGN KEY (diary_num)
+	REFERENCES diary (diary_num)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE diary_singo
 	ADD FOREIGN KEY (diary_num)
 	REFERENCES diary (diary_num)
@@ -715,8 +743,8 @@ ALTER TABLE diary_com
 ;
 
 
-ALTER TABLE diary_tag
-	ADD FOREIGN KEY (u_id)
+ALTER TABLE diary_love
+	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -725,6 +753,14 @@ ALTER TABLE diary_tag
 
 ALTER TABLE diary_tag
 	ADD FOREIGN KEY (i_id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE diary_tag
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -820,7 +856,7 @@ ALTER TABLE photo_com
 
 
 ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -828,7 +864,15 @@ ALTER TABLE photo_com_tag
 
 
 ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE photo_love
+	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -884,6 +928,14 @@ ALTER TABLE noti_com_singo
 
 
 ALTER TABLE photo_com
+	ADD FOREIGN KEY (photo_num)
+	REFERENCES photo (photo_num)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE photo_love
 	ADD FOREIGN KEY (photo_num)
 	REFERENCES photo (photo_num)
 	ON UPDATE RESTRICT

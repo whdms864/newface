@@ -83,7 +83,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div style="position:absolute;top:610px;width: 100%;"align="center">
+		<div style="position:absolute;top:610px;width: 100%;height: 50px;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
 					<a href="<c:url value='/qna11/admin/list?pageNum=${pu.startPageNum-1 }'/>">
