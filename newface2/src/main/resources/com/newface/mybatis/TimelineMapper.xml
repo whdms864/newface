@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.TimelineMapper">
 	<select id="list" resultType="timeline" parameterType="hashmap">
-		select num,title,content,love,singo,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,name,save_name from 
-		(select p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.regdate regdate,h.id id,m.name name,pro.save_name save_name
+		select num,title,content,love,singo,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,name,save_name,tb from 
+		(select p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.regdate regdate,h.id id,m.name name,pro.save_name save_name,'photo' tb
 		from member m
 		join hompy h
 		on h.id=m.id
@@ -22,7 +22,7 @@
 		on pf.photo_folder_num = p.photo_folder_num
 		where p.secret='전체공개'
 		union
-		select d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.regdate regdate,h.id id,m.name name,pro.save_name save_name
+		select d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.regdate regdate,h.id id,m.name name,pro.save_name save_name,'diary' tb
 		from member m
 		join hompy h
 		on h.id=m.id

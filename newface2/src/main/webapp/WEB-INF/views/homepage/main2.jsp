@@ -57,14 +57,12 @@
 						+			"<hr style='margin:0px;padding:0px;'>"
 						+			"<div class='content2' align='left'>"
 						+				"<ul>"
-						+					"<li>";
-						
-					if(list[i].love>0){
-						html +=	"<a href='' class='c_love' style='font-style: bold;color:#337ab7'>좋아요</a>";
-					}else{
-						html +="<a href='' class='c_love'>좋아요</a>";
-					}
-					html +=					"</li>"
+						+					"<li>"
+						+					"<input type='hidden'  value='"+vo.tb+"' class='tb'>"
+						+					"<input type='hidden'  value='"+vo.num+"' class='num'>"
+						+					"<input type='hidden'  value='"+vo.love+"' class='love'>";
+						+					"<a href='' class='c_love'>좋아요</a>";
+						+					"</li>"
 						+					"<li><a href=''>댓글달기</a></li>"
 						+					"<li><a href=''>공유하기</a></li>"
 						+					"<li><a href=''>신고하기</a></li>"
@@ -104,6 +102,23 @@
 						+	"</div>";
 					}
 					$(".list_time").append(html);
+				});
+			}
+		});
+		
+		$(".c_love").click(function(){
+			var tb=$(this).closest("li").find(".tb").val();
+			var num=$(this).closest("li").find(".num").val();
+			var love=$(this).closest("li").find(".love").val();
+			
+			var color=$(this).css("color");
+			if(color!="#337ab7"){
+				$.getJSON('main2/love',{"tb":tb,"num":num,"love":love},function(data){
+					alert(data.love);
+					$(this).css({
+						"font-style":"bold",
+						"color" : "#337ab7"
+					});
 				});
 			}
 		});
@@ -156,14 +171,10 @@
 				<div class="content2" align="left">
 					<ul>
 						<li>
-						<c:choose>
-							<c:when test="${love!=1 }">
-								<a href="" class="c_love">좋아요</a>
-							</c:when>
-							<c:otherwise>
-								<a href="" class="c_love" style="font-style: bold;color:#337ab7">좋아요</a>
-							</c:otherwise>
-						</c:choose>
+						<input type="hidden"  value="${vo.tb }" class="tb">
+						<input type="hidden"  value="${vo.num }" class="num">
+						<input type="hidden"  value="${vo.love }" class="love">
+						<a href="" class="c_love">좋아요</a>
 						</li>
 						<li><a href="">댓글달기</a></li>
 						<li><a href="">공유하기</a></li>

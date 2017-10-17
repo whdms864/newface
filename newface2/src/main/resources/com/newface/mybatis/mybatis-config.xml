@@ -47,7 +47,9 @@
   	<typeAlias type="com.newface.vo.Iu_NameVo" alias="iu_name"/>
   	<typeAlias type="com.newface.vo.TodayVo" alias="today"/> 
   	<typeAlias type="com.newface.vo.MsgVo" alias="msg"/> 
-  	<typeAlias type="com.newface.vo.TimelineVo" alias="timeline"/> 
+  	<typeAlias type="com.newface.vo.TimelineVo" alias="timeline"/>
+  	<typeAlias type="com.newface.vo.Diary_loveVo" alias="d_love"/> 
+  	<typeAlias type="com.newface.vo.Photo_loveVo" alias="p_love"/>  
   </typeAliases>
   
   <mappers>
@@ -66,5 +68,6 @@
   	<mapper resource="com/newface/mybatis/AdMapper.xml"/>
   	<mapper resource="com/newface/mybatis/TimelineMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MsgMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/LoveMapper.xml"/>
   </mappers>
 </configuration>
