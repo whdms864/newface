@@ -39,6 +39,9 @@ public class SetupService {
 	public List<IuVo> iu_request_list(String id){
 		return dao.iu_request_list(id);
 	}
+	public int iu_insert(IuVo vo) {
+		return dao.iu_insert(vo);
+	}
 	public int iuOk(IuVo vo) {
 		return dao.iuOk(vo);
 	}

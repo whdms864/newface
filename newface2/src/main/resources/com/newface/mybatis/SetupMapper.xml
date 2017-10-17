@@ -21,6 +21,9 @@
 	<select id="iu_request_list" parameterType="string" resultType="iu">
 		select * from iu where i_id=#{value} and u_name='신청'
 	</select>
+	<insert id="iu_insert" parameterType="iu">
+		insert into iu values(0,'일촌','일촌',#{u_id},#{i_id})
+	</insert>
 	<update id="iuOk" parameterType="iu">
 		update iu set u_name='일촌' where i_id=#{i_id} and u_id=#{u_id}
 	</update>

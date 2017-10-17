@@ -40,6 +40,9 @@ public class SetupDao {
 	public List<IuVo> iu_request_list(String id){
 		return sqlSession.selectList(NAMESPACE + ".iu_request_list", id);
 	}
+	public int iu_insert(IuVo vo) {
+		return sqlSession.insert(NAMESPACE + ".iu_insert", vo);
+	}
 	public int iuOk(IuVo vo) {
 		return sqlSession.update(NAMESPACE + ".iuOk", vo);
 	}
