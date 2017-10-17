@@ -1,6 +1,7 @@
 package com.newface.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,8 +19,8 @@ public class TimelineDao {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	public List<TimelineVo> list() {
-		return sqlSession.selectList(NAMESPACE+".list");
+	public List<TimelineVo> list(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".list",map);
 	}
 	public String pro_img(String id) {
 		return sqlSession.selectOne(NAMESPACE+".pro_img",id);

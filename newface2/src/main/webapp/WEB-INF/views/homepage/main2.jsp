@@ -1,25 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=28'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=58'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".c_love").click(function(){
-			/* location.href="<c:url value='/memadmin/getinfo?id=${vo.id }&up=1'/>"; */
-		});
-		/* $("#c_love").click(function(){
-			var m_type=$("#m_type").val();
-			if(m_type==""){
-				$("#m_type").focus();
-				alert("회원 상태를 입력해주세요");
-			}else{
-				location.href="<c:url value='/memadmin/getinfo/update?id=${vo.id }'/>&type="+m_type;
+		var startrow=0;
+		var endrow=20;
+		$(window).scroll(function() { 
+			if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
+				startrow +=20;
+				endrow +=20;
+				$.getJSON('main2/list',{"startrow":startrow,"endrow":endrow},function(data){
+					var list=data.list;
+					var pro_img=data.pro_img;
+					var html="";
+					for(var i=0;i<list.length;i++){
+						html +="<div class='timeline'>"
+							+	"<div class='first' align='center'>"
+							+		"<div align='left' style='margin-left: 5px;'>"
+							+			"<table style='padding:0px; margin: 0px;'>"
+							+				"<tr>"
+							+					"<td rowspan='2'>";
+					if(list[i].save_name!=null){
+						html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
+					}else{
+						html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+					}
+					
+					html +=						"</td>"
+						+						"<td style='width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;'>"
+						+							list[i].name
+						+						"</td>"
+						+					"</tr>"
+						+					"<tr>"
+						+						"<td style='width: 94%;padding-left:10px;height: 20px;color:#90949c;'>"
+						+							list[i].regdate
+						+						"</td>"
+						+					"</tr>"
+						+					"<tr>"
+						+						"<td colspan='2'style='width: 100%;'>"
+						+						"<p style='margin-left:5px;'>"+list[i].title+"</p>"
+						+						"</td>"
+						+					"</tr>"
+						+				"</table>"
+						+			"</div>"
+						+			"<div class='content1' align='left'>"
+						+				list[i].content
+						+			"</div>"
+						+			"<div class='content3' align='left'>"
+						+				"<ul>"
+						+					"<li>좋아요 "+list[i].love+"명</li>"
+						+					"<li>댓글수</li>"
+						+				"</ul>"
+						+			"</div>"
+						+			"<hr style='margin:0px;padding:0px;'>"
+						+			"<div class='content2' align='left'>"
+						+				"<ul>"
+						+					"<li>";
+						
+					if(list[i].love>0){
+						html +=	"<a href='' class='c_love' style='font-style: bold;color:#337ab7'>좋아요</a>";
+					}else{
+						html +="<a href='' class='c_love'>좋아요</a>";
+					}
+					html +=					"</li>"
+						+					"<li><a href=''>댓글달기</a></li>"
+						+					"<li><a href=''>공유하기</a></li>"
+						+					"<li><a href=''>신고하기</a></li>"
+						+				"</ul>"
+						+			"</div>"
+						+		"</div>"
+						+	"<div class='timecom' align='center'>";
+						
+					if(pro_img!=null){
+						html +="<img src='/newface/resources/upload/"+pro_img+"' class='img-circle'>";
+					}else{
+						html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+					}
+					html +=	"<input type='text' class='form-control' placeholder='댓글을 입력하세요'>"
+						+			"<div class='com_main'>"
+						+				"<table style='padding:0px; margin: 0px;'>"
+						+					"<tr>"
+						+						"<td rowspan='2'>"
+						+							"<img src='' class='img-circle'>"
+						+						"</td>"
+						+						"<td style='width: 94%;padding-left:10px;height: 30px;'>"
+						+						"	댓글내용"
+						+						"</td>"
+						+					"</tr>"
+						+					"<tr>"
+						+						"<td>"
+						+							"<ul>"
+						+								"<li><a href='' style='margin: 0px;'>좋아요</a></li>"
+						+								"<li><a href=''>답글달기</a></li>"
+						+							"</ul>"
+						+						"</td>"
+						+					"</tr>"
+						+				"</table>"
+						+				"<a href='' class='com_a'>댓글 더보기</a>"
+						+			"</div>"
+						+		"</div>"
+						+	"</div>";
+					}
+					$(".list_time").append(html);
+				});
 			}
-		}); */
+		});
 	});
 </script>
 	<div class="loginafter" align="center">
+	<div class="list_time">
 	<c:forEach var="vo" items="${list }">
 		<div class="timeline">
 			<div class="first" align="center">
@@ -116,8 +207,8 @@
 			</div>
 		</div>
 	</c:forEach>
+	</div>
 </div>
-	
 	
 	
 	

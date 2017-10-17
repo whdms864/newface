@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.TimelineMapper">
-	<select id="list" resultType="timeline">
+	<select id="list" resultType="timeline" parameterType="hashmap">
 		select num,title,content,love,singo,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,name,save_name from 
 		(select p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.regdate regdate,h.id id,m.name name,pro.save_name save_name
 		from member m
@@ -39,7 +39,8 @@
 		on df.diary_folder_num = d.diary_folder_num
 		where d.type='전체공개') a
 		
-		order by a.regdate desc
+		order by a.regdate desc 
+		limit #{startrow},#{endrow}
 	</select>
 	<select id="pro_img" resultType="string" parameterType="string">
 		SELECT pro.save_name save_name
