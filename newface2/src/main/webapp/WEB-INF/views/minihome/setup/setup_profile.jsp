@@ -39,7 +39,7 @@
 		<input type="radio" name="todayis" value="좋음" checked="checked">좋음 
 		<input type="radio" name="todayis" value="보통">보통 
 		<input type="radio" name="todayis" value="나쁨">나쁨 
-		<input  type="submit" value="변경">
+		<input type="submit" value="변경">
 	</form>
 	</div>
 	<hr>

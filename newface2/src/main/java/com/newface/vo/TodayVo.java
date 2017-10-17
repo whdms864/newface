@@ -2,16 +2,16 @@ package com.newface.vo;
 
 public class TodayVo {
 	private int today_num;
-	private int cnt;
+	private int id;
 	private String regdate;
 	private int hompy_num;
 	
 	public TodayVo() {}
 
-	public TodayVo(int today_num, int cnt, String regdate, int hompy_num) {
+	public TodayVo(int today_num, int id, String regdate, int hompy_num) {
 		super();
 		this.today_num = today_num;
-		this.cnt = cnt;
+		this.id = id;
 		this.regdate = regdate;
 		this.hompy_num = hompy_num;
 	}
@@ -24,12 +24,12 @@ public class TodayVo {
 		this.today_num = today_num;
 	}
 
-	public int getCnt() {
-		return cnt;
+	public int getId() {
+		return id;
 	}
 
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getRegdate() {

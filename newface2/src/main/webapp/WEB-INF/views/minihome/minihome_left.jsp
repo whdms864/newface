@@ -22,7 +22,9 @@
 		});
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
-			window.open("<c:url value='/minihome?hompy_num=" + hompy_num + "'/>","_minihome2"," width=1024,height=594,left=100,top=100"); 
+			if(hompy_num!='일촌목록'){
+				window.open("<c:url value='/minihome?hompy_num=" + hompy_num + "'/>","한번만 호출해줘"," width=1024,height=594,left=100,top=100");				
+			}
 		});
 		$("#history").click(function(){
 			var hompy_num=$(this).val();
@@ -67,13 +69,17 @@
 		<span class="triangle">▶</span><a id="history">history</a>
 	</div>
 	<div id="member">
-		<div id="name"><a id="name1">${requestScope.member.name }</a> <span id="i_you"><a id="i_you1">일촌맺기</a></span></div>		
+		<div id="name"><a id="name1">${requestScope.member.name }</a> 
+			<c:if test="${sessionScope.loginid!=sessionScope.hompyid }">
+				<span id="i_you"><a id="i_you1">일촌맺기</a></span>
+			</c:if> 
+		</div>				
 		<div id="email">${requestScope.member.email }</div>
 	</div>
 	<c:if test="${sessionScope.hompyid==sessionScope.loginid }">
 	<div id="iu">
 		<select style="width: 150px; height: 30px;" id="iu_list">
-			<option>일촌목록</option>		
+			<option value="일촌목록" >일촌목록</option>		
 		<c:forEach var="iu" items="${sessionScope.iu_list }">
 			<option value="${iu.hompy_num }">${iu.name } (${iu.u_id})</option>		
 		</c:forEach>

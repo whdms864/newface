@@ -75,7 +75,7 @@
 		select mini_num from miniroom where hompy_num=#{value}
 	</select>
 	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
-		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨'
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨' and r.drag!='미니미'
 	</select>
 	<select id="mine_num" parameterType="int" resultType="position">
 		select * from room_posi where mini_num=#{value} and drag='스킨'
@@ -89,14 +89,17 @@
 	<select id="iu_list" parameterType="string" resultType="iu_name">
 		select i.*,m.name,h.hompy_num from iu i join member m on i.u_id=m.id join hompy h on m.id=h.id where i_id=#{value} and u_name='일촌';
 	</select>
-	<insert id="today_insert" parameterType="int">
-		insert into today values(0,1,now(),#{hompy_num})
+	<select id="today_is" parameterType="hashmap" resultType="today">
+		select today_num from today where id=#{id} and hompy_num=#{hompy_num} and date_format(regdate,'%Y-%c-%e')=date_format(now(),'%Y-%c-%e')
+	</select>
+	<insert id="today_insert" parameterType="hashmap">
+		insert into today values(0,#{id},now(),#{hompy_num})
 	</insert>
 	<select id="today_today" parameterType="int" resultType="int">
-		select ifnull(count(cnt),0) from today where hompy_num=#{value} and regdate=date_format(now(),'%Y-%c-%e')
+		select ifnull(count(id),0) from today where hompy_num=#{value} and regdate=date_format(now(),'%Y-%c-%e')
 	</select>
 	<select id="today_total" parameterType="int" resultType="int">
-		select ifnull(count(cnt),0) from today where hompy_num=#{value}
+		select ifnull(count(id),0) from today where hompy_num=#{value}
 	</select>
 	<select id="iu_history" parameterType="hashmap" resultType="iu_com">
 		select * from iu_com where hompy_num=#{hompy_num} and id=#{id} order by iu_com_num desc limit #{startRow},5

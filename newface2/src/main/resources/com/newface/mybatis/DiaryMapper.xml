@@ -7,7 +7,7 @@
 		insert into diary values(0,#{type},#{title},#{content},'일반',0,now(),#{diary_folder_num})
 	</insert>
 	<select id="folder_list" parameterType="hashmap" resultType="diary">
-		select * 
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num   
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num
 		where f.hompy_num=#{hompy_num} and f.diary_folder_num=#{diary_folder_num}
@@ -15,13 +15,13 @@
 		limit #{startRow},10
 	</select>
 	<select id="content" parameterType="int" resultType="diary">
-		select * from diary where diary_num=#{value}
+		select diary_num,type,title,content,singo,love,date_format(regdate,'%Y-%c-%e') regdate from diary where diary_num=#{value}
 	</select>
 	<insert id="com_insert" parameterType="diarycom">
 		insert into diary_com values(0,#{content},'일반',now(),#{diary_num},#{id})
 	</insert>
 	<select id="com_list" parameterType="int" resultType="diarycom">
-		select diary_com_num,content,regdate,id from diary_com where diary_num=#{value} order by diary_com_num desc
+		select diary_com_num,content,date_format(d.regdate,'%Y-%c-%e') regdate ,id from diary_com where diary_num=#{value} order by diary_com_num desc
 	</select>
 	<select id="name" parameterType="string" resultType="string">
 		select name from member where id=#{value}
@@ -30,7 +30,7 @@
 		select id from hompy where hompy_num=#{value}
 	</select>
 	<select id="folder_basic_list" parameterType="hashmap" resultType="diarylist">
-		select d.*
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num  
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where f.hompy_num=#{hompy_num} and type='전체공개' 
@@ -38,7 +38,7 @@
 		limit #{startRow},10
 	</select>
 	<select id="folder_all_list" parameterType="hashmap" resultType="diarylist">
-		select d.*
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num  
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where f.hompy_num=#{hompy_num}

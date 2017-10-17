@@ -1,5 +1,6 @@
 package com.newface.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -86,5 +87,23 @@ public class SetupDao {
 	}
 	public List<ItemVo> minime_list(String id){
 		return sqlSession.selectList(NAMESPACE + ".minime_list", id);
+	}
+	public int minime_mine_num(int item_num) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_mine_num", item_num);
+	}
+	public int hompy_num(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".hompy_num", id);
+	}
+	public int minime_insert(HashMap<String, Object> map) {
+		return sqlSession.insert(NAMESPACE + ".minime_insert", map);                                                   
+	}
+	public String minime_img(int mini_num) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_img", mini_num);
+	}
+	public RoomposiVo minime_is(int mini_num) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_is", mini_num);
+	}
+	public int minime_delete(int mini_num) {
+		return sqlSession.delete(NAMESPACE + ".minime_delete", mini_num);
 	}
 }

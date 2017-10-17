@@ -69,4 +69,25 @@
 	<select id="minime_list" parameterType="string" resultType="item">
 		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=4
 	</select>
+	<select id="minime_mine_num" parameterType="int" resultType="int">
+		select m.mine_num from mine m join item i on m.item_num=i.item_num where i.item_num=#{value}
+	</select>
+	<select id="hompy_num" parameterType="string" resultType="int">
+		select hompy_num from hompy where id=#{value}
+	</select>
+	<insert id="minime_insert" parameterType="hashmap">
+		insert into room_posi values(0,#{mini_num},'미니미',0,0,#{mine_num})
+	</insert>
+	<select id="minime_img" parameterType="int" resultType="string">
+		select i.item_img from 
+		item i join mine m on i.item_num=m.item_num 
+		join room_posi r on m.mine_num=r.mine_num 
+		where r.drag='미니미'  and r.mini_num=#{value}
+	</select>
+	<select id="minime_is" parameterType="int" resultType="position">
+		select * from room_posi where mini_num=#{value} and drag='미니미'
+	</select>
+	<delete id="minime_delete" parameterType="int">
+		delete from room_posi where mini_num=#{value} and drag='미니미'
+	</delete>
 </mapper>  

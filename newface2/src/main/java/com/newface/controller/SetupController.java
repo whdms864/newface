@@ -1,5 +1,6 @@
 package com.newface.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,13 +30,15 @@ public class SetupController {
 	@Autowired SetupService service;
 	
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
-	public String basicForm(String id,Model model) {
+	public String basicForm(Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
 		model.addAttribute("id", id);
 		return ".basic.setup";
 	}
 	@RequestMapping(value="/setup/menu",method=RequestMethod.POST)
 	public String basic(SetupVo vo,HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
 		vo.setHompy_num(hompy_num);
 		int n=service.menu_update(vo);
 		if(n>0) {
@@ -57,7 +60,7 @@ public class SetupController {
 		model.addAttribute("list", list);
 		
 		//½ºÅ²
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int hompy_num=service.hompy_num(id);
 		RoomposiVo mine=service.skin_mine_num(hompy_num);
 		int item_num=0;
 		if(mine!=null) {
@@ -71,8 +74,8 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
 	public String hname(HompyVo vo,HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
 		vo.setHompy_num(hompy_num);
 		int n=service.hname(vo);
 		if(n>0) {
@@ -91,7 +94,8 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile_content",method=RequestMethod.POST)
 	public String profile_content(String content,HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
 		ProfileVo vo=service.profile(hompy_num);
 		ProfileVo profile=new ProfileVo(vo.getPro_num(), vo.getTodayis(), content, null, vo.getOrg_name(), vo.getSave_name(), hompy_num);
 		int n=service.profile_insert(profile);
@@ -105,7 +109,8 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile_todayis",method=RequestMethod.POST)
 	public String profile_todayis(String todayis,HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
 		ProfileVo vo=service.profile(hompy_num);
 		ProfileVo profile=new ProfileVo(vo.getPro_num(), todayis, vo.getContent(), null, vo.getOrg_name(), vo.getSave_name(), hompy_num);
 		int n=service.profile_insert(profile);
@@ -143,12 +148,12 @@ public class SetupController {
 	}	
 	@RequestMapping(value="/setup/miniroom",method=RequestMethod.GET)
 	public String miniroom(HttpSession session,Model model) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
 		int mini_num=service.mini_num(hompy_num);
 		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
 		model.addAttribute("mini", mini);
 		
-		String id=(String)session.getAttribute("loginid");
 		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
 		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
 		model.addAttribute("wallpaper", wallpaper);
@@ -166,7 +171,7 @@ public class SetupController {
 	@ResponseBody
 	public String room_posi(int item_num,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int hompy_num=service.hompy_num(id);
 		MineVo mine=new MineVo(0, 0, 0, item_num, id);
 		int mine_num=service.mine_num(mine);
 		int mini_num=service.mini_num(hompy_num);
@@ -184,7 +189,7 @@ public class SetupController {
 	@RequestMapping(value="/setup/skin_update",method=RequestMethod.POST)
 	public String skin_update(int item_num,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int hompy_num=service.hompy_num(id);
 		MineVo mine=new MineVo(0, 0, 0, item_num, id);
 		int mine_num=service.mine_num(mine);
 		int mini_num=service.mini_num(hompy_num);
@@ -214,9 +219,38 @@ public class SetupController {
 		return arr.toString();
 	}
 	@RequestMapping(value="/setup/minime",method=RequestMethod.GET)
-	public String minime(String id,Model model) {
+	public String minime(Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
+		int mini_num=service.mini_num(hompy_num);
+		String minime_img=service.minime_img(mini_num);
+		model.addAttribute("minime_img", minime_img);
+		
 		List<ItemVo> list=service.minime_list(id);
 		model.addAttribute("list", list);
+		model.addAttribute("id", id);
 		return ".minime.setup";
 	}
+	@RequestMapping(value="/setup/minime_update",method=RequestMethod.POST)
+	public String minime_update(int item_num,Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		int mine_num=service.minime_mine_num(item_num);
+		int hompy_num=service.hompy_num(id);
+		int mini_num=service.mini_num(hompy_num);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mine_num", mine_num);
+		map.put("mini_num", mini_num);
+		RoomposiVo vo=service.minime_is(mini_num);
+		if(vo!=null) {
+			service.minime_delete(mini_num);
+		}
+		service.minime_insert(map);
+		
+		String minime_img=service.minime_img(mini_num);
+		model.addAttribute("minime_img", minime_img);
+		List<ItemVo> list=service.minime_list(id);
+		model.addAttribute("list", list);
+		model.addAttribute("id", id);
+		return ".minime.setup";
+	}	
 }

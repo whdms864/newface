@@ -17,6 +17,7 @@ import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
+import com.newface.vo.TodayVo;
 
 @Repository
 public class MiniHomeDao {
@@ -100,8 +101,11 @@ public class MiniHomeDao {
 	public List<Iu_NameVo> iu_list(String id) {
 		return sqlSession.selectList(NAMESPACE + ".iu_list", id);
 	}
-	public int today_insert(int hompy_num) {
-		return sqlSession.insert(NAMESPACE + ".today_insert", hompy_num);
+	public List<TodayVo> today_is(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE + ".today_is", map);
+	}
+	public int today_insert(HashMap<String, Object> map) {
+		return sqlSession.insert(NAMESPACE + ".today_insert", map);
 	}
 	public int today_today(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".today_today", hompy_num);

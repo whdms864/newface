@@ -29,6 +29,7 @@ import com.newface.vo.NowVo;
 import com.newface.vo.ProfileVo;
 import com.newface.vo.RoomposiVo;
 import com.newface.vo.SetupVo;
+import com.newface.vo.TodayVo;
 
 @Controller
 public class MiniHomeController {
@@ -45,11 +46,21 @@ public class MiniHomeController {
 			hompy_num=service.hompy_num(id);
 		}else { 
 			//방문자
+			System.out.println("방문자네요");
+			HashMap<String, Object> map=new HashMap<String, Object>();
 			id=service.id(hompy_num);
-			service.today_insert(hompy_num);
+			map.put("id", loginid);
+			map.put("hompy_num",hompy_num);
+			List<TodayVo> today=service.today_is(map);
+			System.out.println("today : " + today);
+			if(today.isEmpty()) {
+				System.out.println("어서와 여긴 처음이지?");
+				service.today_insert(map);				
+			}
 		}
 
 		session.setAttribute("hompy_num", hompy_num);
+		model.addAttribute("id", id);
 		System.out.println("loginid : " + loginid);
 		System.out.println("id : " + id);
 		System.out.println("hompy_num : " + hompy_num);

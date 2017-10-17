@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=15'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=11'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
@@ -93,10 +93,11 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 		</div>
 	</div>	
 	</c:if>	
-	<input type="hidden" id="hompyid" value="${requestScope.hompyid }">
+	<input type="hidden" id="hompyid" value="${requestScope.id }">	
 </div>
 <script> 
-	var hompyid=$("#hompyid").val();
+	var id=$("#hompyid").val();
+	console.log("hompyid : " + id);
 	$("#home").click(function(){
 		var url="<c:url value='/minihome'/>";
 		$(location).attr("href",url);
@@ -114,7 +115,7 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 		$(location).attr("href",url);
 	});
 	$("#set").click(function(){
-		var url="<c:url value='/setup/basic?id=" + hompyid + "'/>";
+		var url="<c:url value='/setup/basic'/>";
 		$(location).attr("href",url);
 	});
 </script>

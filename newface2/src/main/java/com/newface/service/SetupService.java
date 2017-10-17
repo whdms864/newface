@@ -1,5 +1,6 @@
 package com.newface.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,23 @@ public class SetupService {
 	}
 	public List<ItemVo> minime_list(String id){
 		return dao.minime_list(id);
+	}
+	public int minime_mine_num(int item_num) {
+		return dao.minime_mine_num(item_num);
+	}
+	public int hompy_num(String id) {
+		return dao.hompy_num(id);
+	}
+	public int minime_insert(HashMap<String, Object> map) {
+		return dao.minime_insert(map);
+	}
+	public String minime_img(int mini_num) {
+		return dao.minime_img(mini_num);
+	}
+	public RoomposiVo minime_is(int mini_num) {
+		return dao.minime_is(mini_num);
+	}
+	public int minime_delete(int mini_num) {
+		return dao.minime_delete(mini_num);
 	}
 }
