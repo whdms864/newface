@@ -6,12 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.newface.dao.MiniHomeDao;
 import com.newface.dao.MsgDao;
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
 @Service
 public class MsgService {
-	@Autowired MsgDao dao;
+	@Autowired public MsgDao dao;
+	@Autowired public MiniHomeDao minihomedao;
 	
 	public void setDao(MsgDao dao) {
 		this.dao = dao;
@@ -50,6 +53,14 @@ public class MsgService {
 	
 	public MsgVo msgrecv_getinfo(int msg_num) {
 		return dao.msgrecv_getinfo(msg_num);
+	}
+	
+	public int send_clx(int msg_num) {
+		return dao.send_clx(msg_num);
+	}
+	
+	public List<Iu_NameVo> iu_list(String loginid){
+		return minihomedao.iu_list(loginid);
 	}
 	
 }

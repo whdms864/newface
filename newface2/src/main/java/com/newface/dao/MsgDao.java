@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
 @Repository
@@ -47,5 +48,15 @@ public class MsgDao {
 	public MsgVo msgrecv_getinfo(int msg_num) {
 		return sqlSession.selectOne(NAMESPACE+".msgrecv_getinfo",msg_num);
 	}
+	
+	public int send_clx(int msg_num) {
+		return sqlSession.update(NAMESPACE+".send_clx",msg_num);
+	}
+	
+	public List<Iu_NameVo> iu_list(String loginid) {
+		return sqlSession.selectList(NAMESPACE + ".iu_list", loginid);
+	}
+	
+	
 
 }

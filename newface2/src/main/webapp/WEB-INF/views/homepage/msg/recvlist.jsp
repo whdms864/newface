@@ -5,7 +5,7 @@
 		<table class="table table-hover" style="width: 330px; margin-top: 20px;">
 		<thead>
 	  		<tr class="success">
-	  			<th>아이디</th>
+	  			<th>보낸사람</th>
 	  			<th>내용</th>
 	  			<th>날짜</th>
 	  		</tr>

@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.MsgMapper">
 	<insert id="msg_insert" parameterType="msg">
-		insert into msg values(0,#{content},'삭제전','삭제전',now(),'취소가능','읽지않음',#{sender},#{receiver})
+		insert into msg values(0,#{content},'삭제전','삭제전',now(),'1','읽지않음',#{sender},#{receiver})
 	</insert>
 	
 	<select id="msgrecv_list" resultType="msg" parameterType="String">
-		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d') regdate, send_clx, chk, sender, receiver 
+		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, send_clx, chk, sender, receiver 
 		from msg 
-		where receiver=#{loginid } and send_clx='취소가능' and recv_del='삭제전'
+		where receiver=#{loginid } and send_clx='1' and recv_del='삭제전'
 		order by regdate desc
 		limit #{startRow},#{endRow}
 	</select>
@@ -18,14 +18,14 @@
 	<select id="msgrecv_count" resultType="int">
 		select coalesce(count(msg_num),0) 
 		from msg 
-		where receiver=#{loginid} and send_clx='취소가능' and recv_del='삭제전'
+		where receiver=#{loginid} and recv_del='삭제전'
 	</select>
 	
 	
 	<select id="msgsend_list" resultType="msg" parameterType="String">
-		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d') regdate, send_clx, chk, sender, receiver
+		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, send_clx, chk, sender, receiver
 		from msg
-		where sender=#{loginid } and recv_del='삭제전'
+		where sender=#{loginid } and send_del='삭제전'
 		order by regdate desc
 		limit #{startRow},#{endRow}
 	</select>
@@ -33,18 +33,18 @@
 	<select id="msgsend_count" resultType="int">
 		select coalesce(count(msg_num),0) 
 		from msg 
-		where sender=#{loginid} and recv_del='삭제전'
+		where sender=#{loginid} and send_del='삭제전'
 	</select>
 	
 	<update id="msgrecv_delete" parameterType="int">
 		update msg
-		set recv_clx='삭제'
+		set recv_del='삭제'
 		where msg_num=#{msg_num}
 	</update>
 	
 	<update id="msgsend_delete" parameterType="int">
 		update msg
-		set send_clx='삭제'
+		set send_del='삭제'
 		where msg_num=#{msg_num}
 	</update>
 	
@@ -55,11 +55,20 @@
 	</update>
 	
 	<select id="msgrecv_getinfo" parameterType="int" resultType="msg">
-		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d'), send_clx, chk, sender, receiver
+		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, send_clx, chk, sender, receiver
 		from msg
 		where msg_num=#{msg_num}
 	</select>
 	
+	<update id="send_clx" parameterType="int">
+		update msg
+		set send_clx='0'
+		where msg_num=#{msg_num}
+	</update>
+	
+	<select id="iu_list" parameterType="string" resultType="iu_name">
+		select i.*,m.name,h.hompy_num from iu i join member m on i.u_id=m.id join hompy h on m.id=h.id where i_id=#{loginid } and u_name='일촌';
+	</select>
 	
 	
 </mapper>

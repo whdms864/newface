@@ -1,8 +1,8 @@
 @charset "UTF-8";
 *{margin: 0px;padding: 0px;}
-#wrap{width:100%;}
+#wrap{width:442px;}
 #header{width:100%; height:30px;}
-#content{width:342px; margin:auto;}
+#content{width:442px;}
 
 
 	

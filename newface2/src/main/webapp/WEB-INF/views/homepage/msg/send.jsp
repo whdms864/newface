@@ -5,7 +5,7 @@
 		<form action="<c:url value='/msg_send'/>" method="post">
 			<div style="width:200px; height:25px; margin-top:30px">
 				<span style="float:left; margin-right:10px;">받는 사람</span>
-				<input type="text" name="receiver" style="width:120px; height:25px; float:left; margin-bottom:6px;">
+				<input type="text" name="receiver" style="width:120px; height:25px; float:left; margin-bottom:6px;" value="${msgrecv_getinfo.sender}">
 			</div>
 			<div style="margin-top:15px; height:250px;">
 				<textarea name="content" style="width:100%; height:100%;"></textarea>

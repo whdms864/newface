@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newface.page.PageUtil;
 import com.newface.service.MsgService;
+import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
 
@@ -54,14 +55,21 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "/msg_send", method = RequestMethod.GET)
-	public String msg_sendform(Model model) {
+	public String msg_sendform(Model model,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
+		List<Iu_NameVo> iu_list=service.iu_list(loginid);
+		session.setAttribute("iu_list", iu_list);
+		
 		return ".send";
 	}
 	
+	
+	
 	@RequestMapping(value = "/msg_send", method = RequestMethod.POST)
-	public String msg_send(Model model,MsgVo vo) {
+	public String msg_send(Model model,MsgVo vo,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
 		service.msg_insert(vo);
-		return "redirect:/msgrecv_list";
+		return "redirect:/msgsend_list?sender="+loginid;
 	}
 	
 	
@@ -86,6 +94,38 @@ public class MsgController {
 			
 		return ".sendgetinfo";
 	}
+	
+	@RequestMapping(value = "/msgrecv_delete", method = RequestMethod.GET)
+	public String msgrecv_delete(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
+		service.msgrecv_delete(msg_num);
+			
+		return "redirect:/msgrecv_list?receiver="+loginid;
+	}
+	
+	@RequestMapping(value = "/msgsend_delete", method = RequestMethod.GET)
+	public String msgsend_delete(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
+		service.msgsend_delete(msg_num);
+			
+		return "redirect:/msgsend_list?sender="+loginid;
+	}
+	
+	@RequestMapping(value = "/send_clx", method = RequestMethod.GET)
+	public String send_clx(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
+		service.send_clx(msg_num);
+			
+		return "redirect:/msgsend_list?sender="+loginid;
+	}
+	
+	@RequestMapping(value = "/msg_reply", method = RequestMethod.GET)
+	public String msg_replyform(Model model, int msg_num) {
+		MsgVo msgrecv_getinfo=service.msgrecv_getinfo(msg_num);
+		model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
+		return ".send";
+	}
+	
 	
 	
 }
