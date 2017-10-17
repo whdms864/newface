@@ -63,4 +63,29 @@ public class MsgController {
 		service.msg_insert(vo);
 		return "redirect:/msgrecv_list";
 	}
+	
+	
+	@RequestMapping(value = "/msgrecv_getinfo", method = RequestMethod.GET)
+	public String msgrecv_getinfo(Model model, int msg_num) {
+		
+		int n=service.msgrecv_chk(msg_num);
+		
+		if(n>0) {
+			MsgVo msgrecv_getinfo=service.msgrecv_getinfo(msg_num);
+			model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
+		}
+			
+		return ".recvgetinfo";
+	}
+	
+	@RequestMapping(value = "/msgsend_getinfo", method = RequestMethod.GET)
+	public String msgsend_getinfo(Model model, int msg_num) {
+		
+		MsgVo msgsend_getinfo=service.msgrecv_getinfo(msg_num);
+		model.addAttribute("msgsend_getinfo", msgsend_getinfo);
+			
+		return ".sendgetinfo";
+	}
+	
+	
 }

@@ -17,7 +17,7 @@
   		<c:forEach var="msgsend_list" items="${msgsend_list }"> 
   			<tr>
 	  			<td>${msgsend_list.receiver }</td>
-	  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value=''/>">${msgsend_list.content }</a></td>
+	  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value='/msgsend_getinfo?msg_num=${msgsend_list.msg_num }'/>">${msgsend_list.content }</a></td>
 	  			<td>${msgsend_list.regdate }</td>
 	  			<td>${msgsend_list.chk }</td>
 	  			<td>${msgsend_list.send_clx }</td>

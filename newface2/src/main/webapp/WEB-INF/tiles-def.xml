@@ -279,13 +279,14 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/send.jsp"/>
 	</definition>
 	
+	<definition name=".recvgetinfo" extends=".recvlist">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/recvgetinfo.jsp"/>
+	</definition>
 	
-	
+	<definition name=".sendgetinfo" extends=".recvlist">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/sendgetinfo.jsp"/>
+	</definition>
 
-	
-	
-	
-	
 	
 	
 </tiles-definitions>
