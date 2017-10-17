@@ -67,16 +67,9 @@ public class SetupController {
 		model.addAttribute("list", list);
 		
 		//스킨
-		int hompy_num=service.hompy_num(id);
-		RoomposiVo mine=service.skin_mine_num(hompy_num);
-		int item_num=0;
-		if(mine!=null) {
-			item_num=service.item_num(mine.getMine_num());			
-		}
-		if(item_num>0) {
-			String item_img=service.item_img(item_num);
-			session.setAttribute("item_img", item_img);			
-		}		
+		MineVo vo=service.skin_info(id);
+		int item_num=vo.getItem_num();	
+		model.addAttribute("item_num", item_num);
 		return ".skin.setup";
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
@@ -100,7 +93,10 @@ public class SetupController {
 		}
 	}
 	@RequestMapping(value="/setup/profile",method=RequestMethod.GET)
-	public String profileForm() {
+	public String profileForm(HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		ProfileVo vo=service.profile(hompy_num);
+		model.addAttribute("vo", vo);
 		return ".profile.setup";
 	}
 	@RequestMapping(value="/setup/profile_content",method=RequestMethod.POST)
@@ -120,12 +116,12 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile_todayis",method=RequestMethod.POST)
 	public String profile_todayis(String todayis,HttpSession session,Model model) {
-		String id=(String)session.getAttribute("loginid");
-		int hompy_num=service.hompy_num(id);
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		ProfileVo vo=service.profile(hompy_num);
 		ProfileVo profile=new ProfileVo(vo.getPro_num(), todayis, vo.getContent(), null, vo.getOrg_name(), vo.getSave_name(), hompy_num);
 		int n=service.profile_insert(profile);
 		if(n>0) {
+			model.addAttribute("vo", profile);
 			return ".profile.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 기분상태 수정 요청작업이 실패했습니다");
@@ -235,10 +231,11 @@ public class SetupController {
 		int mini_num=service.mini_num(hompy_num);
 		String minime_img=service.minime_img(mini_num);
 		model.addAttribute("minime_img", minime_img);
-		
+		MineVo vo=service.minime_info(id);
 		List<ItemVo> list=service.minime_list(id);
 		model.addAttribute("list", list);
 		model.addAttribute("id", id);
+		model.addAttribute("item_num", vo.getItem_num());
 		return ".minime.setup";
 	}
 	@RequestMapping(value="/setup/minime_update",method=RequestMethod.POST)

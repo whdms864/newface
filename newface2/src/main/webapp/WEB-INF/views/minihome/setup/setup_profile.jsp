@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_profile.css?var=2'/>"> 
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
+<script>
+	$(function(){
+		var todayis=$("#todayis").val();
+		$("input:radio[name='todayis']:radio[value='" + todayis + "']").prop("checked",true);
+	});
+</script>
+<input type="hidden" id="todayis" value="${requestScope.vo.todayis }">
 <div id="setup_profile_back">
 	<h3 id="first">프로필 사진설정</h3>
 	<hr>
@@ -25,7 +33,7 @@
 	<form action="<c:url value='/setup/profile_content'/>" method="post" id="frm">
 		<table>
 			<tr>
-				<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="background-color: white;"></textarea></td>
+				<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="background-color: white;">${requestScope.vo.content }</textarea></td>
 			</tr>
 		</table>				
 		<input id="addBtn" type="submit" value="변경">		
@@ -36,9 +44,9 @@
 	<hr>
 	<div class="profile_back">
 	<form method="post" action="<c:url value='/setup/profile_todayis'/>">
-		<input type="radio" name="todayis" value="행복" checked="checked">행복 
-		<input type="radio" name="todayis" value="보통">보통 
-		<input type="radio" name="todayis" value="나쁨">나쁨 
+		<input type="radio" id="day1" name="todayis" value="행복">행복 
+		<input type="radio" id="day2" name="todayis" value="보통">보통 
+		<input type="radio" id="day3" name="todayis" value="나쁨">나쁨 
 		<input type="submit" value="변경">
 	</form>
 	</div>

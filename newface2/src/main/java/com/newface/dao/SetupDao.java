@@ -112,4 +112,13 @@ public class SetupDao {
 	public int minime_delete(int mini_num) {
 		return sqlSession.delete(NAMESPACE + ".minime_delete", mini_num);
 	}
+	public ItemVo item_info(int item_num) {
+		return sqlSession.selectOne(NAMESPACE + ".item_info", item_num);
+	}
+	public MineVo skin_info(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".skin_info", id);
+	}
+	public MineVo minime_info(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);
+	}
 }

@@ -97,6 +97,11 @@ public class MemberDao {
 	public String searchpwd(HashMap<String, String> map) {
 		return sqlSession.selectOne(NAMESPACE+ ".serachpwd",map);
 	}
-	
+	public int diary_folder_insert(int hompy_num) {
+		return sqlSession.insert(NAMESPACE + ".diary_folder_insert", hompy_num);
+	}
+	public int photo_folder_insert(int hompy_num) {
+		return sqlSession.insert(NAMESPACE + ".photo_folder_insert", hompy_num);
+	}
 	
 }

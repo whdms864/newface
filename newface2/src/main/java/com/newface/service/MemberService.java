@@ -94,4 +94,10 @@ public class MemberService {
 	public String searchpwd(HashMap<String, String> map) {
 		return dao.searchpwd(map);
 	}
+	public int diary_folder_insert(int hompy_num) {
+		return dao.diary_folder_insert(hompy_num);
+	}
+	public int photo_folder_insert(int hompy_num) {
+		return dao.photo_folder_insert(hompy_num);
+	}
 }

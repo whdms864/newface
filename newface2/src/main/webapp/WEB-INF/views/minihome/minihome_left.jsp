@@ -22,8 +22,9 @@
 		});
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
+			var url = "<c:url value='/minihome?hompy_num=" + hompy_num + "'/>"; 
 			if(hompy_num!='일촌목록'){
-				window.open("<c:url value='/minihome?hompy_num=" + hompy_num + "'/>","한번만 호출해줘"," width=1024,height=594,left=100,top=100");				
+				$(location).attr('href',url);			
 			}
 		});
 		$("#history").click(function(){

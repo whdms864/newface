@@ -5,6 +5,8 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
+		var num=$("#num").val();
+		$("select[name='item_num']").val(num).prop("selected",true);
 		$("#minime_list").change(function(){
 			var item_num=$("#minime_list").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
@@ -13,6 +15,7 @@
 		});
 	});
 </script>
+<input type="hidden" id="num" value="${requestScope.item_num }">
 <div id="setup_miniroom_back">
 	<h3 id="title">미니미</h3> 
 	<form method="post" action="<c:url value='/setup/minime_update'/>">

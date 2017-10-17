@@ -96,4 +96,13 @@
 	<delete id="minime_delete" parameterType="int">
 		delete from room_posi where mini_num=#{value} and drag='미니미'
 	</delete>
+	<select id="item_info" parameterType="int" resultType="item">
+		select * from item where item_num=#{value}
+	</select>
+	<select id="skin_info" parameterType="string" resultType="mine">
+		select m.* from room_posi r join mine m on r.mine_num=m.mine_num where r.drag='스킨' and m.id=#{value}
+	</select>
+	<select id="minime_info" parameterType="string" resultType="mine">
+		select m.* from room_posi r join mine m on r.mine_num=m.mine_num where r.drag='미니미' and m.id=#{value}
+	</select>
 </mapper>  

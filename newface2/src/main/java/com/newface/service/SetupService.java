@@ -111,4 +111,13 @@ public class SetupService {
 	public int minime_delete(int mini_num) {
 		return dao.minime_delete(mini_num);
 	}
+	public ItemVo item_info(int item_num) {
+		return dao.item_info(item_num);
+	}
+	public MineVo skin_info(String id) {
+		return dao.skin_info(id);
+	}
+	public MineVo minime_info(String id) {
+		return dao.minime_info(id);
+	}
 }

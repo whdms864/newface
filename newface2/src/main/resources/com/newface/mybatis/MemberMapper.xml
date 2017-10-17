@@ -89,5 +89,11 @@
 		set type=#{type}  
 		where id=#{id}     
 	</update>
+	<insert id="diary_folder_insert" parameterType="int">
+		insert into diary_folder values(0,'기본폴더',now(),#{value})
+	</insert>
+	<insert id="photo_folder_insert" parameterType="int">
+		insert into photo_folder values(0,'기본폴더',now(),#{value})
+	</insert>
 	
 </mapper>  

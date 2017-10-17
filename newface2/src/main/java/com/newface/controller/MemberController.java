@@ -55,7 +55,9 @@ public class MemberController {
 		int n3=service.miniroom(hompy_num);
 		int n4=service.setup_insert(hompy_num);
 		int n5=service.profile_insert(hompy_num);
-		if(n1>0 && n2>0 && n3>0 && n4>0 && n5>0) {
+		int n6=service.diary_folder_insert(hompy_num);
+		int n7=service.photo_folder_insert(hompy_num);
+		if(n1>0 && n2>0 && n3>0 && n4>0 && n5>0 && n6>0 && n7>0) {
 			return ".main";
 		}else {
 			return ".member";

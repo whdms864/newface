@@ -49,17 +49,6 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 			${sessionScope.hname } <c:if test="${sessionScope.loginid==sessionScope.hompyid }"><a id="hname_edit" href="<c:url value='/setup/basic'/>">수정</a></c:if>
 		</div>
 	</div>
-	<%-- <div id="bgm_back">
-		<div id="bgm">
-			<input type="button" value="노래" id="bgm">
-			<audio controls="controls" autoplay="autoplay" preload="none">
-				<source src="<c:url value='/resources/bgm/WINNER-REALLY REALLY.mp3'/>" type="audio/mpeg">
-				<source src="<c:url value='/resources/bgm/TWICE-SIGNAL.mp3'/>" type="audio/mpeg">
-			</audio>
-		</div>
-	</div> --%>
-	
-	
 	<div id="home">
 		<div class="menu">
 			홈
@@ -93,13 +82,10 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 		</div>
 	</div>	
 	</c:if>	
-	<input type="hidden" id="hompyid" value="${requestScope.id }">	
 </div>
 <script> 
-	var id=$("#hompyid").val();
-	console.log("hompyid : " + id);
 	$("#home").click(function(){
-		var url="<c:url value='/minihome'/>";
+		var url="<c:url value='/minihome'/>";					
 		$(location).attr("href",url);
 	});
 	$("#diary").click(function(){

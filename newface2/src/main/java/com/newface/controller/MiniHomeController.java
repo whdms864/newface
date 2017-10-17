@@ -44,6 +44,7 @@ public class MiniHomeController {
 			//홈주인
 			id=loginid;
 			hompy_num=service.hompy_num(id);
+			session.setAttribute("hompy_admin", "1");
 		}else { 
 			//방문자
 			System.out.println("방문자네요");
@@ -57,6 +58,7 @@ public class MiniHomeController {
 				System.out.println("어서와 여긴 처음이지?");
 				service.today_insert(map);				
 			}
+			session.setAttribute("hompy_admin", "2");
 		}
 
 		session.setAttribute("hompy_num", hompy_num);
