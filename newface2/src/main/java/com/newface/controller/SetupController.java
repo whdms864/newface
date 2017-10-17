@@ -32,7 +32,13 @@ public class SetupController {
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
 	public String basicForm(Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
+		String hname=service.hname_select(id);
+		int hompy_num=service.hompy_num(id);
+		SetupVo vo=service.setup_list(hompy_num);
+		
 		model.addAttribute("id", id);
+		model.addAttribute("vo", vo);
+		model.addAttribute("hname", hname);
 		return ".basic.setup";
 	}
 	@RequestMapping(value="/setup/menu",method=RequestMethod.POST)
@@ -43,6 +49,7 @@ public class SetupController {
 		int n=service.menu_update(vo);
 		if(n>0) {
 			SetupVo menu=service.setup_list(hompy_num);	
+			model.addAttribute("vo", menu);
 			session.setAttribute("diary", menu.getDiary());
 			session.setAttribute("photo", menu.getPhoto());
 			session.setAttribute("guest", menu.getGuest());
@@ -81,6 +88,10 @@ public class SetupController {
 		if(n>0) {
 			HompyVo hompy=service.hompy(id);
 			session.setAttribute("hname", hompy.getHname());
+			
+			SetupVo setup=service.setup_list(hompy_num);
+			model.addAttribute("vo", setup);
+			model.addAttribute("hname", vo.getHname());
 			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 홈피명 수정 요청작업이 실패했습니다");

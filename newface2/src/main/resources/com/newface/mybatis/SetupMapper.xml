@@ -12,6 +12,9 @@
 	<update id="hname" parameterType="hompy">
 		update hompy set hname=#{hname} where hompy_num=#{hompy_num}
 	</update>
+	<select id="hname_select" parameterType="string" resultType="string">
+		select hname from hompy where id=#{value}
+	</select>
 	<select id="profile" parameterType="int" resultType="profile">
 		select * from profile where hompy_num=#{value} order by pro_num desc limit 0,1
 	</select>

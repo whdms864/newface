@@ -30,6 +30,9 @@ public class SetupService {
 	public int hname(HompyVo vo) {
 		return dao.hname(vo);
 	}
+	public String hname_select(String id) {
+		return dao.hname_select(id);
+	}
 	public ProfileVo profile(int hompy_num) {
 		return dao.profile(hompy_num);
 	}

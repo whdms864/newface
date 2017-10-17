@@ -31,7 +31,9 @@ public class MemberDao {
 	public int count_type(HashMap<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".count_type",map);
 	}
-	
+	public int profile_insert(int hompy_num) {
+		return sqlSession.insert(NAMESPACE + ".profile_insert", hompy_num);
+	}
 	public MemberVo getinfo(String id) {
 		MemberVo vo=sqlSession.selectOne(NAMESPACE+".getinfo",id);
 		return vo;

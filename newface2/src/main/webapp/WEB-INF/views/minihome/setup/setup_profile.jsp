@@ -36,7 +36,7 @@
 	<hr>
 	<div class="profile_back">
 	<form method="post" action="<c:url value='/setup/profile_todayis'/>">
-		<input type="radio" name="todayis" value="좋음" checked="checked">좋음 
+		<input type="radio" name="todayis" value="행복" checked="checked">행복 
 		<input type="radio" name="todayis" value="보통">보통 
 		<input type="radio" name="todayis" value="나쁨">나쁨 
 		<input type="submit" value="변경">

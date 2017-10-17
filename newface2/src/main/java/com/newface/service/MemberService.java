@@ -32,6 +32,9 @@ public class MemberService {
 	public int count_type(HashMap<String, Object> map) {
 		return dao.count_type(map);
 	}
+	public int profile_insert(int hompy_num) {
+		return dao.profile_insert(hompy_num);
+	}
 	public int setup_insert(int hompy_num) {
 		return dao.setup_insert(hompy_num);
 	}

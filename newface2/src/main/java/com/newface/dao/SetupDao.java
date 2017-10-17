@@ -31,6 +31,9 @@ public class SetupDao {
 	public int hname(HompyVo vo) {
 		return sqlSession.update(NAMESPACE + ".hname", vo);
 	}
+	public String hname_select(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".hname_select", id);
+	}
 	public ProfileVo profile(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE + ".profile", hompy_num);
 	}

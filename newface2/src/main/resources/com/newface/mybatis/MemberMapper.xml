@@ -10,9 +10,11 @@
 	</insert>
 	
 	<insert id="hompyinsert" parameterType="hompy">
-		insert into hompy values(0,0,'NewFace',#{id})
+		insert into hompy values(0,'NewFace',#{id})
 	</insert>
-	
+	<insert id="profile_insert" parameterType="int">
+		insert into profile values(0,'행복','자기소개가 없습니다',now(),null,null,#{hompy_num})
+	</insert>
 	<select id="getinfo_type" resultType="member" parameterType="hashmap">
 		select * from member
 		where type=#{type} and (id like concat('%',#{text},'%') or name like concat('%',#{text},'%'))

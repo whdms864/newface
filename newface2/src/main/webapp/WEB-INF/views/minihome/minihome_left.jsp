@@ -46,7 +46,7 @@
 	<div id="todayis"> 
 		<a id="today_color">TODAY IS.. </a>  
 	<c:choose>
-		<c:when test="${requestScope.vo.todayis=='좋음' }">
+		<c:when test="${requestScope.vo.todayis=='행복' }">
 			<img src="<c:url value='/resources/images/minihome/flower.png'/>">
 		</c:when>
 		<c:when test="${requestScope.vo.todayis=='보통' }">
