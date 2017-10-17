@@ -50,7 +50,7 @@
 						+			"</div>"
 						+			"<div class='content3' align='left'>"
 						+				"<ul>"
-						+					"<li>좋아요 "+list[i].love+"명</li>"
+						+					"<li>좋아요 <label class='loveval' style='font-weight: normal;'>"+list[i].love+"</label>명</li>"
 						+					"<li>댓글수</li>"
 						+				"</ul>"
 						+			"</div>"
@@ -58,10 +58,9 @@
 						+			"<div class='content2' align='left'>"
 						+				"<ul>"
 						+					"<li>"
-						+					"<input type='hidden'  value='"+vo.tb+"' class='tb'>"
-						+					"<input type='hidden'  value='"+vo.num+"' class='num'>"
-						+					"<input type='hidden'  value='"+vo.love+"' class='love'>";
-						+					"<a href='' class='c_love'>좋아요</a>";
+						+					"<input type='hidden'  value='"+list[i].tb+"' class='tb'>"
+						+					"<input type='hidden'  value='"+list[i].num+"' class='num'>"
+						+					"<a class='c_love'>좋아요</a>";
 						+					"</li>"
 						+					"<li><a href=''>댓글달기</a></li>"
 						+					"<li><a href=''>공유하기</a></li>"
@@ -109,18 +108,24 @@
 		$(".c_love").click(function(){
 			var tb=$(this).closest("li").find(".tb").val();
 			var num=$(this).closest("li").find(".num").val();
-			var love=$(this).closest("li").find(".love").val();
-			
+			var love=parseInt($(this).parents(".first").find(".loveval").text());
+			$.getJSON('main2/love',{"tb":tb,"num":num,"love":love},function(data){
+			});
 			var color=$(this).css("color");
-			if(color!="#337ab7"){
-				$.getJSON('main2/love',{"tb":tb,"num":num,"love":love},function(data){
-					alert(data.love);
-					$(this).css({
-						"font-style":"bold",
-						"color" : "#337ab7"
-					});
+			if(color!="rgb(51, 122, 183)"){
+				$(this).css({
+					"font-weight":"bold",
+					"color" : "#337ab7"
 				});
+				love +=1;
+			}else{
+				$(this).css({
+					"font-weight":"normal",
+					"color" : "#616770"
+				});
+				love -=1;
 			}
+			$(this).parents(".first").find(".loveval").text(love);
 		});
 	});
 </script>
@@ -163,7 +168,7 @@
 				</div>
 				<div class="content3" align="left">
 					<ul>
-						<li>좋아요 ${vo.love }명</li>
+						<li>좋아요 <label class="loveval" style="font-weight: normal;">${vo.love }</label>명</li>
 						<li>댓글수</li>
 					</ul>
 				</div>
@@ -173,8 +178,23 @@
 						<li>
 						<input type="hidden"  value="${vo.tb }" class="tb">
 						<input type="hidden"  value="${vo.num }" class="num">
-						<input type="hidden"  value="${vo.love }" class="love">
-						<a href="" class="c_love">좋아요</a>
+						<c:choose>
+							<c:when test="${lovelist.size()>0 }">
+								<c:set var="doneLoop" value="false"/>
+								<c:forEach var="map" items="${lovelist }">
+									<c:if test="${not doneLoop}">
+										<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+											<a class="c_love" style="font-weight:bold;color:#337ab7">좋아요</a>
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
+									</c:if>
+								</c:forEach>
+								<a class="c_love">좋아요</a>
+							</c:when>
+							<c:otherwise>
+								<a class="c_love">좋아요</a>
+							</c:otherwise>
+						</c:choose>
 						</li>
 						<li><a href="">댓글달기</a></li>
 						<li><a href="">공유하기</a></li>

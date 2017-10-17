@@ -1,5 +1,6 @@
 package com.newface.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.service.LoveService;
 import com.newface.service.TimelineService;
 import com.newface.vo.Diary_loveVo;
-import com.newface.vo.PhotoVo;
 import com.newface.vo.Photo_loveVo;
 import com.newface.vo.TimelineVo;
 
@@ -36,7 +36,31 @@ public class TimelineController {
 		map.put("startrow", 0);
 		map.put("endrow", 20);
 		List<TimelineVo> list=timelineservice.list(map);
+		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
+		HashMap<String,Object> map1=new HashMap<String, Object>();
+		for(TimelineVo vo:list) {
+			if(vo.getTb().equals("photo")) {
+				map.put("photo_num", vo.getNum());
+				map.put("id", id);
+				Photo_loveVo plist=loveservice.p_list(map);
+				if(plist!=null) {
+					map1.put("num", vo.getNum());
+					map1.put("tb", "photo");
+					lovelist.add(map1);
+				}
+			}else if(vo.getTb().equals("diary")) {
+				map.put("diary_num", vo.getNum());
+				map.put("id", id);
+				Diary_loveVo dlist=loveservice.d_list(map);
+				if(dlist!=null) {
+					map1.put("num", vo.getNum());
+					map1.put("tb", "diary");
+					lovelist.add(map1);
+				}
+			}
+		}
 		model.addAttribute("list",list);
+		model.addAttribute("lovelist",lovelist);
 		model.addAttribute("pro_img",pro_img);
 		return ".main2";
 	}
@@ -60,10 +84,11 @@ public class TimelineController {
 	public HashMap<String, Object> main2_love(String tb ,int num,int love,HttpSession session){
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		String id=(String)session.getAttribute("loginid");
-		map.put("num", num);
 		map.put("id", id);
-		if(tb=="photo") {
+		if(tb.equals("photo")) {
+			map.put("photo_num", num);
 			Photo_loveVo vo=loveservice.p_list(map);
+			
 			if(vo!=null) {
 				loveservice.p_delete(map);
 				love -=1;
@@ -78,7 +103,8 @@ public class TimelineController {
 				map.put("love", love);
 				loveservice.p_update(map);
 			}
-		}else if(tb=="diary") {
+		}else if(tb.equals("diary")) {
+			map.put("diary_num", num);
 			Diary_loveVo vo=loveservice.d_list(map);
 			if(vo!=null) {
 				loveservice.d_delete(map);
