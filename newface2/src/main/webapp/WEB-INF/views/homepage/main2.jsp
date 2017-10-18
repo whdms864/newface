@@ -185,20 +185,28 @@
 					}
 					$(this).parents(".timeline").find(".gong_wrap").css("display","block");
 				});
+				var startrow_com = 0;
+				var endrow_com = 20;
 				/*댓글달기클릭*/
 				$(".com_in").click(function() {
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
-						"num" : num
+						"num2" : num
 					}, function(data) {
 						for(var i=0;i<data.length;i++){
-							var html="<table style='padding: 0px; margin: 0px;'>"
+							var html="<tbody>"
 									+	"<tr>"
-									+		"<td rowspan='2'><img src='' class='img-circle'></td>"
+									+		"<td rowspan='2' style='padding-top: 5px;'>";
+							if(data[i].save_name!=null){
+								html +="<img src='/newface/resources/upload/"+data[i].save_name +"' class='img-circle'>";
+							}else{
+								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+							}
+								html +="</td>"
 									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
-									+			"댓글내용</td>";
+									+			data[i].content+" · "+data[i].regdate+"</td>";
 									+	"</tr>"
 									+	"<tr>"
 									+		"<td>"
@@ -208,11 +216,97 @@
 									+			"</ul>"
 									+		"</td>"
 									+	"</tr>"
-									+"</table>";
+									+"</tbody>";
 							$(".com_main1").append(html);
 						}
 					});
 					$(this).parents(".timeline").find(".timecom").css("display","block");
+				});
+				/*댓글더보기클릭*/
+				$(".com_a").click(function() {
+					startrow_com +=20;
+					endrow_com +=20;
+					var tb = $(this).parents(".timeline").find(".tb").val();
+					var num = $(this).parents(".timeline").find(".num").val();
+					$.getJSON('main2/com/list', {
+						"tb" : tb,
+						"num2" : num,
+						"startrow_com" : startrow_com,
+						"endrow_com" : endrow_com
+					}, function(data) {
+						for(var i=0;i<data.length;i++){
+							alert(data.length);
+							var html="<tbody>"
+									+	"<tr>"
+									+		"<td rowspan='2' style='padding-top: 5px;'>";
+							if(data[i].save_name!=null){
+								html +="<img src='/newface/resources/upload/"+data[i].save_name +"' class='img-circle'>";
+							}else{
+								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+							}
+								html +="</td>"
+									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+									+			data[i].content+" · "+data[i].regdate+"</td>";
+									+	"</tr>"
+									+	"<tr>"
+									+		"<td>"
+									+			"<ul>"
+									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+									+				"<li><a>답글달기</a></li>"
+									+			"</ul>"
+									+		"</td>"
+									+	"</tr>"
+									+"</tbody>";
+							$(".com_main1").append(html);
+						}
+					});
+				});
+				/*댓글쓰기*/
+				$(".text").keypress(function(event){
+					if(event.keyCode==13){
+						var text=$(".text").val();
+						var tb = $(this).parents(".timeline").find(".tb").val();
+						var num2 = $(this).parents(".timeline").find(".num").val();
+						if(text==""){
+							$("#text").focus();
+							alert("검색할 내용을 입력해주세요");
+						}else{
+							$.getJSON('main2/com/insert', {
+								"tb" : tb,
+								"num2" : num2,
+								"content" : text,
+								"startrow_com" : startrow_com,
+								"endrow_com" : endrow_com
+							}, function(data) {
+								$(".com_main1").html("");
+								var text=$(".text").val("");
+								for(var i=0;i<data.length;i++){
+									var html="<tbody>"
+											+	"<tr>"
+											+		"<td rowspan='2' style='padding-top: 5px;'>";
+									if(data[i].save_name!=null){
+										html +="<img src='/newface/resources/upload/"+data[i].save_name +"' class='img-circle'>";
+									}else{
+										html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+									}
+										html +="</td>"
+											+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+											+			data[i].content+" · "+data[i].regdate+"</td>";
+											+	"</tr>"
+											+	"<tr>"
+											+		"<td>"
+											+			"<ul>"
+											+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+											+				"<li><a>답글달기</a></li>"
+											+			"</ul>"
+											+		"</td>"
+											+	"</tr>"
+											+"</tbody>";
+									$(".com_main1").append(html);
+								}
+							});
+						}
+					}
 				});
 			});
 </script>
@@ -329,26 +423,11 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<input type="text" class="form-control" placeholder="댓글을 입력하세요">
+					<input type="text" class="form-control text" placeholder="댓글을 입력하세요">
 					<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
 					<div class="com_main">
-						<div class="com_main1">
-							<table style="padding: 0px; margin: 0px;">
-								<tr>
-									<td rowspan="2"><img src="" class="img-circle"></td>
-									<td style="width: 94%; padding-left: 10px; height: 30px;">
-										댓글내용</td>
-								</tr>
-								<tr>
-									<td>
-										<ul>
-											<li><a href="" style="margin: 0px;">좋아요</a></li>
-											<li><a href="">답글달기</a></li>
-										</ul>
-									</td>
-								</tr>
-							</table>
-						</div>
+						<table style="padding: 0px; margin: 0px;" class="com_main1">
+						</table>
 						<a class="com_a">댓글 더보기</a>
 					</div>
 				</div>

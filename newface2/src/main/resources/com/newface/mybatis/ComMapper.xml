@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.ComMapper">
 	<select id="p_c_list" resultType="joincom" parameterType="hashmap">
-		select num,content,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,num2,id,save_name,tb from( 
+		select num,content,DATE_FORMAT(regdate, "%Y-%m-%d") regdate,num2,id,save_name,tb from( 
 		select p.photo_com_num num,p.content content,p.regdate regdate,p.photo_num num2,p.id id,pro.save_name save_name,'photo' tb 
 		from photo_com p 
 		join hompy h 
@@ -16,11 +16,12 @@
 		) a 
 		group by a.hompy_num) pro 
 		on h.hompy_num=pro.hompy_num) a 
+		where a.num2=#{num2}
 		order by a.regdate desc 
 		limit #{startrow},#{endrow}
 	</select>
 	<select id="d_c_list" resultType="joincom" parameterType="hashmap">
-		select num,content,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,num2,id,save_name,tb from( 
+		select num,content,DATE_FORMAT(regdate, "%Y-%m-%d") regdate,num2,id,save_name,tb from( 
 		select p.diary_com_num num,p.content content,p.regdate regdate,p.diary_num num2,p.id id,pro.save_name save_name,'diary' tb 
 		from diary_com p 
 		join hompy h 
@@ -31,7 +32,8 @@
 		order by hompy_num, regdate desc 
 		) a 
 		group by a.hompy_num) pro 
-		on h.hompy_num=pro.hompy_num) a 
+		on h.hompy_num=pro.hompy_num) a
+		where a.num2=#{num2} 
 		order by a.regdate desc 
 		limit #{startrow},#{endrow}
 	</select>

@@ -11,20 +11,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newface.service.ComService;
 import com.newface.service.DiaryService;
 import com.newface.service.LoveService;
 import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
 import com.newface.service.SingoService;
 import com.newface.service.TimelineService;
+import com.newface.vo.ComVo;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.Diary_loveVo;
+import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
 import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.Photo_loveVo;
+import com.newface.vo.PhotocomVo;
 import com.newface.vo.PhotofolderVo;
 import com.newface.vo.PhotosingoVo;
 import com.newface.vo.TimelineVo;
@@ -41,6 +46,7 @@ public class TimelineController {
 	@Autowired private MiniHomeService minihomeservice;
 	@Autowired private PhotoService photoservice;
 	@Autowired private DiaryService diaryservice;
+	@Autowired private ComService comservice;
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
 	public String main2(Model model,HttpSession session) {
@@ -137,16 +143,40 @@ public class TimelineController {
 	
 	@RequestMapping("/main2/com/list")
 	@ResponseBody
-	public HashMap<String, Object> main2_com_list(int startrow,int endrow,HttpSession session){
+	public List<ComVo> main2_com_list(@RequestParam(value="startrow_com",defaultValue="0") int startrow_com,
+			@RequestParam(value="endrow_com",defaultValue="5") int endrow_com,int num2,String tb,HttpSession session){
+		System.out.println("Á¦¹ß!!!");
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		List<ComVo> list=null;
+		map.put("startrow", startrow_com);
+		map.put("endrow", endrow_com);
+		map.put("num2", num2);
+		if(tb.equals("photo")) {
+			list=comservice.p_c_list(map);
+		}else if(tb.equals("diary")) {
+			list=comservice.d_c_list(map);
+		}
+		return list;
+	}
+	@RequestMapping("/main2/com/insert")
+	@ResponseBody
+	public List<ComVo> main2_com_insert(int startrow_com,int endrow_com,int num2,String tb,String content,HttpSession session){
 		String id=(String)session.getAttribute("loginid");
-		String pro_img=timelineservice.pro_img(id);
-		HashMap<String,Object> map=new HashMap<String, Object>();
-		map.put("startrow", startrow);
-		map.put("endrow", endrow);
-		List<TimelineVo> list=timelineservice.list(map);
-		map.put("list",list);
-		map.put("pro_img",pro_img);
-		return map;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		List<ComVo> list=null;
+		map.put("startrow", startrow_com);
+		map.put("endrow", endrow_com);
+		map.put("num2", num2);
+		if(tb.equals("photo")) {
+			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id);
+			photoservice.com_insert(vo);
+			list=comservice.p_c_list(map);
+		}else if(tb.equals("diary")) {
+			DiarycomVo vo=new DiarycomVo(0, content, null, null, num2, id, null);
+			diaryservice.com_insert(vo);
+			list=comservice.d_c_list(map);
+		}
+		return list;
 	}
 	
 	@RequestMapping("/main2/love")
