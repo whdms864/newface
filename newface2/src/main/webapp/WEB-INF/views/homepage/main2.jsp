@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=74'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=75'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -185,6 +185,35 @@
 					}
 					$(this).parents(".timeline").find(".gong_wrap").css("display","block");
 				});
+				/*댓글달기클릭*/
+				$(".com_in").click(function() {
+					var tb = $(this).parents(".timeline").find(".tb").val();
+					var num = $(this).parents(".timeline").find(".num").val();
+					$.getJSON('main2/com/list', {
+						"tb" : tb,
+						"num" : num
+					}, function(data) {
+						for(var i=0;i<data.length;i++){
+							var html="<table style='padding: 0px; margin: 0px;'>"
+									+	"<tr>"
+									+		"<td rowspan='2'><img src='' class='img-circle'></td>"
+									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+									+			"댓글내용</td>";
+									+	"</tr>"
+									+	"<tr>"
+									+		"<td>"
+									+			"<ul>"
+									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+									+				"<li><a>답글달기</a></li>"
+									+			"</ul>"
+									+		"</td>"
+									+	"</tr>"
+									+"</table>";
+							$(".com_main1").append(html);
+						}
+					});
+					$(this).parents(".timeline").find(".timecom").css("display","block");
+				});
 			});
 </script>
 <div class="loginafter" align="center">
@@ -257,64 +286,70 @@
 									</c:otherwise>
 								</c:choose>
 							</li>
-							<li><a href="">댓글달기</a></li>
+							<li><a class="com_in">댓글달기</a></li>
 							<li><a class="gongU">공유하기</a></li>
-							<li>
-								<input type="hidden" value="${vo.singo }" class="singo_val"> 
-								<c:choose>
-									<c:when test="${singolist.size()>0 }">
-										<c:set var="doneLoop" value="false" />
-										<c:forEach var="map" items="${singolist }">
-											<c:if test="${not doneLoop}">
-												<c:if test="${map.num==vo.num && map.tb==vo.tb}">
-													<a class="singo" style="font-weight: bold; color: red">신고</a>
-													<c:set var="doneLoop" value="true" />
+							<c:if test="${loginid!=vo.id }">
+								<li style="float:right;">
+									<input type="hidden" value="${vo.singo }" class="singo_val"> 
+									<c:choose>
+										<c:when test="${singolist.size()>0 }">
+											<c:set var="doneLoop" value="false" />
+											<c:forEach var="map" items="${singolist }">
+												<c:if test="${not doneLoop}">
+													<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+														<a class="singo" style="font-weight: bold; color: red">신고</a>
+														<c:set var="doneLoop" value="true" />
+													</c:if>
 												</c:if>
+											</c:forEach>
+											<c:if test="${doneLoop==false}">
+												<a class="singo">신고</a>
 											</c:if>
-										</c:forEach>
-										<c:if test="${doneLoop==false}">
+										</c:when>
+										<c:otherwise>
 											<a class="singo">신고</a>
-										</c:if>
-									</c:when>
-									<c:otherwise>
-										<a class="singo">신고</a>
-									</c:otherwise>
-								</c:choose>
-							</li>
+										</c:otherwise>
+									</c:choose>
+								</li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
 				<div class="timecom" align="center">
-					<c:choose>
-						<c:when test="${pro_img!=null }">
-							<img src="<c:url value='/resources/upload/${pro_img}'/>"
-								class="img-circle">
-						</c:when>
-						<c:otherwise>
-							<img
-								src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
-								class="img-circle">
-						</c:otherwise>
-					</c:choose>
+					<div>
+						<c:choose>
+							<c:when test="${pro_img!=null }">
+								<img src="<c:url value='/resources/upload/${pro_img}'/>"
+									class="img-circle">
+							</c:when>
+							<c:otherwise>
+								<img
+									src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
+									class="img-circle">
+							</c:otherwise>
+						</c:choose>
+					</div>
 					<input type="text" class="form-control" placeholder="댓글을 입력하세요">
 					<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
 					<div class="com_main">
-						<table style="padding: 0px; margin: 0px;">
-							<tr>
-								<td rowspan="2"><img src="" class="img-circle"></td>
-								<td style="width: 94%; padding-left: 10px; height: 30px;">
-									댓글내용</td>
-							</tr>
-							<tr>
-								<td>
-									<ul>
-										<li><a href="" style="margin: 0px;">좋아요</a></li>
-										<li><a href="">답글달기</a></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-						<a href="" class="com_a">댓글 더보기</a>
+						<div class="com_main1">
+							<table style="padding: 0px; margin: 0px;">
+								<tr>
+									<td rowspan="2"><img src="" class="img-circle"></td>
+									<td style="width: 94%; padding-left: 10px; height: 30px;">
+										댓글내용</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="" style="margin: 0px;">좋아요</a></li>
+											<li><a href="">답글달기</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<a class="com_a">댓글 더보기</a>
 					</div>
 				</div>
 				<div class="gong_wrap">

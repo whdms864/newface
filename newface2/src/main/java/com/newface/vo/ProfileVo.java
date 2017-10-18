@@ -1,6 +1,5 @@
 package com.newface.vo;
 
-import java.util.Date;
 
 public class ProfileVo {
 	private int pro_num;

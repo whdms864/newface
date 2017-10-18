@@ -135,6 +135,20 @@ public class TimelineController {
 		return map;
 	}
 	
+	@RequestMapping("/main2/com/list")
+	@ResponseBody
+	public HashMap<String, Object> main2_com_list(int startrow,int endrow,HttpSession session){
+		String id=(String)session.getAttribute("loginid");
+		String pro_img=timelineservice.pro_img(id);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("startrow", startrow);
+		map.put("endrow", endrow);
+		List<TimelineVo> list=timelineservice.list(map);
+		map.put("list",list);
+		map.put("pro_img",pro_img);
+		return map;
+	}
+	
 	@RequestMapping("/main2/love")
 	@ResponseBody
 	public HashMap<String, Object> main2_love(String tb ,int num,int love,HttpSession session){

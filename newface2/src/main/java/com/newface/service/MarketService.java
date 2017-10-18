@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.MarketDao;
-import com.newface.dao.Qna11Dao;
 import com.newface.vo.CategoryVo;
 import com.newface.vo.ItemVo;
-import com.newface.vo.Qna11Vo;
-import com.newface.vo.Qna11comVo;
 
 @Service
 public class MarketService {
