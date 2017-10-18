@@ -52,23 +52,23 @@
 		  	</tr>
 		  	<tr>
 	  			<td colspan="2" style="height:340px">
-			  		<textarea rows="16" cols="65" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea>
+			  		<textarea rows="14" cols="65" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea>
 				</td>
 		  	</tr>
 	</table>
-	<div style="position:absolute;top:430px; width:98%;"align="center">
+	<div style="position:absolute; top:395px; width:98%;"align="center">
 		<div style="background-color: rgb(224, 224, 224);margin-left:8px;width: 99%; height:1px;"></div>
 	</div>
 	
-	<div style="background-color: rgb(239, 238, 238);width: 95%;height:225px; position:absolute; bottom:25px; left:13px">
+	<div style="background-color: rgb(239, 238, 238);width: 95%;height:255px; position:absolute; bottom:30px; left:13px">
 		<form method="post" id="noti_com_insert" action="<c:url value='/noti_com_insert'/>">
 		
 		<div style="display: inline-block;">
 			<div class="form-group has-success" style="display: inline-block; width:500px; height:35px;">
 				<input type="text" name="content" id="com_content" class="form-control" style="width:400px;height:30px; float:left; position:absolute;right:75px; top:5px;">
 					<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; position:absolute; left:420px; top:5px;">
-				<div style="width:95%; height:160px; background-color: white; position:absolute; top:40px; right:12px;">
-					<table style="width:100%;">
+				<div style="width:95%; height:205px; background-color: white; position:absolute; top:40px; right:12px;">
+					<table class="table table-condensed" style="width:100%;">
 						<tr align="center">
 						<th>글쓴이</th>
 						<th>내용</th>
@@ -101,7 +101,7 @@
 	</div>
 </div>
 
-<div style="position:absolute;top:695px;width: 100%;"align="center">
+<div style="position:absolute;top:715px;width: 100%;"align="center">
 	<c:choose>
 		<c:when test="${pu.startPageNum>5 }">
 			<a href="<c:url value='/noti_getinfo?pageNum=${pu.startPageNum-1 }&noti_num=${vo.noti_num }'/>">

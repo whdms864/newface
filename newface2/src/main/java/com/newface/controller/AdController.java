@@ -1,5 +1,6 @@
 package com.newface.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.newface.page.PageUtil;
 import com.newface.service.AdService;
 import com.newface.vo.AdVo;
 import com.newface.vo.AderVo;
@@ -20,8 +23,14 @@ public class AdController {
 		
 	//±§∞Ì∞Ëæ‡
 	@RequestMapping(value = "/ad_list", method = RequestMethod.GET)
-	public String ad_list(Model model,int ader_num) {
-		List<AdVo> ad_list=service.ad_list(ader_num);
+	public String ad_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,int ader_num) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.ad_count(ader_num);
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<AdVo> ad_list=service.ad_list(map);
+		model.addAttribute("pu",pu);
 		model.addAttribute("ad_list", ad_list);
 		return ".ad_list";
 	}
@@ -69,8 +78,14 @@ public class AdController {
 	
 	//±§∞Ì¡÷
 	@RequestMapping(value = "/ader_list", method = RequestMethod.GET)
-	public String ader_list(Model model) {
-		List<AderVo> ader_list=service.ader_list();
+	public String ader_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		int totalRowCount=service.ader_count();
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<AderVo> ader_list=service.ader_list(map);
+		model.addAttribute("pu",pu);
 		model.addAttribute("ader_list",ader_list);
 		return ".ader_list";
 	}

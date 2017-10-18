@@ -48,7 +48,7 @@
 		 </tbody>
 	</table>
 </div>
-<div style="position:absolute;top:700px;width: 100%;"align="center">
+		<div style="position:absolute;top:700px;width: 100%;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
 					<a href="<c:url value='/noti_list?pageNum=${pu.startPageNum-1 }'/>">

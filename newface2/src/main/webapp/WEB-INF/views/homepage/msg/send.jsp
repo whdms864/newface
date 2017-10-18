@@ -15,19 +15,17 @@
 			<span style="float:left; margin-right:10px;">받는 사람</span>
 			<input type="text" id="receiver" name="receiver" style="width:120px; height:25px; float:left; margin-bottom:6px;" value="${msgrecv_getinfo.sender}">
 			
-			<div class="btn-group">
-			  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Small button
-			  </button>
-			  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    <span class="sr-only">Toggle Dropdown</span>
-			  </button>
-			  <div class="dropdown-menu">
-			    <c:forEach var="iu" items="${sessionScope.iu_list }">
-					<input type="checkbox" value="${iu.hompy_num }">${iu.name } (${iu.u_id})		
-				</c:forEach>
-			  </div>
-			</div>
+		<div class="btn-group">
+		  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Small button
+		  </button>
+		  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <div class="dropdown-menu">
+		    ...
+		  </div>
+		</div>
 		</div>
 		
 		<div style="margin-top:15px; height:250px;">

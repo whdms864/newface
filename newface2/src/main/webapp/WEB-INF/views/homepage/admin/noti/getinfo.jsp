@@ -94,7 +94,7 @@
 		</div>
 		</form>
 			<div style="width:90%; height:148px; background-color: white; position:absolute; top:440px; right:38px;">
-					<table style="width:100%;">
+					<table class="table table-condensed" style="width:100%;">
 						<tr>
 						<th>글쓴이</th>
 						<th>내용</th>
