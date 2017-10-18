@@ -50,6 +50,8 @@ public class MsgController {
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<MsgVo> msgsend_list=service.msgsend_list(map);
+		int msgnorecv_count=service.msgnorecv_count(loginid);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		model.addAttribute("pu",pu);
 		model.addAttribute("msgsend_list",msgsend_list);
 				
@@ -60,6 +62,8 @@ public class MsgController {
 	public String msg_sendform(Model model,HttpSession session) {
 		String loginid=(String)session.getAttribute("loginid");
 		List<Iu_NameVo> iu_list=service.iu_list(loginid);
+		int msgnorecv_count=service.msgnorecv_count(loginid);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		session.setAttribute("iu_list", iu_list);
 		
 		return ".send";
@@ -71,17 +75,23 @@ public class MsgController {
 	@RequestMapping(value = "/msg_send", method = RequestMethod.POST)
 	public String msg_send(Model model,MsgVo vo,HttpSession session) {
 		String loginid=(String)session.getAttribute("loginid");
+		
+		int msgnorecv_count=service.msgnorecv_count(loginid);
+		
 		service.msg_insert(vo);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		return "redirect:/msgsend_list?sender="+loginid;
 	}
 	
 	
 	@RequestMapping(value = "/msgrecv_getinfo", method = RequestMethod.GET)
-	public String msgrecv_getinfo(Model model, int msg_num) {
-		
+	public String msgrecv_getinfo(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
 		int n=service.msgrecv_chk(msg_num);
 		
 		if(n>0) {
+			int msgnorecv_count=service.msgnorecv_count(loginid);
+			session.setAttribute("msgnorecv_count", msgnorecv_count);
 			MsgVo msgrecv_getinfo=service.msgrecv_getinfo(msg_num);
 			model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
 		}
@@ -90,10 +100,13 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "/msgsend_getinfo", method = RequestMethod.GET)
-	public String msgsend_getinfo(Model model, int msg_num) {
+	public String msgsend_getinfo(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
 		
 		MsgVo msgsend_getinfo=service.msgrecv_getinfo(msg_num);
+		int msgnorecv_count=service.msgnorecv_count(loginid);
 		model.addAttribute("msgsend_getinfo", msgsend_getinfo);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 			
 		return ".sendgetinfo";
 	}
@@ -123,8 +136,11 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "/msg_reply", method = RequestMethod.GET)
-	public String msg_replyform(Model model, int msg_num) {
+	public String msg_replyform(Model model, int msg_num,HttpSession session) {
+		String loginid=(String)session.getAttribute("loginid");
 		MsgVo msgrecv_getinfo=service.msgrecv_getinfo(msg_num);
+		int msgnorecv_count=service.msgnorecv_count(loginid);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
 		return ".reply";
 	}
