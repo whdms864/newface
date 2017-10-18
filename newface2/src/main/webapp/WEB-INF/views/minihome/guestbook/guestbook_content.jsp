@@ -11,7 +11,7 @@
 				<input type="hidden" value=${sessionScope.loginid } name="id"
 					id="id"> <input type="hidden"
 					value=${sessionScope.hompy_num } name="hompy_num" id="hompy_num">
-				<div class="g_minime"></div>
+				<div class="g_minime">${sessionScope.minime_img }</div>
 				<textarea rows="100" cols="60" name="content" class="g_texta"></textarea>
 				<select class="secret" name="secret">
 					<option value="전체공개">전체공개</option>

@@ -27,5 +27,5 @@
 	</select>
 	<input type="submit" value="적용">
 	</form>
-	<div id="back_img">${requestScope.minime_img }</div>
+	<div id="back_img">${sessionScope.minime_img }</div>
 </div>

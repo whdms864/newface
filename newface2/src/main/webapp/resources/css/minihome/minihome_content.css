@@ -42,7 +42,7 @@ ul{
 }
 
 #board_back{
-	position: relative; top: 10px; left: 20; width: 300px; height: 88px; font-size: 14px;
+	position: relative; top: 10px; left: 20px; width: 300px; height: 88px; font-size: 14px;
 }
 #board{
 	font-size: 14px; margin-top: -20px; 
@@ -54,7 +54,7 @@ ul{
 	border: 1px solid black;width: 120px; margin: auto; 
 }
 .new {
-	background-color: orange; color: white; 
+	background-color: orange; color: white; font-weight: 900px; 
 }
 #miniroom_back{
 	position: relative; top: -50px; left: 20px; width: 446px; height: 200px;

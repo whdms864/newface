@@ -254,7 +254,7 @@ public class SetupController {
 		service.minime_insert(map);
 		
 		String minime_img=service.minime_img(mini_num);
-		model.addAttribute("minime_img", minime_img);
+		session.setAttribute("minime_img", minime_img);
 		List<ItemVo> list=service.minime_list(id);
 		model.addAttribute("list", list);
 		model.addAttribute("id", id);
