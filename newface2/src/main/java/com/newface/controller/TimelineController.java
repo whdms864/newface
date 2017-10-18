@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newface.service.DiaryService;
 import com.newface.service.LoveService;
+import com.newface.service.MiniHomeService;
+import com.newface.service.PhotoService;
 import com.newface.service.TimelineService;
 import com.newface.vo.Diary_loveVo;
+import com.newface.vo.DiaryfolderVo;
 import com.newface.vo.Photo_loveVo;
+import com.newface.vo.PhotofolderVo;
 import com.newface.vo.TimelineVo;
 
 
@@ -27,6 +32,9 @@ import com.newface.vo.TimelineVo;
 public class TimelineController {
 	@Autowired private TimelineService timelineservice;
 	@Autowired private LoveService loveservice;
+	@Autowired private MiniHomeService minihomeservice;
+	@Autowired private PhotoService photoservice;
+	@Autowired private DiaryService diaryservice;
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
 	public String main2(Model model,HttpSession session) {
@@ -124,5 +132,22 @@ public class TimelineController {
 		}
 		map.put("love",love);
 		return map;
+	}
+	@RequestMapping("/main2/folder/plist")
+	@ResponseBody
+	public List<PhotofolderVo> main2_folder_plist(String tb,HttpSession session){
+		String id=(String)session.getAttribute("loginid");
+		int hnum=minihomeservice.hompy_num(id);
+		List<PhotofolderVo> list=photoservice.folder_list(hnum);
+		return list;
+	}
+	
+	@RequestMapping("/main2/folder/dlist")
+	@ResponseBody
+	public List<DiaryfolderVo> main2_folder_dlist(String tb,HttpSession session){
+		String id=(String)session.getAttribute("loginid");
+		int hnum=minihomeservice.hompy_num(id);
+		List<DiaryfolderVo> list=diaryservice.fname(hnum);
+		return list;
 	}
 }

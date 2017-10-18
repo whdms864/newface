@@ -6,6 +6,7 @@
 	width: 95%;
 	padding-top: 10px;
 }
+
 .img-circle {
 	float: left;
 	width: 40px;
@@ -21,16 +22,18 @@
 	height: 40px;
 	margin-left: 5px;
 }
-.timeline{
-	margin-bottom:20px;
+
+.timeline {
+	margin-bottom: 20px;
 }
-.com{
+
+.com {
 	float: left;
 	width: 90%;
 	height: 40px;
 	margin-left: 5px;
-	
 }
+
 .first {
 	border-radius: 2px;
 	box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px;
@@ -50,9 +53,8 @@
 .com_a {
 	float: right;
 	margin-right: 10px;
-	margin-top:10px;
+	margin-top: 10px;
 }
-
 
 .input-icon {
 	width: 20px;
@@ -63,19 +65,21 @@
 
 .content1 {
 	width: 95%;
-	height:320px;
+	height: 320px;
 	border: 1px solid rgba(224, 224, 224, 0.78);
 	padding: 10px;
-	
+	background-color: #fff;
 }
-.content1 p img{
+
+.content1 p img {
 	max-width: 100%;
 	max-height: 98%;
-	
 }
+
 .content2 {
-	margin-top:10px;
+	margin-top: 10px;
 }
+
 .content2 ul {
 	list-style: none;
 	display: inline-block;
@@ -87,24 +91,28 @@
 	float: left;
 	margin-left: 10px;
 }
-.content2 ul li a{
-	color:#616770;
+
+.content2 ul li a {
+	color: #616770;
 }
+
 .content3 ul {
 	list-style: none;
 	display: inline-block;
 	margin: 0px;
-	padding:5px;
+	padding: 5px;
 }
 
 .content3 ul li {
 	float: left;
 	margin-left: 10px;
-	color:#90949c;
+	color: #90949c;
 }
-.com_main{
+
+.com_main {
 	margin-top: 10px;
 }
+
 .com_main ul {
 	list-style: none;
 	display: inline-block;
@@ -115,4 +123,80 @@
 .com_main ul li {
 	float: left;
 	margin-left: 10px;
+}
+
+/* *********** 공유하기 css *************/
+
+.gong_wrap {
+	left: 0;
+	right: 0;
+	top: 100px;
+	position: fixed;
+	width: 550px;
+	background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 5px 30px 30px rgba(89, 89, 89, 0.57);
+    margin: 0 auto 40px;
+    display:none;
+}
+.gong_content{
+	background-color: rgb(79, 184, 255);
+    border-radius: 3px;
+    position: relative;
+}
+.gong_folder{
+	width:100%;
+	background-color:#ebebeb;
+    color: #1d2129;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 10px 12px;
+    height: 50px;
+    margin:0px;
+}
+.g_f_left{
+	float:left;
+}
+.g_f_right{
+	float: right;
+}
+.content_wrap{
+	width:95%;
+	margin-top: 15px;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.add_title, .add_con {
+	width: 95%;
+	height: 50px;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+.add_title_i, .add_con_i{
+	width:100%;
+    height: 100%;
+    border: none;
+    resize: none;
+}
+.secret_sel{
+	color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    border-radius: 5px;
+    font-weight: normal;
+    height: 34px;
+}
+.secret_sel:hover{
+	color: #fff;
+    background-color: #204d74;
+}
+.end_btn{
+	cursor: pointer;
+}
+.folder_sel{
+	border: none;
+	height: 30px;
+	
 }
