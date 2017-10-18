@@ -149,6 +149,7 @@
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
 					/*폴더가져오기*/
+					$(".folder_sel").html("");//옵션 삭제
 					if(tb=='photo'){
 						$.getJSON('main2/folder/plist', {"tb" : tb}, function(data) {
 							for(var i=0;i<data.length;i++){
@@ -273,42 +274,46 @@
 					</div>
 				</div>
 				<div class="gong_wrap">
-					<div class="gong_content">
-						<div class="gong_folder">
-							<div class="g_f_left" >
-								폴더 :
-								<select class="folder_sel">
-								</select>
+					<form method="post" action="main2/gongU">
+						<div class="gong_content">
+							<div class="gong_folder">
+								<div class="g_f_left" >
+									폴더 :
+									<select class="folder_sel" name="fnum">
+									</select>
+								</div>
+								<div class="g_f_right">
+									<img src="<c:url value='/resources/images/homepage/icon/delete-button (2).png'/>" alt="닫기" class="end_btn">
+								</div>
 							</div>
-							<div class="g_f_right">
-								<img src="<c:url value='/resources/images/homepage/icon/delete-button (2).png'/>" alt="닫기" class="end_btn">
+							<div class="content_wrap">
+								<input type="hidden" value="${vo.tb }" name="tb">
+								<input type="hidden" value="${vo.content }" name="org_con">
+								<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;" >
+									<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly" name="title1">
+								</div>
+								<div class="add_title">
+									<input type="text" placeholder="제목을 입력하세요" class="add_title_i" name="title2">
+								</div>
+								<div class="add_con">
+									<textarea rows="5" cols="10"  placeholder="하고 싶은 말을 남겨주세요...." class="add_con_i" name="add_con"></textarea>
+									
+								</div>
+								<div class="content1" align="left">${vo.content }</div>
+							</div>
+							<div class="gong_folder">
+								<div class="g_f_right">
+									<select class="secret_sel" name="secret">
+										<option value="전체공개">전체공개</option>
+										<option value="일촌공개">일촌공개</option>
+										<option value="나만보기">나만보기</option>
+									</select>
+									<input type="button" class="btn btn-default" style="margin-bottom: 5px;" value="취소">
+									<input type="submit" class="btn btn-primary" style="margin-bottom: 5px;" value="게시">
+								</div>
 							</div>
 						</div>
-						<div class="content_wrap">
-							<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;">
-								<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly">
-							</div>
-							<div class="add_title">
-								<input type="text" placeholder="제목을 입력하세요" class="add_title_i">
-							</div>
-							<div class="add_con">
-								<textarea rows="5" cols="10"  placeholder="하고 싶은 말을 남겨주세요...." class="add_con_i" ></textarea>
-								
-							</div>
-							<div class="content1" align="left">${vo.content }</div>
-						</div>
-						<div class="gong_folder">
-							<div class="g_f_right">
-								<select class="secret_sel">
-									<option value="전체공개">전체공개</option>
-									<option value="일촌공개">일촌공개</option>
-									<option value="나만보기">나만보기</option>
-								</select>
-								<button type="button" class="btn btn-default" style="margin-bottom: 5px;">취소</button>
-								<button type="button" class="btn btn-primary" style="margin-bottom: 5px;">게시</button>
-							</div>
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</c:forEach>

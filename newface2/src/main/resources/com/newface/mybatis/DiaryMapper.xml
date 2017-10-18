@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.DiaryMapper">
 	<insert id="insert" parameterType="diary">
-		insert into diary values(0,#{type},#{title},#{content},'일반',0,now(),#{diary_folder_num})
+		insert into diary values(0,#{type},#{title},#{content},0,0,now(),#{diary_folder_num})
 	</insert>
 	<select id="folder_list" parameterType="hashmap" resultType="diarylist">
 		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,8) left_string 

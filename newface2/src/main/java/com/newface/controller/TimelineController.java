@@ -20,6 +20,7 @@ import com.newface.service.PhotoService;
 import com.newface.service.TimelineService;
 import com.newface.vo.Diary_loveVo;
 import com.newface.vo.DiaryfolderVo;
+import com.newface.vo.PhotoVo;
 import com.newface.vo.Photo_loveVo;
 import com.newface.vo.PhotofolderVo;
 import com.newface.vo.TimelineVo;
@@ -73,7 +74,17 @@ public class TimelineController {
 		model.addAttribute("pro_img",pro_img);
 		return ".main2";
 	}
-	
+	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
+	public String main2_gongU(Model model,int fnum,String tb,String org_con
+			,String title1,String title2,String add_con,String secret) {
+		if(tb.equals("photo")) {
+			/*PhotoVo vo=new PhotoVo(0, title, content, 0, secret, 0, null, "»çÁø", fnum);
+			photoservice.photo_insert(vo);*/
+		}else if(tb.equals("diary")) {
+			
+		}
+		return "redirect:/main2";
+	}
 	@RequestMapping("/main2/list")
 	@ResponseBody
 	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session){
