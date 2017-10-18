@@ -7,7 +7,7 @@
 		insert into msg values(0,#{content},'삭제전','삭제전',now(),'1','읽지않음',#{sender},#{receiver})
 	</insert>
 	
-	<select id="msgrecv_list" resultType="msg" parameterType="String">
+	<select id="msgrecv_list" resultType="msg" parameterType="hashmap">
 		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, send_clx, chk, sender, receiver 
 		from msg 
 		where receiver=#{loginid } and send_clx='1' and recv_del='삭제전'
@@ -18,11 +18,17 @@
 	<select id="msgrecv_count" resultType="int">
 		select coalesce(count(msg_num),0) 
 		from msg 
-		where receiver=#{loginid} and recv_del='삭제전'
+		where receiver=#{loginid} and recv_del='삭제전'and send_clx='1'
+	</select>
+	
+	<select id="msgnorecv_count" resultType="int">
+		select coalesce(count(msg_num),0) 
+		from msg 
+		where receiver=#{loginid} and recv_del='삭제전'and send_clx='1' and chk='읽지않음'
 	</select>
 	
 	
-	<select id="msgsend_list" resultType="msg" parameterType="String">
+	<select id="msgsend_list" resultType="msg" parameterType="hashmap">
 		select msg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, send_clx, chk, sender, receiver
 		from msg
 		where sender=#{loginid } and send_del='삭제전'

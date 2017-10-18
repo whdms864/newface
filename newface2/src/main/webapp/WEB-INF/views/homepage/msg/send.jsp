@@ -20,12 +20,12 @@ $(function(){
 <div style="background-color: rgba(250, 250, 250, 0.78); margin-left:7px; margin-top:25px; width: 96%; height: 335px;"align="center">
 	<form action="<c:url value='/msg_send'/>" method="post">
 		
-		<div style="width:430px; height:37px; margin-top:30px; background-color: #fcf8e3;">
+		<div style="width:430px; height:37px; margin-top:25px; background-color: #fcf8e3;">
 			<span style="float:left; margin-left:7px; margin-top:8px; font-weight: bold;">쪽지보내기</span>
 		</div>
-		<div style="width:420px; height:25px; margin-top:10px; margin-left:10px;">
+		<div style="width:420px; height:25px; margin-top:7px; margin-left:10px;">
 			<span style="float:left; margin-right:10px; margin-top:3px; font-weight: bold;">받는 사람</span>
-			<input type="text" id="receiver" name="receiver" style="width:120px; height:28px; float:left;">
+			<input type="text" id="receiver" name="receiver" style="width:120px; height:30px; float:left;">
 			
 		<select style="width:150px; height:30px;" id="iu_list">
 				<option></option>
@@ -36,12 +36,12 @@ $(function(){
 		
 		</div>
 		
-		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:96px;"></div>
+		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:91px;"></div>
 		
-		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:141px;"></div>
+		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:135px;"></div>
 		
-		<div style="margin-top:15px; height:180px; margin-left:7px;">
-			<textarea name="content" style="width:100%; height:100%;"></textarea>
+		<div style="margin-top:25px; height:180px; margin-left:7px;">
+			<textarea name="content" style="width:100%; height:100%; resize: none;"></textarea>
 		</div>
 		<input type="hidden" name="sender" value="${loginid }">
 					

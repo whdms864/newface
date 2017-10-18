@@ -1,8 +1,10 @@
 @charset "UTF-8";
 *{margin: 0px;padding: 0px;}
-#wrap{width:440px;}
+#wrap{width:430px; height:360px;}
 #header{width:100%; height:30px;}
-#content{width:440px;}
-
+#content{width:430px;}
+a:visited {
+    color: gray;
+  }
 
 	

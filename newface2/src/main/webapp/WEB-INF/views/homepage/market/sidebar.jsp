@@ -12,7 +12,7 @@
 		    window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
-		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=442,height=396,left=100,top=100"); 
+		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=440,height=380,left=100,top=100"); 
 		});
 	});
 </script>	
@@ -55,7 +55,7 @@
 		<div>
 			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>
 			<a href="<c:url value='/market/item/list'/>" style="margin-left: 20px;">마켓</a>
-			<a style="margin-left: 20px;" id="msg">쪽지</a>
+			<a style="margin-left: 20px;" id="msg">쪽지(${msgnorecv_count })</a>
 			<a href="<c:url value='/member/mypage?id=${sessionScope.loginid }'/>" style="margin-left: 20px;">MyPage</a>
 		</div>
 	</div>

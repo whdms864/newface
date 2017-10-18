@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.newface.service.CashService;
 import com.newface.service.MarketService;
 import com.newface.service.MemberService;
+import com.newface.service.MsgService;
 import com.newface.service.NotiService;
 import com.newface.service.TimelineService;
 import com.newface.vo.CashVo;
@@ -28,6 +29,7 @@ public class LoginContorller {
 	@Autowired private CashService cashservice;
 	@Autowired private NotiService notiservice;
 	@Autowired private MarketService marketservice;
+	@Autowired private MsgService msgservice;
 	
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -46,9 +48,16 @@ public class LoginContorller {
 
 		if (r || a) {
 			if(r) {
+				
+				
+				//공지사항 사이드바 & 로그인 아이디
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
 				session.setAttribute("noti_side", noti_side);
+				
+				//쪽지
+				int msgnorecv_count=msgservice.msgnorecv_count(loginid);
+				session.setAttribute("msgnorecv_count", msgnorecv_count);
 				
 				//미니미
 				String minime_img=marketservice.minime_info(loginid);

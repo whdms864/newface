@@ -32,6 +32,8 @@ public class MsgController {
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<MsgVo> msgrecv_list=service.msgrecv_list(map);
+		int msgnorecv_count=service.msgnorecv_count(loginid);
+		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		model.addAttribute("pu",pu);
 		model.addAttribute("msgrecv_list",msgrecv_list);
 		

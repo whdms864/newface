@@ -23,15 +23,19 @@ public class MsgDao {
 		return sqlSession.selectList(NAMESPACE+".msgrecv_list",map);
 	}
 	
-	public int msgrecv_count(String receiver) {
-		return sqlSession.selectOne(NAMESPACE+".msgrecv_count",receiver);
+	public int msgrecv_count(String loginid) {
+		return sqlSession.selectOne(NAMESPACE+".msgrecv_count",loginid);
+	}
+	
+	public int msgnorecv_count(String loginid) {
+		return sqlSession.selectOne(NAMESPACE+".msgnorecv_count",loginid);
 	}
 	
 	public List<MsgVo> msgsend_list(HashMap<String, Object> map){
 		return sqlSession.selectList(NAMESPACE+".msgsend_list",map);
 	}
-	public int msgsend_count(String sender) {
-		return sqlSession.selectOne(NAMESPACE+".msgsend_count",sender);
+	public int msgsend_count(String loginid) {
+		return sqlSession.selectOne(NAMESPACE+".msgsend_count",loginid);
 	}
 	
 	public int msgrecv_delete(int msg_num) {

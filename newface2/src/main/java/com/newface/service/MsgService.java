@@ -28,15 +28,21 @@ public class MsgService {
 		return dao.msgrecv_list(map);
 	}
 	
-	public int msgrecv_count(String receiver) {
-		return dao.msgrecv_count(receiver);
+	public int msgrecv_count(String loginid) {
+		return dao.msgrecv_count(loginid);
 	}
+	
+	public int msgnorecv_count(String loginid) {
+		return dao.msgnorecv_count(loginid);
+	}
+	
+	
 	public List<MsgVo> msgsend_list(HashMap<String, Object> map){
 		return dao.msgsend_list(map);
 	}
 	
-	public int msgsend_count(String sender) {
-		return dao.msgsend_count(sender);
+	public int msgsend_count(String loginid) {
+		return dao.msgsend_count(loginid);
 	}
 	
 	public int msgrecv_delete(int msg_num) {

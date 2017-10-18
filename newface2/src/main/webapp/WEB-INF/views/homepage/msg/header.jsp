@@ -9,12 +9,12 @@
 	  	<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); 
 				width: 80px; height:30px; float:left; margin-top:10px;" >
-			<button type="button" class="btn btn-default" onclick="location.href='/newface/msgrecv_list?receiver=${loginid }'">받은쪽지함</button>&nbsp;&nbsp;
+			<button type="button" class="btn btn-default" onclick="location.href='/newface/msgrecv_list?receiver=${loginid }'">받은쪽지함(${msgnorecv_count })</button>&nbsp;&nbsp;
 		</div>
 		
 		<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); 
-				width: 80px; height:30px; ; float:left; margin-top:10px; margin-left: 20px;">
+				width: 80px; height:30px; ; float:left; margin-top:10px; margin-left: 40px;">
 			<button type="button" class="btn btn-default" onclick="location.href='/newface/msgsend_list?sender=${loginid }'">보낸쪽지함</button>
 		</div>
 		
