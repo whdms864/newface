@@ -3,28 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.SingoMapper">
-	<insert id="p_insert" parameterType="p_love">
-		insert into photo_love values(0,#{id},#{photo_num})
+	<insert id="p_insert" parameterType="p_singo">
+		insert into photo_singo values(0,#{content},#{photo_num},#{id})
 	</insert>
-	<insert id="d_insert" parameterType="d_love">
-		insert into diary_love values(0,#{id},#{diary_num})
+	<insert id="d_insert" parameterType="d_singo">
+		insert into diary_singo values(0,#{content},#{diary_num},#{id})
 	</insert>
 	<delete id="p_delete" parameterType="hashmap">
-		delete from photo_love where photo_num=#{photo_num} and id=#{id}
+		delete from photo_singo where photo_num=#{photo_num} and id=#{id}
 	</delete>
 	<delete id="d_delete" parameterType="hashmap">
-		delete from diary_love where diary_num=#{diary_num} and id=#{id}
+		delete from diary_singo where diary_num=#{diary_num} and id=#{id}
 	</delete>
-	<select id="p_list" resultType="p_love" parameterType="hashmap">
-		select * from photo_love where photo_num=#{photo_num} and id=#{id}
+	<select id="p_list" resultType="p_singo" parameterType="hashmap">
+		select * from photo_singo where photo_num=#{photo_num} and id=#{id}
 	</select>
-	<select id="d_list" resultType="d_love" parameterType="hashmap">
-		select * from diary_love where diary_num=#{diary_num} and id=#{id}
+	<select id="d_list" resultType="d_singo" parameterType="hashmap">
+		select * from diary_singo where diary_num=#{diary_num} and id=#{id}
 	</select>
 	<update id="p_update" parameterType="hashmap">
-		update photo set love=#{love} where photo_num=#{photo_num}
+		update photo set singo=#{singo} where photo_num=#{photo_num}
 	</update>
 	<update id="d_update" parameterType="hashmap">
-		update diary set love=#{love} where diary_num=#{diary_num}
+		update diary set singo=#{singo} where diary_num=#{diary_num}
 	</update>
 </mapper>  

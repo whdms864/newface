@@ -8,14 +8,14 @@ public class PhotoVo {
 	private String content;
 	private int love;
 	private String secret;
-	private String singo;
+	private int singo;
 	private Date regdate;
 	private String type;
 	private int photo_folder_num;
 	
 	public PhotoVo() {}
 
-	public PhotoVo(int photo_num, String title, String content, int love, String secret, String singo, Date regdate,
+	public PhotoVo(int photo_num, String title, String content, int love, String secret, int singo, Date regdate,
 			String type, int photo_folder_num) {
 		super();
 		this.photo_num = photo_num;
@@ -69,11 +69,11 @@ public class PhotoVo {
 		this.secret = secret;
 	}
 
-	public String getSingo() {
+	public int getSingo() {
 		return singo;
 	}
 
-	public void setSingo(String singo) {
+	public void setSingo(int singo) {
 		this.singo = singo;
 	}
 

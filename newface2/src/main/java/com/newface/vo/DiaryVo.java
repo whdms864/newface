@@ -5,13 +5,13 @@ public class DiaryVo {
 	private String type;
 	private String title;
 	private String content;
-	private String singo;
+	private int singo;
 	private int love;
 	private String regdate;
 	private int diary_folder_num;
 	private int rownum;
 	private String fname;
-	public DiaryVo(int diary_num, String type, String title, String content, String singo, int love, String regdate,
+	public DiaryVo(int diary_num, String type, String title, String content, int singo, int love, String regdate,
 			int diary_folder_num,String fname) {
 		super();
 		this.diary_num = diary_num;
@@ -67,11 +67,11 @@ public class DiaryVo {
 		this.content = content;
 	}
 
-	public String getSingo() {
+	public int getSingo() {
 		return singo;
 	}
 
-	public void setSingo(String singo) {
+	public void setSingo(int singo) {
 		this.singo = singo;
 	}
 
