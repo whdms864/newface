@@ -7,7 +7,7 @@
 	$(document).ready(function() {
 		var startrow=0;
 		var endrow=20;
-		$(window).scroll(function() { 
+		/* $(window).scroll(function() { 
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
 				startrow +=20;
 				endrow +=20;
@@ -103,7 +103,7 @@
 					$(".list_time").append(html);
 				});
 			}
-		});
+		}); */
 		
 		$(".c_love").click(function(){
 			var tb=$(this).closest("li").find(".tb").val();
@@ -189,7 +189,9 @@
 										</c:if>
 									</c:if>
 								</c:forEach>
-								<a class="c_love">좋아요</a>
+								<c:if test="${doneLoop==false}">
+									<a class="c_love">좋아요</a>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<a class="c_love">좋아요</a>

@@ -37,13 +37,13 @@ public class TimelineController {
 		map.put("endrow", 20);
 		List<TimelineVo> list=timelineservice.list(map);
 		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
-		HashMap<String,Object> map1=new HashMap<String, Object>();
 		for(TimelineVo vo:list) {
 			if(vo.getTb().equals("photo")) {
 				map.put("photo_num", vo.getNum());
 				map.put("id", id);
 				Photo_loveVo plist=loveservice.p_list(map);
 				if(plist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
 					map1.put("num", vo.getNum());
 					map1.put("tb", "photo");
 					lovelist.add(map1);
@@ -53,6 +53,7 @@ public class TimelineController {
 				map.put("id", id);
 				Diary_loveVo dlist=loveservice.d_list(map);
 				if(dlist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
 					map1.put("num", vo.getNum());
 					map1.put("tb", "diary");
 					lovelist.add(map1);
