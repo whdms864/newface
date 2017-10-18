@@ -18,6 +18,7 @@ import com.newface.service.LoveService;
 import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
 import com.newface.service.TimelineService;
+import com.newface.vo.DiaryVo;
 import com.newface.vo.Diary_loveVo;
 import com.newface.vo.DiaryfolderVo;
 import com.newface.vo.PhotoVo;
@@ -75,13 +76,19 @@ public class TimelineController {
 		return ".main2";
 	}
 	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
-	public String main2_gongU(Model model,int fnum,String tb,String org_con
+	public String main2_gongU(Model model,int num,int fnum,String tb
 			,String title1,String title2,String add_con,String secret) {
+		String title=title1+" "+title2;
 		if(tb.equals("photo")) {
-			/*PhotoVo vo=new PhotoVo(0, title, content, 0, secret, 0, null, "사진", fnum);
-			photoservice.photo_insert(vo);*/
+			PhotoVo v=photoservice.photo_update(num);
+			String content=add_con+"<hr>"+v.getContent();
+			PhotoVo vo=new PhotoVo(0, title, content, 0, secret, "0", null, "사진", fnum);
+			photoservice.photo_insert(vo);
 		}else if(tb.equals("diary")) {
-			
+			DiaryVo v=diaryservice.content(num);
+			String content=add_con+"<hr>"+v.getContent();
+			DiaryVo vo=new DiaryVo(0, secret, title, content, "0", 0, null, fnum,null);
+			diaryservice.insert(vo);
 		}
 		return "redirect:/main2";
 	}

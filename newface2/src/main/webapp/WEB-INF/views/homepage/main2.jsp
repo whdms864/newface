@@ -287,11 +287,11 @@
 								</div>
 							</div>
 							<div class="content_wrap">
-								<input type="hidden" value="${vo.tb }" name="tb">
-								<input type="hidden" value="${vo.content }" name="org_con">
-								<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;" >
-									<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly" name="title1">
-								</div>
+								<c:if test="${loginid!=vo.id }">
+									<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;" >
+										<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly" name="title1">
+									</div>
+								</c:if>
 								<div class="add_title">
 									<input type="text" placeholder="제목을 입력하세요" class="add_title_i" name="title2">
 								</div>
@@ -300,6 +300,8 @@
 									
 								</div>
 								<div class="content1" align="left">${vo.content }</div>
+								<input type="hidden" value="${vo.tb }" name="tb">
+								<input type="hidden" value="${vo.num }" name="num">
 							</div>
 							<div class="gong_folder">
 								<div class="g_f_right">
