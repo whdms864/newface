@@ -65,6 +65,7 @@ public class MsgController {
 	
 	
 	
+	
 	@RequestMapping(value = "/msg_send", method = RequestMethod.POST)
 	public String msg_send(Model model,MsgVo vo,HttpSession session) {
 		String loginid=(String)session.getAttribute("loginid");
@@ -123,7 +124,7 @@ public class MsgController {
 	public String msg_replyform(Model model, int msg_num) {
 		MsgVo msgrecv_getinfo=service.msgrecv_getinfo(msg_num);
 		model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
-		return ".send";
+		return ".reply";
 	}
 	
 	

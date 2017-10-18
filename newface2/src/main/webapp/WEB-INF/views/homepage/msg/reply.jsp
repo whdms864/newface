@@ -25,14 +25,9 @@ $(function(){
 		</div>
 		<div style="width:420px; height:25px; margin-top:10px; margin-left:10px;">
 			<span style="float:left; margin-right:10px; margin-top:3px; font-weight: bold;">받는 사람</span>
-			<input type="text" id="receiver" name="receiver" style="width:120px; height:28px; float:left;">
+			<input type="text" id="receiver" name="receiver" style="width:120px; height:28px; float:left;" value="${msgrecv_getinfo.sender}">
 			
-		<select style="width:150px; height:30px;" id="iu_list">
-				<option></option>
-			<c:forEach var="iu" items="${sessionScope.iu_list }">
-				<option value="${iu.u_id}">${iu.name } (${iu.u_id})</option>		
-			</c:forEach>
-		</select>
+		
 		
 		</div>
 		
