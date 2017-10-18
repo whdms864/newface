@@ -5,36 +5,48 @@
 
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 <script type="text/javascript" charset="utf-8">
+$(function(){
 	
+	$("#iu_list").click(function(){
+		var iu_list=$("#iu_list").val();
+		$("#receiver").val(iu_list);
+	});
+	
+});
+
 	
 </script>
 
 <div style="background-color: rgba(250, 250, 250, 0.78); margin-left:7px; margin-top:25px; width: 96%; height: 335px;"align="center">
 	<form action="<c:url value='/msg_send'/>" method="post">
-		<div style="width:420px; height:25px; margin-top:30px">
-			<span style="float:left; margin-right:10px;">받는 사람</span>
-			<input type="text" id="receiver" name="receiver" style="width:120px; height:25px; float:left; margin-bottom:6px;" value="${msgrecv_getinfo.sender}">
-			
-		<div class="btn-group">
-		  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Small button
-		  </button>
-		  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    <span class="sr-only">Toggle Dropdown</span>
-		  </button>
-		  <div class="dropdown-menu">
-		    ...
-		  </div>
+		
+		<div style="width:430px; height:37px; margin-top:30px; background-color: #fcf8e3;">
+			<span style="float:left; margin-left:7px; font-weight: bold;">쪽지보내기</span>
 		</div>
+		<div style="width:420px; height:25px; margin-top:10px; margin-left:10px;">
+			<span style="float:left; margin-right:10px; margin-top:3px; font-weight: bold;">받는 사람</span>
+			<input type="text" id="receiver" name="receiver" style="width:120px; height:28px; float:left;" value="${msgrecv_getinfo.sender}">
+			
+		<select style="width:150px; height:30px;" id="iu_list">
+				<option></option>
+			<c:forEach var="iu" items="${sessionScope.iu_list }">
+				<option value="${iu.u_id}">${iu.name } (${iu.u_id})</option>		
+			</c:forEach>
+		</select>
+		
 		</div>
 		
-		<div style="margin-top:15px; height:250px;">
+		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:96px;"></div>
+		
+		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:141px;"></div>
+		
+		<div style="margin-top:15px; height:180px; margin-left:7px;">
 			<textarea name="content" style="width:100%; height:100%;"></textarea>
 		</div>
 		<input type="hidden" name="sender" value="${loginid }">
 					
 		<div style="margin-top:10px;">
-			<input type="submit" value="보내기">
+			<button type="submit" class="btn btn-warning btn-sm">보내기</button>
 		</div>
 	</form>
 </div>

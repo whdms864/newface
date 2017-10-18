@@ -2,10 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="msg_sendlist" style="background-color: rgba(250, 250, 250, 0.78); margin-left:0px; margin-top:25px; width: 442px; height: 335px;"align="center">
+<div id="msg_sendlist" style="background-color: rgba(250, 250, 250, 0.78); margin-left:0px; margin-top:25px; width: 440px; height: 335px;"align="center">
 	<table class="table table-hover" style="width: 430px; margin-top: 20px;">
 	<thead>
-  		<tr class="danger">
+		<tr>
+			<th colspan="5" class="danger">보낸쪽지함</th>
+		</tr>
+		
+  		<tr>
   			<th>받은사람</th>
   			<th>내용</th>
   			<th>날짜</th>
@@ -36,9 +40,7 @@
 	  		</tr>
 	  	</c:forEach>
 	  	</tbody>
-	  	
-	
-	</table>
+	 </table>
 </div>
 
 	
