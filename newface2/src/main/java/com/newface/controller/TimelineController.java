@@ -17,13 +17,16 @@ import com.newface.service.DiaryService;
 import com.newface.service.LoveService;
 import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
+import com.newface.service.SingoService;
 import com.newface.service.TimelineService;
 import com.newface.vo.DiaryVo;
 import com.newface.vo.Diary_loveVo;
 import com.newface.vo.DiaryfolderVo;
+import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.Photo_loveVo;
 import com.newface.vo.PhotofolderVo;
+import com.newface.vo.PhotosingoVo;
 import com.newface.vo.TimelineVo;
 
 
@@ -34,6 +37,7 @@ import com.newface.vo.TimelineVo;
 public class TimelineController {
 	@Autowired private TimelineService timelineservice;
 	@Autowired private LoveService loveservice;
+	@Autowired private SingoService singoservice;
 	@Autowired private MiniHomeService minihomeservice;
 	@Autowired private PhotoService photoservice;
 	@Autowired private DiaryService diaryservice;
@@ -70,24 +74,49 @@ public class TimelineController {
 				}
 			}
 		}
+		ArrayList<HashMap<String, Object>> singolist=new ArrayList<HashMap<String,Object>>();
+		for(TimelineVo vo:list) {
+			if(vo.getTb().equals("photo")) {
+				map.put("photo_num", vo.getNum());
+				map.put("id", id);
+				PhotosingoVo plist=singoservice.p_list(map);
+				if(plist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "photo");
+					singolist.add(map1);
+				}
+			}else if(vo.getTb().equals("diary")) {
+				map.put("diary_num", vo.getNum());
+				map.put("id", id);
+				DiarysingoVo dlist=singoservice.d_list(map);
+				if(dlist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "diary");
+					singolist.add(map1);
+				}
+			}
+		}
 		model.addAttribute("list",list);
 		model.addAttribute("lovelist",lovelist);
+		model.addAttribute("singolist",singolist);
 		model.addAttribute("pro_img",pro_img);
 		return ".main2";
 	}
 	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
 	public String main2_gongU(Model model,int num,int fnum,String tb
 			,String title1,String title2,String add_con,String secret) {
-		String title=title1+" "+title2;
+		String title=title1+"<br>"+title2;
 		if(tb.equals("photo")) {
 			PhotoVo v=photoservice.photo_update(num);
 			String content=add_con+"<hr>"+v.getContent();
-			PhotoVo vo=new PhotoVo(0, title, content, 0, secret, "0", null, "사진", fnum);
+			PhotoVo vo=new PhotoVo(0, title, content, 0, secret, 0, null, "사진", fnum);
 			photoservice.photo_insert(vo);
 		}else if(tb.equals("diary")) {
 			DiaryVo v=diaryservice.content(num);
 			String content=add_con+"<hr>"+v.getContent();
-			DiaryVo vo=new DiaryVo(0, secret, title, content, "0", 0, null, fnum,null);
+			DiaryVo vo=new DiaryVo(0, secret, title, content,0, 0, null, fnum,null);
 			diaryservice.insert(vo);
 		}
 		return "redirect:/main2";
@@ -151,6 +180,53 @@ public class TimelineController {
 		map.put("love",love);
 		return map;
 	}
+	
+	@RequestMapping("/main2/singo")
+	@ResponseBody
+	public HashMap<String, Object> main2_singo(String tb ,int num,int singo,HttpSession session){
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		String id=(String)session.getAttribute("loginid");
+		map.put("id", id);
+		if(tb.equals("photo")) {
+			map.put("photo_num", num);
+			PhotosingoVo vo=singoservice.p_list(map);
+			if(vo!=null) {
+				System.out.println("삭제");
+				singoservice.p_delete(map);
+				singo -=1;
+				map.put("photo_num", num);
+				map.put("singo", singo);
+				singoservice.p_update(map);
+			}else {
+				System.out.println("추가");
+				PhotosingoVo vo1=new PhotosingoVo(0,null,num,id);
+				singoservice.p_insert(vo1);
+				singo +=1;
+				map.put("photo_num", num);
+				map.put("singo", singo);
+				singoservice.p_update(map);
+			}
+		}else if(tb.equals("diary")) {
+			map.put("diary_num", num);
+			DiarysingoVo vo=singoservice.d_list(map);
+			if(vo!=null) {
+				singoservice.d_delete(map);
+				singo -=1;
+				map.put("diary_num", num);
+				map.put("singo", singo);
+				singoservice.d_update(map);
+			}else {
+				DiarysingoVo vo1=new DiarysingoVo(0,null,num,id);
+				singoservice.d_insert(vo1);
+				singo +=1;
+				map.put("diary_num", num);
+				map.put("singo", singo);
+				singoservice.d_update(map);
+			}
+		}
+		return map;
+	}
+	
 	@RequestMapping("/main2/folder/plist")
 	@ResponseBody
 	public List<PhotofolderVo> main2_folder_plist(String tb,HttpSession session){

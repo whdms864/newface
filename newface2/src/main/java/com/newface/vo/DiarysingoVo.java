@@ -3,17 +3,17 @@ package com.newface.vo;
 public class DiarysingoVo {
 	private int diary_singo_num;
 	private String content;
-	private String id;
 	private int diary_num;
+	private String id;
 	
 	public DiarysingoVo() {}
 
-	public DiarysingoVo(int diary_singo_num, String content, String id, int diary_num) {
+	public DiarysingoVo(int diary_singo_num, String content,int diary_num,String id ) {
 		super();
 		this.diary_singo_num = diary_singo_num;
 		this.content = content;
-		this.id = id;
 		this.diary_num = diary_num;
+		this.id = id;
 	}
 
 	public int getDiary_singo_num() {

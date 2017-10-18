@@ -5,12 +5,10 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS ad;
 DROP TABLE IF EXISTS ader;
 DROP TABLE IF EXISTS diary_com_singo;
-DROP TABLE IF EXISTS diary_singo;
 DROP TABLE IF EXISTS noti_com_singo;
 DROP TABLE IF EXISTS noti_com;
 DROP TABLE IF EXISTS noti;
 DROP TABLE IF EXISTS photo_com_singo;
-DROP TABLE IF EXISTS photo_singo;
 DROP TABLE IF EXISTS qna11_com;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS buy;
@@ -23,6 +21,7 @@ DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS diary_tag;
 DROP TABLE IF EXISTS diary_com;
 DROP TABLE IF EXISTS diary_love;
+DROP TABLE IF EXISTS diary_singo;
 DROP TABLE IF EXISTS diary;
 DROP TABLE IF EXISTS diary_folder;
 DROP TABLE IF EXISTS guestbook_com;
@@ -33,6 +32,7 @@ DROP TABLE IF EXISTS miniroom;
 DROP TABLE IF EXISTS photo_com_tag;
 DROP TABLE IF EXISTS photo_com;
 DROP TABLE IF EXISTS photo_love;
+DROP TABLE IF EXISTS photo_singo;
 DROP TABLE IF EXISTS photo;
 DROP TABLE IF EXISTS photo_folder;
 DROP TABLE IF EXISTS profile;
@@ -120,7 +120,7 @@ CREATE TABLE diary
 	type varchar(20),
 	title varchar(1000),
 	content varchar(4000),
-	singo varchar(20),
+	singo int,
 	love int,
 	regdate date,
 	diary_folder_num int NOT NULL,
@@ -173,8 +173,8 @@ CREATE TABLE diary_singo
 (
 	diary_singo_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	id varchar(250) NOT NULL,
 	diary_num int NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (diary_singo_num)
 );
 
@@ -362,7 +362,7 @@ CREATE TABLE photo
 	content varchar(4000),
 	love int,
 	secret varchar(20),
-	singo varchar(20),
+	singo int,
 	regdate date,
 	type varchar(20),
 	photo_folder_num int NOT NULL,
@@ -519,14 +519,6 @@ ALTER TABLE diary_com_singo
 ;
 
 
-ALTER TABLE diary_singo
-	ADD FOREIGN KEY (id)
-	REFERENCES admin (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
 ALTER TABLE noti
 	ADD FOREIGN KEY (id)
 	REFERENCES admin (id)
@@ -544,14 +536,6 @@ ALTER TABLE noti_com_singo
 
 
 ALTER TABLE photo_com_singo
-	ADD FOREIGN KEY (id)
-	REFERENCES admin (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_singo
 	ADD FOREIGN KEY (id)
 	REFERENCES admin (id)
 	ON UPDATE RESTRICT
@@ -751,8 +735,8 @@ ALTER TABLE diary_love
 ;
 
 
-ALTER TABLE diary_tag
-	ADD FOREIGN KEY (i_id)
+ALTER TABLE diary_singo
+	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -761,6 +745,14 @@ ALTER TABLE diary_tag
 
 ALTER TABLE diary_tag
 	ADD FOREIGN KEY (u_id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE diary_tag
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -856,14 +848,6 @@ ALTER TABLE photo_com
 
 
 ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (u_id)
-	REFERENCES member (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_tag
 	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
@@ -871,7 +855,23 @@ ALTER TABLE photo_com_tag
 ;
 
 
+ALTER TABLE photo_com_tag
+	ADD FOREIGN KEY (u_id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE photo_love
+	ADD FOREIGN KEY (id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE photo_singo
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/homepage/timeline.css?ver=74'/>">
-<script type="text/javascript"
-	src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=74'/>">
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -42,7 +40,7 @@
 								+						"</td>"
 								+					"</tr>"
 								+					"<tr>"
-								+						"<td colspan='2'style='width: 100%;'>"
+								+						"<td colspan='2'style='width: 100%;padding-top:10px;padding-left:5px;'>"
 								+						"<p style='margin-left:5px;'>"+list[i].title+"</p>"
 								+						"</td>"
 								+					"</tr>"
@@ -111,8 +109,7 @@
 				$(".c_love").click(function() {
 					var tb = $(this).closest("li").find(".tb").val();
 					var num = $(this).closest("li").find(".num").val();
-					var love = parseInt($(this).parents(".first").find(
-							".loveval").text());
+					var love = parseInt($(this).parents(".first").find(".loveval").text());
 					$.getJSON('main2/love', {
 						"tb" : tb,
 						"num" : num,
@@ -134,6 +131,29 @@
 						love -= 1;
 					}
 					$(this).parents(".first").find(".loveval").text(love);
+				});
+				$(".singo").click(function() {
+					var tb = $(this).parents(".first").find(".tb").val();
+					var num =$(this).parents(".first").find(".num").val();
+					var singo =$(this).parents(".first").find(".singo_val").val();
+					$.getJSON('main2/singo', {
+						"tb" : tb,
+						"num" : num,
+						"singo" : singo
+					}, function(data) {
+					});
+					var color = $(this).css("color");
+					if (color != "rgb(255, 0, 0)") {
+						$(this).css({
+							"font-weight" : "bold",
+							"color" : "red"
+						});
+					} else {
+						$(this).css({
+							"font-weight" : "normal",
+							"color" : "#616770"
+						});
+					}
 				});
 				
 				/* 취소버튼클릭 */
@@ -197,7 +217,7 @@
 									${vo.regdate }</td>
 							</tr>
 							<tr>
-								<td colspan="2" style="width: 100%;">
+								<td colspan="2" style="width: 100%;padding-top:10px;padding-left:5px;">
 									<p style="margin-left: 5px;">${vo.title }</p>
 								</td>
 							</tr>
@@ -214,8 +234,10 @@
 					<hr style="margin: 0px; padding: 0px;">
 					<div class="content2" align="left">
 						<ul>
-							<li><input type="hidden" value="${vo.tb }" class="tb">
-								<input type="hidden" value="${vo.num }" class="num"> <c:choose>
+							<li>
+								<input type="hidden" value="${vo.tb }" class="tb">
+								<input type="hidden" value="${vo.num }" class="num"> 
+								<c:choose>
 									<c:when test="${lovelist.size()>0 }">
 										<c:set var="doneLoop" value="false" />
 										<c:forEach var="map" items="${lovelist }">
@@ -233,10 +255,32 @@
 									<c:otherwise>
 										<a class="c_love">좋아요</a>
 									</c:otherwise>
-								</c:choose></li>
+								</c:choose>
+							</li>
 							<li><a href="">댓글달기</a></li>
 							<li><a class="gongU">공유하기</a></li>
-							<li><a href="">신고하기</a></li>
+							<li>
+								<input type="hidden" value="${vo.singo }" class="singo_val"> 
+								<c:choose>
+									<c:when test="${singolist.size()>0 }">
+										<c:set var="doneLoop" value="false" />
+										<c:forEach var="map" items="${singolist }">
+											<c:if test="${not doneLoop}">
+												<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+													<a class="singo" style="font-weight: bold; color: red">신고</a>
+													<c:set var="doneLoop" value="true" />
+												</c:if>
+											</c:if>
+										</c:forEach>
+										<c:if test="${doneLoop==false}">
+											<a class="singo">신고</a>
+										</c:if>
+									</c:when>
+									<c:otherwise>
+										<a class="singo">신고</a>
+									</c:otherwise>
+								</c:choose>
+							</li>
 						</ul>
 					</div>
 				</div>
