@@ -71,5 +71,6 @@
   	<mapper resource="com/newface/mybatis/TimelineMapper.xml"/>
   	<mapper resource="com/newface/mybatis/MsgMapper.xml"/>
   	<mapper resource="com/newface/mybatis/LoveMapper.xml"/>
+  	<mapper resource="com/newface/mybatis/SingoMapper.xml"/>
   </mappers>
 </configuration>
