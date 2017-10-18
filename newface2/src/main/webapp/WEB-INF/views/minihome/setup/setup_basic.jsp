@@ -18,9 +18,6 @@
 <input type="hidden" id="guest1" value="${requestScope.vo.guest }">
 <div id="menu">
 	<h3 id="first">메뉴 설정</h3>
-	다이어리 : ${requestScope.vo.diary }
-	사진첩 : ${requestScope.vo.photo }
-	방명록 : ${requestScope.vo.guest }
 	<hr>
 	<div class="menu_back">
 	<form method="post" action="<c:url value='/setup/menu'/>">

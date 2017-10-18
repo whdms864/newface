@@ -11,7 +11,6 @@
 	<script>
 		$(function(){
 			var str=$("#get_diary_folder_num").val();
-			console.log(str);
 			$("#folder_num").val(str).prop("selected", true);
 			
 		});

@@ -11,8 +11,11 @@
 				var div="<img alt='폴더사진' src='<c:url value='/resources/images/minihome/folder.PNG'/>'> ";
 				var fname=null;
 				var diary_folder_num=$("#diary_folder_num").val();
+				if(diary_folder_num==0) {
+					$("#all").css("font-weight","900");
+				}
 				if(diary_folder_num==folder.diary_folder_num){
-					fname="<a href='<c:url value='/diary/list?diary_folder_num=" + folder.diary_folder_num + "'/>' class='folder' id='"+folder.diary_folder_num+"' style='color: red' >" + folder.fname + "</a><br>";
+					fname="<a href='<c:url value='/diary/list?diary_folder_num=" + folder.diary_folder_num + "'/>' class='folder' id='"+folder.diary_folder_num+"' style='font-weight: 900;' >" + folder.fname + "</a><br>";
 				}else{
 					fname="<a href='<c:url value='/diary/list?diary_folder_num=" + folder.diary_folder_num + "'/>' class='folder' id='"+folder.diary_folder_num+"'>" + folder.fname + "</a><br>";					
 				}
@@ -27,7 +30,7 @@
 	</div>
 		<hr>
 	<div id="calender">
-		<a href="<c:url value='/diary/folder_all_list'/>">전체보기</a>
+		<a id="all" href="<c:url value='/diary/folder_all_list'/>">전체보기</a>
 	</div>
 		<hr>
 	<div id="diary_folder_title">

@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=11'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=21'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
@@ -14,8 +14,19 @@
 data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SiK-K, pH-1, %uBC15%uC7AC%uBC94 - iffy (prod by. GroovyRoom)','url':'https://youtu.be/Q8AK_wfGhkg'},{'title':'Sik-K (%uC2DD%uCF00%uC774) - %uC774%uC5B4%uD3F0 (Earphone) (Prod. BOYCOLD) [BOYCOLD]','url':'https://youtu.be/unBH_nFW8Ng'}]}" ></script>
 <!-- SCM Music Player script end -->
 <!-- {'title':'제목','url':'주소'} -->
+<%-- <c:forEach var="bgm" items="${sessionScope.bgm_start }">
+	<input type="hidden" name="bgms" value="${bgm.content }">
+</c:forEach>
+<script>
+	$(function(){
+		var contents=[];
+		$("input[name='bgms']").each(function(){
+			console.log("bgm : " + $(this).val());
+			contents.unshift($(this).val());
+		});
+	});
+</script> --%>
 
-<!-- sdfsdjfosdjfosfjo -->
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
 		<div id="webView"> 
@@ -83,10 +94,19 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 	</div>	
 	</c:if>	
 </div>
+<input type="hidden" id="hompy_admin" value="${sessionScope.hompy_admin }">
+<input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
 <script> 
 	$("#home").click(function(){
-		var url="<c:url value='/minihome'/>";					
-		$(location).attr("href",url);
+		var hompy_admin=$("#hompy_admin").val();
+		var hompy_num=$("#hompy_num").val();;
+		if(hompy_admin==1){
+			var url="<c:url value='/minihome'/>";					
+			$(location).attr("href",url);
+		}else if(hompy_admin==2){
+			var url="<c:url value='/minihome?hompy_num=" + hompy_num + "'/>";					
+			$(location).attr("href",url);
+		}
 	});
 	$("#diary").click(function(){
 		var url="<c:url value='/diary/folder_all_list'/>";

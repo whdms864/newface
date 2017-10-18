@@ -51,6 +51,10 @@ public class GuestBookController {
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<GuestbooklistVo> list=service.list_all(map);
+		for(GuestbooklistVo vo:list) {
+			String minime_img=service.minime_info(vo.getId());
+			vo.setMinime_img(minime_img);
+		}
 		if(list!=null) {
 			model.addAttribute("list",list);
 			model.addAttribute("pu",pu);

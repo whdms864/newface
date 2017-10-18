@@ -129,10 +129,6 @@ public class SetupController {
 			return ".code";
 		}		
 	}
-	@RequestMapping(value="/setup/bgm",method=RequestMethod.GET)
-	public String bgm() {
-		return ".bgm.setup";
-	}
 	@RequestMapping(value="/setup/iu",method=RequestMethod.GET)
 	public String iu(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("loginid");
@@ -235,16 +231,20 @@ public class SetupController {
 		List<ItemVo> list=service.minime_list(id);
 		model.addAttribute("list", list);
 		model.addAttribute("id", id);
-		model.addAttribute("item_num", vo.getItem_num());
+		if(vo!=null) {
+			model.addAttribute("item_num", vo.getItem_num());			
+		}
 		return ".minime.setup";
 	}
 	@RequestMapping(value="/setup/minime_update",method=RequestMethod.POST)
 	public String minime_update(int item_num,Model model,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
-		int mine_num=service.minime_mine_num(item_num);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("item_num", item_num);
+		int mine_num=service.minime_mine_num(map);
 		int hompy_num=service.hompy_num(id);
 		int mini_num=service.mini_num(hompy_num);
-		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("mine_num", mine_num);
 		map.put("mini_num", mini_num);
 		RoomposiVo vo=service.minime_is(mini_num);
@@ -260,4 +260,28 @@ public class SetupController {
 		model.addAttribute("id", id);
 		return ".minime.setup";
 	}	
+	@RequestMapping(value="/setup/bgm",method=RequestMethod.GET)
+	public String bgm(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("loginid");
+		List<ItemVo> list=service.bgm_list(id);
+		model.addAttribute("list", list);
+		return ".bgm.setup";
+	}
+	@RequestMapping(value="/setup/bgm_insert",method=RequestMethod.GET)
+	public String bgm_insert(int[] mine_nums,HttpSession session,Model model) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int mini_num=service.mini_num(hompy_num);
+		for(int mine_num:mine_nums) {
+			service.bgm_delete(mini_num);
+			RoomposiVo vo=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
+			service.bgm_insert(vo);
+		}
+		List<ItemVo> bgm_start=service.bgm_start(mini_num);
+		session.setAttribute("bgm_start", bgm_start);
+		
+		String id=(String)session.getAttribute("loginid");
+		List<ItemVo> list=service.bgm_list(id);
+		model.addAttribute("list", list);
+		return ".bgm.setup";
+	}
 }

@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=13'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_content.css?var=2222'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){	
 		var regdate=$("#regdate").val();
 		var diary_num=$("#diary_num").val();
 		var loginid=$("#loginid").val();
+		var hompyid=$("#hompyid").val();
 		com();
 		$.getJSON("<c:url value='/calendar_auto'/>",{"regdate":regdate},function(data){
 			$(".y").html(data.year);
@@ -85,6 +86,8 @@
 	    			if(com.id==loginid){
 	    				$("#com_list").append(" <a href='#' class='update' id='" + com.diary_com_num + "'>수정</a> | " +
 						"<a href='#' class='delete' id='" + com.diary_com_num + "'>삭제</a>");
+	    			}else if(hompyid==loginid){
+	    				$("#com_list").append(" <a href='#' class='delete' id='" + com.diary_com_num + "'>삭제</a>");
 	    			}
 	    			$("#com_list").append("<br>");
 	    		});
@@ -153,6 +156,7 @@
 <input type="hidden" id="regdate" value="${requestScope.vo.regdate }">
 <input type="hidden" id="diary_num" value="${requestScope.vo.diary_num }">
 <input type="hidden" id="loginid" value="${sessionScope.loginid }">
+<input type="hidden" id="hompyid" value="${sessionScope.hompyid }">
 <br>
 <div id="content_back">
 	<div id="calendar_back">

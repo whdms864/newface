@@ -7,11 +7,13 @@ public class GuestbooklistVo {
 	private String content;
 	private String secret;
 	private String regdate;
+	private String minime_img;
 
 	public GuestbooklistVo() {
 	}
 
-	public GuestbooklistVo(String name, String id, int guest_num, String content, String secret, String regdate) {
+	public GuestbooklistVo(String name, String id, int guest_num, String content, String secret, String regdate,
+			String minime_img) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -19,14 +21,7 @@ public class GuestbooklistVo {
 		this.content = content;
 		this.secret = secret;
 		this.regdate = regdate;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		this.minime_img = minime_img;
 	}
 
 	public String getName() {
@@ -35,6 +30,14 @@ public class GuestbooklistVo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getGuest_num() {
@@ -67,6 +70,14 @@ public class GuestbooklistVo {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public String getMinime_img() {
+		return minime_img;
+	}
+
+	public void setMinime_img(String minime_img) {
+		this.minime_img = minime_img;
 	}
 
 }

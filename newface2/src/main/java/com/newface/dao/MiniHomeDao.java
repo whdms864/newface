@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.newface.vo.HompyVo;
+import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
@@ -118,5 +119,8 @@ public class MiniHomeDao {
 	}
 	public int iu_com_count(HashMap<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE + ".iu_com_count", map);
+	}
+	public List<ItemVo> bgm_list(int mini_num) {
+		return sqlSession.selectList(NAMESPACE + ".bgm_list", mini_num);
 	}
 }

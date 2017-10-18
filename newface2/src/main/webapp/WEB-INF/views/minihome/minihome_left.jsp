@@ -23,7 +23,10 @@
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
 			var url = "<c:url value='/minihome?hompy_num=" + hompy_num + "'/>"; 
-			if(hompy_num!='일촌목록'){
+			if(hompy_num=='myhompy'){
+				var url2="<c:url value='/minihome'/>";
+				$(location).attr('href',url2);
+			}else if(hompy_num!='일촌목록'){
 				$(location).attr('href',url);			
 			}
 		});
@@ -77,14 +80,21 @@
 		</div>				
 		<div id="email">${requestScope.member.email }</div>
 	</div>
-	<c:if test="${sessionScope.hompyid==sessionScope.loginid }">
 	<div id="iu">
 		<select style="width: 150px; height: 30px;" id="iu_list">
-			<option value="일촌목록" >일촌목록</option>		
+			<c:choose>
+				<c:when test="${sessionScope.hompyid==sessionScope.loginid }">
+					<option value="일촌목록" >일촌목록</option>		
+					<option value="일촌목록" >----------------------------------</option>					
+				</c:when>
+				<c:otherwise>
+					<option value="일촌목록" >----------------------------------</option>	
+					<option value="myhompy">내 미니홈피 가기</option>							
+				</c:otherwise>
+			</c:choose>				
 		<c:forEach var="iu" items="${sessionScope.iu_list }">
 			<option value="${iu.hompy_num }">${iu.name } (${iu.u_id})</option>		
 		</c:forEach>
 		</select>
 	</div>
-	</c:if>
 </div>

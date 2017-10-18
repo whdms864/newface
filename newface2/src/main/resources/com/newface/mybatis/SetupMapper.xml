@@ -75,8 +75,8 @@
 	<select id="minime_list" parameterType="string" resultType="item">
 		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=4
 	</select>
-	<select id="minime_mine_num" parameterType="int" resultType="int">
-		select m.mine_num from mine m join item i on m.item_num=i.item_num where i.item_num=#{value}
+	<select id="minime_mine_num" parameterType="hashmap" resultType="int">
+		select m.mine_num from mine m join item i on m.item_num=i.item_num where i.item_num=#{item_num} and m.id=#{id}
 	</select>
 	<select id="hompy_num" parameterType="string" resultType="int">
 		select hompy_num from hompy where id=#{value}
@@ -104,5 +104,17 @@
 	</select>
 	<select id="minime_info" parameterType="string" resultType="mine">
 		select m.* from room_posi r join mine m on r.mine_num=m.mine_num where r.drag='미니미' and m.id=#{value}
+	</select>
+	<select id="bgm_list" parameterType="string" resultType="item_mine">
+		select i.*,m.mine_num from item i join mine m on i.item_num=m.item_num where category_num=7 and m.id=#{value}
+	</select>
+	<insert id="bgm_insert" parameterType="position">
+		insert into room_posi values(0,#{mini_num},'BGM',0,0,#{mine_num})
+	</insert>
+	<delete id="bgm_delete" parameterType="int">
+		delete from room_posi where drag='BGM' and mini_num=#{value}
+	</delete>
+	<select id="bgm_start" parameterType="int" resultType="item">
+		select i.* from room_posi r join mine m on r.mine_num=m.mine_num join item i on i.item_num=m.item_num where r.drag='BGM' and r.mini_num=#{value};
 	</select>
 </mapper>  

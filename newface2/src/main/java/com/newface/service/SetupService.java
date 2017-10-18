@@ -93,8 +93,8 @@ public class SetupService {
 	public List<ItemVo> minime_list(String id){
 		return dao.minime_list(id);
 	}
-	public int minime_mine_num(int item_num) {
-		return dao.minime_mine_num(item_num);
+	public int minime_mine_num(HashMap<String, Object> map) {
+		return dao.minime_mine_num(map);
 	}
 	public int hompy_num(String id) {
 		return dao.hompy_num(id);
@@ -119,5 +119,17 @@ public class SetupService {
 	}
 	public MineVo minime_info(String id) {
 		return dao.minime_info(id);
+	}
+	public List<ItemVo> bgm_list(String id){
+		return dao.bgm_list(id);
+	}
+	public int bgm_insert(RoomposiVo vo) {
+		return dao.bgm_insert(vo);
+	}
+	public int bgm_delete(int mini_num) {
+		return dao.bgm_delete(mini_num);
+	}
+	public List<ItemVo> bgm_start(int mini_num){
+		return dao.bgm_start(mini_num);
 	}
 }

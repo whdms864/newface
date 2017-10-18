@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.newface.dao.MiniHomeDao;
 import com.newface.vo.HompyVo;
+import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
@@ -119,5 +120,8 @@ public class MiniHomeService {
 	}
 	public int iu_com_count(HashMap<String, Object> map) {
 		return dao.iu_com_count(map);
+	}
+	public List<ItemVo> bgm_list(int mini_num){
+		return dao.bgm_list(mini_num);
 	}
 }

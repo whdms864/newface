@@ -12,7 +12,6 @@
 		$(function(){
 			var str=$("#get_diary_folder_num").val();
 			if(str!=""){
-				console.log("fff");
 				$("#folder_num").val(str).prop("selected", true);		
 			}
 		});

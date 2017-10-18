@@ -48,4 +48,7 @@ public class GuestbookService {
 	public int getCount() {
 		return dao.getCount();
 	}
+	public String minime_info(String id) {
+		return dao.minime_info(id);
+	}
 }

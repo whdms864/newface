@@ -140,6 +140,7 @@ public class DiaryController {
 			model.addAttribute("list", list);
 			model.addAttribute("pageNum", pageNum);
 			model.addAttribute("endPageNum", page.getEndPageNum());
+			session.setAttribute("diary_folder_num", "0");
 			return ".all_list.diary";
 		} else {
 			model.addAttribute("code", "오류로 인하여 다이어리 요청작업이 실패했습니다");

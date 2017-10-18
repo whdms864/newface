@@ -94,8 +94,8 @@ public class SetupDao {
 	public List<ItemVo> minime_list(String id){
 		return sqlSession.selectList(NAMESPACE + ".minime_list", id);
 	}
-	public int minime_mine_num(int item_num) {
-		return sqlSession.selectOne(NAMESPACE + ".minime_mine_num", item_num);
+	public int minime_mine_num(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_mine_num", map);
 	}
 	public int hompy_num(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".hompy_num", id);
@@ -120,5 +120,17 @@ public class SetupDao {
 	}
 	public MineVo minime_info(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);
+	}
+	public List<ItemVo> bgm_list(String id){
+		return sqlSession.selectList(NAMESPACE + ".bgm_list", id);
+	}
+	public int bgm_insert(RoomposiVo vo) {
+		return sqlSession.insert(NAMESPACE + ".bgm_insert", vo);
+	}
+	public int bgm_delete(int mini_num) {
+		return sqlSession.delete(NAMESPACE + ".bgm_delete", mini_num);
+	}
+	public List<ItemVo> bgm_start(int mini_num) {
+		return sqlSession.selectList(NAMESPACE + ".bgm_list", mini_num);
 	}
 }

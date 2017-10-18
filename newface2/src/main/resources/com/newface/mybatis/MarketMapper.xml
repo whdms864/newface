@@ -46,4 +46,7 @@
 	<update id="update_cate" parameterType="category">
 		update category set name=#{name} where category_num=#{category_num}
 	</update>
+	<select id="minime_info" parameterType="string" resultType="string">
+		select i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on i.item_num=m.item_num where r.drag='미니미' and m.id=#{value}
+	</select>
 </mapper>  

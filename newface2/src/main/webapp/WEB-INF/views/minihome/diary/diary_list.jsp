@@ -69,7 +69,14 @@
 			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
 		<div class="num">${vo.diary_num }</div>
-		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
+		<c:choose>
+			<c:when test="${vo.char_length>10 }">
+				<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.left_string }...</a></div>
+			</c:when>
+			<c:otherwise>
+				<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>			
+			</c:otherwise>
+		</c:choose>
 		<div class="name">${requestScope.name }</div>
 		<div class="regdate">${vo.regdate }</div>
 		<div class="love">${vo.love }</div><br>

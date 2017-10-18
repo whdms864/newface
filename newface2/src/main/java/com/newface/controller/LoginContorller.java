@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newface.service.CashService;
+import com.newface.service.MarketService;
 import com.newface.service.MemberService;
 import com.newface.service.NotiService;
 import com.newface.service.TimelineService;
@@ -26,6 +27,7 @@ public class LoginContorller {
 	@Autowired private MemberService service;
 	@Autowired private CashService cashservice;
 	@Autowired private NotiService notiservice;
+	@Autowired private MarketService marketservice;
 	
 
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -47,6 +49,10 @@ public class LoginContorller {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
 				session.setAttribute("noti_side", noti_side);
+				
+				//¹Ì´Ï¹Ì
+				String minime_img=marketservice.minime_info(loginid);
+				session.setAttribute("minime_img", minime_img);
 				
 				CashVo vo=cashservice.list(loginid);
 				if(vo!=null) {

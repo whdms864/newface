@@ -75,7 +75,7 @@
 		select mini_num from miniroom where hompy_num=#{value}
 	</select>
 	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
-		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨' and r.drag!='미니미'
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨' and r.drag!='미니미' and drag!='BGM'
 	</select>
 	<select id="mine_num" parameterType="int" resultType="position">
 		select * from room_posi where mini_num=#{value} and drag='스킨'
@@ -106,5 +106,8 @@
 	</select>
 	<select id="iu_com_count" parameterType="hashmap" resultType="int">
 		select ifnull(count(iu_com_num),0) from iu_com where hompy_num=#{hompy_num} and id=#{id}
+	</select>
+	<select id="bgm_list" parameterType="int" resultType="item">
+		select i.* from room_posi r join mine m on r.mine_num=m.mine_num join item i on i.item_num=m.item_num where r.drag='BGM' and r.mini_num=#{value};
 	</select>
 </mapper>  

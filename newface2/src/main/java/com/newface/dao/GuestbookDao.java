@@ -51,4 +51,7 @@ public class GuestbookDao {
 	public int getCount() {
 		return sqlSession.selectOne(NAMESPACE+".count");
 	}
+	public String minime_info(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);
+	}
 }

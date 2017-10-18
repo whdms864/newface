@@ -60,4 +60,7 @@ public class MarketDao {
 	public int update_cate(CategoryVo vo) {
 		return sqlSession.insert(NAMESPACE+".update_cate",vo);
 	}
+	public String minime_info(String id) {
+		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);
+	}
 }

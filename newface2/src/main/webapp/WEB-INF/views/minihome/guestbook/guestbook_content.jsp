@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</c:if>
-				<div class="g_minime1">이미지</div>
+				<div class="g_minime1">${vo.minime_img }</div>
 				<div class="g_content">${vo.content }</div>
 				<c:if test="${vo.secret == '전체공개' }">
 					<div class="g_secret_t"></div>

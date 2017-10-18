@@ -42,12 +42,14 @@ public class MiniHomeController {
 		String id;
 		if(hompy_num<1) { 
 			//홈주인
+			System.out.println("주인이네요");
+			session.setAttribute("hompy_admin", "1");
 			id=loginid;
 			hompy_num=service.hompy_num(id);
-			session.setAttribute("hompy_admin", "1");
 		}else { 
 			//방문자
 			System.out.println("방문자네요");
+			session.setAttribute("hompy_admin", "2");
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			id=service.id(hompy_num);
 			map.put("id", loginid);
@@ -58,7 +60,6 @@ public class MiniHomeController {
 				System.out.println("어서와 여긴 처음이지?");
 				service.today_insert(map);				
 			}
-			session.setAttribute("hompy_admin", "2");
 		}
 
 		session.setAttribute("hompy_num", hompy_num);
@@ -127,9 +128,8 @@ public class MiniHomeController {
 		}
 		
 		//일촌목록
-		List<Iu_NameVo> iu_list=service.iu_list(id);
+		List<Iu_NameVo> iu_list=service.iu_list(loginid);
 		session.setAttribute("iu_list", iu_list);
-		
 		
 		return ".minihome";
 	}

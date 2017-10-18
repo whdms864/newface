@@ -58,5 +58,7 @@ public class MarketService {
 	public int update_cate(CategoryVo vo) {
 		return dao.update_cate(vo);
 	}
-
+	public String minime_info(String id) {
+		return dao.minime_info(id);
+	}
 }

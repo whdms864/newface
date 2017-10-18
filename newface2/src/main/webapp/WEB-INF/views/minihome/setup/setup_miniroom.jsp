@@ -35,7 +35,7 @@
 			
 		});
 		$("#mini").click(function(){
-			console.log("dfsdf");
+			console.log("미니룸");
 		});
 	});
 	function allowDrop(ev){

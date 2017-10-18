@@ -10,11 +10,13 @@ public class DiaryListVo {
 	private int diary_folder_num;
 	private int rownum;
 	private String name;
+	private int char_length;
+	private String left_string;
 	
 	public DiaryListVo() {}
 
 	public DiaryListVo(int diary_num, String title, String content, String regdate, int love, String fname,
-			int diary_folder_num, int rownum, String name) {
+			int diary_folder_num, int rownum, String name, int char_length, String left_string) {
 		super();
 		this.diary_num = diary_num;
 		this.title = title;
@@ -25,6 +27,8 @@ public class DiaryListVo {
 		this.diary_folder_num = diary_folder_num;
 		this.rownum = rownum;
 		this.name = name;
+		this.char_length = char_length;
+		this.left_string = left_string;
 	}
 
 	public int getDiary_num() {
@@ -97,6 +101,22 @@ public class DiaryListVo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getChar_length() {
+		return char_length;
+	}
+
+	public void setChar_length(int char_length) {
+		this.char_length = char_length;
+	}
+
+	public String getLeft_string() {
+		return left_string;
+	}
+
+	public void setLeft_string(String left_string) {
+		this.left_string = left_string;
 	}
 	
 }

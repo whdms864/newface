@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=24'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=22'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -35,18 +35,18 @@
 <div id="news_back">
 	<div id="news">
 		Upload news
-		<hr>
 	</div>
+	<hr>
 </div>
 <div id="board_back">
 	<ul id="board">
 		<c:forEach var="nowVo" items="${requestScope.now }">
 			<c:choose>
 				<c:when test="${nowVo.division==1 }">
-					<li><a href="<c:url value='/photo/list?photo_folder_num=${nowVo.folder_num }'/>">${nowVo.title }</a></li>			
+					<li><span class="photo_now">사진첩</span><a href="<c:url value='/photo/list?photo_folder_num=${nowVo.folder_num }'/>"> ${nowVo.title }</a></li>			
 				</c:when>
 				<c:when test="${nowVo.division==2 }">
-					<li><a href="<c:url value='/diary/content?diary_num=${nowVo.num }'/>">${nowVo.title }</a></li>					
+					<li><span class="diary_now">다이어리</span><a href="<c:url value='/diary/content?diary_num=${nowVo.num }'/>"> ${nowVo.title }</a></li>					
 				</c:when>
 			</c:choose>
 		</c:forEach>
@@ -55,11 +55,11 @@
 <div id="board_cnt">
 	<table >
 		<tr>
-			<td class="cnt">다이어리 ${requestScope.diary_now } / ${requestScope.diary_count }</td>
-			<td class="cnt">사진첩 ${requestScope.photo_now } / ${requestScope.photo_count }</td>
+			<td class="cnt"> 다이어리 ${requestScope.diary_now } / ${requestScope.diary_count }<c:if test="${requestScope.diary_now>0 }"> <span class="new"> N </span></c:if></td>
+			<td class="cnt"> 사진첩 ${requestScope.photo_now } / ${requestScope.photo_count }<c:if test="${requestScope.photo_now>0 }"> <span class="new">N</span></c:if></td>
 		</tr>
 		<tr>
-			<td class="cnt">방명록 ${requestScope.guest_now } / ${requestScope.guest_count }</td>
+			<td class="cnt"> 방명록 ${requestScope.guest_now } / ${requestScope.guest_count }<c:if test="${requestScope.guest_now>0 }"> <span class="new">N</span></c:if></td>
 		</tr>
 	</table>
 </div>
