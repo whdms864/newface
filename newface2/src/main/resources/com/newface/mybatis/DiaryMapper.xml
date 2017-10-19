@@ -7,7 +7,7 @@
 		insert into diary values(0,#{type},#{title},#{content},0,0,now(),#{diary_folder_num})
 	</insert>
 	<select id="folder_list" parameterType="hashmap" resultType="diarylist">
-		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,8) left_string 
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,13) left_string 
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num
 		where f.hompy_num=#{hompy_num} and f.diary_folder_num=#{diary_folder_num}
@@ -30,7 +30,7 @@
 		select id from hompy where hompy_num=#{value}
 	</select>
 	<select id="folder_basic_list" parameterType="hashmap" resultType="diarylist">
-		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,8) left_string
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,13) left_string
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where f.hompy_num=#{hompy_num} and type='전체공개' 
@@ -38,7 +38,7 @@
 		limit #{startRow},10
 	</select>
 	<select id="folder_all_list" parameterType="hashmap" resultType="diarylist">
-		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,8) left_string  
+		select d.diary_num,d.type,d.title,d.content,d.singo,d.love,date_format(d.regdate,'%Y-%c-%e') regdate,d.diary_folder_num,char_length(d.title) char_length,left(d.title,13) left_string  
 		from diary d join diary_folder f 
 		on d.diary_folder_num=f.diary_folder_num 
 		where f.hompy_num=#{hompy_num}

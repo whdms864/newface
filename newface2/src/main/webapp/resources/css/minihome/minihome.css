@@ -72,13 +72,13 @@ body {
 	position: absolute; margin-top: 88px; left: 264px; width: 515px; height: 408px; 	
 }
 #main_skin{
-	border-radius: 10px;width: 515px;height: 430px;	overflow: scroll;
+	border-radius: 10px;width: 515px;height: 430px;	overflow: auto;
 }
 #hname_back{
-	position: absolute; margin-top: 52px; left: 283px; width: 600px; height: 48px; display: inline-block; 
+	position: absolute; margin-top: 45px; left: 283px; width: 450px; height: 48px; display: inline-block; 
 }
 #hname{
-	top:40px;font-weight: bold; font-size: 25px;
+	top:35px;font-weight: bold; font-size: 25px;
 }
 #hname_edit{
 	font-size: 15px; background-color: gray; color: white; margin-left: 40px;

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #diary_list_back{
-	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px; 
+	margin:auto; width: 460px; height: 290; margin-top: 30px; font-size: 14px;
 }
 #title_back{
 	display: inline-block; background-color: #d2d2d2; width: 100%; padding: 0px;
@@ -12,13 +12,13 @@
 	display: inline-block; width: 50px; height:25px; text-align: center;
 }
 #title{
-	display: inline-block; width: 140px; height:25px; text-align: center; 
+	display: inline-block; width: 210px; height:25px; text-align: center; 
 } 
 .title{	
-	display: inline-block; width: 140px; height:25px; text-align: left; 
-} 
-.name{
-	display: inline-block; width: 70px; height:25px; text-align: center;
+	display: inline-block; height:25px;
+}  
+.title a{
+	display: inline-block; width: 210px; height:25px; text-align: left; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; 
 }
 .regdate{
 	display: inline-block; width: 100px; height:25px; text-align: center;
@@ -27,7 +27,7 @@
 	display: inline-block; width: 50px; height:25px; text-align: center;
 }
 a{
-	text-decoration: none; color: black; cursor:pointer;
+	width:210px; text-decoration: none; color: black; cursor:pointer; 
 }
 
 #select{

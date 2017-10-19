@@ -30,6 +30,7 @@ public class PhotoController {
 	}
 	@RequestMapping(value = "/photo/write", method = RequestMethod.GET)
 	public String write(HttpSession session,Model model) {
+		session.setAttribute("choice", "photo");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.Hompy_num(id);
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
@@ -52,6 +53,7 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/folder", method = RequestMethod.GET)
 	public String photo_folder(HttpSession session,Model model) {
+		session.setAttribute("choice", "photo");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.Hompy_num(id);
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
@@ -65,6 +67,7 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/folder_list", method = RequestMethod.GET)
 	public String folder_list(Model model,HttpSession session) {
+		session.setAttribute("choice", "photo");
 		String id=(String)session.getAttribute("fid");
 		if(id==null) {
 			id=(String)session.getAttribute("loginid");
@@ -91,8 +94,7 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/list")
 	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="photo_folder_num",defaultValue="0")int photo_folder_num,HttpSession session,Model model) {
-		System.out.println("¿À³Ä22");
-		System.out.println("photo_folder_num : " + photo_folder_num);
+		session.setAttribute("choice", "photo");
 		String id=(String)session.getAttribute("fid");
 		if(id==null) {
 			id=(String)session.getAttribute("loginid");

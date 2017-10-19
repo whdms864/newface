@@ -112,6 +112,7 @@ public class DiaryController {
 	///////////// 다이어리 전체목록 /////////////
 	@RequestMapping(value = "/diary/folder_all_list", method = {RequestMethod.GET,RequestMethod.POST})
 	public String folder_all_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model, HttpSession session) {
+		session.setAttribute("choice", "diary");
 		//페이지 처리
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		int totalRowCount=service.diary_all_count(hompy_num);
@@ -152,6 +153,7 @@ public class DiaryController {
 	///////////// 다이어리 폴더목록 /////////////
 	@RequestMapping(value = "/diary/list", method = {RequestMethod.GET,RequestMethod.POST})
 	public String diary_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum, int diary_folder_num, HttpSession session, Model model) {
+		session.setAttribute("choice", "diary");
 		//페이지 처리
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		HashMap<String, Integer> map=new HashMap<String, Integer>();
@@ -453,8 +455,7 @@ public class DiaryController {
 	///////////// 상세보기 /////////////
 	@RequestMapping(value = "/diary/content", method = {RequestMethod.GET,RequestMethod.POST})
 	public String content(int diary_num, Model model,HttpSession session) {
-		System.out.println("오냐?");
-		System.out.println("diary_num" + diary_num);
+		session.setAttribute("choice", "diary");
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);

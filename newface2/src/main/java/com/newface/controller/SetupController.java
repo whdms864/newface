@@ -31,6 +31,7 @@ public class SetupController {
 	
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
 	public String basicForm(Model model,HttpSession session) {
+		session.setAttribute("choice", "set");
 		String id=(String)session.getAttribute("loginid");
 		String hname=service.hname_select(id);
 		int hompy_num=service.hompy_num(id);
@@ -94,6 +95,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile",method=RequestMethod.GET)
 	public String profileForm(HttpSession session,Model model) {
+		session.setAttribute("choice", "set");
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		ProfileVo vo=service.profile(hompy_num);
 		model.addAttribute("vo", vo);

@@ -3,18 +3,6 @@ body {
 	margin: 0;
 	padding: 0;
 }
-/* #webView {
-	overflow: hidden;
-	position: relative;
-	width: 1024px;
-	height: 592px;
-	margin: 0 auto;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0)
-}
-#webView[data-show-memo='true'] {
-	overflow: visible
-} */
 #left_back{
 	width:147px ;height:153px ;
 }
@@ -30,7 +18,7 @@ body {
 	color: #16a2a5; font-weight:bold; display: inline-block; font-size: 13px;
 }                 
 #content{
-	position: relative; top: 20px; left: 25px; width: 160px; height: 130px; overflow:scroll;
+	position: relative; top: 20px; left: 25px; width: 160px; height: 130px; overflow:auto;
 	font-size: 13px;
 }
 #edit{

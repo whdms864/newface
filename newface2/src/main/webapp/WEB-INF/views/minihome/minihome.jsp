@@ -6,12 +6,17 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=21'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=11'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 </head>
 <body>
-<script type="text/javascript" src="http://scmplayer.co/script.js" 
-data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SiK-K, pH-1, %uBC15%uC7AC%uBC94 - iffy (prod by. GroovyRoom)','url':'https://youtu.be/Q8AK_wfGhkg'},{'title':'Sik-K (%uC2DD%uCF00%uC774) - %uC774%uC5B4%uD3F0 (Earphone) (Prod. BOYCOLD) [BOYCOLD]','url':'https://youtu.be/unBH_nFW8Ng'}]}" ></script>
+<script type='text/javascript' src='http://scmplayer.co/script.js' id="test"
+data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[
+{'title':'린킨파크 베스트20 노래모음','url':'https://www.youtube.com/watch?v=m7mvpe1fVa4'},
+{'title':'Sik-K (%uC2DD%uCF00%uC774) - %uC774%uC5B4%uD3F0 (Earphone) (Prod. BOYCOLD) [BOYCOLD]','url':'https://youtu.be/unBH_nFW8Ng'}]}" >
+</script>  
+
+
 <!-- SCM Music Player script end -->
 <!-- {'title':'제목','url':'주소'} -->
 <%-- <c:forEach var="bgm" items="${sessionScope.bgm_start }">
@@ -96,7 +101,12 @@ data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css',
 </div>
 <input type="hidden" id="hompy_admin" value="${sessionScope.hompy_admin }">
 <input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
+<input type="hidden" id="choice" value="${sessionScope.choice }">
 <script> 
+	$(function(){
+		var choice=$("#choice").val();
+		$("#" + choice + " .menu").css({"background-color":"white","color":"black","font-weight":"900"});
+	});
 	$("#home").click(function(){
 		var hompy_admin=$("#hompy_admin").val();
 		var hompy_num=$("#hompy_num").val();;

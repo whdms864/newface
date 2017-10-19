@@ -42,6 +42,7 @@ public class GuestBookController {
 	}
 	@RequestMapping("/guest/list_all")
 	public String list_all(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,HttpSession session) {
+		session.setAttribute("choice", "guest");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num = ((Integer)(session.getAttribute("hompy_num"))).intValue();
 		

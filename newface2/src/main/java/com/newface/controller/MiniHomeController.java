@@ -37,6 +37,7 @@ public class MiniHomeController {
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,Model model,HttpServletRequest request) {
+		session.setAttribute("choice", "home");
 		//아이디 구분 (주인인지 아닌지)
 		String loginid=(String)session.getAttribute("loginid");
 		String id;
@@ -160,7 +161,7 @@ public class MiniHomeController {
 		IuVo iu_is=service.iu_is(iu);
 		int n=0;
 		if(iu_is!=null) {
-			IucomVo vo=new IucomVo(0, content, null, hompy_num, u_id);
+			IucomVo vo=new IucomVo(0, content, null, hompy_num, u_id,0);
 			n=service.iu_com(vo);		
 		}
 		JSONObject json=new JSONObject();
@@ -178,6 +179,7 @@ public class MiniHomeController {
 			JSONObject json=new JSONObject();
 			String name=service.name(vo.getId());
 			json.put("id", vo.getId());
+			json.put("hompy_num", vo.getIu_hompy_num());
 			json.put("name", name);
 			json.put("content", vo.getContent());
 			arr.add(json);
@@ -203,6 +205,9 @@ public class MiniHomeController {
 		map.put("startRow", 0);
 		List<IucomVo> list=service.iu_history(map);
 		model.addAttribute("list", list);
+		
+		String name=service.name(id);
+		model.addAttribute("name", name);
 		return "minihome/iu_com";
 	}
 }

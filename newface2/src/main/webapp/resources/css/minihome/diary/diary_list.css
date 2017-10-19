@@ -12,14 +12,11 @@
 	display: inline-block; width: 50px; height:25px; text-align: center;
 }
 #title{
-	display: inline-block; width: 140px; height:25px; text-align: center; 
+	display: inline-block; width: 210px; height:25px; text-align: center; 
 } 
 .title{	
-	display: inline-block; width: 140px; height:25px; text-align: left; 	
+	display: inline-block; width: 210px; height:25px; text-align: left; 	
 } 
-.name{
-	display: inline-block; width: 70px; height:25px; text-align: center;
-}
 .regdate{
 	display: inline-block; width: 100px; height:25px; text-align: center;
 }

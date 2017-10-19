@@ -63,7 +63,7 @@
 		select * from iu where u_name='일촌' and i_id=#{i_id} and u_id=#{u_id}
 	</select>
 	<select id="iu_com_list" parameterType="int" resultType="iu_com">
-		select * from iu_com where hompy_num=#{value} order by iu_com_num desc
+		select i.*,h.hompy_num iu_hompy_num from iu_com i join hompy h on i.id=h.id where i.hompy_num=#{value} order by iu_com_num desc;
 	</select>
 	<select id="name" parameterType="string" resultType="string">
 		select name from member where id=#{value}

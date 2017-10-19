@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=22'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=30'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -20,7 +20,7 @@
 		var iu_content=function(){
 			$.getJSON("<c:url value='/minihome/iu_com_list'/>",function(data){
 				$(data).each(function(i,com){
-					$("#iu_content").append(com.content + " (<span class='com_name'>" + com.name + "</span>) <img class='history' id='" + com.id + "' alt='일촌평 히스토리' src='<c:url value='/resources/images/minihome/arrow.png'/>'><hr>");
+					$("#iu_content").append(com.content + " (<span class='com_name' id='" + com.hompy_num + "'>" + com.name + "</span>) <img class='history' id='" + com.id + "' alt='일촌평 히스토리' src='<c:url value='/resources/images/minihome/arrow.png'/>'><hr>");
 				});
 			});
 		}
@@ -30,11 +30,17 @@
 			var hompy_num=$("#hompy_num").val();
 			window.open("<c:url value='/minihome/iu_history?hompy_num=" + hompy_num + "&id=" + id + "'/>","_minihome3"," width=385,height=594,left=100,top=100");
 		});
+		$("#iu_content").on("click",".com_name",function(){
+			var hompy_num=$(this).attr("id");
+			var url="<c:url value='/minihome/?hompy_num=" + hompy_num + "'/>";
+			$(location).attr("href",url);
+			
+		});
 	});
 </script>
 <div id="news_back">
 	<div id="news">
-		Upload news
+		Upload news 
 	</div>
 	<hr>
 </div>
@@ -53,15 +59,16 @@
 	</ul>
 </div>
 <div id="board_cnt">
-	<table >
-		<tr>
-			<td class="cnt"> 다이어리 ${requestScope.diary_now } / ${requestScope.diary_count }<c:if test="${requestScope.diary_now>0 }"> <span class="new"> N </span></c:if></td>
-			<td class="cnt"> 사진첩 ${requestScope.photo_now } / ${requestScope.photo_count }<c:if test="${requestScope.photo_now>0 }"> <span class="new">N</span></c:if></td>
-		</tr>
-		<tr>
-			<td class="cnt"> 방명록 ${requestScope.guest_now } / ${requestScope.guest_count }<c:if test="${requestScope.guest_now>0 }"> <span class="new">N</span></c:if></td>
-		</tr>
-	</table>
+	<hr>
+	<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a> 
+	<span class="number">${requestScope.diary_now }/${requestScope.diary_count }</span><c:if test="${requestScope.diary_now>0 }"> <span class="new"> N </span></c:if>
+	<hr>
+	<a href="<c:url value='/photo/list'/>">사진첩</a> 
+	<span class="number">${requestScope.photo_now }/${requestScope.photo_count }</span><c:if test="${requestScope.photo_now>0 }"> <span class="new">N</span></c:if>
+	<hr>
+	<a href="<c:url value='/guest/list_all'/>">방명록</a> 
+	<span class="number">${requestScope.guest_now }/${requestScope.guest_count }</span><c:if test="${requestScope.guest_now>0 }"> <span class="new"> N </span></c:if>
+	<hr>
 </div>
 <div id="miniroom_back">
 	Mini Room
@@ -74,10 +81,24 @@
 </div>
 <div id="friends_say_back">
 	<div id="friends_say">Friends say</div>
+	<div id="iu_com">
+		<input type="text" id="iu_text" size="38" name="iu_com" placeholder="일촌과 나누고 싶은 이야기를 남겨보세요">
+		&nbsp;&nbsp;<input type="button" value="확인" id="btn">
+	</div>
 </div>
-<div id="iu_com">
-	<input type="text" id="iu_text" size="38" name="iu_com" placeholder="일촌과 나누고 싶은 이야기를 남겨보세요">
-	&nbsp;&nbsp;<input type="button" value="확인" id="btn">
-</div>
-<input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
+
 <div id="iu_content"></div>
+<input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
+<input type="hidden" id="loginid" value="${sessionScope.loginid }">
+<input type="hidden" id="hompyid" value="${sessionScope.hompyid }">
+<script>
+	$(function(){
+		var loginid=$("#loginid").val();
+		var hompyid=$("#hompyid").val();
+		console.log("loginid : " + loginid);
+		console.log("hompyid : " + hompyid);
+		if(loginid==hompyid){
+			$("#friends_say_back").css("display","none");
+		}
+	});
+</script>
