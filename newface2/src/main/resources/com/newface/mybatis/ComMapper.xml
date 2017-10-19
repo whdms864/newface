@@ -22,23 +22,8 @@
 		order by a.regdate desc 
 		limit #{startrow},#{endrow}
 	</select>
-	<select id="p_c_list_all" resultType="int" parameterType="hashmap">
-		select count(*) from( 
-		select p.photo_com_num num,p.content content,p.regdate regdate,p.photo_num num2,p.id id,m.name name,pro.save_name save_name,'photo' tb 
-		from photo_com p 
-		join hompy h 
-		on h.id=p.id 
-		join member m
-		on m.id=h.id
-		join (select * from ( 
-		select hompy_num,save_name  
-		from profile 
-		order by hompy_num, regdate desc 
-		) a 
-		group by a.hompy_num) pro 
-		on h.hompy_num=pro.hompy_num) a 
-		where a.num2=#{num2}
-		order by a.regdate desc 
+	<select id="p_c_list_all" resultType="int" parameterType="int">
+		select count(*) from photo_com where photo_num=#{value}
 	</select>
 	<select id="d_c_list" resultType="joincom" parameterType="hashmap">
 		select num,content,DATE_FORMAT(regdate, "%Y-%m-%d") regdate,num2,id,name,save_name,tb from( 
@@ -59,22 +44,7 @@
 		order by a.regdate desc 
 		limit #{startrow},#{endrow}
 	</select>
-	<select id="d_c_list_all" resultType="int" parameterType="hashmap">
-		select count(*) from( 
-		select p.diary_com_num num,p.content content,p.regdate regdate,p.diary_num num2,p.id id,m.name name,pro.save_name save_name,'diary' tb 
-		from diary_com p 
-		join hompy h 
-		on h.id=p.id 
-		join member m 
-		on m.id=h.id 
-		join (select * from ( 
-		select hompy_num,save_name  
-		from profile 
-		order by hompy_num, regdate desc 
-		) a 
-		group by a.hompy_num) pro 
-		on h.hompy_num=pro.hompy_num) a
-		where a.num2=#{num2} 
-		order by a.regdate desc 
+	<select id="d_c_list_all" resultType="int" parameterType="int">
+		select count(*) from diary_com where diary_num=#{value}
 	</select>
 </mapper>  

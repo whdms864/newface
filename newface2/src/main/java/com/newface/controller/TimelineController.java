@@ -151,48 +151,65 @@ public class TimelineController {
 		map.put("startrow", startrow_com);
 		map.put("endrow", endrow_com);
 		map.put("num2", num2);
+		int n=0;
 		String add="";
 		if(tb.equals("photo")) {
 			list=comservice.p_c_list(map);
-			int n=comservice.p_c_list_all(map);
-			if(n>endrow_com) {
+			n=comservice.p_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
 				add="yes";
 			}else {
 				add="no";
 			}
 		}else if(tb.equals("diary")) {
 			list=comservice.d_c_list(map);
-			int n=comservice.d_c_list_all(map);
-			if(n>endrow_com) {
+			n=comservice.d_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
 				add="yes";
 			}else {
 				add="no";
 			}
 		}
-		System.out.println(add);
 		map_save.put("list", list);
 		map_save.put("add", add);
 		return map_save;
 	}
 	@RequestMapping("/main2/com/insert")
 	@ResponseBody
-	public List<ComVo> main2_com_insert(int startrow_com,int endrow_com,int num2,String tb,String content,HttpSession session){
+	public HashMap<String, Object> main2_com_insert(int startrow_com,int endrow_com,int num2,String tb,String content,HttpSession session){
 		String id=(String)session.getAttribute("loginid");
 		HashMap<String, Object> map=new HashMap<String, Object>();
+		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
 		map.put("startrow", startrow_com);
 		map.put("endrow", endrow_com);
 		map.put("num2", num2);
+		String add="";
 		if(tb.equals("photo")) {
 			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id);
 			photoservice.com_insert(vo);
 			list=comservice.p_c_list(map);
+			int n=comservice.p_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
 		}else if(tb.equals("diary")) {
 			DiarycomVo vo=new DiarycomVo(0, content, null, null, num2, id, null);
 			diaryservice.com_insert(vo);
 			list=comservice.d_c_list(map);
+			int n=comservice.d_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
+		
 		}
-		return list;
+		map_save.put("list", list);
+		map_save.put("add", add);
+		return map_save;
 	}
 	
 	@RequestMapping("/main2/love")

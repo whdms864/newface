@@ -20,10 +20,10 @@ public class ComService {
 	public List<ComVo> d_c_list(HashMap<String, Object> map) {
 		return dao.d_c_list(map);
 	}
-	public int p_c_list_all(HashMap<String, Object> map) {
-		return dao.p_c_list_all(map);
+	public int p_c_list_all(int num) {
+		return dao.p_c_list_all(num);
 	}
-	public int d_c_list_all(HashMap<String, Object> map) {
-		return dao.d_c_list_all(map);
+	public int d_c_list_all(int num) {
+		return dao.d_c_list_all(num);
 	}
 }
