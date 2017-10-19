@@ -100,4 +100,12 @@ public class MemberService {
 	public int photo_folder_insert(int hompy_num) {
 		return dao.photo_folder_insert(hompy_num);
 	}
+	
+	public List<MemberVo> fsearch(HashMap<String, Object> map) {
+		return dao.fsearch(map);
+	}
+	
+	public int fsearch_count(HashMap<String, Object> map) {
+		return dao.fsearch_count(map);
+	}
 }

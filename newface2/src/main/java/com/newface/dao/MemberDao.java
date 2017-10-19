@@ -104,4 +104,12 @@ public class MemberDao {
 		return sqlSession.insert(NAMESPACE + ".photo_folder_insert", hompy_num);
 	}
 	
+	public List<MemberVo> fsearch(HashMap<String, Object> map) {
+		return sqlSession.selectList(NAMESPACE+".fsearch",map);
+	}
+	
+	public int fsearch_count(HashMap<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".fsearch_count",map);
+	}
+	
 }

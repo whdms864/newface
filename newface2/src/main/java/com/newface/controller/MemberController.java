@@ -152,6 +152,28 @@ public class MemberController {
 		}
 		return ".search";
 	}
+	
+	
+	@RequestMapping(value = "/fsearch_list", method = RequestMethod.GET)
+	public String fsearch(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
+		Model model,@RequestParam(value="text",defaultValue="") String text) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("text",text);
+		int totalRowCount=service.fsearch_count(map);
+		PageUtil pu=new PageUtil(pageNum,10,5,totalRowCount);
+		map.put("startRow",pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<MemberVo> fsearch_list=service.fsearch(map);
+		model.addAttribute("fsearch_list",fsearch_list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("text",text);
+		return ".fsearch_list";
+	}
+	
+	
+	
+	
+	
 	/********* 여기부터 관리자꺼 시작이다!!!!!!!!!!!**************************************/
 	@RequestMapping(value = "/memadmin", method = RequestMethod.GET)
 	public String admin_member_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,

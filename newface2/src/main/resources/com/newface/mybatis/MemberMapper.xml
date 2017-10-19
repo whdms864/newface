@@ -96,4 +96,14 @@
 		insert into photo_folder values(0,'기본폴더',now(),#{value})
 	</insert>
 	
+	<select id="fsearch" resultType="member" parameterType="hashmap">
+		select * from member
+		where type!='탈퇴' and (id like concat('%',#{text},'%') or name like concat('%',#{text},'%') or school like concat('%',#{text},'%') or addr like concat('%',#{text},'%')) 
+		order by id,regdate limit #{startRow},#{endRow}
+	</select>
+	<select id="fsearch_count" resultType="int" parameterType="hashmap">
+	select coalesce(count(id),0) 
+	from member 
+	where type!='탈퇴' and id like concat('%',#{text},'%') or name like concat('%',#{text},'%') or school like concat('%',#{text},'%') or addr like concat('%',#{text},'%')
+	</select>
 </mapper>  
