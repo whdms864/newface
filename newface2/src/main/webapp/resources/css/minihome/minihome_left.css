@@ -1,58 +1,128 @@
 @charset "UTF-8";
+
 body {
 	margin: 0;
 	padding: 0;
 }
-#left_back{
-	width:147px ;height:153px ;
+
+#left_back {
+	width: 147px;
+	height: 153px;
 }
-#profile{/*프로필사진*/
-	position: relative; top: 10px; left: 25px; width: 147px; height: 153px; 
+
+#profile { /*프로필사진*/
+	position: relative;
+	top: 10px;
+	left: 25px;
+	width: 147px;
+	height: 153px;
 }
-#todayis{/*기분상태*/
-	position: relative; top: 15px; left: 23px; width:160px; 
-	line-height: 20px;  font-size: 13px; border:1px solid gray;
-	display: inline-block; text-align: center;
-}    
-#today_color{
-	color: #16a2a5; font-weight:bold; display: inline-block; font-size: 13px;
-}                 
-#content{
-	position: relative; top: 20px; left: 25px; width: 160px; height: 130px; overflow:auto;
+
+#todayis { /*기분상태*/
+	position: relative;
+	top: 15px;
+	left: 23px;
+	width: 160px;
+	line-height: 20px;
+	font-size: 13px;
+	border: 1px solid gray;
+	display: inline-block;
+	text-align: center;
+}
+
+#today_color {
+	color: #16a2a5;
+	font-weight: bold;
+	display: inline-block;
 	font-size: 13px;
 }
-#edit{
-	position: relative; margin-top: 20px; left: 25px; width: 100px; height: 13px; 
-	font-size: 14px; color: rgb(41, 90, 221);
+
+#content {
+	position: relative;
+    top: 20px;
+    left: 25px;
+    width: 160px;
+    height: 130px;
+    overflow-x:hidden; overflow-y:auto
+    font-size: 13px;
+    word-break: break-all;
+    font-size: 14px
 }
-#member{
-	position: relative; margin-top:10px; left: 25px; width: 100px; height: 20px; 
-	font-size: 15px; 
+
+#edit {
+	position: relative;
+	margin-top: 20px;
+	left: 25px;
+	width: 100px;
+	height: 13px;
+	font-size: 14px;
+	color: rgb(41, 90, 221);
 }
-#name{
-	display: inline; float: left; cursor: pointer;  width: 130px;
+
+#member {
+	position: relative;
+	margin-top: 10px;
+	left: 25px;
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
 }
-#name1{
-	color: #213cf5; font-weight: bold; font-size: 14px;
+
+#name {
+	display: inline;
+	float: left;
+	cursor: pointer;
+	width: 130px;
 }
-#u_you{
+
+#name1 {
+	color: #213cf5;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+#u_you {
 	display: inline-block;
 }
-#i_you1{
-	display: none; 
+
+#i_you {
+	position: absolute;
+    margin-top: -16px;
+    margin-left: 70px;
+    border: 1px solid gray;
+    width: 90px;
+    height: 50px;
+    background-color: white;
+    z-index: 99;
+    font-size: 13px;
+    display: none;
 }
-#iu{
-	position: relative; top: 30px; left: 25px;  width: 150px; height: 170px;
+
+#iu {
+	position: relative;
+	top: 30px;
+	left: 25px;
+	width: 150px;
+	height: 170px;
 }
-a{
-	text-decoration: none; color: black;
+
+a {
+	text-decoration: none;
+	color: black;
 }
-#history:hover{
+
+#history:hover {
 	cursor: pointer;
 }
-.photo{
-	max-width: 153px;max-height: 153px; margin-left: auto; margin-right: auto; display: block;
+
+.photo {
+	max-width: 153px;
+	max-height: 153px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
-.triangle{
+
+.triangle {
 	color: #1cc8cc;
 }

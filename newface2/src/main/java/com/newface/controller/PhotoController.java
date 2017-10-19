@@ -25,7 +25,8 @@ public class PhotoController {
 	@Autowired PhotoService service;
 	
 	@RequestMapping(value = "/photo", method = RequestMethod.GET)
-	public String photo() {
+	public String photo(HttpSession session) {
+		session.setAttribute("folder_photo", "all");
 		return ".photo";
 	}
 	@RequestMapping(value = "/photo/write", method = RequestMethod.GET)
@@ -53,9 +54,9 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/folder", method = RequestMethod.GET)
 	public String photo_folder(HttpSession session,Model model) {
+		session.setAttribute("folder_photo", "folder");
 		session.setAttribute("choice", "photo");
-		String id=(String)session.getAttribute("loginid");
-		int hompy_num=service.Hompy_num(id);
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
 		if(list!=null) {
 			model.addAttribute("list",list);
@@ -95,12 +96,17 @@ public class PhotoController {
 	@RequestMapping(value="/photo/list")
 	public String photo_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="photo_folder_num",defaultValue="0")int photo_folder_num,HttpSession session,Model model) {
 		session.setAttribute("choice", "photo");
+		if(photo_folder_num>0) {
+			session.setAttribute("folder_photo", photo_folder_num);		
+		}else {
+			session.setAttribute("folder_photo", "all");					
+		}
 		String id=(String)session.getAttribute("fid");
 		if(id==null) {
 			id=(String)session.getAttribute("loginid");
 		}
 		HashMap<String, Object> map=new HashMap<String, Object>();
-		int hompy_num=service.Hompy_num(id);
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		String name=service.name(id);
 		map.put("hompy_num", hompy_num);
 		map.put("photo_folder_num", photo_folder_num);

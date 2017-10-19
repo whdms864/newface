@@ -9,7 +9,7 @@
 			window.open("<c:url value='/cash'/>","_cash_insert","width=550,height=570,left=100,top=100");
 		});
 		$("#minihome").click(function(){
-		    window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
+		    window.open("<c:url value='/minihome'/>","_minihome"," width=1032,height=617,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
 		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 

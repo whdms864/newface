@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/photo/photo_content.css?ver=3'/>">
+	href="<c:url value='/resources/css/minihome/photo/photo_content.css?ver=32'/>">
 <a href="<c:url value='/photo/write'/>" id="p_upload"><img
 	src="<c:url value='/resources/images/minihome/photo_upload.PNG'/>"></a>
 <c:forEach var="vo" items="${requestScope.list1 }">
 <div class="p_title">
-	${vo.title }
+	<div class="title">${vo.title }</div>
 	<a href="<c:url value='/photo/love?love=1&photo_num=${vo.photo_num }'/>" class="p_love_b">좋아요</a>
 	<c:if test="${requestScope.id eq sessionScope.loginid}">
 	<a class="l1">|</a>

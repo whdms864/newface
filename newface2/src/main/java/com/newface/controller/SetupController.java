@@ -32,6 +32,7 @@ public class SetupController {
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
 	public String basicForm(Model model,HttpSession session) {
 		session.setAttribute("choice", "set");
+		session.setAttribute("set_menu", "set_basic");
 		String id=(String)session.getAttribute("loginid");
 		String hname=service.hname_select(id);
 		int hompy_num=service.hompy_num(id);
@@ -63,6 +64,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/skin",method=RequestMethod.GET)
 	public String skin(HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_skin");
 		String id=(String)session.getAttribute("loginid");
 		List<ItemVo> list=service.skin_list(id);
 		model.addAttribute("list", list);
@@ -75,6 +77,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
 	public String hname(HompyVo vo,HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_profile");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		vo.setHompy_num(hompy_num);
@@ -95,6 +98,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile",method=RequestMethod.GET)
 	public String profileForm(HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_profile");
 		session.setAttribute("choice", "set");
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		ProfileVo vo=service.profile(hompy_num);
@@ -103,6 +107,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/profile_content",method=RequestMethod.POST)
 	public String profile_content(String content,HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_profile");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		ProfileVo vo=service.profile(hompy_num);
@@ -133,6 +138,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/iu",method=RequestMethod.GET)
 	public String iu(HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_iu");
 		String id=(String)session.getAttribute("loginid");
 		List<IuVo> iuVo=service.iu_request_list(id);
 		model.addAttribute("iuVo", iuVo);
@@ -152,6 +158,7 @@ public class SetupController {
 	}	
 	@RequestMapping(value="/setup/miniroom",method=RequestMethod.GET)
 	public String miniroom(HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_miniroom");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		int mini_num=service.mini_num(hompy_num);
@@ -224,6 +231,7 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/minime",method=RequestMethod.GET)
 	public String minime(Model model,HttpSession session) {
+		session.setAttribute("set_menu", "set_minime");
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		int mini_num=service.mini_num(hompy_num);
@@ -264,6 +272,7 @@ public class SetupController {
 	}	
 	@RequestMapping(value="/setup/bgm",method=RequestMethod.GET)
 	public String bgm(HttpSession session,Model model) {
+		session.setAttribute("set_menu", "set_bgm");
 		String id=(String)session.getAttribute("loginid");
 		List<ItemVo> list=service.bgm_list(id);
 		model.addAttribute("list", list);

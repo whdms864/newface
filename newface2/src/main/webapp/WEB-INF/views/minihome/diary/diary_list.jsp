@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=51'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_list.css?ver=22'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -64,20 +64,15 @@
 	</div>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<hr>
+		<div class="next_back">
 		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
 			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
 		<div class="num">${vo.diary_num }</div>
-		<c:choose>
-			<c:when test="${vo.char_length>16 }">
-				<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.left_string }...</a></div>
-			</c:when>
-			<c:otherwise>
-				<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>			
-			</c:otherwise>
-		</c:choose>
+		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
 		<div class="regdate">${vo.regdate }</div>
 		<div class="love">${vo.love }</div><br>
+		</div>
 	</c:forEach> 
 	<hr>
 </div>

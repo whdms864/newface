@@ -1,3 +1,8 @@
+#back{
+	margin: 0px;
+    padding: 0px;
+    margin-left: -15px;
+}
 .g_write_b{
 	position: relative;
     top: 40px;
@@ -14,6 +19,9 @@
     height: 98px;
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
+}
+.g_minime img{
+	margin-top:-10px;
 }
 .g_texta{
 	position: absolute;
@@ -50,8 +58,8 @@
 }
 .g_content_b{
 	position: relative;
-	top:80px;
-	left:35px;
+    top: 10px;
+    left: 20px;
     width: 468px;
     margin-top: 50px;
 }
@@ -79,13 +87,12 @@
 	position: absolute;
     top: 5px;
     left: 45px;
-    width: 33px;
     height: 30px;
     font-size: 11px;
 }
 .g_home{
 	position: absolute;
-    top: 5px;
+    margin-top: 3px;
     left: 83px;
     width: 23px;
     height: 19px;

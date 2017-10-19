@@ -88,7 +88,7 @@ public class MiniHomeController {
 		
 		//프로필사진
 		ProfileVo profile=service.profile(hompy_num);
-		model.addAttribute("vo", profile);
+		session.setAttribute("vo", profile);
 		
 		//최신글
 		List<NowVo> now=service.now(hompy_num);
@@ -110,7 +110,7 @@ public class MiniHomeController {
 		
 		//미니홈피 이름
 		MemberVo member=service.profile_member(hompy_num);
-		model.addAttribute("member", member);	
+		session.setAttribute("member", member);	
 		
 		//미니룸
 		int mini_num=service.mini_num(hompy_num);

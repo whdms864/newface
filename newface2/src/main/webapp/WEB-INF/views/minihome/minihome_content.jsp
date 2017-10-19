@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=30'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=44'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
@@ -56,6 +56,9 @@
 				</c:when>
 			</c:choose>
 		</c:forEach>
+		<c:if test="${requestScope.now=='[]' }">
+			<li id="new_now">등록된 게시물이 없습니다</li>
+		</c:if>
 	</ul>
 </div>
 <div id="board_cnt">
@@ -74,16 +77,23 @@
 	Mini Room
 	<hr>
 	<div id="miniroom">
-		<c:forEach var="miniVo" items="${requestScope.mini }">
-			${miniVo.item_img }
-		</c:forEach> 
+		<c:choose>
+			<c:when test="${requestScope.mini!='[]' }">		
+				<c:forEach var="miniVo" items="${requestScope.mini }">
+					${miniVo.item_img }
+				</c:forEach> 
+			</c:when>
+			<c:otherwise>
+				<img id="new_miniroom" src="<c:url value='/resources/images/minihome/miniroom.PNG'/>">
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 <div id="friends_say_back">
 	<div id="friends_say">Friends say</div>
 	<div id="iu_com">
 		<input type="text" id="iu_text" size="38" name="iu_com" placeholder="일촌과 나누고 싶은 이야기를 남겨보세요">
-		&nbsp;&nbsp;<input type="button" value="확인" id="btn">
+		&nbsp;<input type="button" value="확인" id="btn">
 	</div>
 </div>
 

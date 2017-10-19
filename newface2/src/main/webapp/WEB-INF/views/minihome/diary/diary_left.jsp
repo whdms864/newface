@@ -26,7 +26,7 @@
 </script>
 <div id="diary_left_back">
 	<div id="diary_title">
-		DIARY ${diary_folder_num } 
+		DIARY
 	</div>
 		<hr>
 	<div id="calender">
@@ -38,6 +38,13 @@
 	</div>
 	<div id="diary_folder"></div>
 	<div id="diary_folder_set">
-		<a href="<c:url value='/diary/folder'/>">폴더 관리하기</a>	
+		<c:choose>
+			<c:when test="${sessionScope.folder==folder }">
+				<a style="font-weight: 900" href="<c:url value='/diary/folder'/>">폴더 관리하기</a>		
+			</c:when>
+			<c:otherwise>
+				<a href="<c:url value='/diary/folder'/>">폴더 관리하기</a>		
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>

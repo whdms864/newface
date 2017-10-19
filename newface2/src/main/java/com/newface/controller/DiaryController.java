@@ -337,6 +337,7 @@ public class DiaryController {
 	///////////// 폴더관리 /////////////
 	@RequestMapping(value = "/diary/folder", method = RequestMethod.GET)
 	public String folder(Model model, HttpSession session) {
+		session.setAttribute("folder", "folder");
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		List<DiaryfolderVo> list = service.fname(hompy_num);
 		model.addAttribute("list", list);

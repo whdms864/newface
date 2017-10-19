@@ -4,8 +4,8 @@
 <script type="text/javascript"
 	src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=4'/>">
-	<div>
+	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=22'/>">
+	<div id="back">
 		<form method="post" action="<c:url value='/guest/insert'/>">
 			<div class="g_write_b">
 				<input type="hidden" value=${sessionScope.loginid } name="id"
