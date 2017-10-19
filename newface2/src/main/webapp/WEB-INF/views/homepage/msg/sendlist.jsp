@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<c:url value='/resources/css/paging_style_user.css?ver=4'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/paging_style_user.css?ver=15'/>">
 <style type="text/css>">
 	a:visited {color : black}
 </style>
@@ -21,7 +21,7 @@
 	});
 </script>	
 
-<div id="msg_sendlist" style="background-color: rgba(250, 250, 250, 0.78); margin-left:0px; margin-top:25px; width: 430px; height: 305px;"align="center">
+<div id="msg_sendlist" style="background-color: rgba(250, 250, 250, 0.78); margin-left:5px; margin-top:25px; width: 430px; height: 305px;"align="center">
 	<table class="table table-hover" style="width: 430px; margin-top: 20px;">
 	<thead>
 		<tr>

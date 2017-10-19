@@ -17,7 +17,7 @@ $(function(){
 	
 </script>
 
-<div style="background-color: rgba(250, 250, 250, 0.78); margin-left:7px; margin-top:25px; width: 96%; height: 335px;"align="center">
+<div style="background-color: rgba(250, 250, 250, 0.78); margin-left:5px; margin-top:25px; width: 96%; height: 305px;"align="center">
 	<form action="<c:url value='/msg_send'/>" method="post">
 		
 		<div style="width:430px; height:37px; margin-top:25px; background-color: #fcf8e3;">

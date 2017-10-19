@@ -12,7 +12,7 @@
 		    window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
-		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=440,height=380,left=100,top=100"); 
+		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=440,height=385,left=100,top=100"); 
 		});
 	});
 </script>	
