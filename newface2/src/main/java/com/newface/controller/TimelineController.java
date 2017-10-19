@@ -156,6 +156,12 @@ public class TimelineController {
 		map.put("pro_img",pro_img);
 		return map;
 	}
+	@RequestMapping("/main2/hompynum")
+	@ResponseBody
+	public int main2_hompynum(String id){
+		int hompy_num=minihomeservice.hompy_num(id);
+		return hompy_num;
+	}
 	
 	@RequestMapping("/main2/com/list")
 	@ResponseBody

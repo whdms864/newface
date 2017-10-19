@@ -214,13 +214,23 @@
 							html +="</td>"
 								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
 								+ 		"<input type='hidden' value='"+list[i].num+"' class='com_num'>"
+								+ 		"<input type='hidden' value='"+list[i].id+"' class='com_id'>"
 								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
 								+			list[i].content+" · "+list[i].regdate+" ";
 							if(list[i].id==loginid){
 								html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
 							}	
-							
-							html +="</td>"
+							html +="<div class='name_box'>"
+								+ 	"<ul>"
+								+		"<li>"
+								+			"<a class='hompy_open'>미니홈피가기</a>"
+								+		"</li>"
+								+		"<li>"
+								+			"<a class='msg_open'>쪽지보내기</a>"
+								+		"</li>"
+								+ 	"</ul>"
+								+	"</div>"
+								+	"</td>"
 								+	"</tr>"
 								+	"<tr>"
 								+		"<td>"
@@ -240,9 +250,31 @@
 					});
 					$(this).parents(".timeline").find(".timecom").css("display","block");
 				});
-				
+				/*이름클릭시 이름옆에박스*/
+				$(document).on("click",".click_name",function() {
+					var com_id =$(this).parents("td").find(".com_id").val();
+					var loginid=$("#loginid").val();
+					if(com_id!=loginid){
+						$except = $(this).parent().find(".name_box");
+						$(".name_box").not($except).css("display","none");
+						$except.toggle();
+					}else{
+						window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
+					}
+				});
+				$(document).on("click",".hompy_open",function() {
+					var com_id =$(this).parents("td").find(".com_id").val();
+					var hompy_num=0;
+					$.getJSON('main2/hompynum', {"id" : com_id}, function(data) {
+						$(".name_box").css("display","none");
+						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
+					});
+				});
+				$(document).on("click",".msg_open",function() {
+					var com_id =$(this).parents("td").find(".com_id").val();
+					window.open("<c:url value='/msg_reply?id='/>"+com_id,"_msg"," width=445,height=390,left=100,top=100");  
+				});
 				/*댓글쓰기*/
-
 				$(".text").keypress(function(event){
 					if(event.keyCode==13){
 						var text=$(this);
@@ -255,7 +287,7 @@
 						var loginid=$("#loginid").val();
 						if(text.val()==""){
 							text.focus();
-							alert("검색할 내용을 입력해주세요");
+							alert("댓글을 입력해주세요");
 						}else{
 							$.getJSON('main2/com/insert', {
 								"tb" : tb,
@@ -281,13 +313,23 @@
 										html +="</td>"
 											+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
 											+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
+											+ 		"<input type='hidden' value='"+list[i].id+"' class='com_id'>"
 											+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
 											+			list[i].content+" · "+list[i].regdate+" ";
 										if(list[i].id==loginid){
 											html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
 										}	
 										
-										html +="</td>"
+										html +="<div class='name_box'>"
+											+ 	"<ul>"
+											+		"<li>"
+											+			"<a class='hompy_open'>미니홈피가기</a>"
+											+		"</li>"
+											+		"<li>"
+											+			"<a class='msg_open'>쪽지보내기</a>"
+											+		"</li>"
+											+ 	"</ul>"
+											+	"</div>"
 											+	"</tr>"
 											+	"<tr>"
 											+		"<td>"
@@ -341,13 +383,23 @@
 								html +="</td>"
 									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
 									+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
+									+ 		"<input type='hidden' value='"+list[i].id+"' class='com_id'>"
 									+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
 									+			list[i].content+" · "+list[i].regdate+" ";
 								if(list[i].id==loginid){
 									html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
 								}	
 								
-								html +="</td>"
+								html +="<div class='name_box'>"
+									+ 	"<ul>"
+									+		"<li>"
+									+			"<a class='hompy_open'>미니홈피가기</a>"
+									+		"</li>"
+									+		"<li>"
+									+			"<a class='msg_open'>쪽지보내기</a>"
+									+		"</li>"
+									+ 	"</ul>"
+									+	"</div>"
 									+	"</tr>"
 									+	"<tr>"
 									+		"<td>"
@@ -393,13 +445,23 @@
 							html +="</td>"
 								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
 								+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
+								+ 		"<input type='hidden' value='"+list[i].id+"' class='com_id'>"
 								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
 								+			list[i].content+" · "+list[i].regdate;
 							if(list[i].id==loginid){
 								html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
 							}	
 							
-							html +="</td>"
+							html +="<div class='name_box'>"
+								+ 	"<ul>"
+								+		"<li>"
+								+			"<a class='hompy_open'>미니홈피가기</a>"
+								+		"</li>"
+								+		"<li>"
+								+			"<a class='msg_open'>쪽지보내기</a>"
+								+		"</li>"
+								+ 	"</ul>"
+								+	"</div>"
 								+	"</tr>"
 								+	"<tr>"
 								+		"<td>"

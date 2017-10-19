@@ -15,7 +15,7 @@
 		
 		<div style="width:420px; height:25px; margin-top:7px; margin-left:10px;">
 			<span style="float:left; margin-right:10px; margin-top:3px; font-weight: bold;" >받는 사람</span>
-			<input type="text" id="receiver" name="receiver" style="width:120px; height:30px; float:left;" value="${msgrecv_getinfo.sender}" readonly="readonly">
+			<input type="text" id="receiver" name="receiver" style="width:120px; height:30px; float:left;" value="${sender}" readonly="readonly">
 		</div>
 		
 		<div style="background-color: rgb(224, 224, 224);margin-left:0px;width: 430px; height:2px; position:absolute; top:91px;"></div>

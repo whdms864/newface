@@ -149,13 +149,18 @@ public class MsgController {
 	
 	// 답장보내기 페이지
 	@RequestMapping(value = "/msg_reply", method = RequestMethod.GET)
-	public String msg_replyform(Model model, int msg_num, HttpSession session) {
+	public String msg_replyform(Model model, 
+			@RequestParam(value = "msg_num", defaultValue = "0") int msg_num,
+			HttpSession session,@RequestParam(value = "id", defaultValue = "") String id) {
 		String loginid = (String) session.getAttribute("loginid");
-		MsgVo msgrecv_getinfo = service.msgrecv_getinfo(msg_num);
 		int msgnorecv_count = service.msgnorecv_count(loginid);
-		
+		if(id.equals("")) {
+			MsgVo msgrecv_getinfo = service.msgrecv_getinfo(msg_num);
+			model.addAttribute("sender", msgrecv_getinfo.getSender());
+		}else {
+			model.addAttribute("sender", id);
+		}
 		session.setAttribute("msgnorecv_count", msgnorecv_count);
-		model.addAttribute("msgrecv_getinfo", msgrecv_getinfo);
 		
 		return ".reply";
 	}
