@@ -22,24 +22,28 @@ import com.newface.vo.CashVo;
 import com.newface.vo.NotiVo;
 import com.newface.vo.TimelineVo;
 
-
 @Controller
 public class LoginContorller {
-	@Autowired private MemberService service;
-	@Autowired private CashService cashservice;
-	@Autowired private NotiService notiservice;
-	@Autowired private MarketService marketservice;
-	@Autowired private MsgService msgservice;
-	
+	@Autowired
+	private MemberService service;
+	@Autowired
+	private CashService cashservice;
+	@Autowired
+	private NotiService notiservice;
+	@Autowired
+	private MarketService marketservice;
+	@Autowired
+	private MsgService msgservice;
 
+	// 로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
-	public String login(HttpServletRequest request,Model model) {
+	public String login(HttpServletRequest request, Model model) {
 
 		String loginid = request.getParameter("loginid");
 		String loginpwd = request.getParameter("loginpwd");
-		
-		List<NotiVo> noti_side=notiservice.noti_side();
-		
+
+		List<NotiVo> noti_side = notiservice.noti_side();
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("loginid", loginid);
 		map.put("loginpwd", loginpwd);
@@ -47,30 +51,29 @@ public class LoginContorller {
 		boolean a = service.isAdmin(map);
 
 		if (r || a) {
-			if(r) {
-				
-				
-				//공지사항 사이드바 & 로그인 아이디
+			if (r) {
+
+				// 공지사항 사이드바 & 로그인 아이디
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
 				session.setAttribute("noti_side", noti_side);
-				
-				//쪽지
-				int msgnorecv_count=msgservice.msgnorecv_count(loginid);
+
+				// 쪽지
+				int msgnorecv_count = msgservice.msgnorecv_count(loginid);
 				session.setAttribute("msgnorecv_count", msgnorecv_count);
-				
-				//미니미
-				String minime_img=marketservice.minime_info(loginid);
+
+				// 미니미
+				String minime_img = marketservice.minime_info(loginid);
 				session.setAttribute("minime_img", minime_img);
 				
-				CashVo vo=cashservice.list(loginid);
-				if(vo!=null) {
+				CashVo vo = cashservice.list(loginid);
+				if (vo != null) {
 					session.setAttribute("cnt", vo.getCnt());
-				}else {
+				} else {
 					session.setAttribute("cnt", 0);
 				}
 				return "redirect:/main2";
-			}else if(a) {
+			} else if (a) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginid", loginid);
 				return ".admin";
@@ -81,9 +84,8 @@ public class LoginContorller {
 		}
 		return null;
 	}
-	
-	
 
+	// 로그아웃
 	@RequestMapping("/members/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

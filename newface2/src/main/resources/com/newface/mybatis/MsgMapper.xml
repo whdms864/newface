@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.MsgMapper">
+	
+	
 	<insert id="msg_insert" parameterType="msg">
 		insert into msg values(0,#{content},'삭제전','삭제전',now(),'1','읽지않음',#{sender},#{receiver})
 	</insert>

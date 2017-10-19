@@ -30,19 +30,17 @@
 	<table class="table table-hover" style="width: 460px; margin-top: 20px;">
 		<thead>
 	  		<tr class="success">
-	  			<th>No.</th>
-	  			<th>제목</th>
-	  			<th>작성자</th>
-	  			<th>등록일</th>
+	  			<th style="text-align: center;">제목</th>
+	  			<th style="text-align: center;">작성자</th>
+	  			<th style="text-align: center;">등록일</th>
 	  		</tr>
 	  	</thead>
 	  	<tbody>
 	  		<c:forEach var="vo" items="${list}">
 	  			<tr>
-		  			<td>${vo.noti_num}</td>
-		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value='/noti_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
-		  			<td>${vo.id}</td>
-		  			<td>${vo.regdate}</td>
+		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:150px; overflow: hidden;"><a href="<c:url value='/noti_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}&nbsp;</a>[${vo.noticom_count }]</td>
+		  			<td style="text-align: center; width:100px;">${vo.id}</td>
+		  			<td style="text-align: center; width:100px;">${vo.regdate}</td>
 		  		</tr>
 		  	</c:forEach>
 		 </tbody>

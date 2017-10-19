@@ -60,7 +60,7 @@
 		<div style="background-color: rgb(224, 224, 224);margin-left:8px;width: 99%; height:1px;"></div>
 	</div>
 	
-	<div style="background-color: rgb(239, 238, 238);width: 95%;height:255px; position:absolute; bottom:30px; left:13px">
+	<div style="background-color: white;width: 95%;height:255px; position:absolute; bottom:30px; left:13px">
 		<form method="post" id="noti_com_insert" action="<c:url value='/noti_com_insert'/>">
 		
 		<div style="display: inline-block;">

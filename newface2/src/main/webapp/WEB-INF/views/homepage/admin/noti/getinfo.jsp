@@ -83,17 +83,8 @@
 			  			<td colspan="2" style="height:100px"><textarea rows="13" cols="91" name="content" readonly="readonly" style="border-style:hidden; resize:none;">${vo.content }</textarea></td>
 				  	</tr>
 			</table>
-		<form method="post" id="noti_com_insert" action="<c:url value='/notiadmin_com_insert'/>">
-		<div style="display: inline-block;">
-			<input type="hidden" name="id" value="${sessionScope.loginid }">
-			<input type="hidden" name="noti_num" value="${vo.noti_num}">
-			<div class="form-group has-success" style="display: inline-block; width:700px; height:35px;">
-				<input type="text" name="content" id="com_content" class="form-control" style="width:500px;height:30px; float:left; margin-left:70px;">
-				<input type="submit" value="등록" style=" color: rgb(255, 255, 255); text-align: center; border-radius: 4px; background-color: rgb(52, 152, 219); width:60px; height:27px;float:left; margin-left:10px;">
-			</div>
-		</div>
-		</form>
-			<div style="width:90%; height:148px; background-color: white; position:absolute; top:440px; right:38px;">
+				
+			<div style="width:90%; height:148px; background-color: white; position:absolute; top:375px; right:38px;">
 					<table class="table table-condensed" style="width:100%;">
 						<tr>
 						<th>글쓴이</th>
@@ -125,7 +116,7 @@
 				border-radius: 4px; background-color: rgb(52, 152, 219);width:120px; height:40px;margin-top:10px;" onclick="location.href='/newface/notiadmin_delete?noti_num=${vo.noti_num}'">
 		</div>
 		
-		<div style="position:absolute;top:560px;width: 100%;"align="center">
+		<div style="position:absolute;top:555px;width: 100%;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
 					<a href="<c:url value='/notiadmin_getinfo?pageNum=${pu.startPageNum-1 }&noti_num=${vo.noti_num }'/>">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="<c:url value='/resources/css/paging_style_user.css?ver=4'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/paging_style_user.css?ver=7'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -67,7 +67,7 @@
 			  		<c:forEach var="vo" items="${list}">
 			  			<tr>
 				  			<td>${vo.noti_num}</td>
-				  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:280px; overflow: hidden;"><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}</a></td>
+				  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:200px; overflow: hidden;"><a href="<c:url value='/notiadmin_getinfo?noti_num=${vo.noti_num }'/>">${vo.title}&nbsp;</a>[${vo.noticom_count }]</td>
 				  			<td>${vo.id}</td>
 				  			<td>${vo.regdate}</td>
 				  		</tr>

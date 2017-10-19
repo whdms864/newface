@@ -45,15 +45,15 @@
 	  			<td style="text-align: center;">${msgsend_list.chk }</td>
 	  			<c:choose>
 	  				<c:when test="${msgsend_list.chk=='읽지않음' && msgsend_list.send_clx=='1' }">
-	  					<td><a href="<c:url value='/send_clx?msg_num=${msgsend_list.msg_num }'/>">발송취소</a></td>
+	  					<td style="text-align: center;"><a href="<c:url value='/send_clx?msg_num=${msgsend_list.msg_num }'/>">발송취소</a></td>
 	   				</c:when>
 	   				
 	   				<c:when test="${msgsend_list.chk=='읽지않음' && msgsend_list.send_clx=='0' }">
-	  					<td>취소완료</td>
+	  					<td style="text-align: center;">취소완료</td>
 	   				</c:when>
 	   					   				
 	  				<c:otherwise>
-	  					<td>취소불가</td>
+	  					<td style="text-align: center;"></td>
 	  				</c:otherwise>
 	  			</c:choose>
 	  		</tr>

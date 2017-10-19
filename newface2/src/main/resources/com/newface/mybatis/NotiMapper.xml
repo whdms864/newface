@@ -3,12 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.NotiMapper">
+
 	<insert id="insert" parameterType="noti">
 		insert into noti values(0,#{title},#{content},now(),#{id})
 	</insert>
 	
 	<select id="notilist" resultType="noti" parameterType="hashmap">
-		select noti_num,title,content,date_format(regdate,'%Y-%m-%d') regdate,id from noti order by noti_num desc limit #{startRow},#{endRow}
+		select n.noti_num, n.title, n.content, date_format(n.regdate,'%Y-%m-%d') regdate, n.id, (SELECT COUNT(*) FROM noti_com where noti_num=n.noti_num) noticom_count
+		from noti as n
+		order by noti_num desc
+		limit #{startRow},#{endRow}
 	</select>
 	
 	<select id="notigetinfo" resultType="noti" parameterType="int">

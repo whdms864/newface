@@ -7,16 +7,18 @@ public class NotiVo {
 	private String content;
 	private String regdate;
 	private String id;
+	private int noticom_count;
 	
 	public NotiVo() {}
 
-	public NotiVo(int noti_num, String title, String content, String regdate, String id) {
+	public NotiVo(int noti_num, String title, String content, String regdate, String id, int noticom_count) {
 		super();
 		this.noti_num = noti_num;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
 		this.id = id;
+		this.noticom_count = noticom_count;
 	}
 
 	public int getNoti_num() {
@@ -58,5 +60,12 @@ public class NotiVo {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
+	public int getNoticom_count() {
+		return noticom_count;
+	}
+
+	public void setNoticom_count(int noticom_count) {
+		this.noticom_count = noticom_count;
+	}
 }

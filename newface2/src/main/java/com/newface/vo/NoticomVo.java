@@ -8,6 +8,7 @@ public class NoticomVo {
 	private String id;
 	private String noti_num;
 	
+	
 	public NoticomVo() {}
 
 	public NoticomVo(int noti_com_num, String content, String singo, String regdate, String id, String noti_num) {
