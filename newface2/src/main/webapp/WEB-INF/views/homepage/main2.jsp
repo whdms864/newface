@@ -191,73 +191,89 @@
 				$(".com_in").click(function() {
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
+					var com =$(this).parents(".timeline").find(".com_main1");
+					var com_main=$(this).parents(".timeline").find(".com_main");
+					com.html("");
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
 						"num2" : num
 					}, function(data) {
-						for(var i=0;i<data.length;i++){
+						var list=data.list;
+						var add=data.add;
+						for(var i=0;i<list.length;i++){
 							var html="<tbody>"
 									+	"<tr>"
 									+		"<td rowspan='2' style='padding-top: 5px;'>";
-							if(data[i].save_name!=null){
-								html +="<img src='/newface/resources/upload/"+data[i].save_name +"' class='img-circle'>";
+							if(list[i].save_name!=null){
+								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 							}else{
 								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
 							}
-								html +="</td>"
-									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
-									+			data[i].content+" · "+data[i].regdate+"</td>";
-									+	"</tr>"
-									+	"<tr>"
-									+		"<td>"
-									+			"<ul>"
-									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-									+				"<li><a>답글달기</a></li>"
-									+			"</ul>"
-									+		"</td>"
-									+	"</tr>"
-									+"</tbody>";
-							$(".com_main1").append(html);
+							html +="</td>"
+								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
+								+			list[i].content+" · "+list[i].regdate+"</td>";
+								+	"</tr>"
+								+	"<tr>"
+								+		"<td>"
+								+			"<ul>"
+								+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+								+				"<li><a>답글달기</a></li>"
+								+			"</ul>"
+								+		"</td>"
+								+	"</tr>"
+								+"</tbody>";
+							com.append(html);
+						}
+						if(add=='yes'){
+							com_main.append("<a class='com_a'>댓글 더보기</a>");
 						}
 					});
 					$(this).parents(".timeline").find(".timecom").css("display","block");
 				});
 				/*댓글더보기클릭*/
 				$(".com_a").click(function() {
-					startrow_com +=20;
-					endrow_com +=20;
+					startrow_com +=5;
+					endrow_com +=5;
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
+					var com =$(this).parents(".timeline").find(".com_main1");
+					var com_main=$(this).parents(".timeline").find(".com_main");
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
 						"num2" : num,
 						"startrow_com" : startrow_com,
 						"endrow_com" : endrow_com
 					}, function(data) {
-						for(var i=0;i<data.length;i++){
-							alert(data.length);
+						var list=data.list;
+						var add=data.add;
+						for(var i=0;i<list.length;i++){
 							var html="<tbody>"
 									+	"<tr>"
 									+		"<td rowspan='2' style='padding-top: 5px;'>";
-							if(data[i].save_name!=null){
-								html +="<img src='/newface/resources/upload/"+data[i].save_name +"' class='img-circle'>";
+							if(list[i].save_name!=null){
+								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 							}else{
 								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
 							}
-								html +="</td>"
-									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
-									+			data[i].content+" · "+data[i].regdate+"</td>";
-									+	"</tr>"
-									+	"<tr>"
-									+		"<td>"
-									+			"<ul>"
-									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-									+				"<li><a>답글달기</a></li>"
-									+			"</ul>"
-									+		"</td>"
-									+	"</tr>"
-									+"</tbody>";
-							$(".com_main1").append(html);
+							html +="</td>"
+								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
+								+			list[i].content+" · "+list[i].regdate+"</td>";
+								+	"</tr>"
+								+	"<tr>"
+								+		"<td>"
+								+			"<ul>"
+								+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+								+				"<li><a>답글달기</a></li>"
+								+			"</ul>"
+								+		"</td>"
+								+	"</tr>"
+								+"</tbody>";
+							com.append(html);
+						}
+						if(add=='yes'){
+							com_main.append("<a class='com_a'>댓글 더보기</a>");
 						}
 					});
 				});
@@ -267,6 +283,8 @@
 						var text=$(".text").val();
 						var tb = $(this).parents(".timeline").find(".tb").val();
 						var num2 = $(this).parents(".timeline").find(".num").val();
+						var com =$(this).parents(".timeline").find(".com_main1");
+						com.html("");
 						if(text==""){
 							$("#text").focus();
 							alert("검색할 내용을 입력해주세요");
@@ -278,7 +296,6 @@
 								"startrow_com" : startrow_com,
 								"endrow_com" : endrow_com
 							}, function(data) {
-								$(".com_main1").html("");
 								var text=$(".text").val("");
 								for(var i=0;i<data.length;i++){
 									var html="<tbody>"
@@ -291,6 +308,7 @@
 									}
 										html +="</td>"
 											+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+											+		"<a class='click_name' style='font-weight: bold;'>"+data[i].name+"</a>&nbsp;"
 											+			data[i].content+" · "+data[i].regdate+"</td>";
 											+	"</tr>"
 											+	"<tr>"
@@ -302,9 +320,10 @@
 											+		"</td>"
 											+	"</tr>"
 											+"</tbody>";
-									$(".com_main1").append(html);
+										com.append(html);
 								}
 							});
+							$(this).parents(".timeline").find(".com_main").append("<a class='com_a'>댓글 더보기</a>");
 						}
 					}
 				});
@@ -428,7 +447,7 @@
 					<div class="com_main">
 						<table style="padding: 0px; margin: 0px;" class="com_main1">
 						</table>
-						<a class="com_a">댓글 더보기</a>
+						
 					</div>
 				</div>
 				<div class="gong_wrap">

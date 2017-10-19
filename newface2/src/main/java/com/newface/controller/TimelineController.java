@@ -143,20 +143,36 @@ public class TimelineController {
 	
 	@RequestMapping("/main2/com/list")
 	@ResponseBody
-	public List<ComVo> main2_com_list(@RequestParam(value="startrow_com",defaultValue="0") int startrow_com,
+	public HashMap<String, Object> main2_com_list(@RequestParam(value="startrow_com",defaultValue="0") int startrow_com,
 			@RequestParam(value="endrow_com",defaultValue="5") int endrow_com,int num2,String tb,HttpSession session){
-		System.out.println("Á¦¹ß!!!");
 		HashMap<String, Object> map=new HashMap<String, Object>();
+		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
 		map.put("startrow", startrow_com);
 		map.put("endrow", endrow_com);
 		map.put("num2", num2);
+		String add="";
 		if(tb.equals("photo")) {
 			list=comservice.p_c_list(map);
+			int n=comservice.p_c_list_all(map);
+			if(n>endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
 		}else if(tb.equals("diary")) {
 			list=comservice.d_c_list(map);
+			int n=comservice.d_c_list_all(map);
+			if(n>endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
 		}
-		return list;
+		System.out.println(add);
+		map_save.put("list", list);
+		map_save.put("add", add);
+		return map_save;
 	}
 	@RequestMapping("/main2/com/insert")
 	@ResponseBody

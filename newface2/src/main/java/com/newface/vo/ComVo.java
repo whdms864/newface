@@ -7,18 +7,21 @@ public class ComVo {
 	private String regdate;
 	private int num2;
 	private String id;
+	private String name;
 	private String save_name;
 	private String tb;
 	
 	public ComVo() {}
 
-	public ComVo(int num, String content, String regdate, int num2, String id, String save_name, String tb) {
+	public ComVo(int num, String content, String regdate, int num2, String id, String name, String save_name,
+			String tb) {
 		super();
 		this.num = num;
 		this.content = content;
 		this.regdate = regdate;
 		this.num2 = num2;
 		this.id = id;
+		this.name = name;
 		this.save_name = save_name;
 		this.tb = tb;
 	}
@@ -63,6 +66,14 @@ public class ComVo {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getSave_name() {
 		return save_name;
 	}
@@ -78,7 +89,5 @@ public class ComVo {
 	public void setTb(String tb) {
 		this.tb = tb;
 	}
-
-
 	
 }

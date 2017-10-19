@@ -63,7 +63,8 @@
 		<div class="love">좋아요</div><br>
 	</div>
 	<c:forEach var="vo" items="${requestScope.list }">
-		<hr>
+	<hr>
+	<div class="next_back">
 		<c:if test="${requestScope.hompy_id==sessionScope.loginid }">
 			<div class="chk"><input type="checkbox" name="num" value="${vo.diary_num }"></div>
 		</c:if>
@@ -78,7 +79,8 @@
 		</c:choose> --%>
 		<div class="title"><a href="<c:url value='/diary/content?diary_num=${vo.diary_num }'/>">&nbsp;${vo.title }</a></div>
 		<div class="regdate">${vo.regdate }</div>
-		<div class="love">${vo.love }</div><br>
+		<div class="love">${vo.love }</div>
+	</div>
 	</c:forEach> 
 	<hr>
 </div>
