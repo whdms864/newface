@@ -15,7 +15,9 @@
 	margin-left: 5px;
 	background-color: white;
 }
-
+.del{
+	cursor: pointer;
+}
 .form-control {
 	float: left;
 	width: 89%;

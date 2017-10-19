@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=77'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=78'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -195,6 +195,7 @@
 					var num = $(this).parents(".timeline").find(".num").val();
 					var com =$(this).parents(".timeline").find(".com_main1");
 					var com_a=$(this).parents(".timeline").find(".com_a_wrap");
+					var loginid=$("#loginid").val();
 					com.html("");
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
@@ -212,8 +213,14 @@
 							}
 							html +="</td>"
 								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+								+ 		"<input type='hidden' value='"+list[i].num+"' class='com_num'>"
 								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
-								+			list[i].content+" · "+list[i].regdate+"</td>"
+								+			list[i].content+" · "+list[i].regdate+" ";
+							if(list[i].id==loginid){
+								html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
+							}	
+							
+							html +="</td>"
 								+	"</tr>"
 								+	"<tr>"
 								+		"<td>"
@@ -243,7 +250,9 @@
 						var num2 = $(this).parents(".timeline").find(".num").val();
 						var com =$(this).parents(".timeline").find(".com_main1");
 						var com_a=$(this).parents(".timeline").find(".com_a_wrap");
-						com.html("");
+						var cntval=$(this).parents(".timeline").find(".cntval");
+						var cnt=parseInt(cntval.text());
+						var loginid=$("#loginid").val();
 						if(text.val()==""){
 							text.focus();
 							alert("검색할 내용을 입력해주세요");
@@ -255,7 +264,10 @@
 								"startrow_com" : startrow_com,
 								"endrow_com" : endrow_com
 							}, function(data) {
+								com.html("");
 								text.val("");
+								cnt +=1;
+								cntval.text(cnt);
 								var list=data.list;
 								var add=data.add;
 								for(var i=0;i<list.length;i++){
@@ -268,8 +280,14 @@
 									}
 										html +="</td>"
 											+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+											+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
 											+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
-											+			list[i].content+" · "+list[i].regdate+"</td>"
+											+			list[i].content+" · "+list[i].regdate+" ";
+										if(list[i].id==loginid){
+											html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
+										}	
+										
+										html +="</td>"
 											+	"</tr>"
 											+	"<tr>"
 											+		"<td>"
@@ -290,6 +308,64 @@
 						}
 					}
 				});
+				/*댓글 삭제*/
+				$(document).on("click",".del",function() {
+					var tb = $(this).parents(".timeline").find(".tb").val();
+					var num2 = $(this).parents(".timeline").find(".num").val();
+					var com =$(this).parents(".timeline").find(".com_main1");
+					var com_a=$(this).parents(".timeline").find(".com_a_wrap");
+					var com_num=$(this).parent().find(".com_num").val();
+					var cntval=$(this).parents(".timeline").find(".cntval");
+					var cnt=parseInt(cntval.text());
+					var loginid=$("#loginid").val();
+					$.getJSON('main2/com/delete', {
+						"tb" : tb,
+						"num2" : num2,
+						"num" : com_num,
+						"startrow_com" : startrow_com,
+						"endrow_com" : endrow_com
+					}, function(data) {
+						com.html("");
+						cnt -=1;
+						cntval.text(cnt);
+						var list=data.list;
+						var add=data.add;
+						for(var i=0;i<list.length;i++){
+							var html="<tr>"
+									+		"<td rowspan='2' style='padding-top: 5px;'>";
+							if(list[i].save_name!=null){
+								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
+							}else{
+								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+							}
+								html +="</td>"
+									+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+									+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
+									+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
+									+			list[i].content+" · "+list[i].regdate+" ";
+								if(list[i].id==loginid){
+									html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
+								}	
+								
+								html +="</td>"
+									+	"</tr>"
+									+	"<tr>"
+									+		"<td>"
+									+			"<ul>"
+									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
+									+				"<li><a>답글달기</a></li>"
+									+			"</ul>"
+									+		"</td>"
+									+	"</tr>";
+								com.append(html);
+						}
+						if(add=='yes'){
+							com_a.html("<a class='com_a'>댓글 더보기</a>");
+						}else{
+							com_a.html("");
+						}
+					});
+				});
 				/*댓글더보기클릭*/
 				$(document).on("click",".com_a",function() {
 					startrow_com +=5;
@@ -297,6 +373,7 @@
 					var num = $(this).parents(".timeline").find(".num").val();
 					var com =$(this).parents(".timeline").find(".com_main1");
 					var com_a=$(this).parents(".timeline").find(".com_a_wrap");
+					var loginid=$("#loginid").val();
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
 						"num2" : num,
@@ -315,8 +392,14 @@
 							}
 							html +="</td>"
 								+		"<td style='width: 94%; padding-left: 10px; height: 30px;'>"
+								+ "<input type='hidden' value='"+list[i].num+"' class='com_num'>"
 								+		"<a class='click_name' style='font-weight: bold;'>"+list[i].name+"</a>&nbsp;"
-								+			list[i].content+" · "+list[i].regdate+"</td>"
+								+			list[i].content+" · "+list[i].regdate;
+							if(list[i].id==loginid){
+								html += "<img src='/newface/resources/images/minihome/del.png' class='del'>"
+							}	
+							
+							html +="</td>"
 								+	"</tr>"
 								+	"<tr>"
 								+		"<td>"
@@ -338,6 +421,7 @@
 			});
 </script>
 <div class="loginafter" align="center">
+	<input type="hidden" value="${loginid }" id="loginid">
 	<div class="list_time">
 		<c:forEach var="vo" items="${list }">
 			<div class="timeline">
@@ -380,7 +464,23 @@
 						<ul>
 							<li>좋아요 <label class="loveval" style="font-weight: normal;">${vo.love }</label>명
 							</li>
-							<li>댓글 <label class="cntval" style="font-weight: normal;">${vo.love }</label>개</li>
+							<li>댓글 
+								<c:choose>
+									<c:when test="${cntlist.size()>0 }">
+										<c:set var="doneLoop" value="false" />
+										<c:forEach var="map" items="${cntlist }">
+											<c:if test="${not doneLoop}">
+												<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+													<label class="cntval" style="font-weight: normal;">${map.cnt }</label>개
+													<c:set var="doneLoop" value="true" />
+												</c:if>
+											</c:if>
+										</c:forEach>
+										<c:if test="${doneLoop==false}">0개</c:if>
+									</c:when>
+									<c:otherwise>0개</c:otherwise>
+								</c:choose>
+							</li>
 						</ul>
 					</div>
 					<hr style="margin: 0px; padding: 0px;">

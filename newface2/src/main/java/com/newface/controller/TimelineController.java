@@ -81,6 +81,7 @@ public class TimelineController {
 			}
 		}
 		ArrayList<HashMap<String, Object>> singolist=new ArrayList<HashMap<String,Object>>();
+		ArrayList<HashMap<String, Object>> cntlist=new ArrayList<HashMap<String,Object>>();
 		for(TimelineVo vo:list) {
 			if(vo.getTb().equals("photo")) {
 				map.put("photo_num", vo.getNum());
@@ -92,6 +93,14 @@ public class TimelineController {
 					map1.put("tb", "photo");
 					singolist.add(map1);
 				}
+				
+				int cnt=comservice.p_c_list_all(vo.getNum());
+				HashMap<String,Object> cntmap=new HashMap<String, Object>();
+				cntmap.put("num", vo.getNum());
+				cntmap.put("tb", "photo");
+				cntmap.put("cnt", cnt);
+				cntlist.add(cntmap);
+				
 			}else if(vo.getTb().equals("diary")) {
 				map.put("diary_num", vo.getNum());
 				map.put("id", id);
@@ -102,11 +111,18 @@ public class TimelineController {
 					map1.put("tb", "diary");
 					singolist.add(map1);
 				}
+				int cnt=comservice.d_c_list_all(vo.getNum());
+				HashMap<String,Object> cntmap=new HashMap<String, Object>();
+				cntmap.put("num", vo.getNum());
+				cntmap.put("tb", "diary");
+				cntmap.put("cnt", cnt);
+				cntlist.add(cntmap);
 			}
 		}
 		model.addAttribute("list",list);
 		model.addAttribute("lovelist",lovelist);
 		model.addAttribute("singolist",singolist);
+		model.addAttribute("cntlist",cntlist);
 		model.addAttribute("pro_img",pro_img);
 		return ".main2";
 	}
@@ -144,7 +160,7 @@ public class TimelineController {
 	@RequestMapping("/main2/com/list")
 	@ResponseBody
 	public HashMap<String, Object> main2_com_list(@RequestParam(value="startrow_com",defaultValue="0") int startrow_com,
-			@RequestParam(value="endrow_com",defaultValue="5") int endrow_com,int num2,String tb,HttpSession session){
+			@RequestParam(value="endrow_com",defaultValue="5") int endrow_com,int num2,String tb){
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
@@ -211,7 +227,39 @@ public class TimelineController {
 		map_save.put("add", add);
 		return map_save;
 	}
-	
+	@RequestMapping("/main2/com/delete")
+	@ResponseBody
+	public HashMap<String, Object> main2_com_delete(int startrow_com,int endrow_com,int num2,String tb,int num){
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		HashMap<String, Object> map_save=new HashMap<String, Object>();
+		List<ComVo> list=null;
+		map.put("startrow", startrow_com);
+		map.put("endrow", endrow_com);
+		map.put("num2", num2);
+		String add="";
+		if(tb.equals("photo")) {
+			photoservice.com_delete(num);
+			list=comservice.p_c_list(map);
+			int n=comservice.p_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
+		}else if(tb.equals("diary")) {
+			diaryservice.com_delete(num);
+			list=comservice.d_c_list(map);
+			int n=comservice.d_c_list_all(num2);
+			if(n>startrow_com+endrow_com) {
+				add="yes";
+			}else {
+				add="no";
+			}
+		}
+		map_save.put("list", list);
+		map_save.put("add", add);
+		return map_save;
+	}
 	@RequestMapping("/main2/love")
 	@ResponseBody
 	public HashMap<String, Object> main2_love(String tb ,int num,int love,HttpSession session){
