@@ -20,7 +20,7 @@
 		});
 	});
 </script>	
-	<div style="background-color: rgba(250, 250, 250, 0.78); margin-left:5px; margin-top:25px; width: 430px; height: 305px;"align="center">
+	<div style="background-color: rgba(250, 250, 250, 0.78); margin-left:7px; margin-top:25px; width: 430px; height: 305px;"align="center">
 		<table class="table table-hover" style="width: 430px; margin-top: 20px;">
 		<thead>
 			<tr>

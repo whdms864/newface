@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 	
-	<div style="width:300px; height:50px; margin:auto;">
+	<div style="width:300px; height:50px; margin-left:60px;">
 
 	  	<div style="font-size: 12px; color: rgb(255, 255, 255); text-align: center;
 				line-height: 2.4em; border-radius: 4px; background-color: rgb(52, 152, 219); 
