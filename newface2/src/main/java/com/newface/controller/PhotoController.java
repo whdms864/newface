@@ -69,11 +69,7 @@ public class PhotoController {
 	@RequestMapping(value="/photo/folder_list", method = RequestMethod.GET)
 	public String folder_list(Model model,HttpSession session) {
 		session.setAttribute("choice", "photo");
-		String id=(String)session.getAttribute("fid");
-		if(id==null) {
-			id=(String)session.getAttribute("loginid");
-		}
-		int hompy_num=service.Hompy_num(id);
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		List<PhotofolderVo> list=service.folder_list(hompy_num);
 		if(list!=null) {
 			model.addAttribute("list",list);
@@ -101,10 +97,8 @@ public class PhotoController {
 		}else {
 			session.setAttribute("folder_photo", "all");					
 		}
-		String id=(String)session.getAttribute("fid");
-		if(id==null) {
-			id=(String)session.getAttribute("loginid");
-		}
+		String id=(String)session.getAttribute("loginid");
+		
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		String name=service.name(id);
