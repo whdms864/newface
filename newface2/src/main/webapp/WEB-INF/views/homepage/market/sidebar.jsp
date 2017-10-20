@@ -85,10 +85,12 @@
 					</td>
 				</tr>
 				</c:forEach>
-			
+				
+							
 		</table>
+				<div style="float:right; position:absolute; left:200px; top:370px;"><a href="<c:url value='/noti_list'/>" style="float:right;">더보기</a></div>
 	</div>
-	<a href="<c:url value='/noti_list'/>" style="margin-right: 10px;float:right;">더보기</a>
+	
 </div>
 <div style="margin-top: 20px;display: inline-block;">
 	<div style="width: 50px; height: 40px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
