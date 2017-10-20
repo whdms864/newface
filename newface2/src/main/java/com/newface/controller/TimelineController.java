@@ -49,12 +49,14 @@ public class TimelineController {
 	@Autowired private ComService comservice;
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
-	public String main2(Model model,HttpSession session) {
+	public String main2(Model model,HttpSession session,
+			@RequestParam(value="text",defaultValue="") String text) {
 		String id=(String)session.getAttribute("loginid");
 		String pro_img=timelineservice.pro_img(id);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("startrow", 0);
 		map.put("endrow", 10);
+		map.put("text", text);
 		List<TimelineVo> list=timelineservice.list(map);
 		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
 		for(TimelineVo vo:list) {

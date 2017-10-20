@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=79'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=80'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -33,7 +33,8 @@
 								}
 								html +=						"</td>"
 									+						"<td style='width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;'>"
-									+							list[i].name
+									+							"<input type='hidden' value='"+list[i].id+"' class='vo_id'>"
+									+							"<a class='link_name'>"+list[i].name+"</a>"
 									+						"</td>"
 									+					"</tr>"
 									+					"<tr>"
@@ -230,6 +231,15 @@
 							"color" : "#616770"
 						});
 					}
+				});
+				
+				/*게시글 작성자 클릭시*/
+				$(document).on("click",".link_name",function() {
+					var id=$(this).parents(".timeline").find(".vo_id");
+					var hompy_num=0;
+					$.getJSON('main2/hompynum', {"id" : id}, function(data) {
+						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
+					});
 				});
 				
 				/* 취소버튼클릭 */
@@ -572,9 +582,7 @@
 								<td rowspan="2">
 									<c:choose>
 											<c:when test="${vo.save_name!=null }">
-												<img
-													src="<c:url value='/resources/upload/${vo.save_name }'/>"
-													class="img-circle">
+												<img src="<c:url value='/resources/upload/${vo.save_name }'/>" class="img-circle">
 											</c:when>
 											<c:otherwise>
 												<img
@@ -584,7 +592,8 @@
 										</c:choose>
 								</td>
 								<td style="width: 94%; padding-left: 10px; height: 20px; margin-top: 5px; font-weight: bold; color: #365899;">
-									${vo.name }
+									<input type="hidden" value="${vo.id }" class="vo_id">
+									<a class="link_name">${vo.name }</a>
 								</td>
 							</tr>
 							<tr>

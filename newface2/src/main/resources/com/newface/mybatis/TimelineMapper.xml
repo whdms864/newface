@@ -39,6 +39,7 @@
 		on df.diary_folder_num = d.diary_folder_num
 		where d.type='전체공개') a
 		
+		where title like concat('%',#{text},'%') or content like concat('%',#{text},'%') or name like concat('%',#{text},'%')
 		order by a.regdate desc 
 		limit #{startrow},#{endrow}
 	</select>

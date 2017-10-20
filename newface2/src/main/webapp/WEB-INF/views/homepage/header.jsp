@@ -11,6 +11,17 @@ $(document).ready(function() {
 	$("#iu_img").click(function(){
 		window.open("<c:url value='/minihome?getid=${loginid}'/>","_minihome"," width=1032,height=617,left=100,top=100"); 
 	});
+	$(".search").keypress(function(event){
+		if(event.keyCode==13){
+			var text=$(this);
+			if(text.val()==""){
+				text.focus();
+				alert("검색할 내용을 입력해주세요");
+			}else{
+				location.href="<c:url value='/main2'/>?text="+text.val();
+			}
+		}
+	});
 });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top"style="background-color: white; height:90px;border: none;">
