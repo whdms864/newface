@@ -2,20 +2,47 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#msg").click(function(){
+	    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
+	});
+	$("#iu_img").click(function(){
+		window.open("<c:url value='/setup/iu'/>","_minihome"," width=1032,height=617,left=100,top=100"); 
+	});
+});
+</script>
 <nav class="navbar navbar-default navbar-fixed-top"style="background-color: white; height:90px;border: none;">
-  <nav class="navbar navbar-default navbar-fixed-top"style="background-color: rgb(243, 164, 18); height:70px;">
+  <nav class="navbar navbar-default navbar-fixed-top"style="background-color: rgb(243, 164, 18); height:70px;border-bottom: 1px solid #bf7c01;">
 	  <div class="container">
 	  <c:choose>
-	  
 	  	<c:when test="${not empty sessionScope.loginid }">
-			<a href="<c:url value='/main2'/>">
-				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
+			<a href="<c:url value='/main2'/>" class="logo_A">
+				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"class="logo">
 		  	</a>
+		  	<input type="text" placeholder="게시글 검색 ( 제목 / 내용 / 작성자 )" class="form-control search">
+		  	<div class="icon">
+		  		<div class="icon_set">
+		  			<img src="<c:url value='/resources/images/homepage/icon/email.png'/>" id="msg">
+		  			<div class="circle" align="center">
+		  			<label style="left:5px;">++</label>
+		  			</div>
+		  		</div>
+		  		<div class="icon_set">
+		  			<img src="<c:url value='/resources/images/homepage/icon/add-user.png'/>" id="iu_img">
+		  			<div class="circle" align="center"><label>3</label></div>
+		  		</div>
+		  		<div class="icon_set">
+			  		<a href="<c:url value='/members/logout'/>">
+			  			<img src="<c:url value='/resources/images/homepage/icon/exit.png'/>">
+			  		</a>
+		  		</div>
+			</div>
 		</c:when>
-		
 		<c:otherwise>
-			<a href="<c:url value='/'/>">
-				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>"style="top:4px; left:410px;position:absolute;width:150px; height:63px;">
+			<a href="<c:url value='/'/>" class="logo_A">
+				<img src="<c:url value='/resources/images/homepage/싸이_메인로고.png'/>" class="logo">
 		  	</a>
 		</c:otherwise>
 		

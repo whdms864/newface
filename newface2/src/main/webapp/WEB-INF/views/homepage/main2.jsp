@@ -78,18 +78,17 @@
 									+					"<input type='hidden' value='"+list[i].tb+"' class='tb'>"
 									+					"<input type='hidden' value='"+list[i].num+"' class='num'>";
 								if(lovelist.length>0){
+									var code="<a class='c_love'>좋아요</a>";
 									for(var j=0;j<lovelist.length;j++){
 										if(lovelist[j].num==list[i].num && lovelist[j].tb==list[i].tb){
-											html +=	"<a class='c_love' style='font-weight: bold; color: #337ab7'>좋아요</a>";
+											code =	"<a class='c_love' style='font-weight: bold; color: #337ab7'>좋아요</a>";
 											break;
-										}else{
-											html +="<a class='c_love'>좋아요</a>";
 										}
 									}
+									html +=code;
 								}else{
 									html +="<a class='c_love'>좋아요</a>";
-								}	
-								
+								}
 								html +=					"</li>"
 									+					"<li><a class='com_in'>댓글달기</a></li>"
 									+					"<li><a class='gongU'>공유하기</a></li>";
@@ -97,14 +96,14 @@
 									html +=	"<li style='float:right;'>"
 										+		"<input type='hidden' value="+list[i].singo+" class='singo_val'>";
 									if(singolist.length>0){
-										for(var j=0;j<singolist.length;j++){
+										var code="<a class='singo'>신고</a>";
+										for(var j=0;j<lovelist.length;j++){
 											if(singolist[j].num==list[i].num && singolist[j].tb==list[i].tb){
-												html +=	"<a class='singo' style='font-weight: bold; color: red'>신고</a>";
+												code =	"<a class='singo' style='font-weight: bold; color: red'>신고</a>";
 												break;
-											}else{
-												html +="<a class='singo'>신고</a>";
 											}
 										}
+										html +=code;
 									}else{
 										html +="<a class='singo'>신고</a>";
 									}
