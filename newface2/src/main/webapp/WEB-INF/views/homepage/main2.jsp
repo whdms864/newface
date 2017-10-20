@@ -7,15 +7,18 @@
 	$(document).ready(
 			function() {
 				var startrow = 0;
-				var endrow = 20;
-				/* $(window).scroll(function() { 
+				var endrow = 10;
+				$(window).scroll(function() { 
 					if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
-						startrow +=20;
-						endrow +=20;
+						startrow +=10;
 						$.getJSON('main2/list',{"startrow":startrow,"endrow":endrow},function(data){
 							var list=data.list;
+							var cntlist=data.cntlist;
+							var lovelist=data.lovelist;
+							var singolist=data.singolist;
 							var pro_img=data.pro_img;
-							var html="";
+							var loginid=$("#loginid").val();
+				 			var html="";
 							for(var i=0;i<list.length;i++){
 								html +="<div class='timeline'>"
 									+	"<div class='first' align='center'>"
@@ -23,90 +26,162 @@
 									+			"<table style='padding:0px; margin: 0px;'>"
 									+				"<tr>"
 									+					"<td rowspan='2'>";
-							if(list[i].save_name!=null){
-								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
-							}else{
-								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
-							}
-							
-							html +=						"</td>"
-								+						"<td style='width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;'>"
-								+							list[i].name
-								+						"</td>"
-								+					"</tr>"
-								+					"<tr>"
-								+						"<td style='width: 94%;padding-left:10px;height: 20px;color:#90949c;'>"
-								+							list[i].regdate
-								+						"</td>"
-								+					"</tr>"
-								+					"<tr>"
-								+						"<td colspan='2'style='width: 100%;padding-top:10px;padding-left:5px;'>"
-								+						"<p style='margin-left:5px;'>"+list[i].title+"</p>"
-								+						"</td>"
-								+					"</tr>"
-								+				"</table>"
-								+			"</div>"
-								+			"<div class='content1' align='left'>"
-								+				list[i].content
-								+			"</div>"
-								+			"<div class='content3' align='left'>"
-								+				"<ul>"
-								+					"<li>좋아요 <label class='loveval' style='font-weight: normal;'>"+list[i].love+"</label>명</li>"
-								+					"<li>댓글수</li>"
-								+				"</ul>"
-								+			"</div>"
-								+			"<hr style='margin:0px;padding:0px;'>"
-								+			"<div class='content2' align='left'>"
-								+				"<ul>"
-								+					"<li>"
-								+					"<input type='hidden'  value='"+list[i].tb+"' class='tb'>"
-								+					"<input type='hidden'  value='"+list[i].num+"' class='num'>"
-								+					"<a class='c_love'>좋아요</a>";
-								+					"</li>"
-								+					"<li><a href=''>댓글달기</a></li>"
-								+					"<li><a href=''>공유하기</a></li>"
-								+					"<li><a href=''>신고하기</a></li>"
-								+				"</ul>"
-								+			"</div>"
-								+		"</div>"
-								+	"<div class='timecom' align='center'>";
+								if(list[i].save_name!=null){
+									html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
+								}else{
+									html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+								}
+								html +=						"</td>"
+									+						"<td style='width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;'>"
+									+							list[i].name
+									+						"</td>"
+									+					"</tr>"
+									+					"<tr>"
+									+						"<td style='width: 94%;padding-left:10px;height: 20px;color:#90949c;'>"
+									+							list[i].regdate
+									+						"</td>"
+									+					"</tr>"
+									+					"<tr>"
+									+						"<td colspan='2'style='width: 100%;padding-top:10px;padding-left:5px;'>"
+									+						"<p style='margin-left:5px;'>"+list[i].title+"</p>"
+									+						"</td>"
+									+					"</tr>"
+									+				"</table>"
+									+			"</div>"
+									+			"<div class='content1' align='left'>"
+									+				list[i].content
+									+			"</div>"
+									+			"<div class='content3' align='left'>"
+									+				"<ul>"
+									+					"<li>좋아요 <label class='loveval' style='font-weight: normal;'>"+list[i].love+"</label>명</li>"
+									+					"<li>댓글 ";
 								
-							if(pro_img!=null){
-								html +="<img src='/newface/resources/upload/"+pro_img+"' class='img-circle'>";
-							}else{
-								html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
-							}
-							html +=	"<input type='text' class='form-control' placeholder='댓글을 입력하세요'>"
-								+			"<div class='com_main'>"
-								+				"<table style='padding:0px; margin: 0px;'>"
-								+					"<tr>"
-								+						"<td rowspan='2'>"
-								+							"<img src='' class='img-circle'>"
-								+						"</td>"
-								+						"<td style='width: 94%;padding-left:10px;height: 30px;'>"
-								+						"	댓글내용"
-								+						"</td>"
-								+					"</tr>"
-								+					"<tr>"
-								+						"<td>"
-								+							"<ul>"
-								+								"<li><a href='' style='margin: 0px;'>좋아요</a></li>"
-								+								"<li><a href=''>답글달기</a></li>"
-								+							"</ul>"
-								+						"</td>"
-								+					"</tr>"
-								+				"</table>"
-								+				"<a href='' class='com_a'>댓글 더보기</a>"
-								+			"</div>"
-								+		"</div>"
-								+	"</div>";
+								if(cntlist.length>0){
+									var code="0개";
+									for(var j=0;j<cntlist.length;j++){
+										if(cntlist[j].num==list[i].num && cntlist[j].tb==list[i].tb){
+											code =	"<label class='cntval' style='font-weight:normal;'>"+cntlist[j].cnt+"</label>개";
+											break;
+										}
+									}
+									html +=code;
+								}else{
+									html +="0개";
+								}	
+								html +=	"</li>"
+									+				"</ul>"
+									+			"</div>"
+									+			"<hr style='margin:0px;padding:0px;'>"
+									+			"<div class='content2' align='left'>"
+									+				"<ul>"
+									+					"<li>"
+									+					"<input type='hidden' value='"+list[i].tb+"' class='tb'>"
+									+					"<input type='hidden' value='"+list[i].num+"' class='num'>";
+								if(lovelist.length>0){
+									for(var j=0;j<lovelist.length;j++){
+										if(lovelist[j].num==list[i].num && lovelist[j].tb==list[i].tb){
+											html +=	"<a class='c_love' style='font-weight: bold; color: #337ab7'>좋아요</a>";
+											break;
+										}else{
+											html +="<a class='c_love'>좋아요</a>";
+										}
+									}
+								}else{
+									html +="<a class='c_love'>좋아요</a>";
+								}	
+								
+								html +=					"</li>"
+									+					"<li><a class='com_in'>댓글달기</a></li>"
+									+					"<li><a class='gongU'>공유하기</a></li>";
+								if(loginid!=list[i].id){
+									html +=	"<li style='float:right;'>"
+										+		"<input type='hidden' value="+list[i].singo+" class='singo_val'>";
+									if(singolist.length>0){
+										for(var j=0;j<singolist.length;j++){
+											if(singolist[j].num==list[i].num && singolist[j].tb==list[i].tb){
+												html +=	"<a class='singo' style='font-weight: bold; color: red'>신고</a>";
+												break;
+											}else{
+												html +="<a class='singo'>신고</a>";
+											}
+										}
+									}else{
+										html +="<a class='singo'>신고</a>";
+									}
+									html +="</li>";
+								}
+								html +=				"</ul>"
+									+			"</div>"
+									+		"</div>"
+									+	"<div class='timecom' align='center'>"
+									+		"<div>";
+								if(pro_img!=null){
+									html +="<img src='/newface/resources/upload/"+pro_img+"' class='img-circle'>";
+								}else{
+									html +=	"<img src='/newface/resources/images/homepage/싸이_가상화폐.png' class='img-circle'>";
+								}
+								html +=		"</div>"
+									+		"<input type='text' class='form-control text' placeholder='댓글을 입력하세요'>"
+									+			"<div class='com_main'>"
+									+				"<table style='padding:0px; margin: 0px;'>"
+									+					"<tbody class='com_main1'></tbody>"
+									+				"</table>"
+									+				"<div class='com_a_wrap'></div>"
+									+			"</div>"
+									+		"</div>"
+									+	"<div class='gong_wrap'>"
+									+		"<form method='post' action='main2/gongU'>"
+									+			"<div class='gong_content'>"
+									+				"<div class='gong_folder'>"
+									+					"<div class='g_f_left' >"
+									+						"폴더 : "
+									+						"<select class='folder_sel' name='fnum'>"
+									+						"</select>"
+									+					"</div>"
+									+					"<div class='g_f_right'>"
+									+						"<img src='/newface/resources/images/homepage/icon/delete-button (2).png' alt='닫기' class='end_btn'>"
+									+					"</div>"
+									+				"</div>"
+									+				"<div class='content_wrap'>";
+									
+								if(loginid!=list[i].id){
+									html +=			"<div class='add_title' style='font-weight: bold;height: 20px;color:#e91e63;' >"
+										+				"<input type='text' value='[ "+list[i].name+"님의 게시글 공유 ]' class='add_title_i' readonly='readonly' name='title1'>"
+										+			"</div>";
+								}
+								html +=					"<div class='add_title'>"
+									+						"<input type='text' placeholder='제목을 입력하세요' class='add_title_i' name='title2'>"
+									+					"</div>"
+									+					"<div class='add_con'>"
+									+						"<textarea rows='5' cols='10'  placeholder='하고 싶은 말을 남겨주세요....' class='add_con_i' name='add_con'></textarea>"
+									+					"</div>"
+									+					"<div class='content1' align='left'>"+list[i].content+"</div>"
+									+					"<input type='hidden' value='"+list[i].tb+"' name='tb'>"
+									+					"<input type='hidden' value='"+list[i].num+"' name='num'>"
+									+				"</div>"
+									+				"<div class='gong_folder'>"
+									+					"<div class='g_f_right'>"
+									+						"<select class='secret_sel' name='secret'>"
+									+							"<option value='전체공개'>전체공개</option>"
+									+							"<option value='일촌공개'>일촌공개</option>"
+									+							"<option value='나만보기'>나만보기</option>"
+									+						"</select>"
+									+						"<input type='button' class='btn btn-default' style='margin-bottom: 5px;' value='취소'>"
+									+						"<input type='submit' class='btn btn-primary' style='margin-bottom: 5px;' value='게시'>"
+									+					"</div>"
+									+				"</div>"
+									+			"</div>"
+									+		"</form>"
+									+	"</div>"
+									+"</div>";
 							}
 							$(".list_time").append(html);
 						});
 					}
-				}); */
+				});
 
-				$(".c_love").click(function() {
+				/*좋아요클릭*/
+				$(document).on("click",".c_love",function() {
 					var tb = $(this).closest("li").find(".tb").val();
 					var num = $(this).closest("li").find(".num").val();
 					var love = parseInt($(this).parents(".first").find(".loveval").text());
@@ -132,7 +207,9 @@
 					}
 					$(this).parents(".first").find(".loveval").text(love);
 				});
-				$(".singo").click(function() {
+				
+				/*신고클릭*/
+				$(document).on("click",".singo",function() {
 					var tb = $(this).parents(".first").find(".tb").val();
 					var num =$(this).parents(".first").find(".num").val();
 					var singo =$(this).parents(".first").find(".singo_val").val();
@@ -157,15 +234,15 @@
 				});
 				
 				/* 취소버튼클릭 */
-				$(".btn-default").click(function() {
+				$(document).on("click",".btn-default",function() {
 					$(".gong_wrap").css("display","none");
 				});
 				/* 닫기 클릭 */
-				$(".end_btn").click(function() {
+				$(document).on("click",".end_btn",function() {
 					$(".gong_wrap").css("display","none");
 				});
 				/*공유하기클릭*/
-				$(".gongU").click(function() {
+				$(document).on("click",".gongU",function() {
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
 					/*폴더가져오기*/
@@ -190,7 +267,7 @@
 				var endrow_com = 5;
 				
 				/*댓글달기클릭*/
-				$(".com_in").click(function() {
+				$(document).on("click",".com_in",function() {
 					var tb = $(this).parents(".timeline").find(".tb").val();
 					var num = $(this).parents(".timeline").find(".num").val();
 					var com =$(this).parents(".timeline").find(".com_main1");
@@ -262,6 +339,7 @@
 						window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
 					}
 				});
+				
 				$(document).on("click",".hompy_open",function() {
 					var com_id =$(this).parents("td").find(".com_id").val();
 					var hompy_num=0;
@@ -270,12 +348,13 @@
 						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
 					});
 				});
+				
 				$(document).on("click",".msg_open",function() {
 					var com_id =$(this).parents("td").find(".com_id").val();
 					window.open("<c:url value='/msg_reply?id='/>"+com_id,"_msg"," width=445,height=390,left=100,top=100");  
 				});
 				/*댓글쓰기*/
-				$(".text").keypress(function(event){
+				$(document).on("keypress",".text",function(event) {
 					if(event.keyCode==13){
 						var text=$(this);
 						var tb = $(this).parents(".timeline").find(".tb").val();
