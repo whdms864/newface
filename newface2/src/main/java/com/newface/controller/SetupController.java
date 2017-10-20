@@ -1,7 +1,9 @@
 package com.newface.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -168,7 +171,7 @@ public class SetupController {
 		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
 		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
 		model.addAttribute("wallpaper", wallpaper);
-		return ".miniroom.setup";
+		return "forward:/setup/miniroom_decorate";
 	}
 	@RequestMapping(value="/setup/item_img",method=RequestMethod.GET)
 	@ResponseBody
@@ -216,18 +219,16 @@ public class SetupController {
 		return "redirect:/setup/skin";
 	}
 	@RequestMapping(value="/setup/miniroom_decorate",method=RequestMethod.GET)
-	@ResponseBody
-	public String miniroom_decorate(HttpSession session) {
+	public String miniroom_decorate(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("loginid");
 		List<ItemVo> list=service.miniroom_decorate(id);
-		JSONArray arr=new JSONArray();
-		for(ItemVo vo:list) {
-			JSONObject json=new JSONObject();
-			json.put("item_num", vo.getItem_num());
-			json.put("item_img", vo.getItem_img());
-			arr.add(json);
+		if(list!=null) {
+			model.addAttribute("list",list);
+			return ".miniroom.setup";
+		}else {
+			model.addAttribute("code","오류");
+			return ".code";
 		}
-		return arr.toString();
 	}
 	@RequestMapping(value="/setup/minime",method=RequestMethod.GET)
 	public String minime(Model model,HttpSession session) {
@@ -294,5 +295,20 @@ public class SetupController {
 		List<ItemVo> list=service.bgm_list(id);
 		model.addAttribute("list", list);
 		return ".bgm.setup";
+	}
+	@RequestMapping(value="/setup/miniroom_insert",method=RequestMethod.POST)
+	@ResponseBody
+	public String miniroom_insert(@RequestBody Map<Object, Object> map) {
+		Iterator<Object> itMap = map.keySet().iterator();
+		while (itMap.hasNext()) {
+		     String key = (String) itMap.next();	// KEY 값을 내림차순으로 받는다. 순서를 변경해야 될듯 하다.
+		     System.out.println("key : " + key);
+		}
+		String wall=(String) map.get("wall");
+		System.out.println(wall);
+		System.out.println("item_num="+map.get("item_num"));
+		System.out.println("x="+map.get("x"));
+		System.out.println("y="+map.get("y"));
+		return null;
 	}
 }

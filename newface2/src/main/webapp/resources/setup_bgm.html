@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/newface/resources/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
+<style type="text/css">
+    .css_test img {
+    	cursor:move;
+        width : 100px;
+    }
+    .css_test {
+        border : 5px solid gray;
+        display : inline-block;
+        height : 300px;
+        margin : 5px;
+        width : 300px;
+        border-radius : 7px;
+    }
+</style>
+
+</head>
+<body>
+11232
+<div class="css_test">
+    <img src="http://biketago.com/img/etc/huk1.gif" onmousedown="this.src='http://biketago.com/img/etc/huk2.gif'" onmouseout="this.src='http://biketago.com/img/etc/huk1.gif'" />
+</div>
+<script type="text/javascript">
+
+    // 보기편하게 여러줄로 코딩
+    $('.css_test img').draggable({
+        containment : 'parent' // 부모요소 안에 종속
+    });
+
+</script>
+
+</body>
+</html>

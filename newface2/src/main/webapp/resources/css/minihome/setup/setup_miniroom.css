@@ -14,8 +14,11 @@ h3{
 #first{
 	padding-top: 0px;
 }
-#miniroom{
+.miniroom{
 	width: 400px;height: 200px; background-color: orange; 
+}
+.miniroom p img{
+	cursor :move;
 }
 .item{
 	display:inline; margin: 0px; padding: 0px; z-index: 0; position: relative; 

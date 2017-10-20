@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?var=14'/>"> 
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<!DOCTYPE html>   
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?var=33'/>"> 
+<script type="text/javascript" src="/newface/resources/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/newface/resources/js/jquery.serializeObject.min.js"></script>
+<script type="text/javascript" src="/newface/resources/js/jquery.serializeObject.js"></script>
 <script>
 	$(function(){
-		$.getJSON("<c:url value='/setup/miniroom_decorate'/>",function(data){
-			$(data).each(function(i,item){
-				$("#item_list").append("<a class='miniroom' style='position: relative;' id='" + item.item_num + "'>" + item.item_img + "</a>");
-			});
-		});
 		$("#wallpaper").change(function(){
 			var item_num=$("#wallpaper").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
@@ -26,51 +26,82 @@
 				}
 			});
 		});
-		$("#item_list").on("click",".miniroom",function(){
-			var item_num=$(this).attr("id");
-			var item_img=$(this).html();
-			$("#miniroom").append("<span draggable='true' ondragstart='drag(event)' class='item' id='" + item_num + "'>" + item_img + "</span>");
-		});
-		$("#miniroom").on("draggable",".item",function(){
-			
-		});
+		$( '.miniroom p img' )
+		  .draggable({
+		      containment : '.miniroom' // 부모요소 안에 종속
+	    })
+	    $('.miniroom p img').dblclick(function(){
+	    	var dbnum=$(this).parent().parent().attr('id');
+	    	var css=$(this).css('top');
+	    	var css1=css.split('-');
+	    	$(this).css({'top':0, 'left':0});
+	    	$('#x'+dbnum).val('');
+	    	$('#y'+dbnum).val('');
+	    });
 		$("#mini").click(function(){
-			console.log("미니룸");
+			console.log("dfsdf");
 		});
 	});
-	function allowDrop(ev){
-		ev.preventDefault();
-	}
-	function drag(ev) {
-		ev.dataTransfer.setData("text",ev.target.id);
-	}
-	function drop(ev){
-		ev.preventDefault();
-		var data=ev.dataTransfer.getData("text");
-		ev.target.appendChild(document.getElementById(data));
-	}
 </script>
-<div id="11"><input type="button" value="2222" id="mini"></div>
 <div id="setup_miniroom_back">
-	<h3 id="first">미니룸</h3>
+<h3 id="first">미니룸</h3>
 	<hr>
-	<div class="miniroom_back" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<div class="miniroom_back">
 	<select id="wallpaper">
 	<c:forEach var="vo" items="${requestScope.wallpaper }">
 		<option class="choice" value="${vo.item_num }">${vo.name }</option>
 	</c:forEach>
 	</select>
 	<input type="button" id="btn" value="적용">
-		<div id="miniroom">
-			<c:forEach var="miniVo" items="${requestScope.mini }">
+		<div class="miniroom">
+		
+		<form name="formname" id="formname">
+			<c:forEach var="miniVo" items="${requestScope.mini }" varStatus="status">
 				${miniVo.item_img }
+			<input type="hidden" name="wall" value=${miniVo.mine_num }> 
 			</c:forEach>
+			<c:forEach var="vo" items="${requestScope.list }" varStatus="status">
+			<div id="${vo.item_num }">
+				${vo.item_img }
+			<input type="hidden" name="item_num" value="${vo.item_num }">
+			x:<input type="text" id="x${vo.item_num }" name="x">
+			y:<input type="text" id="y${vo.item_num }" name="y">
+			</div>
+			</c:forEach>
+			<a href="#" onclick="submit()">미니룸 저장</a>
+		</form>
 		</div>
-		<div id="item_list"></div>
 	</div>
-	<div draggable="true" id="test" style="width: 100px; height: 100px; background-color: red; position: relative;"></div>
-	<span style="background-color: green; top:-100px; width: 50px; height:100px; display: block;position: relative;}"></span>
-	<div id="div1" style="background-color: gray; width: 200px; height: 200px;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-	<div id="drag1" draggable="true" ondragstart="drag(event)"style="background-color: yellow; width: 120px; height: 120px;"></div>
-	<hr>
 </div>
+	<script type="text/javascript">	
+	$(".miniroom p img").mouseup(function(){
+		var x=$(this).position().left;
+		var y=$(this).position().top;
+		var num=$(this).parent().parent().attr('id');
+		var x1=$('#x'+num).attr('id');
+		var x2=$('#x'+num).attr('name');
+		console.log(x2);
+		$('#x'+num).val(x);
+		$('#y'+num).val(y);
+		console.log(x);
+		console.log(y);
+	});
+		function submit(){
+			var ex1 = JSON.stringify($("#formname").serializeObject());
+			var ex2 = $("#formname").serializeObject();
+			console.log(ex1);
+			console.log(ex2);
+			$.ajax({
+		        url: "<c:url value='/setup/miniroom_insert'/>",
+		        type: 'POST',
+		        data:JSON.stringify(ex2),
+		        dataType: 'json',
+		        contentType : "application/json; charset=UTF-8",
+		        success: function (result) {
+		            if (result){
+		                console.log(ex1);
+		            }
+		        }
+		    });
+		}
+	</script>
