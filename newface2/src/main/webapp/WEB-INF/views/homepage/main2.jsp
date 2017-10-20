@@ -7,11 +7,10 @@
 	$(document).ready(
 			function() {
 				var startrow = 0;
-				var endrow = 20;
+				var endrow = 10;
 				$(window).scroll(function() { 
 					if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
-						startrow +=20;
-						endrow +=20;
+						startrow +=10;
 						$.getJSON('main2/list',{"startrow":startrow,"endrow":endrow},function(data){
 							var list=data.list;
 							var cntlist=data.cntlist;

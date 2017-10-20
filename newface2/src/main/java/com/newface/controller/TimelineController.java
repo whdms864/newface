@@ -54,7 +54,7 @@ public class TimelineController {
 		String pro_img=timelineservice.pro_img(id);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("startrow", 0);
-		map.put("endrow", 20);
+		map.put("endrow", 10);
 		List<TimelineVo> list=timelineservice.list(map);
 		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
 		for(TimelineVo vo:list) {
