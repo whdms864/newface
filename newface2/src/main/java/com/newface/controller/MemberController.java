@@ -20,6 +20,7 @@ import com.newface.service.MemberService;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Member_Profile_Hompy_JoinVo;
 import com.newface.vo.Qna11Vo;
 
 @Controller
@@ -163,7 +164,7 @@ public class MemberController {
 		PageUtil pu=new PageUtil(pageNum,3,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
-		List<MemberVo> fsearch_list=service.fsearch(map);
+		List<Member_Profile_Hompy_JoinVo> fsearch_list=service.fsearch(map);
 		model.addAttribute("fsearch_list",fsearch_list);
 		model.addAttribute("pu",pu);
 		model.addAttribute("text",text);

@@ -91,6 +91,7 @@
 </div>
 <div style="margin-top: 20px;display: inline-block;">
 	<div style="width: 50px; height: 40px; float:left;background-color: rgb(241, 238, 238); border-radius: 4px 0px 0px 4px; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px 1px 1px 1px;">
+	<img src="<c:url value='/resources/images/homepage/친구찾기.png'/>" style="width:30px; height:30px; margin-left:10px; margin-top:4px;">
 	</div>
 	<input type="text" id="text" name="fsearch" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
 		border-color: rgb(204, 204, 204); width: 200px; height: 40px;float:left;padding:10px;" placeholder="친구찾기 (ID,이름,학교,지역)">

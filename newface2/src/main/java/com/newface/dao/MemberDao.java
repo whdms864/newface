@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Member_Profile_Hompy_JoinVo;
 
 @Repository
 public class MemberDao {
@@ -104,7 +105,7 @@ public class MemberDao {
 		return sqlSession.insert(NAMESPACE + ".photo_folder_insert", hompy_num);
 	}
 	
-	public List<MemberVo> fsearch(HashMap<String, Object> map) {
+	public List<Member_Profile_Hompy_JoinVo> fsearch(HashMap<String, Object> map) {
 		return sqlSession.selectList(NAMESPACE+".fsearch",map);
 	}
 	

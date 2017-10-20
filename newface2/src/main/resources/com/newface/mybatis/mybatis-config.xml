@@ -52,7 +52,9 @@
   	<typeAlias type="com.newface.vo.Photo_loveVo" alias="p_love"/>  
   	<typeAlias type="com.newface.vo.DiarysingoVo" alias="d_singo"/> 
   	<typeAlias type="com.newface.vo.PhotosingoVo" alias="p_singo"/> 
-  	<typeAlias type="com.newface.vo.ComVo" alias="joincom"/> 
+  	<typeAlias type="com.newface.vo.ComVo" alias="joincom"/>
+  	<typeAlias type="com.newface.vo.Member_Profile_Hompy_JoinVo" alias="flist"/>
+  	
   </typeAliases>
   
   <mappers>

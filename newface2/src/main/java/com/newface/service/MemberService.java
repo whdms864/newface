@@ -10,6 +10,7 @@ import com.newface.dao.MemberDao;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
+import com.newface.vo.Member_Profile_Hompy_JoinVo;
 
 @Service
 public class MemberService {
@@ -101,7 +102,7 @@ public class MemberService {
 		return dao.photo_folder_insert(hompy_num);
 	}
 	
-	public List<MemberVo> fsearch(HashMap<String, Object> map) {
+	public List<Member_Profile_Hompy_JoinVo> fsearch(HashMap<String, Object> map) {
 		return dao.fsearch(map);
 	}
 	

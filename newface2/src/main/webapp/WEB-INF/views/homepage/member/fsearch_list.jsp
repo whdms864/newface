@@ -55,40 +55,44 @@
 		  		</div>
 	  		</div> --%>
 	<c:forEach var="vo" items="${fsearch_list}">
-		<table class="table table-bordered" style="width: 460px; margin-top: 20px;">
-			<thead>
-				<tr class="success">
-					<td colspan="6"></td>
-				</tr>
-		  		<tr >
-		  			<th colspan="2" style="width:130px; text-align: center;">아이디</th>
-		  			<th colspan="2" style="width:130px; text-align: center;">이름</th>
-		  			<th colspan="2" style="width:230px; text-align: center;">학교</th>
-		  		</tr>
-		  	</thead>
-		  	<tbody>
-		 		<tr>
-		  			<td colspan="2" style="text-align: center;">${vo.id}</td>
-		  			<td colspan="2" style="text-align: center;">${vo.name}</td>
-		  			<td colspan="2" style="text-align: center;">${vo.school}</td>
-		  		</tr>
-			</tbody>
+		<table style="width: 460px; margin-top: 30px; border: 2px solid black;">
+			<tr>
+				<td rowspan="6" style="width:153px; border:2px solid black; align-content: center;">
+					<c:choose>
+						<c:when test="${vo.save_name==null }">
+							<img src="<c:url value='/resources/images/minihome/profile.PNG'/>">			
+						</c:when>
+						<c:otherwise>
+							<img style="max-width: 153px; max-height: 153px; margin-left: auto; margin-right: auto; display: block;" src="<c:url value='/resources/upload/${vo.save_name }'/>">
+						</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center; border-top: 2px solid black;">아이디</td>
+				<td style="border-top: 2px solid black;">${vo.id }</td>
+			</tr>
+
+			<tr>
+				<td style="text-align: center">이름</td>
+				<td>${vo.name }</td>
+			</tr>
+
+			<tr>
+				<td style="text-align: center">학교</td>
+				<td>${vo.school }</td>
+			</tr>
 			
-			<thead>
-		  		<tr>
-		  			<th colspan="3" style="width:230px; text-align: center;">지역</th>
-		  			<th colspan="3" style="width:230px; text-align: center;">이메일</th>
-		  		</tr>
-		  	</thead>
-		  	<tbody>
-		 		<tr>
-		  			<td colspan="3" style="text-align: center;">${vo.addr}</td>
-		  			<td colspan="3" style="text-align: center;">${vo.email}</td>
-		  		</tr>
-			</tbody>
-				<tr class="success">
-					<td colspan="6"></td>
-				</tr>
+			<tr>
+				<td style="text-align: center">주소</td>
+				<td>${vo.addr }</td>
+			</tr>
+			
+			<tr>
+				<td style="text-align: center">이메일</td>
+				<td>${vo.email }</td>
+			</tr>
+			
 		</table>
 	</c:forEach>
 </div>
