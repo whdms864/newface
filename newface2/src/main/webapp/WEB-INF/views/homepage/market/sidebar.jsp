@@ -11,6 +11,7 @@
 		$("#minihome").click(function(){
 		    window.open("<c:url value='/minihome'/>","_minihome"," width=1032,height=617,left=100,top=100"); 
 		});
+		
 		$("#msg").click(function(){
 		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
 		});
