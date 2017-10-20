@@ -10,17 +10,19 @@
 				var endrow = 10;
 				$(window).scroll(function() { 
 					if ($(window).scrollTop() == $(document).height() - $(window).height()) { 
+						var text=$("#text_s").val();
 						startrow +=10;
-						$.getJSON('main2/list',{"startrow":startrow,"endrow":endrow},function(data){
+						$.getJSON('main2/list',{"startrow":startrow,"endrow":endrow,"text":text},function(data){
 							var list=data.list;
 							var cntlist=data.cntlist;
 							var lovelist=data.lovelist;
 							var singolist=data.singolist;
 							var pro_img=data.pro_img;
+							var text=data.text;
 							var loginid=$("#loginid").val();
 				 			var html="";
 							for(var i=0;i<list.length;i++){
-								html +="<div class='timeline'>"
+								html +=	"<div class='timeline'>"
 									+	"<div class='first' align='center'>"
 									+		"<div align='left' style='margin-left: 5px;'>"
 									+			"<table style='padding:0px; margin: 0px;'>"
@@ -33,9 +35,13 @@
 								}
 								html +=						"</td>"
 									+						"<td style='width: 94%;padding-left:10px;height: 20px;margin-top: 5px;font-weight: bold;color:#365899;'>"
-									+							"<input type='hidden' value='"+list[i].id+"' class='vo_id'>"
-									+							"<a class='link_name'>"+list[i].name+"</a>"
-									+						"</td>"
+									+							"<input type='hidden' value='"+list[i].id+"' class='vo_id'>";
+								if(loginid!=list[i].id){	
+									html +=							"<a class='link_name'>" +list[i].name+"</a>";
+								}else{
+									html +=							"<a class='link_name_i'>"+list[i].name+"</a>";
+								}
+								html +=						"</td>"
 									+					"</tr>"
 									+					"<tr>"
 									+						"<td style='width: 94%;padding-left:10px;height: 20px;color:#90949c;'>"
@@ -98,7 +104,7 @@
 										+		"<input type='hidden' value="+list[i].singo+" class='singo_val'>";
 									if(singolist.length>0){
 										var code="<a class='singo'>신고</a>";
-										for(var j=0;j<lovelist.length;j++){
+										for(var j=0;j<singolist.length;j++){
 											if(singolist[j].num==list[i].num && singolist[j].tb==list[i].tb){
 												code =	"<a class='singo' style='font-weight: bold; color: red'>신고</a>";
 												break;
@@ -235,11 +241,15 @@
 				
 				/*게시글 작성자 클릭시*/
 				$(document).on("click",".link_name",function() {
-					var id=$(this).parents(".timeline").find(".vo_id");
+					var id=$(this).parents(".timeline").find(".vo_id").val();
 					var hompy_num=0;
 					$.getJSON('main2/hompynum', {"id" : id}, function(data) {
 						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
 					});
+				});
+				$(document).on("click",".link_name_i",function() {
+					var loginid=$("#loginid").val();
+					window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
 				});
 				
 				/* 취소버튼클릭 */
@@ -572,6 +582,7 @@
 </script>
 <div class="loginafter" align="center">
 	<input type="hidden" value="${loginid }" id="loginid">
+	<input type="hidden" id="text_s" value="${text }">
 	<div class="list_time">
 		<c:forEach var="vo" items="${list }">
 			<div class="timeline">
@@ -593,7 +604,14 @@
 								</td>
 								<td style="width: 94%; padding-left: 10px; height: 20px; margin-top: 5px; font-weight: bold; color: #365899;">
 									<input type="hidden" value="${vo.id }" class="vo_id">
-									<a class="link_name">${vo.name }</a>
+									<c:choose>
+										<c:when test="${loginid!=vo.id }">
+											<a class="link_name">${vo.name }</a>
+										</c:when>
+										<c:otherwise>
+											<a class="link_name_i">${vo.name }</a>
+										</c:otherwise>
+									</c:choose>
 								</td>
 							</tr>
 							<tr>

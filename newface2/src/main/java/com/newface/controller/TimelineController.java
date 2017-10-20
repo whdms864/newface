@@ -126,16 +126,20 @@ public class TimelineController {
 		model.addAttribute("singolist",singolist);
 		model.addAttribute("cntlist",cntlist);
 		model.addAttribute("pro_img",pro_img);
+		model.addAttribute("text", text);
 		return ".main2";
 	}
 	@RequestMapping("/main2/list")
 	@ResponseBody
-	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session){
+	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session,
+			@RequestParam(value="text",defaultValue="") String text){
+		System.out.println(text);
 		String id=(String)session.getAttribute("loginid");
 		String pro_img=timelineservice.pro_img(id);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("startrow", startrow);
 		map.put("endrow", endrow);
+		map.put("text", text);
 		List<TimelineVo> list=timelineservice.list(map);
 		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
 		for(TimelineVo vo:list) {
@@ -205,6 +209,7 @@ public class TimelineController {
 		map.put("singolist",singolist);
 		map.put("cntlist",cntlist);
 		map.put("pro_img",pro_img);
+		map.put("text",text);
 		return map;
 	}
 	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
