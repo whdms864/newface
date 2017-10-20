@@ -126,6 +126,85 @@ public class TimelineController {
 		model.addAttribute("pro_img",pro_img);
 		return ".main2";
 	}
+	@RequestMapping("/main2/list")
+	@ResponseBody
+	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session){
+		String id=(String)session.getAttribute("loginid");
+		String pro_img=timelineservice.pro_img(id);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("startrow", startrow);
+		map.put("endrow", endrow);
+		List<TimelineVo> list=timelineservice.list(map);
+		ArrayList<HashMap<String, Object>> lovelist=new ArrayList<HashMap<String,Object>>();
+		for(TimelineVo vo:list) {
+			if(vo.getTb().equals("photo")) {
+				map.put("photo_num", vo.getNum());
+				map.put("id", id);
+				Photo_loveVo plist=loveservice.p_list(map);
+				if(plist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "photo");
+					lovelist.add(map1);
+				}
+			}else if(vo.getTb().equals("diary")) {
+				map.put("diary_num", vo.getNum());
+				map.put("id", id);
+				Diary_loveVo dlist=loveservice.d_list(map);
+				if(dlist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "diary");
+					lovelist.add(map1);
+				}
+			}
+		}
+		ArrayList<HashMap<String, Object>> singolist=new ArrayList<HashMap<String,Object>>();
+		ArrayList<HashMap<String, Object>> cntlist=new ArrayList<HashMap<String,Object>>();
+		for(TimelineVo vo:list) {
+			if(vo.getTb().equals("photo")) {
+				map.put("photo_num", vo.getNum());
+				map.put("id", id);
+				PhotosingoVo plist=singoservice.p_list(map);
+				if(plist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "photo");
+					singolist.add(map1);
+				}
+				
+				int cnt=comservice.p_c_list_all(vo.getNum());
+				HashMap<String,Object> cntmap=new HashMap<String, Object>();
+				cntmap.put("num", vo.getNum());
+				cntmap.put("tb", "photo");
+				cntmap.put("cnt", cnt);
+				cntlist.add(cntmap);
+				
+			}else if(vo.getTb().equals("diary")) {
+				map.put("diary_num", vo.getNum());
+				map.put("id", id);
+				DiarysingoVo dlist=singoservice.d_list(map);
+				if(dlist!=null) {
+					HashMap<String,Object> map1=new HashMap<String, Object>();
+					map1.put("num", vo.getNum());
+					map1.put("tb", "diary");
+					singolist.add(map1);
+				}
+				int cnt=comservice.d_c_list_all(vo.getNum());
+				HashMap<String,Object> cntmap=new HashMap<String, Object>();
+				cntmap.put("num", vo.getNum());
+				cntmap.put("tb", "diary");
+				cntmap.put("cnt", cnt);
+				cntlist.add(cntmap);
+			}
+		}
+		map.put("list",list);
+		map.put("lovelist",lovelist);
+		map.put("singolist",singolist);
+		map.put("cntlist",cntlist);
+		map.put("pro_img",pro_img);
+		return map;
+	}
 	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
 	public String main2_gongU(Model model,int num,int fnum,String tb
 			,String title1,String title2,String add_con,String secret) {
@@ -143,19 +222,7 @@ public class TimelineController {
 		}
 		return "redirect:/main2";
 	}
-	@RequestMapping("/main2/list")
-	@ResponseBody
-	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session){
-		String id=(String)session.getAttribute("loginid");
-		String pro_img=timelineservice.pro_img(id);
-		HashMap<String,Object> map=new HashMap<String, Object>();
-		map.put("startrow", startrow);
-		map.put("endrow", endrow);
-		List<TimelineVo> list=timelineservice.list(map);
-		map.put("list",list);
-		map.put("pro_img",pro_img);
-		return map;
-	}
+	
 	@RequestMapping("/main2/hompynum")
 	@ResponseBody
 	public int main2_hompynum(String id){
@@ -322,14 +389,12 @@ public class TimelineController {
 			map.put("photo_num", num);
 			PhotosingoVo vo=singoservice.p_list(map);
 			if(vo!=null) {
-				System.out.println("삭제");
 				singoservice.p_delete(map);
 				singo -=1;
 				map.put("photo_num", num);
 				map.put("singo", singo);
 				singoservice.p_update(map);
 			}else {
-				System.out.println("추가");
 				PhotosingoVo vo1=new PhotosingoVo(0,null,num,id);
 				singoservice.p_insert(vo1);
 				singo +=1;
