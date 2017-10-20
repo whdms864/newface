@@ -26,7 +26,14 @@ $(document).ready(function() {
 		  		<div class="icon_set">
 		  			<img src="<c:url value='/resources/images/homepage/icon/email.png'/>" id="msg">
 		  			<div class="circle" align="center">
-		  			<label style="left:5px;">++</label>
+		  			<c:choose>
+		  				<c:when test="${msgnorecv_count<=9 }">
+		  					<label style="left:7px;">${msgnorecv_count }</label>
+		  				</c:when>
+		  				<c:otherwise>
+		  					<label style="left:5px;">++</label>
+		  				</c:otherwise>
+		  			</c:choose>
 		  			</div>
 		  		</div>
 		  		<div class="icon_set">
