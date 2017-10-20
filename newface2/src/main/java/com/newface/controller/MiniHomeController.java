@@ -35,7 +35,10 @@ public class MiniHomeController {
 	@Autowired MiniHomeService service;
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
-	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,Model model,HttpServletRequest request) {
+	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,
+			Model model,HttpServletRequest request,
+			@RequestParam(value="getid",defaultValue="") String getid) {
+		
 		session.setAttribute("choice", "home");
 		//아이디 구분 (주인인지 아닌지)
 		String loginid=(String)session.getAttribute("loginid");
@@ -134,8 +137,11 @@ public class MiniHomeController {
 		//일촌목록
 		List<Iu_NameVo> iu_list=service.iu_list(loginid);
 		session.setAttribute("iu_list", iu_list);
-		
-		return ".minihome";
+		if(getid.equals("")) {
+			return ".minihome";
+		}else {
+			return "redirect:/setup/iu?getid="+getid;
+		}
 	}
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
 	@ResponseBody

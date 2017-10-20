@@ -97,6 +97,3 @@
 		border-color: rgb(204, 204, 204); width: 200px; height: 40px;float:left;padding:10px;" placeholder="친구찾기 (ID,이름,학교,지역)">
 	
 </div>
-<div>
-	<a href="<c:url value='/members/logout'/>">로그아웃</a>
-</div>		

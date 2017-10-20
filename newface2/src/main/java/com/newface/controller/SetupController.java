@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.SetupService;
@@ -140,9 +141,15 @@ public class SetupController {
 		}		
 	}
 	@RequestMapping(value="/setup/iu",method=RequestMethod.GET)
-	public String iu(HttpSession session,Model model) {
+	public String iu(HttpSession session,Model model,
+			@RequestParam(value="getid",defaultValue="") String getid) {
 		session.setAttribute("set_menu", "set_iu");
-		String id=(String)session.getAttribute("loginid");
+		String id="";
+		if(getid.equals("")) {
+			id=(String)session.getAttribute("loginid");
+		}else {
+			id=getid;
+		}
 		List<IuVo> iuVo=service.iu_request_list(id);
 		model.addAttribute("iuVo", iuVo);
 		return ".iu.setup";
