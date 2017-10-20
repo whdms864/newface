@@ -275,7 +275,7 @@ public class TimelineController {
 		map.put("num2", num2);
 		String add="";
 		if(tb.equals("photo")) {
-			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id);
+			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id,null);
 			photoservice.com_insert(vo);
 			list=comservice.p_c_list(map);
 			int n=comservice.p_c_list_all(num2);

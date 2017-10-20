@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newface.page.PageUtil;
+import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.PhotocomVo;
@@ -23,6 +24,7 @@ import com.newface.vo.PhotolistVo;
 @Controller
 public class PhotoController {
 	@Autowired PhotoService service;
+	@Autowired MiniHomeService mini;
 	
 	@RequestMapping(value = "/photo", method = RequestMethod.GET)
 	public String photo(HttpSession session) {
@@ -97,10 +99,9 @@ public class PhotoController {
 		}else {
 			session.setAttribute("folder_photo", "all");					
 		}
-		String id=(String)session.getAttribute("loginid");
-		
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=mini.id(hompy_num);
 		String name=service.name(id);
 		map.put("hompy_num", hompy_num);
 		map.put("photo_folder_num", photo_folder_num);
@@ -209,12 +210,15 @@ public class PhotoController {
 	}
 	@RequestMapping(value="/photo/com_list", method = RequestMethod.GET)
 	public String com_list(Model model,HttpSession session) {
-		String id=(String)session.getAttribute("fid");
-		if(id==null) {
-			id=(String)session.getAttribute("loginid");
-		}
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String id=mini.id(hompy_num);
 		String name=service.name(id);
 		List<PhotocomVo> list=service.com_list();
+		for(PhotocomVo vo:list) {
+			String id2=vo.getId();
+			String name2=mini.name(id2);
+			vo.setName(name2);
+		}
 		if(list != null) {
 			model.addAttribute("name",name);
 			model.addAttribute("list2",list);

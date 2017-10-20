@@ -318,4 +318,8 @@ public class SetupController {
 		System.out.println("y="+map.get("y"));
 		return null;
 	}
+	@RequestMapping(value="/setup/bgm/test",method=RequestMethod.GET)
+	public String bgm_test() {
+		return "minihome/bgm";
+	}
 }

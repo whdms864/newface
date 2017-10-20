@@ -35,7 +35,7 @@
 <c:forEach var="vo2" items="${requestScope.list2 }">
 	<c:if test="${vo2.photo_num eq vo.photo_num}">
 			<div class="p_comment_name">
-			<a href="">${requestScope.name } :</a> ${vo2.content }
+			<a href="">${vo2.name } :</a> ${vo2.content }
 			<div style="display:inline;font-size:9px;color:gray;">(${vo2.regdate })</div>&nbsp;
 			<c:if test="${sessionScope.loginid == vo2.id}">
 			<a href="<c:url value='/photo/com_delete?photo_com_num=${vo2.photo_com_num }'/>"><img src="<c:url value='/resources/images/minihome/comment_delete1.png'/>" style="position:absolute;margin-top:2px;"></a>

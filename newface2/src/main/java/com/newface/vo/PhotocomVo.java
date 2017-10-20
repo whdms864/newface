@@ -7,10 +7,12 @@ public class PhotocomVo {
 	private String regdate;
 	private int photo_num;
 	private String id;
+	private String name;
 	
 	public PhotocomVo() {}
 
-	public PhotocomVo(int photo_com_num, String singo, String content, String regdate, int photo_num, String id) {
+	public PhotocomVo(int photo_com_num, String singo, String content, String regdate, int photo_num, String id,
+			String name) {
 		super();
 		this.photo_com_num = photo_com_num;
 		this.singo = singo;
@@ -18,6 +20,7 @@ public class PhotocomVo {
 		this.regdate = regdate;
 		this.photo_num = photo_num;
 		this.id = id;
+		this.name = name;
 	}
 
 	public int getPhoto_com_num() {
@@ -57,7 +60,7 @@ public class PhotocomVo {
 	}
 
 	public void setPhoto_num(int photo_num) {
-		this.photo_num = photo_num;	
+		this.photo_num = photo_num;
 	}
 
 	public String getId() {
@@ -66,6 +69,14 @@ public class PhotocomVo {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

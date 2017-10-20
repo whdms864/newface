@@ -17,7 +17,9 @@
 				alert(name + "님과 일촌맺기를 했습니다")
 			});
 		});
-		$("#bgm")
+		$("#bgm").click(function(){
+			window.open("<c:url value='/setup/bgm/test'/>","_bgm12"," width=445,height=390,left=100,top=100"); 
+		});
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
 			var url = "<c:url value='/minihome?hompy_num=" + hompy_num + "'/>"; 
