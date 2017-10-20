@@ -160,7 +160,7 @@ public class MemberController {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("text",text);
 		int totalRowCount=service.fsearch_count(map);
-		PageUtil pu=new PageUtil(pageNum,10,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,3,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<MemberVo> fsearch_list=service.fsearch(map);

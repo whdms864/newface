@@ -15,15 +15,7 @@
 		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
 		});
 		
-		$("#fsearch").click(function(){
-			var text=$("#text").val();
-			if(text==""){
-				$("#text").focus();
-				alert("검색할 내용을 입력해주세요");
-			}else{
-				location.href="<c:url value='/fsearch_list'/>?text="+text;
-			}
-		});
+		
 		$("#text").keypress(function(event){
 			if(event.keyCode==13){
 				var text=$("#text").val();
@@ -102,8 +94,7 @@
 	</div>
 	<input type="text" id="text" name="fsearch" style="color: rgb(94, 94, 94);border-radius: 0px 4px 4px 0px; border-width: 1px 1px 1px 0px; border-style: solid; 
 		border-color: rgb(204, 204, 204); width: 200px; height: 40px;float:left;padding:10px;" placeholder="친구찾기 (ID,이름,학교,지역)">
-	<input type="button" id="fsearch" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-					border-radius: 4px; background-color: rgb(52, 152, 219);width:80px; height:35px;float:left;margin-left: 5px;" >
+	
 </div>
 <div>
 	<a href="<c:url value='/members/logout'/>">로그아웃</a>
