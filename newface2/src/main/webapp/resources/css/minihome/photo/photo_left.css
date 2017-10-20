@@ -1,16 +1,33 @@
 @charset "UTF-8";
-#photo_title{
-	position: relative; top: 10px; left: 20px; width: 154px; height: 30px;
-	color: blue; font-size: 15px;
+
+#photo_title {
+	position: relative;
+	top: 10px;
+	left: 20px;
+	width: 154px;
+	height: 30px;
+	color: blue;
+	font-size: 15px;
 }
-#photo_folder{
-	position: relative; top: 10px; left: 20px; width: 155px; height: 350px;
-	font-size: 13px;  
-}   
-.blank{
+
+#photo_folder {
+	position: relative;
+	top: 10px;
+	left: 20px;
+	width: 155px;
+	height: 350px;
+	font-size: 13px;
+}
+
+.blank {
 	height: 10px;
 }
-#photo_set{
-	position: absolute; top:370px;
+
+#photo_set {
+	position: relative;
+	top: 10px;
 }
-                  
+
+#setup_img {
+	width: 17px;
+}

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_left.css?var=23'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/diary/diary_left.css?var=33'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <input type="hidden" id="diary_folder_num" value="${sessionScope.diary_folder_num }">
 <script>
@@ -38,6 +38,7 @@
 	</div>
 	<div id="diary_folder"></div>
 	<div id="diary_folder_set">
+		<img alt="환경설정" id="setup_img" src="<c:url value='/resources/images/minihome/setup.jpg'/>">
 		<c:choose>
 			<c:when test="${sessionScope.folder==folder }">
 				<a style="font-weight: 900" href="<c:url value='/diary/folder'/>">폴더 관리하기</a>		

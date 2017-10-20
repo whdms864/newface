@@ -45,8 +45,8 @@ public class GuestbookService {
 /*	public int getCount(HashMap<String,Object> map) {
 		return dao.getCount(map);
 	}*/
-	public int getCount() {
-		return dao.getCount();
+	public int getCount(int hompy_num) {
+		return dao.getCount(hompy_num);
 	}
 	public String minime_info(String id) {
 		return dao.minime_info(id);

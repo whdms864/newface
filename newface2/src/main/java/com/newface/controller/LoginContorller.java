@@ -66,6 +66,19 @@ public class LoginContorller {
 				String minime_img = marketservice.minime_info(loginid);
 				session.setAttribute("minime_img", minime_img);
 				
+				// 방문자
+				int hompy_num=service.hompy_num(loginid);
+				int today=service.today_today(hompy_num);
+				session.setAttribute("today", today);
+				
+				//방명록
+				int guest_now=service.guest_now(hompy_num);
+				session.setAttribute("guest_now", guest_now);
+				
+				//일촌신청
+				int iu_request_now=service.iu_request_list(loginid);
+				session.setAttribute("iu_request_now", iu_request_now);
+				
 				CashVo vo = cashservice.list(loginid);
 				if (vo != null) {
 					session.setAttribute("cnt", vo.getCnt());

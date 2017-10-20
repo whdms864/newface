@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.Member_Profile_Hompy_JoinVo;
 
@@ -104,7 +105,15 @@ public class MemberDao {
 	public int photo_folder_insert(int hompy_num) {
 		return sqlSession.insert(NAMESPACE + ".photo_folder_insert", hompy_num);
 	}
-	
+	public int today_today(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".today_today", hompy_num);
+	}
+	public int guest_now(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE + ".guest_now", hompy_num);
+	}
+	public int iu_request_list(String id){
+		return sqlSession.selectOne(NAMESPACE + ".iu_request_list", id);
+	}
 	public List<Member_Profile_Hompy_JoinVo> fsearch(HashMap<String, Object> map) {
 		return sqlSession.selectList(NAMESPACE+".fsearch",map);
 	}
@@ -112,5 +121,4 @@ public class MemberDao {
 	public int fsearch_count(HashMap<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".fsearch_count",map);
 	}
-	
 }

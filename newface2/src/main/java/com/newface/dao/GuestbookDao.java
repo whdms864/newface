@@ -48,8 +48,8 @@ public class GuestbookDao {
 /*	public int getCount(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".count",map);
 	}*/
-	public int getCount() {
-		return sqlSession.selectOne(NAMESPACE+".count");
+	public int getCount(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE+".count",hompy_num);
 	}
 	public String minime_info(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);

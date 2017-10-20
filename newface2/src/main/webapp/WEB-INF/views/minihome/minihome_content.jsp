@@ -63,14 +63,14 @@
 </div>
 <div id="board_cnt">
 	<hr>
-	<a href="<c:url value='/diary/folder_all_list'/>">다이어리</a> 
-	<span class="number">${requestScope.diary_now }/${requestScope.diary_count }</span><c:if test="${requestScope.diary_now>0 }"> <span class="new"> N </span></c:if>
+	<a href="<c:url value='/diary/folder_all_list'/>">다이어리
+	<span class="number">${requestScope.diary_now }/${requestScope.diary_count }</span></a><c:if test="${requestScope.diary_now>0 }">  <span class="new"> N </span></c:if>
 	<hr>
-	<a href="<c:url value='/photo/list'/>">사진첩</a> 
-	<span class="number">${requestScope.photo_now }/${requestScope.photo_count }</span><c:if test="${requestScope.photo_now>0 }"> <span class="new">N</span></c:if>
+	<a href="<c:url value='/photo/list'/>">사진첩 
+	<span class="number">${requestScope.photo_now }/${requestScope.photo_count }</span></a><c:if test="${requestScope.photo_now>0 }"> <span class="new">N</span></c:if>
 	<hr>
-	<a href="<c:url value='/guest/list_all'/>">방명록</a> 
-	<span class="number">${requestScope.guest_now }/${requestScope.guest_count }</span><c:if test="${requestScope.guest_now>0 }"> <span class="new"> N </span></c:if>
+	<a href="<c:url value='/guest/list_all'/>">방명록
+	<span class="number">${requestScope.guest_now }/${requestScope.guest_count }</span></a> <c:if test="${requestScope.guest_now>0 }"> <span class="new"> N </span></c:if>
 	<hr>
 </div>
 <div id="miniroom_back">

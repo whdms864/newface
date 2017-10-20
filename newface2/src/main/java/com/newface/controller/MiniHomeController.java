@@ -1,6 +1,5 @@
 package com.newface.controller;
 
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,10 +52,14 @@ public class MiniHomeController {
 			session.setAttribute("hompy_admin", "2");
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			id=service.id(hompy_num);
+			System.out.println("테스트 아이디 : " + id);
+			System.out.println("내 아이디 : " + loginid);
+			IuVo iu=new IuVo(0, null, null, loginid, id);
+			IuVo iu_is=service.iu_is(iu);
+			session.setAttribute("iu", iu_is);
 			map.put("id", loginid);
 			map.put("hompy_num",hompy_num);
 			List<TodayVo> today=service.today_is(map);
-			System.out.println("today : " + today);
 			if(today.isEmpty()) {
 				System.out.println("어서와 여긴 처음이지?");
 				service.today_insert(map);				
@@ -209,5 +212,20 @@ public class MiniHomeController {
 		String name=service.name(id);
 		model.addAttribute("name", name);
 		return "minihome/iu_com";
+	}
+	@RequestMapping(value="/minihome/iu_delete",method=RequestMethod.GET)
+	@ResponseBody
+	public String iu_delete(HttpSession session) {
+		String i_id=(String)session.getAttribute("loginid");
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		String u_id=service.id(hompy_num);
+		IuVo vo1=new IuVo(0, null, null, i_id, u_id);
+		IuVo vo2=new IuVo(0, null, null, u_id, i_id);
+		int n1=service.iu_delete(vo1);
+		int n2=service.iu_delete(vo2);
+		JSONObject json=new JSONObject();
+		json.put("n1", n1);
+		json.put("n2", n2);
+		return json.toString();
 	}
 }

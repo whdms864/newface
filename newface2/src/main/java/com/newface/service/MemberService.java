@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.newface.dao.MemberDao;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.MemberVo;
 import com.newface.vo.Member_Profile_Hompy_JoinVo;
 
@@ -102,6 +103,15 @@ public class MemberService {
 		return dao.photo_folder_insert(hompy_num);
 	}
 	
+	public int today_today(int hompy_num) {
+		return dao.today_today(hompy_num);
+	}
+	public int guest_now(int hompy_num) {
+		return dao.guest_now(hompy_num);
+	}
+	public int iu_request_list(String id){
+		return dao.iu_request_list(id);
+	}
 	public List<Member_Profile_Hompy_JoinVo> fsearch(HashMap<String, Object> map) {
 		return dao.fsearch(map);
 	}

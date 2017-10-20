@@ -42,15 +42,15 @@
 			</tr>
 			<tr>
 				<td>방문자</td>
-				<td>0</td>
+				<td>${sessionScope.today }</td>
 			</tr>
 			<tr>
 				<td>방명록</td>
-				<td>0</td>
+				<td>${sessionScope.guest_now }</td>
 			</tr>
 			<tr>
 				<td>일촌신청</td>
-				<td>0</td>
+				<td>${sessionScope.iu_request_now }</td>
 			</tr>
 			<tr>
 				<td align="center">

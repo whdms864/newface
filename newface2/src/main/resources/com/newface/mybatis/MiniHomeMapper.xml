@@ -110,4 +110,7 @@
 	<select id="bgm_list" parameterType="int" resultType="item">
 		select i.* from room_posi r join mine m on r.mine_num=m.mine_num join item i on i.item_num=m.item_num where r.drag='BGM' and r.mini_num=#{value};
 	</select>
+	<delete id="iu_delete" parameterType="iu">
+		delete from iu where i_id=#{i_id} and u_id=#{u_id}
+	</delete>
 </mapper>  

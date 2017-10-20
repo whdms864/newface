@@ -13,13 +13,11 @@
 		});
 		$("#i_you1").click(function(){
 			$.getJSON("<c:url value='/minihome/iu_request'/>",function(data){
-				if(data.n>0){
-					alert("일촌신청이 완료되었습니다");
-				}else{
-					alert("이미 일촌신청을 했거나 오류로 인하여 일촌신청 하지 못했습니다")
-				}
+				var name=$("#hompy_name").val();
+				alert(name + "님과 일촌맺기를 했습니다")
 			});
 		});
+		$("#bgm")
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
 			var url = "<c:url value='/minihome?hompy_num=" + hompy_num + "'/>"; 
@@ -35,11 +33,21 @@
 			window.open("<c:url value='/minihome/profile_history?hompy_num=" + hompy_num + "'/>","_minihome3"," width=235,height=594,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
-			console.log(${loginid});
 		    window.open("<c:url value='/msg_reply?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
+		});
+		$("#iu_delete").click(function(){
+			var name=$("#hompy_name").val();
+			$.getJSON("<c:url value='/minihome/iu_delete'/>",function(data){
+				alert(name + "님과 일촌끊기가 완료되었습니다");
+				var iu_hompy_num=$("#iu_hompy_num").val();
+				var url="<c:url value='/minihome?hompy_num=" + iu_hompy_num + "'/>";
+				$(location).attr("href",url);
+			});
 		});
 	});
 </script>
+<input type="hidden" id="hompy_name" value="${sessionScope.member.name }">
+<input type="hidden" id="iu_hompy_num" value="${sessionScope.hompy_num }">
 <div id="left_back">
 	<div id="profile">
 		<c:choose>
@@ -81,8 +89,16 @@
 	</div>
 	<c:if test="${sessionScope.loginid!=sessionScope.hompyid }">
 		<div id="i_you">
-			<a id="i_you1">일촌맺기</a><br>
+			<c:choose>
+				<c:when test="${sessionScope.iu==null }">
+					<a id="i_you1">일촌맺기</a><br>
+				</c:when>
+				<c:otherwise>
+					<a id="iu_delete">일촌끊기</a><br>					
+				</c:otherwise>
+			</c:choose>
 			<a id="msg">쪽지</a>		
+			<a id="bgm">BGM</a>		
 		</div>
 	</c:if>
 	<div id="iu">

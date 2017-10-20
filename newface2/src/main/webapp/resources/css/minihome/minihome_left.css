@@ -126,3 +126,9 @@ a {
 .triangle {
 	color: #1cc8cc;
 }
+#iu_delete{
+	cursor: pointer;
+}
+#i_you1{
+	cursor: pointer;
+}

@@ -74,7 +74,9 @@
 	<update id="leave" parameterType="member">
 		update member set type='탈퇴' where id=#{id}
 	</update>
-	
+	<select id="today_today" parameterType="int" resultType="int">
+		select ifnull(count(id),0) from today where hompy_num=#{value} and regdate=date_format(now(),'%Y-%c-%e')
+	</select>
 	<select id="searchid" resultType="string" parameterType="hashmap">
 		select id from member
 		where name=#{name} and email=#{email}
@@ -95,7 +97,13 @@
 	<insert id="photo_folder_insert" parameterType="int">
 		insert into photo_folder values(0,'기본폴더',now(),#{value})
 	</insert>
-	
+
+	<select id="guest_now" parameterType="int" resultType="int">
+		select count(guest_num) from guestbook where hompy_num=#{hompy_num} and date_format(regdate,"%Y-%c-%d")=date_format(now(),"%Y-%c-%d")
+	</select>
+	<select id="iu_request_list" parameterType="string" resultType="int">
+		select count(iu_num) from iu where i_id=#{value} and u_name='신청'
+	</select>
 	<select id="fsearch" resultType="flist" parameterType="hashmap">
 		select m.id, m.name, m.school, m.addr, m.email, p.save_name
 		from member m join hompy h

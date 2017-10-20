@@ -124,4 +124,7 @@ public class MiniHomeService {
 	public List<ItemVo> bgm_list(int mini_num){
 		return dao.bgm_list(mini_num);
 	}
+	public int iu_delete(IuVo iu) {
+		return dao.iu_delete(iu);
+	}
 }
