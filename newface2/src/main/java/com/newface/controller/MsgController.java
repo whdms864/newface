@@ -181,7 +181,7 @@ public class MsgController {
 		model.addAttribute("pu", pu);
 		model.addAttribute("adminmsg_list", adminmsg_list);
 
-		return ".adminmsglist";
+		return ".adminmsg_list";
 	}
 	
 	@RequestMapping(value = "/adminmsg_getinfo", method = RequestMethod.GET)
@@ -191,7 +191,16 @@ public class MsgController {
 	
 		model.addAttribute("adminmsg_getinfo", adminmsg_getinfo);
 
-		return "";
+		return ".adminmsg_getinfo";
+	}
+	
+	@RequestMapping(value = "/adminmsg_delete", method = RequestMethod.GET)
+	public String adminmsg_delete(Model model, int adminmsg_num, HttpSession session) {
+		String loginid = (String) session.getAttribute("loginid");
+		
+		service.adminmsg_delete(adminmsg_num);
+
+		return "redirect:/adminmsg_list?sender=" + loginid;
 	}
 
 }

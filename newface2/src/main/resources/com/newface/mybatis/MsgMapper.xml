@@ -107,7 +107,7 @@
 	
 	<select id="adminmsg_getinfo" parameterType="int" resultType="adminmsg">
 		select adminmsg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, sender, receiver
-		from adminmsg
+		from admin_msg
 		where adminmsg_num=#{adminmsg_num}
 	</select>
 	

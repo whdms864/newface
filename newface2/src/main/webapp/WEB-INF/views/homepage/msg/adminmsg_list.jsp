@@ -24,10 +24,11 @@
 		<table class="table table-hover" style="width: 430px; margin-top: 20px;">
 		<thead>
 			<tr>
-				<th colspan="3" class="info">관리자</th>
+				<th colspan="3" class="success">관리자가 보낸 쪽지함</th>
 			</tr>
 			
 	  		<tr>
+	  			<th style="text-align: center;">보낸사람</th>
 	  			<th style="width:40%; text-align: center;">내용</th>
 	  			<th style="text-align: center;">날짜</th>
 	  		</tr>
@@ -35,7 +36,8 @@
 	  	<tbody>
 	  		<c:forEach var="adminmsg" items="${adminmsg_list }">
 	  			<tr>
-		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:172px; overflow: hidden;"><a href="<c:url value=''/>">${adminmsg.content }</a></td>
+	  				<td style="text-align: center; text-overflow: ellipsis; white-space: nowrap; max-width:93px; overflow: hidden;">${adminmsg.sender }</td>
+		  			<td style="text-overflow: ellipsis; white-space: nowrap; max-width:172px; overflow: hidden;"><a href="<c:url value='/adminmsg_getinfo?adminmsg_num=${adminmsg.adminmsg_num }'/>">${adminmsg.content }</a></td>
 		  			<td style="text-align: center;">${adminmsg.regdate }</td>
 		  		</tr>
 		  	</c:forEach>
