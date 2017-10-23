@@ -54,4 +54,10 @@
 	<select id="ad_count" resultType="int">
 		select coalesce(count(ad_num),0) from ad where ader_num=#{ader_num}
 	</select>
+	
+	<update id="update_type" parameterType="hashmap">
+		update ad
+		set type=#{type}
+		where ad_num=#{ad_num}
+	</update>
 </mapper>  

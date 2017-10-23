@@ -63,7 +63,7 @@
 				<br>
 				
 				<div class="form-group has-warning" style="display: inline-block; ">
-					<label class="control-label" for="inputWarning1" >계약금액</label>
+					<label class="control-label" for="inputWarning1" >계약금액(원)</label>
 					<input type="text" name="pay" class="form-control" style="width:250px;">
 				</div>
 				

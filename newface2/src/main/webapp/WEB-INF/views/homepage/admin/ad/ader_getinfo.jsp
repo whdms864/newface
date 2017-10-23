@@ -75,8 +75,8 @@
 			  		
 			  		<tr>
 			  			<td colspan="2" align="center">
-			  			<input type="button" onclick="location.href='/newface/ad_list?ader_num=${vo.ader_num}'" value="광고목록"> &nbsp;&nbsp;
-			  			<input type="button" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"> </td>
+			  			<input type="button" class="btn btn-default btn-sm" onclick="location.href='/newface/ad_list?ader_num=${vo.ader_num}'" value="광고목록"> &nbsp;&nbsp;
+			  			<input type="button" class="btn btn-default btn-sm" onclick="location.href='/newface/ad_insert?ader_num=${vo.ader_num}'" value="광고등록"> </td>
 			  		</tr>
 			</table>
 		</div>

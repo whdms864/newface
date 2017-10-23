@@ -64,4 +64,8 @@ public class AdDao {
 	public int ad_count(int ader_num) {
 		return sqlSession.selectOne(NAMESPACE + ".ad_count",ader_num);
 	}
+	
+	public int update_type(HashMap<String, Object> map) {
+		return sqlSession.update(NAMESPACE + ".update_type",map);
+	}
 }

@@ -5,7 +5,7 @@ package com.newface.vo;
 public class AdVo {
 	private int ad_num;
 	private String type;
-	private String pay;
+	private int pay;
 	private String ad_img;
 	private String url;
 	private String sdate;
@@ -14,7 +14,7 @@ public class AdVo {
 	
 	public AdVo() {}
 
-	public AdVo(int ad_num, String type, String pay, String ad_img, String url, String sdate, String edate, int ader_num) {
+	public AdVo(int ad_num, String type, int pay, String ad_img, String url, String sdate, String edate, int ader_num) {
 		super();
 		this.ad_num = ad_num;
 		this.type = type;
@@ -42,11 +42,11 @@ public class AdVo {
 		this.type = type;
 	}
 
-	public String getPay() {
+	public int getPay() {
 		return pay;
 	}
 
-	public void setPay(String pay) {
+	public void setPay(int pay) {
 		this.pay = pay;
 	}
 

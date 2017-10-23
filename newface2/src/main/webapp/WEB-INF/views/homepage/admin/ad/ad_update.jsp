@@ -53,7 +53,7 @@
 				
 				<div class="form-group has-warning" style="display: inline-block;">
 					<label class="control-label" for="inputWarning1">진행상황</label>
-					<select name="type" style="width:250px; height:33px;" class="form-control" >
+					<select name="type" style="width:250px; height:33px;" class="form-control" value="${vo.type }">
 							<option value="계약협상" >계약협상</option>
 							<option value="광고게시" >광고게시</option>
 							<option value="계약만료" >계약만료</option>

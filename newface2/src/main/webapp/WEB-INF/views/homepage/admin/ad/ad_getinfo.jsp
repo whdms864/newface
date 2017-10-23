@@ -36,7 +36,7 @@ td img{
 			<label style="font-weight:bold;font-size:25px;">광고관리</label>
 		</div>
 		<ul>
-		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;">광고주목록</a></li>
+		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;" class="hover_a">광고목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>

@@ -56,4 +56,8 @@ public class AdService {
 	public int ad_count(int ader_num) {
 		return dao.ad_count(ader_num);
 	}
+	
+	public int update_type(HashMap<String, Object> map) {
+		return dao.update_type(map);
+	}
 }

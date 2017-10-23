@@ -45,13 +45,14 @@
 			<label style="font-weight:bold;font-size:25px;">광고관리</label>
 		</div>
 		<ul>
-		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;">광고주목록</a></li>
+		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;"class="hover_a">광고주목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
 		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
 		</ul>
 	</div>
 	<div id="con">
 		<div align="center">
+			
 			<table class="table table-hover" style="width: 90%;margin-top: 20px;">
 				<thead>
 			  		<tr class="danger">
@@ -80,7 +81,7 @@
 	<div style="position:absolute;top:780px;width: 792px;"align="center">
 			<c:choose>
 				<c:when test="${pu.startPageNum>5 }">
-					<a href="<c:url value='/ad_list?pageNum=${pu.startPageNum-1 }&ader_num=${ad.ader_num }'/>">
+					<a href="<c:url value='/ad_list?ader_num=${ader_num }&pageNum=${pu.startPageNum-1 }'/>">
 						<span class="btnprev">◁◁</span>
 					</a>
 				</c:when>
@@ -92,12 +93,12 @@
 			<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 				<c:choose>
 					<c:when test="${i==pu.pageNum }">
-						<a href="<c:url value='/ad_list?pageNum=${i }&ader_num=${ad.ader_num }'/>">
+						<a href="<c:url value='/ad_list?ader_num=${ader_num }&pageNum=${i }'/>">
 							<span data-tooltip="${i }" class="pagination__dot pagination__dot--active"></span>
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a href="<c:url value='/ad_list?pageNum=${i }&ader_num=${ad.ader_num }'/>">
+						<a href="<c:url value='/ad_list?ader_num=${ader_num }&pageNum=${i }'/>">
 							<span data-tooltip="${i }" class="pagination__dot pagination__dot">
 							</span>
 						</a>
@@ -107,7 +108,7 @@
 			</div>
 			<c:choose>
 				<c:when test="${pu.endPageNum<pu.totalPageCount}">
-					<a href="<c:url value='/ad_list?pageNum=${pu.endPageNum+1 }&ader_num=${ad.ader_num }'/>">
+					<a href="<c:url value='/ad_list?ader_num=${ader_num }&pageNum=${pu.endPageNum+1 }'/>">
 						<span class="btnnext">
 								▷▷
 						</span>

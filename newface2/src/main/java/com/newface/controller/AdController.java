@@ -16,6 +16,7 @@ import com.newface.page.PageUtil;
 import com.newface.service.AdService;
 import com.newface.vo.AdVo;
 import com.newface.vo.AderVo;
+import com.newface.vo.MemberVo;
 
 @Controller
 public class AdController {
@@ -27,6 +28,7 @@ public class AdController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		int totalRowCount = service.ad_count(ader_num);
 		PageUtil pu = new PageUtil(pageNum, 15, 5, totalRowCount);
+		map.put("ader_num",ader_num);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		List<AdVo> ad_list = service.ad_list(map);
@@ -80,6 +82,26 @@ public class AdController {
 		service.ad_delete(ad_num);
 		return "redirect:/ader_list";
 	}
+	
+	@RequestMapping(value = "/ad_getinfo2", method = RequestMethod.GET)
+	public String admin_member_getinfo(int ad_num,Model model,@RequestParam(value="up",defaultValue="0") int up) {
+		AdVo vo=service.ad_getinfo(ad_num);
+		model.addAttribute("vo",vo);
+		model.addAttribute("up",up);
+		return ".ad_getinfo";
+	}
+	
+	@RequestMapping(value = "/adtype_update", method = RequestMethod.GET)
+	public String admin_member_getinfo_update(int ad_num,Model model,String type) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("ad_num", ad_num);
+		map.put("type", type);
+		service.update_type(map);
+		return "redirect:/ad_getinfo2?ad_num="+ad_num;
+	}
+	
+	
+	
 
 	// ±§∞Ì¡÷ ∏Ò∑œ
 	@RequestMapping(value = "/ader_list", method = RequestMethod.GET)
