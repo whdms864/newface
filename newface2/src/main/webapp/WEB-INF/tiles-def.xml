@@ -221,6 +221,10 @@
 	<definition name=".ad_update" extends=".ader_list">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/ad_update.jsp"/>
 	</definition>
+	
+	<definition name=".ad_total" extends=".ader_list">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/admin/ad/ad_total.jsp"/>
+	</definition>
 		
 		
 	

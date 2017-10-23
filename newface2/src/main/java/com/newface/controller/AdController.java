@@ -100,6 +100,12 @@ public class AdController {
 		return "redirect:/ad_getinfo2?ad_num="+ad_num;
 	}
 	
+	@RequestMapping(value = "/ad_total", method = RequestMethod.GET)
+	public String ad_total(Model model) {
+		
+		return ".ad_total";
+	}
+	
 	
 	
 

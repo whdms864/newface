@@ -14,7 +14,7 @@ td img{
 			<a href="<c:url value='/notiadmin_list'/>"style="margin-top: 0px;">공지사항</a>
 		</li>
 		<li>
-			<a href="<c:url value='/ader_list'/>"  class="now" >광고관리</a>
+			<a href="<c:url value='/ader_list'/>" class="now">광고관리</a>
 		</li>
 		<li>
 			<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
@@ -38,7 +38,7 @@ td img{
 		<ul>
 		    <li><a href="<c:url value='/ader_list'/>" style="margin-left:0px;" class="hover_a">광고목록</a></li>
 		    <li><a href="<c:url value='/ader_insert'/>">광고주등록</a></li>
-		    <li><a href="<c:url value=''/>">광고매출현황</a></li>
+		    <li><a href="<c:url value='/ad_total'/>">광고매출현황</a></li>
 		</ul>
 	</div>
 	<div id="con">

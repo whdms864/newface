@@ -56,7 +56,7 @@
   	<typeAlias type="com.newface.vo.Member_Profile_Hompy_JoinVo" alias="flist"/>
   	<typeAlias type="com.newface.vo.SingoVo" alias="singo"/>
   	<typeAlias type="com.newface.vo.Singo_getVo" alias="singo_get"/>
-  	
+  	<typeAlias type="com.newface.vo.AdminMsgVo" alias="adminmsg"/>
   </typeAliases>
   
   <mappers>

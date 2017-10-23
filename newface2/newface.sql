@@ -4,6 +4,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS ad;
 DROP TABLE IF EXISTS ader;
+DROP TABLE IF EXISTS admin_msg;
 DROP TABLE IF EXISTS diary_com_singo;
 DROP TABLE IF EXISTS noti_com_singo;
 DROP TABLE IF EXISTS noti_com;
@@ -85,6 +86,19 @@ CREATE TABLE admin
 );
 
 
+CREATE TABLE admin_msg
+(
+	adminmsg_num int NOT NULL,
+	content varchar(4000),
+	send_del varchar(20),
+	recv_del varchar(20),
+	regdate datetime,
+	sender varchar(250) NOT NULL,
+	receiver varchar(250) NOT NULL,
+	PRIMARY KEY (adminmsg_num)
+);
+
+
 CREATE TABLE buy
 (
 	buy_num int NOT NULL AUTO_INCREMENT,
@@ -124,6 +138,7 @@ CREATE TABLE diary
 	love int,
 	regdate date,
 	diary_folder_num int NOT NULL,
+	blind int,
 	PRIMARY KEY (diary_num)
 );
 
@@ -366,6 +381,7 @@ CREATE TABLE photo
 	regdate date,
 	type varchar(20),
 	photo_folder_num int NOT NULL,
+	blind int,
 	PRIMARY KEY (photo_num)
 );
 
@@ -506,6 +522,14 @@ CREATE TABLE today
 ALTER TABLE ad
 	ADD FOREIGN KEY (ader_num)
 	REFERENCES ader (ader_num)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE admin_msg
+	ADD FOREIGN KEY (sender)
+	REFERENCES admin (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
@@ -703,6 +727,14 @@ ALTER TABLE mine
 ;
 
 
+ALTER TABLE admin_msg
+	ADD FOREIGN KEY (receiver)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE buy
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
@@ -744,7 +776,7 @@ ALTER TABLE diary_singo
 
 
 ALTER TABLE diary_tag
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -752,7 +784,7 @@ ALTER TABLE diary_tag
 
 
 ALTER TABLE diary_tag
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -784,7 +816,7 @@ ALTER TABLE hompy
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -792,7 +824,7 @@ ALTER TABLE iu
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -816,7 +848,7 @@ ALTER TABLE mine
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (receiver)
+	ADD FOREIGN KEY (sender)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -824,7 +856,7 @@ ALTER TABLE msg
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (sender)
+	ADD FOREIGN KEY (receiver)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
