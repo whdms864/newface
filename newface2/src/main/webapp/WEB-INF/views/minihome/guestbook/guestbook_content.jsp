@@ -4,7 +4,7 @@
 <script type="text/javascript"
 	src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=22'/>">
+	href="<c:url value='/resources/css/minihome/guestbook/guestbook_content.css?ver=23'/>">
 	<div id="back">
 		<form method="post" action="<c:url value='/guest/insert'/>">
 			<div class="g_write_b">
@@ -26,9 +26,10 @@
 					<div class="g_header1">
 						<div class="g_num">No.${vo.guest_num }</div>
 						<div class="g_name">${vo.name }</div>
-						<a href="" class="g_home">
+						<a href="<c:url value='/minihome?hompy_num=${vo.hompy_num }'/>" class="g_home">
 						<img src="<c:url value='/resources/images/minihome/home_a.PNG'/>"></a>
 						<div class="g_date">( ${vo.regdate } )</div>
+						<c:if test="${sessionScope.loginid == requestScope.home_id || vo.id == sessionScope.id}">
 						<div class="g_update">
 							<a href="<c:url value='/guest/update?guest_num=${vo.guest_num }'/>">수정</a>
 						</div>
@@ -40,6 +41,7 @@
 						<div class="g_delete">
 							<a href="<c:url value='/guest/delete?guest_num=${vo.guest_num }'/>">삭제</a>
 						</div>
+						</c:if>
 					</div>
 				</c:if>
 				<c:if test="${vo.secret == '비밀글' }">

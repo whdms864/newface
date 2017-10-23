@@ -274,6 +274,7 @@ public class TimelineController {
 	@ResponseBody
 	public HashMap<String, Object> main2_com_insert(int startrow_com,int endrow_com,int num2,String tb,String content,HttpSession session){
 		String id=(String)session.getAttribute("loginid");
+		int hompy_num = (Integer)session.getAttribute("hompy_num");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
@@ -282,7 +283,7 @@ public class TimelineController {
 		map.put("num2", num2);
 		String add="";
 		if(tb.equals("photo")) {
-			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id,null);
+			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id,null,hompy_num);
 			photoservice.com_insert(vo);
 			list=comservice.p_c_list(map);
 			int n=comservice.p_c_list_all(num2);

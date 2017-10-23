@@ -172,7 +172,7 @@ public class PhotoController {
 		int photo_num=Integer.parseInt(request.getParameter("photo_num"));
 		int n=service.photo_delete(photo_num);
 		if(n>0) {
-			return "redirect:/photo/folder_list";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -187,7 +187,7 @@ public class PhotoController {
 		map.put("photo_num", photo_num);
 		int n=service.photo_love(map);
 		if(n>0) {
-			return "redirect:/photo/folder_list";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -209,7 +209,7 @@ public class PhotoController {
 	public String photo_updateok(Model model,PhotoVo vo) {
 		int n=service.photo_updateok(vo);
 		if(n>0) {
-			return "redirect:/photo/folder_list";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -239,7 +239,7 @@ public class PhotoController {
 	public String com_insert(PhotocomVo vo,Model model) {
 		int n=service.com_insert(vo);
 		if(n>0) {
-			return "redirect:/photo/folder_list";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code"; 
@@ -271,7 +271,7 @@ public class PhotoController {
 		int photo_com_num=Integer.parseInt(request.getParameter("photo_com_num"));
 		int n=service.com_delete(photo_com_num);
 		if(n>0) {
-			return "redirect:/photo/folder_list";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";

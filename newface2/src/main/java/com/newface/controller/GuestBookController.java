@@ -16,14 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.page.PageUtil;
 import com.newface.service.GuestbookService;
+import com.newface.service.MiniHomeService;
 import com.newface.vo.GuestbookVo;
 import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
 import com.newface.vo.GuestcomlistVo;
+import com.newface.vo.HompyVo;
 
 @Controller
 public class GuestBookController {
 	@Autowired GuestbookService service;
+	@Autowired MiniHomeService mini;
 	
 	@RequestMapping(value = "/guestbook", method = RequestMethod.GET)
 	public String guestbook() {
@@ -44,14 +47,30 @@ public class GuestBookController {
 	public String list_all(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,HttpSession session) {
 		session.setAttribute("choice", "guest");
 		int hompy_num = (Integer)session.getAttribute("hompy_num");
-		
+		String id=(String)session.getAttribute("loginid");
+		String home_id=mini.id(hompy_num);
+		HompyVo vo1=new HompyVo(hompy_num,0,null,id);
+		HompyVo hompy=service.hompy_is(vo1);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("hompy_num", hompy_num);
-		int totalRowCount=service.getCount(hompy_num);
-		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
-		map.put("startRow",pu.getStartRow());
-		map.put("endRow",pu.getEndRow());
-		List<GuestbooklistVo> list=service.list_all(map);
+		map.put("id", id);
+		List<GuestbooklistVo> list=null;
+		PageUtil pu=null;
+		if(hompy!=null) {
+			int totalRowCount=service.getCount(hompy_num);
+			pu=new PageUtil(pageNum,5,5,totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			map.put("home_id",home_id);
+			list=service.list_all(map);
+		}else {
+			int totalRowCount=service.getCount1(hompy_num);
+			pu=new PageUtil(pageNum,5,5,totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			map.put("home_id",home_id);
+			list=service.list_1(map);
+		}
 		for(GuestbooklistVo vo:list) {
 			String minime_img=service.minime_info(vo.getId());
 			vo.setMinime_img(minime_img);

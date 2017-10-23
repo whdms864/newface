@@ -8,11 +8,13 @@ public class PhotocomVo {
 	private int photo_num;
 	private String id;
 	private String name;
+	private int hompy_num;
 	
 	public PhotocomVo() {}
 
+
 	public PhotocomVo(int photo_com_num, String singo, String content, String regdate, int photo_num, String id,
-			String name) {
+			String name, int hompy_num) {
 		super();
 		this.photo_com_num = photo_com_num;
 		this.singo = singo;
@@ -21,7 +23,17 @@ public class PhotocomVo {
 		this.photo_num = photo_num;
 		this.id = id;
 		this.name = name;
+		this.hompy_num = hompy_num;
 	}
+
+	public int getHompy_num() {
+		return hompy_num;
+	}
+
+	public void setHompy_num(int hompy_num) {
+		this.hompy_num = hompy_num;
+	}
+
 
 	public int getPhoto_com_num() {
 		return photo_com_num;

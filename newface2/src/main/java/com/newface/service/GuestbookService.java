@@ -11,6 +11,7 @@ import com.newface.vo.GuestbookVo;
 import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
 import com.newface.vo.GuestcomlistVo;
+import com.newface.vo.HompyVo;
 
 @Service
 public class GuestbookService {
@@ -48,7 +49,16 @@ public class GuestbookService {
 	public int getCount(int hompy_num) {
 		return dao.getCount(hompy_num);
 	}
+	public int getCount1(int hompy_num) {
+		return dao.getCount1(hompy_num);
+	}
 	public String minime_info(String id) {
 		return dao.minime_info(id);
+	}
+	public HompyVo hompy_is(HompyVo vo) {
+		return dao.hompy_is(vo);
+	}
+	public List<GuestbooklistVo> list_1(HashMap<String, Object> map){
+		return dao.list_1(map);
 	}
 }

@@ -11,6 +11,7 @@ import com.newface.vo.GuestbookVo;
 import com.newface.vo.GuestbookcomVo;
 import com.newface.vo.GuestbooklistVo;
 import com.newface.vo.GuestcomlistVo;
+import com.newface.vo.HompyVo;
 
 @Repository
 public class GuestbookDao {
@@ -51,7 +52,16 @@ public class GuestbookDao {
 	public int getCount(int hompy_num) {
 		return sqlSession.selectOne(NAMESPACE+".count",hompy_num);
 	}
+	public int getCount1(int hompy_num) {
+		return sqlSession.selectOne(NAMESPACE+".count1",hompy_num);
+	}
 	public String minime_info(String id) {
 		return sqlSession.selectOne(NAMESPACE + ".minime_info", id);
+	}
+	public HompyVo hompy_is(HompyVo vo) {
+		return sqlSession.selectOne(NAMESPACE+".hompy_is",vo);
+	}
+	public List<GuestbooklistVo> list_1(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".list_1",map);
 	}
 }

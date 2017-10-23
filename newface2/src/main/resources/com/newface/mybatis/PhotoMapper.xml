@@ -13,7 +13,7 @@
 		select * from photo_folder where hompy_num=#{hompy_num}
 	</select>
 	<insert id="photo_insert" parameterType="photo">
-		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num})
+		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num},0)
 	</insert>
 	<select id="photo_list" parameterType="hashmap" resultType="photo_list">
 		select a.photo_num,a.title,a.content,a.love,a.secret,a.singo,date_format(a.regdate,'%Y/%c/%e')as regdate,a.photo_folder_num,b.hompy_num
@@ -79,7 +79,7 @@
 		insert into photo_com values(0,0,#{content},now(),#{photo_num},#{id})
 	</insert>
 	<select id="com_list" resultType="photo_com">
-		select photo_com_num,content,date_format(regdate,'%Y/%c/%e')as regdate,photo_num,id from photo_com
+		select a.photo_com_num,a.content,date_format(a.regdate,'%Y/%c/%e')as regdate,a.photo_num,a.id,b.hompy_num  from photo_com as a join hompy as b on a.id=b.id;
 	</select>
 	<delete id="com_delete" parameterType="int">
 		delete from photo_com where photo_com_num=#{photo_com_num}

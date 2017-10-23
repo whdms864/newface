@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/minihome/photo/photo_content.css?ver=33'/>">
+	href="<c:url value='/resources/css/minihome/photo/photo_content.css?ver=44'/>">
 <a href="<c:url value='/photo/write'/>" id="p_upload"><img
 	src="<c:url value='/resources/images/minihome/photo_upload.PNG'/>"></a>
 	
@@ -54,7 +54,7 @@
 <c:forEach var="vo2" items="${requestScope.list2 }">
 	<c:if test="${vo2.photo_num eq vo.photo_num}">
 			<div class="p_comment_name">
-			<a href="">${vo2.name } :</a> ${vo2.content }
+			<a href="<c:url value='/minihome?hompy_num=${vo2.hompy_num }'/>">${vo2.name } :</a> ${vo2.content }
 			<div style="display:inline;font-size:9px;color:gray;">(${vo2.regdate })</div>&nbsp;
 			<c:if test="${sessionScope.loginid == vo2.id}">
 			<a href="<c:url value='/photo/com_delete?photo_com_num=${vo2.photo_com_num }'/>"><img src="<c:url value='/resources/images/minihome/comment_delete1.png'/>" style="position:absolute;margin-top:2px;"></a>

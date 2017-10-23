@@ -8,12 +8,13 @@ public class GuestbooklistVo {
 	private String secret;
 	private String regdate;
 	private String minime_img;
+	private int hompy_num;
 
 	public GuestbooklistVo() {
 	}
 
 	public GuestbooklistVo(String name, String id, int guest_num, String content, String secret, String regdate,
-			String minime_img) {
+			String minime_img, int hompy_num) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -22,6 +23,16 @@ public class GuestbooklistVo {
 		this.secret = secret;
 		this.regdate = regdate;
 		this.minime_img = minime_img;
+		this.hompy_num = hompy_num;
+	}
+
+
+	public int getHompy_num() {
+		return hompy_num;
+	}
+
+	public void setHompy_num(int hompy_num) {
+		this.hompy_num = hompy_num;
 	}
 
 	public String getName() {
