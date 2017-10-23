@@ -66,7 +66,7 @@
 		</div>
 		<ul>
 		    <li><a href="<c:url value='/memadmin'/>" style="margin-left:0px;">전체회원</a></li>
-		    <li><a href="<c:url value='/memadmin/1'/>" class="hover_a">제재회원</a></li>
+		    <li><a href="<c:url value='/memadmin/1'/>" class="hover_a">경고회원</a></li>
 		    <li><a href="<c:url value='/memadmin/2'/>">탈퇴회원</a></li>
 		</ul>
 	</div>

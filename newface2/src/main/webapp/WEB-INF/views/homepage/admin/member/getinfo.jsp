@@ -78,7 +78,7 @@
 		</div>
 		<ul>
 		    <li><a href="<c:url value='/memadmin'/>" style="margin-left:0px;">전체회원</a></li>
-		    <li><a href="<c:url value='/memadmin/1'/>">제재회원</a></li>
+		    <li><a href="<c:url value='/memadmin/1'/>">경고회원</a></li>
 		    <li><a href="<c:url value='/memadmin/2'/>">탈퇴회원</a></li>
 		</ul>
 	</div>
@@ -116,7 +116,13 @@
 			  			<c:choose>
 			  				<c:when test="${up==1}">
 						  			<td>
-						  			<input type="text" value="${vo.type}" id="m_type">
+						  			<select id="m_type" class="control-label" style="font-weight: bold;height: 25px;">
+										<option value="회원" ${vo.type == '회원' ? 'selected="selected"' : '' }>회원</option>
+										<option value="1회경고" ${vo.type == '1회경고' ? 'selected="selected"' : '' }>1회경고</option>
+										<option value="2회경고" ${vo.type == '2회경고' ? 'selected="selected"' : '' }>2회경고</option>
+										<option value="3회경고" ${vo.type == '3회경고' ? 'selected="selected"' : '' }>3회경고</option>
+										<option value="탈퇴" ${vo.type == '탈퇴' ? 'selected="selected"' : '' }>탈퇴</option>
+									</select>
 						  			<input type="button" value="확인" class="btn btn-primary" id="btn_upok"
 						  			style="width: 50px;padding: 0px;height: 25px;float: right;">
 						  			</td>

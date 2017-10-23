@@ -194,7 +194,7 @@ public class MemberController {
 	@RequestMapping(value = "/memadmin/1", method = RequestMethod.GET)
 	public String admin_member_list_1(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,
 			@RequestParam(value="text",defaultValue="") String text,
-			@RequestParam(value="type",defaultValue="제재") String type) {
+			@RequestParam(value="type",defaultValue="경고") String type) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("text",text);
 		map.put("type",type);

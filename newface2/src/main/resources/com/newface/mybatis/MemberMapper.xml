@@ -17,7 +17,7 @@
 	</insert>
 	<select id="getinfo_type" resultType="member" parameterType="hashmap">
 		select * from member
-		where type=#{type} and (id like concat('%',#{text},'%') or name like concat('%',#{text},'%'))
+		where type like concat('%',#{type},'%') and (id like concat('%',#{text},'%') or name like concat('%',#{text},'%'))
 		order by id,regdate limit #{startRow},#{endRow}
 	</select>
 	<select id="listall" resultType="member" parameterType="hashmap">

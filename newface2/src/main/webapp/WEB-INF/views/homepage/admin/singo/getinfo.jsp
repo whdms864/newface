@@ -70,8 +70,16 @@
 				<div style="width: 93%;height:33%;padding: 10px 10px 0px 10px;">
 						<div class="form-group has-error" style="display: inline-block; ">
 							<div style="display: inline-block;">
-								<label class="control-label" for="inputWarning1">관리자 확인</label>
-								<label class="control-label" for="inputWarning1" style="margin-left: 420px;color: black;">블라인드 : </label>
+								<label class="control-label" for="inputWarning1">[ 관리자 확인 ]</label>
+								<label class="control-label" for="inputWarning1" style="margin-left: 130px;color: black;">회원상태 : </label>
+								<select name="type" class="control-label" style="font-weight: bold;height: 25px;">
+										<option value="회원" ${type == '회원' ? 'selected="selected"' : '' }>회원</option>
+										<option value="1회경고" ${type == '1회경고' ? 'selected="selected"' : '' }>1회경고</option>
+										<option value="2회경고" ${type == '2회경고' ? 'selected="selected"' : '' }>2회경고</option>
+										<option value="3회경고" ${type == '3회경고' ? 'selected="selected"' : '' }>3회경고</option>
+										<option value="탈퇴" ${type == '탈퇴' ? 'selected="selected"' : '' }>탈퇴</option>
+								</select>
+								<label class="control-label" for="inputWarning1" style="margin-left: 130px;color: black;">  블라인드 : </label>
 								<select name="blind" class="control-label" style="font-weight: bold;height: 25px;">
 									<option value="0" ${vo.blind == 0 ? 'selected="selected"' : '' }>일반</option>
 									<option value="1" ${vo.blind == 1 ? 'selected="selected"' : '' }>블라인드</option>
@@ -80,7 +88,8 @@
 							<br>
 							<input type="hidden" name="tb" value="${vo.tb }">
 							<input type="hidden" name="num2" value="${vo.num }">
-							<textarea rows="6" cols="91" name="content" id="in_content" class="form-control" style="resize: none;">${content }</textarea>
+							<input type="hidden" name="writer" value="${vo.id }">
+							<textarea rows="6" cols="91" name="content" id="in_content" class="form-control" style="resize: none;" placeholder="작성폼  = [게시글 제목 - 작성자] : 사유">${content }</textarea>
 						</div>
 				</div>
 				<div style="position:absolute;top:600px;width: 98%;"align="center">
