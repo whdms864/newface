@@ -45,7 +45,7 @@
 			<label style="font-weight:bold;font-size:25px;">신고관리</label>
 		</div>
 		<ul>
-		    <li><a href="<c:url value='/qna11/admin/list'/>"style="margin-left:0px;" class="hover_a">목록</a></li>
+		    <li><a href="<c:url value='/singoadmin'/>"style="margin-left:0px;" class="hover_a">목록</a></li>
 		</ul>
 	</div>
 	<div id="con">	
@@ -54,26 +54,24 @@
 				<thead>
 			  		<tr class="danger">
 			  			<th>No.</th>
+			  			<th>구분</th>
 			  			<th>게시글번호</th>
 			  			<th>신고횟수</th>
+			  			<th>관리자확인</th>
 			  			<th>보기</th>
 			  		</tr>
 			  	</thead>
 			  	<tbody>
+			  		<c:set var="i" value="0"/>
 			  		<c:forEach var="vo" items="${list}">
+			  			<c:set var="i" value="${i + 1}"/>
 			  			<tr>
-				  			<td>${vo.qna11_num}</td>
-				  			<td>${vo.id}</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 300px;">
-				  			<a href="<c:url value='/qna11/admin/detail?qna11_num=${vo.qna11_num }'/>">${vo.title}</a></td>
-				  			<td>${vo.regdate}</td>
-				  			<td>
-					  			<c:choose>
-					  				<c:when test="${vo.confirm=='0'}">대기</c:when>
-					  				<c:when test="${vo.confirm=='1'}">확인중</c:when>
-					  				<c:when test="${vo.confirm=='2'}">답변완료</c:when>
-					  			</c:choose>
-				  			</td>
+			  				<td>${i }</td>
+			  				<td>${vo.tb }</td>
+			  				<td>${vo.num2 }</td>
+			  				<td>${vo.cnt }</td>
+			  				<td>${vo.content }</td>
+			  				<td><a href="<c:url value='/singo/admin/getinfo'/>">보기</a></td>
 				  		</tr>
 				  	</c:forEach>
 				</tbody>

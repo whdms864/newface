@@ -2,6 +2,7 @@ package com.newface.service;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.newface.dao.SingoDao;
 import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotosingoVo;
+import com.newface.vo.SingoVo;
+import com.newface.vo.Singo_getVo;
 
 @Service
 public class SingoService {
@@ -39,5 +42,26 @@ public class SingoService {
 	}
 	public int d_update(HashMap<String, Object> map) {
 		return dao.d_update(map);
+	}
+	public int p_blind(HashMap<String, Object> map) {
+		return dao.p_blind(map);
+	}
+	public int d_blind(HashMap<String, Object> map) {
+		return dao.d_blind(map);
+	}
+	public int ps_update(HashMap<String, Object> map) {
+		return dao.ps_update(map);
+	}
+	public int ds_update(HashMap<String, Object> map) {
+		return dao.ds_update(map);
+	}
+	public List<SingoVo> singo_list(HashMap<String, Object> map) {
+		return dao.singo_list(map);
+	}
+	public Singo_getVo getinfo(int num2)  {
+		return dao.getinfo(num2);
+	}
+	public int getcount()  {
+		return dao.getcount();
 	}
 }

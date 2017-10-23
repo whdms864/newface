@@ -27,4 +27,38 @@
 	<update id="d_update" parameterType="hashmap">
 		update diary set singo=#{singo} where diary_num=#{diary_num}
 	</update>
+	<update id="p_blind" parameterType="hashmap">
+		update photo set blind=#{blind} where photo_num=#{photo_num}
+	</update>
+	<update id="d_blind" parameterType="hashmap">
+		update diary set blind=#{blind} where diary_num=#{diary_num}
+	</update>
+	<update id="ps_update" parameterType="hashmap">
+		update photo_singo set content=#{content} where photo_num=#{photo_num}
+	</update>
+	<update id="ds_update" parameterType="hashmap">
+		update diary_singo set content=#{content} where diary_num=#{diary_num}
+	</update>
+	<select id="singo_list" resultType="singo" parameterType="hashmap">
+		select count(*) cnt,content,num2,tb from(
+		select ps_num num,content,photo_num num2,id,'사진첩' tb from photo_singo
+		union
+		select diary_singo_num num,content,diary_num num2,id,'다이어리' tb from diary_singo)a
+		group by a.num2
+		order by cnt desc 
+		limit #{startRow},#{endRow}
+	</select>
+	<select id="getcount" resultType="int">
+		select count(*) cnt from
+		(select * from photo_singo
+		union
+		select * from diary_singo) a
+	</select>
+	<select id="getinfo" resultType="singo_get" parameterType="int">
+		select * from(
+		select ps_num num,content,photo_num num2,id,'사진첩' tb from photo_singo
+		union
+		select diary_singo_num num,content,diary_num num2,id,'다이어리' tb from diary_singo)a
+		where a.num2=#{value}
+	</select>
 </mapper>  
