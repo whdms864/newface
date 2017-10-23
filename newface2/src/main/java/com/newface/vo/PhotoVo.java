@@ -12,11 +12,12 @@ public class PhotoVo {
 	private Date regdate;
 	private String type;
 	private int photo_folder_num;
+	private int blind;
 	
 	public PhotoVo() {}
 
 	public PhotoVo(int photo_num, String title, String content, int love, String secret, int singo, Date regdate,
-			String type, int photo_folder_num) {
+			String type, int photo_folder_num, int blind) {
 		super();
 		this.photo_num = photo_num;
 		this.title = title;
@@ -27,6 +28,7 @@ public class PhotoVo {
 		this.regdate = regdate;
 		this.type = type;
 		this.photo_folder_num = photo_folder_num;
+		this.blind = blind;
 	}
 
 	public int getPhoto_num() {
@@ -100,5 +102,15 @@ public class PhotoVo {
 	public void setPhoto_folder_num(int photo_folder_num) {
 		this.photo_folder_num = photo_folder_num;
 	}
+
+	public int getBlind() {
+		return blind;
+	}
+
+	public void setBlind(int blind) {
+		this.blind = blind;
+	}
+
+	
 	
 }

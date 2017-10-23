@@ -26,7 +26,7 @@
 			<a href="<c:url value='/ader_list'/>" >광고관리</a>
 		</li>
 		<li>
-			<a href="<c:url value='/qna11/admin/list'/>" class="now">1:1문의</a>
+			<a href="<c:url value='/qna11/admin/list'/>">1:1문의</a>
 		</li>
 		<li>
 			<a href="<c:url value='/market/admin/item/list'/>">마켓관리</a>
@@ -35,7 +35,7 @@
 			<a href="<c:url value='/memadmin'/>" >회원관리</a>
 		</li>
 		<li>
-			<a href="<c:url value='/singoadmin'/>">신고관리</a>
+			<a href="<c:url value='/singoadmin'/>"  class="now">신고관리</a>
 		</li>
 	</ul>
 </div>
@@ -54,10 +54,9 @@
 				<thead>
 			  		<tr class="danger">
 			  			<th>No.</th>
-			  			<th>아이디</th>
-			  			<th>제목</th>
-			  			<th>등록일</th>
-			  			<th>상태</th>
+			  			<th>게시글번호</th>
+			  			<th>신고횟수</th>
+			  			<th>보기</th>
 			  		</tr>
 			  	</thead>
 			  	<tbody>

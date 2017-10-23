@@ -231,12 +231,15 @@
 							"font-weight" : "bold",
 							"color" : "red"
 						});
+						singo += 1;
 					} else {
 						$(this).css({
 							"font-weight" : "normal",
 							"color" : "#616770"
 						});
+						singo -=1;
 					}
+					var singo =$(this).parents(".first").find(".singo_val").val(singo);
 				});
 				
 				/*게시글 작성자 클릭시*/

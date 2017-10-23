@@ -219,12 +219,12 @@ public class TimelineController {
 		if(tb.equals("photo")) {
 			PhotoVo v=photoservice.photo_update(num);
 			String content=add_con+"<hr>"+v.getContent();
-			PhotoVo vo=new PhotoVo(0, title, content, 0, secret, 0, null, "사진", fnum);
+			PhotoVo vo=new PhotoVo(0, title, content, 0, secret, 0, null, "사진", fnum,0);
 			photoservice.photo_insert(vo);
 		}else if(tb.equals("diary")) {
 			DiaryVo v=diaryservice.content(num);
 			String content=add_con+"<hr>"+v.getContent();
-			DiaryVo vo=new DiaryVo(0, secret, title, content,0, 0, null, fnum,null);
+			DiaryVo vo=new DiaryVo(0, secret, title, content,0, 0, null, fnum,0,null,0);
 			diaryservice.insert(vo);
 		}
 		return "redirect:/main2";

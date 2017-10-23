@@ -13,7 +13,7 @@
 		select * from photo_folder where hompy_num=#{hompy_num}
 	</select>
 	<insert id="photo_insert" parameterType="photo">
-		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num})
+		insert into photo values(0,#{title},#{content},0,#{secret},0,now(),#{type},#{photo_folder_num},0)
 	</insert>
 	<select id="photo_list" parameterType="hashmap" resultType="photo_list">
 		select a.photo_num,a.title,a.content,a.love,a.secret,a.singo,date_format(a.regdate,'%Y/%c/%e')as regdate,a.photo_folder_num,b.hompy_num
