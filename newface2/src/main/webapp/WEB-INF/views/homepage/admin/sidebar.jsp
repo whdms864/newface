@@ -22,9 +22,6 @@
 		<a href="<c:url value='/singoadmin'/>">신고관리</a>
 	</li>
 </ul>
-<div>
-<a href="<c:url value='/'/>">main</a>
-</div>
 
 
 
