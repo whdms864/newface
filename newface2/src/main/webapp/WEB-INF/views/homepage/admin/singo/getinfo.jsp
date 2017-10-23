@@ -6,9 +6,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#insert").submit(function(event){
-			var content=$("#content").val();
+			var content=$("#in_content").val();
+			alert(content);
 			if(content==""){
-				$("#content").focus();
+				$("#in_content").focus();
 				alert("관리자 확인란에 내용을 입력해주세요");
 				event.preventDefault();
 			}
@@ -68,18 +69,18 @@
 			<form method="post" id="insert" action="<c:url value='/singo/admin/update'/>">
 				<div style="width: 93%;height:33%;padding: 10px 10px 0px 10px;">
 						<div class="form-group has-error" style="display: inline-block; ">
-							<div>
+							<div style="display: inline-block;">
 								<label class="control-label" for="inputWarning1">관리자 확인</label>
-								<label class="control-label" for="inputWarning1">블라인드 : </label>
-								<select name="blind" class="control-label">
-									<option value="0">일반</option>
-									<option value="1">블라인드</option>
+								<label class="control-label" for="inputWarning1" style="margin-left: 420px;color: black;">블라인드 : </label>
+								<select name="blind" class="control-label" style="font-weight: bold;height: 25px;">
+									<option value="0" ${vo.blind == 0 ? 'selected="selected"' : '' }>일반</option>
+									<option value="1" ${vo.blind == 1 ? 'selected="selected"' : '' }>블라인드</option>
 								</select>
 							</div>
 							<br>
 							<input type="hidden" name="tb" value="${vo.tb }">
-							<input type="hidden" name="num" value="${vo.num }">
-							<textarea rows="6" cols="91" name="content" id="content" class="form-control" style="resize: none;">${content }</textarea>
+							<input type="hidden" name="num2" value="${vo.num }">
+							<textarea rows="6" cols="91" name="content" id="in_content" class="form-control" style="resize: none;">${content }</textarea>
 						</div>
 				</div>
 				<div style="position:absolute;top:600px;width: 98%;"align="center">

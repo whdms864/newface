@@ -31,6 +31,12 @@ public class SingoService {
 	public int d_delete(HashMap<String, Object> map) {
 		return dao.d_delete(map);
 	}
+	public int p_delete_all(int num) {
+		return dao.p_delete_all(num);
+	}
+	public int d_delete_all(int num) {
+		return dao.d_delete_all(num);
+	}
 	public PhotosingoVo p_list(HashMap<String, Object> map) {
 		return dao.p_list(map);
 	}

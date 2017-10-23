@@ -15,6 +15,12 @@
 	<delete id="d_delete" parameterType="hashmap">
 		delete from diary_singo where diary_num=#{diary_num} and id=#{id}
 	</delete>
+	<delete id="p_delete_all" parameterType="int">
+		delete from photo_singo where photo_num=#{value}
+	</delete>
+	<delete id="d_delete_all" parameterType="int">
+		delete from diary_singo where diary_num=#{value}
+	</delete>
 	<select id="p_list" resultType="p_singo" parameterType="hashmap">
 		select * from photo_singo where photo_num=#{photo_num} and id=#{id}
 	</select>
@@ -61,7 +67,7 @@
 		select * from diary_singo where diary_num=#{value}
 	</select>
 	<select id="getinfo" resultType="singo_get" parameterType="hashmap">
-		select num,title,content,love,singo,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,tb from 
+		select num,title,content,love,singo,blind,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,tb from 
 		(select p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.blind blind,p.regdate regdate,h.id id,'사진첩' tb
 		from hompy h
 		join photo_folder pf

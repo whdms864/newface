@@ -7,20 +7,22 @@ public class Singo_getVo {
 	private String content;
 	private int love;
 	private String singo;
+	private int blind;
 	private String regdate;
 	private String id;
 	private String tb;
 	
 	public Singo_getVo() {}
 
-	public Singo_getVo(int num, String title, String content, int love, String singo, String regdate, String id,
-			String tb) {
+	public Singo_getVo(int num, String title, String content, int love, String singo, int blind, String regdate,
+			String id, String tb) {
 		super();
 		this.num = num;
 		this.title = title;
 		this.content = content;
 		this.love = love;
 		this.singo = singo;
+		this.blind = blind;
 		this.regdate = regdate;
 		this.id = id;
 		this.tb = tb;
@@ -66,6 +68,14 @@ public class Singo_getVo {
 		this.singo = singo;
 	}
 
+	public int getBlind() {
+		return blind;
+	}
+
+	public void setBlind(int blind) {
+		this.blind = blind;
+	}
+
 	public String getRegdate() {
 		return regdate;
 	}
@@ -89,7 +99,6 @@ public class Singo_getVo {
 	public void setTb(String tb) {
 		this.tb = tb;
 	}
-
 
 
 	

@@ -34,6 +34,12 @@ public class SingoDao {
 	public int d_delete(HashMap<String, Object> map) {
 		return sqlSession.delete(NAMESPACE+".d_delete",map);
 	}
+	public int p_delete_all(int num) {
+		return sqlSession.delete(NAMESPACE+".p_delete_all",num);
+	}
+	public int d_delete_all(int num) {
+		return sqlSession.delete(NAMESPACE+".d_delete_all",num);
+	}
 	public PhotosingoVo p_list(HashMap<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".p_list",map);
 	}

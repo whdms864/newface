@@ -62,16 +62,29 @@ public class SingoController {
 		model.addAttribute("vo",vo);
 		return ".singoadmin_getinfo";
 	}
-	@RequestMapping(value = "/singo/admin/update", method = RequestMethod.GET)
-	public String update(Model model,int num2,String tb,String content) {
+	@RequestMapping(value = "/singo/admin/update", method = RequestMethod.POST)
+	public String update(Model model,int num2,String tb,String content,int blind) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("content",content);
+		map.put("blind", blind);
 		if(tb.equals("사진첩")) {
 			map.put("photo_num",num2);
 			singoservice.ps_update(map);
+			singoservice.p_blind(map);
+			if(blind==0) {
+				singoservice.p_delete_all(num2);
+			}else {
+				
+			}
 		}else if(tb.equals("다이어리")) {
 			map.put("diary_num",num2);
 			singoservice.ds_update(map);
+			singoservice.d_blind(map);
+			if(blind==0) {
+				singoservice.d_delete_all(num2);
+			}else {
+				
+			}
 		}
 		return "redirect:/singoadmin";
 	}
