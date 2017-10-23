@@ -11,6 +11,7 @@ import com.newface.dao.SingoDao;
 import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotosingoVo;
 import com.newface.vo.SingoVo;
+import com.newface.vo.Singo_getVo;
 
 @Service
 public class SingoService {
@@ -62,6 +63,9 @@ public class SingoService {
 	}
 	public List<DiarysingoVo> d_getinfo(int num2) {
 		return dao.d_getinfo(num2);
+	}
+	public Singo_getVo getinfo(HashMap<String, Object> map) {
+		return dao.getinfo(map);
 	}
 	public int getcount()  {
 		return dao.getcount();

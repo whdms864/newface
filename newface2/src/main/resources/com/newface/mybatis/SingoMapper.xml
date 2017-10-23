@@ -60,4 +60,23 @@
 	<select id="d_getinfo" resultType="d_singo" parameterType="int">
 		select * from diary_singo where diary_num=#{value}
 	</select>
+	<select id="getinfo" resultType="singo_get" parameterType="hashmap">
+		select num,title,content,love,singo,DATE_FORMAT(regdate, "%Y년 %m월 %d일 %H:%i") regdate,id,tb from 
+		(select p.photo_num num,p.title title,p.content content,p.love love,p.singo singo,p.blind blind,p.regdate regdate,h.id id,'사진첩' tb
+		from hompy h
+		join photo_folder pf
+		on pf.hompy_num = h.hompy_num
+		join photo p
+		on pf.photo_folder_num = p.photo_folder_num
+		union
+		select d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.blind blind,d.regdate regdate,h.id id,'다이어리' tb
+		from hompy h
+		join diary_folder df
+		on df.hompy_num = h.hompy_num
+		join diary d
+		on df.diary_folder_num = d.diary_folder_num
+		) a
+		
+		where a.num=#{num} and a.tb=#{tb};
+	</select>
 </mapper>  

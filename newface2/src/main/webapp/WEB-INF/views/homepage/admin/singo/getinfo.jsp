@@ -5,6 +5,14 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#insert").submit(function(event){
+			var content=$("#content").val();
+			if(content==""){
+				$("#content").focus();
+				alert("관리자 확인란에 내용을 입력해주세요");
+				event.preventDefault();
+			}
+		});
 	});
 </script>
 <div id="sidebar">
@@ -42,26 +50,36 @@
 		<div align="center">
 			<table class="table" style="width: 90%;margin-top: 20px;border: 1px solid #ddd;">
 			  		<tr class="danger">
-			  			<td colspan="3">${cvo.title}</td>
+			  			<td>No.${vo.num}</td>
+			  			<td colspan="2">${vo.title}</td>
 			  		</tr>
 			  		<tr>
-			  			<td>신고횟수 : ${cvo.singo }</td>
-			  			<td>작성일 : 작성일</td>
-			  			<td>작성자 : 아이디</td>
+			  			<td>신고횟수 : ${vo.singo }</td>
+			  			<td>작성일 : ${vo.regdate }</td>
+			  			<td>작성자 : ${vo.id }</td>
 				  	</tr>
 				  	<tr>
 			  			<td colspan="3" style="height:300px">
-			  			${cvo.content }
+			  			${vo.content }
 			  			</td>
 				  	</tr>
 			</table>
 			<div style="background-color: rgb(224, 224, 224);margin-top:10px;margin-left:10px;width: 97%; height:1px;"></div>
-			<form method="post" id="insert" action="<c:url value='/qna11/admin/update'/>">
+			<form method="post" id="insert" action="<c:url value='/singo/admin/update'/>">
 				<div style="width: 93%;height:33%;padding: 10px 10px 0px 10px;">
 						<div class="form-group has-error" style="display: inline-block; ">
-							<label class="control-label" for="inputWarning1">관리자 확인</label>
+							<div>
+								<label class="control-label" for="inputWarning1">관리자 확인</label>
+								<label class="control-label" for="inputWarning1">블라인드 : </label>
+								<select name="blind" class="control-label">
+									<option value="0">일반</option>
+									<option value="1">블라인드</option>
+								</select>
+							</div>
 							<br>
-							<textarea rows="6" cols="91" name="content" id="content" class="form-control" style="resize: none;"></textarea>
+							<input type="hidden" name="tb" value="${vo.tb }">
+							<input type="hidden" name="num" value="${vo.num }">
+							<textarea rows="6" cols="91" name="content" id="content" class="form-control" style="resize: none;">${content }</textarea>
 						</div>
 				</div>
 				<div style="position:absolute;top:600px;width: 98%;"align="center">

@@ -20,7 +20,7 @@
 		on pf.hompy_num = h.hompy_num
 		join photo p
 		on pf.photo_folder_num = p.photo_folder_num
-		where p.secret='전체공개'
+		where p.secret='전체공개' and p.blind=0
 		union
 		select d.diary_num num,d.title title,d.content content,d.love love,d.singo singo,d.regdate regdate,h.id id,m.name name,pro.save_name save_name,'diary' tb
 		from member m
@@ -37,7 +37,7 @@
 		on df.hompy_num = h.hompy_num
 		join diary d
 		on df.diary_folder_num = d.diary_folder_num
-		where d.type='전체공개') a
+		where d.type='전체공개' and d.blind=0) a
 		
 		where title like concat('%',#{text},'%') or content like concat('%',#{text},'%') or name like concat('%',#{text},'%')
 		order by a.regdate desc 

@@ -1,19 +1,27 @@
 package com.newface.vo;
 
+
 public class Singo_getVo {
 	private int num;
+	private String title;
 	private String content;
-	private int num2;
+	private int love;
+	private String singo;
+	private String regdate;
 	private String id;
 	private String tb;
 	
 	public Singo_getVo() {}
 
-	public Singo_getVo(int num, String content, int num2, String id, String tb) {
+	public Singo_getVo(int num, String title, String content, int love, String singo, String regdate, String id,
+			String tb) {
 		super();
 		this.num = num;
+		this.title = title;
 		this.content = content;
-		this.num2 = num2;
+		this.love = love;
+		this.singo = singo;
+		this.regdate = regdate;
 		this.id = id;
 		this.tb = tb;
 	}
@@ -26,6 +34,14 @@ public class Singo_getVo {
 		this.num = num;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getContent() {
 		return content;
 	}
@@ -34,12 +50,28 @@ public class Singo_getVo {
 		this.content = content;
 	}
 
-	public int getNum2() {
-		return num2;
+	public int getLove() {
+		return love;
 	}
 
-	public void setNum2(int num2) {
-		this.num2 = num2;
+	public void setLove(int love) {
+		this.love = love;
+	}
+
+	public String getSingo() {
+		return singo;
+	}
+
+	public void setSingo(String singo) {
+		this.singo = singo;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getId() {
@@ -57,6 +89,8 @@ public class Singo_getVo {
 	public void setTb(String tb) {
 		this.tb = tb;
 	}
+
+
 
 	
 }

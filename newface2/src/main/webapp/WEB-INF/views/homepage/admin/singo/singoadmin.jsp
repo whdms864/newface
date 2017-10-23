@@ -70,7 +70,7 @@
 			  				<td>${vo.tb }</td>
 			  				<td>${vo.num2 }</td>
 			  				<td>${vo.cnt }</td>
-			  				<td>${vo.content }</td>
+			  				<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 145px;">${vo.content }</td>
 			  				<td><a href="<c:url value='/singo/admin/getinfo?num2=${vo.num2 }&tb=${vo.tb }'/>">보기</a></td>
 				  		</tr>
 				  	</c:forEach>

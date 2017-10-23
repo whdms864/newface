@@ -22,6 +22,7 @@ import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.PhotosingoVo;
 import com.newface.vo.SingoVo;
+import com.newface.vo.Singo_getVo;
 
 
 
@@ -34,8 +35,7 @@ public class SingoController {
 	@Autowired private DiaryService diaryservice;
 	
 	@RequestMapping(value = "/singoadmin", method = RequestMethod.GET)
-	public String main2(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
-			Model model,HttpSession session) {
+	public String main2(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=singoservice.getcount();
 		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
@@ -47,18 +47,32 @@ public class SingoController {
 		return ".singoadmin";
 	}
 	@RequestMapping(value = "/singo/admin/getinfo", method = RequestMethod.GET)
-	public String main2(Model model,HttpSession session,int num2,String tb) {
+	public String getinfo(Model model,int num2,String tb) {
 		if(tb.equals("사진첩")) {
 			List<PhotosingoVo> list=singoservice.p_getinfo(num2);
-			PhotoVo v=photoservice.photo_update(num2);
-			model.addAttribute("list",list);
-			model.addAttribute("cvo",v);
+			model.addAttribute("content",list.get(0).getContent());
 		}else if(tb.equals("다이어리")) {
 			List<DiarysingoVo> list=singoservice.d_getinfo(num2);
-			DiaryVo v=diaryservice.content(num2);
-			model.addAttribute("list",list);
-			model.addAttribute("cvo",v);
+			model.addAttribute("content",list.get(0).getContent());
 		}
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("num",num2);
+		map.put("tb",tb);
+		Singo_getVo vo=singoservice.getinfo(map);
+		model.addAttribute("vo",vo);
 		return ".singoadmin_getinfo";
+	}
+	@RequestMapping(value = "/singo/admin/update", method = RequestMethod.GET)
+	public String update(Model model,int num2,String tb,String content) {
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("content",content);
+		if(tb.equals("사진첩")) {
+			map.put("photo_num",num2);
+			singoservice.ps_update(map);
+		}else if(tb.equals("다이어리")) {
+			map.put("diary_num",num2);
+			singoservice.ds_update(map);
+		}
+		return "redirect:/singoadmin";
 	}
 }
