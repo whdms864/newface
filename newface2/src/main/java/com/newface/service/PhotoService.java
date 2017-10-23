@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.PhotoDao;
+import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.PhotocomVo;
 import com.newface.vo.PhotofolderVo;
@@ -32,6 +34,18 @@ public class PhotoService {
 	}
 	public List<PhotolistVo> photo_list1(HashMap<String, Object> map){
 		return dao.photo_list1(map);
+	}
+	public List<PhotolistVo> photo_list11(HashMap<String, Object> map){
+		return dao.photo_list11(map);
+	}
+	public List<PhotolistVo> photo_list12(HashMap<String, Object> map){
+		return dao.photo_list12(map);
+	}
+	public List<PhotolistVo> photo_list21(HashMap<String, Object> map){
+		return dao.photo_list21(map);
+	}
+	public List<PhotolistVo> photo_list22(HashMap<String, Object> map){
+		return dao.photo_list22(map);
 	}
 	public String name(String id) {
 		return dao.name(id);
@@ -71,5 +85,14 @@ public class PhotoService {
 	}
 	public int home_test(HashMap<String,Object> map) {
 		return dao.home_test(map);
+	}
+	public int photo_secret(HashMap<String,Object> map) {
+		return dao.photo_secret(map);
+	}
+	public HompyVo hompy_is(HompyVo vo) {
+		return dao.hompy_is(vo);
+	}
+	public IuVo iu_check(IuVo vo) {
+		return dao.iu_check(vo);
 	}
 }

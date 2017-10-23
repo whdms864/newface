@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.PhotocomVo;
 import com.newface.vo.PhotofolderVo;
@@ -34,6 +36,18 @@ public class PhotoDao {
 	}
 	public List<PhotolistVo> photo_list1(HashMap<String, Object> map){
 		return sqlSession.selectList(NAMESPACE+".photo_list1",map);
+	}
+	public List<PhotolistVo> photo_list11(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".photo_list11",map);
+	}
+	public List<PhotolistVo> photo_list12(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".photo_list12",map);
+	}
+	public List<PhotolistVo> photo_list21(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".photo_list21",map);
+	}
+	public List<PhotolistVo> photo_list22(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+".photo_list22",map);
 	}
 	public String name(String id) {
 		return sqlSession.selectOne(NAMESPACE+".name",id);
@@ -73,5 +87,14 @@ public class PhotoDao {
 	}
 	public int home_test(HashMap<String,Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".home_test",map);
+	}
+	public int photo_secret(HashMap<String,Object> map) {
+		return sqlSession.update(NAMESPACE+".photo_secret",map);
+	}
+	public HompyVo hompy_is(HompyVo vo) {
+		return sqlSession.selectOne(NAMESPACE+".hompy_is",vo);
+	}
+	public IuVo iu_check(IuVo vo) {
+		return sqlSession.selectOne(NAMESPACE+".iu_check",vo);
 	}
 }

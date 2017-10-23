@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.newface.page.PageUtil;
 import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
+import com.newface.vo.HompyVo;
+import com.newface.vo.IuVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.PhotocomVo;
 import com.newface.vo.PhotofolderVo;
@@ -101,24 +102,60 @@ public class PhotoController {
 		}
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		session.setAttribute("hompy_num", hompy_num);
+		String home_id=(String)session.getAttribute("loginid");
 		String id=mini.id(hompy_num);
 		String name=service.name(id);
 		map.put("hompy_num", hompy_num);
 		map.put("photo_folder_num", photo_folder_num);
+		HompyVo vo=new HompyVo(hompy_num,0,null,home_id);
+		HompyVo hompy=service.hompy_is(vo);
+		IuVo vo1=new IuVo(0,null,null,id,home_id);
+		IuVo iu=service.iu_check(vo1);
 		List<PhotolistVo> list1 =null;
 		PageUtil pu=null;
-		if (photo_folder_num > 0) {
+		if (photo_folder_num > 0 && hompy !=null) {
 			int totalRowCount=service.getCount1(photo_folder_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list1(map);
-		}else {
+			System.out.println("list1");
+		}else if(photo_folder_num > 0 && hompy == null && iu != null) {
+			int totalRowCount=service.getCount1(photo_folder_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list22(map);
+			System.out.println("list22");
+		}else if(photo_folder_num > 0 && hompy == null && iu == null){
+			int totalRowCount=service.getCount1(photo_folder_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list21(map);
+			System.out.println("list21");
+		}else if (photo_folder_num <= 0 && hompy != null){
 			int totalRowCount=service.getCount(hompy_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list(map);
+			System.out.println("list");
+		}else if(photo_folder_num <=0 && hompy == null && iu !=null) {
+			int totalRowCount=service.getCount(hompy_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list12(map);
+			System.out.println("list12");
+		}else if(photo_folder_num <=0 && hompy == null && iu ==null) {
+			int totalRowCount=service.getCount(hompy_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list11(map);
+			System.out.println("list11");
 		}
 		if(list1!=null) {
 			model.addAttribute("list1",list1);
@@ -235,6 +272,21 @@ public class PhotoController {
 		int n=service.com_delete(photo_com_num);
 		if(n>0) {
 			return "redirect:/photo/folder_list";
+		}else {
+			model.addAttribute("code","오류");
+			return ".code";
+		}
+	}
+	@RequestMapping(value="/photo/photo_secret", method = RequestMethod.GET)
+	public String photo_secret(Model model,HttpServletRequest request) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		String secret=request.getParameter("secret");
+		int photo_num=Integer.parseInt(request.getParameter("photo_num"));
+		map.put("secret",secret );
+		map.put("photo_num", photo_num);
+		int n=service.photo_secret(map);
+		if(n>0) {
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
