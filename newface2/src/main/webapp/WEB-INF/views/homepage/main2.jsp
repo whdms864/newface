@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=80'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=3'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -304,7 +304,7 @@
 						var add=data.add;
 						for(var i=0;i<list.length;i++){
 							var html="<tr>"
-									+		"<td rowspan='2' style='padding-top: 5px;'>";
+									+		"<td style='padding-top: 5px;'>";
 							if(list[i].save_name!=null){
 								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 							}else{
@@ -330,14 +330,6 @@
 								+ 	"</ul>"
 								+	"</div>"
 								+	"</td>"
-								+	"</tr>"
-								+	"<tr>"
-								+		"<td>"
-								+			"<ul>"
-								+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-								+				"<li><a>답글달기</a></li>"
-								+			"</ul>"
-								+		"</td>"
 								+	"</tr>";
 							com.append(html);
 						}
@@ -375,6 +367,27 @@
 					var com_id =$(this).parents("td").find(".com_id").val();
 					window.open("<c:url value='/msg_reply?id='/>"+com_id,"_msg"," width=445,height=390,left=100,top=100");  
 				});
+				
+				/*사용자태그*/
+				$(document).on("keyup",".text",function() {
+					var text=$(this);
+					var box=$(this).parents(".timeline").find(".search_box");
+					var val=text.val();
+					var name="";
+					if(val.indexOf("@")!=-1){
+						name=val.split("@");
+						$.getJSON('main2/name_search', {
+							"name" : val
+						}, function(data) {
+							box.css("display","block");
+							box.text(data.length);
+						});
+					}else{
+						box.css("display","none");
+					}
+				});
+				
+				
 				/*댓글쓰기*/
 				$(document).on("keypress",".text",function(event) {
 					if(event.keyCode==13){
@@ -405,7 +418,7 @@
 								var add=data.add;
 								for(var i=0;i<list.length;i++){
 									var html="<tr>"
-											+		"<td rowspan='2' style='padding-top: 5px;'>";
+											+		"<td style='padding-top: 5px;'>";
 									if(list[i].save_name!=null){
 										html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 									}else{
@@ -431,14 +444,6 @@
 											+		"</li>"
 											+ 	"</ul>"
 											+	"</div>"
-											+	"</tr>"
-											+	"<tr>"
-											+		"<td>"
-											+			"<ul>"
-											+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-											+				"<li><a>답글달기</a></li>"
-											+			"</ul>"
-											+		"</td>"
 											+	"</tr>";
 										com.append(html);
 								}
@@ -475,7 +480,7 @@
 						var add=data.add;
 						for(var i=0;i<list.length;i++){
 							var html="<tr>"
-									+		"<td rowspan='2' style='padding-top: 5px;'>";
+									+		"<td style='padding-top: 5px;'>";
 							if(list[i].save_name!=null){
 								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 							}else{
@@ -501,14 +506,6 @@
 									+		"</li>"
 									+ 	"</ul>"
 									+	"</div>"
-									+	"</tr>"
-									+	"<tr>"
-									+		"<td>"
-									+			"<ul>"
-									+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-									+				"<li><a>답글달기</a></li>"
-									+			"</ul>"
-									+		"</td>"
 									+	"</tr>";
 								com.append(html);
 						}
@@ -537,7 +534,7 @@
 						var add=data.add;
 						for(var i=0;i<list.length;i++){
 							var html="<tr>"
-									+		"<td rowspan='2' style='padding-top: 5px;'>";
+									+		"<td style='padding-top: 5px;'>";
 							if(list[i].save_name!=null){
 								html +="<img src='/newface/resources/upload/"+list[i].save_name +"' class='img-circle'>";
 							}else{
@@ -564,14 +561,8 @@
 								+ 	"</ul>"
 								+	"</div>"
 								+	"</tr>"
-								+	"<tr>"
-								+		"<td>"
-								+			"<ul>"
-								+				"<li><a style='margin: 0px;'>좋아요</a></li>"
-								+				"<li><a>답글달기</a></li>"
-								+			"</ul>"
-								+		"</td>"
-								+	"</tr>";
+								+	"<tr>";
+	
 							com.append(html);
 						}
 						if(add=='yes'){
@@ -632,9 +623,9 @@
 					<div class="content1" align="left">${vo.content }</div>
 					<div class="content3" align="left">
 						<ul>
-							<li>좋아요 <label class="loveval" style="font-weight: normal;">${vo.love }</label>명
+							<li><img src="<c:url value='/resources/images/homepage/icon/speech-bubble (2).png'/>">&nbsp;&nbsp;<label class="loveval" style="font-weight: normal;">${vo.love }</label>명
 							</li>
-							<li>댓글 
+							<li><img src="<c:url value='/resources/images/homepage/icon/chat.png'/>">&nbsp;
 								<c:choose>
 									<c:when test="${cntlist.size()>0 }">
 										<c:set var="doneLoop" value="false" />
@@ -657,6 +648,7 @@
 					<div class="content2" align="left">
 						<ul>
 							<li>
+							<img src="<c:url value='/resources/images/homepage/icon/like.png'/>">
 								<input type="hidden" value="${vo.tb }" class="tb">
 								<input type="hidden" value="${vo.num }" class="num"> 
 								<c:choose>
@@ -679,10 +671,18 @@
 									</c:otherwise>
 								</c:choose>
 							</li>
-							<li><a class="com_in">댓글달기</a></li>
-							<li><a class="gongU">공유하기</a></li>
+							<li>
+								<img src="<c:url value='/resources/images/homepage/icon/speech-bubble.png'/>">
+								<a class="com_in">댓글달기</a>
+							</li>
+							<li>
+								<img src="<c:url value='/resources/images/homepage/icon/social-normal.png'/>">
+								<a class="gongU">공유하기</a>
+							</li>
 							<c:if test="${loginid!=vo.id }">
 								<li style="float:right;">
+								<img src="<c:url value='/resources/images/homepage/icon/alarm.png'/>">
+								
 									<input type="hidden" value="${vo.singo }" class="singo_val"> 
 									<c:choose>
 										<c:when test="${singolist.size()>0 }">
@@ -723,6 +723,8 @@
 						</c:choose>
 					</div>
 					<input type="text" class="form-control text" placeholder="댓글을 입력하세요">
+					<div class="search_box">
+					</div>
 					<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
 					<div class="com_main">
 						<table style="padding: 0px; margin: 0px;">

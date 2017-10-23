@@ -22,6 +22,9 @@ public class MemberService {
 	public MemberVo getinfo(String id) {
 		return dao.getinfo(id);
 	}
+	public List<MemberVo> name_info(String name) {
+		return dao.name_info(name);
+	}
 	public List<MemberVo> getinfo_type(HashMap<String, Object> map) {
 		return dao.getinfo_type(map);
 	}

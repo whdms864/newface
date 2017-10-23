@@ -29,6 +29,10 @@
 		select * from member
 		where id=#{value}
 	</select>
+	<select id="name_info" resultType="member" parameterType="string">
+		select * from member
+		where name like concat('%',#{value},'%')
+	</select>
 	<select id="count" resultType="int" parameterType="hashmap">
 		select coalesce(count(id),0) from member where id like concat('%',#{text},'%') or name like concat('%',#{text},'%')
 	</select>

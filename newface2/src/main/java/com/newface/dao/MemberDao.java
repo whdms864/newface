@@ -40,6 +40,9 @@ public class MemberDao {
 		MemberVo vo=sqlSession.selectOne(NAMESPACE+".getinfo",id);
 		return vo;
 	}
+	public List<MemberVo> name_info(String name) {
+		return sqlSession.selectList(NAMESPACE+".name_info",name);
+	}
 	public int setup_insert(int hompy_num) {
 		int n=sqlSession.insert(NAMESPACE + ".setup_insert", hompy_num);
 		return n;

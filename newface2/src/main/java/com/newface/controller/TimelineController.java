@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.service.ComService;
 import com.newface.service.DiaryService;
 import com.newface.service.LoveService;
+import com.newface.service.MemberService;
 import com.newface.service.MiniHomeService;
 import com.newface.service.PhotoService;
 import com.newface.service.SingoService;
@@ -27,6 +28,7 @@ import com.newface.vo.Diary_loveVo;
 import com.newface.vo.DiarycomVo;
 import com.newface.vo.DiaryfolderVo;
 import com.newface.vo.DiarysingoVo;
+import com.newface.vo.MemberVo;
 import com.newface.vo.PhotoVo;
 import com.newface.vo.Photo_loveVo;
 import com.newface.vo.PhotocomVo;
@@ -47,6 +49,7 @@ public class TimelineController {
 	@Autowired private PhotoService photoservice;
 	@Autowired private DiaryService diaryservice;
 	@Autowired private ComService comservice;
+	@Autowired private MemberService memservice;
 	
 	@RequestMapping(value = "/main2", method = RequestMethod.GET)
 	public String main2(Model model,HttpSession session,
@@ -235,6 +238,12 @@ public class TimelineController {
 	public int main2_hompynum(String id){
 		int hompy_num=minihomeservice.hompy_num(id);
 		return hompy_num;
+	}
+	@RequestMapping("/main2/name_search")
+	@ResponseBody
+	public List<MemberVo> main2_name_search(String name){
+		List<MemberVo> list=memservice.name_info(name);
+		return list;
 	}
 	
 	@RequestMapping("/main2/com/list")
