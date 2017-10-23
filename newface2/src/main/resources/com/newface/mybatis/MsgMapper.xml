@@ -94,7 +94,7 @@
 	</select>
 	
 	<select id="adminmsg_count" resultType="int">
-		select coalesce(count(msg_num),0) 
+		select coalesce(count(adminmsg_num),0) 
 		from admin_msg
 		where receiver=#{loginid} and recv_del='삭제전'
 	</select>

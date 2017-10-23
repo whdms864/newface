@@ -70,15 +70,15 @@ public class MsgDao {
 	}
 	
 	public List<AdminMsgVo> adminmsg_list(HashMap<String, Object> map){
-		return sqlSession.selectList(NAMESPACE+ ".adminmsgrecv_list",map);
+		return sqlSession.selectList(NAMESPACE+ ".adminmsg_list",map);
 	}
 	
 	public int adminmsg_count (String loginid) {
-		return sqlSession.selectOne(NAMESPACE + ".adminmsgrecv_count",loginid);
+		return sqlSession.selectOne(NAMESPACE + ".adminmsg_count",loginid);
 	}
 	
 	public int adminmsg_delete(int adminmsg_num) {
-		return sqlSession.update(NAMESPACE + ".msgrecv_delete",adminmsg_num);
+		return sqlSession.update(NAMESPACE + ".adminmsg_delete",adminmsg_num);
 	}
 	
 	public AdminMsgVo adminmsg_getinfo(int adminmsg_num) {

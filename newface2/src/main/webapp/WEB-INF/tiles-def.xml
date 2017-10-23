@@ -298,6 +298,10 @@
 		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/sendgetinfo.jsp"/>
 	</definition>
 	
+	<definition name=".adminmsglist" extends=".recvlist">
+		<put-attribute name="content" value="/WEB-INF/views/homepage/msg/adminmsglist.jsp"/>
+	</definition>
+	
 	<!-- 친구찾기 -->
 	<definition name=".fsearch_list" extends=".qna11_insert">
 		<put-attribute name="content" value="/WEB-INF/views/homepage/member/fsearch_list.jsp"/>

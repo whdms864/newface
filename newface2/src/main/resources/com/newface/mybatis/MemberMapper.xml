@@ -49,7 +49,7 @@
 	</insert>
 	<select id="isMember" resultType="member" parameterType="hashmap">
 		select * from member
-		where id=#{loginid} and pwd=#{loginpwd} and type='회원'
+		where id=#{loginid} and pwd=#{loginpwd} and type!='탈퇴'
 	</select>
 	
 	<select id="isAdmin" resultType="admin" parameterType="hashmap">

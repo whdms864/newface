@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newface.page.PageUtil;
 import com.newface.service.MsgService;
+import com.newface.vo.AdminMsgVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
@@ -163,6 +164,34 @@ public class MsgController {
 		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		
 		return ".reply";
+	}
+	
+	@RequestMapping(value = "/adminmsg_list", method = RequestMethod.GET)
+	public String adminmsg_list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, Model model,
+			HttpSession session) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String loginid = (String) session.getAttribute("loginid");
+		int totalRowCount = service.adminmsg_count(loginid);
+		PageUtil pu = new PageUtil(pageNum, 5, 5, totalRowCount);
+		map.put("loginid", loginid);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		List<AdminMsgVo> adminmsg_list = service.adminmsg_list(map);
+		
+		model.addAttribute("pu", pu);
+		model.addAttribute("adminmsg_list", adminmsg_list);
+
+		return ".adminmsglist";
+	}
+	
+	@RequestMapping(value = "/adminmsg_getinfo", method = RequestMethod.GET)
+	public String adminmsg_getinfo(Model model, int adminmsg_num, HttpSession session) {
+
+		AdminMsgVo adminmsg_getinfo = service.adminmsg_getinfo(adminmsg_num);
+	
+		model.addAttribute("adminmsg_getinfo", adminmsg_getinfo);
+
+		return "";
 	}
 
 }
