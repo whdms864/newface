@@ -3,11 +3,14 @@ package com.newface.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newface.dao.MiniHomeDao;
 import com.newface.dao.MsgDao;
+import com.newface.vo.AdminMsgVo;
+import com.newface.vo.AdminVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
@@ -67,6 +70,27 @@ public class MsgService {
 	
 	public List<Iu_NameVo> iu_list(String loginid){
 		return minihomedao.iu_list(loginid);
+	}
+	
+	
+	public int adminmsg_insert(AdminMsgVo vo) {
+		return dao.adminmsg_insert(vo);
+	}
+	
+	public List<AdminMsgVo> adminmsg_list(HashMap<String, Object> map){
+		return dao.adminmsg_list(map);
+	}
+	
+	public int adminmsg_count(String loginid) {
+		return dao.adminmsg_count(loginid);
+	}
+	
+	public int adminmsg_delete(int adminmsg_num) {
+		return dao.adminmsg_delete(adminmsg_num);
+	}
+	
+	public AdminMsgVo adminmsg_getinfo(int adminmsg_num) {
+		return dao.adminmsg_getinfo(adminmsg_num);
 	}
 	
 }

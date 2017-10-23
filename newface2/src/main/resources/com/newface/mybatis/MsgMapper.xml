@@ -79,5 +79,37 @@
 	</select>
 	
 	
+	<!-- 관리자 쪽지 -->
+	
+	<insert id="adminmsg_insert" parameterType="adminmsg">
+		insert into admin_msg values (0, #{content}, '삭제전', '삭제전', now(), #{sender}, #{receiver})
+	</insert>
+	
+	<select id="adminmsg_list" resultType="adminmsg" parameterType="hashmap">
+		select adminmsg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, sender, receiver 
+		from admin_msg
+		where receiver=#{loginid} and recv_del='삭제전'
+		order by regdate desc
+		limit #{startRow},#{endRow}
+	</select>
+	
+	<select id="adminmsg_count" resultType="int">
+		select coalesce(count(msg_num),0) 
+		from admin_msg
+		where receiver=#{loginid} and recv_del='삭제전'
+	</select>
+	
+	<update id="adminmsg_delete" parameterType="int">
+		update admin_msg
+		set recv_del='삭제'
+		where adminmsg_num=#{adminmsg_num}
+	</update>
+	
+	<select id="adminmsg_getinfo" parameterType="int" resultType="adminmsg">
+		select adminmsg_num, content, send_del, recv_del, date_format(regdate,'%Y-%m-%d %H:%i') regdate, sender, receiver
+		from adminmsg
+		where adminmsg_num=#{adminmsg_num}
+	</select>
+	
 </mapper>
 

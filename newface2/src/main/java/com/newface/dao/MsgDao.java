@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.newface.vo.AdminMsgVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.MsgVo;
 
@@ -62,5 +63,26 @@ public class MsgDao {
 	}
 	
 	
+	///////////////// 관리자 쪽지 ///////////////
+	
+	public int adminmsg_insert(AdminMsgVo vo) {
+		return sqlSession.insert(NAMESPACE + ".adminmsg_insert",vo);
+	}
+	
+	public List<AdminMsgVo> adminmsg_list(HashMap<String, Object> map){
+		return sqlSession.selectList(NAMESPACE+ ".adminmsgrecv_list",map);
+	}
+	
+	public int adminmsg_count (String loginid) {
+		return sqlSession.selectOne(NAMESPACE + ".adminmsgrecv_count",loginid);
+	}
+	
+	public int adminmsg_delete(int adminmsg_num) {
+		return sqlSession.update(NAMESPACE + ".msgrecv_delete",adminmsg_num);
+	}
+	
+	public AdminMsgVo adminmsg_getinfo(int adminmsg_num) {
+		return sqlSession.selectOne(NAMESPACE+".adminmsg_getinfo",adminmsg_num);
+	}
 
 }
