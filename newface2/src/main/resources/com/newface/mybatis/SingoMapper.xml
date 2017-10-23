@@ -54,11 +54,10 @@
 		union
 		select * from diary_singo) a
 	</select>
-	<select id="getinfo" resultType="singo_get" parameterType="int">
-		select * from(
-		select ps_num num,content,photo_num num2,id,'사진첩' tb from photo_singo
-		union
-		select diary_singo_num num,content,diary_num num2,id,'다이어리' tb from diary_singo)a
-		where a.num2=#{value}
+	<select id="p_getinfo" resultType="p_singo" parameterType="int">
+		select * from photo_singo where photo_num=#{value}
+	</select>
+	<select id="d_getinfo" resultType="d_singo" parameterType="int">
+		select * from diary_singo where diary_num=#{value}
 	</select>
 </mapper>  

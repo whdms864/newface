@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.newface.vo.DiarysingoVo;
 import com.newface.vo.PhotosingoVo;
 import com.newface.vo.SingoVo;
-import com.newface.vo.Singo_getVo;
 
 
 @Repository
@@ -61,8 +60,11 @@ public class SingoDao {
 	public List<SingoVo> singo_list(HashMap<String, Object> map) {
 		return sqlSession.selectList(NAMESPACE+".singo_list",map);
 	}
-	public Singo_getVo getinfo(int num2) {
-		return sqlSession.selectOne(NAMESPACE+".getinfo",num2);
+	public List<PhotosingoVo> p_getinfo(int num2) {
+		return sqlSession.selectList(NAMESPACE+".p_getinfo",num2);
+	}
+	public List<DiarysingoVo> d_getinfo(int num2) {
+		return sqlSession.selectList(NAMESPACE+".d_getinfo",num2);
 	}
 	public int getcount() {
 		return sqlSession.selectOne(NAMESPACE+".getcount");

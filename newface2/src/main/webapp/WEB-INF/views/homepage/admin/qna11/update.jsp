@@ -49,7 +49,7 @@ $(document).ready(function(){
 	<div id="con">
 		<div align="center">
 			<table class="table" style="width: 90%;margin-top: 20px;">
-			  		<tr class="success">
+			  		<tr class="danger">
 			  			<td>No.${vo.qna11_num}</td>
 			  			<td>${vo.title}</td>
 			  		</tr>

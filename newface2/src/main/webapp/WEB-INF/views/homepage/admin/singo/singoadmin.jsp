@@ -71,7 +71,7 @@
 			  				<td>${vo.num2 }</td>
 			  				<td>${vo.cnt }</td>
 			  				<td>${vo.content }</td>
-			  				<td><a href="<c:url value='/singo/admin/getinfo'/>">보기</a></td>
+			  				<td><a href="<c:url value='/singo/admin/getinfo?num2=${vo.num2 }&tb=${vo.tb }'/>">보기</a></td>
 				  		</tr>
 				  	</c:forEach>
 				</tbody>

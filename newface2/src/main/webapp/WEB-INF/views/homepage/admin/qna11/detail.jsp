@@ -50,7 +50,7 @@ $(document).ready(function(){
 		<form method="post" id="qna11_com_form" action="<c:url value='/qna11/admin/insertok'/>">
 			<div align="center">
 				<table class="table" style="width: 90%;margin-top: 20px;">
-				  		<tr class="success">
+				  		<tr class="danger">
 				  			<td>No.${vo.qna11_num}</td>
 				  			<td>${vo.title}</td>
 				  		</tr>

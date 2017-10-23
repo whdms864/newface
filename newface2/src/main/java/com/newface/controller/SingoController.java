@@ -17,6 +17,10 @@ import com.newface.page.PageUtil;
 import com.newface.service.DiaryService;
 import com.newface.service.PhotoService;
 import com.newface.service.SingoService;
+import com.newface.vo.DiaryVo;
+import com.newface.vo.DiarysingoVo;
+import com.newface.vo.PhotoVo;
+import com.newface.vo.PhotosingoVo;
 import com.newface.vo.SingoVo;
 
 
@@ -38,9 +42,23 @@ public class SingoController {
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<SingoVo> list=singoservice.singo_list(map);
-		System.out.println(list.size());
 		model.addAttribute("list",list);
 		model.addAttribute("pu",pu);
 		return ".singoadmin";
+	}
+	@RequestMapping(value = "/singo/admin/getinfo", method = RequestMethod.GET)
+	public String main2(Model model,HttpSession session,int num2,String tb) {
+		if(tb.equals("사진첩")) {
+			List<PhotosingoVo> list=singoservice.p_getinfo(num2);
+			PhotoVo v=photoservice.photo_update(num2);
+			model.addAttribute("list",list);
+			model.addAttribute("cvo",v);
+		}else if(tb.equals("다이어리")) {
+			List<DiarysingoVo> list=singoservice.d_getinfo(num2);
+			DiaryVo v=diaryservice.content(num2);
+			model.addAttribute("list",list);
+			model.addAttribute("cvo",v);
+		}
+		return ".singoadmin_getinfo";
 	}
 }
