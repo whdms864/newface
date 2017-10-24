@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=44'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=45'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
+<script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
 <script>
 	$(function(){
 		$("#btn").click(function(){
@@ -25,6 +26,22 @@
 			});
 		}
 		iu_content();
+		var miniroom=function(){
+			$.getJSON("<c:url value='/minihome/miniroom'/>",function(data){
+				$(data).each(function(i,com){
+					$("#miniroom").append("<div id='"+com.mine_num+"' style='position:absolute;'>"+com.item_img+"</div>");
+					console.log("<div id='"+com.mine_num+"'>"+com.category_num+"</div>");
+					if(com.category_num != 6){
+						$("#"+com.mine_num+" p img").offset({left: com.x});
+						$("#"+com.mine_num+" p img").offset({top: com.y});
+					}
+						$("#"+com.mine_num+" p img").draggable({
+						      containment : '#miniroom' // 부모요소 안에 종속
+					    })
+				});
+			});
+		}
+		miniroom();
 		$("#iu_content").on("click",".history",function(){
 			var id=$(this).attr("id");
 			var hompy_num=$("#hompy_num").val();
@@ -77,16 +94,7 @@
 	Mini Room
 	<hr>
 	<div id="miniroom">
-		<c:choose>
-			<c:when test="${requestScope.mini!='[]' }">		
-				<c:forEach var="miniVo" items="${requestScope.mini }">
-					${miniVo.item_img }
-				</c:forEach> 
-			</c:when>
-			<c:otherwise>
-				<img id="new_miniroom" src="<c:url value='/resources/images/minihome/miniroom.PNG'/>">
-			</c:otherwise>
-		</c:choose>
+	
 	</div>
 </div>
 <div id="friends_say_back">

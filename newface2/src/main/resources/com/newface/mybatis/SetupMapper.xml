@@ -49,10 +49,10 @@
 		select * from room_posi where mine_num=#{mine_num} and mini_num=#{mini_num}
 	</select>
 	<select id="miniroom_hompy" parameterType="int" resultType="miniroom_hompy">
-		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨'
+		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨' and r.drag!='미니룸'
 	</select>
-	<select id="miniroom_decorate" parameterType="string" resultType="item">
-		select i.* from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3
+	<select id="miniroom_decorate" parameterType="string" resultType="item_mine">
+		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3 or id=#{id} and i.category_num=4;
 	</select>
 	<select id="skin_list" parameterType="string" resultType="item_mine">
 		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=5
@@ -119,5 +119,11 @@
 	</select>
 	<delete id="basic_skin" parameterType="int">
 		delete from room_posi where mini_num=#{value} and drag='스킨'
+	</delete>
+	<insert id="miniroom_insert" parameterType="position">
+		insert into room_posi values(0,#{mini_num},'미니룸',#{x},#{y},#{mine_num})
+	</insert>
+	<delete id="miniroom_delete" parameterType="int">
+		delete from room_posi where mini_num=#{mini_num} and drag='미니룸'
 	</delete>
 </mapper>  

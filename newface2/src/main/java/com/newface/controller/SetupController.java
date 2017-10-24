@@ -1,5 +1,6 @@
 package com.newface.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -183,7 +184,7 @@ public class SetupController {
 		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
 		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
 		model.addAttribute("wallpaper", wallpaper);
-		return "forward:/setup/miniroom_decorate";
+		return ".miniroom.setup";
 	}
 	@RequestMapping(value="/setup/item_img",method=RequestMethod.GET)
 	@ResponseBody
@@ -241,7 +242,7 @@ public class SetupController {
 		List<ItemVo> list=service.miniroom_decorate(id);
 		if(list!=null) {
 			model.addAttribute("list",list);
-			return ".miniroom.setup";
+			return ".item";
 		}else {
 			model.addAttribute("code","오류");
 			return ".code";
@@ -315,18 +316,46 @@ public class SetupController {
 	}
 	@RequestMapping(value="/setup/miniroom_insert",method=RequestMethod.POST)
 	@ResponseBody
-	public String miniroom_insert(@RequestBody Map<Object, Object> map) {
-		Iterator<Object> itMap = map.keySet().iterator();
-		while (itMap.hasNext()) {
-		     String key = (String) itMap.next();	// KEY 값을 내림차순으로 받는다. 순서를 변경해야 될듯 하다.
-		     System.out.println("key : " + key);
+	public String miniroom_insert(@RequestBody Map<Object, Object> map,Model model,HttpSession session) {
+		String id=(String)session.getAttribute("loginid");
+		int hompy_num=service.hompy_num(id);
+		int mini_num=service.mini_num(hompy_num);
+		int d=service.miniroom_delete(mini_num);
+		if(d>0) {
+			System.out.println("삭제완료");
 		}
-		String wall=(String) map.get("wall");
-		System.out.println(wall);
-		System.out.println("item_num="+map.get("item_num"));
-		System.out.println("x="+map.get("x"));
-		System.out.println("y="+map.get("y"));
-		return null;
+		System.out.println(map.get("item_num"));
+		System.out.println(map.get("x"));
+		System.out.println(map.get("y"));
+		System.out.println(map.get("mine_num"));
+		ArrayList item_num=(ArrayList) map.get("item_num");
+		String[] item=new String[item_num.size()];
+		ArrayList x=(ArrayList) map.get("x");
+		String[] x1=new String[x.size()];
+		ArrayList y=(ArrayList) map.get("y");
+		String[] y1=new String[y.size()];
+		ArrayList mine_num=(ArrayList) map.get("mine_num");
+		String[] mine=new String[mine_num.size()];
+		for(int i=0;i<item_num.size();i++) {
+			item[i] = item_num.get(i).toString();
+			x1[i] = x.get(i).toString();
+			y1[i] = y.get(i).toString();
+			mine[i] = mine_num.get(i).toString();
+			
+			Double x2=Double.parseDouble(x1[i]);
+			Double y2=Double.parseDouble(y1[i]);
+			int mine2=Integer.parseInt(mine[i]);
+			
+			System.out.println("x2:"+x2);
+			System.out.println("y2:"+y2);
+			System.out.println("mine2:"+mine2);
+			RoomposiVo vo1=new RoomposiVo(0, mini_num, null, x2, y2, mine2);
+			int n1=service.miniroom_insert(vo1);
+			if(n1>0) {
+				System.out.println("아이템 저장완료"+i);
+			}
+		}
+		return "result";
 	}
 	@RequestMapping(value="/setup/bgm/test",method=RequestMethod.GET)
 	public String bgm_test() {

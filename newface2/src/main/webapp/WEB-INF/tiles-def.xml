@@ -11,6 +11,8 @@
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/minihome/minihome_content.jsp"/>
 	</definition>
+	<definition name=".item" template="/WEB-INF/views/minihome/setup/setup_item.jsp">
+	</definition>
 	<!-- 예외  -->
 	<definition name=".guestbook" extends=".minihome">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	

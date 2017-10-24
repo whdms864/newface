@@ -115,12 +115,8 @@ public class MiniHomeController {
 		MemberVo member=service.profile_member(hompy_num);
 		session.setAttribute("member", member);	
 		
-		//¹Ì´Ï·ë
-		int mini_num=service.mini_num(hompy_num);
-		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
-		model.addAttribute("mini", mini);
-		
 		//½ºÅ²
+		int mini_num=service.mini_num(hompy_num);
 		RoomposiVo mine=service.mine_num(mini_num);
 		int item_num=0;
 		if(mine!=null) {
@@ -139,6 +135,25 @@ public class MiniHomeController {
 		}else {
 			return "redirect:/setup/iu?getid="+getid;
 		}
+	}
+	//¹Ì´Ï·ë
+	@RequestMapping(value="/minihome/miniroom",method=RequestMethod.GET)
+	@ResponseBody
+	public String miniroom(HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int mini_num=service.mini_num(hompy_num);
+		List<Miniroom_HompyVo> mini=service.miniroom_hompy(mini_num);
+		JSONArray arr=new JSONArray();
+		for(Miniroom_HompyVo vo:mini) {
+			JSONObject json=new JSONObject();
+			json.put("item_img", vo.getItem_img());
+			json.put("mine_num", vo.getMine_num());
+			json.put("category_num", vo.getCategory_num());
+			json.put("x", vo.getX());
+			json.put("y", vo.getY());
+			arr.add(json);
+		}
+		return arr.toString();
 	}
 	
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)

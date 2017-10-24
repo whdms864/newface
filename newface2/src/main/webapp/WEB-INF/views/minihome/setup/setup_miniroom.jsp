@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>   
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?var=33'/>"> 
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/setup/setup_miniroom.css?ver=34'/>"> 
 <script type="text/javascript" src="/newface/resources/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/newface/resources/js/jquery.serializeObject.min.js"></script>
@@ -26,10 +26,6 @@
 				}
 			});
 		});
-		$( '.miniroom p img' )
-		  .draggable({
-		      containment : '.miniroom' // 부모요소 안에 종속
-	    })
 	    $('.miniroom p img').dblclick(function(){
 	    	var dbnum=$(this).parent().parent().attr('id');
 	    	var css=$(this).css('top');
@@ -40,6 +36,9 @@
 	    });
 		$("#mini").click(function(){
 			console.log("dfsdf");
+		});
+		$('#item_select').click(function(){
+			window.open("<c:url value='/setup/miniroom_decorate'/>",""," width=445,height=390,left=100,top=100")
 		});
 	});
 </script>
@@ -55,11 +54,10 @@
 	<input type="button" id="btn" value="적용">
 		<div class="miniroom">
 		
-		<form name="formname" id="formname">
 			<c:forEach var="miniVo" items="${requestScope.mini }" varStatus="status">
 				${miniVo.item_img }
-			<input type="hidden" name="wall" value=${miniVo.mine_num }> 
 			</c:forEach>
+		<form name="formname" id="formname">
 			<c:forEach var="vo" items="${requestScope.list }" varStatus="status">
 			<div id="${vo.item_num }">
 				${vo.item_img }
@@ -67,41 +65,48 @@
 			x:<input type="text" id="x${vo.item_num }" name="x">
 			y:<input type="text" id="y${vo.item_num }" name="y">
 			</div>
+			<input type="hidden" name="mine_num" value="${vo.mine_num }">
 			</c:forEach>
-			<a href="#" onclick="submit()">미니룸 저장</a>
+			<a href="#" id="submit">미니룸 저장</a>
 		</form>
 		</div>
 	</div>
+	<input type="button" id="item_select" value="아이템가져오기">
 </div>
 	<script type="text/javascript">	
-	$(".miniroom p img").mouseup(function(){
-		var x=$(this).position().left;
-		var y=$(this).position().top;
-		var num=$(this).parent().parent().attr('id');
-		var x1=$('#x'+num).attr('id');
-		var x2=$('#x'+num).attr('name');
-		console.log(x2);
-		$('#x'+num).val(x);
-		$('#y'+num).val(y);
-		console.log(x);
-		console.log(y);
-	});
-		function submit(){
-			var ex1 = JSON.stringify($("#formname").serializeObject());
-			var ex2 = $("#formname").serializeObject();
-			console.log(ex1);
-			console.log(ex2);
-			$.ajax({
-		        url: "<c:url value='/setup/miniroom_insert'/>",
-		        type: 'POST',
-		        data:JSON.stringify(ex2),
-		        dataType: 'json',
-		        contentType : "application/json; charset=UTF-8",
-		        success: function (result) {
-		            if (result){
-		                console.log(ex1);
-		            }
-		        }
-		    });
-		}
+	    $(document).on("click",".miniroom p img",function(){
+			$( '.miniroom p img' )
+			  .draggable({
+			      containment : '.miniroom' // 부모요소 안에 종속
+			 });
+			$(".miniroom p img").mouseup(function(){
+				var x=$(this).offset().left;
+				var y=$(this).offset().top;
+				var num=$(this).parent().parent().attr('id');
+				$('#x'+num).val(x);
+				$('#y'+num).val(y);
+				console.log(x);
+				console.log(y);
+			});
+			$('.insert').remove();
+	    })
+		$(document).on("click","#submit",function(){
+				var ex1 = JSON.stringify($("#formname").serializeObject());
+				var ex2 = $("#formname").serializeObject();
+				console.log(ex1);
+				console.log(ex2);
+				$.ajax({
+			        url: "<c:url value='/setup/miniroom_insert'/>",
+			        type: 'POST',
+			        data:JSON.stringify(ex2),
+			        dataType: 'json',
+			        contentType : "application/json; charset=UTF-8",
+			        success: function (result) {
+			            if (result){
+			            	var url="<c:url value='/minihome'/>"
+			                $(location).attr("href",url);
+			            }
+			        }
+			    });
+			});
 	</script>

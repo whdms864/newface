@@ -136,4 +136,11 @@ public class SetupDao {
 	public int basic_skin(int mini_num) {
 		return sqlSession.delete(NAMESPACE + ".basic_skin", mini_num);
 	}
+	public int miniroom_insert(RoomposiVo vo) {
+		return sqlSession.insert(NAMESPACE+".miniroom_insert",vo);
+	}
+	public int miniroom_delete(int mini_num) {
+		return sqlSession.delete(NAMESPACE+".miniroom_delete",mini_num);
+	}
+
 }
