@@ -6,16 +6,18 @@ public class SetupVo {
 	private int guest;
 	private int photo;
 	private int diary;
+	private int jukebox;
 	
 	public SetupVo() {}
 
-	public SetupVo(int setup_num, int hompy_num, int guest, int photo, int diary) {
+	public SetupVo(int setup_num, int hompy_num, int guest, int photo, int diary, int jukebox) {
 		super();
 		this.setup_num = setup_num;
 		this.hompy_num = hompy_num;
 		this.guest = guest;
 		this.photo = photo;
 		this.diary = diary;
+		this.jukebox = jukebox;
 	}
 
 	public int getSetup_num() {
@@ -56,6 +58,14 @@ public class SetupVo {
 
 	public void setDiary(int diary) {
 		this.diary = diary;
+	}
+
+	public int getJukebox() {
+		return jukebox;
+	}
+
+	public void setJukebox(int jukebox) {
+		this.jukebox = jukebox;
 	}
 	
 }

@@ -11,10 +11,14 @@
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/minihome/minihome_content.jsp"/>
 	</definition>
-	<!-- 예외 방명록 -->
+	<!-- 예외  -->
 	<definition name=".guestbook" extends=".minihome">
 		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/minihome/guestbook/guestbook_content.jsp"/>
+	</definition>
+	<definition name=".jukebox" extends=".minihome">
+		<put-attribute name="left" value="/WEB-INF/views/minihome/minihome_left.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/minihome/jukebox/jukebox_bgm.jsp"/>
 	</definition>
 	<!-- 요청이동 -->
 	<definition name=".code" extends=".minihome">

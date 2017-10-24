@@ -8,82 +8,11 @@
 <html>
 <head>
 <title>홈 (1 of 4)</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=22'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=2'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
-<script>
-$(function(){	
-	var i=1;
-	var j=0;
-	$.getJSON("<c:url value='/minihome/bgm'/>",function(data){
-	var bgm=[];
-		$(data).each(function(i,bgms){
-			bgm[i]=bgms.content;
-		});
-		
-		
-		$("#bgm_list").html(
-	    		"<audio id='bgm" + i + "' controls='controls' autoplay='autoplay' >" +
-				"<source src='<c:url value='/resources/bgm/" + bgm[j] + ".mp3'/>' type='audio/mpeg'>" +
-				"</audio>"
-		);	
-		$("#title_list").html(bgm[j]);
-		
-		function name() {
-			var aud2 = document.getElementById("bgm" + i );
-			aud2.onended = function() {
-			    $("#bgm_list").html(
-			    		"<audio id='bgm" + ++i + "' controls='controls' autoplay='autoplay' >" +
-						"<source src='<c:url value='/resources/bgm/" + bgm[++j] + ".mp3'/>' type='audio/mpeg'>" +
-						"</audio>"
-				);
-			    $("#title_list").html(bgm[j]);
-			    if(bgm.length-1>j){
-			    	//다음곡
-			    	name();
-			    }else{
-			    	//처음으로
-			    	j=-1;
-			    	name();
-			    }
-			}	
-		}
-		
-		var aud1 = document.getElementById("bgm" + i );
-		aud1.onended = function() {
-		    $("#bgm_list").html(
-		    		"<audio id='bgm" + ++i + "' controls='controls' autoplay='autoplay' >" +
-					"<source src='<c:url value='/resources/bgm/" + bgm[++j] + ".mp3'/>' type='audio/mpeg'>" +
-					"</audio>"
-			);
-		    $("#title_list").html(bgm[j]);
-		    if(bgm.length-1>j){
-		    	//다음곡
-		    	name();
-		    }else{
-		    	//처음으로
-		    	j=-1;
-		    	name();
-		    }
-		}	
-		
-		$("#play").click(function(){
-			var aud3 = document.getElementById("bgm" + i );
-			aud3.play();
-		});
-		$("#stop").click(function(){
-			var aud4 = document.getElementById("bgm" + i );
-			aud4.pause();
-		});
-	});
-});
-</script>
+
 </head>
 <body>
-<input type="hidden" id="bgms" value="${sessionScope.bgms }">
-<div id="bgm_list"></div>
-<input type="button" value="실행" id="play" >
-<input type="button" value="정지" id="stop" >
-<div id="title_list"></div>
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
 		<div id="webView"> 
@@ -145,6 +74,13 @@ $(function(){
 		</div>
 	</div>
 	</c:if>
+	<c:if test="${sessionScope.jukebox==1 }">
+	<div id="jukebox">
+		<div class="menu">
+			쥬크박스
+		</div>
+	</div>
+	</c:if>
 	<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
 	<div id="set">
 		<div class="menu">
@@ -182,6 +118,10 @@ $(function(){
 	});
 	$("#guest").click(function(){
 		var url="<c:url value='/guest/list_all'/>";
+		$(location).attr("href",url);
+	});
+	$("#jukebox").click(function(){
+		var url="<c:url value='/jukebox'/>";
 		$(location).attr("href",url);
 	});
 	$("#set").click(function(){

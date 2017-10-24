@@ -46,18 +46,14 @@ public class MiniHomeController {
 		String id;
 		if(hompy_num<1) { 
 			//홈주인
-			System.out.println("주인이네요");
 			session.setAttribute("hompy_admin", "1");
 			id=loginid;
 			hompy_num=service.hompy_num(id);
 		}else { 
 			//방문자
-			System.out.println("방문자네요");
 			session.setAttribute("hompy_admin", "2");
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			id=service.id(hompy_num);
-			System.out.println("테스트 아이디 : " + id);
-			System.out.println("내 아이디 : " + loginid);
 			IuVo iu=new IuVo(0, null, null, loginid, id);
 			IuVo iu_is=service.iu_is(iu);
 			session.setAttribute("iu", iu_is);
@@ -65,16 +61,12 @@ public class MiniHomeController {
 			map.put("hompy_num",hompy_num);
 			List<TodayVo> today=service.today_is(map);
 			if(today.isEmpty()) {
-				System.out.println("어서와 여긴 처음이지?");
 				service.today_insert(map);				
 			}
 		}
 
 		session.setAttribute("hompy_num", hompy_num);
 		model.addAttribute("id", id);
-		System.out.println("loginid : " + loginid);
-		System.out.println("id : " + id);
-		System.out.println("hompy_num : " + hompy_num);
 		
 		//홈피명
 		HompyVo hompy=service.hompy(id);
@@ -92,6 +84,7 @@ public class MiniHomeController {
 		session.setAttribute("diary", vo.getDiary());
 		session.setAttribute("photo", vo.getPhoto());
 		session.setAttribute("guest", vo.getGuest());
+		session.setAttribute("jukebox", vo.getJukebox());		
 		
 		//프로필사진
 		ProfileVo profile=service.profile(hompy_num);
@@ -145,23 +138,6 @@ public class MiniHomeController {
 		}
 	}
 	
-	//BGM
-	@RequestMapping(value="/minihome/bgm",method=RequestMethod.GET)
-	@ResponseBody
-	public String bgm(HttpSession session) {
-		int hompy_num=(Integer)session.getAttribute("hompy_num");
-		int mini_num=service.mini_num(hompy_num);
-		List<ItemVo> bgm_list=service.bgm(mini_num);
-		JSONArray arr=new JSONArray();
-		for(ItemVo bgmVo:bgm_list) {
-			JSONObject json=new JSONObject();
-			if(bgmVo.getContent()!=null) {
-				json.put("content", bgmVo.getContent());
-			}
-			arr.add(json);					
-		}			
-		return arr.toString();
-	}
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
 	@ResponseBody
 	public String iu_request(HttpSession session) {

@@ -61,7 +61,7 @@
 		where id=#{loginid} and pwd=#{loginpwd} 
 	</select>
 	<insert id="setup_insert" parameterType="int">
-		insert into setup values(0,#{value},1,1,1)
+		insert into setup values(0,#{value},1,1,1,1)
 	</insert>
 	
 	

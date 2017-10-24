@@ -106,6 +106,15 @@ body {
 	cursor: pointer;
 }
 
+#jukebox {
+	position: relative;
+	width: 65px;
+	height: 31px;
+	margin-top: 3px;
+	margin-left: 816px;
+	cursor: pointer;
+}
+
 #set {
 	position: relative;
 	width: 65px;

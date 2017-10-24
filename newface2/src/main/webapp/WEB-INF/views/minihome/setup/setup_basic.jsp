@@ -8,14 +8,17 @@
 		var diary=$("#diary1").val();
 		var photo=$("#photo1").val();
 		var guest=$("#guest1").val();
+		var guest=$("#jukebox1").val();
 		if(diary==1) $("input[name=diary]").prop("checked",true);
 		if(photo==1) $("input[name=photo]").prop("checked",true);
 		if(guest==1) $("input[name=guest]").prop("checked",true); 
+		if(guest==1) $("input[name=jukebox]").prop("checked",true); 
 	});
 </script>
 <input type="hidden" id="diary1" value="${requestScope.vo.diary }">
 <input type="hidden" id="photo1" value="${requestScope.vo.photo }">
 <input type="hidden" id="guest1" value="${requestScope.vo.guest }">
+<input type="hidden" id="jukebox1" value="${requestScope.vo.jukebox }">
 <div id="menu">
 	<h3 id="first">메뉴 설정</h3>
 	<hr>
@@ -24,6 +27,7 @@
 	<input type="checkbox" name="diary" value="1"> 다이어리<br>
 	<input type="checkbox" name="photo" value="1"> 사진첩<br>
 	<input type="checkbox" name="guest" value="1"> 방명록<br>
+	<input type="checkbox" name="jukebox" value="1"> 쥬크박스<br>
 	<input type="submit" value="설정">
 	</form>
 	</div>
