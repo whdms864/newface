@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
@@ -8,30 +10,80 @@
 <title>홈 (1 of 4)</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome.css?ver=22'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
-</head>
-<body>
-<script type='text/javascript' src='http://scmplayer.co/script.js' id="test"
-data-config="{'skin':'http://static.tumblr.com/d41lcii/FCymhefb4/unicornio.css','volume':50,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[
-{'title':'린킨파크 베스트20 노래모음','url':'https://www.youtube.com/watch?v=m7mvpe1fVa4'},
-{'title':'Sik-K (%uC2DD%uCF00%uC774) - %uC774%uC5B4%uD3F0 (Earphone) (Prod. BOYCOLD) [BOYCOLD]','url':'https://youtu.be/unBH_nFW8Ng'}]}" >
-</script>  
-
-
-<!-- SCM Music Player script end -->
-<!-- {'title':'제목','url':'주소'} -->
-<%-- <c:forEach var="bgm" items="${sessionScope.bgm_start }">
-	<input type="hidden" name="bgms" value="${bgm.content }">
-</c:forEach>
 <script>
-	$(function(){
-		var contents=[];
-		$("input[name='bgms']").each(function(){
-			console.log("bgm : " + $(this).val());
-			contents.unshift($(this).val());
+$(function(){	
+	var i=1;
+	var j=0;
+	$.getJSON("<c:url value='/minihome/bgm'/>",function(data){
+	var bgm=[];
+		$(data).each(function(i,bgms){
+			bgm[i]=bgms.content;
+		});
+		
+		
+		$("#bgm_list").html(
+	    		"<audio id='bgm" + i + "' controls='controls' autoplay='autoplay' >" +
+				"<source src='<c:url value='/resources/bgm/" + bgm[j] + ".mp3'/>' type='audio/mpeg'>" +
+				"</audio>"
+		);	
+		$("#title_list").html(bgm[j]);
+		
+		function name() {
+			var aud2 = document.getElementById("bgm" + i );
+			aud2.onended = function() {
+			    $("#bgm_list").html(
+			    		"<audio id='bgm" + ++i + "' controls='controls' autoplay='autoplay' >" +
+						"<source src='<c:url value='/resources/bgm/" + bgm[++j] + ".mp3'/>' type='audio/mpeg'>" +
+						"</audio>"
+				);
+			    $("#title_list").html(bgm[j]);
+			    if(bgm.length-1>j){
+			    	//다음곡
+			    	name();
+			    }else{
+			    	//처음으로
+			    	j=-1;
+			    	name();
+			    }
+			}	
+		}
+		
+		var aud1 = document.getElementById("bgm" + i );
+		aud1.onended = function() {
+		    $("#bgm_list").html(
+		    		"<audio id='bgm" + ++i + "' controls='controls' autoplay='autoplay' >" +
+					"<source src='<c:url value='/resources/bgm/" + bgm[++j] + ".mp3'/>' type='audio/mpeg'>" +
+					"</audio>"
+			);
+		    $("#title_list").html(bgm[j]);
+		    if(bgm.length-1>j){
+		    	//다음곡
+		    	name();
+		    }else{
+		    	//처음으로
+		    	j=-1;
+		    	name();
+		    }
+		}	
+		
+		$("#play").click(function(){
+			var aud3 = document.getElementById("bgm" + i );
+			aud3.play();
+		});
+		$("#stop").click(function(){
+			var aud4 = document.getElementById("bgm" + i );
+			aud4.pause();
 		});
 	});
-</script> --%>
-
+});
+</script>
+</head>
+<body>
+<input type="hidden" id="bgms" value="${sessionScope.bgms }">
+<div id="bgm_list"></div>
+<input type="button" value="실행" id="play" >
+<input type="button" value="정지" id="stop" >
+<div id="title_list"></div>
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
 		<div id="webView"> 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newface.page.PageUtil;
 import com.newface.service.MiniHomeService;
 import com.newface.vo.HompyVo;
+import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
 import com.newface.vo.Iu_NameVo;
 import com.newface.vo.IucomVo;
@@ -142,6 +143,24 @@ public class MiniHomeController {
 		}else {
 			return "redirect:/setup/iu?getid="+getid;
 		}
+	}
+	
+	//BGM
+	@RequestMapping(value="/minihome/bgm",method=RequestMethod.GET)
+	@ResponseBody
+	public String bgm(HttpSession session) {
+		int hompy_num=(Integer)session.getAttribute("hompy_num");
+		int mini_num=service.mini_num(hompy_num);
+		List<ItemVo> bgm_list=service.bgm(mini_num);
+		JSONArray arr=new JSONArray();
+		for(ItemVo bgmVo:bgm_list) {
+			JSONObject json=new JSONObject();
+			if(bgmVo.getContent()!=null) {
+				json.put("content", bgmVo.getContent());
+			}
+			arr.add(json);					
+		}			
+		return arr.toString();
 	}
 	@RequestMapping(value="/minihome/iu_request",method=RequestMethod.GET)
 	@ResponseBody

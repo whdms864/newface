@@ -50,7 +50,16 @@ $(document).ready(function() {
 		  		</div>
 		  		<div class="icon_set">
 		  			<img src="<c:url value='/resources/images/homepage/icon/add-user.png'/>" id="iu_img">
-		  			<div class="circle" align="center"><label>3</label></div>
+		  			<div class="circle" align="center">
+						<c:choose>
+			  				<c:when test="${msgnorecv_count<=9 }">
+			  					<label style="left:7px;">${sessionScope.iu_request_now }</label>
+			  				</c:when>
+			  				<c:otherwise>
+			  					<label style="left:5px;">++</label>
+			  				</c:otherwise>
+		  			</c:choose>
+					</div>
 		  		</div>
 		  		<div class="icon_set">
 			  		<a href="<c:url value='/members/logout'/>">

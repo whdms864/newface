@@ -126,4 +126,7 @@ public class MiniHomeDao {
 	public int iu_delete(IuVo iu) {
 		return sqlSession.delete(NAMESPACE + ".iu_delete", iu);
 	}
+	public List<ItemVo> bgm(int mini_num){
+		return sqlSession.selectList(NAMESPACE + ".bgm", mini_num);
+	}
 }
