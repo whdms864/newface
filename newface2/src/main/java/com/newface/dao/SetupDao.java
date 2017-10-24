@@ -133,4 +133,7 @@ public class SetupDao {
 	public List<ItemVo> bgm_start(int mini_num) {
 		return sqlSession.selectList(NAMESPACE + ".bgm_list", mini_num);
 	}
+	public int basic_skin(int mini_num) {
+		return sqlSession.delete(NAMESPACE + ".basic_skin", mini_num);
+	}
 }

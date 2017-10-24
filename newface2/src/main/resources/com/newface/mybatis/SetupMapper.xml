@@ -117,4 +117,7 @@
 	<select id="bgm_start" parameterType="int" resultType="item">
 		select i.* from room_posi r join mine m on r.mine_num=m.mine_num join item i on i.item_num=m.item_num where r.drag='BGM' and r.mini_num=#{value};
 	</select>
+	<delete id="basic_skin" parameterType="int">
+		delete from room_posi where mini_num=#{value} and drag='스킨'
+	</delete>
 </mapper>  

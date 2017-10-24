@@ -6,7 +6,11 @@
 <script>
 	$(function(){
 		var num=$("#num").val();
-		$("select[name='item_num']").val(num).prop("selected",true);
+		if(num==""){
+			$("select[name='item_num']").val("-1").prop("selected",true);	
+		}else{
+			$("select[name='item_num']").val(num).prop("selected",true);		
+		}
 		$("#skin_list").change(function(){
 			var item_num=$("#skin_list").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
@@ -22,13 +26,23 @@
 	<div class="skin_back">
 	<form method="post" action="<c:url value='/setup/skin_update'/>">
 	<select id="skin_list" name="item_num">
+		<option class="choice" value="-1">기본</option>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<option class="choice" value="${vo.item_num }">${vo.name }</option>
 	</c:forEach>
 	</select>
 	<input type="submit" value="적용">
 	</form>
-		<div class="back_img">${sessionScope.item_img }</div>
+		<div class="back_img">
+		<c:choose>
+			<c:when test="${sessionScope.item_img==null }">
+				<img alt="기본스킨" src="<c:url value='/resources/skin/cyworldSkin01.jpg'/>">
+			</c:when>
+			<c:otherwise>
+				${sessionScope.item_img }
+			</c:otherwise>
+		</c:choose> 
+		</div>
 	</div>
 	<hr>
 </div>

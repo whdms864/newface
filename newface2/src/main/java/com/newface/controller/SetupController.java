@@ -75,8 +75,10 @@ public class SetupController {
 		
 		//스킨
 		MineVo vo=service.skin_info(id);
-		int item_num=vo.getItem_num();	
-		model.addAttribute("item_num", item_num);
+		if(vo!=null) {
+			int item_num=vo.getItem_num();
+			model.addAttribute("item_num", item_num);			
+		}
 		return ".skin.setup";
 	}
 	@RequestMapping(value="/setup/hname",method=RequestMethod.POST)
@@ -211,18 +213,23 @@ public class SetupController {
 	public String skin_update(int item_num,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
-		MineVo mine=new MineVo(0, 0, 0, item_num, id);
-		int mine_num=service.mine_num(mine);
-		int mini_num=service.mini_num(hompy_num);
-		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
-		service.skin_delete(mini_num);
-		int n=service.skin_insert(posi);
-		
-		//이미지 불러오기
-		if(n>0) {
-			String item_img=service.item_img(item_num);
-			session.setAttribute("item_img", item_img);													
+		if(item_num==-1) {
+			int mini_num=service.mini_num(hompy_num);
+			service.basic_skin(mini_num);
+		}else {
+			MineVo mine=new MineVo(0, 0, 0, item_num, id);
+			int mine_num=service.mine_num(mine);
+			int mini_num=service.mini_num(hompy_num);
+			RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
+			service.skin_delete(mini_num);
+			int n=service.skin_insert(posi);			
+			//이미지 불러오기
+			if(n>0) {
+				String item_img=service.item_img(item_num);
+				session.setAttribute("item_img", item_img);													
+			}
 		}
+		
 		return "redirect:/setup/skin";
 	}
 	@RequestMapping(value="/setup/miniroom_decorate",method=RequestMethod.GET)
@@ -290,8 +297,8 @@ public class SetupController {
 	public String bgm_insert(int[] mine_nums,HttpSession session,Model model) {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		int mini_num=service.mini_num(hompy_num);
+		service.bgm_delete(mini_num);
 		for(int mine_num:mine_nums) {
-			service.bgm_delete(mini_num);
 			RoomposiVo vo=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
 			service.bgm_insert(vo);
 		}

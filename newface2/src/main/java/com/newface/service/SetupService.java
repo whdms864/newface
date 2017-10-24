@@ -132,4 +132,7 @@ public class SetupService {
 	public List<ItemVo> bgm_start(int mini_num){
 		return dao.bgm_start(mini_num);
 	}
+	public int basic_skin(int mini_num) {
+		return dao.basic_skin(mini_num);
+	}
 }
