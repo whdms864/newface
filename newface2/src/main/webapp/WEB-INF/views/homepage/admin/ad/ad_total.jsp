@@ -9,21 +9,21 @@
 $(function(){
     //1번째 입력값 (그려진 영역의 id값)
     //2번째 입력값 (그래프내에 들어갈 데이터 값)
-     $.jqplot ('graph1', [[1,2,3,4,5,300,30]]);
+	$.jqplot ('graph1', [[1,2,3,4,5,350,30]]);
     
-     $.jqplot ('graph2', [[['첫번째', 50], ['두번째', 22], ['세번째', 38], ['네번째', 30]]],
-    	        {
-    	          seriesDefaults: {
-    	            //원형으로 렌더링
-    	            renderer: $.jqplot.PieRenderer,
-    	            //원형상단에 값보여주기(알아서 %형으로 변환)
-    	            rendererOptions: {
-    	              showDataLabels: true
-    	            }
-    	          },
-    	          //우측 색상별 타이틀 출력
-    	          legend: { show:true, location: 'e' }
-    	        });
+	$.jqplot ('graph2', [[['DB컴퍼니', 50], ['조은컴퍼니', 50]]],
+		{
+		  seriesDefaults: {
+		    //원형으로 렌더링
+		    renderer: $.jqplot.PieRenderer,
+		    //원형상단에 값보여주기(알아서 %형으로 변환)
+		    rendererOptions: {
+		      showDataLabels: true
+		    }
+		  },
+		  //우측 색상별 타이틀 출력
+		  legend: { show:true, location: 'e' }
+		});
 });
 
 	
@@ -71,7 +71,7 @@ $(function(){
 	<div id="con">
 		<div align="center">
 			
-			<div id="graph1" style="width:300px; height:300px; margin-bottom:10px;" ></div>
+			<div id="graph1" style="width:300px; height:300px; margin-bottom:30px;" ></div>
 			<div id="graph2" style="width:400px; height:300px;"></div>
 		
 		</div>

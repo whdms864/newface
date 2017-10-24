@@ -60,4 +60,12 @@ public class AdService {
 	public int update_type(HashMap<String, Object> map) {
 		return dao.update_type(map);
 	}
+	
+	public List<AdVo> ad_slide(){
+		return dao.ad_slide();
+	}
+	
+	public List<AdVo> ad_slide2(){
+		return dao.ad_slide2();
+	}
 }

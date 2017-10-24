@@ -93,4 +93,8 @@ public class MsgService {
 		return dao.adminmsg_getinfo(adminmsg_num);
 	}
 	
+	public int adminmsgno_count(String loginid) {
+		return dao.adminmsgno_count(loginid);
+	}
+	
 }

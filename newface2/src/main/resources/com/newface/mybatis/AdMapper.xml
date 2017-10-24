@@ -60,4 +60,13 @@
 		set type=#{type}
 		where ad_num=#{ad_num}
 	</update>
+	
+	<select id="ad_slide" resultType="ad">
+		select ad_img,url from ad where type='광고게시' order by ad_num limit 0,5
+	</select>
+	
+	<select id="ad_slide2" resultType="ad">
+		select ad_img,url from ad where type='광고게시' order by ad_num limit 5,5
+	</select>
+	
 </mapper>  

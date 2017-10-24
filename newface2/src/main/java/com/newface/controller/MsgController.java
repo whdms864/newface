@@ -56,6 +56,8 @@ public class MsgController {
 		map.put("endRow", pu.getEndRow());
 		List<MsgVo> msgsend_list = service.msgsend_list(map);
 		int msgnorecv_count = service.msgnorecv_count(loginid);
+		int adminmsgno_count = service.adminmsgno_count(loginid);
+		session.setAttribute("adminmsgno_count", adminmsgno_count);
 		session.setAttribute("msgnorecv_count", msgnorecv_count);
 		model.addAttribute("pu", pu);
 		model.addAttribute("msgsend_list", msgsend_list);
@@ -177,6 +179,8 @@ public class MsgController {
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		List<AdminMsgVo> adminmsg_list = service.adminmsg_list(map);
+		int adminmsgno_count = service.adminmsgno_count(loginid);
+		session.setAttribute("adminmsgno_count", adminmsgno_count);
 		
 		model.addAttribute("pu", pu);
 		model.addAttribute("adminmsg_list", adminmsg_list);
@@ -186,9 +190,10 @@ public class MsgController {
 	
 	@RequestMapping(value = "/adminmsg_getinfo", method = RequestMethod.GET)
 	public String adminmsg_getinfo(Model model, int adminmsg_num, HttpSession session) {
-
+		String loginid = (String) session.getAttribute("loginid");
 		AdminMsgVo adminmsg_getinfo = service.adminmsg_getinfo(adminmsg_num);
-	
+		int adminmsgno_count = service.adminmsgno_count(loginid);
+		session.setAttribute("adminmsgno_count", adminmsgno_count);
 		model.addAttribute("adminmsg_getinfo", adminmsg_getinfo);
 
 		return ".adminmsg_getinfo";

@@ -84,5 +84,9 @@ public class MsgDao {
 	public AdminMsgVo adminmsg_getinfo(int adminmsg_num) {
 		return sqlSession.selectOne(NAMESPACE+".adminmsg_getinfo",adminmsg_num);
 	}
+	
+	public int adminmsgno_count(String loginid) {
+		return sqlSession.selectOne(NAMESPACE+".adminmsgno_count",loginid);
+	}
 
 }

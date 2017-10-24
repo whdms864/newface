@@ -111,5 +111,11 @@
 		where adminmsg_num=#{adminmsg_num}
 	</select>
 	
+	<select id="adminmsgno_count" resultType="int">
+		select coalesce(count(adminmsg_num),0) 
+		from admin_msg 
+		where receiver=#{loginid} and recv_del='삭제전'
+	</select>
+	
 </mapper>
 

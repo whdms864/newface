@@ -68,4 +68,12 @@ public class AdDao {
 	public int update_type(HashMap<String, Object> map) {
 		return sqlSession.update(NAMESPACE + ".update_type",map);
 	}
+	
+	public List<AdVo> ad_slide(){
+		return sqlSession.selectList(NAMESPACE+ ".ad_slide");
+	}
+	
+	public List<AdVo> ad_slide2(){
+		return sqlSession.selectList(NAMESPACE+ ".ad_slide2");
+	}
 }

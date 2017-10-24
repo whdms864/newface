@@ -107,7 +107,6 @@ public class AdController {
 	}
 	
 	
-	
 
 	// ±§∞Ì¡÷ ∏Ò∑œ
 	@RequestMapping(value = "/ader_list", method = RequestMethod.GET)

@@ -84,16 +84,16 @@
 			<div style="width:90%; height:148px; background-color: white; position:absolute; top:375px; right:38px;">
 					<table class="table table-condensed" style="width:100%;">
 						<tr>
-						<th>글쓴이</th>
-						<th>내용</th>
-						<th>작성일</th>
+						<th style="text-align: center;">글쓴이</th>
+						<th style="text-align: center;">내용</th>
+						<th style="text-align: center;">작성일</th>
 						<th></th>
 						</tr>
 						<c:forEach var="noti_com_list" items="${noti_com_list }">
 						<tr>
-							<td style="width:18%; height:20%" >${noti_com_list.id }</td>
+							<td style="width:18%; height:20%; text-align: center;" >${noti_com_list.id }</td>
 							<td style="width:55%;">${noti_com_list.content }</td>
-							<td style="width:18%;">${noti_com_list.regdate }</td>
+							<td style="width:18%; text-align: center;">${noti_com_list.regdate }</td>
 							<td><input type="button" value="블라인드"></td>
 						</tr>
 						</c:forEach>
