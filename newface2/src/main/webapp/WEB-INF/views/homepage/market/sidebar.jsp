@@ -12,7 +12,7 @@
 		    window.open("<c:url value='/minihome'/>","_minihome"," width=1032,height=617,left=100,top=100"); 
 		});
 		
-		$("#msg").click(function(){
+		$("#msg_m").click(function(){
 		    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
 		});
 		
@@ -69,7 +69,7 @@
 		<div>
 			<a href="<c:url value='/qna11/getinfo'/>">1:1문의</a>
 			<a href="<c:url value='/market/item/list'/>" style="margin-left: 20px;">마켓</a>
-			<a style="margin-left: 20px;" id="msg">쪽지</a>
+			<a style="margin-left: 20px;" id="msg_m">쪽지</a>
 			<a href="<c:url value='/member/mypage?id=${sessionScope.loginid }'/>" style="margin-left: 20px;">MyPage</a>
 		</div>
 	</div>

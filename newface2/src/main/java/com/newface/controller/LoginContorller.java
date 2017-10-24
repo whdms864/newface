@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.service.AdService;
 import com.newface.service.CashService;
@@ -106,5 +107,13 @@ public class LoginContorller {
 		session2.setAttribute("ad_slide", ad_slide);
 		session2.setAttribute("ad_slide2", ad_slide2);
 		return ".main";
+	}
+	//header count
+	@RequestMapping("/mem/iu_request_now")
+	@ResponseBody
+	public int iu_request_now(HttpSession session){
+		String loginid = (String) session.getAttribute("loginid");
+		int iu_request_now=service.iu_request_list(loginid);
+		return iu_request_now;
 	}
 }

@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.page.PageUtil;
 import com.newface.service.MsgService;
 import com.newface.vo.AdminMsgVo;
 import com.newface.vo.Iu_NameVo;
+import com.newface.vo.MemberVo;
 import com.newface.vo.MsgVo;
 
 @Controller
@@ -64,7 +66,14 @@ public class MsgController {
 
 		return ".sendlist";
 	}
-
+	//header count
+	@RequestMapping("/msg/msgnorecv_count")
+	@ResponseBody
+	public int msgnorecv_count(HttpSession session){
+		String loginid = (String) session.getAttribute("loginid");
+		int msgnorecv_count = service.msgnorecv_count(loginid);
+		return msgnorecv_count;
+	}
 	// 쪽지보내기 페이지
 	@RequestMapping(value = "/msg_send", method = RequestMethod.GET)
 	public String msg_sendform(Model model, HttpSession session) {

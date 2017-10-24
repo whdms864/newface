@@ -340,7 +340,6 @@
 						}
 					});
 					$(this).parents(".timeline").find(".timecom").css("display","block");
-					$(".text").focus();
 				});
 				/*이름클릭시 이름옆에박스*/
 				$(document).on("click",".click_name",function() {

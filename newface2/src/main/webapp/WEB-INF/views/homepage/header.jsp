@@ -23,6 +23,22 @@ $(document).ready(function() {
 			}
 		}
 	});
+	setInterval(function(){
+		$.getJSON('msg/msgnorecv_count', function(data) {
+			if(data<=9){
+				$("#msg_before").text(data);
+			}else{
+				$("#msg_after").text("++");
+			}
+		});
+		$.getJSON('mem/iu_request_now', function(data) {
+			if(data<=9){
+				$("#iu_before").text(data);
+			}else{
+				$("#iu_after").text("++");
+			}
+		});
+	},1000);
 });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top"style="background-color: white; height:90px;border: none;">
@@ -40,10 +56,10 @@ $(document).ready(function() {
 		  			<div class="circle" align="center">
 		  			<c:choose>
 		  				<c:when test="${msgnorecv_count<=9 }">
-		  					<label style="left:7px;">${msgnorecv_count }</label>
+		  					<label style="left:7px;" id="msg_before">${msgnorecv_count }</label>
 		  				</c:when>
 		  				<c:otherwise>
-		  					<label style="left:5px;">++</label>
+		  					<label style="left:5px;" id="msg_after">++</label>
 		  				</c:otherwise>
 		  			</c:choose>
 		  			</div>
@@ -52,11 +68,11 @@ $(document).ready(function() {
 		  			<img src="<c:url value='/resources/images/homepage/icon/add-user.png'/>" id="iu_img">
 		  			<div class="circle" align="center">
 						<c:choose>
-			  				<c:when test="${msgnorecv_count<=9 }">
-			  					<label style="left:7px;">${sessionScope.iu_request_now }</label>
+			  				<c:when test="${iu_request_now<=9 }">
+			  					<label style="left:7px;" id="iu_before">${iu_request_now }</label>
 			  				</c:when>
 			  				<c:otherwise>
-			  					<label style="left:5px;">++</label>
+			  					<label style="left:5px;" id="iu_after">++</label>
 			  				</c:otherwise>
 		  			</c:choose>
 					</div>
