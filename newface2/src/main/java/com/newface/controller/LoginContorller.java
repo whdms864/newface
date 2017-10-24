@@ -12,28 +12,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.newface.service.AdService;
 import com.newface.service.CashService;
 import com.newface.service.MarketService;
 import com.newface.service.MemberService;
 import com.newface.service.MsgService;
 import com.newface.service.NotiService;
 import com.newface.service.TimelineService;
+import com.newface.vo.AdVo;
 import com.newface.vo.CashVo;
 import com.newface.vo.NotiVo;
 import com.newface.vo.TimelineVo;
 
 @Controller
 public class LoginContorller {
-	@Autowired
-	private MemberService service;
-	@Autowired
-	private CashService cashservice;
-	@Autowired
-	private NotiService notiservice;
-	@Autowired
-	private MarketService marketservice;
-	@Autowired
-	private MsgService msgservice;
+	@Autowired private MemberService service;
+	@Autowired private CashService cashservice;
+	@Autowired private NotiService notiservice;
+	@Autowired private MarketService marketservice;
+	@Autowired private MsgService msgservice;
+	@Autowired private AdService adservice;
 
 	// 로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -100,8 +98,13 @@ public class LoginContorller {
 
 	// 로그아웃
 	@RequestMapping("/members/logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
+		HttpSession session2 = request.getSession();
+		List<AdVo> ad_slide=adservice.ad_slide();
+		List<AdVo> ad_slide2=adservice.ad_slide2();
+		session2.setAttribute("ad_slide", ad_slide);
+		session2.setAttribute("ad_slide2", ad_slide2);
 		return ".main";
 	}
 }

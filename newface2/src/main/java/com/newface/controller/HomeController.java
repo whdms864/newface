@@ -26,7 +26,6 @@ public class HomeController {
 	public String home(HttpSession session) {
 		List<AdVo> ad_slide=service.ad_slide();
 		List<AdVo> ad_slide2=service.ad_slide2();
-		System.out.println(ad_slide2.size());
 		session.setAttribute("ad_slide", ad_slide);
 		session.setAttribute("ad_slide2", ad_slide2);
 		
