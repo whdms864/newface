@@ -340,6 +340,7 @@
 						}
 					});
 					$(this).parents(".timeline").find(".timecom").css("display","block");
+					$(".text").focus();
 				});
 				/*이름클릭시 이름옆에박스*/
 				$(document).on("click",".click_name",function() {
@@ -367,26 +368,6 @@
 					var com_id =$(this).parents("td").find(".com_id").val();
 					window.open("<c:url value='/msg_reply?id='/>"+com_id,"_msg"," width=445,height=390,left=100,top=100");  
 				});
-				
-				/*사용자태그*/
-				$(document).on("keyup",".text",function() {
-					var text=$(this);
-					var box=$(this).parents(".timeline").find(".search_box");
-					var val=text.val();
-					var name="";
-					if(val.indexOf("@")!=-1){
-						name=val.split("@");
-						$.getJSON('main2/name_search', {
-							"name" : val
-						}, function(data) {
-							box.css("display","block");
-							box.text(data.length);
-						});
-					}else{
-						box.css("display","none");
-					}
-				});
-				
 				
 				/*댓글쓰기*/
 				$(document).on("keypress",".text",function(event) {
@@ -723,9 +704,6 @@
 						</c:choose>
 					</div>
 					<input type="text" class="form-control text" placeholder="댓글을 입력하세요">
-					<div class="search_box">
-					</div>
-					<%-- <img class="input-icon" src="<c:url value='/resources/images/homepage/icon/photo-camera.png'/>" > --%>
 					<div class="com_main">
 						<table style="padding: 0px; margin: 0px;">
 							<tbody class="com_main1"></tbody>
