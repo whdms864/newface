@@ -1,0 +1,36 @@
+#jukebox_back{
+	margin: auto;
+    width: 450px;
+}
+#img{
+	text-align: center;
+	height: 150px;
+}
+#title{
+	    margin-top: 10px;
+    margin-bottom: 5px;
+	font-weight: 900;
+    text-align: center;
+}
+#bgm_list{
+	text-align: center;
+}
+#title_list{
+	width: 350px;
+    margin: auto;
+    font-size: 13px;
+    height: 180px;
+    overflow: auto;
+}
+.btn:hover{
+	font-weight: 900;
+	cursor: pointer;
+}
+#zero{
+	text-align: center;
+    margin-top: 150px;
+}
+#zero_img{
+	height: 120px;
+    margin-left: 160px;
+}

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.page.PageUtil;
+import com.newface.service.MemberService;
 import com.newface.service.MiniHomeService;
+import com.newface.service.SetupService;
 import com.newface.vo.HompyVo;
 import com.newface.vo.ItemVo;
 import com.newface.vo.IuVo;
@@ -34,6 +36,7 @@ import com.newface.vo.TodayVo;
 @Controller
 public class MiniHomeController {
 	@Autowired MiniHomeService service;
+	@Autowired MemberService member;
 	
 	@RequestMapping(value = "/minihome", method = RequestMethod.GET)
 	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,
@@ -148,7 +151,9 @@ public class MiniHomeController {
 		IuVo iu=service.iu_before(vo);
 		int n=0;
 		if(iu==null) {
-			service.iu_request(vo);			
+			service.iu_request(vo);	
+			int iu_request_now=member.iu_request_list(i_id);
+			session.setAttribute("iu_request_now", iu_request_now);
 		}
 		JSONObject json=new JSONObject();
 		json.put("n", n);

@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newface.service.MemberService;
 import com.newface.service.SetupService;
 import com.newface.vo.HompyVo;
 import com.newface.vo.ItemVo;
@@ -32,6 +32,7 @@ import com.newface.vo.SetupVo;
 @Controller
 public class SetupController {
 	@Autowired SetupService service;
+	@Autowired MemberService member;
 	
 	@RequestMapping(value="/setup/basic",method=RequestMethod.GET)
 	public String basicForm(Model model,HttpSession session) {
@@ -164,6 +165,8 @@ public class SetupController {
 		IuVo vo=new IuVo(0, null, null, i_id, u_id);
 		int n=service.iuOk(vo);
 		service.iu_insert(vo);
+		int iu_request_now=member.iu_request_list(i_id);
+		session.setAttribute("iu_request_now", iu_request_now);
 		JSONObject json=new JSONObject();
 		json.put("n", n);
 		return json.toString();
