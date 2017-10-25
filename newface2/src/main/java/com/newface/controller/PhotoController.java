@@ -156,6 +156,13 @@ public class PhotoController {
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list11(map);
 			System.out.println("list11");
+		}else {
+			int totalRowCount=service.getCount(hompy_num);
+			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
+			map.put("startRow",pu.getStartRow());
+			map.put("endRow",pu.getEndRow());
+			list1=service.photo_list(map);
+			System.out.println("list");
 		}
 		if(list1!=null) {
 			model.addAttribute("list1",list1);
