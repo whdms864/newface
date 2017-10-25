@@ -78,6 +78,7 @@ public class GuestBookController {
 			vo.setMinime_img(minime_img);
 		}
 		if(list!=null) {
+			model.addAttribute("home_id",home_id);
 			model.addAttribute("list",list);
 			model.addAttribute("pu",pu);
 			return "forward:/guest/com_list";
