@@ -80,7 +80,7 @@
 	</div>
 	<div id="edit">
 		<c:if test="${sessionScope.loginid==sessionScope.hompyid }">
-			<span class="triangle">▶</span><a href="<c:url value='/setup/profile'/>">edit</a>
+			<span class="triangle">▶</span><a id="edit1" href="<c:url value='/setup/profile'/>">edit</a>
 		</c:if> 
 		<span class="triangle">▶</span><a id="history">history</a>
 	</div>

@@ -53,10 +53,13 @@ body {
 	position: relative;
 	margin-top: 20px;
 	left: 25px;
-	width: 100px;
+	width: 120px;
 	height: 13px;
 	font-size: 14px;
 	color: rgb(41, 90, 221);
+}
+#edit1:hover{
+	cursor: pointer; font-weight: 900;
 }
 
 #member {
@@ -70,9 +73,11 @@ body {
 
 #name {
 	display: inline;
-	float: left;
-	cursor: pointer;
+	float: left;	
 	width: 130px;
+}
+#name:hover{
+	cursor: pointer; font-weight: 900;
 }
 
 #name1 {
@@ -112,7 +117,7 @@ a {
 }
 
 #history:hover {
-	cursor: pointer;
+	cursor: pointer; font-weight: 900;
 }
 
 .photo {
@@ -126,9 +131,12 @@ a {
 .triangle {
 	color: #1cc8cc;
 }
-#iu_delete{
-	cursor: pointer;
+#iu_delete:hover{
+	cursor: pointer; font-weight: 900;
 }
-#i_you1{
-	cursor: pointer;
+#i_you1:hover{
+	cursor: pointer; font-weight: 900;
+}
+#msg:hover{
+	cursor: pointer; font-weight: 900;
 }
