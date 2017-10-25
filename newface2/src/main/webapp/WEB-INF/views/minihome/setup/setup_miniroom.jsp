@@ -51,7 +51,7 @@
 		<option class="choice" value="${vo.item_num }">${vo.name }</option>
 	</c:forEach>
 	</select>
-	<input type="button" id="btn" value="벽지적용">
+	<input type="button" id="btn" value="적용">
 		<div class="miniroom">
 		
 			<c:forEach var="miniVo" items="${requestScope.mini }" varStatus="status">
@@ -67,11 +67,11 @@
 			</div>
 			<input type="hidden" name="mine_num" value="${vo.mine_num }">
 			</c:forEach>
+			<a href="#" id="submit">미니룸 저장</a>
 		</form>
 		</div>
 	</div>
 	<input type="button" id="item_select" value="아이템가져오기">
-	<a href="#" id="submit">미니룸 저장</a>
 </div>
 	<script type="text/javascript">	
 	    $(document).on("click",".miniroom p img",function(){

@@ -1,6 +1,7 @@
 @charset "UTF-8";
-#setup_miniroom_back{
-	padding: 30px;
+#setup_minime_back{
+	margin: auto;
+    text-align: center;
 }    
 .miniroom_back{
 	 padding-bottom: 10px; background-color: #f3f3f3; padding-top: 0px;
@@ -21,7 +22,7 @@
 	display:inline; margin: 0px; padding: 0px; z-index: 99; top: 94px; left: 30px; position: relative; 
 }
 #back_img{
-	border: 1px solid gray;
+	border: 1px solid gray; width: 145px;
 }
 
 
