@@ -31,7 +31,7 @@
 		update iu set u_name='일촌' where i_id=#{i_id} and u_id=#{u_id}
 	</update>
 	<select id="miniroom_wallpaper" parameterType="miniroom_list" resultType="miniroom_list">
-		select m.*,i.name,i.item_img from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=#{category_num}
+		select m.*,i.name,i.item_img from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=8
 	</select>
 	<select id="item_img" parameterType="int" resultType="string">
 		select item_img from item where item_num=#{value}
