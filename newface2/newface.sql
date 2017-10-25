@@ -51,8 +51,8 @@ CREATE TABLE ad
 	pay varchar(4000),
 	ad_img varchar(4000),
 	url varchar(1000),
-	sdate date,
-	edate date,
+	sdate varchar(1000),
+	edate varchar(1000),
 	ader_num int NOT NULL,
 	PRIMARY KEY (ad_num)
 );
@@ -66,7 +66,7 @@ CREATE TABLE ader
 	snum varchar(1000),
 	dname varchar(1000),
 	phone varchar(1000),
-	regdate date,
+	regdate datetime,
 	PRIMARY KEY (ader_num)
 );
 
@@ -96,7 +96,7 @@ CREATE TABLE admin_msg
 CREATE TABLE buy
 (
 	buy_num int NOT NULL AUTO_INCREMENT,
-	regdate date,
+	regdate datetime,
 	cnt int,
 	pay int,
 	item_num int NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE diary
 	content varchar(4000),
 	singo int,
 	love int,
-	regdate date,
+	regdate datetime,
 	diary_folder_num int NOT NULL,
 	blind int,
 	PRIMARY KEY (diary_num)
@@ -142,7 +142,7 @@ CREATE TABLE diary_com
 	diary_com_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	singo varchar(20),
-	regdate date,
+	regdate datetime,
 	diary_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (diary_com_num)
@@ -153,7 +153,7 @@ CREATE TABLE diary_folder
 (
 	diary_folder_num int NOT NULL AUTO_INCREMENT,
 	fname varchar(1000),
-	regdate date,
+	regdate datetime,
 	hompy_num int NOT NULL,
 	PRIMARY KEY (diary_folder_num)
 );
@@ -183,7 +183,7 @@ CREATE TABLE guestbook
 	guest_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	secret varchar(20),
-	regdate date,
+	regdate datetime,
 	id varchar(250) NOT NULL,
 	hompy_num int NOT NULL,
 	PRIMARY KEY (guest_num)
@@ -194,7 +194,7 @@ CREATE TABLE guestbook_com
 (
 	guest_com_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	guest_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (guest_com_num)
@@ -226,7 +226,7 @@ CREATE TABLE item
 	name varchar(1000),
 	content varchar(4000),
 	item_img varchar(4000),
-	regdate date,
+	regdate datetime,
 	category_num int NOT NULL,
 	PRIMARY KEY (item_num)
 );
@@ -247,7 +247,7 @@ CREATE TABLE iu_com
 (
 	iu_com_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	hompy_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (iu_com_num)
@@ -264,7 +264,7 @@ CREATE TABLE member
 	birth varchar(50),
 	school varchar(50),
 	type varchar(20),
-	regdate date,
+	regdate datetime,
 	PRIMARY KEY (id)
 );
 
@@ -309,7 +309,7 @@ CREATE TABLE noti
 	noti_num int NOT NULL AUTO_INCREMENT,
 	title varchar(1000),
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (noti_num)
 );
@@ -320,7 +320,7 @@ CREATE TABLE noti_com
 	noti_com_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
 	singo varchar(20),
-	regdate date,
+	regdate datetime,
 	id varchar(250) NOT NULL,
 	noti_num int NOT NULL,
 	PRIMARY KEY (noti_com_num)
@@ -335,7 +335,7 @@ CREATE TABLE photo
 	love int,
 	secret varchar(20),
 	singo int,
-	regdate date,
+	regdate datetime,
 	type varchar(20),
 	photo_folder_num int NOT NULL,
 	blind int,
@@ -348,7 +348,7 @@ CREATE TABLE photo_com
 	photo_com_num int NOT NULL AUTO_INCREMENT,
 	singo varchar(20),
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	photo_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (photo_com_num)
@@ -359,7 +359,7 @@ CREATE TABLE photo_folder
 (
 	photo_folder_num int NOT NULL AUTO_INCREMENT,
 	fname varchar(1000),
-	regdate date,
+	regdate datetime,
 	hompy_num int NOT NULL,
 	PRIMARY KEY (photo_folder_num)
 );
@@ -389,7 +389,7 @@ CREATE TABLE profile
 	pro_num int NOT NULL AUTO_INCREMENT,
 	todayis varchar(500),
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	org_name varchar(1000),
 	save_name varchar(1000),
 	hompy_num int NOT NULL,
@@ -402,7 +402,7 @@ CREATE TABLE qna11
 	qna11_num int NOT NULL AUTO_INCREMENT,
 	title varchar(1000),
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	confirm varchar(20),
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (qna11_num)
@@ -413,7 +413,7 @@ CREATE TABLE qna11_com
 (
 	qna11_com_num int NOT NULL AUTO_INCREMENT,
 	content varchar(4000),
-	regdate date,
+	regdate datetime,
 	qna11_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (qna11_com_num)
@@ -447,7 +447,7 @@ CREATE TABLE setup
 CREATE TABLE today
 (
 	today_num int NOT NULL AUTO_INCREMENT,
-	regdate date,
+	regdate datetime,
 	hompy_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (today_num)
