@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.SetupMapper">
 	<select id="setup_list" parameterType="int" resultType="setup">
-		select guest,photo,diary from setup where hompy_num=#{value}	
+		select guest,photo,diary,jukebox from setup where hompy_num=#{value}	
 	</select>
 	<update id="menu_update" parameterType="setup">
-		update setup set diary=#{diary},photo=#{photo},guest=#{guest} where hompy_num=#{hompy_num}
+		update setup set diary=#{diary},photo=#{photo},guest=#{guest},jukebox=#{jukebox} where hompy_num=#{hompy_num}
 	</update>
 	<update id="hname" parameterType="hompy">
 		update hompy set hname=#{hname} where hompy_num=#{hompy_num}
@@ -55,7 +55,7 @@
 		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3 or id=#{id} and i.category_num=4;
 	</select>
 	<select id="skin_list" parameterType="string" resultType="item_mine">
-		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=5
+		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=1
 	</select>
 	<insert id="skin_insert" parameterType="position">
 		insert into room_posi values(0,#{mini_num},'스킨',0,0,#{mine_num})
@@ -73,7 +73,7 @@
 		select * from hompy where id=#{value}
 	</select>
 	<select id="minime_list" parameterType="string" resultType="item">
-		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=4
+		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=6
 	</select>
 	<select id="minime_mine_num" parameterType="hashmap" resultType="int">
 		select m.mine_num from mine m join item i on m.item_num=i.item_num where i.item_num=#{item_num} and m.id=#{id}
