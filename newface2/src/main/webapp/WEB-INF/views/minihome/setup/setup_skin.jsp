@@ -14,7 +14,11 @@
 		$("#skin_list").change(function(){
 			var item_num=$("#skin_list").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
-				$(".back_img").html("<span class='back_img'>" + data.item_img + "</span>");
+				if(data.item_img==null){
+					$(".back_img").html("<span class='back_img'><img src='<c:url value='/resources/skin/cyworldSkin01.jpg'/>'></span>");										
+				}else{
+					$(".back_img").html("<span class='back_img'>" + data.item_img + "</span>");					
+				}
 			});
 		});
 	});
