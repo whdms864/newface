@@ -22,10 +22,10 @@
 	});
 </script>	
 <style>
-	td p img{
+/* 	td p img{
 		width: 40px;
 		height: 40px;
-	}
+	} */
 /* 	table{
 		text-align: center;	
 	}
