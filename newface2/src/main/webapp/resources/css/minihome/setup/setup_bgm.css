@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+h3 {
+	width: 430px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#bgm_title {
+	background-color: #c5c5c5;
+	width: 430px;
+	margin: auto;
+	font-size: 15px;
+}
+
+#bgm_back {
+	width: 430px;
+	margin: auto;
+	font-size: 15px;
+}
+
+#bgm_list {
+	width: 430px;
+	margin: auto;
+	font-size: 15px;
+}
