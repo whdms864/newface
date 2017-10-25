@@ -5,9 +5,6 @@
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script>
 	$(function(){
-		/* $("#name").on("click","#name1",function(){
-			$("#i_you").toggle(); 
-		}); */
 		$("#name1").click(function(){
 			$("#i_you").toggle();
 		});
@@ -16,9 +13,6 @@
 				var name=$("#hompy_name").val();
 				alert(name + "님과 일촌맺기를 했습니다")
 			});
-		});
-		$("#bgm").click(function(){
-			window.open("<c:url value='/setup/bgm/test'/>","_bgm12"," width=445,height=390,left=100,top=100"); 
 		});
 		$("#iu_list").change(function(){
 			var hompy_num=$(this).val();
@@ -35,7 +29,12 @@
 			window.open("<c:url value='/minihome/profile_history?hompy_num=" + hompy_num + "'/>","_minihome3"," width=235,height=592,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
-		    window.open("<c:url value='/msg_reply?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
+			var hompy_num=$("#iu_hompy_num").val();
+			var id;
+			$.getJSON("<c:url value='/minihome/id'/>",{"hompy_num":hompy_num},function(data){
+				id=data.id;
+			});
+			window.open("<c:url value='/msg_reply?id='/>"+id,"_msg2"," width=445,height=390,left=100,top=100"); 
 		});
 		$("#iu_delete").click(function(){
 			var name=$("#hompy_name").val();
@@ -99,8 +98,7 @@
 					<a id="iu_delete">일촌끊기</a><br>					
 				</c:otherwise>
 			</c:choose>
-			<a id="msg">쪽지</a>		
-			<a id="bgm">BGM</a>		
+			<a id="msg">쪽지보내기</a>			
 		</div>
 	</c:if>
 	<div id="iu">

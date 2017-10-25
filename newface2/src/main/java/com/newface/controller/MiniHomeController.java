@@ -249,4 +249,12 @@ public class MiniHomeController {
 		json.put("n2", n2);
 		return json.toString();
 	}
+	@RequestMapping(value="/minihome/id",method=RequestMethod.GET)
+	@ResponseBody
+	public String id(int hompy_num) {
+		String id=service.id(hompy_num);
+		JSONObject json=new JSONObject();
+		json.put("id", id);
+		return json.toString();
+	}
 }

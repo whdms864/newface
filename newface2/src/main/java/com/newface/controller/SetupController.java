@@ -221,6 +221,7 @@ public class SetupController {
 		if(item_num==-1) {
 			int mini_num=service.mini_num(hompy_num);
 			service.basic_skin(mini_num);
+			session.setAttribute("item_img", null);
 		}else {
 			MineVo mine=new MineVo(0, 0, 0, item_num, id);
 			int mine_num=service.mine_num(mine);
