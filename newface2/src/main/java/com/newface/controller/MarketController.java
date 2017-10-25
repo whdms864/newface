@@ -35,7 +35,7 @@ public class MarketController {
 	
 	@RequestMapping(value = "/market/item/list", method = RequestMethod.GET)
 	public String user_item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
-			@RequestParam(value="category_num",defaultValue="3") int category_num,Model model,
+			@RequestParam(value="category_num",defaultValue="1") int category_num,Model model,
 			@RequestParam(value="text",defaultValue="") String text) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("category_num", category_num);
@@ -135,7 +135,7 @@ public class MarketController {
 	
 	@RequestMapping(value = "/market/admin/item/list", method = RequestMethod.GET)
 	public String item_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,
-			@RequestParam(value="category_num",defaultValue="3") int category_num,Model model,
+			@RequestParam(value="category_num",defaultValue="1") int category_num,Model model,
 			@RequestParam(value="text",defaultValue="") String text) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("category_num", category_num);
