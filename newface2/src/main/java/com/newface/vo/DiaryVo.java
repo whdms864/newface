@@ -12,6 +12,9 @@ public class DiaryVo {
 	private int rownum;
 	private String fname;
 	private int blind;
+	
+	public DiaryVo() {}
+	
 	public DiaryVo(int diary_num, String type, String title, String content, int singo, int love, String regdate,
 			int diary_folder_num, int rownum, String fname, int blind) {
 		super();

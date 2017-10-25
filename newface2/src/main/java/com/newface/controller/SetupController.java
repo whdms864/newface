@@ -61,6 +61,7 @@ public class SetupController {
 			session.setAttribute("diary", menu.getDiary());
 			session.setAttribute("photo", menu.getPhoto());
 			session.setAttribute("guest", menu.getGuest());
+			session.setAttribute("jukebox", menu.getJukebox());
 			return ".basic.setup";			
 		}else {
 			model.addAttribute("code", "오류로 인하여 카테고리 메뉴수정 요청작업이 실패했습니다");

@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newface.mybatis.SetupMapper">
 	<select id="setup_list" parameterType="int" resultType="setup">
-		select guest,photo,diary from setup where hompy_num=#{value}	
+		select guest,photo,diary,jukebox from setup where hompy_num=#{value}	
 	</select>
 	<update id="menu_update" parameterType="setup">
-		update setup set diary=#{diary},photo=#{photo},guest=#{guest} where hompy_num=#{hompy_num}
+		update setup set diary=#{diary},photo=#{photo},guest=#{guest},jukebox=#{jukebox} where hompy_num=#{hompy_num}
 	</update>
 	<update id="hname" parameterType="hompy">
 		update hompy set hname=#{hname} where hompy_num=#{hompy_num}
