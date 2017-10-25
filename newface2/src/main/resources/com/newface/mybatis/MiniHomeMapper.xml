@@ -96,7 +96,7 @@
 		insert into today values(0,now(),#{hompy_num},#{id})
 	</insert>
 	<select id="today_today" parameterType="int" resultType="int">
-		select ifnull(count(id),0) from today where hompy_num=#{value} and regdate=date_format(now(),'%Y-%c-%e')
+		select ifnull(count(id),0) from today where hompy_num=#{value} and date_format(regdate,'%Y-%c-%e')=date_format(now(),'%Y-%c-%e')
 	</select>
 	<select id="today_total" parameterType="int" resultType="int">
 		select ifnull(count(id),0) from today where hompy_num=#{value}
