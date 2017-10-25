@@ -130,4 +130,7 @@
 	<select id="get_diary_num" resultType="int">
 		select max(diary_num) from diary
 	</select>
+	<select id="diary_basic" parameterType="int" resultType="diary">
+		select * from diary where diary_num=#{value}
+	</select>
 </mapper>  

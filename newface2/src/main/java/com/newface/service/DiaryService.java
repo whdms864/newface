@@ -124,4 +124,7 @@ public class DiaryService {
 	public int get_diary_num() {
 		return dao.get_diary_num();
 	}
+	public DiaryVo diary_basic(int diary_num) {
+		return dao.diary_basic(diary_num);
+	}
 }

@@ -460,9 +460,11 @@ public class DiaryController {
 		int hompy_num = (Integer) session.getAttribute("hompy_num");
 		String hompy_id=service.id(hompy_num);
 		DiaryVo vo = service.content(diary_num);
+		
 
 		if (vo != null) {
-			session.setAttribute("diary_folder_num", vo.getDiary_folder_num());
+			DiaryVo diary =service.diary_basic(diary_num);
+			session.setAttribute("diary_folder_num", diary.getDiary_folder_num());
 			model.addAttribute("hompy_id", hompy_id);
 			model.addAttribute("vo", vo);
 			return ".content.diary";
