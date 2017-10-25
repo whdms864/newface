@@ -141,5 +141,7 @@ public class SetupService {
 	public int miniroom_delete(int mini_num) {
 		return dao.miniroom_delete(mini_num);
 	}
-
+	public int wall_delete(HashMap<String,Object> map) {
+		return dao.wall_delete(map);
+	}
 }

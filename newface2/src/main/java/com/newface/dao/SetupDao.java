@@ -142,5 +142,7 @@ public class SetupDao {
 	public int miniroom_delete(int mini_num) {
 		return sqlSession.delete(NAMESPACE+".miniroom_delete",mini_num);
 	}
-
+	public int wall_delete(HashMap<String,Object> map) {
+		return sqlSession.delete(NAMESPACE+".wall_delete",map);
+	}
 }

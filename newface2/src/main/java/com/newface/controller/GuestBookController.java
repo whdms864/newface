@@ -49,6 +49,8 @@ public class GuestBookController {
 		int hompy_num = (Integer)session.getAttribute("hompy_num");
 		String id=(String)session.getAttribute("loginid");
 		String home_id=mini.id(hompy_num);
+		System.out.println("homeid="+home_id);
+		System.out.println("id="+id);
 		HompyVo vo1=new HompyVo(hompy_num,0,null,id);
 		HompyVo hompy=service.hompy_is(vo1);
 		HashMap<String,Object> map=new HashMap<String, Object>();

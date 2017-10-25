@@ -31,7 +31,7 @@
 				$(data).each(function(i,com){
 					$("#miniroom").append("<div id='"+com.mine_num+"' style='position:absolute;'>"+com.item_img+"</div>");
 					console.log("<div id='"+com.mine_num+"'>"+com.category_num+"</div>");
-					if(com.category_num != 6){
+					if(com.category_num != 8){
 						$("#"+com.mine_num+" p img").offset({left: com.x});
 						$("#"+com.mine_num+" p img").offset({top: com.y});
 					}

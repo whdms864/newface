@@ -199,10 +199,17 @@ public class SetupController {
 	@ResponseBody
 	public String room_posi(int item_num,HttpSession session) {
 		String id=(String)session.getAttribute("loginid");
+		HashMap<String,Object> map=new HashMap<String, Object>();
 		int hompy_num=service.hompy_num(id);
 		MineVo mine=new MineVo(0, 0, 0, item_num, id);
 		int mine_num=service.mine_num(mine);
 		int mini_num=service.mini_num(hompy_num);
+		map.put("mine_num",mine_num);
+		map.put("mini_num",mini_num);
+		int n1=service.wall_delete(map);
+		if(n1>0) {
+			System.out.println("삭제완료");
+		}
 		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
 		RoomposiVo test=service.mine_num_is(posi);
 		int n2=0;
