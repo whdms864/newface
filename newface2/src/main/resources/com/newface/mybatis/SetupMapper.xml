@@ -52,10 +52,10 @@
 		select r.*,i.category_num,i.item_img from room_posi r join mine m on r.mine_num=m.mine_num join item i on m.item_num=i.item_num where r.mini_num=#{value} and r.drag!='스킨' and r.drag!='미니룸'
 	</select>
 	<select id="miniroom_decorate" parameterType="string" resultType="item_mine">
-		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=3 or id=#{id} and i.category_num=4;
+		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where id=#{id} and i.category_num=6 or id=#{id} and i.category_num=5;
 	</select>
 	<select id="skin_list" parameterType="string" resultType="item_mine">
-		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=5
+		select i.*,m.mine_num from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=1
 	</select>
 	<insert id="skin_insert" parameterType="position">
 		insert into room_posi values(0,#{mini_num},'스킨',0,0,#{mine_num})
@@ -73,7 +73,7 @@
 		select * from hompy where id=#{value}
 	</select>
 	<select id="minime_list" parameterType="string" resultType="item">
-		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=4
+		select i.* from mine m join item i on m.item_num=i.item_num where m.id=#{value} and i.category_num=6
 	</select>
 	<select id="minime_mine_num" parameterType="hashmap" resultType="int">
 		select m.mine_num from mine m join item i on m.item_num=i.item_num where i.item_num=#{item_num} and m.id=#{id}
