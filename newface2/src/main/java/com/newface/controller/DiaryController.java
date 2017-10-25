@@ -352,7 +352,7 @@ public class DiaryController {
 		vo.setHompy_num(hompy_num);
 		int n = service.folder_insert(vo);
 		if (n > 0) {
-			return ".folder.diary";
+			return "redirect:/diary/folder";
 		} else {
 			model.addAttribute("code", "오류로 인하여 폴더생성 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
@@ -426,9 +426,7 @@ public class DiaryController {
 	public String folder_update(DiaryfolderVo vo, Model model) {
 		int n = service.folder_update(vo);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 폴더수정 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/folder_all_list");
-			return ".code";
+			return "redirect:/diary/folder";
 		} else {
 			model.addAttribute("code", "오류로 인하여 폴더수정 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
@@ -443,9 +441,7 @@ public class DiaryController {
 		vo.setHompy_num(hompy_num);
 		int n = service.folder_delete(vo);
 		if (n > 0) {
-			model.addAttribute("code", "성공적으로 폴더삭제 요청작업이 성공했습니다");
-			model.addAttribute("url", "/diary/folder_all_list");
-			return ".code";
+			return "redirect:/diary/folder";
 		} else {
 			model.addAttribute("code", "오류로 인하여 폴더삭제 요청작업이 실패했습니다");
 			model.addAttribute("url", "/diary/folder_all_list");
