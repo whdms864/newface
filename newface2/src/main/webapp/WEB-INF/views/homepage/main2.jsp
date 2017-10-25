@@ -247,12 +247,12 @@
 					var id=$(this).parents(".timeline").find(".vo_id").val();
 					var hompy_num=0;
 					$.getJSON('main2/hompynum', {"id" : id}, function(data) {
-						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
+						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=592,left=100,top=100"); 
 					});
 				});
 				$(document).on("click",".link_name_i",function() {
 					var loginid=$("#loginid").val();
-					window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
+					window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592,left=100,top=100"); 
 				});
 				
 				/* 취소버튼클릭 */
@@ -350,7 +350,7 @@
 						$(".name_box").not($except).css("display","none");
 						$except.toggle();
 					}else{
-						window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=594,left=100,top=100"); 
+						window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592,left=100,top=100"); 
 					}
 				});
 				
@@ -359,7 +359,7 @@
 					var hompy_num=0;
 					$.getJSON('main2/hompynum', {"id" : com_id}, function(data) {
 						$(".name_box").css("display","none");
-						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=594,left=100,top=100"); 
+						window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=592,left=100,top=100"); 
 					});
 				});
 				

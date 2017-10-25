@@ -5,11 +5,8 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS ad;
 DROP TABLE IF EXISTS ader;
 DROP TABLE IF EXISTS admin_msg;
-DROP TABLE IF EXISTS diary_com_singo;
-DROP TABLE IF EXISTS noti_com_singo;
 DROP TABLE IF EXISTS noti_com;
 DROP TABLE IF EXISTS noti;
-DROP TABLE IF EXISTS photo_com_singo;
 DROP TABLE IF EXISTS qna11_com;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS buy;
@@ -19,7 +16,6 @@ DROP TABLE IF EXISTS room_posi;
 DROP TABLE IF EXISTS mine;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS category;
-DROP TABLE IF EXISTS diary_tag;
 DROP TABLE IF EXISTS diary_com;
 DROP TABLE IF EXISTS diary_love;
 DROP TABLE IF EXISTS diary_singo;
@@ -27,10 +23,8 @@ DROP TABLE IF EXISTS diary;
 DROP TABLE IF EXISTS diary_folder;
 DROP TABLE IF EXISTS guestbook_com;
 DROP TABLE IF EXISTS guestbook;
-DROP TABLE IF EXISTS hashtag;
 DROP TABLE IF EXISTS iu_com;
 DROP TABLE IF EXISTS miniroom;
-DROP TABLE IF EXISTS photo_com_tag;
 DROP TABLE IF EXISTS photo_com;
 DROP TABLE IF EXISTS photo_love;
 DROP TABLE IF EXISTS photo_singo;
@@ -155,16 +149,6 @@ CREATE TABLE diary_com
 );
 
 
-CREATE TABLE diary_com_singo
-(
-	dcs_num int NOT NULL AUTO_INCREMENT,
-	content varchar(4000),
-	diary_com_num int NOT NULL,
-	id varchar(250) NOT NULL,
-	PRIMARY KEY (dcs_num)
-);
-
-
 CREATE TABLE diary_folder
 (
 	diary_folder_num int NOT NULL AUTO_INCREMENT,
@@ -194,16 +178,6 @@ CREATE TABLE diary_singo
 );
 
 
-CREATE TABLE diary_tag
-(
-	tag_num int NOT NULL AUTO_INCREMENT,
-	diary_com_num int NOT NULL,
-	i_id varchar(250) NOT NULL,
-	u_id varchar(250) NOT NULL,
-	PRIMARY KEY (tag_num)
-);
-
-
 CREATE TABLE guestbook
 (
 	guest_num int NOT NULL AUTO_INCREMENT,
@@ -224,14 +198,6 @@ CREATE TABLE guestbook_com
 	guest_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (guest_com_num)
-);
-
-
-CREATE TABLE hashtag
-(
-	hashtag_num int NOT NULL AUTO_INCREMENT,
-	content varchar(4000),
-	PRIMARY KEY (hashtag_num)
 );
 
 
@@ -331,6 +297,7 @@ CREATE TABLE msg
 	recv_del varchar(20),
 	regdate date,
 	send_clx varchar(20),
+	chk varchar(100),
 	sender varchar(250) NOT NULL,
 	receiver varchar(250) NOT NULL,
 	PRIMARY KEY (msg_num)
@@ -360,16 +327,6 @@ CREATE TABLE noti_com
 );
 
 
-CREATE TABLE noti_com_singo
-(
-	noti_com_singo int NOT NULL AUTO_INCREMENT,
-	content varchar(4000),
-	id varchar(250) NOT NULL,
-	noti_com_num int NOT NULL,
-	PRIMARY KEY (noti_com_singo)
-);
-
-
 CREATE TABLE photo
 (
 	photo_num int NOT NULL AUTO_INCREMENT,
@@ -395,26 +352,6 @@ CREATE TABLE photo_com
 	photo_num int NOT NULL,
 	id varchar(250) NOT NULL,
 	PRIMARY KEY (photo_com_num)
-);
-
-
-CREATE TABLE photo_com_singo
-(
-	pcs_num int NOT NULL AUTO_INCREMENT,
-	content varchar(4000),
-	photo_com_num int NOT NULL,
-	id varchar(250) NOT NULL,
-	PRIMARY KEY (pcs_num)
-);
-
-
-CREATE TABLE photo_com_tag
-(
-	pct_num int NOT NULL AUTO_INCREMENT,
-	photo_com_num int NOT NULL,
-	i_id varchar(250) NOT NULL,
-	u_id varchar(250) NOT NULL,
-	PRIMARY KEY (pct_num)
 );
 
 
@@ -502,6 +439,7 @@ CREATE TABLE setup
 	guest int,
 	photo int,
 	diary int,
+	jukebox int,
 	PRIMARY KEY (setup_num)
 );
 
@@ -509,9 +447,9 @@ CREATE TABLE setup
 CREATE TABLE today
 (
 	today_num int NOT NULL AUTO_INCREMENT,
-	cnt int,
 	regdate date,
 	hompy_num int NOT NULL,
+	id varchar(250) NOT NULL,
 	PRIMARY KEY (today_num)
 );
 
@@ -535,31 +473,7 @@ ALTER TABLE admin_msg
 ;
 
 
-ALTER TABLE diary_com_singo
-	ADD FOREIGN KEY (id)
-	REFERENCES admin (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
 ALTER TABLE noti
-	ADD FOREIGN KEY (id)
-	REFERENCES admin (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE noti_com_singo
-	ADD FOREIGN KEY (id)
-	REFERENCES admin (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_singo
 	ADD FOREIGN KEY (id)
 	REFERENCES admin (id)
 	ON UPDATE RESTRICT
@@ -602,22 +516,6 @@ ALTER TABLE diary_love
 ALTER TABLE diary_singo
 	ADD FOREIGN KEY (diary_num)
 	REFERENCES diary (diary_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE diary_com_singo
-	ADD FOREIGN KEY (diary_com_num)
-	REFERENCES diary_com (diary_com_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE diary_tag
-	ADD FOREIGN KEY (diary_com_num)
-	REFERENCES diary_com (diary_com_num)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
@@ -775,22 +673,6 @@ ALTER TABLE diary_singo
 ;
 
 
-ALTER TABLE diary_tag
-	ADD FOREIGN KEY (i_id)
-	REFERENCES member (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE diary_tag
-	ADD FOREIGN KEY (u_id)
-	REFERENCES member (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
 ALTER TABLE guestbook
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
@@ -816,7 +698,7 @@ ALTER TABLE hompy
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (u_id)
+	ADD FOREIGN KEY (i_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -824,7 +706,7 @@ ALTER TABLE iu
 
 
 ALTER TABLE iu
-	ADD FOREIGN KEY (i_id)
+	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -848,7 +730,7 @@ ALTER TABLE mine
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (sender)
+	ADD FOREIGN KEY (receiver)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -856,7 +738,7 @@ ALTER TABLE msg
 
 
 ALTER TABLE msg
-	ADD FOREIGN KEY (receiver)
+	ADD FOREIGN KEY (sender)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -873,22 +755,6 @@ ALTER TABLE noti_com
 
 ALTER TABLE photo_com
 	ADD FOREIGN KEY (id)
-	REFERENCES member (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (i_id)
-	REFERENCES member (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (u_id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -912,6 +778,14 @@ ALTER TABLE photo_singo
 
 
 ALTER TABLE qna11
+	ADD FOREIGN KEY (id)
+	REFERENCES member (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE today
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
 	ON UPDATE RESTRICT
@@ -951,14 +825,6 @@ ALTER TABLE noti_com
 ;
 
 
-ALTER TABLE noti_com_singo
-	ADD FOREIGN KEY (noti_com_num)
-	REFERENCES noti_com (noti_com_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
 ALTER TABLE photo_com
 	ADD FOREIGN KEY (photo_num)
 	REFERENCES photo (photo_num)
@@ -978,22 +844,6 @@ ALTER TABLE photo_love
 ALTER TABLE photo_singo
 	ADD FOREIGN KEY (photo_num)
 	REFERENCES photo (photo_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_singo
-	ADD FOREIGN KEY (photo_com_num)
-	REFERENCES photo_com (photo_com_num)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE photo_com_tag
-	ADD FOREIGN KEY (photo_com_num)
-	REFERENCES photo_com (photo_com_num)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;

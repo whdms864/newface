@@ -32,7 +32,7 @@
 		});
 		$("#history").click(function(){
 			var hompy_num=$(this).val();
-			window.open("<c:url value='/minihome/profile_history?hompy_num=" + hompy_num + "'/>","_minihome3"," width=235,height=594,left=100,top=100"); 
+			window.open("<c:url value='/minihome/profile_history?hompy_num=" + hompy_num + "'/>","_minihome3"," width=235,height=592,left=100,top=100"); 
 		});
 		$("#msg").click(function(){
 		    window.open("<c:url value='/msg_reply?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 

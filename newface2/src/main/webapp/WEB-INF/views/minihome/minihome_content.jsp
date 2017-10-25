@@ -45,7 +45,7 @@
 		$("#iu_content").on("click",".history",function(){
 			var id=$(this).attr("id");
 			var hompy_num=$("#hompy_num").val();
-			window.open("<c:url value='/minihome/iu_history?hompy_num=" + hompy_num + "&id=" + id + "'/>","_minihome3"," width=385,height=594,left=100,top=100");
+			window.open("<c:url value='/minihome/iu_history?hompy_num=" + hompy_num + "&id=" + id + "'/>","_minihome3"," width=385,height=592,left=100,top=100");
 		});
 		$("#iu_content").on("click",".com_name",function(){
 			var hompy_num=$(this).attr("id");
