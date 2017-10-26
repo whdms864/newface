@@ -90,4 +90,13 @@
 	<select id="iu_check" parameterType="iu" resultType="iu">
 		select * from iu where i_id=#{i_id} and u_id=#{u_id}
 	</select>
+	<delete id="love_delete" parameterType="int">
+		delete from photo_love where photo_num=#{photo_num}
+	</delete>
+	<delete id="photo_com_delete" parameterType="int">
+		delete from photo_com where photo_num=#{photo_num}
+	</delete>
+	<delete id="photo_singo_delete" parameterType="int">
+		delete from photo_singo where photo_num=#{photo_num}
+	</delete>
 </mapper>   

@@ -177,6 +177,9 @@ public class PhotoController {
 	@RequestMapping(value="/photo/delete", method = RequestMethod.GET)
 	public String photo_delete(Model model,HttpServletRequest request) {
 		int photo_num=Integer.parseInt(request.getParameter("photo_num"));
+		service.love_delete(photo_num);
+		service.photo_com_delete(photo_num);
+		service.photo_singo_delete(photo_num);
 		int n=service.photo_delete(photo_num);
 		if(n>0) {
 			return "redirect:/photo/list";

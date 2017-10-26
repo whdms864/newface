@@ -95,4 +95,13 @@ public class PhotoService {
 	public IuVo iu_check(IuVo vo) {
 		return dao.iu_check(vo);
 	}
+	public int love_delete(int photo_num) {
+		return dao.love_delete(photo_num);
+	}
+	public int photo_com_delete(int photo_num) {
+		return dao.photo_com_delete(photo_num);
+	}
+	public int photo_singo_delete(int photo_num) {
+		return dao.photo_singo_delete(photo_num);
+	}
 }
