@@ -42,7 +42,6 @@ public class MiniHomeController {
 	public String home(@RequestParam(value="hompy_num",defaultValue="0")int hompy_num,HttpSession session,
 			Model model,HttpServletRequest request,
 			@RequestParam(value="getid",defaultValue="") String getid) {
-		System.out.println("들어옴? : " + hompy_num);
 		session.setAttribute("choice", "home");
 		//아이디 구분 (주인인지 아닌지)
 		String loginid=(String)session.getAttribute("loginid");
@@ -50,12 +49,10 @@ public class MiniHomeController {
 		if(hompy_num<1) { 
 			//홈주인
 			session.setAttribute("hompy_admin", "1");
-			System.out.println("주인");
 			id=loginid;
 			hompy_num=service.hompy_num(id);
 		}else { 
 			//방문자
-			System.out.println("방문자");
 			session.setAttribute("hompy_admin", "2");
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			id=service.id(hompy_num);
@@ -122,18 +119,12 @@ public class MiniHomeController {
 		RoomposiVo mine=service.mine_num(mini_num);
 		int item_num=0;
 		if(mine!=null) {
-			System.out.println("zzzzz");
 			item_num=service.item_num(mine.getMine_num());			
 		}
 		if(item_num>0) {
-			System.out.println("============시작===============");
 			String item_img=service.item_img(item_num);
-			System.out.println("hompy_num : " + hompy_num);
-			System.out.println("skin : " + item_img);
 			session.setAttribute("skin_img", item_img);						
-			System.out.println(">>>>>>>>>>>>>끝>>>>>>>>>>>>>");
 		}else {
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 			session.setAttribute("skin_img", null);									
 		}
 		
