@@ -86,7 +86,7 @@ public class PhotoController {
 	public String photo_insert(PhotoVo vo,Model model) {
 		int n=service.photo_insert(vo);
 		if(n>0) {
-			return ".photo";
+			return "redirect:/photo/list";
 		}else {
 			model.addAttribute("code","¿À·ù");
 			return ".code";
