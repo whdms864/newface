@@ -11,7 +11,7 @@
 	<div class="p_c_wrap">	
 		<div class="p_title">
 			<div class="title">${vo.title }</div>
-			<div style="margin-top:10px;">
+			<div style="margin-top:10px;width: 99%;">
 				<a href="<c:url value='/photo/love?love=1&photo_num=${vo.photo_num }'/>" class="p_love_b">좋아요</a>
 				<c:if test="${requestScope.id eq sessionScope.loginid}">
 					<a href="<c:url value='/photo/delete?photo_num=${vo.photo_num }'/>" class="p_delete">삭제</a>
@@ -39,8 +39,7 @@
 		</div>
 		<div class="p_content_back">
 		<div class="p_top_wrap">
-			<div class="p_date">${vo.regdate }</div>
-			<div class="p_love">좋아요: ${vo.love }</div>
+			<div class="p_love">좋아요: ${vo.love } &nbsp;${vo.regdate }</div>
 		</div>
 			<div class="p_content_img">${vo.content }</div>
 		</div>

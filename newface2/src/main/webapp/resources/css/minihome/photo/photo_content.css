@@ -110,22 +110,12 @@
 	
 }
 .p_top_wrap{
-	display: inline-block;
 	width: 475px;
 }
 
-.p_date {
-	width: 69px;
-	height: 21px;
-	font-size: 12px;
-	float: right;
-}
-
 .p_love {
-	width: 60px;
 	height: 21px;
 	font-size: 12px;
-	float: right;
 }
 
 .p_content_img {
