@@ -76,4 +76,21 @@ public class AdDao {
 	public List<AdVo> ad_slide2(){
 		return sqlSession.selectList(NAMESPACE+ ".ad_slide2");
 	}
+	
+	public List<AdVo> total_income(){
+		return sqlSession.selectList(NAMESPACE+".total_income");
+	}
+	
+	public List<AdVo> daily_income(){
+		return sqlSession.selectList(NAMESPACE+".daily_income");
+	}
+	
+	public List<AdVo> month_income(){
+		return sqlSession.selectList(NAMESPACE+".month_income");
+	}
+	
+	public List<AdVo> year_income(){
+		return sqlSession.selectList(NAMESPACE+".year_income");
+	}
+	
 }

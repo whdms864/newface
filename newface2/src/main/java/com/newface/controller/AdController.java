@@ -103,6 +103,16 @@ public class AdController {
 	@RequestMapping(value = "/ad_total", method = RequestMethod.GET)
 	public String ad_total(Model model) {
 		
+		List<AdVo> total_income=service.total_income();
+		List<AdVo> daily_income=service.daily_income();
+		List<AdVo> month_income=service.month_income();
+		List<AdVo> year_income=service.year_income();
+		
+		model.addAttribute("total_income", total_income);
+		model.addAttribute("daily_income", daily_income);
+		model.addAttribute("month_income", month_income);
+		model.addAttribute("year_income", year_income);
+		
 		return ".ad_total";
 	}
 	

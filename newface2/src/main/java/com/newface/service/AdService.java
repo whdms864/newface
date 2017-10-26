@@ -68,4 +68,20 @@ public class AdService {
 	public List<AdVo> ad_slide2(){
 		return dao.ad_slide2();
 	}
+	
+	public List<AdVo> total_income(){
+		return dao.total_income();
+	}
+	
+	public List<AdVo> daily_income(){
+		return dao.daily_income();
+	}
+	
+	public List<AdVo> month_income(){
+		return dao.month_income();
+	}
+	
+	public List<AdVo> year_income(){
+		return dao.year_income();
+	}
 }

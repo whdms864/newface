@@ -55,7 +55,7 @@
 		  			<th>카테고리</th>
 		  			<th>상품명</th>
 		  			<th>수량</th>
-		  			<th>결제금액</th>
+		  			<th>금액</th>
 		  			<th>구매일</th>
 		  		</tr>
 		  	</thead>
@@ -69,8 +69,8 @@
 			  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
 			  			<a class="info"><input type="hidden" value="${vo.item_num }" class="item_num_val">${vo.iname}</a></td>
 		  				<td>${vo.cnt}</td>
-		  				<td>${vo.pay}</td>
-		  				<td>${vo.regdate}</td>
+		  				<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 30px;">${vo.pay}</td>
+		  				<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">${vo.regdate}</td>
 			  		</tr>
 			  	</c:forEach>
 			 </tbody>

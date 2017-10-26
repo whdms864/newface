@@ -69,4 +69,35 @@
 		select ad_img,url from ad where type='광고게시' order by ad_num limit 5,5
 	</select>
 	
+	<!-- 회사별 총매출현황 -->
+	<select id="total_income" resultType="ad">
+		select sum(pay) tot,ader_num 
+		from ad
+		where type!='광고협상'
+		group by ader_num
+	</select>
+	
+	<!-- 일별 매출현황 -->
+	<select id="daily_income" resultType="ad">
+		select sum(pay) tot,ader_num 
+		from ad
+		where type!='광고협상' and date_format(sdate,'%Y%m%d')=(date_format(now(),'%Y%m%d')-1)
+		group by ader_num
+	</select>
+	
+	<!-- 월별 -->
+	<select id="month_income" resultType="ad">
+		select sum(pay) tot,ader_num 
+		from ad
+		where type!='광고협상' and date_format(sdate,'%Y%m')=(date_format(now(),'%Y%m')-1)
+		group by ader_num
+	</select>
+	
+	<!-- 년도별 -->
+	<select id="year_income" resultType="ad">
+		select sum(pay) tot,ader_num 
+		from ad
+		where type!='광고협상' and date_format(sdate,'%Y')=(date_format(now(),'%Y')-1)
+		group by ader_num
+	</select>
 </mapper>  

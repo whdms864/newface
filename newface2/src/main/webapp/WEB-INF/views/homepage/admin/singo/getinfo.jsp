@@ -7,7 +7,6 @@
 	$(document).ready(function() {
 		$("#insert").submit(function(event){
 			var content=$("#in_content").val();
-			alert(content);
 			if(content==""){
 				$("#in_content").focus();
 				alert("관리자 확인란에 내용을 입력해주세요");
