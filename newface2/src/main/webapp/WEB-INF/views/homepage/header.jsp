@@ -10,7 +10,7 @@ $(document).ready(function() {
 	    window.open("<c:url value='/msgrecv_list?receiver=${loginid}'/>","_msg"," width=445,height=390,left=100,top=100"); 
 	});
 	$("#iu_img").click(function(){
-	    window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592,left=100,top=100"); 
+	    window.open("<c:url value='/minihome'/>?getid=${loginid}","_minihome"," width=1024,height=592,left=100,top=100"); 
 	});
 	$(".search").keypress(function(event){
 		if(event.keyCode==13){

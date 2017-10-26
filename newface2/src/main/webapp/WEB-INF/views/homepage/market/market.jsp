@@ -56,24 +56,33 @@
 	<div style="border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.227451) 3px 3px 8px 0px; background-color: rgb(250, 250, 250); 
 		width:90%; height:90%;margin-left:30px;padding-top: 10px;" align="center">
 		<div align="center" style="display: inline-block;">
-			<c:set var="i" value="0"/>
-			<c:forEach var="vo" items="${list}">
-				<c:set var="i" value="${i + 1}"/>
-				<div style="width:140px; height:140px; background-color: rgb(224, 224, 224);padding: 5px;margin-left:10px;margin-top:10px;float: left;"align="center">
-					<div  class="item_list" style="width:85%; height:80%; background-color:rgb(255, 255, 255);font-size: 10px;">
-					${vo.item_img}
-					</div>
-					<div style="font-size:13px;margin-top: 5px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-						<a class="item_getinfo" style="cursor:pointer;">
-						<input type="hidden" value="${vo.item_num }" class="item_num_val">
-						${vo.name}
-						</a>
-					</div>
-				</div>
-				<c:if test="${i%3==0 }">
-				<br>
-				</c:if>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${list.size()==0 }">
+					<label style="font-weight:bold;font-size: 30px; position: absolute;top:150px;left: 160px;"> 
+						검색 결과가 없습니다.
+					</label>
+				</c:when>
+				<c:otherwise>
+					<c:set var="i" value="0"/>
+					<c:forEach var="vo" items="${list}">
+						<c:set var="i" value="${i + 1}"/>
+						<div style="width:140px; height:140px; background-color: rgb(224, 224, 224);padding: 5px;margin-left:10px;margin-top:10px;float: left;"align="center">
+							<div  class="item_list" style="width:85%; height:80%; background-color:rgb(255, 255, 255);font-size: 10px;">
+							${vo.item_img}
+							</div>
+							<div style="font-size:13px;margin-top: 5px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+								<a class="item_getinfo" style="cursor:pointer;">
+								<input type="hidden" value="${vo.item_num }" class="item_num_val">
+								${vo.name}
+								</a>
+							</div>
+						</div>
+						<c:if test="${i%3==0 }">
+						<br>
+						</c:if>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div style="position:absolute;top:665px;width: 85%;"align="center">
 			<c:choose>

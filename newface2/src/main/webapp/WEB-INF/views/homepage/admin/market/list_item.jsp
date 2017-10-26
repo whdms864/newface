@@ -20,16 +20,6 @@
 			var category_num=$(this).val();
 			location.href='list?category_num='+category_num;
 		});
-		$("#search").click(function(){
-			var text=$("#text").val();
-			var category_num=$("#select_cate").val();
-			if(text==""){
-				$("#text").focus();
-				alert("검색할 내용을 입력해주세요");
-			}else{
-				location.href='list?category_num='+category_num+'&text='+text;
-			}
-		});
 		$("#text").keypress(function(event){
 			if(event.keyCode==13){
 				var text=$("#text").val();
@@ -104,23 +94,32 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		<c:forEach var="vo" items="${list}">
-			  			<tr>
-				  			<td>${vo.item_num}</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-				  				${vo.name}
-				  			</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-				  			${vo.item_img}</td>
-				  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
-				  				${vo.content}
-				  			</td>
-				  			<td>${vo.pay}</td>
-				  			<td>${vo.regdate}</td>
-				  			<td><a href="<c:url value='/market/admin/item/update?item_num=${vo.item_num }'/>">수정</a></td>
-				  			<td><a href="<c:url value='/market/admin/item/delete?item_num=${vo.item_num }'/>">삭제</a></td>
-				  		</tr>
-				  	</c:forEach>
+			  		<c:choose>
+					  	<c:when test="${list.size()==0 }">
+							<label style="font-weight:bold;font-size: 30px; position: absolute;top:150px;left: 210px;"> 
+								검색 결과가 없습니다.
+							</label>
+						</c:when>
+						<c:otherwise>
+					  		<c:forEach var="vo" items="${list}">
+					  			<tr>
+						  			<td>${vo.item_num}</td>
+						  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+						  				${vo.name}
+						  			</td>
+						  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+						  			${vo.item_img}</td>
+						  			<td style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;">
+						  				${vo.content}
+						  			</td>
+						  			<td>${vo.pay}</td>
+						  			<td>${vo.regdate}</td>
+						  			<td><a href="<c:url value='/market/admin/item/update?item_num=${vo.item_num }'/>">수정</a></td>
+						  			<td><a href="<c:url value='/market/admin/item/delete?item_num=${vo.item_num }'/>">삭제</a></td>
+						  		</tr>
+						  	</c:forEach>
+					  	</c:otherwise>
+					  </c:choose>
 				 </tbody>
 			</table>
 		</div>
@@ -170,8 +169,6 @@
 			<div style="display: inline-block;margin-top: 20px;">
 				<div class="form-group has-success" style="display: inline-block; ">
 					<input type="text" name="text" id="text" class="form-control" placeholder="검색할 상품명을 입력하세요" value="${text }" style="width:520px;float:left;margin-left: 5px;">
-					<input type="button" id="search" value="검색" style=" color: rgb(255, 255, 255); text-align: center; line-height: 2.4em; 
-					border-radius: 4px; background-color: rgb(52, 152, 219);width:80px; height:35px;float:left;margin-left: 5px;" > 
 				</div>
 			</div>
 		</div>

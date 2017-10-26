@@ -83,15 +83,24 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		<c:forEach var="vo" items="${list}">
-			  			<tr>
-				  			<td><a href="<c:url value='/memadmin/getinfo?id=${vo.id }'/>">${vo.id}</a></td>
-				  			<td>${vo.name}</td>
-				  			<td>${vo.email}</td>
-				  			<td>${vo.type}</td>
-				  			<td>${vo.regdate}</td>
-				  		</tr>
-				  	</c:forEach>
+				  	<c:choose>
+					  	<c:when test="${list.size()==0 }">
+							<label style="font-weight:bold;font-size: 30px; position: absolute;top:150px;left: 210px;"> 
+								조회할 회원이 없습니다.
+							</label>
+						</c:when>
+						<c:otherwise>
+					  		<c:forEach var="vo" items="${list}">
+					  			<tr>
+						  			<td><a href="<c:url value='/memadmin/getinfo?id=${vo.id }'/>">${vo.id}</a></td>
+						  			<td>${vo.name}</td>
+						  			<td>${vo.email}</td>
+						  			<td>${vo.type}</td>
+						  			<td>${vo.regdate}</td>
+						  		</tr>
+						  	</c:forEach>
+						 </c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 		</div>
