@@ -157,7 +157,7 @@ public class MarketController {
 	public String cate_list(@RequestParam(value="pageNum",defaultValue="1") int pageNum,Model model,@RequestParam(value="category_num",defaultValue="0") int category_num,@RequestParam(value="up",defaultValue="0") int up) {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		int totalRowCount=service.getCount();
-		PageUtil pu=new PageUtil(pageNum,5,5,totalRowCount);
+		PageUtil pu=new PageUtil(pageNum,15,5,totalRowCount);
 		map.put("startRow",pu.getStartRow());
 		map.put("endRow",pu.getEndRow());
 		List<CategoryVo> list=service.list_cate(map);

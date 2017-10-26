@@ -217,7 +217,8 @@ public class TimelineController {
 	}
 	@RequestMapping(value = "/main2/gongU", method = RequestMethod.POST)
 	public String main2_gongU(Model model,int num,int fnum,String tb
-			,String title1,String title2,String add_con,String secret) {
+			,String title1,@RequestParam(value="title2",defaultValue="") String title2,
+			@RequestParam(value="add_con",defaultValue="") String add_con,String secret) {
 		String title=title1+"<br>"+title2;
 		if(tb.equals("photo")) {
 			PhotoVo v=photoservice.photo_update(num);
@@ -283,7 +284,6 @@ public class TimelineController {
 	@ResponseBody
 	public HashMap<String, Object> main2_com_insert(int startrow_com,int endrow_com,int num2,String tb,String content,HttpSession session){
 		String id=(String)session.getAttribute("loginid");
-		int hompy_num = (Integer)session.getAttribute("hompy_num");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
@@ -292,7 +292,7 @@ public class TimelineController {
 		map.put("num2", num2);
 		String add="";
 		if(tb.equals("photo")) {
-			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id,null,hompy_num);
+			PhotocomVo vo=new PhotocomVo(0, null, content, null, num2, id,null,0);
 			photoservice.com_insert(vo);
 			list=comservice.p_c_list(map);
 			int n=comservice.p_c_list_all(num2);
