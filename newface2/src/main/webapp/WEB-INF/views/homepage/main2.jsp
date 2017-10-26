@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=3'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/timeline.css?ver=4'/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript">
 	$(document).ready(
@@ -168,7 +168,7 @@
 									+					"<div class='add_con'>"
 									+						"<textarea rows='5' cols='10'  placeholder='하고 싶은 말을 남겨주세요....' class='add_con_i' name='add_con'></textarea>"
 									+					"</div>"
-									+					"<div class='content1' align='left'>"+list[i].content+"</div>"
+									+					"<div class='content11' align='left'>"+list[i].content+"</div>"
 									+					"<input type='hidden' value='"+list[i].tb+"' name='tb'>"
 									+					"<input type='hidden' value='"+list[i].num+"' name='num'>"
 									+				"</div>"
@@ -744,7 +744,7 @@
 									<textarea rows="5" cols="10"  placeholder="하고 싶은 말을 남겨주세요...." class="add_con_i" name="add_con"></textarea>
 									
 								</div>
-								<div class="content1" align="left">${vo.content }</div>
+								<div class="content11" align="left">${vo.content }</div>
 								<input type="hidden" value="${vo.tb }" name="tb">
 								<input type="hidden" value="${vo.num }" name="num">
 							</div>
