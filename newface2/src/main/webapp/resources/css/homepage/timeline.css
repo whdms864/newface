@@ -93,7 +93,8 @@
 
 .content1 {
 	width: 95%;
-	min-height: 320px;
+	height: 320px;
+	overflow:scroll;
 	border: 1px solid rgba(224, 224, 224, 0.78);
 	padding: 10px;
 	background-color: #fff;

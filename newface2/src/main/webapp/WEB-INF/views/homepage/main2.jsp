@@ -82,6 +82,7 @@
 									+			"<div class='content2' align='left'>"
 									+				"<ul>"
 									+					"<li>"
+									+					"<img src='/newface/resources/images/homepage/icon/like.png'>"
 									+					"<input type='hidden' value='"+list[i].tb+"' class='tb'>"
 									+					"<input type='hidden' value='"+list[i].num+"' class='num'>";
 								if(lovelist.length>0){
@@ -97,8 +98,14 @@
 									html +="<a class='c_love'>좋아요</a>";
 								}
 								html +=					"</li>"
-									+					"<li><a class='com_in'>댓글달기</a></li>"
-									+					"<li><a class='gongU'>공유하기</a></li>";
+									+					"<li>"
+									+						"<img src='/newface/resources/images/homepage/icon/speech-bubble.png'>"
+									+						"<a class='com_in'>댓글달기</a>"
+									+					"</li>"
+									+					"<li>"
+									+						"<img src='/newface/resources/images/homepage/icon/social-normal.png'>"
+									+						"<a class='gongU'>공유하기</a>"
+									+					"</li>";
 								if(loginid!=list[i].id){
 									html +=	"<li style='float:right;'>"
 										+		"<input type='hidden' value="+list[i].singo+" class='singo_val'>";
