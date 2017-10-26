@@ -33,8 +33,8 @@
 			var id;
 			$.getJSON("<c:url value='/minihome/id'/>",{"hompy_num":hompy_num},function(data){
 				id=data.id;
+				window.open("<c:url value='/msg_reply?id='/>"+id,"_msg"," width=445,height=390,left=100,top=100"); 
 			});
-			window.open("<c:url value='/msg_reply?id='/>"+id,"_msg"," width=445,height=390,left=100,top=100"); 
 		});
 		$("#iu_delete").click(function(){
 			var name=$("#hompy_name").val();
