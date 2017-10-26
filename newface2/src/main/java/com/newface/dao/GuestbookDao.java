@@ -64,4 +64,7 @@ public class GuestbookDao {
 	public List<GuestbooklistVo> list_1(HashMap<String, Object> map){
 		return sqlSession.selectList(NAMESPACE+".list_1",map);
 	}
+	public int guest_com_delete(int guest_num) {
+		return sqlSession.delete(NAMESPACE+".guest_com_delete",guest_num);
+	}
 }

@@ -61,4 +61,7 @@ public class GuestbookService {
 	public List<GuestbooklistVo> list_1(HashMap<String, Object> map){
 		return dao.list_1(map);
 	}
+	public int guest_com_delete(int guest_num) {
+		return dao.guest_com_delete(guest_num);
+	}
 }

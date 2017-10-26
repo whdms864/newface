@@ -58,4 +58,7 @@
 	<select id="hompy_is" parameterType="hompy" resultType="hompy">
 		select * from hompy where id=#{id} and hompy_num=#{hompy_num}
 	</select>
+	<delete id="guest_com_delete" parameterType="int">
+		delete from guestbook_com where guest_num=${guest_num}
+	</delete>
 </mapper>   

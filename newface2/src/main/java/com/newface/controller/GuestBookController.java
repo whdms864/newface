@@ -103,6 +103,7 @@ public class GuestBookController {
 	@RequestMapping(value = "/guest/delete")
 	public String delete(HttpServletRequest request) {
 		int guest_num=Integer.parseInt(request.getParameter("guest_num"));
+		service.guest_com_delete(guest_num);
 		int n=service.delete(guest_num);
 		if(n>0) {
 			return "redirect:/guest/list_all";
