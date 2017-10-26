@@ -249,6 +249,10 @@ public class DiaryController {
 	///////////// 다이어리 삭제 /////////////
 	@RequestMapping(value = "/diary/delete", method = RequestMethod.GET)
 	public String delete(int diary_num, int diary_folder_num, Model model) {
+		List<DiarycomVo> list=service.com_list(diary_num);
+		if(list!=null) {
+			service.diary_com_delete(diary_num);			
+		}
 		int n = service.delete(diary_num);
 		if (n > 0) {
 			model.addAttribute("diary_folder_num", diary_folder_num);

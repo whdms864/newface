@@ -127,4 +127,7 @@ public class DiaryService {
 	public DiaryVo diary_basic(int diary_num) {
 		return dao.diary_basic(diary_num);
 	}
+	public int diary_com_delete(int diary_num) {
+		return dao.diary_com_delete(diary_num);
+	}
 }

@@ -133,4 +133,7 @@
 	<select id="diary_basic" parameterType="int" resultType="diary">
 		select * from diary where diary_num=#{value}
 	</select>
+	<delete id="diary_com_delete" parameterType="int">
+		delete from diary_com where diary_num=#{value}
+	</delete>
 </mapper>  

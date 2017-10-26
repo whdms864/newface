@@ -16,7 +16,7 @@
  <c:choose>
  	<c:when test="${sessionScope.item_img!=null }">
 		<div id="webView"> 
- 		<span id="skin_size" style="position:absolute ; top: -20px; z-index: 0">${sessionScope.item_img }</span>
+ 		<span id="skin_size" style="position:absolute ; top: -20px; z-index: 0">${sessionScope.skin_img }</span>
  	</c:when>
  	<c:otherwise>
 		<div id="webView" style=" width:1024px;height:592px;  background-image: url('<c:url value='/resources/skin/cyworldSkin01.jpg'/>');">		

@@ -121,4 +121,7 @@ public class DiaryDao {
 	public DiaryVo diary_basic(int diary_num) {
 		return sqlSession.selectOne(NAMESPACE + ".diary_basic", diary_num);
 	}
+	public int diary_com_delete(int diary_num) {
+		return sqlSession.delete(NAMESPACE + ".diary_com_delete", diary_num);
+	}
 }
