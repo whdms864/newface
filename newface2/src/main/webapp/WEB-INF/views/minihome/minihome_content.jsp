@@ -94,7 +94,7 @@
 	Mini Room
 	<hr>
 	<div id="miniroom">
-	
+	<img id="miniroom_null" src="<c:url value='/resources/images/minihome/miniroom.PNG'/>">	
 	</div>
 </div>
 <div id="friends_say_back">

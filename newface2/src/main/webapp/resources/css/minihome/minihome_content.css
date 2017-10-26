@@ -147,6 +147,9 @@ ul {
 	height: 200px;
 	text-align: center;
 }
+#miniroom_null{
+	margin-top: 20px
+}
 
 #miniroom img {
 	margin-top: -16px;

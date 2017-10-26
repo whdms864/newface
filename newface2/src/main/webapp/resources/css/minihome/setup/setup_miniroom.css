@@ -15,7 +15,7 @@ h3{
 	padding-top: 0px;
 }
 .miniroom{
-	width: 400px;height: 200px; background-color: orange; 
+	width: 400px;height: 200px; border: 1px solid #e8e8e8; 
 }
 .miniroom p img{
 	cursor :move;
