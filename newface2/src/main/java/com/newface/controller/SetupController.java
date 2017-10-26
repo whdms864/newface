@@ -206,10 +206,7 @@ public class SetupController {
 		int mini_num=service.mini_num(hompy_num);
 		map.put("mine_num",mine_num);
 		map.put("mini_num",mini_num);
-		int n1=service.wall_delete(map);
-		if(n1>0) {
-			System.out.println("삭제완료");
-		}
+		service.wall_delete(map);
 		RoomposiVo posi=new RoomposiVo(0, mini_num, null, 0, 0, mine_num);
 		RoomposiVo test=service.mine_num_is(posi);
 		int n2=0;
@@ -329,14 +326,7 @@ public class SetupController {
 		String id=(String)session.getAttribute("loginid");
 		int hompy_num=service.hompy_num(id);
 		int mini_num=service.mini_num(hompy_num);
-		int d=service.miniroom_delete(mini_num);
-		if(d>0) {
-			System.out.println("삭제완료");
-		}
-		System.out.println(map.get("item_num"));
-		System.out.println(map.get("x"));
-		System.out.println(map.get("y"));
-		System.out.println(map.get("mine_num"));
+		service.miniroom_delete(mini_num);
 		ArrayList item_num=(ArrayList) map.get("item_num");
 		String[] item=new String[item_num.size()];
 		ArrayList x=(ArrayList) map.get("x");
@@ -355,14 +345,8 @@ public class SetupController {
 			Double y2=Double.parseDouble(y1[i]);
 			int mine2=Integer.parseInt(mine[i]);
 			
-			System.out.println("x2:"+x2);
-			System.out.println("y2:"+y2);
-			System.out.println("mine2:"+mine2);
 			RoomposiVo vo1=new RoomposiVo(0, mini_num, null, x2, y2, mine2);
-			int n1=service.miniroom_insert(vo1);
-			if(n1>0) {
-				System.out.println("아이템 저장완료"+i);
-			}
+			service.miniroom_insert(vo1);
 		}
 		return "result";
 	}

@@ -23,6 +23,9 @@ $(function(){
 		);	
 		$("#img").html(img[j]);
 		$("#title").html(bgm[j]);
+		//테스트중
+		var test=document.getElementById("bgm" + i);
+		console.log(test.duration);
 		
 		function name() {
 			var aud2 = document.getElementById("bgm" + i );

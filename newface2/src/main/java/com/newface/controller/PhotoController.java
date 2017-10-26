@@ -120,49 +120,42 @@ public class PhotoController {
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list1(map);
-			System.out.println("list1");
 		}else if(photo_folder_num > 0 && hompy == null && iu != null) {
 			int totalRowCount=service.getCount1(photo_folder_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list22(map);
-			System.out.println("list22");
 		}else if(photo_folder_num > 0 && hompy == null && iu == null){
 			int totalRowCount=service.getCount1(photo_folder_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list21(map);
-			System.out.println("list21");
 		}else if (photo_folder_num <= 0 && hompy != null){
 			int totalRowCount=service.getCount(hompy_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list(map);
-			System.out.println("list");
 		}else if(photo_folder_num <=0 && hompy == null && iu !=null) {
 			int totalRowCount=service.getCount(hompy_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list12(map);
-			System.out.println("list12");
 		}else if(photo_folder_num <=0 && hompy == null && iu ==null) {
 			int totalRowCount=service.getCount(hompy_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list11(map);
-			System.out.println("list11");
 		}else {
 			int totalRowCount=service.getCount(hompy_num);
 			pu=new PageUtil(pageNum, 5, 5, totalRowCount);
 			map.put("startRow",pu.getStartRow());
 			map.put("endRow",pu.getEndRow());
 			list1=service.photo_list(map);
-			System.out.println("list");
 		}
 		if(list1!=null) {
 			model.addAttribute("list1",list1);

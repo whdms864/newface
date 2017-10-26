@@ -136,7 +136,6 @@ public class TimelineController {
 	@ResponseBody
 	public HashMap<String, Object> main2_list(int startrow,int endrow,HttpSession session,
 			@RequestParam(value="text",defaultValue="") String text){
-		System.out.println(text);
 		String id=(String)session.getAttribute("loginid");
 		String pro_img=timelineservice.pro_img(id);
 		HashMap<String,Object> map=new HashMap<String, Object>();

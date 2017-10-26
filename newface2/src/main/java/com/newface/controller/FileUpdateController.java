@@ -28,10 +28,10 @@ public class FileUpdateController {
 		// 기존파일 삭제
 		String path=session.getServletContext().getRealPath("resources/upload");
 		ProfileVo delvo=service.profile(hompy_num);
-		/*if(!delvo.getSave_name().isEmpty()) {
+		if(!delvo.getSave_name().isEmpty()) {
 			File f=new File(path + "\\" + delvo.getSave_name());
 			f.delete();			
-		}*/
+		}
 		// 파일 업로드
 		String orgfilename=file1.getOriginalFilename();
 		//(중복되지 않는)저장할 파일명 만들기
@@ -40,7 +40,6 @@ public class FileUpdateController {
 			//파일업로드(파일복사)하기
 			InputStream is=file1.getInputStream();
 			FileOutputStream fos=new FileOutputStream(path + "\\" + savefilename);
-			System.out.println(path);
 			FileCopyUtils.copy(is, fos);
 			is.close();
 			fos.close();			

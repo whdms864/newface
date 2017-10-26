@@ -164,7 +164,6 @@ public class MsgController {
 	public String msg_replyform(Model model, 
 			@RequestParam(value = "msg_num", defaultValue = "0") int msg_num,
 			HttpSession session,@RequestParam(value = "id", defaultValue = "") String id) {
-		System.out.println("msg id : " + id);
 		String loginid = (String) session.getAttribute("loginid");
 		int msgnorecv_count = service.msgnorecv_count(loginid);
 		if(id.equals("")) {
