@@ -565,205 +565,214 @@
 	<input type="hidden" value="${loginid }" id="loginid">
 	<input type="hidden" id="text_s" value="${text }">
 	<div class="list_time">
-		<c:forEach var="vo" items="${list }">
-			<div class="timeline">
-				<div class="first" align="center">
-					<div align="left" style="margin-left: 5px;">
-						<table style="padding: 0px; margin: 0px;">
-							<tr>
-								<td rowspan="2">
-									<c:choose>
-											<c:when test="${vo.save_name!=null }">
-												<img src="<c:url value='/resources/upload/${vo.save_name }'/>" class="img-circle">
+		<c:choose>
+			<c:when test="${list.size()==0 }">
+				<label style="font-weight:bold;font-size: 30px; position: absolute;top:150px;left: 160px;"> 
+					검색 결과가 없습니다.
+				</label>
+			</c:when>
+			<c:otherwise>
+			<c:forEach var="vo" items="${list }">
+				<div class="timeline">
+					<div class="first" align="center">
+						<div align="left" style="margin-left: 5px;">
+							<table style="padding: 0px; margin: 0px;">
+								<tr>
+									<td rowspan="2">
+										<c:choose>
+												<c:when test="${vo.save_name!=null }">
+													<img src="<c:url value='/resources/upload/${vo.save_name }'/>" class="img-circle">
+												</c:when>
+												<c:otherwise>
+													<img
+														src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
+														class="img-circle">
+												</c:otherwise>
+											</c:choose>
+									</td>
+									<td style="width: 94%; padding-left: 10px; height: 20px; margin-top: 5px; font-weight: bold; color: #365899;">
+										<input type="hidden" value="${vo.id }" class="vo_id">
+										<c:choose>
+											<c:when test="${loginid!=vo.id }">
+												<a class="link_name">${vo.name }</a>
 											</c:when>
 											<c:otherwise>
-												<img
-													src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
-													class="img-circle">
+												<a class="link_name_i">${vo.name }</a>
 											</c:otherwise>
 										</c:choose>
-								</td>
-								<td style="width: 94%; padding-left: 10px; height: 20px; margin-top: 5px; font-weight: bold; color: #365899;">
-									<input type="hidden" value="${vo.id }" class="vo_id">
+									</td>
+								</tr>
+								<tr>
+									<td
+										style="width: 94%; padding-left: 10px; height: 20px; color: #90949c;">
+										${vo.regdate }</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="width: 100%;padding-top:10px;padding-left:5px;">
+										<p style="margin-left: 5px;">${vo.title }</p>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="content1" align="left">${vo.content }</div>
+						<div class="content3" align="left">
+							<ul>
+								<li><img src="<c:url value='/resources/images/homepage/icon/speech-bubble (2).png'/>">&nbsp;&nbsp;<label class="loveval" style="font-weight: normal;">${vo.love }</label>명
+								</li>
+								<li><img src="<c:url value='/resources/images/homepage/icon/chat.png'/>">&nbsp;
 									<c:choose>
-										<c:when test="${loginid!=vo.id }">
-											<a class="link_name">${vo.name }</a>
-										</c:when>
-										<c:otherwise>
-											<a class="link_name_i">${vo.name }</a>
-										</c:otherwise>
-									</c:choose>
-								</td>
-							</tr>
-							<tr>
-								<td
-									style="width: 94%; padding-left: 10px; height: 20px; color: #90949c;">
-									${vo.regdate }</td>
-							</tr>
-							<tr>
-								<td colspan="2" style="width: 100%;padding-top:10px;padding-left:5px;">
-									<p style="margin-left: 5px;">${vo.title }</p>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="content1" align="left">${vo.content }</div>
-					<div class="content3" align="left">
-						<ul>
-							<li><img src="<c:url value='/resources/images/homepage/icon/speech-bubble (2).png'/>">&nbsp;&nbsp;<label class="loveval" style="font-weight: normal;">${vo.love }</label>명
-							</li>
-							<li><img src="<c:url value='/resources/images/homepage/icon/chat.png'/>">&nbsp;
-								<c:choose>
-									<c:when test="${cntlist.size()>0 }">
-										<c:set var="doneLoop" value="false" />
-										<c:forEach var="map" items="${cntlist }">
-											<c:if test="${not doneLoop}">
-												<c:if test="${map.num==vo.num && map.tb==vo.tb}">
-													<label class="cntval" style="font-weight: normal;">${map.cnt }</label>개
-													<c:set var="doneLoop" value="true" />
-												</c:if>
-											</c:if>
-										</c:forEach>
-										<c:if test="${doneLoop==false}">0개</c:if>
-									</c:when>
-									<c:otherwise>0개</c:otherwise>
-								</c:choose>
-							</li>
-						</ul>
-					</div>
-					<hr style="margin: 0px; padding: 0px;">
-					<div class="content2" align="left">
-						<ul>
-							<li>
-							<img src="<c:url value='/resources/images/homepage/icon/like.png'/>">
-								<input type="hidden" value="${vo.tb }" class="tb">
-								<input type="hidden" value="${vo.num }" class="num"> 
-								<c:choose>
-									<c:when test="${lovelist.size()>0 }">
-										<c:set var="doneLoop" value="false" />
-										<c:forEach var="map" items="${lovelist }">
-											<c:if test="${not doneLoop}">
-												<c:if test="${map.num==vo.num && map.tb==vo.tb}">
-													<a class="c_love" style="font-weight: bold; color: #337ab7">좋아요</a>
-													<c:set var="doneLoop" value="true" />
-												</c:if>
-											</c:if>
-										</c:forEach>
-										<c:if test="${doneLoop==false}">
-											<a class="c_love">좋아요</a>
-										</c:if>
-									</c:when>
-									<c:otherwise>
-										<a class="c_love">좋아요</a>
-									</c:otherwise>
-								</c:choose>
-							</li>
-							<li>
-								<img src="<c:url value='/resources/images/homepage/icon/speech-bubble.png'/>">
-								<a class="com_in">댓글달기</a>
-							</li>
-							<li>
-								<img src="<c:url value='/resources/images/homepage/icon/social-normal.png'/>">
-								<a class="gongU">공유하기</a>
-							</li>
-							<c:if test="${loginid!=vo.id }">
-								<li style="float:right;">
-								<img src="<c:url value='/resources/images/homepage/icon/alarm.png'/>">
-								
-									<input type="hidden" value="${vo.singo }" class="singo_val"> 
-									<c:choose>
-										<c:when test="${singolist.size()>0 }">
+										<c:when test="${cntlist.size()>0 }">
 											<c:set var="doneLoop" value="false" />
-											<c:forEach var="map" items="${singolist }">
+											<c:forEach var="map" items="${cntlist }">
 												<c:if test="${not doneLoop}">
 													<c:if test="${map.num==vo.num && map.tb==vo.tb}">
-														<a class="singo" style="font-weight: bold; color: red">신고</a>
+														<label class="cntval" style="font-weight: normal;">${map.cnt }</label>개
+														<c:set var="doneLoop" value="true" />
+													</c:if>
+												</c:if>
+											</c:forEach>
+											<c:if test="${doneLoop==false}">0개</c:if>
+										</c:when>
+										<c:otherwise>0개</c:otherwise>
+									</c:choose>
+								</li>
+							</ul>
+						</div>
+						<hr style="margin: 0px; padding: 0px;">
+						<div class="content2" align="left">
+							<ul>
+								<li>
+								<img src="<c:url value='/resources/images/homepage/icon/like.png'/>">
+									<input type="hidden" value="${vo.tb }" class="tb">
+									<input type="hidden" value="${vo.num }" class="num"> 
+									<c:choose>
+										<c:when test="${lovelist.size()>0 }">
+											<c:set var="doneLoop" value="false" />
+											<c:forEach var="map" items="${lovelist }">
+												<c:if test="${not doneLoop}">
+													<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+														<a class="c_love" style="font-weight: bold; color: #337ab7">좋아요</a>
 														<c:set var="doneLoop" value="true" />
 													</c:if>
 												</c:if>
 											</c:forEach>
 											<c:if test="${doneLoop==false}">
-												<a class="singo">신고</a>
+												<a class="c_love">좋아요</a>
 											</c:if>
 										</c:when>
 										<c:otherwise>
-											<a class="singo">신고</a>
+											<a class="c_love">좋아요</a>
 										</c:otherwise>
 									</c:choose>
 								</li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-				<div class="timecom" align="center">
-					<div>
-						<c:choose>
-							<c:when test="${pro_img!=null }">
-								<img src="<c:url value='/resources/upload/${pro_img}'/>"
-									class="img-circle">
-							</c:when>
-							<c:otherwise>
-								<img
-									src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
-									class="img-circle">
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<input type="text" class="form-control text" placeholder="댓글을 입력하세요">
-					<div class="com_main">
-						<table style="padding: 0px; margin: 0px;">
-							<tbody class="com_main1"></tbody>
-						</table>
-						<div class="com_a_wrap">
-						</div>
-					</div>
-				</div>
-				<div class="gong_wrap">
-					<form method="post" action="main2/gongU">
-						<div class="gong_content">
-							<div class="gong_folder">
-								<div class="g_f_left" >
-									폴더 :
-									<select class="folder_sel" name="fnum">
-									</select>
-								</div>
-								<div class="g_f_right">
-									<img src="<c:url value='/resources/images/homepage/icon/delete-button (2).png'/>" alt="닫기" class="end_btn">
-								</div>
-							</div>
-							<div class="content_wrap">
+								<li>
+									<img src="<c:url value='/resources/images/homepage/icon/speech-bubble.png'/>">
+									<a class="com_in">댓글달기</a>
+								</li>
+								<li>
+									<img src="<c:url value='/resources/images/homepage/icon/social-normal.png'/>">
+									<a class="gongU">공유하기</a>
+								</li>
 								<c:if test="${loginid!=vo.id }">
-									<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;" >
-										<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly" name="title1">
-									</div>
-								</c:if>
-								<div class="add_title">
-									<input type="text" placeholder="제목을 입력하세요" class="add_title_i" name="title2">
-								</div>
-								<div class="add_con">
-									<textarea rows="5" cols="10"  placeholder="하고 싶은 말을 남겨주세요...." class="add_con_i" name="add_con"></textarea>
+									<li style="float:right;">
+									<img src="<c:url value='/resources/images/homepage/icon/alarm.png'/>">
 									
-								</div>
-								<div class="content11" align="left">${vo.content }</div>
-								<input type="hidden" value="${vo.tb }" name="tb">
-								<input type="hidden" value="${vo.num }" name="num">
-							</div>
-							<div class="gong_folder">
-								<div class="g_f_right">
-									<select class="secret_sel" name="secret">
-										<option value="전체공개">전체공개</option>
-										<option value="일촌공개">일촌공개</option>
-										<option value="나만보기">나만보기</option>
-									</select>
-									<input type="button" class="btn btn-default" style="margin-bottom: 5px;" value="취소">
-									<input type="submit" class="btn btn-primary" style="margin-bottom: 5px;" value="게시">
-								</div>
+										<input type="hidden" value="${vo.singo }" class="singo_val"> 
+										<c:choose>
+											<c:when test="${singolist.size()>0 }">
+												<c:set var="doneLoop" value="false" />
+												<c:forEach var="map" items="${singolist }">
+													<c:if test="${not doneLoop}">
+														<c:if test="${map.num==vo.num && map.tb==vo.tb}">
+															<a class="singo" style="font-weight: bold; color: red">신고</a>
+															<c:set var="doneLoop" value="true" />
+														</c:if>
+													</c:if>
+												</c:forEach>
+												<c:if test="${doneLoop==false}">
+													<a class="singo">신고</a>
+												</c:if>
+											</c:when>
+											<c:otherwise>
+												<a class="singo">신고</a>
+											</c:otherwise>
+										</c:choose>
+									</li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+					<div class="timecom" align="center">
+						<div>
+							<c:choose>
+								<c:when test="${pro_img!=null }">
+									<img src="<c:url value='/resources/upload/${pro_img}'/>"
+										class="img-circle">
+								</c:when>
+								<c:otherwise>
+									<img
+										src="<c:url value='/resources/images/homepage/싸이_가상화폐.png'/>"
+										class="img-circle">
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<input type="text" class="form-control text" placeholder="댓글을 입력하세요">
+						<div class="com_main">
+							<table style="padding: 0px; margin: 0px;">
+								<tbody class="com_main1"></tbody>
+							</table>
+							<div class="com_a_wrap">
 							</div>
 						</div>
-					</form>
+					</div>
+					<div class="gong_wrap">
+						<form method="post" action="main2/gongU">
+							<div class="gong_content">
+								<div class="gong_folder">
+									<div class="g_f_left" >
+										폴더 :
+										<select class="folder_sel" name="fnum">
+										</select>
+									</div>
+									<div class="g_f_right">
+										<img src="<c:url value='/resources/images/homepage/icon/delete-button (2).png'/>" alt="닫기" class="end_btn">
+									</div>
+								</div>
+								<div class="content_wrap">
+									<c:if test="${loginid!=vo.id }">
+										<div class="add_title" style="font-weight: bold;height: 20px;color:#e91e63;" >
+											<input type="text" value="[ ${vo.name }님의 게시글 공유 ]" class="add_title_i" readonly="readonly" name="title1">
+										</div>
+									</c:if>
+									<div class="add_title">
+										<input type="text" placeholder="제목을 입력하세요" class="add_title_i" name="title2">
+									</div>
+									<div class="add_con">
+										<textarea rows="5" cols="10"  placeholder="하고 싶은 말을 남겨주세요...." class="add_con_i" name="add_con"></textarea>
+										
+									</div>
+									<div class="content11" align="left">${vo.content }</div>
+									<input type="hidden" value="${vo.tb }" name="tb">
+									<input type="hidden" value="${vo.num }" name="num">
+								</div>
+								<div class="gong_folder">
+									<div class="g_f_right">
+										<select class="secret_sel" name="secret">
+											<option value="전체공개">전체공개</option>
+											<option value="일촌공개">일촌공개</option>
+											<option value="나만보기">나만보기</option>
+										</select>
+										<input type="button" class="btn btn-default" style="margin-bottom: 5px;" value="취소">
+										<input type="submit" class="btn btn-primary" style="margin-bottom: 5px;" value="게시">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 
