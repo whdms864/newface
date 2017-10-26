@@ -4,10 +4,10 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html >
 <html>
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/qna11.css'/>">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/homepage/qna11.css?ver=4'/>">
 </head>
 <body>
 <div id="wrap">
@@ -15,14 +15,14 @@
 		<tiles:insertAttribute name="header"/>
 	</div>
 	
-	<div id="main2">
-		<div id="sidebar">
+	<div id="main3">
+		<div id="sidebar2">
 			<tiles:insertAttribute name="sidebar"/>
 		</div>
-		<div id="content">
+		<div id="content2">
 			<tiles:insertAttribute name="content"/>
 		</div>
-		<div id="ad">
+		<div id="ad2">
 			<tiles:insertAttribute name="ad"/>
 		</div>
 	</div>
