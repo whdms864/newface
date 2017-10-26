@@ -6,8 +6,8 @@ body {
 }
 
 #webView {
-	overflow-x:hidden; overflow-y:auto
-	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto position: relative;
 	width: 1024px;
 	height: 592px;
 	margin: 0 auto;
@@ -29,10 +29,10 @@ body {
 
 #iu_com { /* 일촌평댓글 */
 	position: relative;
-    top: -19px;
-    left: 70px;
-    width: 400px;
-    height: 40px;
+	top: -19px;
+	left: 70px;
+	width: 400px;
+	height: 40px;
 }
 
 #iu_text {
@@ -185,6 +185,7 @@ a {
 
 .history {
 	cursor: pointer;
+	margin-top: -7px;
 }
 
 .com_name {
@@ -201,20 +202,23 @@ li {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-#new_miniroom{
+
+#new_miniroom {
 	height: 140px;
-    position: relative;
-    top: 50px;
-    left: 37px;
+	position: relative;
+	top: 50px;
+	left: 37px;
 }
-.new_now{
+
+.new_now {
 	line-height: 22px;
-    max-width: 270px;
-    max-height: 23px;
-    overflow: visible;
-    white-space: pre-line;
-    text-overflow: unset;
+	max-width: 270px;
+	max-height: 23px;
+	overflow: visible;
+	white-space: pre-line;
+	text-overflow: unset;
 }
+
 .photo_now {
 	background-color: #3e7cf0;
 	color: white;
@@ -235,4 +239,10 @@ li {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
+}
+
+#iu_style {
+	color: #06a5a5;
+	font-weight: 900;
+	font-size: 13px;
 }

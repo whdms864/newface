@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=45'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=4'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
 <script>
@@ -21,7 +21,7 @@
 		var iu_content=function(){
 			$.getJSON("<c:url value='/minihome/iu_com_list'/>",function(data){
 				$(data).each(function(i,com){
-					$("#iu_content").append(com.content + " (<span class='com_name' id='" + com.hompy_num + "'>" + com.name + "</span>) <img class='history' id='" + com.id + "' alt='일촌평 히스토리' src='<c:url value='/resources/images/minihome/arrow.png'/>'><hr>");
+					$("#iu_content").append("·" + com.content + " (<span class='com_name' id='" + com.hompy_num + "'>" + com.name + "</span>) <img class='history' id='" + com.id + "' alt='일촌평 히스토리' src='<c:url value='/resources/images/minihome/arrow.png'/>'><br>");
 				});
 			});
 		}
@@ -105,7 +105,9 @@
 	</div>
 </div>
 
-<div id="iu_content"></div>
+<div id="iu_content">
+<span id="iu_style">일촌평</span><hr>
+</div>
 <input type="hidden" id="hompy_num" value="${sessionScope.hompy_num }">
 <input type="hidden" id="loginid" value="${sessionScope.loginid }">
 <input type="hidden" id="hompyid" value="${sessionScope.hompyid }">
