@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=4'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_content.css?var=42'/>">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.min.js" />'></script>
 <script type="text/javascript" src="/newface/resources/js/jquery-ui.min.js"></script>
 <script>
@@ -93,9 +93,7 @@
 <div id="miniroom_back">
 	Mini Room
 	<hr>
-	<div id="miniroom">
-	<img id="miniroom_null" src="<c:url value='/resources/images/minihome/miniroom.PNG'/>">	
-	</div>
+	<div id="miniroom"></div>
 </div>
 <div id="friends_say_back">
 	<div id="friends_say">Friends say</div>
