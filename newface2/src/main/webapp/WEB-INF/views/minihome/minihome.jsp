@@ -14,7 +14,7 @@
 </head>
 <body>
  <c:choose>
- 	<c:when test="${sessionScope.item_img!=null }">
+ 	<c:when test="${sessionScope.skin_img!=null }">
 		<div id="webView"> 
  		<span id="skin_size" style="position:absolute ; top: -20px; z-index: 0">${sessionScope.skin_img }</span>
  	</c:when>
