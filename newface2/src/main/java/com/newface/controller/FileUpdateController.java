@@ -27,6 +27,7 @@ public class FileUpdateController {
 		int hompy_num=(Integer)session.getAttribute("hompy_num");
 		// 기존파일 삭제
 		String path=session.getServletContext().getRealPath("resources/upload");
+		System.out.println("path : " + path);
 		ProfileVo delvo=service.profile(hompy_num);
 		if(!delvo.getSave_name().isEmpty()) {
 			File f=new File(path + "\\" + delvo.getSave_name());

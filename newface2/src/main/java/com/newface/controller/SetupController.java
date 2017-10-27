@@ -236,7 +236,7 @@ public class SetupController {
 			//이미지 불러오기
 			if(n>0) {
 				String item_img=service.item_img(item_num);
-				session.setAttribute("item_img", item_img);													
+				session.setAttribute("skin_img", item_img);													
 			}
 		}
 		
