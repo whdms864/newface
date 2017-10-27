@@ -15,6 +15,12 @@
 		});
 	});
 </script>
+<style>
+p {
+    max-height: 270px;
+    overflow: auto;
+}
+</style>
 <div id="sidebar">
 	<ul>
 		<li>

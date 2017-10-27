@@ -75,7 +75,7 @@
 		<div style="position:absolute;top:620px;width: 98%;"align="center">
 			<c:choose>
 			<c:when test="${pu.startPageNum>5 }">
-				<a href="<c:url value='/qna11/getinfo?pageNum=${pu.startPageNum-1 }'/>">
+				<a href="<c:url value='/market/buy/list?pageNum=${pu.startPageNum-1 }'/>">
 					<span class="btnprev">◁◁</span>
 				</a>
 			</c:when>
@@ -87,12 +87,12 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }">
-					<a href="<c:url value='/qna11/getinfo?pageNum=${i }'/>">
+					<a href="<c:url value='/market/buy/list?pageNum=${i }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot--active"></span>
 					</a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/qna11/getinfo?pageNum=${i }'/>">
+					<a href="<c:url value='/market/buy/list?pageNum=${i }'/>">
 						<span data-tooltip="${i }" class="pagination__dot pagination__dot">
 						</span>
 					</a>
@@ -102,7 +102,7 @@
 		</div>
 		<c:choose>
 			<c:when test="${pu.endPageNum<pu.totalPageCount}">
-				<a href="<c:url value='/qna11/getinfo?pageNum=${pu.endPageNum+1 }'/>">
+				<a href="<c:url value='/market/buy/list?pageNum=${pu.endPageNum+1 }'/>">
 					<span class="btnnext">
 							▷▷
 					</span>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newface.page.PageUtil;
 import com.newface.service.MemberService;
+import com.newface.service.MiniHomeService;
 import com.newface.vo.AdminVo;
 import com.newface.vo.HompyVo;
 import com.newface.vo.MemberVo;
@@ -26,6 +27,7 @@ import com.newface.vo.Qna11Vo;
 @Controller
 public class MemberController {
 	@Autowired private MemberService service;
+	@Autowired private MiniHomeService minihomeservice;
 		
 	@RequestMapping(value="/idcheck/json",produces="application/json;charset=utf-8")
 	@ResponseBody

@@ -112,7 +112,12 @@
 		select m.id, m.name, m.school, m.addr, m.email, p.save_name
 		from member m join hompy h
 		on m.id=h.id
-		join profile p
+		join (select * from (
+		select hompy_num,save_name 
+		from profile
+		order by hompy_num, regdate desc
+		) a
+		group by a.hompy_num) p
 		on h.hompy_num=p.hompy_num
 		where m.type!='탈퇴' and (m.id like concat('%',#{text},'%') or m.name like concat('%',#{text},'%') or m.school like concat('%',#{text},'%') or m.addr like concat('%',#{text},'%')) 
 		order by m.id,m.regdate limit #{startRow},#{endRow}
@@ -121,7 +126,12 @@
 		select coalesce(count(m.id),0) 
 		from member m join hompy h
 		on m.id=h.id
-		join profile p
+		join (select * from (
+		select hompy_num,save_name 
+		from profile
+		order by hompy_num, regdate desc
+		) a
+		group by a.hompy_num) p
 		on h.hompy_num=p.hompy_num
 		where m.type!='탈퇴' and m.id like concat('%',#{text},'%') or m.name like concat('%',#{text},'%') or m.school like concat('%',#{text},'%') or m.addr like concat('%',#{text},'%')
 	</select>

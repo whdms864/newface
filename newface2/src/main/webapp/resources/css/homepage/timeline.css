@@ -108,7 +108,7 @@
 .content11 {
 	width: 95%;
 	height: 320px;
-	overflow:scroll;
+	overflow:auto;
 	border: 1px solid rgba(224, 224, 224, 0.78);
 	padding: 10px;
 	background-color: #fff;

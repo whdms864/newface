@@ -16,6 +16,20 @@
 			$(this).html("▷▷");
 		});
 		
+		$(document).on("click",".link_name",function() {
+			var id=$(this).parents("table").find(".id_val_search").text();
+			
+			var hompy_num=0;
+			$.getJSON('main2/hompynum', {"id" : id}, function(data) {
+				
+				window.open("<c:url value='/minihome?hompy_num='/>"+data,"_minihome"," width=1024,height=592,left=100,top=100"); 
+			});
+		});
+		$(document).on("click",".link_name_i",function() {
+			var loginid=$("#loginid").val();
+			window.open("<c:url value='/minihome'/>","_minihome"," width=1024,height=592,left=100,top=100"); 
+		});
+		
 		
 	});
 </script>	
@@ -54,47 +68,63 @@
 		  			</div>
 		  		</div>
 	  		</div> --%>
-	<c:forEach var="vo" items="${fsearch_list}">
-		<table style="width: 460px; margin-top: 30px; border: 2px solid black;">
-			<tr>
-				<td rowspan="6" style="width:153px; border:2px solid black; align-content: center;">
-					<c:choose>
-						<c:when test="${vo.save_name==null }">
-							<img src="<c:url value='/resources/images/minihome/profile.PNG'/>">			
-						</c:when>
-						<c:otherwise>
-							<img style="max-width: 153px; max-height: 153px; margin-left: auto; margin-right: auto; display: block;" src="<c:url value='/resources/upload/${vo.save_name }'/>">
-						</c:otherwise>
-					</c:choose>
-				</td>
-			</tr>
-			<tr>
-				<td style="text-align: center; border-top: 2px solid black;">아이디</td>
-				<td style="border-top: 2px solid black;">${vo.id }</td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center">이름</td>
-				<td>${vo.name }</td>
-			</tr>
-
-			<tr>
-				<td style="text-align: center">학교</td>
-				<td>${vo.school }</td>
-			</tr>
-			
-			<tr>
-				<td style="text-align: center">주소</td>
-				<td>${vo.addr }</td>
-			</tr>
-			
-			<tr>
-				<td style="text-align: center">이메일</td>
-				<td>${vo.email }</td>
-			</tr>
-			
-		</table>
-	</c:forEach>
+	<c:choose>
+		<c:when test="${fsearch_list.size()==0 }">
+					<label style="font-weight:bold;font-size: 30px; position: absolute;top:150px;left: 135px;"> 
+						검색 결과가 없습니다.
+					</label>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="vo" items="${fsearch_list}">
+				<table style="width: 460px; margin-top: 30px; border: 2px solid black;">
+					<tr>
+						<td rowspan="6" style="width:153px; border:2px solid black; align-content: center;">
+							<c:choose>
+								<c:when test="${vo.save_name==null }">
+									<img src="<c:url value='/resources/images/minihome/profile.PNG'/>">			
+								</c:when>
+								<c:otherwise>
+									<img style="max-width: 153px; max-height: 153px; margin-left: auto; margin-right: auto; display: block;" src="<c:url value='/resources/upload/${vo.save_name }'/>">
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: center; border-top: 2px solid black; width:80px;">아이디</td>
+						<td style="border-top: 2px solid black;" class="id_val_search">${vo.id }</td>
+					</tr>
+		
+					<tr>
+						<td style="text-align: center; width:80px;">이름</td>
+						<c:choose>
+							<c:when test="${loginid!=vo.id }">
+								<td><a class="link_name">${vo.name }</a></td>
+							</c:when>
+							<c:otherwise>
+								<td><a class="link_name_i">${vo.name }</a></td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+		
+					<tr>
+						<td style="text-align: center; width:80px;">학교</td>
+						<td>${vo.school }</td>
+					</tr>
+					
+					<tr>
+						<td style="text-align: center; width:80px;">주소</td>
+						<td>${vo.addr }</td>
+					</tr>
+					
+					<tr>
+						<td style="text-align: center; width:80px;">이메일</td>
+						<td>${vo.email }</td>
+					</tr>
+					
+				</table>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
 </div>
 
 <div style="position:absolute;top:700px;width: 100%;"align="center">
