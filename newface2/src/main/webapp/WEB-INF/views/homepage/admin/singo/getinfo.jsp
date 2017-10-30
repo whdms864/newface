@@ -16,7 +16,7 @@
 	});
 </script>
 <style>
-p {
+.aa {
     max-height: 270px;
     overflow: auto;
 }
@@ -65,8 +65,10 @@ p {
 			  			<td>작성자 : ${vo.id }</td>
 				  	</tr>
 				  	<tr>
-			  			<td colspan="3" style="height:300px">
-			  			${vo.content }
+			  			<td colspan="3" style="height:270px;">
+				  			<div class="aa">
+				  				${vo.content }
+				  			</div>
 			  			</td>
 				  	</tr>
 			</table>
