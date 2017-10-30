@@ -23,7 +23,7 @@
 		});
 	});
 </script>
-<input type="hidden" id="num" value="${requestScope.item_num }">
+<input type="hidden" id="num" value="${requestScope.skin_num }">
 <div id="setup_skin_back">
 	<h3 id="first">미니홈피 스킨설정</h3>
 	<hr>
@@ -39,7 +39,7 @@
 	</form>
 		<div class="back_img">
 		<c:choose>
-			<c:when test="${sessionScope.item_img==null }">
+			<c:when test="${sessionScope.skin_img==null }">
 				<img alt="기본스킨" src="<c:url value='/resources/skin/cyworldSkin01.jpg'/>">
 			</c:when>
 			<c:otherwise>
