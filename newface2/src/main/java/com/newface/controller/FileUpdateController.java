@@ -1,6 +1,5 @@
 package com.newface.controller;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,11 +27,11 @@ public class FileUpdateController {
 		// 기존파일 삭제
 		String path=session.getServletContext().getRealPath("resources/upload");
 		System.out.println(path);
-		ProfileVo delvo=service.profile(hompy_num);
-		if(!delvo.getSave_name().isEmpty()) {
+	/*	ProfileVo delvo=service.profile(hompy_num);*/
+	/*	if(!delvo.getSave_name().isEmpty()) {
 			File f=new File(path + "\\" + delvo.getSave_name());
 			f.delete();			
-		}
+		}*/
 		// 파일 업로드
 		String orgfilename=file1.getOriginalFilename();
 		//(중복되지 않는)저장할 파일명 만들기

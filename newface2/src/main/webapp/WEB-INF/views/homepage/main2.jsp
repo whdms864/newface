@@ -302,6 +302,7 @@
 					var com =$(this).parents(".timeline").find(".com_main1");
 					var com_a=$(this).parents(".timeline").find(".com_a_wrap");
 					var loginid=$("#loginid").val();
+					startrow_com = 0;
 					com.html("");
 					$.getJSON('main2/com/list', {
 						"tb" : tb,
@@ -386,6 +387,7 @@
 						var cntval=$(this).parents(".timeline").find(".cntval");
 						var cnt=parseInt(cntval.text());
 						var loginid=$("#loginid").val();
+						startrow_com=0;
 						if(text.val()==""){
 							text.focus();
 							alert("댓글을 입력해주세요");
@@ -453,11 +455,12 @@
 					var cntval=$(this).parents(".timeline").find(".cntval");
 					var cnt=parseInt(cntval.text());
 					var loginid=$("#loginid").val();
+					startrow_com=0;
 					$.getJSON('main2/com/delete', {
 						"tb" : tb,
 						"num2" : num2,
 						"num" : com_num,
-						"startrow_com" : startrow_com,
+						"startrow_com" :startrow_com,
 						"endrow_com" : endrow_com
 					}, function(data) {
 						com.html("");

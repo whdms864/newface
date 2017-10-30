@@ -253,6 +253,10 @@ public class TimelineController {
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		HashMap<String, Object> map_save=new HashMap<String, Object>();
 		List<ComVo> list=null;
+		System.out.println(startrow_com);
+		System.out.println(endrow_com);
+		System.out.println(num2);
+		System.out.println(tb);
 		map.put("startrow", startrow_com);
 		map.put("endrow", endrow_com);
 		map.put("num2", num2);
