@@ -80,7 +80,7 @@ public class SetupController {
 		MineVo vo=service.skin_info(id);
 		if(vo!=null) {
 			int item_num=vo.getItem_num();
-			model.addAttribute("item_num", item_num);			
+			model.addAttribute("skin_num", item_num);			
 		}
 		return ".skin.setup";
 	}

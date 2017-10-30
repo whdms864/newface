@@ -23,7 +23,7 @@
 		});
 	});
 </script>
-<input type="hidden" id="num" value="${requestScope.item_num }">
+<input type="hidden" id="num" value="${requestScope.skin_num }">
 <div id="setup_skin_back">
 	<h3 id="first">미니홈피 스킨설정</h3>
 	<hr>
