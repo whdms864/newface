@@ -43,7 +43,7 @@
 				<img alt="기본스킨" src="<c:url value='/resources/skin/cyworldSkin01.jpg'/>">
 			</c:when>
 			<c:otherwise>
-				${sessionScope.item_img }
+				${sessionScope.skin_img }
 			</c:otherwise>
 		</c:choose> 
 		</div>

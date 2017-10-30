@@ -23,7 +23,7 @@ $(document).ready(function() {
 			}
 		}
 	});
-	/* setInterval(function(){
+	setInterval(function(){
 		$.getJSON('msg/msgnorecv_count', function(data) {
 			if(data<=9){
 				$("#msg_before").text(data);
@@ -38,7 +38,7 @@ $(document).ready(function() {
 				$("#iu_after").text("++");
 			}
 		});
-	},1000); */
+	},1000);
 });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top"style="background-color: white; height:90px;border: none;">

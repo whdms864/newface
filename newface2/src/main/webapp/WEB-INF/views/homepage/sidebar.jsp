@@ -78,6 +78,7 @@ function getCookie(cookieName) {
 
 	
 </script>
+<!--  -->
 <!----------------- 여기서부터 왼쪽 사이드바 ----------------->
 <div align="center" style="width: 250px; height: 200px;background-color: rgb(224, 224, 224);">
 	<div align="center" style="display:inline-block;">
