@@ -185,6 +185,7 @@ public class SetupController {
 		Miniroom_listVo vo=new Miniroom_listVo(0, 0, 0, 0, id, 6, null, null);
 		List<Miniroom_listVo> wallpaper=service.miniroom_wallpaper(vo);
 		model.addAttribute("wallpaper", wallpaper);
+
 		return ".miniroom.setup";
 	}
 	@RequestMapping(value="/setup/item_img",method=RequestMethod.GET)

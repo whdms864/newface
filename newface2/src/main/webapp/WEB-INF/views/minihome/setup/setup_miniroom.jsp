@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/newface/resources/js/jquery.serializeObject.min.js"></script>
 <script type="text/javascript" src="/newface/resources/js/jquery.serializeObject.js"></script>
 <script>
-	$(function(){
+	$(function(){	
 		$("#wallpaper").change(function(){
 			var item_num=$("#wallpaper").find(":selected").val();
 			$.getJSON("<c:url value='/setup/item_img'/>",{"item_num":item_num},function(data){
@@ -47,6 +47,7 @@
 	<hr>
 	<div class="miniroom_back">
 	<select id="wallpaper">
+		<option>벽지를 선택하세요</option>
 	<c:forEach var="vo" items="${requestScope.wallpaper }">
 		<option class="choice" value="${vo.item_num }">${vo.name }</option>
 	</c:forEach>
@@ -67,11 +68,11 @@
 			</div>
 			<input type="hidden" name="mine_num" value="${vo.mine_num }">
 			</c:forEach>
-			<a href="#" id="submit">미니룸 저장</a>
+			<input type="button" id="item_select" value="미니룸 가져오기">
+			<input type="button" id="submit" value="미니룸 저장">
 		</form>
 		</div>
 	</div>
-	<input type="button" id="item_select" value="아이템가져오기">
 </div>
 	<script type="text/javascript">	
 	    $(document).on("click",".miniroom p img",function(){
