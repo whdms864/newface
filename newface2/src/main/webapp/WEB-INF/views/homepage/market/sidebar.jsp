@@ -38,7 +38,7 @@
 		<table width="240px" style="margin: 10px;text-align: center;">
 			<tr>
 				<td rowspan="5" width="80px"><!-- 미니미 -->
-					<div style="background-color: rgb(255, 255, 255); width:74px; height:111px;">${sessionScope.minime_img }</div>
+					<div style="background-color: rgb(255, 255, 255); width:90px; height:111px;">${sessionScope.minime_img }</div>
 				</td>
 			</tr>
 			<tr>
