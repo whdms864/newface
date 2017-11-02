@@ -30,7 +30,7 @@
 				</c:forEach>
 				</select>
 			</td>
-			<td><input type="text" name="title" id="title" placeholder="다이어리 제목을 입력하세요" ></td>
+			<td><input type="text" name="title" id="title" placeholder="다이어리 제목을 입력하세요" style="width: 383px"></td>
 		</tr>
 		<tr>
 			<td style="margin:0; padding:0;" colspan="2"><textarea name="content" id="smarteditor" style="width:493px; height:270px;"></textarea></td>
