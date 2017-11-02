@@ -1,54 +1,115 @@
 @charset "UTF-8";
+
 body {
 	margin: 0;
 	padding: 0;
 }
-#left_back{
-	width:147px ;height:153px ;
+
+#left_back {
+	width: 155px;
+	height: 153px;
 }
-#profile{/*프로필사진*/
-	position: relative; top: 10px; left: 25px; width: 147px; height: 153px; 
+
+#profile { /*프로필사진*/
+	position: relative;
+	top: 10px;
+	left: 25px;
+	width: 147px;
+	height: 153px;
 }
-#todayis{/*기분상태*/
-	position: relative; top: 20px; left: 38px; width:100px;
-	border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; 
-	text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(26, 188, 156);
+
+#todayis { /*기분상태*/
+	position: relative;
+	top: 20px;
+	left: 38px;
+	width: 100px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+	text-align: center;
+	line-height: 20px;
+	color: rgb(255, 255, 255);
+	font-size: 12px;
+	box-shadow: none;
+	background-color: rgb(26, 188, 156);
 	display: inline-block;
-}                     
-#content{
-	position: relative; top: 20px; left: 25px; width: 160px; height: 130px; overflow:auto;
+}
+
+#content {
+	position: relative;
+	top: 20px;
+	left: 25px;
+	width: 160px;
+	height: 130px;
+	overflow: auto;
 	font-size: 13px;
 }
-#edit{
-	position: relative; margin-top: 20px; left: 25px; width: 100px; height: 13px; 
-	font-size: 14px; color: rgb(41, 90, 221);
+
+#edit {
+	position: relative;
+	margin-top: 20px;
+	left: 25px;
+	width: 100px;
+	height: 13px;
+	font-size: 14px;
+	color: rgb(41, 90, 221);
 }
-#member{
-	position: relative; margin-top:10px; left: 25px; width: 100px; height: 20px; 
-	font-size: 15px; 
+
+#member {
+	position: relative;
+	margin-top: 10px;
+	left: 25px;
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
 }
-#name{
-	display: inline; float: left; cursor: pointer;  width: 130px;
+
+#name {
+	display: inline;
+	float: left;
+	cursor: pointer;
+	width: 130px;
 }
-#u_you{
+
+#u_you {
 	display: inline-block;
 }
-#i_you1{
-	display: none; 
+
+#i_you1 {
+	display: none;
 }
-#iu{
-	position: relative; top: 30px; left: 25px;  width: 150px; height: 170px;
+
+#iu {
+	position: relative;
+	top: 30px;
+	left: 25px;
+	width: 150px;
+	height: 170px;
 }
-a{
-	text-decoration: none; color: black;
+
+a {
+	text-decoration: none;
+	color: black;
 }
-#history:hover{
-	font-weight: bold; cursor: pointer;
+
+#history:hover {
+	font-weight: bold;
+	cursor: pointer;
 }
-.photo{
-	max-width: 153px;max-height: 153px; margin-left: auto; margin-right: auto; display: block;
+
+.photo {
+	max-width: 153px;
+	max-height: 153px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
-hr{
+
+hr {
 	width: 230px;
 }
 
+#regdate {
+	margin-left: 25px;
+}

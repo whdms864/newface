@@ -16,7 +16,7 @@
 		select * from profile where hompy_num=#{value} order by pro_num desc limit 0,1
 	</select>
 	<select id="profile_list" parameterType="int" resultType="profile">
-		select * from profile where hompy_num=#{value} order by pro_num desc
+		select todayis,content,save_name,date_format(regdate,'%Y년 %c월 %e일 %r') regdate from profile where hompy_num=#{value} order by pro_num desc;
 	</select>
 	<select id="now" parameterType="int" resultType="now">
 		select photo_num num,title,p.photo_folder_num folder_num,hompy_num,p.regdate regdate,(select 1 from dual) division

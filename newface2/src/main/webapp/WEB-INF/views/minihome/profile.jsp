@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_profile.css?var=23'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/minihome/minihome_profile.css?var=43'/>">
 </head>
 <body>
 <div id="left_back">
